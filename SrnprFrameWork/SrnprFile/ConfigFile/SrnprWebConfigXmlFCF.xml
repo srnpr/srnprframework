@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/xsl" href="SrnprWebConfigXsltCF.xslt"?>
+<srnprWebConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://SrnprFrameWork/SrnprFile/ConfigFile SrnprWebConfigXsdCF.xsd" xmlns="http://SrnprFrameWork/SrnprFile/ConfigFile/SrnprWebConfig">
+	<commonConfig>
+		<dllVersion>1.1.1.1</dllVersion>
+		<dllXsltCssHref>SrnprWebConfigCssCF.css</dllXsltCssHref>
+		<widgateDefaultVersion>1.1.1.1</widgateDefaultVersion>
+		<webSiteUrl>http://SrnprFrameWork</webSiteUrl>
+	</commonConfig>
+	<includeFileList jsBaseUrl="http://f.xgou.com/AtGang/Control/" cssBaseUrl="">
+		<js fileId="jsWebCommon" Description="common">SrnprWebJsCommon.js</js>
+		<js fileId="jsFileUploadWWW">SrnprWebJsWidgetFileUploadWWW.js</js>
+		<css fileId="cssBase">cssBase.css</css>
+	</includeFileList>
+	<widgetList>
+		<widget widgetId="1001">PageSerchWWW</widget>
+		<widget widgetId="1002">FileUploadWWW</widget>
+		<widget widgetId="1003">CkeditorWWW</widget>
+	</widgetList>
+	<widget version="1">
+		<config version="1">
+			<pageSerch version="1" widgetId="1001">
+				<includeFile version="1">
+					<file>jsWebCommon</file>
+				</includeFile>
+			</pageSerch>
+			<fileUpload version="1" widgetId="1002">
+				<includeFile version="1">
+					<file>jsFileUploadWWW</file>
+                    <file>jsWebCommon</file>
+				</includeFile>
+                <dictionary version="1">
+                    <entry key="UploadFilePathServer" value="TempFile"/>
+                    <entry key="UploadButtonText" value="上传"/>
+                    <entry key="AllowPostFix" value=".rar|.doc|.docx|.xls|.xlsx|.ppt|.pptx|.pdf|.jpg|.gif|.jpeg|.bmp|.txt|.rtf|.csv|.zip|.7z|"/>
+                    <entry key="ButtonClass" value="button2"/>
+                    <entry key="WebStyleWidth" value="300px"/>
+                    <entry key="FileSaveWebServicesUrl" value="http://f.xgou.com/WsImageUpload/FileUpload.asmx"/>
+                    <entry key="MaxFileLength" value="5MB"/>
+                </dictionary>
+			</fileUpload>
+		</config>
+		<config version="2">
+			<pageSerch version="1" widgetId="1001">
+				<includeFile version="1">
+					<file>jsWebCommon</file>
+				</includeFile>
+			</pageSerch>
+		</config>
+	</widget>
+</srnprWebConfig>

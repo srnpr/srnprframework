@@ -1,0 +1,80 @@
+﻿.SWCbody
+{
+    background-color: #e7f4fe;
+    margin:0px;
+    padding:10px;
+   
+}
+
+.SWCListTitle
+{
+    background-color:#1e82af;
+    margin:10px 0px 10px 0px;
+    color:#ffffff;
+    font-weight:bold;
+    line-height:30px;
+    text-indent:10px;
+    font-size:15px;
+    font-family:楷体_GB2312;
+    
+}
+.SWCListTableWidget
+{
+    background-color:#004d00;
+    width:auto;
+    float:left;
+    height:30px;
+    padding:0px 20px 0px 20px;
+    line-height:30px;
+    font-size:14px;
+    color:#ffffff;
+    margin-top:10px;
+    
+}
+
+ .SWCListTable
+{
+    clear:both;
+    background-color: #4ea7cf;
+    font-size: 13px;
+    width:80%;
+    table-layout:fixed;
+   
+   
+}
+.SWCListTable tr th
+{
+    background-color: #dbedf5;
+    padding: 5px;
+    font-weight: bold;
+    color: #004d00;
+}
+.SWCListTable tr td
+{
+    background-color: #e7f4fe;
+    padding: 5px;
+   
+}
+
+.SWCListTableField
+{
+    color: #990000;
+    text-align:right;
+    
+}
+
+.SWCListTabledescription
+{
+    color: #999999;
+}
+.SWCListTableValue
+{
+    color: #004d00;
+}
+
+.SWCListTableTitle
+{
+    
+    text-align:center;
+    color: #004d00;
+}

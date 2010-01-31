@@ -1,0 +1,101 @@
+﻿http://caifengzhe.blog.hexun.com/38300939_d.html
+
+
+任何的编程语言或者是SQL语句都有内置的函数或方法，而强大灵活的xslt技术也是如此。熟练掌握XSLT的常用函数的用法，XSLT的应用将变得如此轻松，你会发现XSLT比想象中还要牛！以下是xslt数值的函数与xslt字符串函数的说明与参考示例。
+
+1、xslt数值的函数：
+（1）fn:number(arg)   返回参数的数值。参数可以是布尔值、字符串或节点集。
+     示例：<xsl:value-of select="number('100')"/>  返回 100
+
+（2）fn:abs(num) 返回参数的绝对值。
+     示例：<xsl:value-of select="number(-3.14)"/>  返回 3.14
+
+（3）fn:ceiling(num) 返回大于 num 参数的最小整数。（注：这里有些文章是写错了的，将大于写成了小于）
+     示例：<xsl:value-of select="ceiling(3.14)"/>  返回 4
+
+（4）fn:floor(num) 返回小于等于 num 参数的最大整数。
+     示例：<xsl:value-of select="floor(3.14)"/>  返回 3
+
+（5）fn:round(num) 把 num 参数舍入为最接近的整数。
+     示例：<xsl:value-of select="round(3.14)"/>  返回 3
+
+（6）round-half-to-even(num) 
+     示例：<xsl:value-of select="round-half-to-even(0.5)"/>  返回 0
+     示例：<xsl:value-of select="round-half-to-even(1.5)"/>  返回 2
+     示例：<xsl:value-of select="round-half-to-even(2.5)"/>  返回 2
+
+
+2、xslt字符串函数
+（1）fn:string(arg) 返回参数的字符串值。参数可以是数字、逻辑值或节点集。
+     示例：<xsl:value-of select="string(314)"/>  返回 "314"
+
+（2）fn:codepoints-to-string(int,int,...) 根据代码点序列返回字符串。
+     示例：<xsl:value-of select="codepoints-to-string(84, 104, 233, 114, 232, 115, 101)"/>  返回 'Thérèse'
+ 
+（3）fn:string-to-codepoints(string) 根据字符串返回代码点序列。
+     示例：<xsl:value-of select="string-to-codepoints("Thérèse")"/>  返回 84, 104, 233, 114, 232, 115, 101
+
+（4）fn:codepoint-equal(comp1,comp2) 根据 Unicode 代码点对照，如果 comp1 的值等于 comp2 的值，则返回 true。(http://www.w3.org/2005/02/xpath-functions/collation/codepoint)，否则返回 false。
+     示例：<xsl:value-of select="compare('ghi', 'ghi')"/>  返回 true
+
+     fn:compare(comp1,comp2) 
+     fn:compare(comp1,comp2,collation)  如果 comp1 小于 comp2，则返回 -1。如果 comp1 等于 comp2，则返回 0。如果 comp1 大于 comp2，则返回 1。（根据所用的对照规则）。
+     示例：<xsl:value-of select="compare('ghi', 'ghi')"/>  返回 0
+
+（5）fn:concat(string,string,...) 返回字符串的拼接。
+     示例：<xsl:value-of select="concat('XPath ','is ','FUN!')"/>  返回 'XPath is FUN!'
+ 
+（6）fn:string-join((string,string,...),sep) 使用 sep 参数作为分隔符，来返回 string 参数拼接后的字符串。
+     示例：<xsl:value-of select="string-join(('Www.', 'mobansheji', '.', 'com'), ' ')"/>  返回 'www.mobansheji.com'
+
+（7）fn:substring(string,start,len) 
+     fn:substring(string,start) 返回从start位置开始的指定长度的子字符串。第一个字符的下标是 1。如果省略 len 参数，则返回从位置 start 到字符串末尾的子字符串。
+     示例：<xsl:value-of select="substring('www.mobansheji.com',1,4)"/>  返回 'www.'
+           <xsl:value-of select="substring('www.mobansheji.com',4)"/>  返回 'mobansheji.com'
+
+（8）fn:string-length(string) fn:string-length() 返回指定字符串的长度。如果没有 string 参数，则返回当前节点的字符串值的长度。
+     示例：<xsl:value-of select="substring('www.mobansheji.com')"/>  返回 18
+
+（9）fn:normalize-space(string) fn:normalize-space() 删除指定字符串的开头和结尾的空白，并把内部的所有空白序列替换为一个，然后返回结果。如果没有 string 参数，则处理当前节点。。
+     示例：<xsl:value-of select="normalize-space(' www.    mobansheji .  com  ')"/>  返回 'www.mobansheji.com'
+
+（10）fn:upper-case(string) 把 string 参数转换为大写。
+     示例：<xsl:value-of select="upper-case('The Xpath')"/>  返回 'THE XPATH'
+ 
+（11）fn:lower-case(string) 把 string 参数转换为小写。
+     示例：<xsl:value-of select="lower-case('The XML')"/>  返回 'the xml'
+ 
+（12）fn:translate(string1,string2,string3) 把 string1 中的 string2 替换为 string3。
+     示例：<xsl:value-of select="translate('Do you know xml and xpath?','xml','xslt')"/>  返回 'Do you know xslt and xpath?'
+     示例：<xsl:value-of select="translate('12:30','03','54')"/>  返回 '12:45'
+ 
+（13）fn:escape-uri(stringURI,esc-res)
+     示例：<xsl:value-of select="escape-uri("http://example.com/test#car", true())"/>  返回 "http%3A%2F%2Fexample.com%2Ftest#car"
+     示例：<xsl:value-of select="escape-uri("http://example.com/test#car", false())"/>  返回 "http://example.com/test#car"
+ 
+（14）fn:contains(string1,string2) 如果 string1 包含 string2，则返回 true，否则返回 false。
+     示例：<xsl:value-of select="contains('XML','XM')"/>  返回 true
+ 
+（15）fn:starts-with(string1,string2) 如果 string1 以 string2 开始，则返回 true，否则返回 false。
+     示例：<xsl:value-of select="starts-with('XML','X')"/>  返回 true
+ 
+（16）fn:ends-with(string1,string2) 如果 string1 以 string2 结尾，则返回 true，否则返回 false。
+     示例：<xsl:value-of select="ends-with('XML','X')"/>  返回 false
+ 
+（17）fn:substring-before(string1,string2) 返回 string2 在 string1 中出现之前的子字符串。
+     示例：<xsl:value-of select="substring-before('www.mobansheji.com','.')"/>  返回 'www'
+ 
+（18）fn:substring-after(string1,string2) 返回 string2 在 string1 中出现之后的子字符串。
+     示例：<xsl:value-of select="substring-before('www.mobansheji.com','.')"/>  返回 'mobansheji.com'
+ 
+（19）fn:matches(string,pattern) 如果 string 参数匹配指定的模式，则返回 true，否则返回 false。
+     示例：<xsl:value-of select="matches("Merano", "ran")"/>  返回 true
+ 
+（20）fn:replace(string,pattern,replace) 把指定的模式替换为 replace 参数，并返回结果。
+     示例：<xsl:value-of select="replace("The password is admin888", "8", "*")"/>  返回 'The password is admin***'
+ 
+（21）fn:tokenize(string,pattern)
+     示例：<xsl:value-of select="tokenize("XPath is fun", "\s+")"/>  返回 ("XPath", "is", "fun")
+
+ 
+

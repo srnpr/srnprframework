@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+<xs:schema id="SrnprWebConfigXsdCF"
+    targetNamespace="http://SrnprFrameWork.SrnprWebConfig"
+    elementFormDefault="qualified"
+    xmlns="http://SrnprFrameWork.SrnprWebConfig"
+    xmlns:mstns="http://tempuri.org/SrnprWebConfigXsdCF.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+-->
+<xs:schema id="SrnprWebConfigXsdCF"
+    elementFormDefault="qualified"
+		   targetNamespace="http://SrnprFrameWork/SrnprFile/ConfigFile/SrnprWebConfig"
+		    xmlns="http://SrnprFrameWork/SrnprFile/ConfigFile/SrnprWebConfig"
+    xmlns:mstns="http://tempuri.org/SrnprWebConfigXsdCF.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		  xmlns:swc="http://SrnprFrameWork/SrnprFile/ConfigFile/SrnprWebConfig"
+>
+	
+	<!--自定义数据类型-->
+	<xs:simpleType name="_st_DllVersion"  final="#all" >
+		<xs:annotation>
+			<xs:documentation>DLL版本编号</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]*[1-9]\.[0-9]?[0-9]*\.[0-9]?[0-9]*\.[0-9]?[0-9]*"></xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="_st_HttpUrlOrNull" final="#all">
+		<xs:annotation>
+			<xs:documentation>超链接或者空</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="((h|H)(t|T)(t|T)(p|P)(s|S)?://..*)|()"></xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="_st_JsHref" final="#all">
+		<xs:annotation>
+			<xs:documentation>JavaScript文件链接</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="..*\.(j|J)(s|S)"></xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="_st_CssHref" final="#all">
+		<xs:annotation>
+			<xs:documentation>CSS文件链接</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="..*\.(c|C)(s|S)(s|S)"></xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="_st_Version" final="#all">
+		<xs:annotation>
+			<xs:documentation>各个子版本控制</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[1-9][0-9]*"></xs:pattern>
+		</xs:restriction>
+		
+	</xs:simpleType>
+
+
+	<xs:simpleType name="_st_WeigetKeyId" final="#all">
+		<xs:annotation>
+			<xs:documentation>控件主键编号</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9a-zA-Z]{4}"></xs:pattern>
+		</xs:restriction>
+
+	</xs:simpleType>
+
+	<xs:complexType name="_ct_Config" final="#all">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="version" type="swc:_st_Version" use="required"></xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="_ct_widget_config_includeFile" final="#all">
+		<xs:sequence>
+			<xs:element name="file" type="xs:string" maxOccurs="unbounded"></xs:element>
+		</xs:sequence>
+		<xs:attribute name="version" type="swc:_st_Version" use="required"></xs:attribute>
+	</xs:complexType>
+
+    <xs:complexType name="_ct_widget_config_dictionary" final="#all">
+        <xs:sequence>
+            <xs:element name="entry"  maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:attribute name="key" type="xs:string" use="required"></xs:attribute>
+                    <xs:attribute name="value" type="xs:string" use="required"></xs:attribute>
+                </xs:complexType>
+                
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="version" type="swc:_st_Version" use="required"></xs:attribute>
+    </xs:complexType>
+	
+	<!--验证序列-->
+	<xs:element name="srnprWebConfig">
+		<xs:complexType>
+			<xs:sequence>
+				<!--通用配置序列-->
+				<xs:element name="commonConfig">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="dllVersion" type="swc:_st_DllVersion">
+							</xs:element>
+							<xs:element name="dllXsltCssHref" type="swc:_st_CssHref"></xs:element>
+							<xs:element name="widgateDefaultVersion"  type="swc:_st_DllVersion">
+							</xs:element>
+							<xs:element name="webSiteUrl" type="xs:anyURI">
+							</xs:element>
+						</xs:sequence>
+						
+					</xs:complexType>
+				</xs:element>
+				<!--包含文件序列-->
+				<xs:element name="includeFileList">
+					<xs:complexType>
+
+						<xs:sequence>
+							<xs:element name="js" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="_st_JsHref">
+											<xs:attribute name="fileId" use="required">
+												<xs:simpleType>
+													<xs:restriction base="xs:string">
+														<xs:pattern value="js.*"></xs:pattern>
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:attribute>
+											<xs:attribute name="Description" type="xs:string"></xs:attribute>
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+								
+							</xs:element>
+
+							<xs:element name="css" maxOccurs="unbounded" >
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="_st_CssHref">
+											<xs:attribute name="fileId" use="required">
+												<xs:simpleType>
+													<xs:restriction base="xs:string">
+														<xs:pattern value="css.*"></xs:pattern>
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:attribute>
+											<xs:attribute name="Description" type="xs:string"></xs:attribute>
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="jsBaseUrl" type="swc:_st_HttpUrlOrNull"></xs:attribute>
+						<xs:attribute name="cssBaseUrl" type="swc:_st_HttpUrlOrNull"></xs:attribute>
+					</xs:complexType>
+					<!--主外键
+					<xs:key name="_key_includeFileList_jsKey">
+						<xs:selector xpath="swc:js"></xs:selector>
+						<xs:field xpath="@id"></xs:field>
+					</xs:key>
+					<xs:key name="_key_includeFileList_cssKey">
+					<xs:selector xpath="swc:css"></xs:selector>
+					<xs:field xpath="@id"></xs:field>
+					</xs:key>-->
+				</xs:element>
+				<xs:element name="widgetList">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="widget" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:string">
+											<xs:attribute name="widgetId" use="required" type="swc:_st_WeigetKeyId"></xs:attribute>
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+								
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+					
+				</xs:element>
+				
+				<!--配置序列-->
+				<xs:element name="widget" minOccurs="1" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>
+							Widget配置系列
+						</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="config" minOccurs="1" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="pageSerch" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>查询</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="includeFile" type="swc:_ct_widget_config_includeFile">
+														<xs:annotation>
+															<xs:documentation>包含文件 用逗号分隔</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="version" type="swc:_st_Version" use="required"></xs:attribute>
+												<xs:attribute name="widgetId" type="swc:_st_WeigetKeyId"></xs:attribute>
+											</xs:complexType>
+										</xs:element>
+
+										<xs:element name="fileUpload" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>文件上传</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="includeFile" type="swc:_ct_widget_config_includeFile">
+														<xs:annotation>
+															<xs:documentation>包含文件 用逗号分隔</xs:documentation>
+														</xs:annotation>
+														
+													</xs:element>
+                                                    <xs:element name="dictionary" type="swc:_ct_widget_config_dictionary"></xs:element>
+												</xs:sequence>
+												<xs:attribute name="version" type="swc:_st_Version" use="required"></xs:attribute>
+												<xs:attribute name="widgetId" type="swc:_st_WeigetKeyId"></xs:attribute>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="version" type="swc:_st_Version"  use="required"></xs:attribute>
+								</xs:complexType>
+								<xs:key name="_key_widget_config_pageSerch">
+									<xs:annotation>
+										<xs:documentation>
+											不允许控件版本重复
+										</xs:documentation>
+									</xs:annotation>
+									<xs:selector xpath="swc:pageSerch"></xs:selector>
+									<xs:field xpath="@version"></xs:field>
+								</xs:key>
+
+
+								
+								
+							</xs:element>
+							
+						</xs:sequence>
+						<xs:attribute name="version" type="swc:_st_Version"  use="required"></xs:attribute>
+					</xs:complexType>
+					
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+		
+		<!--全局唯一键约束-->
+
+		<xs:key name="_key_includeFileList_fileId">
+			<xs:selector xpath="./swc:includeFileList/*"></xs:selector>
+			<xs:field xpath="@fileId"></xs:field>
+		</xs:key>
+		<xs:keyref name="_keyref_wigdet_fileId" refer="_key_includeFileList_fileId">
+			<xs:selector xpath="./swc:widget/swc:config/*/swc:includeFile/swc:file"></xs:selector>
+			<xs:field xpath="."></xs:field>
+		</xs:keyref>
+
+		<xs:key name="_key_widgetList_widgetId">
+			<xs:selector xpath="./swc:widgetList/*"></xs:selector>
+			<xs:field xpath="@widgetId"></xs:field>
+		</xs:key>
+		<xs:keyref name="_keyref_wigdet_widgetId" refer="_key_widgetList_widgetId">
+			<xs:selector xpath="./swc:widget/swc:config/*"></xs:selector>
+			<xs:field xpath="@widgetId"></xs:field>
+		</xs:keyref>
+		
+	</xs:element>
+</xs:schema>

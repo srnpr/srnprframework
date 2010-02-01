@@ -60,6 +60,7 @@
     <Content Include="ConfigFile\SrnprWebConfigCssFCF.css" />
     <Content Include="ConfigFile\SrnprWebConfigXsltFCF.xslt" />
     <Content Include="DragFile\ElementDragXmlFDF.xml" />
+    <Content Include="WebFile\SrnprWebDragElementFWF.js" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ConfigFile\SrnprWebConfigRegFCF.reg" />

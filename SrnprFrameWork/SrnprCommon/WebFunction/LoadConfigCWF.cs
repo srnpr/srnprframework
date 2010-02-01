@@ -59,20 +59,20 @@ namespace SrnprCommon.WebFunction
                     widgetConfig = new WebModel.FileUploadConfigCWM();
                     break;
                 default:
-                    widgetConfig=new WebModel.CommonWidgetConfigCWM();
+                    widgetConfig = new WebModel.CommonWidgetConfigCWM();
                     break;
             }
 
 
             if (System.Web.HttpContext.Current != null)
             {
-               
+
             }
 
             Dictionary<string, InterFace.WebWidgetConfigCIF> d = GetListFromXML();
-           
 
-            widgetConfig=d[widgetType.ToString()];
+
+            widgetConfig = d[widgetType.ToString()];
 
 
             return widgetConfig;
@@ -86,7 +86,7 @@ namespace SrnprCommon.WebFunction
         /// Description: 得到List
         /// </summary>
         /// <returns></returns>
-        public Dictionary<string,InterFace.WebWidgetConfigCIF> GetListFromXML()
+        public Dictionary<string, InterFace.WebWidgetConfigCIF> GetListFromXML()
         {
             Dictionary<string, InterFace.WebWidgetConfigCIF> dConfigReturn = new Dictionary<string, SrnprCommon.InterFace.WebWidgetConfigCIF>();
             WebModel.CommonWidgetConfigCWM commonConfig = new SrnprCommon.WebModel.CommonWidgetConfigCWM();
@@ -98,9 +98,9 @@ namespace SrnprCommon.WebFunction
             //如果无法读取配置文件  则开始读取注册表
             if (string.IsNullOrEmpty(sXmlPath))
             {
-                string sVersion=System.Reflection.Assembly.GetCallingAssembly().GetName().Version.ToString();
+                string sVersion = System.Reflection.Assembly.GetCallingAssembly().GetName().Version.ToString();
                 RegistryKey rstryKey = Registry.LocalMachine;
-                RegistryKey rgstryKeyValues = rstryKey.OpenSubKey(@"SOFTWARE\SrnprFrameWork\SrnprWeb\"+sVersion);
+                RegistryKey rgstryKeyValues = rstryKey.OpenSubKey(@"SOFTWARE\SrnprFrameWork\SrnprWeb\" + sVersion);
                 if (rgstryKeyValues != null)
                 {
                     object oPath = rgstryKeyValues.GetValue(SRNPR_WEB_CONFIG_PATH_NAME);
@@ -110,122 +110,122 @@ namespace SrnprCommon.WebFunction
                     }
                     rgstryKeyValues.Close();
                 }
-                
+
             }
 
 
             if (sXmlPath.IndexOf('~') == 0)
             {
-                sXmlPath= System.Web.HttpContext.Current.Server.MapPath(sXmlPath);
+                sXmlPath = System.Web.HttpContext.Current.Server.MapPath(sXmlPath);
             }
 
             //如果存在该路径 则开始加载XML
-            if (string.IsNullOrEmpty(sXmlPath)||!System.IO.File.Exists(sXmlPath))
+            if (string.IsNullOrEmpty(sXmlPath) || !System.IO.File.Exists(sXmlPath))
             {
                 throw new Exception("Loading ConfigXML Error!!!");
             }
 
             #endregion
 
-            
-           
+
+
             xdXml.Load(sXmlPath);
 
 
             XmlNode xnDE = xdXml.DocumentElement;
-            XmlNamespaceManager xmm=new XmlNamespaceManager(xdXml.NameTable);
-           xmm.AddNamespace("s",xnDE.NamespaceURI);
-           XmlNode xnCommon = xnDE.SelectSingleNode("s:commonConfig",xmm);
-          
-
-           
+            XmlNamespaceManager xmm = new XmlNamespaceManager(xdXml.NameTable);
+            xmm.AddNamespace("s", xnDE.NamespaceURI);
+            XmlNode xnCommon = xnDE.SelectSingleNode("s:commonConfig", xmm);
 
 
-           #region 加载通用序列
-           commonConfig.DllVersion =new Version( xnCommon.SelectSingleNode("s:dllVersion",xmm).InnerText);
-           commonConfig.WidgetDefaultVersion = new Version(xnCommon.SelectSingleNode("s:widgateDefaultVersion", xmm).InnerText);
-          
-           XmlNode xnIncludeList = xnCommon.NextSibling;
-          
-
-           XmlNodeList xnlInclude = xnIncludeList.ChildNodes;
-
-           string sJsBaseUrl = xnIncludeList.Attributes["jsBaseUrl"].Value.Trim();
-           string sCssBaseUrl = xnIncludeList.Attributes["cssBaseUrl"].Value.Trim();
-
-           foreach (XmlNode xnFile in xnIncludeList.ChildNodes)
-           {
-               switch (xnFile.Name)
-               {
-                   case "js":
-
-                       dInculdeFile.Add(xnFile.Attributes["fileId"].Value.Trim(), GetIncludeFileUrl(xnFile.InnerText, sJsBaseUrl, SrnprCommon.EnumCommon.WebWidgetIncludeFileType.JS));
-                      
-                       break;
-                   case "css":
-
-                       dInculdeFile.Add(xnFile.Attributes["fileId"].Value.Trim(), GetIncludeFileUrl(xnFile.InnerText, sCssBaseUrl, SrnprCommon.EnumCommon.WebWidgetIncludeFileType.CSS));
-                       
-                       break;
-               }
-           }
-
-           commonConfig.IncludeFileList = dInculdeFile;
 
 
-           #endregion
+
+            #region 加载通用序列
+            commonConfig.DllVersion = new Version(xnCommon.SelectSingleNode("s:dllVersion", xmm).InnerText);
+            commonConfig.WidgetDefaultVersion = new Version(xnCommon.SelectSingleNode("s:widgateDefaultVersion", xmm).InnerText);
+
+            XmlNode xnIncludeList = xnCommon.NextSibling;
 
 
-           XmlNode xnWidgetConfig = xnDE.SelectSingleNode("s:widget[@version=" + commonConfig.WidgetDefaultVersion.Major.ToString() + "]/s:config[@version="+commonConfig.WidgetDefaultVersion.Minor.ToString()+"]", xmm);
+            XmlNodeList xnlInclude = xnIncludeList.ChildNodes;
 
-           #region 开始FileUpload
-           XmlNodeList xnlFileUpload = xnWidgetConfig.SelectNodes("s:fileUpload", xmm);
+            string sJsBaseUrl = xnIncludeList.Attributes["jsBaseUrl"].Value.Trim();
+            string sCssBaseUrl = xnIncludeList.Attributes["cssBaseUrl"].Value.Trim();
 
-           if (xnlFileUpload.Count > 0)
-           {
-              /*
-               List<string> listString = new List<string>();
-               foreach (XmlNode xnUpload in xnlFileUpload)
-               {
-                   foreach(XmlNode xnVersion in xnUpload.SelectNodes("@version"))
-                   {
-                       if (listString.Contains(xnUpload.Attributes["version"].Value.Trim() + "." + xnVersion.Value.Trim()))
-                       {
-                           listString.Add(xnUpload.Attributes["version"].Value.Trim() + "." + xnVersion.Value.Trim());
-                       }
-                   }
-               }
-               */
+            foreach (XmlNode xnFile in xnIncludeList.ChildNodes)
+            {
+                switch (xnFile.Name)
+                {
+                    case "js":
 
+                        dInculdeFile.Add(xnFile.Attributes["fileId"].Value.Trim(), GetIncludeFileUrl(xnFile.InnerText, sJsBaseUrl, SrnprCommon.EnumCommon.WebWidgetIncludeFileType.JS));
 
-               XmlNode xnlIncludeFile = xnlFileUpload[0].SelectSingleNode("s:includeFile",xmm);
+                        break;
+                    case "css":
 
-               WebModel.FileUploadConfigCWM fuc = new SrnprCommon.WebModel.FileUploadConfigCWM();
-               fuc.IncludeFile = new Dictionary<string, string>();
-               foreach (XmlNode xnInc in xnlIncludeFile.ChildNodes)
-               {
-                   fuc.IncludeFile.Add(xnInc.InnerText.Trim(), dInculdeFile[xnInc.InnerText.Trim()]);
+                        dInculdeFile.Add(xnFile.Attributes["fileId"].Value.Trim(), GetIncludeFileUrl(xnFile.InnerText, sCssBaseUrl, SrnprCommon.EnumCommon.WebWidgetIncludeFileType.CSS));
 
-               }
+                        break;
+                }
+            }
 
-               XmlNode xnlDictionary = xnlFileUpload[0].SelectSingleNode("s:dictionary", xmm);
-               fuc.Dictionary = new Dictionary<string, string>();
-               foreach (XmlNode xnDic in xnlDictionary.ChildNodes)
-               {
-                   fuc.Dictionary.Add(xnDic.Attributes["key"].Value.ToString(),xnDic.Attributes["value"].Value.ToString().Trim());
-
-               }
-
-               dConfigReturn.Add(SrnprCommon.EnumCommon.WebWidgetTypeCEC.FileUploadWWW.ToString(), fuc);
-           }
-           
+            commonConfig.IncludeFileList = dInculdeFile;
 
 
-           #endregion
+            #endregion
 
 
-           #region xmlreader版本注释
-           /*
+            XmlNode xnWidgetConfig = xnDE.SelectSingleNode("s:widget[@version=" + commonConfig.WidgetDefaultVersion.Major.ToString() + "]/s:config[@version=" + commonConfig.WidgetDefaultVersion.Minor.ToString() + "]", xmm);
+
+            #region 开始FileUpload
+            XmlNodeList xnlFileUpload = xnWidgetConfig.SelectNodes("s:fileUpload", xmm);
+
+            if (xnlFileUpload.Count > 0)
+            {
+                /*
+                 List<string> listString = new List<string>();
+                 foreach (XmlNode xnUpload in xnlFileUpload)
+                 {
+                     foreach(XmlNode xnVersion in xnUpload.SelectNodes("@version"))
+                     {
+                         if (listString.Contains(xnUpload.Attributes["version"].Value.Trim() + "." + xnVersion.Value.Trim()))
+                         {
+                             listString.Add(xnUpload.Attributes["version"].Value.Trim() + "." + xnVersion.Value.Trim());
+                         }
+                     }
+                 }
+                 */
+
+
+                XmlNode xnlIncludeFile = xnlFileUpload[0].SelectSingleNode("s:includeFile", xmm);
+
+                WebModel.FileUploadConfigCWM fuc = new SrnprCommon.WebModel.FileUploadConfigCWM();
+                fuc.IncludeFile = new Dictionary<string, string>();
+                foreach (XmlNode xnInc in xnlIncludeFile.ChildNodes)
+                {
+                    fuc.IncludeFile.Add(xnInc.InnerText.Trim(), dInculdeFile[xnInc.InnerText.Trim()]);
+
+                }
+
+                XmlNode xnlDictionary = xnlFileUpload[0].SelectSingleNode("s:dictionary", xmm);
+                fuc.Dictionary = new Dictionary<string, string>();
+                foreach (XmlNode xnDic in xnlDictionary.ChildNodes)
+                {
+                    fuc.Dictionary.Add(xnDic.Attributes["key"].Value.ToString(), xnDic.Attributes["value"].Value.ToString().Trim());
+
+                }
+
+                dConfigReturn.Add(SrnprCommon.EnumCommon.WebWidgetTypeCEC.FileUploadWWW.ToString(), fuc);
+            }
+
+
+
+            #endregion
+
+
+            #region xmlreader版本注释
+            /*
             XmlReader xr = XmlReader.Create(sXmlPath);
             WebModel.CommonWidgetCOnfigWM commonConfig = new SrnprCommon.WebModel.CommonWidgetCOnfigWM();
 
@@ -327,32 +327,32 @@ namespace SrnprCommon.WebFunction
              * 
              * 
              */
-           #endregion
+            #endregion
 
-           return dConfigReturn;
+            return dConfigReturn;
         }
 
 
 
-        private string GetIncludeFileUrl(string sPath,string sBaseUrl,EnumCommon.WebWidgetIncludeFileType fileType)
+        private string GetIncludeFileUrl(string sPath, string sBaseUrl, EnumCommon.WebWidgetIncludeFileType fileType)
         {
             string sReturn = "";
             if (StaticFunctionCWF.IsHttpUrl(sPath))
             {
-                sReturn=  sPath;
+                sReturn = sPath;
             }
             else
             {
-                sReturn= sBaseUrl + sPath;
+                sReturn = sBaseUrl + sPath;
             }
 
             switch (fileType)
             {
                 case SrnprCommon.EnumCommon.WebWidgetIncludeFileType.JS:
-                    sReturn = string.Format("<script type=\"text/javascript\" src=\"{0}\"></script>",sReturn);
+                    sReturn = string.Format("<script type=\"text/javascript\" src=\"{0}\"></script>", sReturn);
                     break;
                 case SrnprCommon.EnumCommon.WebWidgetIncludeFileType.CSS:
-                    sReturn = string.Format("<link rel=\"Stylesheet\" href=\"{0}\" />",sReturn);
+                    sReturn = string.Format("<link rel=\"Stylesheet\" href=\"{0}\" />", sReturn);
                     break;
             }
 
@@ -362,9 +362,9 @@ namespace SrnprCommon.WebFunction
 
 
 
-        
 
-       
+
+
 
     }
 }

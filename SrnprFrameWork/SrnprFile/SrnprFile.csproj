@@ -57,12 +57,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ConfigFile\SrnprWebConfigXmlFCF.xml" />
-    <Content Include="ConfigFile\SrnprWebConfigCssCF.css" />
-    <Content Include="ConfigFile\SrnprWebConfigXsltCF.xslt" />
+    <Content Include="ConfigFile\SrnprWebConfigCssFCF.css" />
+    <Content Include="ConfigFile\SrnprWebConfigXsltFCF.xslt" />
+    <Content Include="DragFile\ElementDragXmlFDF.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ConfigFile\SrnprWebConfigRegCF.reg" />
-    <None Include="ConfigFile\SrnprWebConfigXsdCF.xsd" />
+    <None Include="ConfigFile\SrnprWebConfigRegFCF.reg" />
+    <None Include="ConfigFile\SrnprWebConfigXsdFCF.xsd" />
+    <None Include="DragFile\ElementDragXsdFDF.xsd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<elementDragRoot  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				  xsi:schemaLocation="http://SrnprFrameWork/SrnprFile/ConfigFile ElementDragXsdFDF.xsd" >
+	<dragList>
+		<dragElement id="1" groupId="1" from="Ope_AgentFilterList" orderBy="CreateDate desc"
+					 where=" ExecNotesID='{0}'" title="渠道筛选工单"  functionId=""  top="5" >
+			<selectField>
+				<field id="1001" header="创建人" select="CrateOperator"/>
+				<field id="1002" header="审批人" select="ExecNotesID"/>
+			</selectField>
+			<addMenu>
+				<menu functionId="" showText="创建渠道筛选工单" link="/Ope/Filter/FilterPro.aspx"/>
+			</addMenu>
+		</dragElement>
+		<dragElement id="2" groupId="1" from="Ope_AgentFilterList" orderBy="CreateDate desc"
+					 where=" ExecNotesID='{0}'" title="渠道筛选工单"  functionId=""  top="5" >
+			<selectField>
+				<field id="1003" header="创建人" select="CrateOperator"/>
+				<field id="1004" header="审批人" select="ExecNotesID"/>
+			</selectField>
+			<addMenu>
+				<menu functionId="" showText="创建渠道筛选工单" link="/Ope/Filter/FilterPro.aspx"/>
+			</addMenu>
+		</dragElement>
+
+	</dragList>
+
+</elementDragRoot>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ElementDragXsdFDF"
+    
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/ElementDragXsdFDF.xsd"
+    xmlns:mstns="http://tempuri.org/ElementDragXsdFDF.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+	<xs:element name="elementDragRoot">
+
+		<xs:complexType>
+
+			<xs:sequence>
+				<xs:element name="dragList">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="dragElement" maxOccurs="unbounded" minOccurs="1">
+								<xs:complexType>
+
+									<xs:sequence>
+
+										<xs:element name="selectField">
+											<xs:complexType>
+												<xs:sequence>
+
+													<xs:element name="field" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:attribute name="id" use="required" type="xs:long"></xs:attribute>
+															<xs:attribute name="header" use="required" type="xs:string"></xs:attribute>
+															<xs:attribute name="select" use="required" type="xs:string"></xs:attribute>
+															<xs:attribute name="link"  type="xs:string"></xs:attribute>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="addMenu">
+
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="menu" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:attribute name="functionId" use="required" type="xs:long"></xs:attribute>
+															<xs:attribute name="showText" use="required" type="xs:string"></xs:attribute>
+															<xs:attribute name="link" use="required" type="xs:string"></xs:attribute>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="groupId" use="required" type="xs:string" ></xs:attribute>
+									<xs:attribute name="from" use="required" type="xs:string"></xs:attribute>
+									<xs:attribute name="orderBy" use="required" type="xs:string"></xs:attribute>
+									<xs:attribute name="where" use="required" type="xs:string"></xs:attribute>
+									<xs:attribute name="title" use="required" type="xs:string"></xs:attribute>
+									<xs:attribute name="top" use="required" type="xs:long"></xs:attribute>
+									<xs:attribute name="functionId" use="required" type="xs:long"></xs:attribute>
+									<xs:attribute name="id" use="required" type="xs:long"></xs:attribute>
+								</xs:complexType>
+
+							</xs:element>
+
+						</xs:sequence>
+
+					</xs:complexType>
+
+				</xs:element>
+
+			</xs:sequence>
+
+		</xs:complexType>
+		<xs:key name="_key_field_id">
+			<xs:selector xpath="./dragList/dragElement/selectField/*"></xs:selector>
+			<xs:field xpath="@id"></xs:field>
+		</xs:key>
+	</xs:element>
+
+</xs:schema>

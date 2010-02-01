@@ -1,0 +1,15 @@
+﻿body {margin:0px;padding:0px;font-size:12px;text-align:center;}
+body > div {text-align:center; margin-right:auto; margin-left:auto;} 
+.content{width:900px;}
+.content .left{
+ float:left;
+ width:20%;
+ border:1px solid #FF0000;
+ margin:3px;
+}
+.content .center{float:left;border:1px solid #FF0000;margin:3px;width:57%}
+.content .right{float:right;width:20%;border:1px solid #FF0000;margin:3px}
+.mo{height:auto;border:1px solid #CCC;margin:3px;background:#FFF}
+.mo h1{background:#ECF9FF;height:18px;padding:3px;cursor:move}
+.mo .nr{height:80px;border:1px solid #F3F3F3;margin:2px}
+h1{margin:0px;padding:0px;text-align:left;font-size:12px}

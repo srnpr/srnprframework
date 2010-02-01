@@ -1,5 +1,6 @@
 ﻿(
-function() {
+function()
+{
 
     // Will speed up references to window, and allows munging its name.
     var window = this,
@@ -9,24 +10,31 @@ function() {
 	_SrnprWebJsCommon = window.SrnprWebJsCommon,
     // Map over the $ in case of overwrite
 	_SWJC = window.SWJC,
- SrnprWebJsCommon = window.SrnprWebJsCommon = window.SWJC = function(e) {
-     if (typeof (e) == "string") {
+ SrnprWebJsCommon = window.SrnprWebJsCommon = window.SWJC = function(e)
+ {
+     if (typeof (e) == "string")
+     {
          e = document.getElementById(e);
      }
-     else if (e == undefined) {
+     else if (e == undefined)
+     {
          e = document;
      }
 
      return e;
  }
 
-    SWJC.InitObj = function(oDefault, o) {
-        if (o == undefined) {
+    SWJC.InitObj = function(oDefault, o)
+    {
+        if (o == undefined)
+        {
             o = oDefault;
         }
-        else {
+        else
+        {
             //重新初始化
-            for (var p in oDefault) {
+            for (var p in oDefault)
+            {
                 if (o[p] == undefined)
                     o[p] = oDefault[p];
             }
@@ -34,38 +42,80 @@ function() {
         return o;
     }
 
-    SWJC.AlterMsg = function(m) {
+    /*元素操作相关******************************/
+    SWJC.DelElement = function(e)
+    {
+        if (SWJC(e))
+        {
+            SWJC(e).parentNode.removeChild(SWJC(e));
+        }
+    }
+
+    SWJC.GetPoint = function(e)
+    {
+        e = SWJC(e);
+        var a = new Array()
+        var t = e.offsetTop;
+        var l = e.offsetLeft;
+        var w = e.offsetWidth;
+        var h = e.offsetHeight;
+        while (e = e.offsetParent)
+        {
+            t += e.offsetTop;
+            l += e.offsetLeft;
+        }
+        a[0] = t; a[1] = l; a[2] = w; a[3] = h
+        return a;
+    }
+
+
+
+
+
+    SWJC.AlterMsg = function(m)
+    {
         alert(m);
     }
 
-    SWJC.SubmitElement = function(e) {
-        if (typeof (e) == "string") {
+    SWJC.SubmitElement = function(e)
+    {
+        if (typeof (e) == "string")
+        {
             e = document.getElementById(e);
         }
-        if (e) {
+        if (e)
+        {
             e.form.submit();
         }
-        else {
+        else
+        {
             document.forms[0].submit();
         }
     }
 
-    SWJC.AddEvent = function(element, e, fn) {
-        if (typeof (element) == "string") {
+    SWJC.AddEvent = function(element, e, fn)
+    {
+        if (typeof (element) == "string")
+        {
             element = document.getElementById(element);
         }
 
-        if (element) {
-            if (element.addEventListener) {
+        if (element)
+        {
+            if (element.addEventListener)
+            {
                 element.addEventListener(e, fn, false);
-            } else {
+            } else
+            {
                 element.attachEvent("on" + e, fn);
             }
         }
     }
 
-    SWJC.AddError = function(e, m) {
-        if (!SWJC(e).nextSibling.srnprwebjscommon_vali_error) {
+    SWJC.AddError = function(e, m)
+    {
+        if (!SWJC(e).nextSibling.srnprwebjscommon_vali_error)
+        {
             var o = document.createElement("span");
             o.srnprwebjscommon_vali_error = "true";
             o.innerHTML = "<img src=\"http://f.xgou.com/AtGang/UI/images/vali_0.gif\" />" + m;
@@ -86,18 +136,22 @@ function() {
         mozilla: /mozilla/.test(userAgent) && !/(compatible|webkit)/.test(userAgent)
     }
 
-    SWJC.IsCheckSubmit = function(e) {
+    SWJC.IsCheckSubmit = function(e)
+    {
         return !SWJC("Jquery_Tooltip_Check_Submit");
     }
 
 
-    SWJC.UnSubmit = function(e) {
+    SWJC.UnSubmit = function(e)
+    {
         e = e || window.event;
 
-        if (!this.Browser.msie) {
+        if (!this.Browser.msie)
+        {
             e.preventDefault();
         }
-        else {
+        else
+        {
             e.returnValue = false;
         }
 

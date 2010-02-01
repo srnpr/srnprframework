@@ -13,3 +13,32 @@ body > div {text-align:center; margin-right:auto; margin-left:auto;}
 .mo h1{background:#ECF9FF;height:18px;padding:3px;cursor:move}
 .mo .nr{height:80px;border:1px solid #F3F3F3;margin:2px}
 h1{margin:0px;padding:0px;text-align:left;font-size:12px}
+
+
+
+.SrnprWebCssDragElementFWFList
+{
+    width:900px;
+}
+
+.SrnprWebCssDragElementFWFHead
+{
+    width:auto;
+    height:20px;
+    cursor:move;
+    
+    background-color:#cccccc;
+}
+.SrnprWebCssDragElementFWFBox
+{
+    height:140px;
+    border:solid 1px #000000;
+     margin-right:auto;
+     margin-left:auto;
+     width:900px;
+     margin-top:20px;
+}
+.SrnprWebCssDragElementFWFContent
+{
+    height:100px;
+}

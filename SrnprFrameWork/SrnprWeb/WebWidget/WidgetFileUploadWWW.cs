@@ -15,11 +15,11 @@ namespace SrnprWeb.WebWidget
 {
     [DefaultProperty("Text")]
     [ToolboxData("<{0}:WidgetFileUploadWWW runat=server></{0}:WidgetFileUploadWWW>")]
-    public class WidgetFileUploadWWW : WebControl,SrnprCommon.InterFace.WebWidgetBaseCIF
+    public class WidgetFileUploadWWW : WebControl, SrnprCommon.InterFace.WebWidgetBaseCIF
     {
 
         #region 公共属性
-        private string _uploadButtonText="";
+        private string _uploadButtonText = "";
         /// <summary>
         /// 上传按钮文字
         /// </summary>
@@ -29,7 +29,7 @@ namespace SrnprWeb.WebWidget
             {
                 if (string.IsNullOrEmpty(_uploadButtonText))
                 {
-                    return  GetConfigDictionary(WebWidgetFileUploadWWWDictionary.UploadButtonText);
+                    return GetConfigDictionary(WebWidgetFileUploadWWWDictionary.UploadButtonText);
                 }
                 else
                 {
@@ -212,7 +212,8 @@ namespace SrnprWeb.WebWidget
 
 
 
-     
+
+
         /// <summary>
         /// 是否有上传文件
         /// </summary>
@@ -220,9 +221,9 @@ namespace SrnprWeb.WebWidget
         {
             get
             {
-                return _fileInfo.Count>0;
+                return _fileInfo.Count > 0;
             }
-            
+
         }
 
         private List<WebEntity.FileUploadInfoWWE> _fileInfo;
@@ -234,7 +235,7 @@ namespace SrnprWeb.WebWidget
             get
             {
 
-                
+
 
 
                 return _fileInfo;
@@ -243,7 +244,7 @@ namespace SrnprWeb.WebWidget
             {
                 _fileInfo = value;
 
-               
+
 
             }
         }
@@ -258,7 +259,7 @@ namespace SrnprWeb.WebWidget
             {
                 return _errorType;
             }
-           
+
         }
 
 
@@ -269,11 +270,11 @@ namespace SrnprWeb.WebWidget
         /// <summary>
         /// 上传编号
         /// </summary>
-        private  const string CONST_INPUT_FILE_ID_ADD = "_SRNPRWEB_WIDGETFILEUPLOADWWW_FILE";
+        private const string CONST_INPUT_FILE_ID_ADD = "_SRNPRWEB_WIDGETFILEUPLOADWWW_FILE";
         /// <summary>
         /// 按钮编号
         /// </summary>
-        private  const string CONST_INPUT_BUTTON_ID_ADD = "_SRNPRWEB_WIDGETFILEUPLOADWWW_BUTTON";
+        private const string CONST_INPUT_BUTTON_ID_ADD = "_SRNPRWEB_WIDGETFILEUPLOADWWW_BUTTON";
         /// <summary>
         /// 隐藏编号
         /// </summary>
@@ -298,7 +299,7 @@ namespace SrnprWeb.WebWidget
         /// 文件字符串
         /// </summary>
         private string FileString = "";
-       
+
         #endregion
 
         /// <summary>
@@ -307,13 +308,13 @@ namespace SrnprWeb.WebWidget
         /// <param name="e"></param>
         protected override void OnInit(EventArgs e)
         {
-            
+
 
             base.OnInit(e);
 
             InitControl();
-           
-            
+
+
         }
 
         private void InitControl()
@@ -433,7 +434,7 @@ namespace SrnprWeb.WebWidget
                 }
             }
         }
-        
+
 
 
         /// <summary>
@@ -442,25 +443,25 @@ namespace SrnprWeb.WebWidget
         /// <param name="writer"></param>
         protected override void Render(HtmlTextWriter writer)
         {
-            
-              
-            
+
+
+
 
 
 
             foreach (KeyValuePair<string, string> de in WidgetConfig.IncludeFile)
             {
-                if (base.Page!=null&&!Page.ClientScript.IsClientScriptBlockRegistered(Page.GetType(), de.Key.ToString()))
+                if (base.Page != null && !Page.ClientScript.IsClientScriptBlockRegistered(Page.GetType(), de.Key.ToString()))
                 {
                     Page.ClientScript.RegisterClientScriptBlock(Page.GetType(), de.Key.ToString(), "", false);
                     writer.Write(de.Value.ToString());
 
                 }
             }
-           
+
             base.Render(writer);
 
-            if (_fileInfo.Count > 0&&string.IsNullOrEmpty(FileString))
+            if (_fileInfo.Count > 0 && string.IsNullOrEmpty(FileString))
             {
                 string[] str = new string[_fileInfo.Count * 2];
                 for (int i = 0, j = _fileInfo.Count; i < j; i++)
@@ -473,23 +474,23 @@ namespace SrnprWeb.WebWidget
 
             StringBuilder sb = new StringBuilder();
 
-            sb.Append("<input type=\"file\" style=\"width:"+WebStyleWidth+"\" onkeydown=\"event.returnValue=false;\" onpaste=\"return false\" name=\"" + base.UniqueID + CONST_INPUT_FILE_ID_ADD + "\" id=\"" + base.UniqueID + CONST_INPUT_FILE_ID_ADD + "\"/>");
+            sb.Append("<input type=\"file\" style=\"width:" + WebStyleWidth + "\" onkeydown=\"event.returnValue=false;\" onpaste=\"return false\" name=\"" + base.UniqueID + CONST_INPUT_FILE_ID_ADD + "\" id=\"" + base.UniqueID + CONST_INPUT_FILE_ID_ADD + "\"/>");
             sb.Append("<input type=\"button\" class=\"" + ButtonClass + "\" name=\"" + base.UniqueID + CONST_INPUT_BUTTON_ID_ADD + "\" id=\"" + base.UniqueID + CONST_INPUT_BUTTON_ID_ADD + "\" value=\"" + UploadButtonText + "\"/>");
             sb.Append("<input type=\"hidden\" name=\"" + base.UniqueID + CONST_INPUT_TYPE_ID_ADD + "\" id=\"" + base.UniqueID + CONST_INPUT_TYPE_ID_ADD + "\" value=\"\"/>");
 
             sb.Append("<input type=\"hidden\" name=\"" + base.UniqueID + CONST_INPUT_HIDDEN_ID_ADD + "\" id=\"" + base.UniqueID + CONST_INPUT_HIDDEN_ID_ADD + "\" value=\"" + FileString + "\"/>");
             sb.Append("<span id=\"" + base.UniqueID + CONST_SPAN_FILELIST_ID_ADD + "\"></span>");
             sb.Append("<script defer=\"defer\">SrnprWebWidgetFileUploadWWW({");
-                
-            if(IsAllowNull)sb.Append("isAllowNull:1,");
-            if(!string.IsNullOrEmpty(_allowPostFix))sb.Append("allowPostFix:\"" + _allowPostFix + "\",");
+
+            if (IsAllowNull) sb.Append("isAllowNull:1,");
+            if (!string.IsNullOrEmpty(_allowPostFix)) sb.Append("allowPostFix:\"" + _allowPostFix + "\",");
             if (!string.IsNullOrEmpty(_allowFileCount)) sb.Append("allowFileCount:\"" + _allowFileCount + "\",");
             if (!string.IsNullOrEmpty(_fileType)) sb.Append("fileType:\"" + _fileType + "\",");
             if (!string.IsNullOrEmpty(_uploadButtonEvalFunction)) sb.Append("uploadButtonEvalFunction:\"" + _uploadButtonEvalFunction + "\",");
-            if (0!=_errorType)
+            if (0 != _errorType)
                 sb.Append("errorType:\"" + _errorType.ToString() + "\",");
-            
-                sb.Append("maxFileLength:\"" + MaxFileLength + "\",");
+
+            sb.Append("maxFileLength:\"" + MaxFileLength + "\",");
             sb.Append(" Id:\"" + base.UniqueID + "\",fId:\"" + CONST_INPUT_FILE_ID_ADD + "\",hId:\"" + CONST_INPUT_HIDDEN_ID_ADD + "\",tId:\"" + CONST_INPUT_TYPE_ID_ADD + "\",bId:\"" + CONST_INPUT_BUTTON_ID_ADD + "\",sId:\"" + CONST_SPAN_FILELIST_ID_ADD + "\",split:\"" + CONST_FILE_SPLIT_STRING + "\"})</script>");
 
 
@@ -503,7 +504,7 @@ namespace SrnprWeb.WebWidget
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            
+
             //添加一个隐藏上传控件
             FileUpload fu = new FileUpload();
             fu.ID = Guid.NewGuid().ToString();
@@ -527,7 +528,7 @@ namespace SrnprWeb.WebWidget
 
             base.Controls.Add(hf);
             */
-            
+
 
         }
 
@@ -547,7 +548,20 @@ namespace SrnprWeb.WebWidget
             }
         }
 
-        
+
+
+
+        public string GetHtml(string sAddUrl)
+        {
+            int iCount = FileInfo.Count;
+            string[] strFile = new string[iCount];
+            for (int i = 0; i < iCount; i++)
+            {
+                strFile[i] = "<a href=\"" + sAddUrl + FileInfo[i].FileUrl + "\" target=\"_blank\">" + FileInfo[i].FileName + "</a>";
+            }
+
+            return HttpUtility.HtmlEncode(string.Join("<br/>", strFile));
+        }
 
 
         [Browsable(false)]
@@ -586,7 +600,7 @@ namespace SrnprWeb.WebWidget
             get
            ;
             set
-            
+
            ;
         }
 

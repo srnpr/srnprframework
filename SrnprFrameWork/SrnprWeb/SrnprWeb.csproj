@@ -63,6 +63,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebEntity\FileUploadInfoWWE.cs" />
     <Compile Include="WebEntity\PageSerchConfigWWE.cs" />
+    <Compile Include="WebProcess\WidgetDragWWP.cs" />
     <Compile Include="WebWidget\CkeditorWWW.cs" />
     <Compile Include="WebWidget\PageSerchWWW.cs" />
     <Compile Include="WebWidget\WidgetFileUploadWWW.cs" />

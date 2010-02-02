@@ -16,21 +16,21 @@
         <div>
             <div class="SrnprWebCssDragElementFWFList">
                 <div class="SrnprWebCssDragElementFWFBox" srnprwebjsdragelementfwfid="1-1">
-                    <div class="SrnprWebCssDragElementFWFHead" srnprwebjsdragelementfwfid="1-1-1">
+                    <div class="SrnprWebCssDragElementFWFHead" >
                         1-1-1
                     </div>
                     <div class="SrnprWebCssDragElementFWFContent">
                     </div>
                 </div>
                 <div class="SrnprWebCssDragElementFWFBox" srnprwebjsdragelementfwfid="1-1">
-                    <div class="SrnprWebCssDragElementFWFHead" srnprwebjsdragelementfwfid="1-1-2">
+                    <div class="SrnprWebCssDragElementFWFHead" >
                         1-1-2
                     </div>
                     <div class="SrnprWebCssDragElementFWFContent">
                     </div>
                 </div>
                 <div class="SrnprWebCssDragElementFWFBox" srnprwebjsdragelementfwfid="1-1">
-                    <div class="SrnprWebCssDragElementFWFHead" srnprwebjsdragelementfwfid="1-1-3">
+                    <div class="SrnprWebCssDragElementFWFHead">
                         1-1-3
                     </div>
                     <div class="SrnprWebCssDragElementFWFContent">

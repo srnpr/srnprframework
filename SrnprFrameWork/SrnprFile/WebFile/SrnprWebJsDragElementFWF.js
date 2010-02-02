@@ -15,10 +15,10 @@ function SrnprWebJsDragElementFWFPreLoad()
     var o = document.getElementsByTagName("div")
     for (var i = 0; i < o.length; i++)
     {
-        if (o[i].srnprwebjsdragelementfwfid)
+        if (o[i].parentNode && o[i].parentNode.srnprwebjsdragelementfwfid)
         {
-            
-            if (o[i].srnprwebjsdragelementfwfid.split('-').length == 3)
+
+            if (o[i].parentNode.srnprwebjsdragelementfwfid.split('-').length == 2)
             {
                 o[i].onmousedown = function(e)
                 {
@@ -40,10 +40,8 @@ function SrnprWebJsDragElementFWFPreLoad()
                     dragobj.o.parentNode.insertBefore(om, dragobj.o)
                     return false
                 }
-            }
-            else
-            {
-                dragArray.push(o[i]);
+           
+                dragArray.push(o[i].parentNode);
             }
             
             

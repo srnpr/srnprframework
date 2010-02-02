@@ -15,7 +15,7 @@ function SrnprWebJsDragElementFWFPreLoad()
     var o = document.getElementsByTagName("div")
     for (var i = 0; i < o.length; i++)
     {
-        if (o[i].parentNode && o[i].parentNode.srnprwebjsdragelementfwfid)
+        if (o[i].className=="Menubox"&& o[i].parentNode && o[i].parentNode.srnprwebjsdragelementfwfid)
         {
 
             if (o[i].parentNode.srnprwebjsdragelementfwfid.split('-').length == 2)

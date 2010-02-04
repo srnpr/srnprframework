@@ -158,6 +158,51 @@ function()
     }
 
 
+    SWJC.Ajax = function(e)
+    {
+
+        this.AjaxMethod = "POST";                            //默认传输方式 POST;
+        this.SendObject = null;                                //传输的内容，默认null    
+        this.ResponseType = "Text";                        //返回值类型
+        this.Async = true;                                        //是否异步方式
+
+        var xmlHttp;
+        try
+        {
+            xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+        } catch (ex)
+        {
+            try
+            {
+                xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (ex)
+            {
+                xmlHttp = new XMLHttpRequest();
+            }
+        }
+        if (xmlHttp == null)
+        {
+
+            SWJC.AlterMsg("创建xmlHTTP失败！");
+
+        } else
+        {
+            //xmlHttp.onreadystatechange = this.SendBack;
+            xmlHttp.open(this.AjaxMethod, e.u, this.Async);
+            xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xmlHttp.send(this.SendObject);
+        }
+
+    }
+
+
+
+
+
+
+
+
+
 
 
 

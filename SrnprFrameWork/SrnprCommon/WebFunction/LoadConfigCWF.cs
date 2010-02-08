@@ -1,21 +1,46 @@
-﻿using System;
+﻿/******************************************************
+ * Description: 加载配置
+ * Author: Liudpc
+ * Create Date: 2010-2-8 14:33:53
+ ******************************************************/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
 using Microsoft.Win32;
+using System.Web;
+using System.Web.Caching;
 
 namespace SrnprCommon.WebFunction
 {
+
+    /// <summary>
+    /// Description: 加载配置
+    /// Author:Liudpc
+    /// Create Date: 2010-2-8 14:34:06
+    /// </summary>
     public class LoadConfigCWF
     {
         /// <summary>
         /// 定义配置值
         /// </summary>
         private const string SRNPR_WEB_CONFIG_PATH_NAME = "SrnprWebConfigPath";
+        private const string SRNPR_WEB_CONFIG_CACHE_NAME = "SrnprCommon_WebFuntion_LoadConfigCWF_CaccheConfig";
 
 
 
+        /// <summary>
+        /// 
+        /// Description: 得到控件配置
+        /// Author:Liudpc
+        /// Create Date: 2010-2-8 14:34:28
+        /// </summary>
+        /// <param name="widgetType"></param>
+        /// <param name="sBuildVersion"></param>
+        /// <param name="sRevisionVersion"></param>
+        /// <returns></returns>
         public InterFace.WebWidgetConfigCIF GetWeightConfig(EnumCommon.WebWidgetTypeCEC widgetType, string sBuildVersion, string sRevisionVersion)
         {
 
@@ -64,12 +89,26 @@ namespace SrnprCommon.WebFunction
             }
 
 
-            if (System.Web.HttpContext.Current != null)
-            {
+            Dictionary<string, InterFace.WebWidgetConfigCIF> d ;
 
+            if (System.Web.HttpContext.Current != null&&System.Web.HttpContext.Current.Cache[SRNPR_WEB_CONFIG_CACHE_NAME]!=null)
+            {
+                //从缓存读取配置
+                d = (Dictionary<string, InterFace.WebWidgetConfigCIF>)System.Web.HttpContext.Current.Cache[SRNPR_WEB_CONFIG_CACHE_NAME];
+            }
+            else
+            {
+                //从xml读取配置
+                d = GetListFromXML();
+                if (System.Web.HttpContext.Current != null)
+                {
+                    //建立缓存依赖
+                    System.Web.Caching.CacheDependency cd = new System.Web.Caching.CacheDependency(((WebModel.CommonWidgetConfigCWM)d[SrnprCommon.EnumCommon.WebWidgetTypeCEC.CommonWidgetWWW.ToString()]).XmlFilePath);
+                    System.Web.HttpContext.Current.Cache.Insert(SRNPR_WEB_CONFIG_CACHE_NAME, d, cd, Cache.NoAbsoluteExpiration, Cache.NoSlidingExpiration);
+                }
             }
 
-            Dictionary<string, InterFace.WebWidgetConfigCIF> d = GetListFromXML();
+           
 
 
             widgetConfig = d[widgetType.ToString()];
@@ -142,6 +181,7 @@ namespace SrnprCommon.WebFunction
 
 
             #region 加载通用序列
+            commonConfig.XmlFilePath = sXmlPath;
             commonConfig.DllVersion = new Version(xnCommon.SelectSingleNode("s:dllVersion", xmm).InnerText);
             commonConfig.WidgetDefaultVersion = new Version(xnCommon.SelectSingleNode("s:widgateDefaultVersion", xmm).InnerText);
 
@@ -171,7 +211,7 @@ namespace SrnprCommon.WebFunction
             }
 
             commonConfig.IncludeFileList = dInculdeFile;
-
+            dConfigReturn.Add(SrnprCommon.EnumCommon.WebWidgetTypeCEC.CommonWidgetWWW.ToString(), commonConfig);
 
             #endregion
 

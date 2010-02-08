@@ -15,10 +15,8 @@
           /> 
           
           
-          <sw:WidgetFileUploadWWW ID="WidgetFileUploadWWW2"  runat="server" AllowFileCount=""  UploadButtonText="aa" FileType="pic"
-          
-              
-          />
+          <sw:WidgetFileUploadWWW ID="WidgetFileUploadWWW2"  runat="server" 
+            UploadButtonText="fff"  />
           <sw:WidgetFileUploadWWW ID="WidgetFileUploadWWW3"  runat="server"
               
           />

@@ -11,6 +11,7 @@ xsi:schemaLocation="http://SrnprFrameWork/SrnprFile/ConfigFile SrnprWebConfigXsd
 	<includeFileList jsBaseUrl="http://f.xgou.com/AtGang/Control/" cssBaseUrl="">
 		<js fileId="jsWebCommon" Description="common">SrnprWebJsCommon.js</js>
 		<js fileId="jsFileUploadWWW">SrnprWebJsWidgetFileUploadWWW.js</js>
+		<js fileId="jsCkeditor">/Ckeditor/ckeditor.js</js>
 		<css fileId="cssBase">cssBase.css</css>
 	</includeFileList>
 	<widgetList>
@@ -40,6 +41,14 @@ xsi:schemaLocation="http://SrnprFrameWork/SrnprFile/ConfigFile SrnprWebConfigXsd
 					<entry key="MaxFileLength" value="5MB"/>
 				</dictionary>
 			</fileUpload>
+			<ckeditor version="1" widgetId="1003">
+				<includeFile version="1">
+					<file>jsCkeditor</file>
+				</includeFile>
+				<dictionary version="1">
+					<entry key="" value=""/>
+				</dictionary>
+			</ckeditor>
 		</config>
 		<config version="2">
 			<pageSerch version="1" widgetId="1001">

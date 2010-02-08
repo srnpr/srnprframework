@@ -240,6 +240,25 @@
 												<xs:attribute name="widgetId" type="swc:_st_WeigetKeyId"></xs:attribute>
 											</xs:complexType>
 										</xs:element>
+
+										<xs:element name="ckeditor" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>编辑器</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="includeFile" type="swc:_ct_widget_config_includeFile">
+														<xs:annotation>
+															<xs:documentation>包含文件 用逗号分隔</xs:documentation>
+														</xs:annotation>
+
+													</xs:element>
+													<xs:element name="dictionary" type="swc:_ct_widget_config_dictionary"></xs:element>
+												</xs:sequence>
+												<xs:attribute name="version" type="swc:_st_Version" use="required"></xs:attribute>
+												<xs:attribute name="widgetId" type="swc:_st_WeigetKeyId"></xs:attribute>
+											</xs:complexType>
+										</xs:element>
 									</xs:sequence>
 									<xs:attribute name="version" type="swc:_st_Version"  use="required"></xs:attribute>
 								</xs:complexType>

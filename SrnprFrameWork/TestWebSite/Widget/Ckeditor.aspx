@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    
+    <sw:CkeditorWWW ID="CkeditorWWW1" runat="server" />
     </div>
     </form>
 </body>

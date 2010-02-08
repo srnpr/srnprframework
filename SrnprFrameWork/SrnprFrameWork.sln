@@ -27,13 +27,14 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "TestWebSite", "TestWebSite\
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "4610"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SrnprFile", "SrnprFile\SrnprFile.csproj", "{426BBCE0-CF0C-48C2-BB52-797E03ABE716}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SrnprRemark", "SrnprRemark\SrnprRemark.csproj", "{F2353107-A02E-4E1F-AC4B-47BCDBE546C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SrnprInclude", "SrnprInclude\SrnprInclude.csproj", "{D8391F89-7EAD-4C97-8A70-635239D98710}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
@@ -64,6 +65,10 @@ Global
 		{F2353107-A02E-4E1F-AC4B-47BCDBE546C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F2353107-A02E-4E1F-AC4B-47BCDBE546C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2353107-A02E-4E1F-AC4B-47BCDBE546C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8391F89-7EAD-4C97-8A70-635239D98710}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8391F89-7EAD-4C97-8A70-635239D98710}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8391F89-7EAD-4C97-8A70-635239D98710}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8391F89-7EAD-4C97-8A70-635239D98710}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

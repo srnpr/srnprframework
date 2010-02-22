@@ -29,12 +29,14 @@
 															<xs:attribute name="header" use="required" type="xs:string"></xs:attribute>
 															<xs:attribute name="select" use="required" type="xs:string"></xs:attribute>
 															<xs:attribute name="link"  type="xs:string"></xs:attribute>
+															<xs:attribute name="defaultShow"  type="xs:string"></xs:attribute>
+															<xs:attribute name="showLength"  type="xs:int"></xs:attribute>
 														</xs:complexType>
 													</xs:element>
 												</xs:sequence>
 											</xs:complexType>
 										</xs:element>
-										<xs:element name="addMenu">
+										<xs:element name="addMenu" minOccurs="0">
 
 											<xs:complexType>
 												<xs:sequence>

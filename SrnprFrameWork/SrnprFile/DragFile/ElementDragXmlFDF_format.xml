@@ -11,7 +11,7 @@ LEFT JOIN dbo.Ass_EnumInfo e ON a.BigType = e.EnumID AND e.EnumTypeID=1013900000
 LEFT JOIN dbo.Sys_RuleStateInfo r ON c.RuleTypeID = r.RuleTypeID AND c.StateID = r.StateId"
 					 orderBy="a.CreateDate desc"
 					 where=" a.ApplicationId = b.ApplicationId AND a.ApplicationId = c.ApplicationId AND charindex(','+'{0}'+',',','+b.NextApprovalUser+',')>0"
-					 title="项目工单"  functionId="101010000000000336"  top="5" >
+					 title="项目工单"  functionId="101010000000000322"  top="5" >
 			<selectField>
 				<field id="1101" header="工单编号" select="a.ShowItemID" defaultShow="All" link="&lt;a target=_blank href=/Ope/Item/ItemOpen.aspx?ShowId={0}&amp;Mode=View &gt;{0}&lt;/a&gt;" />
 
@@ -29,8 +29,8 @@ LEFT JOIN dbo.Sys_RuleStateInfo r ON c.RuleTypeID = r.RuleTypeID AND c.StateID =
 
 			</selectField>
 			<addMenu>
-				<menu functionId="101010000000000338" showText="项目工单创建" link="Ope/Item/ItemPro.aspx"/>
-				<menu functionId="101010000000000328" showText="项目工单查询" link="Ope/Item/ItemQcn.aspx "/>
+				<menu functionId="101010000000000321" showText="项目工单创建" link="Ope/Item/ItemPro.aspx"/>
+				<menu functionId="101010000000000323" showText="项目工单查询" link="Ope/Item/ItemQcn.aspx "/>
 			</addMenu>
 		</dragElement>
 		<!--渠道筛选工单-->
@@ -71,7 +71,7 @@ LEFT JOIN dbo.Sys_RuleStateInfo r ON c.RuleTypeID = r.RuleTypeID AND c.StateID =
 		</dragElement>
 		<!--自定义工单-->
 		<dragElement id="14" groupId="1" from="Ope_DefineRecord A,Ope_DefineHistory B" orderBy="A.CreateDate desc"
-					 where=" B.AppOperator='{0}' And B.FinishFlag=0 And A.FinishFlag=0 AND A.DefineID = B.DefineID" title="自定义工单"  functionId="101010000000000344"  top="5" >
+					 where=" B.AppOperator='{0}' And B.FinishFlag=0 And A.FinishFlag=0 AND A.DefineID = B.DefineID" title="自定义工单"  functionId="101010000000000334"  top="5" >
 			<selectField>
 				<field id="1401" header="工单编号" select="A.ShowDefineID" defaultShow="All"/>
 				<field id="1402" header="创建人" select="A.CreateOperatorName" defaultShow="All"/>
@@ -84,8 +84,8 @@ LEFT JOIN dbo.Sys_RuleStateInfo r ON c.RuleTypeID = r.RuleTypeID AND c.StateID =
 				<field id="1409" header="操作" select="B.ID" defaultShow="All" link="&lt;a target=_blank href=/Ope/Define/DefineApl.aspx?id={0} &gt;处理&lt;/a&gt;"/>
 			</selectField>
 			<addMenu>
-				<menu functionId="101010000000000342" showText="自定义工单创建" link="Ope/Define/DefinePro.aspx"/>
-				<menu functionId="101010000000000345" showText="自定义工单查询" link="Ope/Define/DefineQcn.aspx"/>
+				<menu functionId="101010000000000333" showText="自定义工单创建" link="Ope/Define/DefinePro.aspx"/>
+				<menu functionId="101010000000000335" showText="自定义工单查询" link="Ope/Define/DefineQcn.aspx"/>
 			</addMenu>
 		</dragElement>
 		<!--欠款查询-->

@@ -41,11 +41,16 @@
 			<Rule>
 				<!--表达式匹配规则序列 判断结果true时执行调用模板  该规则执行逻辑为从上向下顺序执行 碰到一条结果true就跳出执行逻辑-->
 				<RuleExpression>
+					
 					<!--表达式之一-->
 					<ExpressionInfo>
+						<!--要调用的模板编号-->
 						<TempleteGuid>templeteguidone</TempleteGuid>
+						<!--表达式 支持字段级匹配  暂时不支持循环级规则-->
 						<Expression>{$字段七号}=未确认状态</Expression>
 					</ExpressionInfo>
+					
+					<!--表达式之一-->
 					<ExpressionInfo>
 						<TempleteGuid>templeteguidtwo</TempleteGuid>
 						<Expression>{$字段七号}+2-(3+4)>{$字段八号}</Expression>
@@ -57,11 +62,15 @@
 		
 		<!--模板序列-->
 		<TempleteItem>
+			<!--模板-->
 			<Templete GuId="templeteguidone">
+				<!--邮件类模板-->
 				<EmailInfo>
+					<!--邮件标题 支持非循环级替换规则-->
 					<Title>
 						你好，你的{$字段一号}将于{$字段七号}送达到你手
 					</Title>
+					<!--邮件内容-->
 					<Content>
 					<![CDATA[
 			

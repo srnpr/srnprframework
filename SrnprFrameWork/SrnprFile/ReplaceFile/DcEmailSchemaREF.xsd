@@ -11,6 +11,9 @@
 				<xs:element name="DcEmail" maxOccurs="1" minOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
+
+							<xs:element name="Used"  minOccurs="1" maxOccurs="1"></xs:element>
+							
 							<xs:element name="Description"  minOccurs="1" maxOccurs="1"></xs:element>
 
 

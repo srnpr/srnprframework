@@ -60,6 +60,7 @@
     <None Include="DllKey\SrnprWebKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Dcgou\index.htm" />
     <Content Include="Xml\完美的xslt数值函数与字符串函数.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

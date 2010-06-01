@@ -14,6 +14,10 @@
     你可使用的参数有：{$订单编号}&nbsp;&nbsp; {$订单金额}&nbsp;&nbsp; {$代理商名称}<br />
     <br />
     <br />
+    <br />
+    是否可用：<asp:CheckBox ID="CheckBox1" runat="server" Text="可用" />
+    <br />
+    <br />
     邮件标题：<asp:TextBox ID="TextBox2" runat="server" Width="557px">{$代理商名称}您好，你下了订单。</asp:TextBox>
     <br />
     <br />

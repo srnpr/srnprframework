@@ -68,6 +68,7 @@
     <Compile Include="WebWidget\CkeditorWWW.cs" />
     <Compile Include="WebWidget\PageSerchWWW.cs" />
     <Compile Include="WebWidget\WidgetFileUploadWWW.cs" />
+    <Compile Include="WebXml\ReplaceXmlWWX.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SrnprCommon\SrnprCommon.csproj">

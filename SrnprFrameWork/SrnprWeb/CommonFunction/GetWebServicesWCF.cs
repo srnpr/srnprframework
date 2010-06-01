@@ -12,6 +12,9 @@ using System.CodeDom;
 
 namespace SrnprWeb.CommonFunction
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class GetWebServicesWCF
     {
 

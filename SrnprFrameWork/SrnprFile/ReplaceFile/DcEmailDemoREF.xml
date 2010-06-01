@@ -39,8 +39,12 @@
 			<Rule>
 				<RuleExpression>
 					<ExpressionInfo>
-						<TempleteGuid>gggafdasfd-fdsaf</TempleteGuid>
+						<TempleteGuid>gggafdasfdfdsaf</TempleteGuid>
 						<Expression>{$字段七号}=未确认状态</Expression>
+					</ExpressionInfo>
+					<ExpressionInfo>
+						<TempleteGuid>gggafdasfdfdsaf</TempleteGuid>
+						<Expression>{$字段七号}+2-(3+4)>{$字段八号}</Expression>
 					</ExpressionInfo>
 				</RuleExpression>
 			</Rule>

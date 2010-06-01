@@ -40,7 +40,7 @@
 				<RuleExpression>
 					<ExpressionInfo>
 						<TempleteGuid>gggafdasfd-fdsaf</TempleteGuid>
-						<Expression></Expression>
+						<Expression>{$字段七号}=未确认状态</Expression>
 					</ExpressionInfo>
 				</RuleExpression>
 			</Rule>

@@ -18,6 +18,9 @@
     是否可用：<asp:CheckBox ID="CheckBox1" runat="server" Text="可用" />
     <br />
     <br />
+    条件表达式：<asp:TextBox ID="TextBox3" runat="server" Width="539px"></asp:TextBox>
+    <br />
+    <br />
     邮件标题：<asp:TextBox ID="TextBox2" runat="server" Width="557px">{$代理商名称}您好，你下了订单。</asp:TextBox>
     <br />
     <br />

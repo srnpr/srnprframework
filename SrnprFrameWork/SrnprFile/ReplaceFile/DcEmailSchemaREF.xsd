@@ -13,9 +13,9 @@
 						<xs:sequence>
 
 							<xs:element name="Used"  minOccurs="1" maxOccurs="1" type="xs:boolean">
-								
+
 							</xs:element>
-							
+
 							<xs:element name="Description"  minOccurs="1" maxOccurs="1"></xs:element>
 
 
@@ -51,13 +51,50 @@
 							</xs:element>
 
 
+							<xs:element name="RuleItem" maxOccurs="1" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Rule">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:choice minOccurs="0">
+														<xs:element name="RuleExpression" minOccurs="1" maxOccurs="unbounded">
+															<xs:complexType>
+																<xs:sequence>
+																	<xs:element name="ExpressionInfo">
+																		<xs:complexType>
+																			<xs:sequence>
+																				<xs:element name="TempleteGuid"></xs:element>
+																				<xs:element name="Expression"></xs:element>
+																			</xs:sequence>
+																		</xs:complexType>
+																	</xs:element>
+																</xs:sequence>
+																
+
+															</xs:complexType>
+														</xs:element>
+													</xs:choice>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+
+
+
+
+
+
+
 							<xs:element name="TempleteItem" maxOccurs="1" minOccurs="0">
 								<xs:complexType>
 									<xs:sequence>
 										<xs:element name="Templete" minOccurs="1" maxOccurs="unbounded">
 
 											<xs:complexType>
-												
+
 												<xs:sequence>
 													<xs:choice minOccurs="0">
 														<xs:element name="EmailInfo">
@@ -66,15 +103,15 @@
 																	<xs:element name="Title"></xs:element>
 																	<xs:element name="Content"></xs:element>
 																</xs:sequence>
-															
+
 															</xs:complexType>
-															
+
 														</xs:element>
 													</xs:choice>
 													<xs:choice minOccurs="0"></xs:choice>
-													
-													
-													
+
+
+
 												</xs:sequence>
 												<xs:attribute name="GuId"></xs:attribute>
 											</xs:complexType>
@@ -82,11 +119,11 @@
 										</xs:element>
 									</xs:sequence>
 								</xs:complexType>
-								
-								
+
+
 							</xs:element>
-							
-						
+
+
 
 						</xs:sequence>
 

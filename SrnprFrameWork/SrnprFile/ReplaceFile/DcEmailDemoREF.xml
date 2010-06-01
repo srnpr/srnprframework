@@ -35,11 +35,20 @@
 		
 		<!--######################################以下内容由设计人员维护#######################################-->
 
-
+		<RuleItem>
+			<Rule>
+				<RuleExpression>
+					<ExpressionInfo>
+						<TempleteGuid>gggafdasfd-fdsaf</TempleteGuid>
+						<Expression></Expression>
+					</ExpressionInfo>
+				</RuleExpression>
+			</Rule>
+		</RuleItem>
 		
 
 		<TempleteItem>
-			<Templete GuId="">
+			<Templete GuId="gggafdasfd-fdsaf">
 				<EmailInfo>
 					<Title>
 						你好，你的{$字段一号}将于{$字段七号}送达到你手

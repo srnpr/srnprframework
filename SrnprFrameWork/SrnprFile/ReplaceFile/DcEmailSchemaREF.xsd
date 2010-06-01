@@ -12,7 +12,9 @@
 					<xs:complexType>
 						<xs:sequence>
 
-							<xs:element name="Used"  minOccurs="1" maxOccurs="1"></xs:element>
+							<xs:element name="Used"  minOccurs="1" maxOccurs="1" type="xs:boolean">
+								
+							</xs:element>
 							
 							<xs:element name="Description"  minOccurs="1" maxOccurs="1"></xs:element>
 

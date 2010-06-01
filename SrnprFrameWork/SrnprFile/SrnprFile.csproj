@@ -61,6 +61,8 @@
     <Content Include="ConfigFile\SrnprWebConfigXsltFCF.xslt" />
     <Content Include="DragFile\ElementDragXmlFDF.xml" />
     <Content Include="DragFile\ElementDragXmlFDF_format.xml" />
+    <Content Include="EmailFile\DcEmailConfigFEF.xml" />
+    <Content Include="EmailFile\DcEmailDemoFEF.xml" />
     <Content Include="WebFile\SrnprWebCssDragElementFWF.css" />
     <Content Include="WebFile\SrnprWebJsCommonFWF.js" />
     <Content Include="WebFile\SrnprWebJsDragElementFWF.js" />
@@ -69,6 +71,7 @@
     <None Include="ConfigFile\SrnprWebConfigRegFCF.reg" />
     <None Include="ConfigFile\SrnprWebConfigXsdFCF.xsd" />
     <None Include="DragFile\ElementDragXsdFDF.xsd" />
+    <None Include="EmailFile\DcEmailSchemaFEF.xsd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

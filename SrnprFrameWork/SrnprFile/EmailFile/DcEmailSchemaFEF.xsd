@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DcEmailSchema"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/DcEmailSchema.xsd"
+    xmlns:mstns="http://tempuri.org/DcEmailSchema.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+	<xs:element name="DcEmailRoot">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DcEmail" maxOccurs="1" minOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Description"  minOccurs="1" maxOccurs="1"></xs:element>
+
+
+							<xs:element name="ParmItem" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Parm" minOccurs="1" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:attribute name="asText" use="required"></xs:attribute>
+												<xs:attribute name="parmName" use="required"></xs:attribute>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+
+
+							<xs:element name="MainItem" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="MainSql" minOccurs="1" maxOccurs="unbounded"></xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+
+
+							<xs:element name="ListItem" maxOccurs="1" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ListSql" minOccurs="1" maxOccurs="unbounded"></xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+
+
+							<xs:element name="Title"  minOccurs="1" maxOccurs="1"></xs:element>
+							<xs:element name="Content"  minOccurs="1" maxOccurs="1"></xs:element>
+
+						</xs:sequence>
+
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DcEmailRoot  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				  xsi:schemaLocation="http://SrnprFrameWork/DcEmailSchema/dcemail DcEmailSchema.xsd">
+	<DcEmail>
+		<Description></Description>
+		<ParmItem>
+			<Parm asText="参数一号" parmName="parm" />
+		</ParmItem>
+		<MainItem>
+			<MainSql>reeeeeeeeeeeeee</MainSql>
+		</MainItem>
+		<ListItem>
+			<ListSql>rrrrrrrrrrrrrrrrrrrrrrrrr</ListSql>
+			<ListSql>rrrrrrrrrrrrrrrrrrrrrrrrrr</ListSql>
+		</ListItem>
+
+		<Title></Title>
+		<Content></Content>
+
+	</DcEmail>
+</DcEmailRoot>

@@ -4,10 +4,11 @@
 	<DcEmail>
 		<Description></Description>
 		<ParmItem>
-			<Parm asText="参数一号" parmName="parm" />
+			<Parm asText="参数一号" parmName="parm1" />
 		</ParmItem>
 		<MainItem>
-			<MainSql>reeeeeeeeeeeeee</MainSql>
+			<MainSql>select filed1 as 字段一号,field2 as 字段二号 from table1 where fieldx=@parm1</MainSql>
+			<MainSql>select filed7 as 字段七号,field8 as 字段八号 from table2 where fieldy='{$参数一号}'</MainSql>
 		</MainItem>
 		<ListItem>
 			<ListSql>rrrrrrrrrrrrrrrrrrrrrrrrr</ListSql>

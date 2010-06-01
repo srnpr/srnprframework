@@ -24,7 +24,6 @@
     邮件标题：<asp:TextBox ID="TextBox2" runat="server" Width="557px">{$代理商名称}您好，你下了订单。</asp:TextBox>
     <br />
     <br />
-    <br />
     邮件内容：<br />
     <asp:TextBox ID="TextBox1" runat="server" Height="167px" Width="635px">{$代理商名称}您好，你下的订单{$订单编号}将于什么时候送到。</asp:TextBox>
     <br />

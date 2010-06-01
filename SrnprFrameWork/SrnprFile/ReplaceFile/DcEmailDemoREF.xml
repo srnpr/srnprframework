@@ -35,6 +35,7 @@
 		
 		<!--######################################以下内容由设计人员维护#######################################-->
 
+		<!--规则匹配序列-->
 		<RuleItem>
 			<Rule>
 				<RuleExpression>
@@ -50,7 +51,8 @@
 			</Rule>
 		</RuleItem>
 		
-
+		
+		<!--模板序列-->
 		<TempleteItem>
 			<Templete GuId="templeteguidone">
 				<EmailInfo>

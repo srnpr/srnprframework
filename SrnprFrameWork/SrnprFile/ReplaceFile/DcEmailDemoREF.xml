@@ -37,8 +37,11 @@
 
 		<!--规则匹配序列-->
 		<RuleItem>
+			<!--规则列表-->
 			<Rule>
+				<!--表达式匹配规则序列 判断结果true时执行调用模板  该规则执行逻辑为从上向下顺序执行 碰到一条结果true就跳出执行逻辑-->
 				<RuleExpression>
+					<!--表达式之一-->
 					<ExpressionInfo>
 						<TempleteGuid>templeteguidone</TempleteGuid>
 						<Expression>{$字段七号}=未确认状态</Expression>

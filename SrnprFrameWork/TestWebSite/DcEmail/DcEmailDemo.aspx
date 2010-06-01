@@ -21,7 +21,7 @@
     <br />
     <br />
     <br />
-    条件表达式：<asp:TextBox ID="TextBox3" runat="server" Width="539px">{$字段七号}=未确认状态</asp:TextBox>
+    条件表达式：<asp:TextBox ID="TextBox3" runat="server" Width="539px">{$订单金额}=1000</asp:TextBox>
     <br />
     <br />
     邮件标题：<asp:TextBox ID="TextBox2" runat="server" Width="557px">{$代理商名称}您好，你下了订单。</asp:TextBox>

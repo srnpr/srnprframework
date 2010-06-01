@@ -18,6 +18,9 @@
     是否可用：<asp:CheckBox ID="CheckBox1" runat="server" Text="可用" />
     <br />
     <br />
+    <br />
+    <br />
+    <br />
     条件表达式：<asp:TextBox ID="TextBox3" runat="server" Width="539px">{$字段七号}=未确认状态</asp:TextBox>
     <br />
     <br />

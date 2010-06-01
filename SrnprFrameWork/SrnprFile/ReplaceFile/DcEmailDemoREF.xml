@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DcEmailRoot  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				  xsi:schemaLocation="http://SrnprFrameWork/DcEmailSchema/dcemail DcEmailSchema.xsd">
+	<DcEmail>
+		
+		<!--#######################################以下内容由开发人员维护############################################-->
+		
+		
+		
+		<!--描述信息-->
+		<Description>这个邮件涉及某某模块 主要用于</Description>
+		
+		<!--输入参数-->
+		<ParmItem>
+			<Parm asText="参数一号" parmName="parm1" />
+		</ParmItem>
+		
+		<!--主字段读取参数  请使用as中文来进行  方便设计人员进行匹配使用-->
+		<MainItem>
+			<MainSql>select filed1 as 字段一号,field2 as 字段二号 from table1 where fieldx=@parm1</MainSql>
+			<MainSql>select filed7 as 字段七号,field8 as 字段八号 from table2 where fieldy='{$参数一号}'</MainSql>
+		</MainItem>
+		
+		<!--循环字段读取参数  请使用as中文来进行  方便设计人员进行匹配使用-->
+		<ListItem>
+			<ListSql>select filed11 as 循环字段十一号,field12 as 循环字段十二号 from table3 where fieldz=@parm1</ListSql>
+			<ListSql>select filed13 as 循环字段十三号,field14 as 循环字段十四号 from table4 where fieldc='{$字段一号}'</ListSql>
+		</ListItem>
+
+		
+		
+		
+		
+		
+		<!--######################################以下内容由设计人员维护#######################################-->
+		
+		
+		
+		<!--邮件标题-->
+		<Title>你好，你的{$字段一号}将于{$字段七号}送达到你手</Title>
+		
+		<!--邮件内容-->
+		<Content>
+			<![CDATA[
+			
+			<html>
+            <head></head>
+            <body>
+				<div>
+                会员的信息
+                {$字段二号}测试邮件
+                
+				
+				
+                第一列表开始：
+                {#列表开始}
+                   明细编号：{#循环字段十一号}
+                {#列表结束}
+                </div>
+                <br/>
+				
+				
+                第二列表开始：
+                {#列表开始}
+                   状态编号：{#循环字段十三号}
+                   刷新时间:{#循环字段十四号}
+                   
+                   用户名(列表可以调用主数据)：{$字段八号}
+                {#列表结束}
+            </body>
+        </html>
+			
+			
+			]]>
+			
+		</Content>
+
+	</DcEmail>
+</DcEmailRoot>

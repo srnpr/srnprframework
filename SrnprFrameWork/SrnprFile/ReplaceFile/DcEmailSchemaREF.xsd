@@ -51,8 +51,42 @@
 							</xs:element>
 
 
-							<xs:element name="Title"  minOccurs="1" maxOccurs="1"></xs:element>
-							<xs:element name="Content"  minOccurs="1" maxOccurs="1"></xs:element>
+							<xs:element name="TempleteItem" maxOccurs="1" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Templete" minOccurs="1" maxOccurs="unbounded">
+
+											<xs:complexType>
+												
+												<xs:sequence>
+													<xs:choice minOccurs="0">
+														<xs:element name="EmailInfo">
+															<xs:complexType>
+																<xs:sequence>
+																	<xs:element name="Title"></xs:element>
+																	<xs:element name="Content"></xs:element>
+																</xs:sequence>
+															
+															</xs:complexType>
+															
+														</xs:element>
+													</xs:choice>
+													<xs:choice minOccurs="0"></xs:choice>
+													
+													
+													
+												</xs:sequence>
+												<xs:attribute name="GuId"></xs:attribute>
+											</xs:complexType>
+
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+								
+								
+							</xs:element>
+							
+						
 
 						</xs:sequence>
 

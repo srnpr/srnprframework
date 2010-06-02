@@ -28,11 +28,6 @@
 			<ListSql>select filed13 as 循环字段十三号,field14 as 循环字段十四号 from table4 where fieldc='{$字段一号}'</ListSql>
 		</ListItem>
 
-
-
-
-
-
 		<!--######################################以下内容由设计人员维护#######################################-->
 
 		<!--规则匹配序列-->
@@ -105,8 +100,6 @@
 						]]>
 					</Content>
 				</EmailInfo>
-
-
 			</Templete>
 			<Templete GuId="templeteguidtwo">
 				<EmailInfo>

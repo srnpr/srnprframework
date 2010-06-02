@@ -25,11 +25,13 @@
         </tr>
         <tr>
             <td>
-                &nbsp;</td>
+                {$订单金额}=1000</td>
             <td>
-                &nbsp;</td>
+                {$代理商名称}您好，你下了订单。</td>
             <td>
-                &nbsp;</td>
+                <asp:Button ID="Button2" runat="server" Text="修改" />
+                <asp:Button ID="Button3" runat="server" Text="删除" />
+            </td>
         </tr>
         <tr>
             <td>

@@ -11,14 +11,8 @@
 				<xs:element name="DcEmail" maxOccurs="1" minOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
-
-							<xs:element name="Used"  minOccurs="1" maxOccurs="1" type="xs:boolean">
-
-							</xs:element>
-
+							<xs:element name="Used"  minOccurs="1" maxOccurs="1" type="xs:boolean"></xs:element>
 							<xs:element name="Description"  minOccurs="1" maxOccurs="1"></xs:element>
-
-
 							<xs:element name="ParmItem" minOccurs="0" maxOccurs="1">
 								<xs:complexType>
 									<xs:sequence>
@@ -31,8 +25,6 @@
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
-
-
 							<xs:element name="MainItem" minOccurs="0" maxOccurs="1">
 								<xs:complexType>
 									<xs:sequence>
@@ -40,8 +32,6 @@
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
-
-
 							<xs:element name="ListItem" maxOccurs="1" minOccurs="0">
 								<xs:complexType>
 									<xs:sequence>
@@ -49,8 +39,6 @@
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
-
-
 							<xs:element name="RuleItem" maxOccurs="1" minOccurs="0">
 								<xs:complexType>
 									<xs:sequence>
@@ -70,8 +58,6 @@
 																		</xs:complexType>
 																	</xs:element>
 																</xs:sequence>
-
-
 															</xs:complexType>
 														</xs:element>
 													</xs:choice>
@@ -81,20 +67,11 @@
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
-
-
-
-
-
-
-
 							<xs:element name="TempleteItem" maxOccurs="1" minOccurs="0">
 								<xs:complexType>
 									<xs:sequence>
 										<xs:element name="Templete" minOccurs="1" maxOccurs="unbounded">
-
 											<xs:complexType>
-
 												<xs:sequence>
 													<xs:choice minOccurs="0">
 														<xs:element name="EmailInfo">
@@ -103,35 +80,21 @@
 																	<xs:element name="Title"></xs:element>
 																	<xs:element name="Content"></xs:element>
 																</xs:sequence>
-
 															</xs:complexType>
-
 														</xs:element>
 													</xs:choice>
 													<xs:choice minOccurs="0"></xs:choice>
-
-
-
 												</xs:sequence>
 												<xs:attribute name="GuId"></xs:attribute>
 											</xs:complexType>
-
 										</xs:element>
 									</xs:sequence>
 								</xs:complexType>
-
-
 							</xs:element>
-
-
-
 						</xs:sequence>
-
 					</xs:complexType>
 				</xs:element>
 			</xs:sequence>
-
 		</xs:complexType>
 	</xs:element>
-
 </xs:schema>

@@ -46,6 +46,9 @@
     条件表达式：<asp:TextBox ID="TextBox3" runat="server" Width="539px">{$订单金额}=1000</asp:TextBox>
     <br />
     <br />
+    接收人：<asp:TextBox ID="TextBox4" runat="server">{$创建人}{$特殊接收人}</asp:TextBox>
+    <br />
+    <br />
     邮件标题：<asp:TextBox ID="TextBox2" runat="server" Width="557px">{$代理商名称}您好，你下了订单。</asp:TextBox>
     <br />
     <br />

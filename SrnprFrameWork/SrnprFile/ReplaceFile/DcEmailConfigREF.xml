@@ -18,6 +18,7 @@
 		<EmailServer id="esDcgou">
 
 		</EmailServer>
+		
 	</EmailServerInfo>
 
 
@@ -32,7 +33,7 @@
 		description：描述 
 		userd：是否可用 
 		-->
-		<email id="dcemaildemo" dsId="dsSBUOperation" esId="esDcgou" title="C系统X模块发送邮件" description="这个系统正在初步测试中" used="true"></email>
+		<email id="DcEmailDemoREF" dsId="dsSBUOperation" esId="esDcgou" title="C系统X模块发送邮件" description="这个系统正在初步测试中" used="true"></email>
 
 	</EmailInfo>
 

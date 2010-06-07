@@ -1,4 +1,10 @@
-﻿using System;
+﻿/******************************************************
+ * Description: 调用WebServices
+ * Author: Liudpc
+ * Create Date: 2010-6-7 16:51:57
+ ******************************************************/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +18,12 @@ using System.CodeDom;
 
 namespace SrnprWeb.CommonFunction
 {
+   
+
     /// <summary>
-    /// 
+    /// Description: 调用
+    /// Author:Liudpc
+    /// Create Date: 2010-6-7 16:52:34
     /// </summary>
     public class GetWebServicesWCF
     {

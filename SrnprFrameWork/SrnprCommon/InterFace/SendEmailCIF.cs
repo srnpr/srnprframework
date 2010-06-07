@@ -7,5 +7,12 @@ namespace SrnprCommon.InterFace
 {
      public interface SendEmailCIF
     {
+
+         public bool SendEmail()
+         {
+
+         }
+
+
     }
 }

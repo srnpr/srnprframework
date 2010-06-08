@@ -5,7 +5,13 @@ using System.Text;
 
 namespace SrnprCommon.ReplaceFile
 {
-    class ItemListSqlEntityCRF
+
+    /// <summary>
+    /// Description: 循环sql实体
+    /// Author:Liudpc
+    /// Create Date: 2010-6-8 17:54:37
+    /// </summary>
+    public class ItemListSqlEntityCRF
     {
     }
 }

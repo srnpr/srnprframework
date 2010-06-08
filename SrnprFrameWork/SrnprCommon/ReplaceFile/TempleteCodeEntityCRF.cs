@@ -34,5 +34,12 @@ namespace SrnprCommon.ReplaceFile
         public string Description { get; set; }
 
 
+
+        public List<ItemPramEntityCRF> Parm { get; set; }
+
+        public List<ItemMainSqlEntityCRF> MainSql { get; set; }
+
+        public List<ItemListSqlEntityCRF> ListSql { get; set; }
+
     }
 }

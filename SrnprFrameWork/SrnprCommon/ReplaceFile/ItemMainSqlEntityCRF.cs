@@ -5,7 +5,14 @@ using System.Text;
 
 namespace SrnprCommon.ReplaceFile
 {
-    class ItemMainSqlEntityCRF
+
+
+    /// <summary>
+    /// Description: 主sql实体
+    /// Author:Liudpc
+    /// Create Date: 2010-6-8 17:54:27
+    /// </summary>
+    public class ItemMainSqlEntityCRF
     {
     }
 }

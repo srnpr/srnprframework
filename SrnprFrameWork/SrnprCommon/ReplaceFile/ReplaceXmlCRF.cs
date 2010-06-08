@@ -9,6 +9,26 @@ namespace SrnprCommon.ReplaceFile
     {
 
 
+        /// <summary>
+        /// 
+        /// Description: 得到替换的内容
+        /// Author:Liudpc
+        /// Create Date: 2010-6-8 16:45:27
+        /// </summary>
+        /// <returns></returns>
+        public string GetXmlReplaceContent()
+        {
+
+
+
+
+            return "";
+        }
+
+
+
+
+
         public bool SendEmail()
         {
 

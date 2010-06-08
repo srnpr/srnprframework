@@ -38,5 +38,19 @@ namespace SrnprCommon.ReplaceFile
 
 
 
+        public TempleteXmlEntityCRF GetTempleteXml()
+        {
+            TempleteXmlEntityCRF txe = new TempleteXmlEntityCRF();
+
+
+
+            return txe;
+        }
+
+
+
+
+
+
     }
 }

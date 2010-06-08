@@ -63,6 +63,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReplaceFile\DataServerEntityCRF.cs" />
     <Compile Include="ReplaceFile\ReplaceXmlCRF.cs" />
+    <Compile Include="ReplaceFile\XmlCodeEntityCRF.cs" />
+    <Compile Include="ReplaceFile\XmlDesignEntityCRF.cs" />
     <Compile Include="WebFunction\LoadConfigCWF.cs" />
     <Compile Include="WebFunction\StaticFunctionCWF.cs" />
     <Compile Include="WebModel\CkeditorConfigCWM.cs" />

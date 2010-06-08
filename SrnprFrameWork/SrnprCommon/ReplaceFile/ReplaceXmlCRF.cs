@@ -9,7 +9,12 @@ namespace SrnprCommon.ReplaceFile
     {
 
 
+        public bool SendEmail()
+        {
 
+            return true;
+
+        }
 
 
 

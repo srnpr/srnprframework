@@ -25,7 +25,13 @@ namespace SrnprCommon.ReplaceFile
 
 
 
-       
+
+        /// <summary>
+        /// Description: 描述信息
+        /// Author:Liudpc
+        /// Create Date: 2010-6-8 17:51:23
+        /// </summary>
+        public string Description { get; set; }
 
 
     }

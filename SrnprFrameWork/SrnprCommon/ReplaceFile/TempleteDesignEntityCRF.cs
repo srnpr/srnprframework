@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SrnprCommon.ReplaceFile
 {
-    class XmlCodeEntityCRF
+    class TempleteDesignEntityCRF
     {
     }
 }

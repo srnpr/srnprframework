@@ -11,7 +11,7 @@ namespace SrnprCommon.ReplaceFile
     /// Author:Liudpc
     /// Create Date: 2010-6-8 17:23:12
     /// </summary>
-    class TempleteXmlEntityCRF
+     public class TempleteXmlEntityCRF
     {
 
 

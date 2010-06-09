@@ -50,7 +50,7 @@ namespace SrnprCommon.ReplaceFile
         public List<ItemMainSqlEntityCRF> MainSql { get; set; }
 
         /// <summary>
-        /// Description: 列表参数
+        /// Description: 列表Sql
         /// Author:Liudpc
         /// Create Date: 2010-6-9 9:03:34
         /// </summary>

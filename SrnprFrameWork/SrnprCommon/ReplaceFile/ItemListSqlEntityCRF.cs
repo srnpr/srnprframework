@@ -13,5 +13,15 @@ namespace SrnprCommon.ReplaceFile
     /// </summary>
     public class ItemListSqlEntityCRF
     {
+
+
+        /// <summary>
+        /// Description: sql语句
+        /// Author:Liudpc
+        /// Create Date: 2010-6-9 9:28:00
+        /// </summary>
+        public string SqlString { get; set; }
+
+
     }
 }

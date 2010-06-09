@@ -56,6 +56,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ConfigFile\SrnprCommonConfigFCF.xml" />
     <Content Include="ConfigFile\SrnprWebConfigXmlFCF.xml" />
     <Content Include="ConfigFile\SrnprWebConfigCssFCF.css" />
     <Content Include="ConfigFile\SrnprWebConfigXsltFCF.xslt" />
@@ -72,6 +73,9 @@
     <None Include="ConfigFile\SrnprWebConfigXsdFCF.xsd" />
     <None Include="DragFile\ElementDragXsdFDF.xsd" />
     <None Include="ReplaceFile\DcEmailSchemaREF.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="LogFile\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

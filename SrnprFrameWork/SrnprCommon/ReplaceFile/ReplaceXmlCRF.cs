@@ -44,7 +44,7 @@ namespace SrnprCommon.ReplaceFile
         {
             TempleteXmlEntityCRF txe = new TempleteXmlEntityCRF();
 
-           
+            txe.Code = GetTempleteCode(sFilePath);
            
 
 
@@ -62,6 +62,17 @@ namespace SrnprCommon.ReplaceFile
             {
                 XmlDocument xd = new XmlDocument();
                 xd.Load(sFilePath);
+                XmlNode xnCode= xd.SelectSingleNode("ReplaceFileRoot/ReplaceFile/ReplaceFileCode");
+
+
+
+
+
+
+
+
+
+
 
 
             }
@@ -81,7 +92,7 @@ namespace SrnprCommon.ReplaceFile
 
 
 
-        private void AddLog(string sLogId, params string strParams)
+        private void AddLog(string sLogId, params string[] strParams)
         {
 
 

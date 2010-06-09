@@ -83,6 +83,7 @@
 																						<xs:sequence>
 																							<xs:element name="TempleteGuid"></xs:element>
 																							<xs:element name="Expression"></xs:element>
+																							<xs:element name="ExpressionParm" minOccurs="0"></xs:element>
 																						</xs:sequence>
 																					</xs:complexType>
 																				</xs:element>

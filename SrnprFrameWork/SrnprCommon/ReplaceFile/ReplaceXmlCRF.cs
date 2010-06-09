@@ -45,6 +45,14 @@ namespace SrnprCommon.ReplaceFile
 
 
 
+        /// <summary>
+        /// 
+        /// Description: 得到编码实体
+        /// Author:Liudpc
+        /// Create Date: 2010-6-9 17:01:41
+        /// </summary>
+        /// <param name="sFilePath"></param>
+        /// <returns></returns>
         private TempleteCodeEntityCRF GetTempleteCode(string sFilePath)
         {
             TempleteCodeEntityCRF tce = new TempleteCodeEntityCRF();
@@ -143,6 +151,16 @@ namespace SrnprCommon.ReplaceFile
 
         }
 
+
+
+        /// <summary>
+        /// 
+        /// Description: 得到设计实体
+        /// Author:Liudpc
+        /// Create Date: 2010-6-9 17:01:54
+        /// </summary>
+        /// <param name="sFilePath"></param>
+        /// <returns></returns>
         private TempleteDesignEntityCRF GetTempleteDesign(string sFilePath)
         {
             TempleteDesignEntityCRF tde = new TempleteDesignEntityCRF();

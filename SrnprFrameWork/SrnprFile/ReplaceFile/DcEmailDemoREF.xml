@@ -5,12 +5,28 @@
 
 		<!--#######################################以下内容由开发人员维护############################################-->
 
-		<!--是否可用-->
-		<Used>true</Used>
+	
 
-		<!--描述信息-->
-		<Description>这个邮件涉及某某模块 主要用于</Description>
-
+		<ConfigItem>
+			
+			<!--是否可用-->
+			<Used>true</Used>
+			
+			<!--标题-->
+			<Title>系统**模块发送邮件</Title>
+			
+			<!--描述信息-->
+			<Description>此模板用于描述dem</Description>
+			
+			<!--数据库连接编号-->
+			<DataServerId></DataServerId>
+			
+			<!--邮件发送服务器连接编号-->
+			<EmailServerId></EmailServerId>
+		</ConfigItem>
+		
+		
+		
 		<!--输入参数-->
 		<ParmItem>
 			<Parm asText="参数一号" parmName="parm1" />
@@ -29,6 +45,21 @@
 			<ListSql>select filed13 as 循环字段十三号,field14 as 循环字段十四号 from table4 where fieldc='{$字段一号}'</ListSql>
 		</ListItem>
 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		<!--######################################以下内容由设计人员维护#######################################-->
 
 		<!--规则匹配序列-->

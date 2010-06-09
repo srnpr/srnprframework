@@ -11,8 +11,22 @@
 				<xs:element name="DcEmail" maxOccurs="1" minOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="Used"  minOccurs="1" maxOccurs="1" type="xs:boolean"></xs:element>
-							<xs:element name="Description"  minOccurs="1" maxOccurs="1"></xs:element>
+							
+							
+
+							<xs:element name="ConfigItem" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Used"  minOccurs="1" maxOccurs="1" type="xs:boolean"></xs:element>
+										<xs:element name="Title"  minOccurs="1" maxOccurs="1" type="xs:string"></xs:element>
+										<xs:element name="Description"  minOccurs="1" maxOccurs="1" type="xs:string"></xs:element>
+										<xs:element name="DataServerId"  minOccurs="1" maxOccurs="1" type="xs:string"></xs:element>
+										<xs:element name="EmailServerId"  minOccurs="1" maxOccurs="1" type="xs:string"></xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							
+							
 							<xs:element name="ParmItem" minOccurs="0" maxOccurs="1">
 								<xs:complexType>
 									<xs:sequence>

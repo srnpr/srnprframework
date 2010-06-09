@@ -76,7 +76,7 @@
     <None Include="ConfigFile\SrnprWebConfigRegFCF.reg" />
     <None Include="ConfigFile\SrnprWebConfigXsdFCF.xsd" />
     <None Include="DragFile\ElementDragXsdFDF.xsd" />
-    <None Include="ReplaceFile\DcEmailSchemaREF.xsd" />
+    <None Include="ReplaceFile\DcEmailSchemaFRF.xsd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -64,8 +64,10 @@
     <Content Include="DragFile\ElementDragXmlFDF_format.xml" />
     <Content Include="LogFile\LogFileConfigFLF.xml" />
     <Content Include="LogFile\ReplaceFileLogFLF.xml" />
-    <Content Include="ReplaceFile\DcEmailConfigREF.xml" />
+    <Content Include="ReplaceFile\DcEmailCodeFRF.xml" />
+    <Content Include="ReplaceFile\DcEmailConfigFRF.xml" />
     <Content Include="ReplaceFile\DcEmailDemoREF.xml" />
+    <Content Include="ReplaceFile\DcEmailCodeFRF.ds.xml" />
     <Content Include="WebFile\SrnprWebCssDragElementFWF.css" />
     <Content Include="WebFile\SrnprWebJsCommonFWF.js" />
     <Content Include="WebFile\SrnprWebJsDragElementFWF.js" />

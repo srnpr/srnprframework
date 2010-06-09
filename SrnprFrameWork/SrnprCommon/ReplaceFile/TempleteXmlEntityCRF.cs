@@ -20,7 +20,7 @@ namespace SrnprCommon.ReplaceFile
         /// Author:Liudpc
         /// Create Date: 2010-6-8 17:22:33
         /// </summary>
-        TempleteCodeEntityCRF Code { get; set; }
+        public TempleteCodeEntityCRF Code { get; set; }
 
 
 
@@ -29,6 +29,6 @@ namespace SrnprCommon.ReplaceFile
         /// Author:Liudpc
         /// Create Date: 2010-6-8 17:22:53
         /// </summary>
-        TempleteDesignEntityCRF Design { get; set; }
+        public TempleteDesignEntityCRF Design { get; set; }
     }
 }

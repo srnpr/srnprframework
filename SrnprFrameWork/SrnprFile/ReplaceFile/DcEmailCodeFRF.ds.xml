@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<DcEmailRoot  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-				  xsi:schemaLocation="http://SrnprFrameWork/DcEmailSchema/dcemail DcEmailSchemaFRF.xsd">
-	<DcEmail>
+<ReplaceFileRoot  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				  xsi:schemaLocation="http://SrnprFrameWork/ReplaceFileSchema/ReplaceFile ReplaceFileSchemaFRF.xsd">
+	<ReplaceFile>
 
 		<!--######################################以下内容由设计人员维护#######################################-->
 
-		<DcEmailDesign>
+		<ReplaceFileDesign>
 
 			<!--规则匹配序列-->
 		<RuleItem>
@@ -125,8 +125,8 @@
 
 
 
-		</DcEmailDesign>
+		</ReplaceFileDesign>
 
 
-	</DcEmail>
-</DcEmailRoot>
+	</ReplaceFile>
+</ReplaceFileRoot>

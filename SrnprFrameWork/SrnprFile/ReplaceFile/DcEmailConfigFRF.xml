@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<!--服务器信息系列-->
+	<DataServerInfo>
+		<!--数据库服务器  id：服务器编号    serverType：服务器类型(mssql：Microsoft SQL Server；mysql：MySql DataServer；oracle：Oracle DataServer)-->
+		<DataServer id="dsSBUOperation" serverType="mssql">
+			<!--开发机器连接字符串-->
+			<DevServer>10.1.11.1</DevServer>
+			<!--测试机连接字符串-->
+			<TestServer>10.1.11.2</TestServer>
+			<!--正式机连接字符串-->
+			<FormalServer>10.1.11.3</FormalServer>
+		</DataServer>
+	</DataServerInfo>
+
+	<!--邮件服务器信息系列-->
+	<EmailServerInfo>
+		<EmailServer id="esDcgou">
+
+		</EmailServer>
+		
+	</EmailServerInfo>
+
+
+
+	<!--邮件信息列表-->
+	<EmailInfo>
+		<!--邮件参数   
+		id：编号名称全局唯一  
+		dsId：数据库服务器编号 
+		esId：邮件发送服务器编号 
+		title：标题    
+		description：描述 
+		userd：是否可用 
+		-->
+		<email id="DcEmailDemoREF" dsId="dsSBUOperation" esId="esDcgou" title="C系统X模块发送邮件" description="这个系统正在初步测试中" used="true"></email>
+
+	</EmailInfo>
+
+
+</Root>

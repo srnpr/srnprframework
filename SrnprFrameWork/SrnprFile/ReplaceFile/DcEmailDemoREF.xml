@@ -25,6 +25,7 @@
 			<EmailServerId></EmailServerId>
 
 			
+			
 			<!--版本标识符-->
 			<Version>2.0.0.0</Version>
 		</ConfigItem>

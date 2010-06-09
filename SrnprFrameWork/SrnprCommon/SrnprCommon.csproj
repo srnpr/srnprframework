@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseEntity\WebWidgetConfigCBE.cs" />
+    <Compile Include="CommonLog\LogInfoCCL.cs" />
     <Compile Include="EnumCommon\ReplaceFileCEC.cs" />
     <Compile Include="EnumCommon\WebWidgetCEC.cs" />
     <Compile Include="InterFace\WebWidgetBaseCIF.cs" />

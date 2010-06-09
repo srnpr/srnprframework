@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<LogFileConfigRoot>
+	<LogTypeList>
+		<LogType id="1">一般日志信息</LogType>
+
+		<LogType id="5">一般错误信息</LogType>
+
+		<LogType id="7">严重错误信息,程序异常</LogType>
+	</LogTypeList>
+	
+	
+	
+	<LogFileList>
+
+		<LogFile fileName="ReplaceFileLogFLF.xml" logId="log2001"></LogFile>
+
+	</LogFileList>
+
+
+</LogFileConfigRoot>

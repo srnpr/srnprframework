@@ -62,6 +62,7 @@
     <Content Include="ConfigFile\SrnprWebConfigXsltFCF.xslt" />
     <Content Include="DragFile\ElementDragXmlFDF.xml" />
     <Content Include="DragFile\ElementDragXmlFDF_format.xml" />
+    <Content Include="LogFile\LogFileConfigFLF.xml" />
     <Content Include="LogFile\ReplaceFileLogFLF.xml" />
     <Content Include="ReplaceFile\DcEmailConfigREF.xml" />
     <Content Include="ReplaceFile\DcEmailDemoREF.xml" />

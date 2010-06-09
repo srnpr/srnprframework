@@ -24,11 +24,29 @@ namespace SrnprCommon.ReplaceFile
 
 
 
-        
-        
 
-       
 
+
+
+        public List<string> GetTempleteUsedParms(TempleteXmlEntityCRF txe)
+        {
+            List<string> parmsList = new List<string>();
+
+
+
+
+
+
+
+
+
+
+
+
+            return parmsList;
+
+
+        }
 
 
 

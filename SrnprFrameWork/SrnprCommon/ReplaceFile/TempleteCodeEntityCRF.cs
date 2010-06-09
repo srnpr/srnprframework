@@ -35,11 +35,30 @@ namespace SrnprCommon.ReplaceFile
 
 
 
+        /// <summary>
+        /// Description: 参数
+        /// Author:Liudpc
+        /// Create Date: 2010-6-9 9:02:59
+        /// </summary>
         public List<ItemPramEntityCRF> Parm { get; set; }
 
+        /// <summary>
+        /// Description: 主sql
+        /// Author:Liudpc
+        /// Create Date: 2010-6-9 9:03:14
+        /// </summary>
         public List<ItemMainSqlEntityCRF> MainSql { get; set; }
 
+        /// <summary>
+        /// Description: 列表参数
+        /// Author:Liudpc
+        /// Create Date: 2010-6-9 9:03:34
+        /// </summary>
         public List<ItemListSqlEntityCRF> ListSql { get; set; }
+
+
+        
+
 
     }
 }

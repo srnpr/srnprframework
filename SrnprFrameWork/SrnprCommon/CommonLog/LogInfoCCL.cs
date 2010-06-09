@@ -7,5 +7,18 @@ namespace SrnprCommon.CommonLog
 {
     public class LogInfoCCL
     {
+
+
+        public static string GetLogInfo(EnumCommon.LogFile logFile,string sLogId)
+        {
+
+            return "";
+
+        }
+
+
+
+
+
     }
 }

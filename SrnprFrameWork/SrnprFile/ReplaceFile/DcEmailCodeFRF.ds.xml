@@ -20,6 +20,8 @@
 						<TempleteGuid>templeteguidone</TempleteGuid>
 						<!--表达式 支持字段级匹配  暂时不支持循环级规则-->
 						<Expression>{$字段七号}=未确认状态</Expression>
+
+						<ExpressionParm>{$收件人}</ExpressionParm>
 					</ExpressionInfo>
 
 					<!--表达式之一-->

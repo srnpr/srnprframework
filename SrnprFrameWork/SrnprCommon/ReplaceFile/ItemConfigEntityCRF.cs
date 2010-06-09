@@ -27,5 +27,7 @@ namespace SrnprCommon.ReplaceFile
         public string EmailServerId { get; set; }
 
 
+        public string Version { get; set; }
+
     }
 }

@@ -3,24 +3,9 @@
 				  xsi:schemaLocation="http://SrnprFrameWork/DcEmailSchema/dcemail DcEmailSchemaFRF.xsd">
 	<DcEmail>
 
-
-
-
-
-
-
-
 		<!--######################################以下内容由设计人员维护#######################################-->
 
-
-
-
-
-
 		<DcEmailDesign>
-
-
-
 
 			<!--规则匹配序列-->
 		<RuleItem>

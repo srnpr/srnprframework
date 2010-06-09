@@ -40,6 +40,12 @@ namespace SrnprCommon.ReplaceFile
 
 
 
+
+
+
+
+
+
         public TempleteXmlEntityCRF GetTempleteXml(string sFilePath)
         {
             TempleteXmlEntityCRF txe = new TempleteXmlEntityCRF();

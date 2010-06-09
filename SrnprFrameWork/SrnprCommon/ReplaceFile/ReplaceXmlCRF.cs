@@ -27,10 +27,17 @@ namespace SrnprCommon.ReplaceFile
 
 
 
-
-        public List<string> GetTempleteUsedParms(TempleteXmlEntityCRF txe)
+        public DataReplaceEntityCRF GetDataReplace(TempleteXmlEntityCRF txe,DataServerEntityCRF dse)
         {
-            List<string> parmsList = new List<string>();
+            DataReplaceEntityCRF dre = new DataReplaceEntityCRF();
+            dre.MainParms = new Dictionary<string, string>();
+
+
+            if (txe.Code.Parm.Count > 0)
+            {
+
+
+            }
 
 
 
@@ -39,14 +46,11 @@ namespace SrnprCommon.ReplaceFile
 
 
 
-
-
-
-
-            return parmsList;
-
-
+            return dre;
         }
+       
+
+
 
 
 

@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="BaseEntity\WebWidgetConfigCBE.cs" />
     <Compile Include="CommonLog\LogInfoCCL.cs" />
+    <Compile Include="DataHelper\SqlHelperCDH.cs" />
     <Compile Include="EnumCommon\LogFileCEC.cs" />
     <Compile Include="EnumCommon\ReplaceFileCEC.cs" />
     <Compile Include="EnumCommon\WebWidgetCEC.cs" />

@@ -34,8 +34,8 @@
 
 		<!--输入参数-->
 		<ParmItem>
-			<Parm asText="参数一号" parmName="parm1" />
-			<Parm asText="特殊接收人" parmName="parm2"/>
+			<Parm parmText="参数一号" parmName="parm1" />
+			<Parm parmText="特殊接收人" parmName="parm2"/>
 		</ParmItem>
 
 		<!--主字段读取参数  请使用as中文来进行  方便设计人员进行匹配使用-->
@@ -44,12 +44,7 @@
 			<MainSql>select filed7 as 字段七号,field8 as 字段八号 from table2 where fieldy='{$参数一号}'</MainSql>
 		</MainItem>
 
-		<!--循环字段读取参数  请使用as中文来进行  方便设计人员进行匹配使用-->
-		<ListItem>
-			<ListSql>select filed11 as 循环字段十一号,field12 as 循环字段十二号 from table3 where fieldz=@parm1</ListSql>
-			<ListSql>select filed13 as 循环字段十三号,field14 as 循环字段十四号 from table4 where fieldc='{$字段一号}'</ListSql>
-		</ListItem>
-
+		
 
 
 		</ReplaceFileCode>

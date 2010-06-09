@@ -36,7 +36,7 @@
 												<xs:sequence>
 													<xs:element name="Parm" minOccurs="1" maxOccurs="unbounded">
 														<xs:complexType>
-															<xs:attribute name="asText" use="required"></xs:attribute>
+															<xs:attribute name="parmText" use="required"></xs:attribute>
 															<xs:attribute name="parmName" use="required"></xs:attribute>
 														</xs:complexType>
 													</xs:element>

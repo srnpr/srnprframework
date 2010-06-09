@@ -16,27 +16,18 @@ namespace SrnprCommon.ReplaceFile
     {
 
 
+
         /// <summary>
-        /// Description: 是否可用
+        /// Description: 配置参数
         /// Author:Liudpc
-        /// Create Date: 2010-6-8 17:47:44
+        /// Create Date: 2010-6-9 13:58:29
         /// </summary>
-        public bool Used { get; set; }
-
+        public ItemConfigEntityCRF Config { get; set; }
 
 
 
         /// <summary>
-        /// Description: 描述信息
-        /// Author:Liudpc
-        /// Create Date: 2010-6-8 17:51:23
-        /// </summary>
-        public string Description { get; set; }
-
-
-
-        /// <summary>
-        /// Description: 参数
+        /// Description: 输入参数
         /// Author:Liudpc
         /// Create Date: 2010-6-9 9:02:59
         /// </summary>

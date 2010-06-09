@@ -28,6 +28,6 @@ namespace SrnprWeb.WebEntity
             set { _headerText = value; }
         }
 
-        private int _defaultFlag = 0;
+      
     }
 }

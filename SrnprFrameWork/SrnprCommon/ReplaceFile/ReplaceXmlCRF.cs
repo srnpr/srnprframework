@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
+using System.IO;
 
 namespace SrnprCommon.ReplaceFile
 {
@@ -43,22 +44,8 @@ namespace SrnprCommon.ReplaceFile
         {
             TempleteXmlEntityCRF txe = new TempleteXmlEntityCRF();
 
-
-            XmlDocument xd = new XmlDocument();
-            xd.Load(sFilePath);
-
-
-
-
-
-
-
-
-
-            
-
-            
-
+           
+           
 
 
             return txe;
@@ -66,8 +53,40 @@ namespace SrnprCommon.ReplaceFile
 
 
 
+        private TempleteCodeEntityCRF GetTempleteCode(string sFilePath)
+        {
+            TempleteCodeEntityCRF tce = new TempleteCodeEntityCRF();
 
 
+            if (File.Exists(sFilePath))
+            {
+                XmlDocument xd = new XmlDocument();
+                xd.Load(sFilePath);
+
+
+            }
+            else
+            {
+                AddLog("log20010015",sFilePath);
+            }
+
+
+
+            return tce;
+
+
+        }
+
+
+
+
+
+        private void AddLog(string sLogId, params string strParams)
+        {
+
+
+
+        }
 
     }
 }

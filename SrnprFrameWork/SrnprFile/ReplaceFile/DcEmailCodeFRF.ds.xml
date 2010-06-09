@@ -1,62 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <DcEmailRoot  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-				  xsi:schemaLocation="http://SrnprFrameWork/DcEmailSchema/dcemail DcEmailSchemaREF.xsd">
+				  xsi:schemaLocation="http://SrnprFrameWork/DcEmailSchema/dcemail DcEmailSchemaFRF.xsd">
 	<DcEmail>
-
-		<!--#######################################以下内容由开发人员维护############################################-->
-
-
-
-		<ConfigItem>
-
-			<!--是否可用-->
-			<Used>true</Used>
-
-			<!--标题-->
-			<Title>系统**模块发送邮件</Title>
-
-			<!--描述信息-->
-			<Description>此模板用于描述dem</Description>
-
-			<!--数据库连接编号-->
-			<DataServerId></DataServerId>
-
-			<!--邮件发送服务器连接编号-->
-			<EmailServerId></EmailServerId>
-
-
-
-			<!--版本标识符-->
-			<Version>2.0.0.0</Version>
-		</ConfigItem>
-
-
-
-		<!--输入参数-->
-		<ParmItem>
-			<Parm asText="参数一号" parmName="parm1" />
-			<Parm asText="特殊接收人" parmName="parm2"/>
-		</ParmItem>
-
-		<!--主字段读取参数  请使用as中文来进行  方便设计人员进行匹配使用-->
-		<MainItem>
-			<MainSql>select filed1 as 字段一号,field2 as 字段二号,select create as 创建人,dbo.ddd() as 序列 from table1 where fieldx=@parm1</MainSql>
-			<MainSql>select filed7 as 字段七号,field8 as 字段八号 from table2 where fieldy='{$参数一号}'</MainSql>
-		</MainItem>
-
-		<!--循环字段读取参数  请使用as中文来进行  方便设计人员进行匹配使用-->
-		<ListItem>
-			<ListSql>select filed11 as 循环字段十一号,field12 as 循环字段十二号 from table3 where fieldz=@parm1</ListSql>
-			<ListSql>select filed13 as 循环字段十三号,field14 as 循环字段十四号 from table4 where fieldc='{$字段一号}'</ListSql>
-		</ListItem>
-
-
-
-
-
-
-
-
 
 
 
@@ -67,7 +12,17 @@
 
 		<!--######################################以下内容由设计人员维护#######################################-->
 
-		<!--规则匹配序列-->
+
+
+
+
+
+		<DcEmailDesign>
+
+
+
+
+			<!--规则匹配序列-->
 		<RuleItem>
 			<!--规则列表-->
 			<Rule>
@@ -185,7 +140,7 @@
 
 
 
-
+		</DcEmailDesign>
 
 
 	</DcEmail>

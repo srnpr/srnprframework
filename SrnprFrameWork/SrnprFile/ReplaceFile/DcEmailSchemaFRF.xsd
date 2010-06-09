@@ -11,102 +11,120 @@
 				<xs:element name="DcEmail" maxOccurs="1" minOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
-							
-							
 
-							<xs:element name="ConfigItem" minOccurs="0" maxOccurs="1">
+							<xs:element name="DcEmailCode" minOccurs="0" maxOccurs="1">
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element name="Used"  minOccurs="1" maxOccurs="1" type="xs:boolean"></xs:element>
-										<xs:element name="Title"  minOccurs="1" maxOccurs="1" type="xs:string"></xs:element>
-										<xs:element name="Description"  minOccurs="1" maxOccurs="1" type="xs:string"></xs:element>
-										<xs:element name="DataServerId"  minOccurs="1" maxOccurs="1" type="xs:string"></xs:element>
-										<xs:element name="EmailServerId"  minOccurs="1" maxOccurs="1" type="xs:string"></xs:element>
 
-										<xs:element name="Version"  minOccurs="1" maxOccurs="1" type="xs:string"></xs:element>
-									</xs:sequence>
-								</xs:complexType>
-							</xs:element>
-							
-							
-							<xs:element name="ParmItem" minOccurs="0" maxOccurs="1">
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element name="Parm" minOccurs="1" maxOccurs="unbounded">
-											<xs:complexType>
-												<xs:attribute name="asText" use="required"></xs:attribute>
-												<xs:attribute name="parmName" use="required"></xs:attribute>
-											</xs:complexType>
-										</xs:element>
-									</xs:sequence>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="MainItem" minOccurs="0" maxOccurs="1">
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element name="MainSql" minOccurs="1" maxOccurs="unbounded"></xs:element>
-									</xs:sequence>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="ListItem" maxOccurs="1" minOccurs="0">
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element name="ListSql" minOccurs="1" maxOccurs="unbounded"></xs:element>
-									</xs:sequence>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="RuleItem" maxOccurs="1" minOccurs="0">
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element name="Rule">
+										<xs:element name="ConfigItem" minOccurs="0" maxOccurs="1">
 											<xs:complexType>
 												<xs:sequence>
-													<xs:choice minOccurs="0">
-														<xs:element name="RuleExpression" minOccurs="1" maxOccurs="unbounded">
-															<xs:complexType>
-																<xs:sequence>
-																	<xs:element name="ExpressionInfo" maxOccurs="unbounded">
+													<xs:element name="Used"  minOccurs="1" maxOccurs="1" type="xs:boolean"></xs:element>
+													<xs:element name="Title"  minOccurs="1" maxOccurs="1" type="xs:string"></xs:element>
+													<xs:element name="Description"  minOccurs="1" maxOccurs="1" type="xs:string"></xs:element>
+													<xs:element name="DataServerId"  minOccurs="1" maxOccurs="1" type="xs:string"></xs:element>
+													<xs:element name="EmailServerId"  minOccurs="1" maxOccurs="1" type="xs:string"></xs:element>
+
+													<xs:element name="Version"  minOccurs="1" maxOccurs="1" type="xs:string"></xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+
+
+										<xs:element name="ParmItem" minOccurs="0" maxOccurs="1">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Parm" minOccurs="1" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:attribute name="asText" use="required"></xs:attribute>
+															<xs:attribute name="parmName" use="required"></xs:attribute>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="MainItem" minOccurs="0" maxOccurs="1">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="MainSql" minOccurs="1" maxOccurs="unbounded"></xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="ListItem" maxOccurs="1" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="ListSql" minOccurs="1" maxOccurs="unbounded"></xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+
+
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="DcEmailDesign" maxOccurs="1" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+
+
+
+										<xs:element name="RuleItem" maxOccurs="1" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Rule">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:choice minOccurs="0">
+																	<xs:element name="RuleExpression" minOccurs="1" maxOccurs="unbounded">
 																		<xs:complexType>
 																			<xs:sequence>
-																				<xs:element name="TempleteGuid"></xs:element>
-																				<xs:element name="Expression"></xs:element>
+																				<xs:element name="ExpressionInfo" maxOccurs="unbounded">
+																					<xs:complexType>
+																						<xs:sequence>
+																							<xs:element name="TempleteGuid"></xs:element>
+																							<xs:element name="Expression"></xs:element>
+																						</xs:sequence>
+																					</xs:complexType>
+																				</xs:element>
 																			</xs:sequence>
 																		</xs:complexType>
 																	</xs:element>
-																</xs:sequence>
-															</xs:complexType>
-														</xs:element>
-													</xs:choice>
+																</xs:choice>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
 												</xs:sequence>
 											</xs:complexType>
 										</xs:element>
-									</xs:sequence>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="TempleteItem" maxOccurs="1" minOccurs="0">
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element name="Templete" minOccurs="1" maxOccurs="unbounded">
+										<xs:element name="TempleteItem" maxOccurs="1" minOccurs="0">
 											<xs:complexType>
 												<xs:sequence>
-													<xs:choice minOccurs="0">
-														<xs:element name="EmailInfo">
-															<xs:complexType>
-																<xs:sequence>
-																	<xs:element name="Title"></xs:element>
-																	<xs:element name="Content"></xs:element>
-																</xs:sequence>
-															</xs:complexType>
-														</xs:element>
-													</xs:choice>
-													<xs:choice minOccurs="0"></xs:choice>
+													<xs:element name="Templete" minOccurs="1" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:choice minOccurs="0">
+																	<xs:element name="EmailInfo">
+																		<xs:complexType>
+																			<xs:sequence>
+																				<xs:element name="Title"></xs:element>
+																				<xs:element name="Content"></xs:element>
+																			</xs:sequence>
+																		</xs:complexType>
+																	</xs:element>
+																</xs:choice>
+																<xs:choice minOccurs="0"></xs:choice>
+															</xs:sequence>
+															<xs:attribute name="GuId"></xs:attribute>
+														</xs:complexType>
+													</xs:element>
 												</xs:sequence>
-												<xs:attribute name="GuId"></xs:attribute>
 											</xs:complexType>
 										</xs:element>
+
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
+
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>

@@ -134,6 +134,14 @@ namespace SrnprCommon.ReplaceFile
 
 
 
+        /// <summary>
+        /// 
+        /// Description: 根据文件路径得到实体
+        /// Author:Liudpc
+        /// Create Date: 2010-6-10 14:13:27
+        /// </summary>
+        /// <param name="sFilePath"></param>
+        /// <returns></returns>
         public TempleteXmlEntityCRF GetTempleteXml(string sFilePath)
         {
             TempleteXmlEntityCRF txe = new TempleteXmlEntityCRF();

@@ -24,7 +24,11 @@ namespace SrnprCommon.ReplaceFile
             ReplaceResultEntity returnResult = new ReplaceResultEntity();
 
 
+
+
+            replaceEntity.TempleteXml.Design.
             
+
 
 
 

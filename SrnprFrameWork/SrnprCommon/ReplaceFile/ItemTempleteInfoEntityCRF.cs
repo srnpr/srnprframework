@@ -5,11 +5,7 @@ using System.Text;
 
 namespace SrnprCommon.ReplaceFile
 {
-    public class TempleteDesignEntityCRF
+    class ItemTempleteInfoEntityCRF
     {
-
-        public List<ItemRuleExpressionEntityCRF> RuleExpress { get; set; }
-
-
     }
 }

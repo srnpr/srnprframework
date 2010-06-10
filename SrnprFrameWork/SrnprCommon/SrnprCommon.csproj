@@ -72,6 +72,8 @@
     <Compile Include="ReplaceFile\ItemListSqlEntityCRF.cs" />
     <Compile Include="ReplaceFile\ItemMainSqlEntityCRF.cs" />
     <Compile Include="ReplaceFile\ItemPramEntityCRF.cs" />
+    <Compile Include="ReplaceFile\ItemRuleExpressionEntityCRF.cs" />
+    <Compile Include="ReplaceFile\ItemTempleteInfoEntityCRF.cs" />
     <Compile Include="ReplaceFile\ReplaceFileEntityCRF.cs" />
     <Compile Include="ReplaceFile\ReplaceResultEntity.cs" />
     <Compile Include="ReplaceFile\ReplaceXmlCRF.cs" />

@@ -19,5 +19,13 @@ namespace SrnprCommon.CommonConfig
         public  const  string MainParmReplace = "{${0}}";
 
 
+
+
+
+        
+
+
+
+
     }
 }

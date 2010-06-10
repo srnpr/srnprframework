@@ -4,6 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using System.IO;
+using System.Text.RegularExpressions;
+using SrnprCommon.CommonConfig;
+using SrnprCommon.EnumCommon;
+using System.Data;
+using System.Data.SqlClient;
+using SrnprCommon.DataHelper;
 
 namespace SrnprCommon.ReplaceFile
 {
@@ -27,17 +33,66 @@ namespace SrnprCommon.ReplaceFile
 
 
 
-        public DataReplaceEntityCRF GetDataReplace(TempleteXmlEntityCRF txe,DataServerEntityCRF dse)
+        public DataReplaceEntityCRF GetDataReplace(ReplaceFileEntityCRF rfe)
         {
             DataReplaceEntityCRF dre = new DataReplaceEntityCRF();
             dre.MainParms = new Dictionary<string, string>();
 
+            string sMainReplace=ReplaceFileConfigCCC.MainParmReplace;
 
-            if (txe.Code.Parm.Count > 0)
+            List<SqlParameter> sqlParmList = new List<SqlParameter>();
+
+
+            #region 开始进行输入参数的处理
+            if (!string.IsNullOrEmpty(rfe.ReplaceParms))
             {
 
+                string[] strParms = Regex.Split(rfe.ReplaceParms, ReplaceFileConfigCCC.SplitString);
+
+                List<ItemPramEntityCRF> parmList = rfe.TempleteXml.Code.Parm;
+                for (int i = 0, j = strParms.Length; i < j; i++)
+                {
+                    int iIndex=strParms[i].IndexOf("=");
+                    if(iIndex>0)
+                    {
+                        ItemPramEntityCRF  ipe= parmList.Single(t => t.ParmName == strParms[i].Substring(0, iIndex));
+                        sqlParmList.Add(new SqlParameter("@"+ipe,strParms[i].Substring(iIndex+1)));
+
+                        if (ipe != null)
+                        {
+                            dre.MainParms.Add(string.Format(sMainReplace, ipe.ParmText), strParms[i].Substring(iIndex + 1));
+
+                        }
+                    }
+                }
 
             }
+            #endregion
+
+
+            #region 开始进行主sql取出
+            if (rfe.TempleteXml.Code.MainSql.Count > 0)
+            {
+                SqlParameter[] sp=sqlParmList.ToArray();
+                foreach(ItemMainSqlEntityCRF imse in rfe.TempleteXml.Code.MainSql)
+                {
+                    DataTable dt = SqlHelperCDH.ExecuteDataTable(rfe.DataServer.ConnString, imse.SqlString, sp);
+                    if(dt.Rows.Count>0)
+                    {
+                        for (int i = 0, j = dt.Columns.Count; i < j; i++)
+                        {
+                            dre.MainParms.Add(string.Format(sMainReplace, dt.Columns[i].ColumnName), dt.Rows[0][i].ToString().Trim());
+                        }
+                    }
+                }
+            }
+
+            #endregion
+
+
+
+
+
 
 
 

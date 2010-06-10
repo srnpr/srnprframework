@@ -40,5 +40,14 @@ namespace SrnprCommon.ReplaceFile
         /// </summary>
         public ServerCategory Category { get; set; }
 
+
+
+
+        /// <summary>
+        /// Description: 连接字符串
+        /// Author:Liudpc
+        /// Create Date: 2010-6-10 11:31:10
+        /// </summary>
+        public string ConnString { get; set; }
     }
 }

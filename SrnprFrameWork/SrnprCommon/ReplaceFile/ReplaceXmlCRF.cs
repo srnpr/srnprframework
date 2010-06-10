@@ -18,13 +18,13 @@ namespace SrnprCommon.ReplaceFile
 
 
 
-        public ReplaceResultEntity Replace(ReplaceFileEntityCRF rfe)
+        public ReplaceResultEntity Replace(ReplaceFileEntityCRF replaceEntity)
         {
 
             ReplaceResultEntity returnResult = new ReplaceResultEntity();
 
 
-
+            
 
 
 

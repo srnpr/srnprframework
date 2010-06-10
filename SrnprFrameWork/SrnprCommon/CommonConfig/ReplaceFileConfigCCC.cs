@@ -8,7 +8,7 @@ namespace SrnprCommon.CommonConfig
     public class ReplaceFileConfigCCC
     {
 
-        public  const string SplitString = "$$####$$";
+        public const string SplitString = "$$##$#$$";
 
 
 

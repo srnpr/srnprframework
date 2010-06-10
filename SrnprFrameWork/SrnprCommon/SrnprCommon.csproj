@@ -79,6 +79,7 @@
     <Compile Include="ReplaceFile\ReplaceFileEntityCRF.cs" />
     <Compile Include="ReplaceFile\ReplaceResultEntity.cs" />
     <Compile Include="ReplaceFile\ReplaceXmlCRF.cs" />
+    <Compile Include="ReplaceFile\SendEmail.cs" />
     <Compile Include="ReplaceFile\TempleteXmlEntityCRF.cs" />
     <Compile Include="ReplaceFile\TempleteCodeEntityCRF.cs" />
     <Compile Include="ReplaceFile\TempleteDesignEntityCRF.cs" />

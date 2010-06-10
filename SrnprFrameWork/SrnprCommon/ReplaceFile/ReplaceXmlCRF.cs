@@ -26,7 +26,9 @@ namespace SrnprCommon.ReplaceFile
 
 
 
-          
+            DataReplaceEntityCRF dataReplace = GetDataReplace(replaceEntity);
+
+
             
             
 
@@ -121,8 +123,6 @@ namespace SrnprCommon.ReplaceFile
         }
 
 
-
-
         /// <summary>
         /// 
         /// Description: 根据字典替换字符串
@@ -147,8 +147,6 @@ namespace SrnprCommon.ReplaceFile
         }
 
 
-
-
         /// <summary>
         /// 
         /// Description: 根据文件路径得到实体
@@ -168,7 +166,6 @@ namespace SrnprCommon.ReplaceFile
 
             return txe;
         }
-
 
 
         /// <summary>
@@ -278,7 +275,6 @@ namespace SrnprCommon.ReplaceFile
         }
 
 
-
         /// <summary>
         /// 
         /// Description: 得到设计实体
@@ -289,7 +285,7 @@ namespace SrnprCommon.ReplaceFile
         /// <returns></returns>
         private TempleteDesignEntityCRF GetTempleteDesign(string sFilePath)
         {
-            TempleteDesignEntityCRF tde = new TempleteDesignEntityCRF();
+            TempleteDesignEntityCRF returnDesignEntity = new TempleteDesignEntityCRF();
 
             if (File.Exists(sFilePath))
             {
@@ -298,7 +294,7 @@ namespace SrnprCommon.ReplaceFile
                 XmlNode xnDesign = xd.SelectSingleNode("ReplaceFileRoot/ReplaceFile/ReplaceFileDesign");
 
 
-                tde.ItemRule = new List<ItemRuleEntityCRF>();
+                returnDesignEntity.ItemRule = new List<ItemRuleEntityCRF>();
                 XmlNode xnRule = xnDesign.SelectSingleNode("RuleItem/Rule");
                 if (xnRule != null)
                 {
@@ -306,13 +302,13 @@ namespace SrnprCommon.ReplaceFile
                     {
                         if (xnRuleInfo.Name == "RuleExpression")
                         {
-                            foreach (XmlNode xn in xnRuleInfo.ChildNodes)
+                            foreach (XmlNode xn in xnRuleInfo.SelectNodes("ExpressionInfo"))
                             {
                                 ItemRuleExpressionEntityCRF iree = new ItemRuleExpressionEntityCRF();
                                 iree.Expression = xn.SelectSingleNode("Expression").InnerText.Trim();
                                 iree.TempleteGuid = xn.SelectSingleNode("TempleteGuid").InnerText.Trim();
                                 iree.ExpressionParm = xn.SelectSingleNode("ExpressionParm").InnerText.Trim();
-                                tde.ItemRule.Add(iree);
+                                returnDesignEntity.ItemRule.Add(iree);
                             }
                         }
 
@@ -320,7 +316,7 @@ namespace SrnprCommon.ReplaceFile
                 }
 
 
-                tde.ItemTemplete = new List<ItemTempleteEntityCRF>();
+                returnDesignEntity.ItemTemplete = new List<ItemTempleteEntityCRF>();
                 XmlNode xnTemplete = xnDesign.SelectSingleNode("TempleteItem/Templete");
                 if (xnTemplete != null)
                 {
@@ -331,10 +327,10 @@ namespace SrnprCommon.ReplaceFile
 
                             ItemTempleteEmailInfoEntityCRF itee = new ItemTempleteEmailInfoEntityCRF();
                             itee.Guid = xnTemplete.Attributes["GuId"].Value.Trim();
-                            itee.Title = xnTemplete.SelectSingleNode("Title").InnerText;
-                            itee.Content = xnTemplete.SelectSingleNode("Content").InnerText;
+                            itee.Title = xnTempleteInfo.SelectSingleNode("Title").InnerText;
+                            itee.Content = xnTempleteInfo.SelectSingleNode("Content").InnerText;
 
-                            tde.ItemTemplete.Add(itee);
+                            returnDesignEntity.ItemTemplete.Add(itee);
                         }
 
                     }
@@ -355,19 +351,18 @@ namespace SrnprCommon.ReplaceFile
 
 
 
-            return tde;
+            return returnDesignEntity;
         }
 
 
-
-
-
-
-
-
-
-
-
+        /// <summary>
+        /// 
+        /// Description: 添加到日志文件
+        /// Author:Liudpc
+        /// Create Date: 2010-6-10 17:50:18
+        /// </summary>
+        /// <param name="sLogId"></param>
+        /// <param name="strParams"></param>
         private void AddLog(string sLogId, params string[] strParams)
         {
 

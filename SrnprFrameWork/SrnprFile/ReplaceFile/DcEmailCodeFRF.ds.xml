@@ -28,6 +28,8 @@
 					<ExpressionInfo>
 						<TempleteGuid>templeteguidtwo</TempleteGuid>
 						<Expression>{$字段七号}+2-(3+4)>{$字段八号}</Expression>
+
+						<ExpressionParm>{$收件人}</ExpressionParm>
 					</ExpressionInfo>
 				</RuleExpression>
 			</Rule>

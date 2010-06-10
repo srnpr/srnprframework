@@ -12,10 +12,18 @@ public partial class DcEmail_DcEmailTest : System.Web.UI.Page
     {
 
 
-        SrnprCommon.ReplaceFile.ReplaceFileEntityCRF rfe=new SrnprCommon.ReplaceFile.ReplaceFileEntityCRF();
+        //SrnprCommon.ReplaceFile.ReplaceFileEntityCRF rfe=new SrnprCommon.ReplaceFile.ReplaceFileEntityCRF();
             
-          rfe.TempleteXml  = new SrnprCommon.ReplaceFile.ReplaceXmlCRF().GetTempleteXml(@"S:\AAAProject\SrnprFrameWork\SrnprFile\ReplaceFile\DcEmailCodeFRF.xml");
+          //rfe.TempleteXml  = new SrnprCommon.ReplaceFile.ReplaceXmlCRF().GetTempleteXml(@"S:\AAAProject\SrnprFrameWork\SrnprFile\ReplaceFile\DcEmailCodeFRF.xml");
 
+
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+
+      
+
+        Label1.Text = SrnprCommon.CommonFunction.EvalFunctionCCF.Eval(TextBox1.Text.Trim()).ToString().Trim();
 
     }
 }

@@ -16,12 +16,7 @@ namespace SrnprCommon.ReplaceFile
     public class ReplaceXmlCRF
     {
 
-        public object Eval(string sExpress)
-        {
-            Microsoft.JScript.Vsa.VsaEngine ve = Microsoft.JScript.Vsa.VsaEngine.CreateEngine();
-            object ret = Microsoft.JScript.Eval.JScriptEvaluate(sExpress, ve);
-            return ret;
-        }
+       
 
 
 
@@ -35,6 +30,35 @@ namespace SrnprCommon.ReplaceFile
 
 
             DataReplaceEntityCRF dataReplace = GetDataReplace(replaceEntity);
+
+
+
+
+            if (replaceEntity.TempleteXml.Design.ItemRule.Count > 0)
+            {
+                foreach (ItemRuleEntityCRF itemRule in replaceEntity.TempleteXml.Design.ItemRule)
+                {
+
+                    if (itemRule.RuleType == EnumCommon.ItemRuleType.RuleExpression)
+                    {
+                        ItemRuleExpressionEntityCRF ruleExpress=itemRule as ItemRuleExpressionEntityCRF;
+
+                        string sResult = CommonFunction.EvalFunctionCCF.Eval(ReplaceParmsByDict(ruleExpress.Expression,dataReplace.MainParms)).ToLower();
+
+                        if (sResult == "true")
+                        {
+
+
+
+                        }
+
+
+                    }
+                }
+
+
+            }
+
 
 
 

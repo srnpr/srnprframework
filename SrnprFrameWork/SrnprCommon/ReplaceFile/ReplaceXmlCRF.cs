@@ -16,6 +16,14 @@ namespace SrnprCommon.ReplaceFile
     public class ReplaceXmlCRF
     {
 
+        public object Eval(string sExpress)
+        {
+            Microsoft.JScript.Vsa.VsaEngine ve = Microsoft.JScript.Vsa.VsaEngine.CreateEngine();
+            object ret = Microsoft.JScript.Eval.JScriptEvaluate(sExpress, ve);
+            return ret;
+        }
+
+
 
 
         public ReplaceResultEntity Replace(ReplaceFileEntityCRF replaceEntity)
@@ -27,14 +35,6 @@ namespace SrnprCommon.ReplaceFile
 
 
             DataReplaceEntityCRF dataReplace = GetDataReplace(replaceEntity);
-
-
-            
-            
-
-
-
-
 
 
 

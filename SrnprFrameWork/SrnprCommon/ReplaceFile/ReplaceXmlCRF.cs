@@ -26,7 +26,7 @@ namespace SrnprCommon.ReplaceFile
 
 
 
-            replaceEntity.TempleteXml.Design.
+            
             
 
 

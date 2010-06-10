@@ -53,4 +53,22 @@ namespace SrnprCommon.EnumCommon
         FormalServer
     }
 
+
+
+    /// <summary>
+    /// Description: 模板类型
+    /// Author:Liudpc
+    /// Create Date: 2010-6-10 16:17:41
+    /// </summary>
+    public enum ItemTempleteType
+    {
+
+        /// <summary>
+        /// Description: 邮件模板
+        /// Author:Liudpc
+        /// Create Date: 2010-6-10 16:17:56
+        /// </summary>
+        EmailInfo,
+    }
+
 }

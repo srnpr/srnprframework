@@ -57,6 +57,7 @@
     <Compile Include="BaseEntity\WebWidgetConfigCBE.cs" />
     <Compile Include="CommonConfig\ReplaceFileConfigCCC.cs" />
     <Compile Include="CommonLog\LogInfoCCL.cs" />
+    <Compile Include="DataHelper\DataTableAutoHelperCDH.cs" />
     <Compile Include="DataHelper\SqlHelperCDH.cs" />
     <Compile Include="EnumCommon\LogFileCEC.cs" />
     <Compile Include="EnumCommon\ReplaceFileCEC.cs" />

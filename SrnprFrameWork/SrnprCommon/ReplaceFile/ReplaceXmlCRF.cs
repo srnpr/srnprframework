@@ -42,6 +42,9 @@ namespace SrnprCommon.ReplaceFile
 
             List<SqlParameter> sqlParmList = new List<SqlParameter>();
 
+            DataHelper.DataTableAutoHelperCDH dtah = new DataTableAutoHelperCDH();
+       
+
 
             #region 开始进行输入参数的处理
             if (!string.IsNullOrEmpty(rfe.ReplaceParms))
@@ -76,7 +79,7 @@ namespace SrnprCommon.ReplaceFile
                 SqlParameter[] sp=sqlParmList.ToArray();
                 foreach(ItemMainSqlEntityCRF imse in rfe.TempleteXml.Code.MainSql)
                 {
-                    DataTable dt = SqlHelperCDH.ExecuteDataTable(rfe.DataServer.ConnString, imse.SqlString, sp);
+                    DataTable dt = dtah.GetDataTable(rfe.DataServer, imse.SqlString, sp);
                     if(dt.Rows.Count>0)
                     {
                         for (int i = 0, j = dt.Columns.Count; i < j; i++)
@@ -90,21 +93,43 @@ namespace SrnprCommon.ReplaceFile
             #endregion
 
 
-
-
-
-
-
-
-
-
-
-
+            if (rfe.TempleteXml.Code.ListSql.Count > 0)
+            {
+                SqlParameter[] sp=sqlParmList.ToArray();
+                foreach (ItemListSqlEntityCRF ilse in rfe.TempleteXml.Code.ListSql)
+                {
+                    dre.ListParms.Add(dtah.GetDataTable(rfe.DataServer, ReplaceParmsByDict(ilse.SqlString,dre.MainParms), sp));
+                }
+            }
 
             return dre;
         }
-       
 
+
+
+
+        /// <summary>
+        /// 
+        /// Description: 根据字典替换字符串
+        /// Author:Liudpc
+        /// Create Date: 2010-6-10 12:03:39
+        /// </summary>
+        /// <param name="sInput"></param>
+        /// <param name="dValue"></param>
+        /// <returns></returns>
+        private string ReplaceParmsByDict(string sInput, Dictionary<string, string> dValue)
+        {
+            if (sInput.IndexOf(ReplaceFileConfigCCC.ReplaceFrom) > -1)
+            {
+                foreach (KeyValuePair<string, string> kvp in dValue)
+                {
+                    sInput = sInput.Replace(kvp.Key, kvp.Value);
+                }
+            }
+            return sInput;
+
+
+        }
 
 
 

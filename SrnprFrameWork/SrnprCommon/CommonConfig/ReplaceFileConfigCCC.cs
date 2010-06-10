@@ -10,6 +10,12 @@ namespace SrnprCommon.CommonConfig
 
         public  const string SplitString = "$$####$$";
 
+
+
+
+
+        public const string ReplaceFrom = "{";
+
         public  const  string MainParmReplace = "{${0}}";
 
 

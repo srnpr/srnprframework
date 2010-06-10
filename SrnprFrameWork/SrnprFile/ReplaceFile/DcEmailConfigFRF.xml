@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Root>
+<DcEmailConfigRoot>
 	<!--服务器信息系列-->
 	<DataServerInfo>
 		<!--数据库服务器  id：服务器编号    serverType：服务器类型(mssql：Microsoft SQL Server；mysql：MySql DataServer；oracle：Oracle DataServer)-->
@@ -38,4 +38,4 @@
 	</EmailInfo>
 
 
-</Root>
+</DcEmailConfigRoot>

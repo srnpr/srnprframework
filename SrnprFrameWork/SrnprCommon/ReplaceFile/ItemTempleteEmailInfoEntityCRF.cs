@@ -21,5 +21,14 @@ namespace SrnprCommon.ReplaceFile
         {
             get { return SrnprCommon.EnumCommon.ItemTempleteType.EmailInfo; }
         }
+
+
+
+
+        public string Title { get; set; }
+
+
+        public string Content { get; set; }
+
     }
 }

@@ -299,13 +299,10 @@ namespace SrnprCommon.ReplaceFile
 
 
                 tde.ItemRule = new List<ItemRuleEntityCRF>();
-
-
-                XmlNode xnlRule = xnDesign.SelectSingleNode("RuleItem/Rule");
-
-                if (xnlRule != null)
+                XmlNode xnRule = xnDesign.SelectSingleNode("RuleItem/Rule");
+                if (xnRule != null)
                 {
-                    foreach (XmlNode xnRuleInfo in xnlRule.ChildNodes)
+                    foreach (XmlNode xnRuleInfo in xnRule.ChildNodes)
                     {
                         if (xnRuleInfo.Name == "RuleExpression")
                         {
@@ -320,8 +317,29 @@ namespace SrnprCommon.ReplaceFile
                         }
 
                     }
-
                 }
+
+
+                tde.ItemTemplete = new List<ItemTempleteEntityCRF>();
+                XmlNode xnTemplete = xnDesign.SelectSingleNode("TempleteItem/Templete");
+                if (xnTemplete != null)
+                {
+                    foreach (XmlNode xnTempleteInfo in xnTemplete.ChildNodes)
+                    {
+                        if (xnTempleteInfo.Name == "EmailInfo")
+                        {
+
+                            ItemTempleteEmailInfoEntityCRF itee = new ItemTempleteEmailInfoEntityCRF();
+                            itee.Guid = xnTemplete.Attributes["GuId"].Value.Trim();
+                            itee.Title = xnTemplete.SelectSingleNode("Title").InnerText;
+                            itee.Content = xnTemplete.SelectSingleNode("Content").InnerText;
+
+                            tde.ItemTemplete.Add(itee);
+                        }
+
+                    }
+                }
+
 
 
 

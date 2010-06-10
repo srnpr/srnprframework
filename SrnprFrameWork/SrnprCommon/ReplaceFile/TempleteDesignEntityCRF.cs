@@ -8,8 +8,10 @@ namespace SrnprCommon.ReplaceFile
     public class TempleteDesignEntityCRF
     {
 
-        public List<ItemRuleExpressionEntityCRF> RuleExpress { get; set; }
+        public List<ItemRuleEntityCRF> ItemRule { get; set; }
 
 
+
+        public List<ItemTempleteEntityCRF> ItemTemplete { get; set; }
     }
 }

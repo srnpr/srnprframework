@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SrnprCommon.ReplaceFile
 {
-    public class ItemRuleExpressionEntityCRF
+    public class ItemRuleExpressionEntityCRF:ItemRuleEntityCRF
     {
 
 
@@ -17,5 +17,10 @@ namespace SrnprCommon.ReplaceFile
 
         public string ExpressionParm { get; set; }
 
+
+        public override SrnprCommon.EnumCommon.ItemRuleType RuleType
+        {
+            get { return SrnprCommon.EnumCommon.ItemRuleType.RuleExpression; }
+        }
     }
 }

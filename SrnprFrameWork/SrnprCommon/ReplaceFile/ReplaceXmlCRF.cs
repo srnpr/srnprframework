@@ -26,6 +26,7 @@ namespace SrnprCommon.ReplaceFile
 
 
 
+          
             
             
 
@@ -296,6 +297,31 @@ namespace SrnprCommon.ReplaceFile
                 xd.Load(sFilePath);
                 XmlNode xnDesign = xd.SelectSingleNode("ReplaceFileRoot/ReplaceFile/ReplaceFileDesign");
 
+
+                tde.ItemRule = new List<ItemRuleEntityCRF>();
+
+
+                XmlNode xnlRule = xnDesign.SelectSingleNode("RuleItem/Rule");
+
+                if (xnlRule != null)
+                {
+                    foreach (XmlNode xnRuleInfo in xnlRule.ChildNodes)
+                    {
+                        if (xnRuleInfo.Name == "RuleExpression")
+                        {
+                            foreach (XmlNode xn in xnRuleInfo.ChildNodes)
+                            {
+                                ItemRuleExpressionEntityCRF iree = new ItemRuleExpressionEntityCRF();
+                                iree.Expression = xn.SelectSingleNode("Expression").InnerText.Trim();
+                                iree.TempleteGuid = xn.SelectSingleNode("TempleteGuid").InnerText.Trim();
+                                iree.ExpressionParm = xn.SelectSingleNode("ExpressionParm").InnerText.Trim();
+                                tde.ItemRule.Add(iree);
+                            }
+                        }
+
+                    }
+
+                }
 
 
 

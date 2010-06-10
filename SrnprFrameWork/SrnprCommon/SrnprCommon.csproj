@@ -72,8 +72,9 @@
     <Compile Include="ReplaceFile\ItemListSqlEntityCRF.cs" />
     <Compile Include="ReplaceFile\ItemMainSqlEntityCRF.cs" />
     <Compile Include="ReplaceFile\ItemPramEntityCRF.cs" />
+    <Compile Include="ReplaceFile\ItemRuleEntityCRF.cs" />
     <Compile Include="ReplaceFile\ItemRuleExpressionEntityCRF.cs" />
-    <Compile Include="ReplaceFile\ItemTempleteEmailInfoEntity.cs" />
+    <Compile Include="ReplaceFile\ItemTempleteEmailInfoEntityCRF.cs" />
     <Compile Include="ReplaceFile\ItemTempleteEntityCRF.cs" />
     <Compile Include="ReplaceFile\ReplaceFileEntityCRF.cs" />
     <Compile Include="ReplaceFile\ReplaceResultEntity.cs" />

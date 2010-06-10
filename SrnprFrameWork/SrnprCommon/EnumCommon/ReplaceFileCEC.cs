@@ -71,4 +71,22 @@ namespace SrnprCommon.EnumCommon
         EmailInfo,
     }
 
+
+
+    /// <summary>
+    /// Description: 规则类型枚举
+    /// Author:Liudpc
+    /// Create Date: 2010-6-10 17:03:09
+    /// </summary>
+    public enum ItemRuleType
+    {
+
+        /// <summary>
+        /// Description: 表达式规则
+        /// Author:Liudpc
+        /// Create Date: 2010-6-10 17:03:00
+        /// </summary>
+        RuleExpression
+    }
+
 }

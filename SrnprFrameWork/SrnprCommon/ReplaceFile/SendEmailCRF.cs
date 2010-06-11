@@ -64,24 +64,52 @@ namespace SrnprCommon.ReplaceFile
 
 
 
-
-            foreach (DoSendEmailEntityCRF send in doSend)
+            if (doSend.Count > 0)
             {
 
-                 ItemTempleteEmailInfoEntityCRF emailEntity= replaceEntity.TempleteXml.Design.ItemTemplete.SingleOrDefault(t => t.Guid == send.TempleteId) as ItemTempleteEmailInfoEntityCRF;
+
+
+                foreach (DoSendEmailEntityCRF send in doSend)
+                {
+
+                    ItemTempleteEmailInfoEntityCRF emailEntity = replaceEntity.TempleteXml.Design.ItemTemplete.SingleOrDefault(t => t.Guid == send.TempleteId) as ItemTempleteEmailInfoEntityCRF;
 
 
 
-                 send.Title = replace.ReplaceParmsByDict(emailEntity.Title, dataReplace.MainParms);
+                    send.Title = replace.ReplaceParmsByDict(emailEntity.Title, dataReplace.MainParms);
 
 
-                 send.Content = replace.ReplaceParmsByDict(emailEntity.Content, dataReplace.MainParms);
+                    send.Content = replace.ReplaceParmsByDict(emailEntity.Content, dataReplace.MainParms);
+
+
+                    send.EmailServer = CommonConfig.ReplaceFileConfigCCC.Config().EmailServerList.SingleOrDefault(t => t.Id == replaceEntity.TempleteXml.Code.Config.EmailServerId);
 
 
 
+                    CommonFunction.SendEmailCCF.Send(send);
+
+                }
+            }
 
 
 
+            int iSuccessFulCount = doSend.Count(t => t.SendSuccessFlag);
+            if (iSuccessFulCount == 0)
+            {
+                returnResult.ReplaceResultFlag = false;
+                returnResult.SendState = 3;
+            }
+            else
+            {
+                returnResult.ReplaceResultFlag = true;
+                if (iSuccessFulCount == doSend.Count)
+                {
+                    returnResult.SendState = 1;
+                }
+                else
+                {
+                    returnResult.SendState = 2;
+                }
             }
 
 

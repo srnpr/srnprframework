@@ -21,8 +21,7 @@ namespace SrnprCommon.ReplaceFile
 
 
         /// <summary>
-
-        /// Description: 发送状态
+        /// Description: 发送状态（1：发送成功，2：部分发送成功，3：发送失败）
         /// Author:Liudpc
         /// Create Date: 2010-6-11 13:38:54
         /// </summary>

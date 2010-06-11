@@ -13,7 +13,7 @@ namespace SrnprCommon.CommonFunction
 
 
 
-        public bool Send(ReplaceFile.DoSendEmailEntityCRF emailInfo)
+        public static bool Send(ReplaceFile.DoSendEmailEntityCRF emailInfo)
         {
 
             try
@@ -51,12 +51,14 @@ namespace SrnprCommon.CommonFunction
 
                 client.Send(mail);
 
-                return true;
+                emailInfo.SendSuccessFlag = true;
             }
             catch
             {
-                return false;
+                emailInfo.SendSuccessFlag = false;
             }
+
+            return emailInfo.SendSuccessFlag;
 
 
 

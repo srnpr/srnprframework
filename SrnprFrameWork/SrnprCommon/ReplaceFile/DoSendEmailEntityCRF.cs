@@ -11,9 +11,16 @@ namespace SrnprCommon.ReplaceFile
     /// Author:Liudpc
     /// Create Date: 2010-6-11 13:51:08
     /// </summary>
-    class DoSendEmailEntityCRF
+    public class DoSendEmailEntityCRF
     {
 
+
+        /// <summary>
+        /// Description: 发送成功标志
+        /// Author:Liudpc
+        /// Create Date: 2010-6-11 14:23:56
+        /// </summary>
+        public bool SendSuccessFlag { get; set; }
 
 
         /// <summary>

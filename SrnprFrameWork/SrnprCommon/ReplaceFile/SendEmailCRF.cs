@@ -154,5 +154,14 @@ namespace SrnprCommon.ReplaceFile
             return replace.GetListFileInfoByFilePath(CommonConfig.ReplaceFileConfigCCC.Config.ListFilePath);
 
         }
+
+
+
+        public string[] RegexSqlStringParm(string sContent)
+        {
+            return replace.RegexSqlStringParm(sContent);
+        }
+
+
     }
 }

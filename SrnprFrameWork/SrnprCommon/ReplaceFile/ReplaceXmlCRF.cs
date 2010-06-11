@@ -18,6 +18,26 @@ namespace SrnprCommon.ReplaceFile
 
 
 
+        public string[] RegexSqlStringParm(string sSql)
+        {
+            List<string> strList = new List<string>();
+           string sReplace= Regex.Replace(sSql, @"\(.*\)", "").ToLower();
+          sReplace= Regex.Match(sReplace,"(select).*?(from)").Value;
+
+          foreach (string s in sReplace.Split(','))
+          {
+
+              if (s.LastIndexOf(" as ") > -1)
+              {
+                  strList.Add(  s.Substring(s.LastIndexOf(" as ")+3).Trim());
+              }
+          }
+
+            return strList.ToArray();
+
+
+        }
+
 
 
         /// <summary>

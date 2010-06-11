@@ -12,6 +12,10 @@ public partial class DcEmail_DcEmailDesign : System.Web.UI.Page
     {
 
 
+        SendEmailCRF se = new SendEmailCRF();
+
+
+
         string sId = Request["Id"].ToString().Trim();
 
 
@@ -21,7 +25,7 @@ public partial class DcEmail_DcEmailDesign : System.Web.UI.Page
 
        
 
-
+       //string[] strSql=txe.Code.MainSql.
 
     }
 }

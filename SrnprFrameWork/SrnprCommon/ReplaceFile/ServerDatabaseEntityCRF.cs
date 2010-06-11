@@ -13,7 +13,7 @@ namespace SrnprCommon.ReplaceFile
     /// Author:Liudpc
     /// Create Date: 2010-6-8 10:10:09
     /// </summary>
-    public class DataServerEntityCRF
+    public class ServerDatabaseEntityCRF
     {
 
         /// <summary>

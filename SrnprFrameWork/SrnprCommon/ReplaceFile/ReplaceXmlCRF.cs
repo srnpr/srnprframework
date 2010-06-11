@@ -45,9 +45,10 @@ namespace SrnprCommon.ReplaceFile
 
                         string sResult = CommonFunction.EvalFunctionCCF.Eval(ReplaceParmsByDict(ruleExpress.Expression,dataReplace.MainParms)).ToLower();
 
+
                         if (sResult == "true")
                         {
-
+                            
 
 
                         }

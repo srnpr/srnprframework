@@ -46,7 +46,7 @@ namespace SrnprCommon.ReplaceFile
         public string ReplaceFileId { get; set; }
 
 
-        public DataServerEntityCRF DataServer { get; set; }
+        public ServerDatabaseEntityCRF DataServer { get; set; }
 
     }
 }

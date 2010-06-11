@@ -12,7 +12,7 @@ namespace SrnprCommon.DataHelper
 
 
 
-        public DataTable GetDataTable(ReplaceFile.DataServerEntityCRF dse, string sql, SqlParameter[] sp)
+        public DataTable GetDataTable(ReplaceFile.ServerDatabaseEntityCRF dse, string sql, SqlParameter[] sp)
         {
             DataTable dt;
             switch (dse.ServerType)

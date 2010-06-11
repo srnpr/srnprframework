@@ -34,7 +34,9 @@ namespace SrnprCommon.ReplaceFile
 
                 XmlDocument xd = new XmlDocument();
 
-                XmlNode xnRoot = xd.CreateNode(XmlNodeType.Document, "EmailListRoot", "");
+
+
+                XmlNode xnRoot = xd.CreateElement("EmailListRoot");
 
 
                 XmlNode xnList = xnRoot.AppendChild(xd.CreateElement("EmailList"));
@@ -46,11 +48,13 @@ namespace SrnprCommon.ReplaceFile
                     if(sFileName.IndexOf(sCode)>0&&sFileName.IndexOf(sDesign)==-1)
                     {
 
-                        TempleteCodeEntityCRF code = GetTempleteCode(sCode);
+                        TempleteCodeEntityCRF code = GetTempleteCode(sFileName);
                         XmlNode xn = xd.CreateElement("EmailInfo");
 
                         XmlNode xnId=xd.CreateElement("Id");
-                        xnId.InnerText=sFileName.Substring(sFileName.LastIndexOf("\\"), sFileName.LastIndexOf(sCode) - 1);
+
+
+                        xnId.InnerText = sFileName.Substring(sFileName.LastIndexOf("\\")+1, sFileName.LastIndexOf(sCode) - sFileName.LastIndexOf("\\") - 1);
                         xn.AppendChild(xnId);
 
                         XmlNode xnTitle = xd.CreateElement("Title");
@@ -62,6 +66,10 @@ namespace SrnprCommon.ReplaceFile
                         xn.AppendChild(xnDescription);
 
 
+                        XmlNode xnFilePath = xd.CreateElement("FilePath");
+                        xnFilePath.InnerText = sFileName;
+                        xn.AppendChild(xnFilePath);
+
 
                         xnList.AppendChild(xn);
 
@@ -72,7 +80,7 @@ namespace SrnprCommon.ReplaceFile
 
                 }
 
-
+                xd.AppendChild(xnRoot);
                 xd.Save(CommonConfig.ReplaceFileConfigCCC.Config.ListFilePath);
 
 

@@ -86,5 +86,15 @@ namespace SrnprCommon.CommonConfig
         /// </summary>
         public string DesignFileApp { get; set; }
 
+
+
+
+        /// <summary>
+        /// Description: 列表文件路径
+        /// Author:Liudpc
+        /// Create Date: 2010-6-11 15:16:58
+        /// </summary>
+        public string ListFilePath { get; set; }
+
     }
 }

@@ -10,6 +10,9 @@
 
 		<CodeFileApp>.xml</CodeFileApp>
 		<DesignFileApp>.ds.xml</DesignFileApp>
+
+		<ListFilePath></ListFilePath>
+		
 	</Config>
 	
 	<!--服务器信息系列-->

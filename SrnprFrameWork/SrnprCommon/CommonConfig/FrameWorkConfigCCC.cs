@@ -19,14 +19,7 @@ namespace SrnprCommon.CommonConfig
 
                 XmlDocument xd = new XmlDocument();
                 xd.Load(@"S:\AAAProject\SrnprFrameWork\SrnprFile\FraomeWork\SrnprFrameWorkConfigSFW.xml");
-
-
-
-
-
-
                frameConfig.CommonConfigPath= xd.DocumentElement.SelectSingleNode("CommonConfig/ConfigFilePath").InnerText;
-
 
 
 

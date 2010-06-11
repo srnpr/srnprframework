@@ -60,6 +60,7 @@
     <Compile Include="CommonConfig\FrameWorkConfigCCC.cs" />
     <Compile Include="CommonConfig\FrameWorkConfigEntityCCC.cs" />
     <Compile Include="CommonConfig\ReplaceFileConfigCCC.cs" />
+    <Compile Include="CommonConfig\ReplaceFileConfigEntityCCC.cs" />
     <Compile Include="CommonFunction\EvalFunctionCCF.cs" />
     <Compile Include="CommonLog\LogInfoCCL.cs" />
     <Compile Include="DataHelper\DataTableAutoHelperCDH.cs" />

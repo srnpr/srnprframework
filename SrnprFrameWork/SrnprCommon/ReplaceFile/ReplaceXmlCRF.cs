@@ -21,55 +21,7 @@ namespace SrnprCommon.ReplaceFile
 
 
 
-        public ResultReplaceEntityCRF Replace(ReplaceFileEntityCRF replaceEntity)
-        {
-
-            ResultReplaceEntityCRF returnResult = new ResultReplaceEntityCRF();
-
-
-
-
-            DataReplaceEntityCRF dataReplace = GetDataReplace(replaceEntity);
-
-
-
-
-            if (replaceEntity.TempleteXml.Design.ItemRule.Count > 0)
-            {
-                foreach (ItemRuleEntityAtCRF itemRule in replaceEntity.TempleteXml.Design.ItemRule)
-                {
-
-                    if (itemRule.RuleType == EnumCommon.ItemRuleType.RuleExpression)
-                    {
-                        ItemRuleExpressionEntityCRF ruleExpress=itemRule as ItemRuleExpressionEntityCRF;
-
-                        string sResult = CommonFunction.EvalFunctionCCF.Eval(ReplaceParmsByDict(ruleExpress.Expression,dataReplace.MainParms)).ToLower();
-
-
-                        if (sResult == "true")
-                        {
-                            
-
-
-                        }
-
-
-                    }
-                }
-
-
-            }
-
-
-
-
-
-
-            return returnResult;
-
-
-
-        }
+       
         
       
 
@@ -157,7 +109,7 @@ namespace SrnprCommon.ReplaceFile
         /// <param name="sInput"></param>
         /// <param name="dValue"></param>
         /// <returns></returns>
-        private string ReplaceParmsByDict(string sInput, Dictionary<string, string> dValue)
+        public string ReplaceParmsByDict(string sInput, Dictionary<string, string> dValue)
         {
             if (sInput.IndexOf(ReplaceFileConfigCCC.ReplaceFrom) > -1)
             {

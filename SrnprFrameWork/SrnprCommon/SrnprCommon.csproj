@@ -75,6 +75,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReplaceFile\DataReplaceEntityCRF.cs" />
     <Compile Include="ReplaceFile\DoSendEmailEntityCRF.cs" />
+    <Compile Include="ReplaceFile\ReplaceFileListEntityCRF.cs" />
     <Compile Include="ReplaceFile\ResultReplaceEntityIfCRF.cs" />
     <Compile Include="ReplaceFile\ResultSendEmailEntityCRF.cs" />
     <Compile Include="ReplaceFile\ServerDatabaseEntityCRF.cs" />

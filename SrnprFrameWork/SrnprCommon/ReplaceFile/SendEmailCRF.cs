@@ -125,11 +125,7 @@ namespace SrnprCommon.ReplaceFile
 
         public void RecheckAllEmailFile()
         {
-
             new ReplaceXmlCRF().RecheckXmlFromDirectory(CommonConfig.ReplaceFileConfigCCC.Config.XmlFileDirectory);
-
-
-
         }
 
     }

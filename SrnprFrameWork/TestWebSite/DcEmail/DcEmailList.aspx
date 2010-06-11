@@ -19,6 +19,23 @@
         <br />
         <br />
         <br />
+        
+        <table>
+       
+       
+        <asp:Repeater ID="rpList" runat="server">       
+        <ItemTemplate>
+         <tr>
+        
+        
+        </tr>
+        
+        
+        
+        </ItemTemplate>
+        </asp:Repeater>
+         </table>
+        
         <br />
     
     </div>

@@ -12,6 +12,6 @@ namespace SrnprCommon.ReplaceFile
 
 
 
-        public List<ItemTempleteAbstractEntityCRF> ItemTemplete { get; set; }
+        public List<ItemTempleteEntityAtCRF> ItemTemplete { get; set; }
     }
 }

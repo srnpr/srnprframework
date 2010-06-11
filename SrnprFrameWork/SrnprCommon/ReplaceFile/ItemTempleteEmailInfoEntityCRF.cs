@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SrnprCommon.ReplaceFile
 {
-    public class ItemTempleteEmailInfoEntityCRF:ItemTempleteAbstractEntityCRF
+    public class ItemTempleteEmailInfoEntityCRF:ItemTempleteEntityAtCRF
     {
 
 

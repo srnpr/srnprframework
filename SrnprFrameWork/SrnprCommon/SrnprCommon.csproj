@@ -62,6 +62,7 @@
     <Compile Include="CommonConfig\ReplaceFileConfigCCC.cs" />
     <Compile Include="CommonConfig\ReplaceFileConfigEntityCCC.cs" />
     <Compile Include="CommonFunction\EvalFunctionCCF.cs" />
+    <Compile Include="CommonFunction\SendEmailCCF.cs" />
     <Compile Include="CommonLog\LogInfoCCL.cs" />
     <Compile Include="DataHelper\DataTableAutoHelperCDH.cs" />
     <Compile Include="DataHelper\SqlHelperCDH.cs" />

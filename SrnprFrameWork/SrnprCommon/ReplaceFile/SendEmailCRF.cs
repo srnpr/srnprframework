@@ -12,7 +12,8 @@ namespace SrnprCommon.ReplaceFile
         public ResultSendEmailEntityCRF SendEmail(string sXmlId,string sParmsContent)
         {
 
-            ResultReplaceEntityCRF returnResult = new ResultReplaceEntityCRF();
+            ResultSendEmailEntityCRF returnResult = new ResultSendEmailEntityCRF();
+
 
             ReplaceXmlCRF replace = new ReplaceXmlCRF();
 

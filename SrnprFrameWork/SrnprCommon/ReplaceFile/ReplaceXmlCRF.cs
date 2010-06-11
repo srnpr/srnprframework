@@ -21,10 +21,10 @@ namespace SrnprCommon.ReplaceFile
 
 
 
-        public ReplaceResultEntity Replace(ReplaceFileEntityCRF replaceEntity)
+        public ReplaceResultEntityCRF Replace(ReplaceFileEntityCRF replaceEntity)
         {
 
-            ReplaceResultEntity returnResult = new ReplaceResultEntity();
+            ReplaceResultEntityCRF returnResult = new ReplaceResultEntityCRF();
 
 
 

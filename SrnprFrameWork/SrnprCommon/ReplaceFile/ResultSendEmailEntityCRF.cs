@@ -5,14 +5,7 @@ using System.Text;
 
 namespace SrnprCommon.ReplaceFile
 {
-    public class ReplaceResultEntityCRF
+    class ResultSendEmailEntityCRF
     {
-
-
-
-
-
-
-
     }
 }

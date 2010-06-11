@@ -46,6 +46,7 @@ namespace SrnprCommon.CommonConfig
                     replaceEntity.XmlFileDirectory = xnRoot.SelectSingleNode("Config/XmlFileDirectory").InnerText.Trim();
                     replaceEntity.CodeFileApp = xnRoot.SelectSingleNode("Config/CodeFileApp").InnerText.Trim();
                     replaceEntity.DesignFileApp = xnRoot.SelectSingleNode("Config/DesignFileApp").InnerText.Trim();
+                    replaceEntity.ListFilePath = xnRoot.SelectSingleNode("Config/ListFilePath").InnerText.Trim();
 
 
                     foreach (XmlNode xn in xnRoot.SelectNodes("DataServerInfo/DataServer"))

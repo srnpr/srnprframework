@@ -49,10 +49,21 @@ namespace SrnprCommon.ReplaceFile
                         TempleteCodeEntityCRF code = GetTempleteCode(sCode);
                         XmlNode xn = xd.CreateElement("EmailInfo");
 
-                        XmlAttribute xa = xd.CreateAttribute("");
-                        xa.Value = "";
+                        XmlNode xnId=xd.CreateElement("Id");
+                        xnId.InnerText=sFileName.Substring(sFileName.LastIndexOf("\\"), sFileName.LastIndexOf(sCode) - 1);
+                        xn.AppendChild(xnId);
 
-                        xn.Attributes.Append(xd.CreateAttribute(""));
+                        XmlNode xnTitle = xd.CreateElement("Title");
+                        xnTitle.InnerText = code.Config.Title;
+                        xn.AppendChild(xnTitle);
+
+                        XmlNode xnDescription = xd.CreateElement("Description");
+                        xnDescription.InnerText = code.Config.Description;
+                        xn.AppendChild(xnDescription);
+
+
+
+                        xnList.AppendChild(xn);
 
 
 
@@ -60,6 +71,9 @@ namespace SrnprCommon.ReplaceFile
                     }
 
                 }
+
+
+                xd.Save(CommonConfig.ReplaceFileConfigCCC.Config.ListFilePath);
 
 
 

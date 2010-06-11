@@ -13,6 +13,6 @@ public partial class DcEmail_DcEmailList : System.Web.UI.Page
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
-
+        new SrnprCommon.ReplaceFile.SendEmailCRF().RecheckAllEmailFile();
     }
 }

@@ -11,7 +11,7 @@
 		<CodeFileApp>.xml</CodeFileApp>
 		<DesignFileApp>.ds.xml</DesignFileApp>
 
-		<ListFilePath></ListFilePath>
+		<ListFilePath>D:\SrnprFrameWork\ReplaceFile\EmailList.xml</ListFilePath>
 		
 	</Config>
 	

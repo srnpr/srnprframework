@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SrnprCommon.ReplaceFile
 {
-    public class ItemRuleExpressionEntityCRF:ItemRuleEntityCRF
+    public class ItemRuleExpressionEntityCRF:ItemRuleEntityAtCRF
     {
 
 

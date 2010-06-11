@@ -36,7 +36,7 @@ namespace SrnprCommon.ReplaceFile
 
             if (replaceEntity.TempleteXml.Design.ItemRule.Count > 0)
             {
-                foreach (ItemRuleEntityCRF itemRule in replaceEntity.TempleteXml.Design.ItemRule)
+                foreach (ItemRuleEntityAtCRF itemRule in replaceEntity.TempleteXml.Design.ItemRule)
                 {
 
                     if (itemRule.RuleType == EnumCommon.ItemRuleType.RuleExpression)
@@ -318,7 +318,7 @@ namespace SrnprCommon.ReplaceFile
                 XmlNode xnDesign = xd.SelectSingleNode("ReplaceFileRoot/ReplaceFile/ReplaceFileDesign");
 
 
-                returnDesignEntity.ItemRule = new List<ItemRuleEntityCRF>();
+                returnDesignEntity.ItemRule = new List<ItemRuleEntityAtCRF>();
                 XmlNode xnRule = xnDesign.SelectSingleNode("RuleItem/Rule");
                 if (xnRule != null)
                 {

@@ -8,7 +8,7 @@ namespace SrnprCommon.ReplaceFile
     public class TempleteDesignEntityCRF
     {
 
-        public List<ItemRuleEntityCRF> ItemRule { get; set; }
+        public List<ItemRuleEntityAtCRF> ItemRule { get; set; }
 
 
 

@@ -1,15 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <DcEmailConfigRoot>
+
+
+	<Config>
+		<SplitString>$$##$#$$</SplitString>
+		<ReplaceFrom>{</ReplaceFrom>
+		<MainParmReplace>{${0}}</MainParmReplace>
+		
+	</Config>
+	
 	<!--服务器信息系列-->
 	<DataServerInfo>
 		<!--数据库服务器  id：服务器编号    serverType：服务器类型(mssql：Microsoft SQL Server；mysql：MySql DataServer；oracle：Oracle DataServer)-->
-		<DataServer id="dsSBUOperation" serverType="mssql">
-			<!--开发机器连接字符串-->
-			<DevServer>10.1.11.1</DevServer>
-			<!--测试机连接字符串-->
-			<TestServer>10.1.11.2</TestServer>
-			<!--正式机连接字符串-->
-			<FormalServer>10.1.11.3</FormalServer>
+		<DataServer id="dsSBUOperation" serverType="mssql" connString="">
 		</DataServer>
 	</DataServerInfo>
 

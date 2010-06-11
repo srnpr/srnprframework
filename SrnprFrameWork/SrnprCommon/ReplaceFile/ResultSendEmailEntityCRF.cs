@@ -11,10 +11,8 @@ namespace SrnprCommon.ReplaceFile
 
         public bool ReplaceResultFlag
         {
-            get
-            ;
-            set
-            ;
+            get;
+            set;
         }
 
         #endregion

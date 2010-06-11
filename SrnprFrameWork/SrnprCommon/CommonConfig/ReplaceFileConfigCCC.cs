@@ -49,7 +49,7 @@ namespace SrnprCommon.CommonConfig
                 replaceEntity.SplitString = xnRoot.SelectSingleNode("Config/SplitString").InnerText.Trim();
                 replaceEntity.ReplaceFrom = xnRoot.SelectSingleNode("Config/ReplaceFrom").InnerText.Trim();
                 replaceEntity.MainParmReplace = xnRoot.SelectSingleNode("Config/MainParmReplace").InnerText.Trim();
-
+                replaceEntity.XmlFileDirectory = xnRoot.SelectSingleNode("Config/XmlFileDirectory").InnerText.Trim();
 
 
                 foreach (XmlNode xn in xnRoot.SelectNodes("DataServerInfo/DataServer"))

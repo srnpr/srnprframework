@@ -29,17 +29,30 @@ namespace SrnprCommon.ReplaceFile
                 string sCode=CommonConfig.ReplaceFileConfigCCC.Config.CodeFileApp;
                 string sDesign=CommonConfig.ReplaceFileConfigCCC.Config.DesignFileApp;
 
+
+
+
+                XmlDocument xd = new XmlDocument();
+
+                XmlNode xnRoot = xd.CreateNode(XmlNodeType.Document, "EmailListRoot", "");
+
+
+                XmlNode xnList = xnRoot.AppendChild(xd.CreateElement("EmailList"));
+
+
                 foreach (string sFileName in Directory.GetFiles(sDirectory))
                 {
 
                     if(sFileName.IndexOf(sCode)>0&&sFileName.IndexOf(sDesign)==-1)
                     {
 
-
-
                         TempleteCodeEntityCRF code = GetTempleteCode(sCode);
+                        XmlNode xn = xd.CreateElement("EmailInfo");
 
+                        XmlAttribute xa = xd.CreateAttribute("");
+                        xa.Value = "";
 
+                        xn.Attributes.Append(xd.CreateAttribute(""));
 
 
 

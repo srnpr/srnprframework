@@ -7,5 +7,9 @@ namespace SrnprCommon.ReplaceFile
 {
     interface ResultReplaceEntityIfCRF
     {
+
+        bool ReplaceResultFlag { get; set; }
+
+
     }
 }

@@ -20,7 +20,57 @@ namespace SrnprCommon.ReplaceFile
 
 
 
-        public bool RecheckXmlFromDirectory(string sDirectory)
+        /// <summary>
+        /// 
+        /// Description: 根据文件路径分析出列表元素
+        /// Author:Liudpc
+        /// Create Date: 2010-6-11 16:23:48
+        /// </summary>
+        /// <param name="sListFilePath"></param>
+        /// <returns></returns>
+        public List<ReplaceFileListEntityCRF> GetListFileInfoByFilePath(string sListFilePath)
+        {
+
+           
+
+
+            List<ReplaceFileListEntityCRF> list = new List<ReplaceFileListEntityCRF>();
+
+            if (File.Exists(sListFilePath))
+            {
+                XmlDocument xd = new XmlDocument();
+                xd.Load(sListFilePath);
+                foreach (XmlNode xn in xd.DocumentElement.SelectNodes("EmailList/EmailInfo"))
+                {
+                    ReplaceFileListEntityCRF r = new ReplaceFileListEntityCRF();
+                    r.Id = xn.ChildNodes[0].InnerText.Trim();
+                    r.Title = xn.ChildNodes[1].InnerText.Trim();
+                    r.Description = xn.ChildNodes[2].InnerText.Trim();
+                    r.FilePath = xn.ChildNodes[3].InnerText.Trim();
+                    list.Add(r);
+                }
+
+            }
+
+
+            return list;
+        }
+
+
+
+
+       
+
+        /// <summary>
+        /// 
+        /// Description: 根据文件夹名称分析该文件夹下内容
+        /// Author:Liudpc
+        /// Create Date: 2010-6-11 16:19:01
+        /// </summary>
+        /// <param name="sDirectory"></param>
+        /// <param name="sListFileSavePath"></param>
+        /// <returns></returns>
+        public bool RecheckXmlFromDirectory(string sDirectory,string sListFileSavePath)
         {
 
 
@@ -81,7 +131,7 @@ namespace SrnprCommon.ReplaceFile
                 }
 
                 xd.AppendChild(xnRoot);
-                xd.Save(CommonConfig.ReplaceFileConfigCCC.Config.ListFilePath);
+                xd.Save(sListFileSavePath);
 
 
 

@@ -8,12 +8,25 @@ namespace SrnprCommon.ReplaceFile
     public class SendEmailCRF
     {
 
+        private static ReplaceXmlCRF replace;
+
+        public  SendEmailCRF()
+        {
+            if (replace == null)
+            {
+                replace = new ReplaceXmlCRF();
+            }
+        }
+
+
+
+
+
         public List<DoSendEmailEntityCRF> GetSendList(string sXmlId, string sParmsContent)
         {
             List<DoSendEmailEntityCRF> doSend = new List<DoSendEmailEntityCRF>();
 
-            ReplaceXmlCRF replace = new ReplaceXmlCRF();
-
+           
 
             ReplaceFileEntityCRF replaceEntity = new ReplaceFileEntityCRF();
 
@@ -125,8 +138,21 @@ namespace SrnprCommon.ReplaceFile
 
         public void RecheckAllEmailFile()
         {
-            new ReplaceXmlCRF().RecheckXmlFromDirectory(CommonConfig.ReplaceFileConfigCCC.Config.XmlFileDirectory);
+            replace.RecheckXmlFromDirectory(CommonConfig.ReplaceFileConfigCCC.Config.XmlFileDirectory, CommonConfig.ReplaceFileConfigCCC.Config.ListFilePath);
         }
 
+
+        /// <summary>
+        /// 
+        /// Description: 得到所有文件的列表
+        /// Author:Liudpc
+        /// Create Date: 2010-6-11 16:28:27
+        /// </summary>
+        /// <returns></returns>
+        public List<ReplaceFileListEntityCRF> GetListFileInfoByFilePath()
+        {
+            return replace.GetListFileInfoByFilePath(CommonConfig.ReplaceFileConfigCCC.Config.ListFilePath);
+
+        }
     }
 }

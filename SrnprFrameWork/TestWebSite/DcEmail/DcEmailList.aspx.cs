@@ -10,9 +10,30 @@ public partial class DcEmail_DcEmailList : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
+
+        if (!IsPostBack)
+        {
+            BindRP();
+        }
+
+
     }
+
+    private void BindRP()
+    {
+
+        rpList.DataSource = new SrnprCommon.ReplaceFile.SendEmailCRF().GetListFileInfoByFilePath();
+        rpList.DataBind();
+
+
+    }
+
+
     protected void Button1_Click(object sender, EventArgs e)
     {
         new SrnprCommon.ReplaceFile.SendEmailCRF().RecheckAllEmailFile();
+
+        BindRP();
+
     }
 }

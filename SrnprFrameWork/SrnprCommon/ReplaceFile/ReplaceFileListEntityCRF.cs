@@ -12,7 +12,7 @@ namespace SrnprCommon.ReplaceFile
     /// Author:Liudpc
     /// Create Date: 2010-6-11 16:15:23
     /// </summary>
-    class ReplaceFileListEntityCRF
+    public class ReplaceFileListEntityCRF
     {
 
 

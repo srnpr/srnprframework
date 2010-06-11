@@ -26,8 +26,9 @@
         <asp:Repeater ID="rpList" runat="server">       
         <ItemTemplate>
          <tr>
-        
-        
+        <td><%#Eval("Id")%></td>
+        <td><%#Eval("Title")%></td>
+        <td><%#Eval("Description")%></td>
         </tr>
         
         

@@ -12,7 +12,15 @@ namespace SrnprCommon.ReplaceFile
         public ResultSendEmailEntityCRF SendEmail(string sXmlId,string sParmsContent)
         {
 
+
+
             ResultSendEmailEntityCRF returnResult = new ResultSendEmailEntityCRF();
+
+
+            List<DoSendEmailEntityCRF> doSend = new List<DoSendEmailEntityCRF>();
+
+
+
 
 
             ReplaceXmlCRF replace = new ReplaceXmlCRF();
@@ -45,7 +53,7 @@ namespace SrnprCommon.ReplaceFile
                         string sResult = CommonFunction.EvalFunctionCCF.Eval(replace.ReplaceParmsByDict(ruleExpress.Expression, dataReplace.MainParms)).ToLower();
                         if (sResult == "true")
                         {
-                            
+                            doSend.Add(new DoSendEmailEntityCRF() { TempleteId = ruleExpress.TempleteGuid, ToEmail = replace.ReplaceParmsByDict(ruleExpress.ExpressionParm, dataReplace.MainParms) });
 
 
                         }
@@ -55,6 +63,26 @@ namespace SrnprCommon.ReplaceFile
 
 
 
+
+
+            foreach (DoSendEmailEntityCRF send in doSend)
+            {
+
+                 ItemTempleteEmailInfoEntityCRF emailEntity= replaceEntity.TempleteXml.Design.ItemTemplete.SingleOrDefault(t => t.Guid == send.TempleteId) as ItemTempleteEmailInfoEntityCRF;
+
+
+
+                 send.Title = replace.ReplaceParmsByDict(emailEntity.Title, dataReplace.MainParms);
+
+
+                 send.Content = replace.ReplaceParmsByDict(emailEntity.Content, dataReplace.MainParms);
+
+
+
+
+
+
+            }
 
 
 

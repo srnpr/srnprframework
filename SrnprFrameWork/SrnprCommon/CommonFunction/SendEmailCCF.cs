@@ -13,7 +13,7 @@ namespace SrnprCommon.CommonFunction
 
 
 
-        public bool Send(string sToEmail, string sTitle, string sContent, ReplaceFile.ServerEmailEntityCRF server)
+        public bool Send(ReplaceFile.DoSendEmailEntityCRF emailInfo)
         {
 
             try
@@ -21,31 +21,31 @@ namespace SrnprCommon.CommonFunction
 
 
 
-                MailAddress from = new MailAddress(server.SendMailName, server.SendMailDisplayName);
-                MailAddress to = new MailAddress(sToEmail);
+                MailAddress from = new MailAddress(emailInfo.EmailServer.SendMailName, emailInfo.EmailServer.SendMailDisplayName);
+                MailAddress to = new MailAddress(emailInfo.ToEmail);
                 System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage(from, to);
 
                
 
-                mail.Subject = sTitle;
-                mail.Body = sContent;
+                mail.Subject = emailInfo.Title;
+                mail.Body = emailInfo.Content;
                 mail.BodyEncoding = Encoding.UTF8; ;
                 mail.SubjectEncoding = Encoding.UTF8;
-               
-                mail.IsBodyHtml = server.IsBodyHtml;
 
-                SmtpClient client = new SmtpClient(server.SmtpHost);
+                mail.IsBodyHtml = emailInfo.EmailServer.IsBodyHtml;
 
-                NetworkCredential smtpuserinfo = new System.Net.NetworkCredential(server.UserName, server.Password);
+                SmtpClient client = new SmtpClient(emailInfo.EmailServer.SmtpHost);
+
+                NetworkCredential smtpuserinfo = new System.Net.NetworkCredential(emailInfo.EmailServer.UserName, emailInfo.EmailServer.Password);
                 client.Credentials = smtpuserinfo;
 
-                client.EnableSsl = server.EnableSsl;
-               
+                client.EnableSsl = emailInfo.EmailServer.EnableSsl;
 
 
-                if (!string.IsNullOrEmpty(server.Port))
+
+                if (!string.IsNullOrEmpty(emailInfo.EmailServer.Port))
                 {
-                    client.Port = int.Parse(server.Port);
+                    client.Port = int.Parse(emailInfo.EmailServer.Port);
                 }
 
 

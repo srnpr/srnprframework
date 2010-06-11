@@ -55,5 +55,9 @@ namespace SrnprCommon.ReplaceFile
 
 
 
+        public ServerEmailEntityCRF EmailServer { get; set; }
+
+
+
     }
 }

@@ -16,5 +16,16 @@ namespace SrnprCommon.ReplaceFile
         }
 
         #endregion
+
+
+
+
+        /// <summary>
+
+        /// Description: 发送状态
+        /// Author:Liudpc
+        /// Create Date: 2010-6-11 13:38:54
+        /// </summary>
+        public int SendState { get; set; }
     }
 }

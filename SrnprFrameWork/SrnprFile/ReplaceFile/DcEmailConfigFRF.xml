@@ -6,7 +6,7 @@
 		<SplitString>$$##$#$$</SplitString>
 		<ReplaceFrom>{</ReplaceFrom>
 		<MainParmReplace>{${0}}</MainParmReplace>
-		
+		<XmlFileDirectory>D:\SrnprFrameWork\EmailReplace\</XmlFileDirectory>
 	</Config>
 	
 	<!--服务器信息系列-->

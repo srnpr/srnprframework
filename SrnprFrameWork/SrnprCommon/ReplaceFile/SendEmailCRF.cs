@@ -39,13 +39,10 @@ namespace SrnprCommon.ReplaceFile
             {
                 foreach (ItemRuleEntityAtCRF itemRule in replaceEntity.TempleteXml.Design.ItemRule)
                 {
-
                     if (itemRule.RuleType == EnumCommon.ItemRuleType.RuleExpression)
                     {
                         ItemRuleExpressionEntityCRF ruleExpress = itemRule as ItemRuleExpressionEntityCRF;
-
                         string sResult = CommonFunction.EvalFunctionCCF.Eval(replace.ReplaceParmsByDict(ruleExpress.Expression, dataReplace.MainParms)).ToLower();
-
                         if (sResult == "true")
                         {
                             

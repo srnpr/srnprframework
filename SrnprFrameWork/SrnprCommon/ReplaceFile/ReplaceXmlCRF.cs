@@ -32,7 +32,7 @@ namespace SrnprCommon.ReplaceFile
             DataReplaceEntityCRF dre = new DataReplaceEntityCRF();
             dre.MainParms = new Dictionary<string, string>();
 
-            string sMainReplace=ReplaceFileConfigCCC.MainParmReplace;
+            string sMainReplace = ReplaceFileConfigCCC.Config().MainParmReplace;
 
             List<SqlParameter> sqlParmList = new List<SqlParameter>();
 
@@ -44,7 +44,7 @@ namespace SrnprCommon.ReplaceFile
             if (!string.IsNullOrEmpty(rfe.ReplaceParms))
             {
 
-                string[] strParms = Regex.Split(rfe.ReplaceParms, ReplaceFileConfigCCC.SplitString);
+                string[] strParms = Regex.Split(rfe.ReplaceParms, ReplaceFileConfigCCC.Config().SplitString);
 
                 List<ItemPramEntityCRF> parmList = rfe.TempleteXml.Code.Parm;
                 for (int i = 0, j = strParms.Length; i < j; i++)
@@ -111,7 +111,7 @@ namespace SrnprCommon.ReplaceFile
         /// <returns></returns>
         public string ReplaceParmsByDict(string sInput, Dictionary<string, string> dValue)
         {
-            if (sInput.IndexOf(ReplaceFileConfigCCC.ReplaceFrom) > -1)
+            if (sInput.IndexOf(ReplaceFileConfigCCC.Config().ReplaceFrom) > -1)
             {
                 foreach (KeyValuePair<string, string> kvp in dValue)
                 {

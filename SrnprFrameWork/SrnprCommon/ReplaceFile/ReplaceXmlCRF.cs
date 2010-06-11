@@ -16,11 +16,55 @@ namespace SrnprCommon.ReplaceFile
     public class ReplaceXmlCRF
     {
 
-       
 
 
 
 
+        public bool RecheckXmlFromDirectory(string sDirectory)
+        {
+
+
+            if (Directory.Exists(sDirectory))
+            {
+                string sCode=CommonConfig.ReplaceFileConfigCCC.Config.CodeFileApp;
+                string sDesign=CommonConfig.ReplaceFileConfigCCC.Config.DesignFileApp;
+
+                foreach (string sFileName in Directory.GetFiles(sDirectory))
+                {
+
+                    if(sFileName.IndexOf(sCode)>0&&sFileName.IndexOf(sDesign)==-1)
+                    {
+
+
+
+                        TempleteCodeEntityCRF code = GetTempleteCode(sCode);
+
+
+
+
+
+
+                    }
+
+                }
+
+
+
+
+
+            }
+            else
+            {
+                AddLog(20010025,sDirectory);
+            }
+
+
+
+
+
+
+            return true;
+        }
        
         
       
@@ -32,7 +76,7 @@ namespace SrnprCommon.ReplaceFile
             DataReplaceEntityCRF dre = new DataReplaceEntityCRF();
             dre.MainParms = new Dictionary<string, string>();
 
-            string sMainReplace = ReplaceFileConfigCCC.Config().MainParmReplace;
+            string sMainReplace = ReplaceFileConfigCCC.Config.MainParmReplace;
 
             List<SqlParameter> sqlParmList = new List<SqlParameter>();
 
@@ -44,7 +88,7 @@ namespace SrnprCommon.ReplaceFile
             if (!string.IsNullOrEmpty(rfe.ReplaceParms))
             {
 
-                string[] strParms = Regex.Split(rfe.ReplaceParms, ReplaceFileConfigCCC.Config().SplitString);
+                string[] strParms = Regex.Split(rfe.ReplaceParms, ReplaceFileConfigCCC.Config.SplitString);
 
                 List<ItemPramEntityCRF> parmList = rfe.TempleteXml.Code.Parm;
                 for (int i = 0, j = strParms.Length; i < j; i++)
@@ -111,7 +155,7 @@ namespace SrnprCommon.ReplaceFile
         /// <returns></returns>
         public string ReplaceParmsByDict(string sInput, Dictionary<string, string> dValue)
         {
-            if (sInput.IndexOf(ReplaceFileConfigCCC.Config().ReplaceFrom) > -1)
+            if (sInput.IndexOf(ReplaceFileConfigCCC.Config.ReplaceFrom) > -1)
             {
                 foreach (KeyValuePair<string, string> kvp in dValue)
                 {
@@ -241,7 +285,7 @@ namespace SrnprCommon.ReplaceFile
             }
             else
             {
-                AddLog("log20010015",sFilePath);
+                AddLog(20010015,sFilePath);
             }
 
 
@@ -321,7 +365,7 @@ namespace SrnprCommon.ReplaceFile
             }
             else
             {
-                AddLog("log20010015", sFilePath);
+                AddLog(20010015, sFilePath);
             }
 
 
@@ -340,7 +384,7 @@ namespace SrnprCommon.ReplaceFile
         /// </summary>
         /// <param name="sLogId"></param>
         /// <param name="strParams"></param>
-        private void AddLog(string sLogId, params string[] strParams)
+        private void AddLog(long sLogId, params string[] strParams)
         {
 
 

@@ -70,5 +70,21 @@ namespace SrnprCommon.CommonConfig
 
 
 
+
+        /// <summary>
+        /// Description: 代码文件名称后缀
+        /// Author:Liudpc
+        /// Create Date: 2010-6-11 14:44:55
+        /// </summary>
+        public string CodeFileApp { get; set; }
+
+
+        /// <summary>
+        /// Description: 设计文件名称后缀
+        /// Author:Liudpc
+        /// Create Date: 2010-6-11 14:44:37
+        /// </summary>
+        public string DesignFileApp { get; set; }
+
     }
 }

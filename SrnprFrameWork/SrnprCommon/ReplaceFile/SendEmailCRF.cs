@@ -8,20 +8,9 @@ namespace SrnprCommon.ReplaceFile
     public class SendEmailCRF
     {
 
-
-        public ResultSendEmailEntityCRF SendEmail(string sXmlId,string sParmsContent)
+        public List<DoSendEmailEntityCRF> GetSendList(string sXmlId, string sParmsContent)
         {
-
-
-
-            ResultSendEmailEntityCRF returnResult = new ResultSendEmailEntityCRF();
-
-
             List<DoSendEmailEntityCRF> doSend = new List<DoSendEmailEntityCRF>();
-
-
-
-
 
             ReplaceXmlCRF replace = new ReplaceXmlCRF();
 
@@ -31,12 +20,12 @@ namespace SrnprCommon.ReplaceFile
 
 
 
-            replaceEntity.TempleteXml = replace.GetTempleteXml(CommonConfig.ReplaceFileConfigCCC.Config().XmlFileDirectory + sXmlId + ".xml");
+            replaceEntity.TempleteXml = replace.GetTempleteXml(CommonConfig.ReplaceFileConfigCCC.Config.XmlFileDirectory + sXmlId + ".xml");
             replaceEntity.ReplaceParms = sParmsContent;
             replaceEntity.ReplaceFileId = sXmlId;
-            replaceEntity.DataServer = CommonConfig.ReplaceFileConfigCCC.Config().DataServerList.SingleOrDefault(t => t.Id == replaceEntity.TempleteXml.Code.Config.DataServerId);
+            replaceEntity.DataServer = CommonConfig.ReplaceFileConfigCCC.Config.DataServerList.SingleOrDefault(t => t.Id == replaceEntity.TempleteXml.Code.Config.DataServerId);
 
-            
+
 
             DataReplaceEntityCRF dataReplace = replace.GetDataReplace(replaceEntity);
 
@@ -73,25 +62,37 @@ namespace SrnprCommon.ReplaceFile
                 {
 
                     ItemTempleteEmailInfoEntityCRF emailEntity = replaceEntity.TempleteXml.Design.ItemTemplete.SingleOrDefault(t => t.Guid == send.TempleteId) as ItemTempleteEmailInfoEntityCRF;
-
-
-
                     send.Title = replace.ReplaceParmsByDict(emailEntity.Title, dataReplace.MainParms);
-
-
                     send.Content = replace.ReplaceParmsByDict(emailEntity.Content, dataReplace.MainParms);
-
-
-                    send.EmailServer = CommonConfig.ReplaceFileConfigCCC.Config().EmailServerList.SingleOrDefault(t => t.Id == replaceEntity.TempleteXml.Code.Config.EmailServerId);
-
-
-
-                    CommonFunction.SendEmailCCF.Send(send);
+                    send.EmailServer = CommonConfig.ReplaceFileConfigCCC.Config.EmailServerList.SingleOrDefault(t => t.Id == replaceEntity.TempleteXml.Code.Config.EmailServerId);
 
                 }
             }
 
+            return doSend;
 
+        }
+
+
+
+
+        public ResultSendEmailEntityCRF SendEmail(string sXmlId,string sParmsContent)
+        {
+
+
+
+            ResultSendEmailEntityCRF returnResult = new ResultSendEmailEntityCRF();
+
+
+            List<DoSendEmailEntityCRF> doSend = GetSendList(sXmlId, sParmsContent);
+
+            if (doSend.Count > 0)
+            {
+                foreach (DoSendEmailEntityCRF send in doSend)
+                {
+                    CommonFunction.SendEmailCCF.Send(send);
+                }
+            }
 
             int iSuccessFulCount = doSend.Count(t => t.SendSuccessFlag);
             if (iSuccessFulCount == 0)
@@ -119,8 +120,17 @@ namespace SrnprCommon.ReplaceFile
 
         }
 
-        
 
+
+
+        public void RecheckAllEmailFile()
+        {
+
+
+
+
+
+        }
 
     }
 }

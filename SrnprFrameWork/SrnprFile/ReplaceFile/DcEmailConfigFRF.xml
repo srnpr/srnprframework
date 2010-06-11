@@ -7,6 +7,9 @@
 		<ReplaceFrom>{</ReplaceFrom>
 		<MainParmReplace>{${0}}</MainParmReplace>
 		<XmlFileDirectory>D:\SrnprFrameWork\EmailReplace\</XmlFileDirectory>
+
+		<CodeFileApp>.xml</CodeFileApp>
+		<DesignFileApp>.ds.xml</DesignFileApp>
 	</Config>
 	
 	<!--服务器信息系列-->

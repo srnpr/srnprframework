@@ -13,7 +13,7 @@
 	
 	<LogFileList>
 
-		<LogFile fileName="ReplaceFileLogFLF.xml" logId="log2001"></LogFile>
+		<LogFile fileName="ReplaceFileLogFLF.xml" logId="2001"></LogFile>
 
 	</LogFileList>
 

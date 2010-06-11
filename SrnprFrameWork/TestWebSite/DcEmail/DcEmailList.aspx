@@ -12,6 +12,14 @@
     
         <asp:Button ID="Button1" runat="server" onclick="Button1_Click" 
             Text="重新检测所有文件" />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
     
     </div>
     </form>

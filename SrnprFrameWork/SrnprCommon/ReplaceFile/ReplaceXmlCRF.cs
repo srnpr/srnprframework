@@ -31,11 +31,7 @@ namespace SrnprCommon.ReplaceFile
         public List<ReplaceFileListEntityCRF> GetListFileInfoByFilePath(string sListFilePath)
         {
 
-           
-
-
             List<ReplaceFileListEntityCRF> list = new List<ReplaceFileListEntityCRF>();
-
             if (File.Exists(sListFilePath))
             {
                 XmlDocument xd = new XmlDocument();
@@ -49,9 +45,7 @@ namespace SrnprCommon.ReplaceFile
                     r.FilePath = xn.ChildNodes[3].InnerText.Trim();
                     list.Add(r);
                 }
-
             }
-
 
             return list;
         }
@@ -78,20 +72,9 @@ namespace SrnprCommon.ReplaceFile
             {
                 string sCode=CommonConfig.ReplaceFileConfigCCC.Config.CodeFileApp;
                 string sDesign=CommonConfig.ReplaceFileConfigCCC.Config.DesignFileApp;
-
-
-
-
                 XmlDocument xd = new XmlDocument();
-
-
-
                 XmlNode xnRoot = xd.CreateElement("EmailListRoot");
-
-
                 XmlNode xnList = xnRoot.AppendChild(xd.CreateElement("EmailList"));
-
-
                 foreach (string sFileName in Directory.GetFiles(sDirectory))
                 {
 
@@ -100,9 +83,7 @@ namespace SrnprCommon.ReplaceFile
 
                         TempleteCodeEntityCRF code = GetTempleteCode(sFileName);
                         XmlNode xn = xd.CreateElement("EmailInfo");
-
                         XmlNode xnId=xd.CreateElement("Id");
-
 
                         xnId.InnerText = sFileName.Substring(sFileName.LastIndexOf("\\")+1, sFileName.LastIndexOf(sCode) - sFileName.LastIndexOf("\\") - 1);
                         xn.AppendChild(xnId);
@@ -156,6 +137,14 @@ namespace SrnprCommon.ReplaceFile
 
 
 
+        /// <summary>
+        /// 
+        /// Description: 从数据库中匹配出内容
+        /// Author:Liudpc
+        /// Create Date: 2010-6-11 16:38:03
+        /// </summary>
+        /// <param name="rfe"></param>
+        /// <returns></returns>
         public DataReplaceEntityCRF GetDataReplace(ReplaceFileEntityCRF rfe)
         {
             DataReplaceEntityCRF dre = new DataReplaceEntityCRF();
@@ -264,12 +253,8 @@ namespace SrnprCommon.ReplaceFile
         public TempleteXmlEntityCRF GetTempleteXml(string sFilePath)
         {
             TempleteXmlEntityCRF txe = new TempleteXmlEntityCRF();
-
             txe.Code = GetTempleteCode(sFilePath);
-
             txe.Design = GetTempleteDesign(sFilePath.Replace(".xml",".ds.xml"));
-
-
             return txe;
         }
 

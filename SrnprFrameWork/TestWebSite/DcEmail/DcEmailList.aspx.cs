@@ -24,8 +24,7 @@ public partial class DcEmail_DcEmailList : System.Web.UI.Page
 
         rpList.DataSource = new SrnprCommon.ReplaceFile.SendEmailCRF().GetListFileInfoByFilePath();
         rpList.DataBind();
-
-
+       
     }
 
 

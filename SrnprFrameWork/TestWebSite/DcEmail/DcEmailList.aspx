@@ -29,6 +29,9 @@
         <td><%#Eval("Id")%></td>
         <td><%#Eval("Title")%></td>
         <td><%#Eval("Description")%></td>
+        
+        <td><a href="DcEmailDesign.aspx?id=<%#Eval("ID") %> %>">修改</a></td>
+        
         </tr>
         
         

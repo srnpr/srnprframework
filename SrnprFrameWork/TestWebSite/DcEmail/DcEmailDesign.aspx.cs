@@ -10,5 +10,14 @@ public partial class DcEmail_DcEmailDesign : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
+
+        string sId = Request["Id"].ToString().Trim();
+
+
+
+
+
+
+
     }
 }

@@ -185,7 +185,10 @@ namespace SrnprCommon.ReplaceFile
 
 
 
+            foreach (ItemMainSqlEntityCRF mainSql in txe.Code.MainSql)
+            {
 
+            }
 
 
 

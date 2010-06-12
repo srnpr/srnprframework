@@ -12,6 +12,8 @@ namespace SrnprCommon.ReplaceFile
 
 
 
+        public string Parms { get; set; }
+
 
     }
 }

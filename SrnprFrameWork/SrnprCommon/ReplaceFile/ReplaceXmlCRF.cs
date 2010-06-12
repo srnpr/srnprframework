@@ -18,6 +18,14 @@ namespace SrnprCommon.ReplaceFile
 
 
 
+        /// <summary>
+        /// 
+        /// Description: 根据sql解析出可以匹配使用的参数
+        /// Author:Liudpc
+        /// Create Date: 2010-6-12 16:02:51
+        /// </summary>
+        /// <param name="sSql"></param>
+        /// <returns></returns>
         public string[] RegexSqlStringParm(string sSql)
         {
             List<string> strList = new List<string>();
@@ -393,7 +401,7 @@ namespace SrnprCommon.ReplaceFile
         /// </summary>
         /// <param name="sFilePath"></param>
         /// <returns></returns>
-        private TempleteDesignEntityCRF GetTempleteDesign(string sFilePath)
+        public TempleteDesignEntityCRF GetTempleteDesign(string sFilePath)
         {
             TempleteDesignEntityCRF returnDesignEntity = new TempleteDesignEntityCRF();
 

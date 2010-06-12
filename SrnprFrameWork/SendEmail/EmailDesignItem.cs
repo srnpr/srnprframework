@@ -7,6 +7,8 @@ namespace SendEmail
 {
     public class EmailDesignItem
     {
+        public string XmlId { get; set; }
+
 
         public string Title { get; set; }
 

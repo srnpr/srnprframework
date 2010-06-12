@@ -9,7 +9,7 @@ namespace SrnprCommon.ReplaceFile
     {
 
 
-        public string TempleteGuid { get; set; }
+        public override string TempleteGuid { get; set; }
 
 
 

@@ -177,6 +177,34 @@ namespace SendEmail
 
 
 
+        private bool UpdateXml(EmailDesignItem edi)
+        {
+
+            TempleteDesignEntityCRF design = GetTempleteDesign(edi.XmlId);
+
+            ItemRuleExpressionEntityCRF ire = design.ItemRule.SingleOrDefault(t => t.TempleteGuid == edi.TempleteGuid) as ItemRuleExpressionEntityCRF;
+
+
+
+
+
+
+
+
+
+            return true;
+        }
+
+
+
+
+        public TempleteDesignEntityCRF GetTempleteDesign(string sXmlId)
+        {
+            return replace.GetTempleteDesign(ReplaceFileConfigCCC.Config.XmlFileDirectory + sXmlId + ReplaceFileConfigCCC.Config.DesignFileApp);
+
+        }
+
+
 
 
         public EmailDesignInfo GetDesign(string sXmlId)

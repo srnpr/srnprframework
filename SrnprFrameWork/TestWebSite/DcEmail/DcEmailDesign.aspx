@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DcEmailDesign.aspx.cs" Inherits="DcEmail_DcEmailDesign" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
@@ -18,65 +17,68 @@
     <table style="width: 78%; height: 61px;">
         <tr>
             <td>
-                条件表达式</td>
+                条件表达式
+            </td>
             <td>
-                邮件标题</td>
+                邮件标题
+            </td>
             <td>
-                操作</td>
+                操作
+            </td>
         </tr>
-        
         <asp:Repeater ID="rpList" runat="server">
-        <ItemTemplate>
-        
-        
-        <tr>
-        <td><%#Eval("RuleExpress")%></td>
-        <td><%#Eval("Title")%></td>
-        <td>
-        <input type="button" onclick="" />
-        
-        </td>
-        
-        </tr>
-        
-        
-        </ItemTemplate>
-        
+            <ItemTemplate>
+                <tr>
+                    <td>
+                        <%#Eval("RuleExpress")%>
+                    </td>
+                    <td>
+                        <%#Eval("Title")%>
+                    </td>
+                    <td>
+                        <input type="button" onclick="" />
+                    </td>
+                </tr>
+            </ItemTemplate>
         </asp:Repeater>
-        
-        
-        
-        
     </table>
+    <input type="hidden" name="dev_dcemail_submit_type" id="dev_dcemail_submit_type" />
     
-    
+    <input type="hidden" name="dev_dcemail_submit_tempguid" id="dev_dcemail_submit_tempguid" />
     <asp:Panel ID="pShow" runat="server">
+        <asp:HiddenField ID="hfTempId" runat="server" />
     
-    
-     <br />
-    条件表达式：<asp:TextBox ID="TextBox3" runat="server" Width="539px">{$订单金额}=1000</asp:TextBox>
-    <br />
-    <br />
-    接收人：<asp:TextBox ID="TextBox4" runat="server">{$创建人}{$特殊接收人}</asp:TextBox>
-    <br />
-    <br />
-    邮件标题：<asp:TextBox ID="TextBox2" runat="server" Width="557px">{$代理商名称}您好，你下了订单。</asp:TextBox>
-    <br />
-    <br />
-    邮件内容：<br />
-    <asp:TextBox ID="TextBox1" runat="server" Height="89px" Width="635px">{$代理商名称}您好，你下的订单{$订单编号}将于什么时候送到。</asp:TextBox>
-    <br />
-    <br />
-    <asp:Button ID="Button1" runat="server" Text="提交" />
-    
+        <br />
+        条件表达式：<asp:TextBox ID="tbRuleExpress" runat="server" Width="539px"></asp:TextBox>
+        <br />
+        <br />
+        接收人：<asp:TextBox ID="tbToEmail" runat="server"></asp:TextBox>
+        <br />
+        <br />
+        邮件标题：<asp:TextBox ID="tbTitle" runat="server" Width="557px"></asp:TextBox>
+        <br />
+        <br />
+        邮件内容：<br />
+        <asp:TextBox ID="tbContent" runat="server" Height="89px" Width="635px"></asp:TextBox>
+        <br />
+        <br />
+        <asp:Button ID="Button1" runat="server" Text="提交" />
     </asp:Panel>
-    
-    
-    
-   
     <div>
-    
     </div>
     </form>
+    
+    <script type="text/javascript">
+        function Dev_Dcemail_Submit(iType,sGuid)
+        {
+            document.getElementById("dev_dcemail_submit_type").value = iType;
+            document.getElementById("dev_dcemail_submit_tempguid").value = sGuid;
+
+            document.getElementById("dev_dcemail_submit_type").form.submit();
+        }
+    
+    
+    </script>
+    
 </body>
 </html>

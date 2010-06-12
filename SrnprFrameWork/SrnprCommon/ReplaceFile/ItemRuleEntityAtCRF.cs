@@ -9,5 +9,9 @@ namespace SrnprCommon.ReplaceFile
     {
 
         public abstract EnumCommon.ItemRuleType RuleType { get; }
+
+
+        public abstract string TempleteGuid { get; set; }
+
     }
 }

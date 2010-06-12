@@ -21,6 +21,32 @@ public partial class DcEmail_DcEmailDesign : System.Web.UI.Page
             BindRP();
         }
 
+
+
+
+        if (!string.IsNullOrEmpty(Request["dev_dcemail_submit_type"]))
+        {
+
+            switch (int.Parse(Request["dev_dcemail_submit_type"]))
+            {
+
+                case 1:
+
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+
+                    break;
+
+            }
+
+
+        }
+
+
+
     }
 
 

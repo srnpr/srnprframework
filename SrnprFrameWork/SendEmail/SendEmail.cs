@@ -203,10 +203,24 @@ namespace SendEmail
 
 
 
-            returnResult.DicRuleTemplete = new Dictionary<ItemRuleExpressionEntityCRF, ItemTempleteEmailInfoEntityCRF>();
+            returnResult.ListItem = new List<EmailDesignItem>();
             foreach (ItemRuleExpressionEntityCRF ire in txe.Design.ItemRule)
             {
-                returnResult.DicRuleTemplete.Add(ire, (ItemTempleteEmailInfoEntityCRF)txe.Design.ItemTemplete.Where(t => t.Guid == ire.TempleteGuid));
+
+                ItemTempleteEmailInfoEntityCRF ite = txe.Design.ItemTemplete.SingleOrDefault(t => t.Guid == ire.TempleteGuid) as ItemTempleteEmailInfoEntityCRF;
+
+
+                EmailDesignItem edi = new EmailDesignItem();
+                edi.TempleteGuid = ire.TempleteGuid;
+                edi.ToEmail = ire.ExpressionParm;
+                edi.Title = ite.Title;
+                edi.Content = ite.Content;
+                edi.RuleExpress = ire.Expression;
+
+
+                returnResult.ListItem.Add(edi);
+
+                
             }
 
 

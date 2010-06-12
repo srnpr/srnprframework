@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SrnprCommon.ReplaceFile
+namespace SendEmail
 {
-    public class ResultSendEmail:ResultReplaceEntityIfCRF
+    public class ResultSendEmail:SrnprCommon.ReplaceFile.ResultReplaceEntityIfCRF
     {
         #region ResultReplaceEntityIfCRF 成员
 

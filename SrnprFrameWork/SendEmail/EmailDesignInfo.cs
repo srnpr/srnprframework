@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SrnprCommon.ReplaceFile
+namespace SendEmail
 {
     public class EmailDesignInfo
     {
@@ -15,11 +15,10 @@ namespace SrnprCommon.ReplaceFile
         public string Parms { get; set; }
 
 
-        public Dictionary<ItemRuleExpressionEntityCRF, ItemTempleteEmailInfoEntityCRF> DicRuleTemplete { get; set; }
 
 
 
-        public List<emaildesign
+        public List<EmailDesignItem> ListItem { get; set; }
 
     }
 }

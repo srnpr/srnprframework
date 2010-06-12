@@ -22,9 +22,7 @@ public partial class DcEmail_DcEmailDesign : System.Web.UI.Page
 
         ReplaceXmlCRF rx = new ReplaceXmlCRF();
 
-       TempleteXmlEntityCRF txe=rx.GetTempleteXml( new SrnprCommon.ReplaceFile.SendEmailCRF().GetListFileInfoByFilePath().SingleOrDefault(t => t.Id == sId).FilePath);
-
-
+      
 
        StringBuilder sb = new StringBuilder();
        foreach (ItemMainSqlEntityCRF mainSql in txe.Code.MainSql)

@@ -172,6 +172,34 @@ namespace SrnprCommon.ReplaceFile
 
 
 
+        public ResultSendEmailDesignEntityCRF GetDesign(string sXmlId)
+        {
+
+            ResultSendEmailDesignEntityCRF returnResult = new ResultSendEmailDesignEntityCRF();
+
+
+            TempleteXmlEntityCRF txe = replace.GetTempleteXml(GetListFileInfoByFilePath().SingleOrDefault(t => t.Id == sXmlId).FilePath);
+
+
+            returnResult.Title = txe.Code.Config.Title;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            return returnResult;
+
+        }
+
         
 
 

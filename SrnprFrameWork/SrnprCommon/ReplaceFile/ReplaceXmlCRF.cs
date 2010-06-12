@@ -394,6 +394,16 @@ namespace SrnprCommon.ReplaceFile
 
 
 
+
+        /// <summary>
+        /// 
+        /// Description: 保存设计到xml文件
+        /// Author:Liudpc
+        /// Create Date: 2010-6-12 17:17:49
+        /// </summary>
+        /// <param name="desigon"></param>
+        /// <param name="sSavePath"></param>
+        /// <returns></returns>
         public bool SaveTempleteDesign(TempleteDesignEntityCRF desigon,string sSavePath)
         {
 

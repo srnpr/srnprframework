@@ -184,11 +184,17 @@ namespace SrnprCommon.ReplaceFile
             returnResult.Title = txe.Code.Config.Title;
 
 
-
+            StringBuilder sb = new StringBuilder();
             foreach (ItemMainSqlEntityCRF mainSql in txe.Code.MainSql)
             {
-
+                foreach (string s in replace.RegexSqlStringParm(mainSql.SqlString))
+                {
+                    sb.Append("<li>" + string.Format(CommonConfig.ReplaceFileConfigCCC.Config.MainParmReplace, s) + "<li>");
+                }
             }
+
+
+
 
 
 

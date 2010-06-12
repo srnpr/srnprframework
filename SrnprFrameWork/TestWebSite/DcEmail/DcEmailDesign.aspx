@@ -32,7 +32,10 @@
         <tr>
         <td><%#Eval("RuleExpress")%></td>
         <td><%#Eval("Title")%></td>
-        <td></td>
+        <td>
+        <input type="button" onclick="" />
+        
+        </td>
         
         </tr>
         
@@ -43,28 +46,14 @@
         
         
         
-        <tr>
-            <td>
-                {$订单金额}=1000</td>
-            <td>
-                {$代理商名称}您好，你下了订单。</td>
-            <td>
-                <asp:Button ID="Button2" runat="server" Text="修改" />
-                <asp:Button ID="Button3" runat="server" Text="删除" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-        </tr>
+        
     </table>
     
     
-    <br />
+    <asp:Panel ID="pShow" runat="server">
+    
+    
+     <br />
     条件表达式：<asp:TextBox ID="TextBox3" runat="server" Width="539px">{$订单金额}=1000</asp:TextBox>
     <br />
     <br />
@@ -79,6 +68,12 @@
     <br />
     <br />
     <asp:Button ID="Button1" runat="server" Text="提交" />
+    
+    </asp:Panel>
+    
+    
+    
+   
     <div>
     
     </div>

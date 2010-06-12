@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SrnprCommon.ReplaceFile
 {
-    public class ResultSendEmailDesignEntityCRF
+    public class EmailDesignInfo
     {
 
         public string Title { get; set; }
@@ -16,6 +16,10 @@ namespace SrnprCommon.ReplaceFile
 
 
         public Dictionary<ItemRuleExpressionEntityCRF, ItemTempleteEmailInfoEntityCRF> DicRuleTemplete { get; set; }
+
+
+
+        public List<emaildesign
 
     }
 }

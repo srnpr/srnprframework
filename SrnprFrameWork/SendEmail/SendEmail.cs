@@ -96,12 +96,12 @@ namespace SendEmail
 
 
 
-        public ResultSendEmailEntityCRF Send(string sXmlId,string sParmsContent)
+        public ResultSendEmail Send(string sXmlId,string sParmsContent)
         {
 
 
 
-            ResultSendEmailEntityCRF returnResult = new ResultSendEmailEntityCRF();
+            ResultSendEmail returnResult = new ResultSendEmail();
 
 
             List<DoSendEmailEntityCRF> doSend = GetSendList(sXmlId, sParmsContent);
@@ -179,10 +179,10 @@ namespace SendEmail
 
 
 
-        public ResultSendEmailDesignEntityCRF GetDesign(string sXmlId)
+        public EmailDesignInfo GetDesign(string sXmlId)
         {
 
-            ResultSendEmailDesignEntityCRF returnResult = new ResultSendEmailDesignEntityCRF();
+            EmailDesignInfo returnResult = new EmailDesignInfo();
 
 
             TempleteXmlEntityCRF txe = replace.GetTempleteXml(GetListFileInfoByFilePath().SingleOrDefault(t => t.Id == sXmlId).FilePath);

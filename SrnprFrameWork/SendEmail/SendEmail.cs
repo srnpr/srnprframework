@@ -177,39 +177,98 @@ namespace SendEmail
 
 
 
-        private bool UpdateXml(EmailDesignItem edi)
+        private bool UpdateItemToXml(EmailDesignItem edi)
         {
 
             TempleteDesignEntityCRF design = GetTempleteDesign(edi.XmlId);
 
             ItemRuleExpressionEntityCRF ire = design.ItemRule.SingleOrDefault(t => t.TempleteGuid == edi.TempleteGuid) as ItemRuleExpressionEntityCRF;
-
-
             ire.ExpressionParm = edi.ToEmail;
             ire.Expression = edi.RuleExpress;
-
-
-
             ItemTempleteEmailInfoEntityCRF itee = design.ItemTemplete.SingleOrDefault(t => t.Guid == edi.TempleteGuid) as ItemTempleteEmailInfoEntityCRF;
 
             itee.Title = edi.Title;
             itee.Content = edi.Content;
-            
+            return replace.SaveTempleteDesign(design, GetXmlPathByXmlId(edi.XmlId));
+        }
 
 
+        public bool DelItemToXml(string sXmlId,string sGuId)
+        {
+            TempleteDesignEntityCRF design = GetTempleteDesign(sXmlId);
+
+            ItemRuleEntityAtCRF ire=design.ItemRule.SingleOrDefault(t=>t.TempleteGuid==sGuId);
+            design.ItemRule.Remove(ire);
+
+            ItemTempleteEntityIfCRF itee = design.ItemTemplete.SingleOrDefault(t => t.Guid == sGuId);
+            design.ItemTemplete.Remove(itee);
 
 
+            return replace.SaveTempleteDesign(design, GetXmlPathByXmlId(sXmlId));
+
+        }
 
 
-            return true;
+        private bool AddItemToXml(EmailDesignItem edi)
+        {
+            TempleteDesignEntityCRF design = GetTempleteDesign(edi.XmlId);
+
+            string sGuid=Guid.NewGuid().ToString();
+
+            ItemRuleExpressionEntityCRF ire = new ItemRuleExpressionEntityCRF();
+            ire.Expression = edi.RuleExpress;
+            ire.ExpressionParm = edi.ToEmail;
+            ire.TempleteGuid = sGuid;
+
+            design.ItemRule.Add(ire);
+
+            ItemTempleteEmailInfoEntityCRF itee = new ItemTempleteEmailInfoEntityCRF();
+            itee.Content = edi.Content;
+            itee.Guid = sGuid;
+            itee.Title = edi.Title;
+
+            design.ItemTemplete.Add(itee);
+
+
+            return replace.SaveTempleteDesign(design, GetXmlPathByXmlId(edi.XmlId));
+
+
         }
 
 
 
 
+
+
+
+
+        /// <summary>
+        /// 
+        /// Description: 根据xml编号得到设计实体
+        /// Author:Liudpc
+        /// Create Date: 2010-6-12 16:54:37
+        /// </summary>
+        /// <param name="sXmlId"></param>
+        /// <returns></returns>
         public TempleteDesignEntityCRF GetTempleteDesign(string sXmlId)
         {
-            return replace.GetTempleteDesign(ReplaceFileConfigCCC.Config.XmlFileDirectory + sXmlId + ReplaceFileConfigCCC.Config.DesignFileApp);
+            return replace.GetTempleteDesign(GetXmlPathByXmlId(sXmlId));
+
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// Description: 根据xml编号得出xml文件路径
+        /// Author:Liudpc
+        /// Create Date: 2010-6-12 16:54:13
+        /// </summary>
+        /// <param name="sXmlId"></param>
+        /// <returns></returns>
+        private string GetXmlPathByXmlId(string sXmlId)
+        {
+            return ReplaceFileConfigCCC.Config.XmlFileDirectory + sXmlId + ReplaceFileConfigCCC.Config.DesignFileApp;
 
         }
 

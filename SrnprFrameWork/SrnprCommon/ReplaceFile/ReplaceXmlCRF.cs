@@ -393,6 +393,93 @@ namespace SrnprCommon.ReplaceFile
         }
 
 
+
+        public bool SaveTempleteDesign(TempleteDesignEntityCRF desigon,string sSavePath)
+        {
+
+            XmlDocument xd = new XmlDocument();
+
+            XmlNode xnReplaceFileRoot = xd.CreateElement("ReplaceFileRoot");
+
+            XmlNode xnReplaceFile = xd.CreateElement("ReplaceFile");
+
+
+            XmlNode xnRuleItem = xd.CreateElement("RuleItem");
+            XmlNode xnRule = xd.CreateElement("Rule");
+            XmlNode xnRuleExpression = xd.CreateElement("RuleExpression");
+            foreach (ItemRuleEntityAtCRF ruleEntity in desigon.ItemRule)
+            {
+                switch (ruleEntity.RuleType)
+                {
+                    case ItemRuleType.RuleExpression:
+
+                        ItemRuleExpressionEntityCRF iree=ruleEntity as ItemRuleExpressionEntityCRF;
+                        XmlNode xnExpressionInfo = xd.CreateElement("ExpressionInfo");
+
+
+                        XmlAppendNode(xd, "TempleteGuid", iree.TempleteGuid, xnExpressionInfo);
+                        XmlAppendNode(xd, "Expression", iree.Expression, xnExpressionInfo);
+                        XmlAppendNode(xd, "ExpressionParm", iree.ExpressionParm, xnExpressionInfo);
+
+                        xnRuleExpression.AppendChild(xnExpressionInfo);
+
+                        break;
+                }
+
+            }
+            xnRule.AppendChild(xnRuleExpression);
+            xnRuleItem.AppendChild(xnRule);
+            xnReplaceFile.AppendChild(xnRuleItem);
+
+
+
+
+
+            XmlNode xnTempleteItem = xd.CreateElement("TempleteItem");
+            foreach (ItemTempleteEntityIfCRF tempEntity in desigon.ItemTemplete)
+            {
+                switch (tempEntity.TempleteType)
+                {
+                    case ItemTempleteType.EmailInfo:
+
+                        ItemTempleteEmailInfoEntityCRF itee = tempEntity as ItemTempleteEmailInfoEntityCRF;
+                        XmlNode xnTemplete = xd.CreateElement("Templete");
+
+                        XmlAttribute xa = xd.CreateAttribute("GuId");
+                        xa.Value = itee.Guid;
+                        xnTemplete.AppendChild(xa);
+
+
+                        XmlNode xnEmailInfo = xd.CreateElement("EmailInfo");
+
+                        XmlAppendNode(xd, "Title", itee.Title, xnEmailInfo);
+                        XmlAppendNode(xd, "Content", itee.Content, xnEmailInfo);
+
+                        xnTemplete.AppendChild(xnEmailInfo);
+
+                        break;
+                }
+            }
+
+
+
+
+
+            return true;
+
+        }
+
+
+        private void XmlAppendNode(XmlDocument xd,string sNodeName, string sInnerText, XmlNode xnFather)
+        {
+            XmlNode xn = xd.CreateElement(sNodeName);
+            xn.InnerText = sInnerText;
+            xnFather.AppendChild(xn);
+
+        }
+
+
+
         /// <summary>
         /// 
         /// Description: 得到设计实体

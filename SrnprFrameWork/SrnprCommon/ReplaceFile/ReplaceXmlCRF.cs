@@ -548,22 +548,26 @@ namespace SrnprCommon.ReplaceFile
 
 
                 returnDesignEntity.ItemTemplete = new List<ItemTempleteEntityIfCRF>();
-                XmlNode xnTemplete = xnDesign.SelectSingleNode("TempleteItem/Templete");
-                if (xnTemplete != null)
+                XmlNode xnTempleteItem = xnDesign.SelectSingleNode("TempleteItem");
+                if (xnTempleteItem != null)
                 {
-                    foreach (XmlNode xnTempleteInfo in xnTemplete.ChildNodes)
+                    foreach (XmlNode xnTemplete in xnTempleteItem)
                     {
-                        if (xnTempleteInfo.Name == "EmailInfo")
+
+                        foreach (XmlNode xnTempleteInfo in xnTemplete.ChildNodes)
                         {
+                            if (xnTempleteInfo.Name == "EmailInfo")
+                            {
 
-                            ItemTempleteEmailInfoEntityCRF itee = new ItemTempleteEmailInfoEntityCRF();
-                            itee.Guid = xnTemplete.Attributes["GuId"].Value.Trim();
-                            itee.Title = xnTempleteInfo.SelectSingleNode("Title").InnerText;
-                            itee.Content = xnTempleteInfo.SelectSingleNode("Content").InnerText;
+                                ItemTempleteEmailInfoEntityCRF itee = new ItemTempleteEmailInfoEntityCRF();
+                                itee.Guid = xnTemplete.Attributes["GuId"].Value.Trim();
+                                itee.Title = xnTempleteInfo.SelectSingleNode("Title").InnerText;
+                                itee.Content = xnTempleteInfo.SelectSingleNode("Content").InnerText;
 
-                            returnDesignEntity.ItemTemplete.Add(itee);
+                                returnDesignEntity.ItemTemplete.Add(itee);
+                            }
+
                         }
-
                     }
                 }
 

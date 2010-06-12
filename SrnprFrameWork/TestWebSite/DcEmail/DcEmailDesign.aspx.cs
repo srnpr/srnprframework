@@ -20,6 +20,7 @@ public partial class DcEmail_DcEmailDesign : System.Web.UI.Page
         if (!IsPostBack)
         {
             BindRP();
+            pShow.Visible = false;
         }
 
 
@@ -27,21 +28,43 @@ public partial class DcEmail_DcEmailDesign : System.Web.UI.Page
 
         if (!string.IsNullOrEmpty(Request["dev_dcemail_submit_type"]))
         {
-
+            string sGuid=Request["dev_dcemail_submit_tempguid"].ToString().Trim();
             switch (int.Parse(Request["dev_dcemail_submit_type"]))
             {
 
                 case 1:
                     pShow.Visible = true;
                     hfTempId.Value = "";
+                    tbContent.Text = "";
+                    tbRuleExpress.Text = "";
+                    tbTitle.Text = "";
+                    tbToEmail.Text = "";
+
                     break;
                 case 2:
                     pShow.Visible = true;
-                    hfTempId.Value = Request["dev_dcemail_submit_tempguid"].ToString().Trim();
+                    hfTempId.Value = sGuid;
+
+
+                    EmailDesignInfo eInfo= new SendEmail.SendEmail().GetDesign(sId);
+
+                    EmailDesignItem eItem = eInfo.ListItem.SingleOrDefault(t => t.TempleteGuid == sGuid);
+
+
+                    tbContent.Text = eItem.Content;
+                    tbRuleExpress.Text = eItem.RuleExpress;
+                    tbTitle.Text = eItem.Title;
+                    tbToEmail.Text = eItem.ToEmail;
+
+                  
+
                     break;
                 case 3:
                     pShow.Visible = false;
-                    new SendEmail.SendEmail().DelItemToXml(sId, Request["dev_dcemail_submit_tempguid"]);
+                    new SendEmail.SendEmail().DelItemToXml(sId, sGuid);
+
+                    BindRP();
+
                     break;
 
             }
@@ -91,9 +114,9 @@ public partial class DcEmail_DcEmailDesign : System.Web.UI.Page
         }
 
          pShow.Visible = false;
-        
 
 
+         BindRP();
 
     }
 }

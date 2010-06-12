@@ -280,7 +280,7 @@ namespace SrnprCommon.ReplaceFile
         /// </summary>
         /// <param name="sFilePath"></param>
         /// <returns></returns>
-        private TempleteCodeEntityCRF GetTempleteCode(string sFilePath)
+        public TempleteCodeEntityCRF GetTempleteCode(string sFilePath)
         {
             TempleteCodeEntityCRF tce = new TempleteCodeEntityCRF();
 

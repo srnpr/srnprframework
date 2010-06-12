@@ -10,9 +10,13 @@
     <form id="form1" runat="server">
     <div>
     
-        <asp:TextBox ID="TextBox1" runat="server" Width="261px"></asp:TextBox>
-        <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Button" />
-        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        <br />
+        输入参数集合：
+        <asp:Label ID="lbInput" runat="server"></asp:Label>
+        <br />
+        <asp:Button ID="btnTest" runat="server" onclick="btnTest_Click" Text="进行测试" />
+        <br />
+        <br />
     
     </div>
     </form>

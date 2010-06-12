@@ -29,6 +29,15 @@ namespace SendEmail
 
 
 
+        /// <summary>
+        /// 
+        /// Description: 得到发送内容
+        /// Author:Liudpc
+        /// Create Date: 2010-6-12 17:50:39
+        /// </summary>
+        /// <param name="sXmlId"></param>
+        /// <param name="sParmsContent"></param>
+        /// <returns></returns>
         public List<DoSendEmailEntityCRF> GetSendList(string sXmlId, string sParmsContent)
         {
             List<DoSendEmailEntityCRF> doSend = new List<DoSendEmailEntityCRF>();
@@ -96,6 +105,15 @@ namespace SendEmail
 
 
 
+        /// <summary>
+        /// 
+        /// Description: 执行发送邮件并返回结果
+        /// Author:Liudpc
+        /// Create Date: 2010-6-12 17:51:04
+        /// </summary>
+        /// <param name="sXmlId"></param>
+        /// <param name="sParmsContent"></param>
+        /// <returns></returns>
         public ResultSendEmail Send(string sXmlId,string sParmsContent)
         {
 
@@ -254,6 +272,12 @@ namespace SendEmail
         {
             return replace.GetTempleteDesign(GetXmlPathByXmlId(sXmlId));
 
+        }
+
+
+        public TempleteCodeEntityCRF GetTempleteCode(string sXmlId)
+        {
+            return replace.GetTempleteCode(ReplaceFileConfigCCC.Config.XmlFileDirectory + sXmlId + ReplaceFileConfigCCC.Config.CodeFileApp);
         }
 
 

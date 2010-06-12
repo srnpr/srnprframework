@@ -20,16 +20,15 @@ public partial class DcEmail_DcEmailDesign : System.Web.UI.Page
         string sId = Request["Id"].ToString().Trim();
 
 
-        ReplaceXmlCRF rx = new ReplaceXmlCRF();
+
+
+
+        ResultSendEmailDesignEntityCRF rse = se.GetDesign(sId);
+        lbParmsShow.Text = rse.Parms;
+
+
 
       
-
-       StringBuilder sb = new StringBuilder();
-       foreach (ItemMainSqlEntityCRF mainSql in txe.Code.MainSql)
-       {
-           sb.Append("<li>{$" + string.Join("}</li><li>{$", se.RegexSqlStringParm(mainSql.SqlString)) + "}</li>");
-       }
-       lbParmsShow.Text = sb.ToString().Trim();
 
        //string[] strSql=txe.Code.MainSql.
 

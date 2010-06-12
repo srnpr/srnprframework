@@ -13,7 +13,7 @@ public partial class DcEmail_DcEmailDesign : System.Web.UI.Page
     {
 
 
-        SendEmailCRF se = new SendEmailCRF();
+        
 
 
 
@@ -23,9 +23,7 @@ public partial class DcEmail_DcEmailDesign : System.Web.UI.Page
 
 
 
-        ResultSendEmailDesignEntityCRF rse = se.GetDesign(sId);
-        lbParmsShow.Text = rse.Parms;
-
+     
 
 
       

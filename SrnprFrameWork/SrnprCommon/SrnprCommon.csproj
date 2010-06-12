@@ -77,7 +77,6 @@
     <Compile Include="ReplaceFile\DoSendEmailEntityCRF.cs" />
     <Compile Include="ReplaceFile\ReplaceFileListEntityCRF.cs" />
     <Compile Include="ReplaceFile\ResultReplaceEntityIfCRF.cs" />
-    <Compile Include="ReplaceFile\ResultSendEmailDesignEntityCRF.cs" />
     <Compile Include="ReplaceFile\ResultSendEmailEntityCRF.cs" />
     <Compile Include="ReplaceFile\ServerDatabaseEntityCRF.cs" />
     <Compile Include="ReplaceFile\ItemConfigEntityCRF.cs" />
@@ -90,7 +89,6 @@
     <Compile Include="ReplaceFile\ItemTempleteEntityIfCRF.cs" />
     <Compile Include="ReplaceFile\ReplaceFileEntityCRF.cs" />
     <Compile Include="ReplaceFile\ReplaceXmlCRF.cs" />
-    <Compile Include="ReplaceFile\SendEmailCRF.cs" />
     <Compile Include="ReplaceFile\ServerEmailEntityCRF.cs" />
     <Compile Include="ReplaceFile\TempleteXmlEntityCRF.cs" />
     <Compile Include="ReplaceFile\TempleteCodeEntityCRF.cs" />

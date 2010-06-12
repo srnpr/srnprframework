@@ -62,7 +62,7 @@
         <asp:TextBox ID="tbContent" runat="server" Height="89px" Width="635px"></asp:TextBox>
         <br />
         <br />
-        <asp:Button ID="Button1" runat="server" Text="提交" />
+        <asp:Button ID="btnSave" runat="server" Text="提交" onclick="btnSave_Click" />
     </asp:Panel>
     <div>
     </div>

@@ -404,6 +404,8 @@ namespace SrnprCommon.ReplaceFile
             XmlNode xnReplaceFile = xd.CreateElement("ReplaceFile");
 
 
+            XmlNode xnReplaceFileDesign = xd.CreateElement("ReplaceFileDesign");
+
             XmlNode xnRuleItem = xd.CreateElement("RuleItem");
             XmlNode xnRule = xd.CreateElement("Rule");
             XmlNode xnRuleExpression = xd.CreateElement("RuleExpression");
@@ -429,7 +431,7 @@ namespace SrnprCommon.ReplaceFile
             }
             xnRule.AppendChild(xnRuleExpression);
             xnRuleItem.AppendChild(xnRule);
-            xnReplaceFile.AppendChild(xnRuleItem);
+            xnReplaceFileDesign.AppendChild(xnRuleItem);
 
 
 
@@ -447,7 +449,7 @@ namespace SrnprCommon.ReplaceFile
 
                         XmlAttribute xa = xd.CreateAttribute("GuId");
                         xa.Value = itee.Guid;
-                        xnTemplete.AppendChild(xa);
+                        xnTemplete.Attributes.Append(xa);
 
 
                         XmlNode xnEmailInfo = xd.CreateElement("EmailInfo");
@@ -462,10 +464,13 @@ namespace SrnprCommon.ReplaceFile
                         break;
                 }
             }
-            xnReplaceFile.AppendChild(xnTempleteItem);
 
 
 
+
+            xnReplaceFileDesign.AppendChild(xnTempleteItem);
+
+            xnReplaceFile.AppendChild(xnReplaceFileDesign);
 
 
             xnReplaceFileRoot.AppendChild(xnReplaceFile);

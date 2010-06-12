@@ -177,7 +177,7 @@ namespace SendEmail
 
 
 
-        private bool UpdateItemToXml(EmailDesignItem edi)
+        public bool UpdateItemToXml(EmailDesignItem edi)
         {
 
             TempleteDesignEntityCRF design = GetTempleteDesign(edi.XmlId);
@@ -209,7 +209,7 @@ namespace SendEmail
         }
 
 
-        private bool AddItemToXml(EmailDesignItem edi)
+        public bool AddItemToXml(EmailDesignItem edi)
         {
             TempleteDesignEntityCRF design = GetTempleteDesign(edi.XmlId);
 

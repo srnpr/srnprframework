@@ -24,6 +24,24 @@
             <td>
                 操作</td>
         </tr>
+        
+        <asp:Repeater ID="rpList" runat="server">
+        <ItemTemplate>
+        
+        
+        <tr>
+        <td></td>
+        
+        
+        </tr>
+        
+        
+        </ItemTemplate>
+        
+        </asp:Repeater>
+        
+        
+        
         <tr>
             <td>
                 {$订单金额}=1000</td>

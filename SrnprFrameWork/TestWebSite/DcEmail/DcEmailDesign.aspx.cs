@@ -19,7 +19,13 @@ public partial class DcEmail_DcEmailDesign : System.Web.UI.Page
 
         string sId = Request["Id"].ToString().Trim();
 
+        SendEmail.SendEmail se = new SendEmail.SendEmail();
 
+        SendEmail.EmailDesignInfo edi = se.GetDesign(sId);
+
+        lbParmsShow.Text = edi.Parms;
+
+        
 
 
 

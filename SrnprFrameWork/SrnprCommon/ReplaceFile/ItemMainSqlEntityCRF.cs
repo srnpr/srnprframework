@@ -23,5 +23,10 @@ namespace SrnprCommon.ReplaceFile
         /// Create Date: 2010-6-9 9:27:34
         /// </summary>
         public string SqlString { get; set; }
+
+
+
+        
+
     }
 }

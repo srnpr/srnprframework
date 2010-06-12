@@ -36,12 +36,16 @@
                         <%#Eval("Title")%>
                     </td>
                     <td>
-                        <input type="button" onclick="" />
+                        <input type="button" onclick="Dev_Dcemail_Submit(2,'<%#Eval("TempleteGuid") %>')" value="修改" />
+                        <input type="button" onclick="Dev_Dcemail_Submit(3,'<%#Eval("TempleteGuid") %>')" value="删除" />
                     </td>
                 </tr>
             </ItemTemplate>
         </asp:Repeater>
     </table>
+    <input type="button" onclick="Dev_Dcemail_Submit(1,'')" value="添加" />
+    
+    
     <input type="hidden" name="dev_dcemail_submit_type" id="dev_dcemail_submit_type" />
     
     <input type="hidden" name="dev_dcemail_submit_tempguid" id="dev_dcemail_submit_tempguid" />

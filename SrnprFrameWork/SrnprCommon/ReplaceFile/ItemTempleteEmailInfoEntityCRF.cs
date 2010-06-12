@@ -5,19 +5,19 @@ using System.Text;
 
 namespace SrnprCommon.ReplaceFile
 {
-    public class ItemTempleteEmailInfoEntityCRF:ItemTempleteEntityAtCRF
+    public class ItemTempleteEmailInfoEntityCRF:ItemTempleteEntityIfCRF
     {
 
 
 
-        public override string Guid
+        public  string Guid
         {
             get
           ;
             set;
         }
 
-        public override SrnprCommon.EnumCommon.ItemTempleteType TempleteType
+        public  SrnprCommon.EnumCommon.ItemTempleteType TempleteType
         {
             get { return SrnprCommon.EnumCommon.ItemTempleteType.EmailInfo; }
         }

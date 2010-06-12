@@ -426,7 +426,7 @@ namespace SrnprCommon.ReplaceFile
                 }
 
 
-                returnDesignEntity.ItemTemplete = new List<ItemTempleteEntityAtCRF>();
+                returnDesignEntity.ItemTemplete = new List<ItemTempleteEntityIfCRF>();
                 XmlNode xnTemplete = xnDesign.SelectSingleNode("TempleteItem/Templete");
                 if (xnTemplete != null)
                 {

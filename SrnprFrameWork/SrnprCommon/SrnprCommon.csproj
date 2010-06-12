@@ -87,7 +87,7 @@
     <Compile Include="ReplaceFile\ItemRuleEntityAtCRF.cs" />
     <Compile Include="ReplaceFile\ItemRuleExpressionEntityCRF.cs" />
     <Compile Include="ReplaceFile\ItemTempleteEmailInfoEntityCRF.cs" />
-    <Compile Include="ReplaceFile\ItemTempleteEntityAtCRF.cs" />
+    <Compile Include="ReplaceFile\ItemTempleteEntityIfCRF.cs" />
     <Compile Include="ReplaceFile\ReplaceFileEntityCRF.cs" />
     <Compile Include="ReplaceFile\ReplaceXmlCRF.cs" />
     <Compile Include="ReplaceFile\SendEmailCRF.cs" />

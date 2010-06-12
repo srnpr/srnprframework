@@ -196,6 +196,13 @@ namespace SrnprCommon.ReplaceFile
 
 
 
+            returnResult.DicRuleTemplete = new Dictionary<ItemRuleExpressionEntityCRF, ItemTempleteEmailInfoEntityCRF>();
+            foreach (ItemRuleExpressionEntityCRF ire in txe.Design.ItemRule)
+            {
+                returnResult.DicRuleTemplete.Add(ire, (ItemTempleteEmailInfoEntityCRF)txe.Design.ItemTemplete.Where(t => t.Guid == ire.TempleteGuid));
+            }
+
+
 
 
 

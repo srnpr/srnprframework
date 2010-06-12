@@ -15,5 +15,7 @@ namespace SrnprCommon.ReplaceFile
         public string Parms { get; set; }
 
 
+        public Dictionary<ItemRuleExpressionEntityCRF, ItemTempleteEmailInfoEntityCRF> DicRuleTemplete { get; set; }
+
     }
 }

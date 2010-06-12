@@ -136,6 +136,12 @@ namespace SrnprCommon.ReplaceFile
 
 
 
+        /// <summary>
+        /// 
+        /// Description: 重新检测所有文件并生成列表文件
+        /// Author:Liudpc
+        /// Create Date: 2010-6-12 11:08:06
+        /// </summary>
         public void RecheckAllEmailFile()
         {
             replace.RecheckXmlFromDirectory(CommonConfig.ReplaceFileConfigCCC.Config.XmlFileDirectory, CommonConfig.ReplaceFileConfigCCC.Config.ListFilePath);

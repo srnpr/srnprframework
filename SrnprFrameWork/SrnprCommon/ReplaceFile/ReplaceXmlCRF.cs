@@ -22,7 +22,7 @@ namespace SrnprCommon.ReplaceFile
         {
             List<string> strList = new List<string>();
            string sReplace= Regex.Replace(sSql, @"\(.*\)", "").ToLower();
-          sReplace= Regex.Match(sReplace,"(select).*?(from)").Value;
+          sReplace= Regex.Match(sReplace,"(?<=select).*?(?=from)").Value;
 
           foreach (string s in sReplace.Split(','))
           {

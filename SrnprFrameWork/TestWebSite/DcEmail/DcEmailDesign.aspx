@@ -10,7 +10,8 @@
     <form id="form1" runat="server">
     邮件描述：这个邮件是给代理商发滴,涉及a模块b模块<br />
     <br />
-    你可使用的参数有：{$订单编号}&nbsp;&nbsp; {$订单金额}&nbsp;&nbsp; {$代理商名称}<br />
+    你可使用的参数有：<asp:Label ID="lbParmsShow" runat="server"></asp:Label>
+    <br />
     <br />
     是否可用：<asp:CheckBox ID="CheckBox1" runat="server" Text="可用" />
     <br />

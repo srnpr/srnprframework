@@ -110,23 +110,17 @@ namespace SrnprCommon.ReplaceFile
 
                         TempleteCodeEntityCRF code = GetTempleteCode(sFileName);
                         XmlNode xn = xd.CreateElement("EmailInfo");
-                        XmlNode xnId=xd.CreateElement("Id");
-
-                        xnId.InnerText = sFileName.Substring(sFileName.LastIndexOf("\\")+1, sFileName.LastIndexOf(sCode) - sFileName.LastIndexOf("\\") - 1);
-                        xn.AppendChild(xnId);
-
-                        XmlNode xnTitle = xd.CreateElement("Title");
-                        xnTitle.InnerText = code.Config.Title;
-                        xn.AppendChild(xnTitle);
-
-                        XmlNode xnDescription = xd.CreateElement("Description");
-                        xnDescription.InnerText = code.Config.Description;
-                        xn.AppendChild(xnDescription);
 
 
-                        XmlNode xnFilePath = xd.CreateElement("FilePath");
-                        xnFilePath.InnerText = sFileName;
-                        xn.AppendChild(xnFilePath);
+                        XmlAppendNode(xd, "Id", sFileName.Substring(sFileName.LastIndexOf("\\") + 1, sFileName.LastIndexOf(sCode) - sFileName.LastIndexOf("\\") - 1), xn);
+
+                        XmlAppendNode(xd, "Title", code.Config.Title, xn);
+
+                        XmlAppendNode(xd, "Description", code.Config.Description, xn);
+                        XmlAppendNode(xd, "FilePath", sFileName, xn);
+
+                      
+
 
 
                         xnList.AppendChild(xn);
@@ -498,6 +492,18 @@ namespace SrnprCommon.ReplaceFile
         }
 
 
+
+
+        /// <summary>
+        /// 
+        /// Description: Xml文件添加元素
+        /// Author:Liudpc
+        /// Create Date: 2010-6-12 17:18:16
+        /// </summary>
+        /// <param name="xd"></param>
+        /// <param name="sNodeName"></param>
+        /// <param name="sInnerText"></param>
+        /// <param name="xnFather"></param>
         private void XmlAppendNode(XmlDocument xd,string sNodeName, string sInnerText, XmlNode xnFather)
         {
             XmlNode xn = xd.CreateElement(sNodeName);

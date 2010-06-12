@@ -185,7 +185,16 @@ namespace SendEmail
             ItemRuleExpressionEntityCRF ire = design.ItemRule.SingleOrDefault(t => t.TempleteGuid == edi.TempleteGuid) as ItemRuleExpressionEntityCRF;
 
 
+            ire.ExpressionParm = edi.ToEmail;
+            ire.Expression = edi.RuleExpress;
 
+
+
+            ItemTempleteEmailInfoEntityCRF itee = design.ItemTemplete.SingleOrDefault(t => t.Guid == edi.TempleteGuid) as ItemTempleteEmailInfoEntityCRF;
+
+            itee.Title = edi.Title;
+            itee.Content = edi.Content;
+            
 
 
 

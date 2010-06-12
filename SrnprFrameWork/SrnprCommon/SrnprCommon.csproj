@@ -77,7 +77,6 @@
     <Compile Include="ReplaceFile\DoSendEmailEntityCRF.cs" />
     <Compile Include="ReplaceFile\ReplaceFileListEntityCRF.cs" />
     <Compile Include="ReplaceFile\ResultReplaceEntityIfCRF.cs" />
-    <Compile Include="ReplaceFile\ResultSendEmailEntityCRF.cs" />
     <Compile Include="ReplaceFile\ServerDatabaseEntityCRF.cs" />
     <Compile Include="ReplaceFile\ItemConfigEntityCRF.cs" />
     <Compile Include="ReplaceFile\ItemListSqlEntityCRF.cs" />

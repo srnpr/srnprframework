@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SrnprCommon.ReplaceFile
 {
-    interface ResultReplaceEntityIfCRF
+    public interface ResultReplaceEntityIfCRF
     {
 
         bool ReplaceResultFlag { get; set; }

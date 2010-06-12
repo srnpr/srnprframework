@@ -30,8 +30,9 @@
         
         
         <tr>
+        <td><%#Eval("RuleExpress")%></td>
+        <td><%#Eval("Title")%></td>
         <td></td>
-        
         
         </tr>
         

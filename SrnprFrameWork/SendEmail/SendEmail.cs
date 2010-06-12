@@ -191,15 +191,19 @@ namespace SendEmail
             returnResult.Title = txe.Code.Config.Title;
 
 
+
+            string sMainParm = ReplaceFileConfigCCC.Config.MainParmReplace;
+
             StringBuilder sb = new StringBuilder();
             foreach (ItemMainSqlEntityCRF mainSql in txe.Code.MainSql)
             {
                 foreach (string s in replace.RegexSqlStringParm(mainSql.SqlString))
                 {
-                    sb.Append("<li>" + string.Format(ReplaceFileConfigCCC.Config.MainParmReplace, s) + "<li>");
+                    sb.Append("<li>{$" + s+ "}</li>");
                 }
             }
 
+            returnResult.Parms = sb.ToString().Trim();
 
 
 
@@ -208,17 +212,23 @@ namespace SendEmail
             {
 
                 ItemTempleteEmailInfoEntityCRF ite = txe.Design.ItemTemplete.SingleOrDefault(t => t.Guid == ire.TempleteGuid) as ItemTempleteEmailInfoEntityCRF;
+               
+                if (ite != null)
+                {
+                    EmailDesignItem edi = new EmailDesignItem();
+                    
+                    edi.TempleteGuid = ire.TempleteGuid;
+                    edi.ToEmail = ire.ExpressionParm;
+                    edi.Title = ite.Title;
+                    edi.Content = ite.Content;
+                    edi.RuleExpress = ire.Expression;
+
+                    returnResult.ListItem.Add(edi);
+
+                }
 
 
-                EmailDesignItem edi = new EmailDesignItem();
-                edi.TempleteGuid = ire.TempleteGuid;
-                edi.ToEmail = ire.ExpressionParm;
-                edi.Title = ite.Title;
-                edi.Content = ite.Content;
-                edi.RuleExpress = ire.Expression;
-
-
-                returnResult.ListItem.Add(edi);
+               
 
                 
             }

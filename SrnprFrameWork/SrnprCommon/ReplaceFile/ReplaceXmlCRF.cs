@@ -457,11 +457,24 @@ namespace SrnprCommon.ReplaceFile
 
                         xnTemplete.AppendChild(xnEmailInfo);
 
+                        xnTempleteItem.AppendChild(xnTemplete);
+
                         break;
                 }
             }
+            xnReplaceFile.AppendChild(xnTempleteItem);
 
 
+
+
+
+            xnReplaceFileRoot.AppendChild(xnReplaceFile);
+            xd.AppendChild(xnReplaceFileRoot);
+
+
+
+
+            xd.Save(sSavePath);
 
 
 

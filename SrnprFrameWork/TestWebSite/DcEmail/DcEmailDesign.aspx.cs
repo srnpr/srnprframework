@@ -9,32 +9,33 @@ using System.Text;
 
 public partial class DcEmail_DcEmailDesign : System.Web.UI.Page
 {
+    string sId;
     protected void Page_Load(object sender, EventArgs e)
     {
 
-
-        
-
+        sId = Request["Id"].ToString().Trim();
 
 
-        string sId = Request["Id"].ToString().Trim();
+        if (!IsPostBack)
+        {
+            BindRP();
+        }
 
+    }
+
+
+
+    protected void BindRP()
+    {
         SendEmail.SendEmail se = new SendEmail.SendEmail();
 
         SendEmail.EmailDesignInfo edi = se.GetDesign(sId);
 
         lbParmsShow.Text = edi.Parms;
 
-        
-
-
-
-     
-
-
-      
-
-       //string[] strSql=txe.Code.MainSql.
-
+        rpList.DataSource = edi.ListItem;
+        rpList.DataBind();
     }
+
+
 }

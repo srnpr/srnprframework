@@ -23,17 +23,17 @@ public partial class DcEmail_DcEmailList : System.Web.UI.Page
     private void BindRP()
     {
 
-        //rpList.DataSource = new SrnprCommon.ReplaceFile.SendEmailCRF().GetListFileInfoByFilePath();
-        //rpList.DataBind();
+        rpList.DataSource = new SendEmail.SendEmail().GetListFileInfoByFilePath();
+        rpList.DataBind();
        
     }
 
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        //new SrnprCommon.ReplaceFile.SendEmailCRF().RecheckAllEmailFile();
+         new SendEmail.SendEmail().RecheckAllEmailFile();
 
-        //BindRP();
+        BindRP();
 
     }
 }

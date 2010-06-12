@@ -43,6 +43,8 @@
                 &nbsp;</td>
         </tr>
     </table>
+    
+    
     <br />
     条件表达式：<asp:TextBox ID="TextBox3" runat="server" Width="539px">{$订单金额}=1000</asp:TextBox>
     <br />

@@ -27,15 +27,10 @@ public partial class DcEmail_DcEmailDesign : System.Web.UI.Page
 
 
        StringBuilder sb = new StringBuilder();
-
        foreach (ItemMainSqlEntityCRF mainSql in txe.Code.MainSql)
        {
            sb.Append("<li>{$"+string.Join("}</li><li>{$",rx.RegexSqlStringParm(mainSql.SqlString))+"}</li>");
-
-           
        }
-
-
        lbParmsShow.Text = sb.ToString().Trim();
 
        //string[] strSql=txe.Code.MainSql.

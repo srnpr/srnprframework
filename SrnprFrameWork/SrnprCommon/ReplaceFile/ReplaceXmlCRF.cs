@@ -26,7 +26,6 @@ namespace SrnprCommon.ReplaceFile
 
           foreach (string s in sReplace.Split(','))
           {
-
               if (s.LastIndexOf(" as ") > -1)
               {
                   strList.Add(  s.Substring(s.LastIndexOf(" as ")+3).Trim());

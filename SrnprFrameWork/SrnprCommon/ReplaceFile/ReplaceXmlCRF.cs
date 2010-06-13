@@ -161,6 +161,9 @@ namespace SrnprCommon.ReplaceFile
         public DataReplaceEntityCRF GetDataReplace(ReplaceFileEntityCRF rfe)
         {
             DataReplaceEntityCRF dre = new DataReplaceEntityCRF();
+            dre.ResultFlag = true;
+
+
             dre.MainParms = new Dictionary<string, string>();
 
             string sMainReplace = ReplaceFileConfigCCC.Config.MainParmReplace;
@@ -208,7 +211,9 @@ namespace SrnprCommon.ReplaceFile
 
                 foreach(ItemMainSqlEntityCRF imse in rfe.TempleteXml.Code.MainSql)
                 {
-                   
+                    if (dre.ResultFlag)
+                    {
+
                         DataTable dt = dtah.GetDataTable(rfe.DataServer, ReplaceParmsByDict(imse.SqlString, dre.MainParms), sp);
                         if (dt.Rows.Count > 0)
                         {
@@ -219,9 +224,9 @@ namespace SrnprCommon.ReplaceFile
                         }
                         else
                         {
-                            break;
+                            dre.ResultFlag = false;
                         }
-                      
+                    }
                     
                 }
             }

@@ -18,6 +18,9 @@ namespace SrnprCommon.ReplaceFile
     public class DataReplaceEntityCRF
     {
 
+        public bool ResultFlag { get; set; }
+
+
 
         /// <summary>
         /// Description: 主替换参数集合

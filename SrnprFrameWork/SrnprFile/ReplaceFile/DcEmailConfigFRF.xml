@@ -29,7 +29,15 @@
 	<!--邮件服务器信息系列-->
 	<EmailServerInfo>
 		<EmailServer id="esDcgou">
-
+			<Id></Id>
+			<SendMailName>dcgou@digitalchina.com</SendMailName>
+			<SendMailDisplayName></SendMailDisplayName>
+			<IsBodyHtml></IsBodyHtml>
+			<SmtpHost>10.1.180.242</SmtpHost>
+			<UserName></UserName>
+			<Password></Password>
+			<EnableSsl></EnableSsl>
+			<Port></Port>
 		</EmailServer>
 		
 	</EmailServerInfo>

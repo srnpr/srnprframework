@@ -19,20 +19,26 @@ public partial class DcEmail_DcEmailTest : System.Web.UI.Page
     {
         sXmlId = Request["id"].ToString().Trim();
 
-        if (!IsPostBack)
-        {
-
+        
              //se.GetTempleteDesign(sXmlId);
             StringBuilder sb = new StringBuilder();
 
             foreach (SrnprCommon.ReplaceFile.ItemPramEntityCRF ipe in se.GetTempleteCode(sXmlId).Parm)
             {
-                sb.Append("<li>"+ipe.ParmText+"：<input type=\"text\" name=\""+sInputNameLeft+ipe.ParmName+"\"></li>");
+
+                if (!string.IsNullOrEmpty(Request[sInputNameLeft + ipe.ParmName]))
+                {
+                    sb.Append("<li>" + ipe.ParmText + "：<input type=\"text\" name=\"" + sInputNameLeft + ipe.ParmName + "\" value=\"" + Request[sInputNameLeft + ipe.ParmName] + "\"></li>");
+                }
+                else
+                {
+                    sb.Append("<li>" + ipe.ParmText + "：<input type=\"text\" name=\"" + sInputNameLeft + ipe.ParmName + "\"></li>");
+                }
             }
 
 
             lbInput.Text = sb.ToString().Trim();
-        }
+       
 
         
 
@@ -57,7 +63,10 @@ public partial class DcEmail_DcEmailTest : System.Web.UI.Page
 
        List<DoSendEmailEntityCRF> doSend=  se.GetSendList(sXmlId, string.Join(SrnprCommon.CommonConfig.ReplaceFileConfigCCC.Config.SplitString, lStr.ToArray()));
 
+       lbCount.Text = doSend.Count.ToString();
 
+       rpList.DataSource = doSend;
+       rpList.DataBind();
 
     }
 }

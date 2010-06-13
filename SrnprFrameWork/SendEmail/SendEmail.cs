@@ -93,8 +93,9 @@ namespace SendEmail
                     ItemTempleteEmailInfoEntityCRF emailEntity = replaceEntity.TempleteXml.Design.ItemTemplete.SingleOrDefault(t => t.Guid == send.TempleteId) as ItemTempleteEmailInfoEntityCRF;
                     send.Title = replace.ReplaceParmsByDict(emailEntity.Title, dataReplace.MainParms);
                     send.Content = replace.ReplaceParmsByDict(emailEntity.Content, dataReplace.MainParms);
-                    send.EmailServer = ReplaceFileConfigCCC.Config.EmailServerList.SingleOrDefault(t => t.Id == replaceEntity.TempleteXml.Code.Config.EmailServerId);
+          
 
+                    send.EmailServerId = replaceEntity.TempleteXml.Code.Config.EmailServerId;
                 }
             }
 
@@ -126,9 +127,11 @@ namespace SendEmail
 
             if (doSend.Count > 0)
             {
+                ServerEmailEntityCRF emailServer = ReplaceFileConfigCCC.Config.EmailServerList.SingleOrDefault(t => t.Id ==doSend[0].EmailServerId);
+
                 foreach (DoSendEmailEntityCRF send in doSend)
                 {
-                    SendEmailCCF.Send(send);
+                    SendEmailCCF.Send(send,emailServer);
                 }
             }
 

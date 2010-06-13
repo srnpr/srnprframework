@@ -62,7 +62,7 @@ namespace SrnprCommon.ReplaceFile
 
 
 
-        public ServerEmailEntityCRF EmailServer { get; set; }
+        public string EmailServerId { get; set; }
 
 
 

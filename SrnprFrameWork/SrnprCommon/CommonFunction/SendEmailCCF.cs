@@ -13,7 +13,7 @@ namespace SrnprCommon.CommonFunction
 
 
 
-        public static bool Send(ReplaceFile.DoSendEmailEntityCRF emailInfo)
+        public static bool Send(ReplaceFile.DoSendEmailEntityCRF emailInfo,ReplaceFile.ServerEmailEntityCRF emailServer)
         {
 
             try
@@ -21,7 +21,7 @@ namespace SrnprCommon.CommonFunction
 
 
 
-                MailAddress from = new MailAddress(emailInfo.EmailServer.SendMailName, emailInfo.EmailServer.SendMailDisplayName);
+                MailAddress from = new MailAddress(emailServer.SendMailName, emailServer.SendMailDisplayName);
                 MailAddress to = new MailAddress(emailInfo.ToEmail);
                 System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage(from, to);
 
@@ -32,20 +32,20 @@ namespace SrnprCommon.CommonFunction
                 mail.BodyEncoding = Encoding.UTF8; ;
                 mail.SubjectEncoding = Encoding.UTF8;
 
-                mail.IsBodyHtml = emailInfo.EmailServer.IsBodyHtml;
+                mail.IsBodyHtml = emailServer.IsBodyHtml;
 
-                SmtpClient client = new SmtpClient(emailInfo.EmailServer.SmtpHost);
+                SmtpClient client = new SmtpClient(emailServer.SmtpHost);
 
-                NetworkCredential smtpuserinfo = new System.Net.NetworkCredential(emailInfo.EmailServer.UserName, emailInfo.EmailServer.Password);
+                NetworkCredential smtpuserinfo = new System.Net.NetworkCredential(emailServer.UserName, emailServer.Password);
                 client.Credentials = smtpuserinfo;
 
-                client.EnableSsl = emailInfo.EmailServer.EnableSsl;
+                client.EnableSsl = emailServer.EnableSsl;
 
 
 
-                if (!string.IsNullOrEmpty(emailInfo.EmailServer.Port))
+                if (!string.IsNullOrEmpty(emailServer.Port))
                 {
-                    client.Port = int.Parse(emailInfo.EmailServer.Port);
+                    client.Port = int.Parse(emailServer.Port);
                 }
 
 

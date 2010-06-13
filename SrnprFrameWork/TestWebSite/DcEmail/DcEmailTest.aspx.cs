@@ -19,6 +19,13 @@ public partial class DcEmail_DcEmailTest : System.Web.UI.Page
     {
         sXmlId = Request["id"].ToString().Trim();
 
+
+        if (!IsPostBack)
+        {
+            btnTestSend.Visible = false;
+        }
+
+
         
              //se.GetTempleteDesign(sXmlId);
             StringBuilder sb = new StringBuilder();
@@ -44,10 +51,9 @@ public partial class DcEmail_DcEmailTest : System.Web.UI.Page
 
     }
 
-    protected void btnTest_Click(object sender, EventArgs e)
+
+    private string GetParms()
     {
-
-
         List<string> lStr = new List<string>();
         foreach (SrnprCommon.ReplaceFile.ItemPramEntityCRF ipe in se.GetTempleteCode(sXmlId).Parm)
         {
@@ -57,19 +63,45 @@ public partial class DcEmail_DcEmailTest : System.Web.UI.Page
             }
             else
             {
-                lStr.Add(ipe.ParmName + "=" );
+                lStr.Add(ipe.ParmName + "=");
             }
         }
 
+        return string.Join(SrnprCommon.CommonConfig.ReplaceFileConfigCCC.Config.SplitString, lStr.ToArray());
+    }
 
 
 
-       List<DoSendEmailEntityCRF> doSend=  se.GetSendList(sXmlId, string.Join(SrnprCommon.CommonConfig.ReplaceFileConfigCCC.Config.SplitString, lStr.ToArray()));
+
+    protected void btnTest_Click(object sender, EventArgs e)
+    {
+
+
+        
+
+
+
+       List<DoSendEmailEntityCRF> doSend=  se.GetSendList(sXmlId, GetParms());
 
        lbCount.Text = doSend.Count.ToString();
 
        rpList.DataSource = doSend;
        rpList.DataBind();
 
+       if (doSend.Count > 0)
+       {
+           btnTestSend.Visible = true;
+
+       }
+
+
+    }
+    protected void btnTestSend_Click(object sender, EventArgs e)
+    {
+        
+
+            se.Send(sXmlId, GetParms());
+
+        
     }
 }

@@ -13,7 +13,7 @@
         输入参数集合：
         <asp:Label ID="lbInput" runat="server"></asp:Label>
         <br />
-        <asp:Button ID="btnTest" runat="server" OnClick="btnTest_Click" Text="进行测试" />
+        <asp:Button ID="btnTest" runat="server" OnClick="btnTest_Click" Text="测试邮件内容" />
         <br />
         <br />
     </div>
@@ -39,6 +39,10 @@
                
                 
             </asp:Repeater>
+            <br />
+            <br />
+            <asp:Button ID="btnTestSend" runat="server" onclick="btnTestSend_Click" 
+                Text="开始发送邮件" />
         </div>
     </div>
     </form>

@@ -184,7 +184,7 @@ namespace SrnprCommon.ReplaceFile
                     if(iIndex>0)
                     {
                         ItemPramEntityCRF  ipe= parmList.Single(t => t.ParmName == strParms[i].Substring(0, iIndex));
-                        sqlParmList.Add(new SqlParameter("@"+ipe,strParms[i].Substring(iIndex+1)));
+                        sqlParmList.Add(new SqlParameter("@"+ipe.ParmName,strParms[i].Substring(iIndex+1)));
 
                         if (ipe != null)
                         {
@@ -204,7 +204,7 @@ namespace SrnprCommon.ReplaceFile
                 SqlParameter[] sp=sqlParmList.ToArray();
                 foreach(ItemMainSqlEntityCRF imse in rfe.TempleteXml.Code.MainSql)
                 {
-                    DataTable dt = dtah.GetDataTable(rfe.DataServer, imse.SqlString, sp);
+                    DataTable dt = dtah.GetDataTable(rfe.DataServer,ReplaceParmsByDict(  imse.SqlString,dre.MainParms), sp);
                     if(dt.Rows.Count>0)
                     {
                         for (int i = 0, j = dt.Columns.Count; i < j; i++)

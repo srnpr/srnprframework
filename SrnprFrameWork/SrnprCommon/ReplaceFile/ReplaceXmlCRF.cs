@@ -257,6 +257,7 @@ namespace SrnprCommon.ReplaceFile
             #endregion
 
 
+            #region 开始进行循环表格取出
             if (rfe.TempleteXml.Code.ListSql.Count > 0)
             {
                 SqlParameter[] sp=sqlParmList.ToArray();
@@ -265,6 +266,7 @@ namespace SrnprCommon.ReplaceFile
                     dre.ListParms.Add(dtah.GetDataTable(rfe.DataServer, ReplaceParmsByDict(ilse.SqlString,dre.MainParms), sp));
                 }
             }
+            #endregion 
 
             return dre;
         }

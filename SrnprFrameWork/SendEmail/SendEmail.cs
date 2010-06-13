@@ -319,7 +319,7 @@ namespace SendEmail
             {
                 foreach (string s in replace.RegexSqlStringParm(mainSql.SqlString))
                 {
-                    sb.Append("<li>{$" + s+ "}</li>");
+                    sb.Append("<li>"+string.Format(sMainParm,s)+"</li>");
                 }
             }
 

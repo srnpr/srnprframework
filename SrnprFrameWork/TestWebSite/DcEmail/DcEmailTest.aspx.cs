@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using SrnprCommon;
 using System.Text;
+using SrnprCommon.ReplaceFile;
 
 public partial class DcEmail_DcEmailTest : System.Web.UI.Page
 {
@@ -39,6 +40,20 @@ public partial class DcEmail_DcEmailTest : System.Web.UI.Page
 
     protected void btnTest_Click(object sender, EventArgs e)
     {
+
+
+        List<string> lStr = new List<string>();
+        foreach (SrnprCommon.ReplaceFile.ItemPramEntityCRF ipe in se.GetTempleteCode(sXmlId).Parm)
+        {
+            if(!string.IsNullOrEmpty(Request[sInputNameLeft+ipe.ParmName]))
+            {
+                lStr.Add(ipe.ParmName+"="+ Request[sInputNameLeft + ipe.ParmName]);
+            }
+        }
+
+       List<DoSendEmailEntityCRF> doSend=  se.GetSendList(sXmlId, string.Join(SrnprCommon.CommonConfig.ReplaceFileConfigCCC.Config.SplitString, lStr.ToArray()));
+
+
 
     }
 }

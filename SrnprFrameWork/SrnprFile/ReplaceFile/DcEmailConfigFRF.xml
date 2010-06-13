@@ -5,7 +5,7 @@
 	<Config>
 		<SplitString>$$##$#$$</SplitString>
 		<ReplaceFrom>{</ReplaceFrom>
-		<MainParmReplace>{${0}}</MainParmReplace>
+		<MainParmReplace>[${0}]</MainParmReplace>
 		<XmlFileDirectory>D:\SrnprFrameWork\ReplaceFile\EmailInfo\</XmlFileDirectory>
 
 		<CodeFileApp>.xml</CodeFileApp>
@@ -18,7 +18,7 @@
 	<!--服务器信息系列-->
 	<DataServerInfo>
 		<!--数据库服务器  id：服务器编号    serverType：服务器类型(mssql：Microsoft SQL Server；mysql：MySql DataServer；oracle：Oracle DataServer)-->
-		<DataServer id="dsSBUOperation" serverType="mssql" connString="">
+		<DataServer id="dsSBUOperation" serverType="mssql" connString="server=10.1.126.248\dbtest;database=SBUOperation;user id=sa;password=xgou.cn;">
 		</DataServer>
 	</DataServerInfo>
 

@@ -4,7 +4,7 @@
 
 	<FrameWorkConfig>
 
-		<FrameWorkServerId></FrameWorkServerId>
+		
 		
 	</FrameWorkConfig>
 
@@ -12,7 +12,7 @@
 
 	<CommonConfig>
 
-		<ConfigFilePath>S:\AAAProject\SrnprFrameWork\SrnprFile\ConfigFile\SrnprCommonConfigFCF.xml</ConfigFilePath>
+		<ConfigFilePath>S:\AAAProject\SrnprFrameWork\SrnprFile\ConfigFile\SrnprCommonConfigFCFTest.xml</ConfigFilePath>
 		
 	</CommonConfig>
 	

@@ -25,11 +25,16 @@
         <div>
             <asp:Repeater ID="rpList" runat="server">
                 <ItemTemplate>
+                
+                <div style="margin-bottom:10px; border:solid 1px #999999; padding:5px">
+                
                    <div> 收件人：
                     
                         <%#Eval("ToEmail")%></div>
                    <div>邮件标题：<%#Eval("Title") %></div>
                    <div> 邮件内容：<%#Eval("Content") %></div>
+                   
+                   </div>
                 </ItemTemplate>
                
                 

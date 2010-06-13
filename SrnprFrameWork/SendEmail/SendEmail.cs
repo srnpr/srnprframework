@@ -201,6 +201,14 @@ namespace SendEmail
 
 
 
+        /// <summary>
+        /// 
+        /// Description: 更新元素
+        /// Author:Liudpc
+        /// Create Date: 2010-6-13 14:23:21
+        /// </summary>
+        /// <param name="edi"></param>
+        /// <returns></returns>
         public bool UpdateItemToXml(EmailDesignItem edi)
         {
 
@@ -217,6 +225,15 @@ namespace SendEmail
         }
 
 
+        /// <summary>
+        /// 
+        /// Description: 删除元素
+        /// Author:Liudpc
+        /// Create Date: 2010-6-13 14:23:13
+        /// </summary>
+        /// <param name="sXmlId"></param>
+        /// <param name="sGuId"></param>
+        /// <returns></returns>
         public bool DelItemToXml(string sXmlId,string sGuId)
         {
             TempleteDesignEntityCRF design = GetTempleteDesign(sXmlId);
@@ -233,6 +250,14 @@ namespace SendEmail
         }
 
 
+        /// <summary>
+        /// 
+        /// Description: 添加元素
+        /// Author:Liudpc
+        /// Create Date: 2010-6-13 14:23:06
+        /// </summary>
+        /// <param name="edi"></param>
+        /// <returns></returns>
         public bool AddItemToXml(EmailDesignItem edi)
         {
             TempleteDesignEntityCRF design = GetTempleteDesign(edi.XmlId);
@@ -281,6 +306,14 @@ namespace SendEmail
         }
 
 
+        /// <summary>
+        /// 
+        /// Description: 根据xml编号得到代码实体
+        /// Author:Liudpc
+        /// Create Date: 2010-6-13 14:22:50
+        /// </summary>
+        /// <param name="sXmlId"></param>
+        /// <returns></returns>
         public TempleteCodeEntityCRF GetTempleteCode(string sXmlId)
         {
             return replace.GetTempleteCode(ReplaceFileConfigCCC.Config.XmlFileDirectory + sXmlId + ReplaceFileConfigCCC.Config.CodeFileApp);

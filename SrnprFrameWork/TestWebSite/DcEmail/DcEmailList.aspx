@@ -20,9 +20,14 @@
         <br />
         <br />
         
-        <table>
+        <table cellpadding="1" cellspacing="1" border="1">
        
-       
+       <tr>
+       <th>编号</th>
+       <th>邮件主描述</th>
+       <th>邮件辅助描述</th>
+       <th>操作</th>
+       </tr>
         <asp:Repeater ID="rpList" runat="server">       
         <ItemTemplate>
          <tr>
@@ -30,8 +35,8 @@
         <td><%#Eval("Title")%></td>
         <td><%#Eval("Description")%></td>
         
-        <td><a href="DcEmailDesign.aspx?id=<%#Eval("ID") %>" target="_blank">修改</a></td>
-        <td><a href="DcEmailTest.aspx?id=<%#Eval("ID") %>" target="_blank">测试</a></td>
+        <td><a href="DcEmailDesign.aspx?id=<%#Eval("ID") %>" target="_blank">修改</a>
+        <a href="DcEmailTest.aspx?id=<%#Eval("ID") %>" target="_blank">测试</a></td>
         </tr>
         
         

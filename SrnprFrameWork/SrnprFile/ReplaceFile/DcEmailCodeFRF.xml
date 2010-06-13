@@ -24,9 +24,17 @@
 				<!--邮件发送服务器连接编号-->
 				<EmailServerId></EmailServerId>
 
+				<!--状态标识符号 非必须参数  如果有该参数则会以状态选择来进行条件判断-->
+				<StateSql>SELECT  EnumTypeName AS 枚举名称 FROM dbo.Ass_EnumTypeInfo</StateSql>
 
+				
+				
+				
 				<!--版本标识符-->
 				<Version>2.0.0.0</Version>
+				
+				
+				
 			</ConfigItem>
 
 
@@ -45,6 +53,10 @@
 				<MainSql>select filed1 as 字段一号,field2 as 字段二号,select create as 创建人,dbo.ddd() as 序列 from table1 where fieldx=@parm1</MainSql>
 				<MainSql>select filed7 as 字段七号,field8 as 字段八号 from table2 where fieldy='{$参数一号}'</MainSql>
 			</MainItem>
+			
+			
+			
+			
 
 		</ReplaceFileCode>
 	</ReplaceFile>

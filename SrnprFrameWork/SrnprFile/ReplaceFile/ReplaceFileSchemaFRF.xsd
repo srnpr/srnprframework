@@ -24,7 +24,8 @@
 													<xs:element name="Description"  minOccurs="1" maxOccurs="1" type="xs:string"></xs:element>
 													<xs:element name="DataServerId"  minOccurs="1" maxOccurs="1" type="xs:string"></xs:element>
 													<xs:element name="EmailServerId"  minOccurs="1" maxOccurs="1" type="xs:string"></xs:element>
-
+													<xs:element name="StateSql"  minOccurs="0" maxOccurs="1" type="xs:string"></xs:element>
+													
 													<xs:element name="Version"  minOccurs="1" maxOccurs="1" type="xs:string"></xs:element>
 												</xs:sequence>
 											</xs:complexType>

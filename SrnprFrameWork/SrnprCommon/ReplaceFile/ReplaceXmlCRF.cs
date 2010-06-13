@@ -318,7 +318,11 @@ namespace SrnprCommon.ReplaceFile
                     tce.Config.Description = xnConfig.SelectSingleNode("Description").InnerText.Trim();
                     tce.Config.DataServerId = xnConfig.SelectSingleNode("DataServerId").InnerText.Trim();
                     tce.Config.EmailServerId = xnConfig.SelectSingleNode("EmailServerId").InnerText.Trim();
-                    tce.Config.Version = xnConfig.SelectSingleNode("Version").InnerText.Trim();
+                   
+
+                    tce.Config.StateSql =XmlGetChildValueByName(xnConfig,"StateSql");
+
+                    tce.Config.Version =XmlGetChildValueByName(xnConfig,"Version");
 
                     //判断是否可用
                     string sUsed = xnConfig.SelectSingleNode("Used").InnerText.Trim().ToLower();
@@ -518,6 +522,32 @@ namespace SrnprCommon.ReplaceFile
             xn.InnerText = sInnerText;
             xnFather.AppendChild(xn);
 
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// Description: 根据名称取出子元素并返回字符串  适用于可能存在
+        /// Author:Liudpc
+        /// Create Date: 2010-6-13 11:25:00
+        /// </summary>
+        /// <param name="xnFather"></param>
+        /// <param name="sNodeName"></param>
+        /// <returns></returns>
+        private string XmlGetChildValueByName(XmlNode xnFather, string sNodeName)
+        {
+            XmlNode xn = xnFather.SelectSingleNode(sNodeName);
+            if (xn != null)
+            {
+                return xn.InnerText.Trim();
+
+            }
+            else
+            {
+                return null;
+            }
         }
 
 

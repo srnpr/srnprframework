@@ -54,6 +54,15 @@ namespace SrnprCommon.ReplaceFile
         public string EmailServerId { get; set; }
 
 
+
+        /// <summary>
+        /// Description: 快速设定状态标识符
+        /// Author:Liudpc
+        /// Create Date: 2010-6-13 11:18:50
+        /// </summary>
+        public string StateSql { get; set; }
+
+
         /// <summary>
         /// Description: 版本标识符
         /// Author:Liudpc

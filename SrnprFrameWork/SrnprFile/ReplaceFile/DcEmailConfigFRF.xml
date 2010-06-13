@@ -6,6 +6,10 @@
 		<SplitString>#s#p##l##i#t#</SplitString>
 		<ReplaceFrom>[</ReplaceFrom>
 		<MainParmReplace>[${0}]</MainParmReplace>
+		<ListParmReplace>[#{0}]</ListParmReplace>
+		<ListParmReplace>[#列表开始]</ListParmReplace>
+		<ListParmReplace>[#{0}]</ListParmReplace>
+		
 		<XmlFileDirectory>D:\SrnprFrameWork\ReplaceFile\EmailInfo\</XmlFileDirectory>
 
 		<CodeFileApp>.xml</CodeFileApp>

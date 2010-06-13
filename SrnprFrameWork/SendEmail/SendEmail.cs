@@ -7,6 +7,7 @@ using SrnprCommon;
 using SrnprCommon.CommonConfig;
 using SrnprCommon.CommonFunction;
 using SrnprCommon.EnumCommon;
+using System.Data;
 
 namespace SendEmail
 {
@@ -314,6 +315,29 @@ namespace SendEmail
 
 
             returnResult.Title = txe.Code.Config.Title;
+
+
+            if (!string.IsNullOrEmpty(txe.Code.Config.StateSql))
+            {
+
+                string[] strParm = replace.RegexSqlStringParm(txe.Code.Config.StateSql);
+
+                if (strParm.Length == 1)
+                {
+                    returnResult.StateTitle = strParm[0];
+
+                    returnResult.StateValue = replace.GetStateValue(txe.Code.Config.StateSql, ReplaceFileConfigCCC.Config.DataServerList.SingleOrDefault(t => t.Id == txe.Code.Config.DataServerId));
+
+                    
+
+                }
+            }
+
+
+
+
+
+
 
 
 

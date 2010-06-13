@@ -5,6 +5,14 @@ using System.Text;
 
 namespace SendEmail
 {
+
+
+
+    /// <summary>
+    /// Description: 邮件设计实体
+    /// Author:Liudpc
+    /// Create Date: 2010-6-13 11:29:14
+    /// </summary>
     public class EmailDesignItem
     {
         public string XmlId { get; set; }

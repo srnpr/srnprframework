@@ -144,9 +144,32 @@ namespace SrnprCommon.ReplaceFile
 
             return true;
         }
-       
-        
-      
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// Description: 根据状态sql取出所有的状态
+        /// Author:Liudpc
+        /// Create Date: 2010-6-13 11:46:22
+        /// </summary>
+        /// <param name="sSqlstring"></param>
+        /// <param name="db"></param>
+        /// <returns></returns>
+        public string[] GetStateValue(string sSqlstring, ServerDatabaseEntityCRF db)
+        {
+            DataTable dt = new DataHelper.DataTableAutoHelperCDH().GetDataTable(db, sSqlstring, null);
+            string[] str = new string[dt.Rows.Count];
+            for (int i = 0, j = str.Length; i < j; i++)
+            {
+                str[i] = dt.Rows[i][0].ToString().Trim();
+            }
+            return str;
+
+        }
+
 
 
 

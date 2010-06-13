@@ -60,7 +60,10 @@
             <asp:HiddenField ID="hfTempId" runat="server" />
             <br />
             条件表达式：<asp:TextBox ID="tbRuleExpress" runat="server" Width="539px"></asp:TextBox>
+            
+            <asp:CheckBoxList ID="cblState" runat="server"></asp:CheckBoxList>
             <br />
+            
             <br />
             接收人：<asp:TextBox ID="tbToEmail" runat="server"></asp:TextBox>
             <br />

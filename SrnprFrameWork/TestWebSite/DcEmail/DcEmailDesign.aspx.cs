@@ -84,6 +84,25 @@ public partial class DcEmail_DcEmailDesign : System.Web.UI.Page
 
         SendEmail.EmailDesignInfo edi = se.GetDesign(sId);
 
+
+        if (string.IsNullOrEmpty(edi.StateTitle))
+        {
+            cblState.Visible = false;
+        }
+        else
+        {
+            tbRuleExpress.Visible = false;
+
+            foreach (string s in edi.StateValue)
+            {
+                cblState.Items.Add(new ListItem(s.Trim(), s.Trim()));
+            }
+
+
+        }
+
+
+
         lbParmsShow.Text = edi.Parms;
 
         rpList.DataSource = edi.ListItem;

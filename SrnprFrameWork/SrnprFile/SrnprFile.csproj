@@ -56,7 +56,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ConfigFile\SrnprCommonConfigFCF.xml" />
+    <Content Include="ConfigFile\SrnprCommonConfigFCFTest.xml" />
+    <Content Include="ConfigFile\SrnprCommonConfigFormalFCF.xml" />
     <Content Include="ConfigFile\SrnprWebConfigXmlFCF.xml" />
     <Content Include="ConfigFile\SrnprWebConfigCssFCF.css" />
     <Content Include="ConfigFile\SrnprWebConfigXsltFCF.xslt" />

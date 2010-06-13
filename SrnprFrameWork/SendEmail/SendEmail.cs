@@ -344,6 +344,14 @@ namespace SendEmail
 
 
 
+        /// <summary>
+        /// 
+        /// Description: 得到设计信息
+        /// Author:Liudpc
+        /// Create Date: 2010-6-13 14:25:49
+        /// </summary>
+        /// <param name="sXmlId"></param>
+        /// <returns></returns>
         public EmailDesignInfo GetDesign(string sXmlId)
         {
 

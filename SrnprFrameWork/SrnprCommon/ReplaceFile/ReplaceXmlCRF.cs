@@ -673,12 +673,30 @@ namespace SrnprCommon.ReplaceFile
             {
                 MatchCollection mc = Regex.Matches(sContent, "\\[#循环开始\\].*?\\[#循环结束\\]", RegexOptions.Singleline);
                 
-
-                foreach(Match m in mc)
+                
+                for (int i = 0, j = mc.Count; i < j; i++)
                 {
+                    StringBuilder sb = new StringBuilder();
+                    for (int n = 0, m = dataEntity.ListParms[i].Rows.Count; n < m; n++)
+                    {
 
-                    
+                        string sList = mc[i].Value.Replace("[#循环开始]", "").Replace("[#循环结束]","");
+
+                        for (int q = 0, w = dataEntity.ListParms[i].Columns.Count; q < w; q++)
+                        {
+                            sList=sList.Replace("[#"+dataEntity.ListParms[i].Columns[q].ColumnName.Trim()+"]",dataEntity.ListParms[i].Rows[n][q].ToString());
+                        }
+                        sb.Append(sList);
+
+                    }
+
+                    sContent = sContent.Replace(mc[i].Value, sb.ToString());
+
                 }
+
+
+
+               
 
 
             }

@@ -94,7 +94,11 @@ namespace SendEmail
 
                         ItemTempleteEmailInfoEntityCRF emailEntity = replaceEntity.TempleteXml.Design.ItemTemplete.SingleOrDefault(t => t.Guid == send.TempleteId) as ItemTempleteEmailInfoEntityCRF;
                         send.Title = replace.ReplaceParmsByDict(emailEntity.Title, dataReplace.MainParms);
-                        send.Content = replace.ReplaceParmsByDict(emailEntity.Content, dataReplace.MainParms);
+
+                        send.Content = replace.GetReplaceContentFromDatabase(emailEntity.Content, dataReplace);
+
+                        
+
 
 
                         send.EmailServerId = replaceEntity.TempleteXml.Code.Config.EmailServerId;

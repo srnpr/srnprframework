@@ -72,7 +72,7 @@
             <br />
             <br />
             邮件内容(fck)：<br />
-            <asp:TextBox ID="tbContent" runat="server" Height="89px" Width="635px"></asp:TextBox>
+            <asp:TextBox ID="tbContent" runat="server" TextMode="MultiLine" Height="89px" Width="635px"></asp:TextBox>
             <br />
             <br />
             <asp:Button ID="btnSave" runat="server" Text="提交" OnClick="btnSave_Click" />

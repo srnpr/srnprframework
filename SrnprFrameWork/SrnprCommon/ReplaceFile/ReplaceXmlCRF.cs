@@ -202,16 +202,27 @@ namespace SrnprCommon.ReplaceFile
             if (rfe.TempleteXml.Code.MainSql.Count > 0)
             {
                 SqlParameter[] sp=sqlParmList.ToArray();
+
+                
+                
+
                 foreach(ItemMainSqlEntityCRF imse in rfe.TempleteXml.Code.MainSql)
                 {
-                    DataTable dt = dtah.GetDataTable(rfe.DataServer,ReplaceParmsByDict(  imse.SqlString,dre.MainParms), sp);
-                    if(dt.Rows.Count>0)
-                    {
-                        for (int i = 0, j = dt.Columns.Count; i < j; i++)
+                   
+                        DataTable dt = dtah.GetDataTable(rfe.DataServer, ReplaceParmsByDict(imse.SqlString, dre.MainParms), sp);
+                        if (dt.Rows.Count > 0)
                         {
-                            dre.MainParms.Add(string.Format(sMainReplace, dt.Columns[i].ColumnName), dt.Rows[0][i].ToString().Trim());
+                            for (int i = 0, j = dt.Columns.Count; i < j; i++)
+                            {
+                                dre.MainParms.Add(string.Format(sMainReplace, dt.Columns[i].ColumnName), dt.Rows[0][i].ToString().Trim());
+                            }
                         }
-                    }
+                        else
+                        {
+                            break;
+                        }
+                      
+                    
                 }
             }
 

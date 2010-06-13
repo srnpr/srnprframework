@@ -3,8 +3,8 @@
 
 
 	<Config>
-		<SplitString>$$##$#$$</SplitString>
-		<ReplaceFrom>{</ReplaceFrom>
+		<SplitString>#s#p##l##i#t#</SplitString>
+		<ReplaceFrom>[</ReplaceFrom>
 		<MainParmReplace>[${0}]</MainParmReplace>
 		<XmlFileDirectory>D:\SrnprFrameWork\ReplaceFile\EmailInfo\</XmlFileDirectory>
 

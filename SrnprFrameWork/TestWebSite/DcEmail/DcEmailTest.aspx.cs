@@ -45,9 +45,13 @@ public partial class DcEmail_DcEmailTest : System.Web.UI.Page
         List<string> lStr = new List<string>();
         foreach (SrnprCommon.ReplaceFile.ItemPramEntityCRF ipe in se.GetTempleteCode(sXmlId).Parm)
         {
-            if(!string.IsNullOrEmpty(Request[sInputNameLeft+ipe.ParmName]))
+            if (!string.IsNullOrEmpty(Request[sInputNameLeft + ipe.ParmName]))
             {
-                lStr.Add(ipe.ParmName+"="+ Request[sInputNameLeft + ipe.ParmName]);
+                lStr.Add(ipe.ParmName + "=" + Request[sInputNameLeft + ipe.ParmName]);
+            }
+            else
+            {
+                lStr.Add(ipe.ParmName + "=" );
             }
         }
 

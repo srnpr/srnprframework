@@ -303,6 +303,12 @@ namespace SendEmail
         }
 
 
+        public string GetMainReplace(string sInput)
+        {
+            return string.Format(ReplaceFileConfigCCC.Config.MainParmReplace, sInput);
+        }
+
+
 
 
         public EmailDesignInfo GetDesign(string sXmlId)

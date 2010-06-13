@@ -51,6 +51,27 @@ public partial class DcEmail_DcEmailDesign : System.Web.UI.Page
                     EmailDesignItem eItem = eInfo.ListItem.SingleOrDefault(t => t.TempleteGuid == sGuid);
 
 
+                    if (cblState.Visible)
+                    {
+                        string[] str = eItem.RuleExpress.Replace("||", "|").Replace("==", "=").Split('|');
+
+                        foreach(string s in str)
+                        {
+                            string sValue = s.Split('=')[1].Replace("\"","");
+
+                            if(cblState.Items.FindByValue(sValue)!=null)
+                            cblState.Items.FindByValue(sValue).Selected = true;
+                        }
+
+                        
+
+
+                    }
+                    
+                    
+
+
+
                     tbContent.Text = eItem.Content;
                     tbRuleExpress.Text = eItem.RuleExpress;
                     tbTitle.Text = eItem.Title;
@@ -85,21 +106,24 @@ public partial class DcEmail_DcEmailDesign : System.Web.UI.Page
         SendEmail.EmailDesignInfo edi = se.GetDesign(sId);
 
 
-        if (string.IsNullOrEmpty(edi.StateTitle))
+        if (!string.IsNullOrEmpty(edi.StateTitle)&&edi.StateValue.Length>0)
         {
-            cblState.Visible = false;
+            if (cblState.Items.Count == 0)
+            {
+                tbRuleExpress.Visible = false;
+                lbRule.Text = edi.StateTitle.Trim();
+
+                foreach (string s in edi.StateValue)
+                {
+                    cblState.Items.Add(new ListItem(s.Trim(), s.Trim()));
+                }
+            }
+
         }
         else
         {
-            tbRuleExpress.Visible = false;
-            lbRule.Text = edi.StateTitle.Trim();
 
-            foreach (string s in edi.StateValue)
-            {
-                cblState.Items.Add(new ListItem(s.Trim(), s.Trim()));
-            }
-
-
+            cblState.Visible = false;
         }
 
 
@@ -113,12 +137,49 @@ public partial class DcEmail_DcEmailDesign : System.Web.UI.Page
 
     protected void btnSave_Click(object sender, EventArgs e)
     {
-
+        SendEmail.SendEmail se= new SendEmail.SendEmail();
 
         EmailDesignItem edi = new EmailDesignItem();
 
         edi.Content = tbContent.Text.Trim();
+
+
+
         edi.RuleExpress=tbRuleExpress.Text.Trim();
+
+        if (cblState.Visible)
+        {
+            string sStateName =se.GetMainReplace( lbRule.Text.Trim());
+
+            List<string> lStr = new List<string>();
+
+            foreach (ListItem li in cblState.Items)
+            {
+                if (li.Selected)
+                {
+
+                    lStr.Add("\""+sStateName+"\"==\"" + li.Value.Trim() + "\"");
+
+                }
+            }
+
+            if (lStr.Count > 0)
+            {
+
+                edi.RuleExpress = string.Join("||", lStr.ToArray());
+            }
+            else
+            {
+                edi.RuleExpress = "\"" + sStateName + "\"==\"" + sStateName+"\"";
+            }
+
+
+
+
+        }
+
+
+
         edi.TempleteGuid = hfTempId.Value.Trim();
         edi.Title = tbTitle.Text.Trim();
         edi.ToEmail = tbToEmail.Text.Trim();
@@ -126,11 +187,11 @@ public partial class DcEmail_DcEmailDesign : System.Web.UI.Page
 
         if(string.IsNullOrEmpty(edi.TempleteGuid))
         {
-            new SendEmail.SendEmail().AddItemToXml(edi);
+           se.AddItemToXml(edi);
         }
         else
         {
-            new SendEmail.SendEmail().UpdateItemToXml(edi);
+            se.UpdateItemToXml(edi);
         }
 
          pShow.Visible = false;

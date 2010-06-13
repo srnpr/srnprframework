@@ -59,7 +59,7 @@
         <asp:Panel ID="pShow" runat="server">
             <asp:HiddenField ID="hfTempId" runat="server" />
             <br />
-            条件表达式：<asp:TextBox ID="tbRuleExpress" runat="server" Width="539px"></asp:TextBox>
+            <asp:Label ID="lbRule" runat="server" Text="条件表达式："></asp:Label><asp:TextBox ID="tbRuleExpress" runat="server" Width="539px"></asp:TextBox>
             
             <asp:CheckBoxList ID="cblState" runat="server"></asp:CheckBoxList>
             <br />

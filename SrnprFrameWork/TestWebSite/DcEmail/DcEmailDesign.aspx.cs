@@ -92,6 +92,7 @@ public partial class DcEmail_DcEmailDesign : System.Web.UI.Page
         else
         {
             tbRuleExpress.Visible = false;
+            lbRule.Text = edi.StateTitle.Trim();
 
             foreach (string s in edi.StateValue)
             {

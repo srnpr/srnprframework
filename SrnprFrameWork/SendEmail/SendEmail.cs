@@ -69,7 +69,7 @@ namespace SendEmail
                         if (itemRule.RuleType == ItemRuleType.RuleExpression)
                         {
                             ItemRuleExpressionEntityCRF ruleExpress = itemRule as ItemRuleExpressionEntityCRF;
-                            string sResult = EvalFunctionCCF.Eval(replace.ReplaceParmsByDict(ruleExpress.Expression, dataReplace.MainParms)).ToLower();
+                            string sResult =string.IsNullOrEmpty(ruleExpress.Expression)?"true": EvalFunctionCCF.Eval(replace.ReplaceParmsByDict(ruleExpress.Expression, dataReplace.MainParms)).ToLower();
                             if (sResult == "true")
                             {
                                 doSend.Add(new DoSendEmailEntityCRF() { TempleteId = ruleExpress.TempleteGuid, ToEmail = replace.ReplaceParmsByDict(ruleExpress.ExpressionParm, dataReplace.MainParms) });

@@ -31,12 +31,12 @@
 		<EmailServer id="esDcgou">
 			<Id></Id>
 			<SendMailName>dcgou@digitalchina.com</SendMailName>
-			<SendMailDisplayName></SendMailDisplayName>
-			<IsBodyHtml></IsBodyHtml>
+			<SendMailDisplayName>消费管理系统</SendMailDisplayName>
+			<IsBodyHtml>true</IsBodyHtml>
 			<SmtpHost>10.1.180.242</SmtpHost>
 			<UserName></UserName>
 			<Password></Password>
-			<EnableSsl></EnableSsl>
+			<EnableSsl>false</EnableSsl>
 			<Port></Port>
 		</EmailServer>
 		

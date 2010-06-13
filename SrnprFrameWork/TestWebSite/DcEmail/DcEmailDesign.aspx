@@ -68,7 +68,7 @@
             邮件标题：<asp:TextBox ID="tbTitle" runat="server" Width="557px"></asp:TextBox>
             <br />
             <br />
-            邮件内容：<br />
+            邮件内容(fck)：<br />
             <asp:TextBox ID="tbContent" runat="server" Height="89px" Width="635px"></asp:TextBox>
             <br />
             <br />

@@ -61,6 +61,9 @@ public partial class DcEmail_DcEmailTest : System.Web.UI.Page
             }
         }
 
+
+
+
        List<DoSendEmailEntityCRF> doSend=  se.GetSendList(sXmlId, string.Join(SrnprCommon.CommonConfig.ReplaceFileConfigCCC.Config.SplitString, lStr.ToArray()));
 
        lbCount.Text = doSend.Count.ToString();

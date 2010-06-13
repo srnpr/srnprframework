@@ -60,42 +60,44 @@ namespace SendEmail
 
 
 
-
-            if (replaceEntity.TempleteXml.Design.ItemRule.Count > 0)
+            if (dataReplace.ResultFlag)
             {
-                foreach (ItemRuleEntityAtCRF itemRule in replaceEntity.TempleteXml.Design.ItemRule)
+                if (replaceEntity.TempleteXml.Design.ItemRule.Count > 0)
                 {
-                    if (itemRule.RuleType == ItemRuleType.RuleExpression)
+                    foreach (ItemRuleEntityAtCRF itemRule in replaceEntity.TempleteXml.Design.ItemRule)
                     {
-                        ItemRuleExpressionEntityCRF ruleExpress = itemRule as ItemRuleExpressionEntityCRF;
-                        string sResult =EvalFunctionCCF.Eval(replace.ReplaceParmsByDict(ruleExpress.Expression, dataReplace.MainParms)).ToLower();
-                        if (sResult == "true")
+                        if (itemRule.RuleType == ItemRuleType.RuleExpression)
                         {
-                            doSend.Add(new DoSendEmailEntityCRF() { TempleteId = ruleExpress.TempleteGuid, ToEmail = replace.ReplaceParmsByDict(ruleExpress.ExpressionParm, dataReplace.MainParms) });
+                            ItemRuleExpressionEntityCRF ruleExpress = itemRule as ItemRuleExpressionEntityCRF;
+                            string sResult = EvalFunctionCCF.Eval(replace.ReplaceParmsByDict(ruleExpress.Expression, dataReplace.MainParms)).ToLower();
+                            if (sResult == "true")
+                            {
+                                doSend.Add(new DoSendEmailEntityCRF() { TempleteId = ruleExpress.TempleteGuid, ToEmail = replace.ReplaceParmsByDict(ruleExpress.ExpressionParm, dataReplace.MainParms) });
 
 
+                            }
                         }
                     }
                 }
-            }
 
 
 
 
-            if (doSend.Count > 0)
-            {
-
-
-
-                foreach (DoSendEmailEntityCRF send in doSend)
+                if (doSend.Count > 0)
                 {
 
-                    ItemTempleteEmailInfoEntityCRF emailEntity = replaceEntity.TempleteXml.Design.ItemTemplete.SingleOrDefault(t => t.Guid == send.TempleteId) as ItemTempleteEmailInfoEntityCRF;
-                    send.Title = replace.ReplaceParmsByDict(emailEntity.Title, dataReplace.MainParms);
-                    send.Content = replace.ReplaceParmsByDict(emailEntity.Content, dataReplace.MainParms);
-          
 
-                    send.EmailServerId = replaceEntity.TempleteXml.Code.Config.EmailServerId;
+
+                    foreach (DoSendEmailEntityCRF send in doSend)
+                    {
+
+                        ItemTempleteEmailInfoEntityCRF emailEntity = replaceEntity.TempleteXml.Design.ItemTemplete.SingleOrDefault(t => t.Guid == send.TempleteId) as ItemTempleteEmailInfoEntityCRF;
+                        send.Title = replace.ReplaceParmsByDict(emailEntity.Title, dataReplace.MainParms);
+                        send.Content = replace.ReplaceParmsByDict(emailEntity.Content, dataReplace.MainParms);
+
+
+                        send.EmailServerId = replaceEntity.TempleteXml.Code.Config.EmailServerId;
+                    }
                 }
             }
 

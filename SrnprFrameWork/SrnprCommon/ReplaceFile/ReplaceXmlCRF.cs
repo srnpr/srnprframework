@@ -260,6 +260,7 @@ namespace SrnprCommon.ReplaceFile
             #region 开始进行循环表格取出
             if (rfe.TempleteXml.Code.ListSql.Count > 0)
             {
+                dre.ListParms = new List<DataTable>();
                 SqlParameter[] sp=sqlParmList.ToArray();
                 foreach (ItemListSqlEntityCRF ilse in rfe.TempleteXml.Code.ListSql)
                 {
@@ -659,6 +660,37 @@ namespace SrnprCommon.ReplaceFile
 
             return returnDesignEntity;
         }
+
+
+
+
+        public string GetReplaceContentFromDatabase(string sContent,DataReplaceEntityCRF dataEntity)
+        {
+
+            sContent = ReplaceParmsByDict(sContent, dataEntity.MainParms);
+
+            if(sContent.IndexOf("[#循环开始]")>-1)
+            {
+                MatchCollection mc = Regex.Matches(sContent, "\\[#循环开始\\].*?\\[#循环结束\\]", RegexOptions.Singleline);
+                
+
+                foreach(Match m in mc)
+                {
+
+                    
+                }
+
+
+            }
+
+
+
+            return sContent;
+
+        }
+
+
+
 
 
         /// <summary>

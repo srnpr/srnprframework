@@ -67,8 +67,9 @@
     <Content Include="LogFile\LogFileConfigFLF.xml" />
     <Content Include="LogFile\ReplaceFileLogFLF.xml" />
     <Content Include="ReplaceFile\DcEmailCodeFRF.xml" />
-    <Content Include="ReplaceFile\DcEmailConfigFRF.xml" />
+    <Content Include="ReplaceFile\DcEmailConfigTestFRF.xml" />
     <Content Include="ReplaceFile\DcEmailCodeFRF.ds.xml" />
+    <Content Include="ReplaceFile\DcEmailConfigFormalFRF.xml" />
     <Content Include="WebFile\SrnprWebCssDragElementFWF.css" />
     <Content Include="WebFile\SrnprWebJsCommonFWF.js" />
     <Content Include="WebFile\SrnprWebJsDragElementFWF.js" />

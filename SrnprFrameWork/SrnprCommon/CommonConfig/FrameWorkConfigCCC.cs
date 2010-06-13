@@ -10,6 +10,9 @@ namespace SrnprCommon.CommonConfig
      class FrameWorkConfigCCC
     {
         private static FrameWorkConfigEntityCCC frameConfig;
+
+        private const string BaseConfigPath = "D:\\SrnprFrameWork\\";
+
         public static FrameWorkConfigEntityCCC GetFrameWorkConfigRoot()
         {
             if (frameConfig == null)
@@ -18,7 +21,7 @@ namespace SrnprCommon.CommonConfig
 
 
                 XmlDocument xd = new XmlDocument();
-                xd.Load(@"S:\AAAProject\SrnprFrameWork\SrnprFile\FraomeWork\SrnprFrameWorkConfigSFW.xml");
+                xd.Load(@BaseConfigPath+"SrnprFrameWorkConfigSFW.xml");
                frameConfig.CommonConfigPath= xd.DocumentElement.SelectSingleNode("CommonConfig/ConfigFilePath").InnerText;
 
 

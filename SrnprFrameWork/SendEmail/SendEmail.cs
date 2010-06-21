@@ -11,6 +11,13 @@ using System.Data;
 
 namespace SendEmail
 {
+
+
+    /// <summary>
+    /// Description: 发送邮件
+    /// Author:Liudpc
+    /// Create Date: 2010-6-21 15:18:48
+    /// </summary>
     public class SendEmail
     {
 

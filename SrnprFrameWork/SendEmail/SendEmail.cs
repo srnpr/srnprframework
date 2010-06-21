@@ -429,7 +429,7 @@ namespace SendEmail
                     edi.Title = ite.Title;
                     edi.Content = ite.Content;
                     edi.RuleExpress = ire.Expression;
-
+                  
                     returnResult.ListItem.Add(edi);
 
                 }

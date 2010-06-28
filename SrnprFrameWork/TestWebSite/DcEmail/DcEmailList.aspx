@@ -34,8 +34,8 @@
         <td><%#Eval("Id")%></td>
         <td><%#Eval("Title")%></td>
         <td><%#Eval("Description")%></td>
-        
-        <td><a href="DcEmailDesign.aspx?id=<%#Eval("ID") %>" target="_blank">修改</a>
+        <td><a href="DcEmailCode.aspx?id=<%#Eval("ID") %>" target="_blank">修改Code</a>
+        <a href="DcEmailDesign.aspx?id=<%#Eval("ID") %>" target="_blank">修改Design</a>
         <a href="DcEmailTest.aspx?id=<%#Eval("ID") %>" target="_blank">测试</a></td>
         </tr>
         

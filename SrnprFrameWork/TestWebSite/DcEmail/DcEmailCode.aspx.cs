@@ -96,12 +96,22 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
 
     protected void lbParmChange_Click(object sender, EventArgs e)
     {
+        string sParmGuid = ((Button)sender).CommandArgument;
+        
 
-        hfParmId.Value = ((Button)sender).CommandArgument;
-        pParmAdd.Visible = true;
-        btnParm.Text = "确认修改";
+        SrnprCommon.ReplaceFile.ItemPramEntityCRF ipe= TempCode.Parm.SingleOrDefault(t => t.ParmName == sParmGuid);
+        if (ipe != null)
+        {
+            hfParmId.Value = sParmGuid;
+            pParmAdd.Visible = true;
+            btnParm.Text = "确认修改";
+            tbParmName.Text = ipe.ParmName;
+            tbParmDescriptioon.Text = ipe.ParmText;
+            
 
-        TempCode.Parm.SingleOrDefault(t => t.ParmName == hfParmId.Value);
+
+
+        }
 
 
     }
@@ -117,6 +127,8 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
         pParmAdd.Visible = true;
         btnParm.Text = "确认添加";
         hfParmId.Value = "";
+        tbParmName.Text = "";
+        tbParmDescriptioon.Text = "";
 
 
 
@@ -129,10 +141,24 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
     {
         if (!string.IsNullOrEmpty(tbParmName.Text) && !string.IsNullOrEmpty(tbParmDescriptioon.Text))
         {
+            string sParmGuid = hfParmId.Value.Trim();
 
-            if (hfParmId.Value != "")
+            if (!string.IsNullOrEmpty(sParmGuid))
             {
-
+                SrnprCommon.ReplaceFile.ItemPramEntityCRF ipe = TempCode.Parm.SingleOrDefault(t => t.ParmName == sParmGuid);
+                if (ipe != null)
+                {
+                    ipe.ParmName = tbParmName.Text;
+                    ipe.ParmText = tbParmDescriptioon.Text;
+                }
+            }
+            else
+            {
+                SrnprCommon.ReplaceFile.ItemPramEntityCRF ipe = new SrnprCommon.ReplaceFile.ItemPramEntityCRF();
+                ipe.ParmName = tbParmName.Text.Trim();
+                ipe.ParmText = tbParmDescriptioon.Text.Trim();
+                ipe.Guid = Guid.NewGuid().ToString();
+                TempCode.Parm.Add(ipe);
             }
         }
     }

@@ -66,6 +66,9 @@
                     <th>
                         参数描述
                     </th>
+                    <th>
+                    操作
+                    </th>
                 </tr>
                 <asp:Repeater ID="rpParmItem" runat="server" 
                     >
@@ -75,7 +78,11 @@
                             <%#Eval("ParmName") %>
                             </td>
                             <td>
-                            <asp:LinkButton ID="lbChange" runat="server" CommandName="ParmName" CommandArgument=' <%#Eval("ParmName") %>' OnClick="lbParmChange_Click">修改</asp:LinkButton>
+                            <%#Eval("ParmText") %>
+                            </td>
+                            <td>
+                            <asp:LinkButton ID="lbChange" runat="server" CommandName="upd" CommandArgument=' <%#Eval("Guid") %>' OnClick="lbParmChange_Click">修改</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton1" runat="server" CommandName="del" CommandArgument=' <%#Eval("Guid") %>' OnClick="lbParmChange_Click">删除</asp:LinkButton>
                             </td>
                         </tr>
                     </ItemTemplate>

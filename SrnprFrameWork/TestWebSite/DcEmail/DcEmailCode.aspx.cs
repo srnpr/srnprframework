@@ -32,7 +32,12 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
                 TempCode=tc;
             }
 
-            Bind(TempCode);
+
+
+
+
+            BindFirst(TempCode);
+            BindList(TempCode);
 
 
             pParmAdd.Visible = false;
@@ -58,25 +63,28 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
     }
 
 
-    protected void Bind(SrnprCommon.ReplaceFile.TempleteCodeEntityCRF tc)
+    protected void BindFirst(SrnprCommon.ReplaceFile.TempleteCodeEntityCRF tc)
     {
 
         tbTitle.Text = tc.Config.Title;
         tbDescription.Text = tc.Config.Description;
 
 
-        rpParmItem.DataSource = tc.Parm;
-        rpParmItem.DataBind();
+
 
 
         ddlDataBase.DataSource = se.GetServerDatabase();
-        ddlDataBase.DataTextField =ddlDataBase.DataValueField= "Id";
+        ddlDataBase.DataTextField = ddlDataBase.DataValueField = "Id";
         ddlDataBase.DataBind();
 
         if (!string.IsNullOrEmpty(tc.Config.DataServerId))
         {
             ddlDataBase.SelectedIndex = ddlDataBase.Items.IndexOf(ddlDataBase.Items.FindByValue(tc.Config.DataServerId));
         }
+
+
+
+
 
         ddlServerEmail.DataSource = se.GetServerEmail();
         ddlServerEmail.DataTextField = ddlServerEmail.DataValueField = "Id";
@@ -86,6 +94,21 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
         {
             ddlServerEmail.SelectedIndex = ddlServerEmail.Items.IndexOf(ddlServerEmail.Items.FindByValue(tc.Config.EmailServerId));
         }
+    }
+
+
+
+
+    protected void BindList(SrnprCommon.ReplaceFile.TempleteCodeEntityCRF tc)
+    {
+
+        
+
+        rpParmItem.DataSource = tc.Parm;
+        rpParmItem.DataBind();
+
+
+       
 
 
 
@@ -96,22 +119,37 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
 
     protected void lbParmChange_Click(object sender, EventArgs e)
     {
-        string sParmGuid = ((Button)sender).CommandArgument;
-        
+        string sCommandName = ((LinkButton)sender).CommandName;
 
-        SrnprCommon.ReplaceFile.ItemPramEntityCRF ipe= TempCode.Parm.SingleOrDefault(t => t.ParmName == sParmGuid);
-        if (ipe != null)
+        string sParmGuid = ((LinkButton)sender).CommandArgument;
+
+        if (sCommandName == "upd")
         {
-            hfParmId.Value = sParmGuid;
-            pParmAdd.Visible = true;
-            btnParm.Text = "确认修改";
-            tbParmName.Text = ipe.ParmName;
-            tbParmDescriptioon.Text = ipe.ParmText;
-            
+            SrnprCommon.ReplaceFile.ItemPramEntityCRF ipe = TempCode.Parm.SingleOrDefault(t => t.Guid == sParmGuid);
+            if (ipe != null)
+            {
+                hfParmId.Value = sParmGuid;
+                pParmAdd.Visible = true;
+                btnParm.Text = "确认修改";
+                tbParmName.Text = ipe.ParmName;
+                tbParmDescriptioon.Text = ipe.ParmText;
 
 
 
+
+            }
         }
+        else if (sCommandName == "del")
+        {
+             SrnprCommon.ReplaceFile.ItemPramEntityCRF ipe = TempCode.Parm.SingleOrDefault(t => t.Guid == sParmGuid);
+             if (ipe != null)
+             {
+                 TempCode.Parm.Remove(ipe);
+             }
+             BindList(TempCode);
+        }
+
+        
 
 
     }
@@ -139,13 +177,13 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
     }
     protected void btnParm_Click(object sender, EventArgs e)
     {
-        if (!string.IsNullOrEmpty(tbParmName.Text) && !string.IsNullOrEmpty(tbParmDescriptioon.Text))
+        if (!string.IsNullOrEmpty(tbParmName.Text) && !string.IsNullOrEmpty(tbParmDescriptioon.Text) && TempCode.Parm.Count(t => t.ParmName == tbParmName.Text.Trim()) == 0)
         {
             string sParmGuid = hfParmId.Value.Trim();
 
             if (!string.IsNullOrEmpty(sParmGuid))
             {
-                SrnprCommon.ReplaceFile.ItemPramEntityCRF ipe = TempCode.Parm.SingleOrDefault(t => t.ParmName == sParmGuid);
+                SrnprCommon.ReplaceFile.ItemPramEntityCRF ipe = TempCode.Parm.SingleOrDefault(t => t.Guid == sParmGuid);
                 if (ipe != null)
                 {
                     ipe.ParmName = tbParmName.Text;
@@ -161,5 +199,7 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
                 TempCode.Parm.Add(ipe);
             }
         }
+
+        BindList(TempCode);
     }
 }

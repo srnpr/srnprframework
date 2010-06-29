@@ -23,5 +23,11 @@ namespace SrnprCommon.ReplaceFile
         public string SqlString { get; set; }
 
 
+        /// <summary>
+        /// Description: Guid
+        /// Author:Liudpc
+        /// Create Date: 2010-6-29 15:43:00
+        /// </summary>
+        public string Guid { get; set; }
     }
 }

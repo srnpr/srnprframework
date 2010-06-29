@@ -373,7 +373,7 @@ namespace SrnprCommon.ReplaceFile
                     tce.Parm = new List<ItemPramEntityCRF>();
                     foreach (XmlNode xn in xnlParms)
                     {
-                        tce.Parm.Add(new ItemPramEntityCRF() { ParmName = xn.Attributes["parmName"].Value.Trim(), ParmText = xn.Attributes["parmText"].Value.Trim() });
+                        tce.Parm.Add(new ItemPramEntityCRF() { ParmName = XmlGetAttValueByName(xn,"parmName"), ParmText =XmlGetAttValueByName(xn,"parmText"),Guid=XmlGetAttValueByName(xn,"guid")  });
                     }
                 }
 
@@ -388,7 +388,7 @@ namespace SrnprCommon.ReplaceFile
                     tce.MainSql = new List<ItemMainSqlEntityCRF>();
                     foreach (XmlNode xn in xnlMainSql)
                     {
-                        tce.MainSql.Add(new ItemMainSqlEntityCRF() { SqlString = xn.InnerText.Trim() });
+                        tce.MainSql.Add(new ItemMainSqlEntityCRF() { SqlString = xn.InnerText.Trim(), Guid = XmlGetAttValueByName(xn, "guid") });
                     }
                 }
 
@@ -403,7 +403,7 @@ namespace SrnprCommon.ReplaceFile
                     tce.ListSql = new List<ItemListSqlEntityCRF>();
                     foreach (XmlNode xn in xnlListItem)
                     {
-                        tce.ListSql.Add(new ItemListSqlEntityCRF() { SqlString = xn.InnerText.Trim() });
+                        tce.ListSql.Add(new ItemListSqlEntityCRF() { SqlString = xn.InnerText.Trim(), Guid = XmlGetAttValueByName(xn, "guid") });
                     }
                 }
 
@@ -576,6 +576,28 @@ namespace SrnprCommon.ReplaceFile
             }
         }
 
+
+        /// <summary>
+        /// 
+        /// Description: 根据名称取出属性
+        /// Author:Liudpc
+        /// Create Date: 2010-6-29 15:11:36
+        /// </summary>
+        /// <param name="xnNode"></param>
+        /// <param name="sAttName"></param>
+        /// <returns></returns>
+        private string XmlGetAttValueByName(XmlNode xnNode, string sAttName)
+        {
+            XmlAttribute xa = xnNode.Attributes[sAttName];
+            if (xa != null)
+            {
+                return xa.Value;
+            }
+            else
+            {
+                return null;
+            }
+        }
 
 
         /// <summary>

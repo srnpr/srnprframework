@@ -39,6 +39,7 @@
 														<xs:complexType>
 															<xs:attribute name="parmText" use="required"></xs:attribute>
 															<xs:attribute name="parmName" use="required"></xs:attribute>
+															<xs:attribute name="guid" use="required"></xs:attribute>
 														</xs:complexType>
 													</xs:element>
 												</xs:sequence>
@@ -47,14 +48,31 @@
 										<xs:element name="MainItem" minOccurs="0" maxOccurs="1">
 											<xs:complexType>
 												<xs:sequence>
-													<xs:element name="MainSql" minOccurs="1" maxOccurs="unbounded"></xs:element>
+													<xs:element name="MainSql" minOccurs="1" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:simpleContent>
+																<xs:extension base="xs:string">
+																	<xs:attribute name="guid" use="required"></xs:attribute>
+																</xs:extension>
+															</xs:simpleContent>
+														</xs:complexType>
+													</xs:element>
+													
 												</xs:sequence>
 											</xs:complexType>
 										</xs:element>
 										<xs:element name="ListItem" maxOccurs="1" minOccurs="0">
 											<xs:complexType>
 												<xs:sequence>
-													<xs:element name="ListSql" minOccurs="1" maxOccurs="unbounded"></xs:element>
+													<xs:element name="ListSql" minOccurs="1" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:simpleContent>
+																<xs:extension base="xs:string">
+																	<xs:attribute name="guid" use="required"></xs:attribute>
+																</xs:extension>
+															</xs:simpleContent>
+														</xs:complexType>
+													</xs:element>
 												</xs:sequence>
 											</xs:complexType>
 										</xs:element>

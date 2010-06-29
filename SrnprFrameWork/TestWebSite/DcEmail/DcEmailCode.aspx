@@ -55,6 +55,9 @@
             </tr>
         </table>
         <div>
+        <div>参数列表：<asp:LinkButton ID="lbParmAdd" runat="server" onclick="lbParmAdd_Click">添加</asp:LinkButton>
+            </div>
+        <div>
             <table>
                 <tr>
                     <th>
@@ -72,12 +75,23 @@
                             <%#Eval("ParmName") %>
                             </td>
                             <td>
-                            <asp:Button ID="btnChange" runat="server" CommandName="ParmName" CommandArgument=' <%#Eval("ParmName") %>' OnClick="btnParmChange_Click"/>
+                            <asp:LinkButton ID="lbChange" runat="server" CommandName="ParmName" CommandArgument=' <%#Eval("ParmName") %>' OnClick="lbParmChange_Click">修改</asp:LinkButton>
                             </td>
                         </tr>
                     </ItemTemplate>
                 </asp:Repeater>
             </table>
+            </div>
+            <asp:Panel ID="pParmAdd" runat="server">
+            <asp:HiddenField ID="hfParmId" runat="server" />
+                参数名称：<asp:TextBox ID="tbParmName" runat="server"></asp:TextBox>
+                参数中文描述：<asp:TextBox ID="tbParmDescriptioon" runat="server"></asp:TextBox>
+                <asp:Button ID="btnParm" runat="server" Text="确认操作" onclick="btnParm_Click" />
+                &nbsp;
+                <asp:Button ID="btnParmCancel" runat="server" Text="取消" 
+                    onclick="btnParmCancel_Click" />
+            
+            </asp:Panel>
         </div>
         <div>
             <table>

@@ -41,8 +41,8 @@
 
 			<!--输入参数-->
 			<ParmItem>
-				<Parm parmText="参数一号" parmName="parm1" />
-				<Parm parmText="特殊接收人" parmName="parm2"/>
+				<Parm parmText="参数一号" parmName="parm1" guid="111" />
+				<Parm parmText="特殊接收人" parmName="parm2" guid="22"/>
 			</ParmItem>
 
 			
@@ -50,8 +50,8 @@
 			
 			<!--主字段读取参数  请使用as中文来进行  方便设计人员进行匹配使用-->
 			<MainItem>
-				<MainSql>select filed1 as 字段一号,field2 as 字段二号,select create as 创建人,dbo.ddd() as 序列 from table1 where fieldx=@parm1</MainSql>
-				<MainSql>select filed7 as 字段七号,field8 as 字段八号 from table2 where fieldy='{$参数一号}'</MainSql>
+				<MainSql guid="2223">select filed1 as 字段一号,field2 as 字段二号,select create as 创建人,dbo.ddd() as 序列 from table1 where fieldx=@parm1</MainSql>
+				<MainSql guid="44">select filed7 as 字段七号,field8 as 字段八号 from table2 where fieldy='{$参数一号}'</MainSql>
 			</MainItem>
 			
 			

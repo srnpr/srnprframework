@@ -26,6 +26,12 @@ namespace SrnprCommon.ReplaceFile
 
 
 
+        /// <summary>
+        /// Description: Guid
+        /// Author:Liudpc
+        /// Create Date: 2010-6-29 15:42:26
+        /// </summary>
+        public string Guid { get; set; }
         
 
     }

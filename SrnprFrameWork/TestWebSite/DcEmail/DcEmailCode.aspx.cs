@@ -34,6 +34,9 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
 
             Bind(TempCode);
 
+
+            pParmAdd.Visible = false;
+
         }
 
 
@@ -91,15 +94,46 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
     }
 
 
-    protected void btnParmChange_Click(object sender, EventArgs e)
+    protected void lbParmChange_Click(object sender, EventArgs e)
     {
-       
+
+        hfParmId.Value = ((Button)sender).CommandArgument;
+        pParmAdd.Visible = true;
+        btnParm.Text = "确认修改";
+
+        TempCode.Parm.SingleOrDefault(t => t.ParmName == hfParmId.Value);
+
+
     }
 
 
 
     protected void btnSave_Click(object sender, EventArgs e)
     {
+        
+    }
+    protected void lbParmAdd_Click(object sender, EventArgs e)
+    {
+        pParmAdd.Visible = true;
+        btnParm.Text = "确认添加";
+        hfParmId.Value = "";
 
+
+
+    }
+    protected void btnParmCancel_Click(object sender, EventArgs e)
+    {
+        pParmAdd.Visible = false;
+    }
+    protected void btnParm_Click(object sender, EventArgs e)
+    {
+        if (!string.IsNullOrEmpty(tbParmName.Text) && !string.IsNullOrEmpty(tbParmDescriptioon.Text))
+        {
+
+            if (hfParmId.Value != "")
+            {
+
+            }
+        }
     }
 }

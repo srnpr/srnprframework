@@ -31,5 +31,14 @@ namespace SrnprCommon.ReplaceFile
         /// </summary>
         public string ParmText { get; set; }
 
+
+
+        /// <summary>
+        /// Description: 参数的唯一标识
+        /// Author:Liudpc
+        /// Create Date: 2010-6-29 15:14:24
+        /// </summary>
+        public string Guid { get; set; }
+
     }
 }

@@ -55,72 +55,90 @@
             </tr>
         </table>
         <div>
-        <div>参数列表：<asp:LinkButton ID="lbParmAdd" runat="server" onclick="lbParmAdd_Click">添加</asp:LinkButton>
+            <div>
+                参数列表：<asp:LinkButton ID="lbParmAdd" runat="server" OnClick="lbParmAdd_Click">添加</asp:LinkButton>
             </div>
-        <div>
-            <table>
-                <tr>
-                    <th>
-                        参数名称
-                    </th>
-                    <th>
-                        参数描述
-                    </th>
-                    <th>
-                    操作
-                    </th>
-                </tr>
-                <asp:Repeater ID="rpParmItem" runat="server" 
-                    >
-                    <ItemTemplate>
-                        <tr>
-                            <td>
-                            <%#Eval("ParmName") %>
-                            </td>
-                            <td>
-                            <%#Eval("ParmText") %>
-                            </td>
-                            <td>
-                            <asp:LinkButton ID="lbChange" runat="server" CommandName="upd" CommandArgument=' <%#Eval("Guid") %>' OnClick="lbParmChange_Click">修改</asp:LinkButton>
-                            <asp:LinkButton ID="LinkButton1" runat="server" CommandName="del" CommandArgument=' <%#Eval("Guid") %>' OnClick="lbParmChange_Click">删除</asp:LinkButton>
-                            </td>
-                        </tr>
-                    </ItemTemplate>
-                </asp:Repeater>
-            </table>
+            <div>
+                <table>
+                    <tr>
+                        <th>
+                            参数名称
+                        </th>
+                        <th>
+                            参数描述
+                        </th>
+                        <th>
+                            操作
+                        </th>
+                    </tr>
+                    <asp:Repeater ID="rpParmItem" runat="server">
+                        <ItemTemplate>
+                            <tr>
+                                <td>
+                                    <%#Eval("ParmName") %>
+                                </td>
+                                <td>
+                                    <%#Eval("ParmText") %>
+                                </td>
+                                <td>
+                                    <asp:LinkButton ID="lbParmChange" runat="server" CommandName="upd_parm" CommandArgument=' <%#Eval("Guid") %>'
+                                        OnClick="lbChange_Click">修改</asp:LinkButton>
+                                    <asp:LinkButton ID="lbParmDel" runat="server" CommandName="del_parm" CommandArgument=' <%#Eval("Guid") %>'
+                                        OnClick="lbChange_Click">删除</asp:LinkButton>
+                                </td>
+                            </tr>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </table>
             </div>
             <asp:Panel ID="pParmAdd" runat="server">
-            <asp:HiddenField ID="hfParmId" runat="server" />
+                <asp:HiddenField ID="hfParmId" runat="server" />
                 参数名称：<asp:TextBox ID="tbParmName" runat="server"></asp:TextBox>
                 参数中文描述：<asp:TextBox ID="tbParmDescriptioon" runat="server"></asp:TextBox>
-                <asp:Button ID="btnParm" runat="server" Text="确认操作" onclick="btnParm_Click" />
+                <asp:Button ID="btnParm" runat="server" Text="确认操作" OnClick="btnParm_Click" />
                 &nbsp;
-                <asp:Button ID="btnParmCancel" runat="server" Text="取消" 
-                    onclick="btnParmCancel_Click" />
-            
+                <asp:Button ID="btnParmCancel" runat="server" Text="取消" CommandName="cancel_parm"
+                    OnClick="btnCancel_Click" />
             </asp:Panel>
         </div>
         <div>
-            <table>
-                <tr>
-                    <th>
-                        参数名称
-                    </th>
-                    <th>
-                        参数描述
-                    </th>
-                </tr>
-                <asp:Repeater ID="rpMainItem" runat="server">
-                    <ItemTemplate>
-                        <tr>
-                            <td>
-                            </td>
-                            <td>
-                            </td>
-                        </tr>
-                    </ItemTemplate>
-                </asp:Repeater>
-            </table>
+            <div>
+                主Sql：<asp:LinkButton ID="lbMainsqlAdd" runat="server" OnClick="lbParmAdd_Click">添加</asp:LinkButton>
+            </div>
+            <div>
+                <table>
+                    <tr>
+                        <th>
+                            参数名称
+                        </th>
+                        <th>
+                            操作
+                        </th>
+                    </tr>
+                    <asp:Repeater ID="rpMainItem" runat="server">
+                        <ItemTemplate>
+                            <tr>
+                                <td>
+                                    <%#Eval("MainSql") %>
+                                </td>
+                                <td>
+                                    <asp:LinkButton ID="lbMainsqlChange" runat="server" CommandName="upd_mainsql" CommandArgument=' <%#Eval("Guid") %>'
+                                        OnClick="lbChange_Click">修改</asp:LinkButton>
+                                    <asp:LinkButton ID="lbMainsqlDel" runat="server" CommandName="del_mainsql" CommandArgument=' <%#Eval("Guid") %>'
+                                        OnClick="lbChange_Click">删除</asp:LinkButton>
+                                </td>
+                            </tr>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </table>
+            </div>
+            <asp:Panel ID="pMainsql" runat="server">
+                <asp:HiddenField ID="hfMainsqlId" runat="server" />
+                主sql：<asp:TextBox ID="tbMainsql" runat="server"></asp:TextBox>
+                <asp:Button ID="btnMainsql" runat="server" Text="确认操作" OnClick="btnMainsql_Click" />
+                &nbsp;
+                <asp:Button ID="Button2" runat="server" Text="取消" CommandName="cancel_mainsql" OnClick="btnCancel_Click" />
+            </asp:Panel>
         </div>
         <div>
             <table>
@@ -145,13 +163,7 @@
             </table>
         </div>
     </div>
-    
-    
-    
-    <asp:Button ID="btnSave" runat="server" onclick="btnSave_Click" Text="确认修改" />
-    
-    
-    
+    <asp:Button ID="btnSave" runat="server" OnClick="btnSave_Click" Text="确认修改" />
     </form>
 </body>
 </html>

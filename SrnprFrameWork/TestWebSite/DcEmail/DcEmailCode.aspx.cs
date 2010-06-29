@@ -117,13 +117,13 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
     }
 
 
-    protected void lbParmChange_Click(object sender, EventArgs e)
+    protected void lbChange_Click(object sender, EventArgs e)
     {
         string sCommandName = ((LinkButton)sender).CommandName;
 
         string sParmGuid = ((LinkButton)sender).CommandArgument;
 
-        if (sCommandName == "upd")
+        if (sCommandName == "upd_parm")
         {
             SrnprCommon.ReplaceFile.ItemPramEntityCRF ipe = TempCode.Parm.SingleOrDefault(t => t.Guid == sParmGuid);
             if (ipe != null)
@@ -139,7 +139,7 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
 
             }
         }
-        else if (sCommandName == "del")
+        else if (sCommandName == "del_parm")
         {
              SrnprCommon.ReplaceFile.ItemPramEntityCRF ipe = TempCode.Parm.SingleOrDefault(t => t.Guid == sParmGuid);
              if (ipe != null)
@@ -147,6 +147,13 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
                  TempCode.Parm.Remove(ipe);
              }
              BindList(TempCode);
+        }
+        else if (sCommandName == "upd_mainsql")
+        {
+        }
+        else if (sCommandName == "del_mainsql")
+        {
+
         }
 
         
@@ -171,10 +178,28 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
 
 
     }
-    protected void btnParmCancel_Click(object sender, EventArgs e)
+    protected void btnCancel_Click(object sender, EventArgs e)
     {
-        pParmAdd.Visible = false;
+        switch (((Button)sender).CommandName)
+        {
+
+            case "cancel_parm":
+                pParmAdd.Visible = false;
+                break;
+            case "cancel_mainsql":
+                pMainsql.Visible = false;
+                break;
+            case "":
+                break;
+        }
+
+       
     }
+
+
+
+
+
     protected void btnParm_Click(object sender, EventArgs e)
     {
         if (!string.IsNullOrEmpty(tbParmName.Text) && !string.IsNullOrEmpty(tbParmDescriptioon.Text) && TempCode.Parm.Count(t => t.ParmName == tbParmName.Text.Trim()) == 0)
@@ -201,5 +226,9 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
         }
 
         BindList(TempCode);
+    }
+    protected void btnMainsql_Click(object sender, EventArgs e)
+    {
+
     }
 }

@@ -455,9 +455,18 @@ namespace SendEmail
         }
 
 
-        
 
 
+        public List<ServerDatabaseEntityCRF> GetServerDatabase()
+        {
+            return SrnprCommon.CommonConfig.ReplaceFileConfigCCC.Config.DataServerList;
+        }
+
+
+        public List<ServerEmailEntityCRF> GetServerEmail()
+        {
+            return SrnprCommon.CommonConfig.ReplaceFileConfigCCC.Config.EmailServerList;
+        }
         
     }
 }

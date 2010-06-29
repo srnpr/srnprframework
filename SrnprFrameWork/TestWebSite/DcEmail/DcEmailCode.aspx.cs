@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 public partial class DcEmail_DcEmailCode : System.Web.UI.Page
 {
 
-
+    SendEmail.SendEmail se = new SendEmail.SendEmail();
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -18,7 +18,7 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
 
             if (Request["id"] != null)
             {
-                SendEmail.SendEmail se = new SendEmail.SendEmail();
+               
 
                 TempCode = se.GetTempleteCode(Request["id"]);
             }
@@ -62,7 +62,44 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
         tbDescription.Text = tc.Config.Description;
 
 
+        rpParmItem.DataSource = tc.Parm;
+        rpParmItem.DataBind();
 
+
+        ddlDataBase.DataSource = se.GetServerDatabase();
+        ddlDataBase.DataTextField =ddlDataBase.DataValueField= "Id";
+        ddlDataBase.DataBind();
+
+        if (!string.IsNullOrEmpty(tc.Config.DataServerId))
+        {
+            ddlDataBase.SelectedIndex = ddlDataBase.Items.IndexOf(ddlDataBase.Items.FindByValue(tc.Config.DataServerId));
+        }
+
+        ddlServerEmail.DataSource = se.GetServerEmail();
+        ddlServerEmail.DataTextField = ddlServerEmail.DataValueField = "Id";
+        ddlServerEmail.DataBind();
+
+        if (!string.IsNullOrEmpty(tc.Config.EmailServerId))
+        {
+            ddlServerEmail.SelectedIndex = ddlServerEmail.Items.IndexOf(ddlServerEmail.Items.FindByValue(tc.Config.EmailServerId));
+        }
+
+
+
+
+
+    }
+
+
+    protected void btnParmChange_Click(object sender, EventArgs e)
+    {
+       
+    }
+
+
+
+    protected void btnSave_Click(object sender, EventArgs e)
+    {
 
     }
 }

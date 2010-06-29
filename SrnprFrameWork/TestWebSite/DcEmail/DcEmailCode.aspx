@@ -39,7 +39,7 @@
                     邮件服务器：
                 </td>
                 <td>
-                    <asp:DropDownList ID="ddlServerType" runat="server">
+                    <asp:DropDownList ID="ddlServerEmail" runat="server">
                     </asp:DropDownList>
                 </td>
             </tr>
@@ -64,12 +64,15 @@
                         参数描述
                     </th>
                 </tr>
-                <asp:Repeater ID="rpParmItem" runat="server">
+                <asp:Repeater ID="rpParmItem" runat="server" 
+                    >
                     <ItemTemplate>
                         <tr>
                             <td>
+                            <%#Eval("ParmName") %>
                             </td>
                             <td>
+                            <asp:Button ID="btnChange" runat="server" CommandName="ParmName" CommandArgument=' <%#Eval("ParmName") %>' OnClick="btnParmChange_Click"/>
                             </td>
                         </tr>
                     </ItemTemplate>
@@ -121,6 +124,13 @@
             </table>
         </div>
     </div>
+    
+    
+    
+    <asp:Button ID="btnSave" runat="server" onclick="btnSave_Click" Text="确认修改" />
+    
+    
+    
     </form>
 </body>
 </html>

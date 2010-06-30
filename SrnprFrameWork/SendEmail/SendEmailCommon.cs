@@ -298,7 +298,19 @@ namespace SendEmail
 
 
 
-
+        /// <summary>
+        /// 
+        /// Description: 保存代码文档
+        /// Author:Liudpc
+        /// Create Date: 2010-6-30 11:37:42
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="sXmlId"></param>
+        /// <returns></returns>
+        public SrnprCommon.BaseEntity.ResultReturnEntityCBE SaveTempleteCode(TempleteCodeEntityCRF code, string sXmlId)
+        {
+            return replace.SaveTempleteCode(code, GetXmlPathByXmlId(sXmlId));
+        }
 
 
 

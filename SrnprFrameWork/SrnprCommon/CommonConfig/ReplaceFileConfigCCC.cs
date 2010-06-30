@@ -62,7 +62,7 @@ namespace SrnprCommon.CommonConfig
                     replaceEntity.XmlFileDirectory = FrameWorkConfigCCC.GetConfigPath(XmlStaticCCF.GetChildValueByName(xnRoot,"Config/XmlFileDirectory"));
                     IoStaticCCF.CheckDirectory(replaceEntity.XmlFileDirectory);
 
-                    replaceEntity.XmlFileHistoryDir = XmlStaticCCF.GetChildValueByName(xnRoot, "Config/ListFilePath");
+                    replaceEntity.XmlFileHistoryDir =  FrameWorkConfigCCC.GetConfigPath(XmlStaticCCF.GetChildValueByName(xnRoot, "Config/XmlFileHistoryDir"));
                     IoStaticCCF.CheckDirectory(replaceEntity.XmlFileHistoryDir);
 
 
@@ -71,11 +71,11 @@ namespace SrnprCommon.CommonConfig
 
 
 
-                    replaceEntity.ListFileDir = XmlStaticCCF.GetChildValueByName(xnRoot, "Config/ListFileDir");
+                    replaceEntity.ListFileDir = FrameWorkConfigCCC.GetConfigPath( XmlStaticCCF.GetChildValueByName(xnRoot, "Config/ListFileDir"));
 
                     IoStaticCCF.CheckDirectory(replaceEntity.ListFileDir);
 
-                    replaceEntity.ListFilePath = XmlStaticCCF.GetChildValueByName(xnRoot,"Config/ListFilePath");
+                    replaceEntity.ListFilePath =replaceEntity.ListFileDir + XmlStaticCCF.GetChildValueByName(xnRoot,"Config/ListFilePath");
 
 
                     foreach (XmlNode xn in xnRoot.SelectNodes("DataServerInfo/DataServer"))

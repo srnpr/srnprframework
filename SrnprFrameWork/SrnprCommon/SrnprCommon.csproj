@@ -69,6 +69,7 @@
     <Compile Include="EnumCommon\LogFileCEC.cs" />
     <Compile Include="EnumCommon\ReplaceFileCEC.cs" />
     <Compile Include="EnumCommon\WebWidgetCEC.cs" />
+    <Compile Include="InterFace\ResultReturnBaseCIF.cs" />
     <Compile Include="InterFace\WebWidgetBaseCIF.cs" />
     <Compile Include="InterFace\WebWidgetConfigCIF.cs" />
     <Compile Include="MessageInfo\WebWidgetErrorCMI.cs" />

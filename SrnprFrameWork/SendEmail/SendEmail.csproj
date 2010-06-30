@@ -49,7 +49,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EmailDesignInfo.cs" />
     <Compile Include="ResultSendEmail.cs" />
-    <Compile Include="SendEmail.cs" />
+    <Compile Include="SendEmailCommon.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SrnprCommon\SrnprCommon.csproj">

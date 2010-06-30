@@ -18,14 +18,14 @@ namespace SendEmail
     /// Author:Liudpc
     /// Create Date: 2010-6-21 15:18:48
     /// </summary>
-    public class SendEmail
+    public class SendEmailCommon
     {
 
 
 
           private static ReplaceXmlCRF replace;
 
-          public SendEmail()
+          public SendEmailCommon()
         {
             if (replace == null)
             {

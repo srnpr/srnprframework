@@ -69,5 +69,23 @@ namespace SrnprCommon.CommonFunction
         }
 
 
+        /// <summary>
+        /// 
+        /// Description: 添加属性
+        /// Author:Liudpc
+        /// Create Date: 2010-6-30 16:15:25
+        /// </summary>
+        /// <param name="xn"></param>
+        /// <param name="sAttName"></param>
+        /// <param name="sAttValue"></param>
+        /// <returns></returns>
+        public static bool AppendAtt(XmlNode xn, string sAttName, string sAttValue)
+        {
+            XmlAttribute xa = xn.OwnerDocument.CreateAttribute(sAttName);
+            xa.Value = sAttValue;
+            xn.Attributes.Append(xa);
+            return true;
+        }
+
     }
 }

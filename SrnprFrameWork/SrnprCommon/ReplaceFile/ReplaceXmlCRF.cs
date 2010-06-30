@@ -542,7 +542,7 @@ namespace SrnprCommon.ReplaceFile
         public BaseEntity.ResultReturnEntityCBE SaveTempleteCode(TempleteCodeEntityCRF code, string sSavePath)
         {
             BaseEntity.ResultReturnEntityCBE rre = new SrnprCommon.BaseEntity.ResultReturnEntityCBE();
-
+            rre.ResultFlag = true;
             
             XmlDocument xd = new XmlDocument();
             XmlNode xnReplaceFileRoot = xd.CreateElement("ReplaceFileRoot");
@@ -551,11 +551,39 @@ namespace SrnprCommon.ReplaceFile
 
 
             #region 开始保存配置文件
+            if (rre.ResultFlag)
+            {
+                XmlNode xnConfigItem = xd.CreateElement("ConfigItem");
+                XmlAppendNode(xd, "Used", code.Config.Used ? "true" : "false", xnConfigItem);
+                XmlAppendNode(xd, "Title", code.Config.Title, xnConfigItem);
+                XmlAppendNode(xd, "Description", code.Config.Description, xnConfigItem);
+                XmlAppendNode(xd, "DataServerId", code.Config.DataServerId, xnConfigItem);
+                XmlAppendNode(xd, "EmailServerId", code.Config.EmailServerId, xnConfigItem);
+                XmlAppendNode(xd, "StateSql", code.Config.StateSql, xnConfigItem);
+                XmlAppendNode(xd, "Version", code.Config.Version, xnConfigItem);
 
-
-
+                xnReplaceFileCode.AppendChild(xnConfigItem);
+            }
             #endregion
 
+
+            #region 开始保存输入参数
+            if (rre.ResultFlag)
+            {
+                XmlNode xnParmItem = xd.CreateElement("ParmItem");
+
+                foreach (var v in code.Parm)
+                {
+                    XmlNode xnParm = xd.CreateElement("Parm");
+                    xnParm.Attributes["parmText"].Value = v.ParmText;
+                    xnParm.Attributes["parmName"].Value = v.ParmName;
+                    xnParm.Attributes["guid"].Value = v.Guid;
+                    xnParmItem.AppendChild(xnParm);
+                }
+
+                xnReplaceFileCode.AppendChild(xnParmItem);
+            }
+            #endregion
 
 
 

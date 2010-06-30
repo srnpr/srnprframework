@@ -54,7 +54,7 @@ namespace SrnprCommon.CommonFunction
         /// <param name="sNodeName"></param>
         /// <param name="sNodeInnerText"></param>
         /// <returns></returns>
-        public XmlNode AppendChildNode(XmlNode xn, string sNodeName, string sNodeInnerText)
+        public static XmlNode AppendChildNode(XmlNode xn, string sNodeName, string sNodeInnerText)
         {
             XmlNode xnChild=xn.OwnerDocument.CreateElement(sNodeName);
 

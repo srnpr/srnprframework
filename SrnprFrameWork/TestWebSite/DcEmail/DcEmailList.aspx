@@ -12,6 +12,8 @@
     
         <asp:Button ID="Button1" runat="server" onclick="Button1_Click" 
             Text="重新检测所有文件" />
+            
+            <a href="DcEmailCode.aspx">新建</a>
         <br />
         <br />
         <br />

@@ -11,11 +11,11 @@
 		<ListParmReplace>[#{0}]</ListParmReplace>
 		
 		<XmlFileDirectory>~\ReplaceFile\EmailInfo\</XmlFileDirectory>
-		<XmlFilehistoryDir>~\ReplaceFile\EmailBack\</XmlFilehistoryDir>
+		<XmlFileHistoryDir>~\ReplaceFile\EmailBack\</XmlFileHistoryDir>
 		<CodeFileApp>.xml</CodeFileApp>
 		<DesignFileApp>.ds.xml</DesignFileApp>
-
-		<ListFilePath>D:\SrnprFrameWork\ReplaceFile\EmailList\EmailList.xml</ListFilePath>
+		<ListFileDir>~\ReplaceFile\EmailList\</ListFileDir>
+		<ListFilePath>EmailList.xml</ListFilePath>
 		
 	</Config>
 	

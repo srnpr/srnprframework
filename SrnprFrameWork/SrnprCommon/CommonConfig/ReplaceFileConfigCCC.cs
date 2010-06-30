@@ -45,13 +45,13 @@ namespace SrnprCommon.CommonConfig
                     replaceEntity.SplitString = xnRoot.SelectSingleNode("Config/SplitString").InnerText.Trim();
                     replaceEntity.ReplaceFrom = xnRoot.SelectSingleNode("Config/ReplaceFrom").InnerText.Trim();
                     replaceEntity.MainParmReplace = xnRoot.SelectSingleNode("Config/MainParmReplace").InnerText.Trim();
-                    replaceEntity.XmlFileDirectory =FrameWorkConfigCCC.GetConfigPath( xnRoot.SelectSingleNode("Config/XmlFileDirectory").InnerText.Trim());
-                    if (!Directory.Exists(replaceEntity.XmlFileDirectory))
-                    {
-                        Directory.CreateDirectory(replaceEntity.XmlFileDirectory);
-                    }
+
+                    replaceEntity.XmlFileDirectory = FrameWorkConfigCCC.GetConfigPath(XmlStaticCCF.GetChildValueByName(xnRoot,"Config/XmlFileDirectory"));
+                    IoStaticCCF.CheckDirectory(replaceEntity.XmlFileDirectory);
 
                     replaceEntity.XmlFileHistoryDir = XmlStaticCCF.GetChildValueByName(xnRoot, "Config/ListFilePath");
+                    IoStaticCCF.CheckDirectory(replaceEntity.XmlFileHistoryDir);
+
 
                     replaceEntity.CodeFileApp = xnRoot.SelectSingleNode("Config/CodeFileApp").InnerText.Trim();
                     replaceEntity.DesignFileApp = xnRoot.SelectSingleNode("Config/DesignFileApp").InnerText.Trim();
@@ -59,10 +59,8 @@ namespace SrnprCommon.CommonConfig
 
 
                     replaceEntity.ListFileDir = XmlStaticCCF.GetChildValueByName(xnRoot, "Config/ListFileDir");
-                    if (!Directory.Exists(replaceEntity.ListFileDir))
-                    {
-                        Directory.CreateDirectory(replaceEntity.ListFileDir);
-                    }
+
+                    IoStaticCCF.CheckDirectory(replaceEntity.ListFileDir);
 
                     replaceEntity.ListFilePath = xnRoot.SelectSingleNode("Config/ListFilePath").InnerText.Trim();
 

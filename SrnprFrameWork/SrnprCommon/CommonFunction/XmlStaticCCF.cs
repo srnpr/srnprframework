@@ -7,7 +7,7 @@ using System.Xml;
 namespace SrnprCommon.CommonFunction
 {
 
-    public class XmlStaticCCF
+    public static class XmlStaticCCF
     {
 
         /// <summary>

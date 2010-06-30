@@ -11,7 +11,7 @@ namespace SrnprCommon.CommonConfig
     {
         private static FrameWorkConfigEntityCCC frameConfig;
 
-        private const string BaseConfigPath = "D:\\SrnprFrameWork\\";
+        private static string BaseConfigPath = "D:\\SrnprFrameWork\\";
 
         public static FrameWorkConfigEntityCCC GetFrameWorkConfigRoot()
         {

@@ -489,7 +489,7 @@ namespace SrnprCommon.ReplaceFile
                         ItemTempleteEmailInfoEntityCRF itee = tempEntity as ItemTempleteEmailInfoEntityCRF;
                         XmlNode xnTemplete = xd.CreateElement("Templete");
 
-                        XmlAttribute xa = xd.CreateAttribute("GuId");
+                        XmlAttribute xa = xd.CreateAttribute("guid");
                         xa.Value = itee.Guid;
                         xnTemplete.Attributes.Append(xa);
 

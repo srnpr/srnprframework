@@ -543,8 +543,11 @@ namespace SrnprCommon.ReplaceFile
         {
             BaseEntity.ResultReturnEntityCBE rre = new SrnprCommon.BaseEntity.ResultReturnEntityCBE();
             rre.ResultFlag = true;
-            
             XmlDocument xd = new XmlDocument();
+
+
+
+
             XmlNode xnReplaceFileRoot = xd.CreateElement("ReplaceFileRoot");
             XmlNode xnReplaceFile = xd.CreateElement("ReplaceFile");
             XmlNode xnReplaceFileCode = xd.CreateElement("ReplaceFileCode");
@@ -585,9 +588,47 @@ namespace SrnprCommon.ReplaceFile
             }
             #endregion
 
+            #region 开始保存主Sql
+            if (rre.ResultFlag)
+            {
+                XmlNode xnMainItem = xd.CreateElement("MainItem");
+
+                foreach (var v in code.MainSql)
+                {
+                    XmlNode xnMainSql = xd.CreateElement("MainSql");
+                    xnMainSql.Attributes["guid"].Value = v.Guid;
+                    xnMainSql.InnerText = v.SqlString;
+                    xnMainItem.AppendChild(xnMainSql);
+                }
+
+                xnReplaceFileCode.AppendChild(xnMainItem);
+            }
+            #endregion
+
+            #region 开始保存循环Sql
+            if (rre.ResultFlag)
+            {
+                XmlNode xnListItem = xd.CreateElement("ListItem");
+
+                foreach (var v in code.ListSql)
+                {
+                    XmlNode xnListSql = xd.CreateElement("ListSql");
+                    xnListSql.Attributes["guid"].Value = v.Guid;
+                    xnListSql.InnerText = v.SqlString;
+                    xnListItem.AppendChild(xnListSql);
+                }
+
+                xnReplaceFileCode.AppendChild(xnListItem);
+            }
+            #endregion
 
 
+            xnReplaceFile.AppendChild(xnReplaceFileCode);
+            xnReplaceFileRoot.AppendChild(xnReplaceFile);
 
+            xd.AppendChild(xnReplaceFileRoot);
+
+            xd.Save(sSavePath);
 
             return rre;
         }

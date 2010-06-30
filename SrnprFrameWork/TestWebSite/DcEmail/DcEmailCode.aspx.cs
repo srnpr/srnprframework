@@ -340,7 +340,7 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
                 break;
             case "add_listsql":
                 pListSql.Visible = true;
-                btnListSql.Text="确认添加";
+                btnListsql.Text="确认添加";
                 tbListsql.Text = "";
                 hfListsqlId.Value = "";
                 break;

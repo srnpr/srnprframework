@@ -11,7 +11,7 @@ namespace SrnprCommon.InterFace
     /// Author:Liudpc
     /// Create Date: 2010-6-30 10:55:51
     /// </summary>
-    interface ResultReturnBaseCIF
+    public interface ResultReturnBaseCIF
     {
 
 

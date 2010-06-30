@@ -152,12 +152,12 @@ namespace SendEmail
             int iSuccessFulCount = doSend.Count(t => t.SendSuccessFlag);
             if (iSuccessFulCount == 0)
             {
-                returnResult.ReplaceResultFlag = false;
+                returnResult.ResultFlag = false;
                 returnResult.SendState = 3;
             }
             else
             {
-                returnResult.ReplaceResultFlag = true;
+                returnResult.ResultFlag = true;
                 if (iSuccessFulCount == doSend.Count)
                 {
                     returnResult.SendState = 1;

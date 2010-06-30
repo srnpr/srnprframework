@@ -4,7 +4,7 @@
 
 	<ReplaceFile>
 
-		<ReplaceFilePath>D:\SrnprFrameWork\ReplaceFile\Config\DcEmailConfigTestFRF.xml</ReplaceFilePath>
+		<ReplaceFilePath>~\ReplaceFile\Config\DcEmailConfigTestFRF.xml</ReplaceFilePath>
 		
 	</ReplaceFile>
 	

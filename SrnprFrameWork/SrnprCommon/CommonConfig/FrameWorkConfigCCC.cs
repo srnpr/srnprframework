@@ -35,7 +35,7 @@ namespace SrnprCommon.CommonConfig
                 frameConfig = new FrameWorkConfigEntityCCC();
                 XmlDocument xd = new XmlDocument();
                 xd.Load(BaseConfigPath+"SrnprFrameWorkConfigSFW.xml");
-               frameConfig.CommonConfigPath= xd.DocumentElement.SelectSingleNode("CommonConfig/ConfigFilePath").InnerText;
+               frameConfig.CommonConfigPath=GetConfigPath( xd.DocumentElement.SelectSingleNode("CommonConfig/ConfigFilePath").InnerText);
 
 
 
@@ -57,9 +57,9 @@ namespace SrnprCommon.CommonConfig
          /// <returns></returns>
         public static string GetConfigPath(string sPathUrl)
         {
-            if (sPathUrl.IndexOf("~/") == 0)
+            if (sPathUrl.IndexOf("~\\") == 0)
             {
-                sPathUrl = sPathUrl.Replace("~/", BaseConfigPath);
+                sPathUrl = sPathUrl.Replace("~\\", BaseConfigPath);
             }
             return sPathUrl;
         }

@@ -12,7 +12,7 @@
 
 	<CommonConfig>
 
-		<ConfigFilePath>D:\SrnprFrameWork\Config\SrnprCommonConfigTestFCF.xml</ConfigFilePath>
+		<ConfigFilePath>~\Config\SrnprCommonConfigTestFCF.xml</ConfigFilePath>
 		
 	</CommonConfig>
 	

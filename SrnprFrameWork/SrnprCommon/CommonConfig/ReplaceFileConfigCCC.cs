@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using SrnprCommon.ReplaceFile;
+using System.IO;
+using SrnprCommon.CommonFunction;
 
 namespace SrnprCommon.CommonConfig
 {
@@ -35,7 +37,7 @@ namespace SrnprCommon.CommonConfig
                     XmlDocument xdConfig = new XmlDocument();
                     xdConfig.Load(CommonConfig.FrameWorkConfigCCC.GetFrameWorkConfigRoot().CommonConfigPath);
                     XmlDocument xd = new XmlDocument();
-                    xd.Load(xdConfig.DocumentElement.SelectSingleNode("ReplaceFile/ReplaceFilePath").InnerText.Trim());
+                    xd.Load(FrameWorkConfigCCC.GetConfigPath(xdConfig.DocumentElement.SelectSingleNode("ReplaceFile/ReplaceFilePath").InnerText.Trim()));
                     XmlNode xnRoot = xd.DocumentElement;
 
 
@@ -43,7 +45,14 @@ namespace SrnprCommon.CommonConfig
                     replaceEntity.SplitString = xnRoot.SelectSingleNode("Config/SplitString").InnerText.Trim();
                     replaceEntity.ReplaceFrom = xnRoot.SelectSingleNode("Config/ReplaceFrom").InnerText.Trim();
                     replaceEntity.MainParmReplace = xnRoot.SelectSingleNode("Config/MainParmReplace").InnerText.Trim();
-                    replaceEntity.XmlFileDirectory = xnRoot.SelectSingleNode("Config/XmlFileDirectory").InnerText.Trim();
+                    replaceEntity.XmlFileDirectory =FrameWorkConfigCCC.GetConfigPath( xnRoot.SelectSingleNode("Config/XmlFileDirectory").InnerText.Trim());
+                    if (!Directory.Exists(replaceEntity.XmlFileDirectory))
+                    {
+                        Directory.CreateDirectory(replaceEntity.XmlFileDirectory);
+                    }
+
+                    replaceEntity.XmlFilehistoryDir = XmlStaticCCF.GetChildValueByName(xnRoot, "Config/ListFilePath");
+
                     replaceEntity.CodeFileApp = xnRoot.SelectSingleNode("Config/CodeFileApp").InnerText.Trim();
                     replaceEntity.DesignFileApp = xnRoot.SelectSingleNode("Config/DesignFileApp").InnerText.Trim();
                     replaceEntity.ListFilePath = xnRoot.SelectSingleNode("Config/ListFilePath").InnerText.Trim();

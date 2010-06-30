@@ -33,10 +33,8 @@ namespace SrnprCommon.CommonConfig
             if (frameConfig == null)
             {
                 frameConfig = new FrameWorkConfigEntityCCC();
-
-
                 XmlDocument xd = new XmlDocument();
-                xd.Load(@BaseConfigPath+"SrnprFrameWorkConfigSFW.xml");
+                xd.Load(BaseConfigPath+"SrnprFrameWorkConfigSFW.xml");
                frameConfig.CommonConfigPath= xd.DocumentElement.SelectSingleNode("CommonConfig/ConfigFilePath").InnerText;
 
 

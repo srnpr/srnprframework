@@ -41,7 +41,8 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
 
 
             pParmAdd.Visible = false;
-
+            pMainsql.Visible = false;
+            pListSql.Visible = false;
         }
 
 
@@ -108,8 +109,12 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
         rpParmItem.DataBind();
 
 
-       
 
+        rpMainItem.DataSource = tc.MainSql;
+        rpMainItem.DataBind();
+
+        rpListItem.DataSource = tc.ListSql;
+        rpListItem.DataBind();
 
 
 
@@ -150,9 +155,25 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
         }
         else if (sCommandName == "upd_mainsql")
         {
+            SrnprCommon.ReplaceFile.ItemMainSqlEntityCRF imse = TempCode.MainSql.SingleOrDefault(t => t.Guid == sParmGuid);
+            if (imse != null)
+            {
+
+                hfMainsqlId.Value = sParmGuid;
+                pMainsql.Visible = true;
+                btnMainsql.Text = "确认修改";
+                tbMainsql.Text = imse.SqlString;
+            }
+
+
         }
         else if (sCommandName == "del_mainsql")
         {
+            SrnprCommon.ReplaceFile.ItemMainSqlEntityCRF imse = TempCode.MainSql.SingleOrDefault(t => t.Guid == sParmGuid);
+            if (imse != null)
+            {
+                TempCode.MainSql.Remove(imse);
+            }
 
         }
 
@@ -167,17 +188,7 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
     {
         
     }
-    protected void lbParmAdd_Click(object sender, EventArgs e)
-    {
-        pParmAdd.Visible = true;
-        btnParm.Text = "确认添加";
-        hfParmId.Value = "";
-        tbParmName.Text = "";
-        tbParmDescriptioon.Text = "";
-
-
-
-    }
+ 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
         switch (((Button)sender).CommandName)
@@ -189,7 +200,9 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
             case "cancel_mainsql":
                 pMainsql.Visible = false;
                 break;
-            case "":
+            case "cancel_listsql":
+
+                pListSql.Visible = false;
                 break;
         }
 
@@ -229,6 +242,84 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
     }
     protected void btnMainsql_Click(object sender, EventArgs e)
     {
+        if(!string.IsNullOrEmpty(tbMainsql.Text.Trim()))
+        {
+            string sMainsqlGuid = hfMainsqlId.Value.Trim();
+            if (!string.IsNullOrEmpty(sMainsqlGuid))
+            {
+                SrnprCommon.ReplaceFile.ItemMainSqlEntityCRF imse = TempCode.MainSql.SingleOrDefault(t => t.Guid == sMainsqlGuid);
+                if (imse != null)
+                {
+                    imse.SqlString = tbMainsql.Text;
+                }
+            }
+            else
+            {
+                SrnprCommon.ReplaceFile.ItemMainSqlEntityCRF imse = new SrnprCommon.ReplaceFile.ItemMainSqlEntityCRF();
+                imse.SqlString = tbMainsql.Text;
+                imse.Guid = Guid.NewGuid().ToString();
+                TempCode.MainSql.Add(imse);
+            }
+        }
 
+
+        BindList(TempCode);
     }
+    protected void btnListSql_Click(object sender, EventArgs e)
+    {
+        if (!string.IsNullOrEmpty(tbListsql.Text.Trim()))
+        {
+            string sListsqlGuid = hfListsqlId.Value.Trim();
+            if (!string.IsNullOrEmpty(sListsqlGuid))
+            {
+                SrnprCommon.ReplaceFile.ItemListSqlEntityCRF ilse = TempCode.ListSql.SingleOrDefault(t => t.Guid == sListsqlGuid);
+                if (ilse != null)
+                {
+                    ilse.SqlString = tbListsql.Text;
+                }
+            }
+            else
+            {
+                SrnprCommon.ReplaceFile.ItemListSqlEntityCRF ilse = new SrnprCommon.ReplaceFile.ItemListSqlEntityCRF();
+                ilse.SqlString = tbListsql.Text;
+                ilse.Guid = Guid.NewGuid().ToString();
+                TempCode.ListSql.Add(ilse);
+            }
+        }
+
+        BindList(TempCode);
+    }
+
+
+    protected void lbAdd_Click(object sender, EventArgs e)
+    {
+        switch (((LinkButton)sender).CommandName)
+        {
+
+            case "add_parm":
+                pParmAdd.Visible = true;
+                btnParm.Text = "确认添加";
+                hfParmId.Value = "";
+                tbParmName.Text = "";
+                tbParmDescriptioon.Text = "";
+                break;
+            case "add_mainsql":
+                pMainsql.Visible = true;
+                btnMainsql.Text = "确认添加";
+                tbMainsql.Text = "";
+                hfMainsqlId.Value = "";
+
+                break;
+            case "add_listsql":
+                pListSql.Visible = true;
+                btnListSql.Text="确认添加";
+                tbListsql.Text = "";
+                hfListsqlId.Value = "";
+                break;
+        }
+    }
+
+
+  
+   
 }

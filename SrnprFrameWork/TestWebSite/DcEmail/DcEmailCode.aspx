@@ -56,7 +56,7 @@
         </table>
         <div>
             <div>
-                参数列表：<asp:LinkButton ID="lbParmAdd" runat="server" OnClick="lbParmAdd_Click">添加</asp:LinkButton>
+                参数列表：<asp:LinkButton ID="lbParmAdd" runat="server" CommandName="add_parm" OnClick="lbAdd_Click">添加</asp:LinkButton>
             </div>
             <div>
                 <table>
@@ -103,7 +103,7 @@
         </div>
         <div>
             <div>
-                主Sql：<asp:LinkButton ID="lbMainsqlAdd" runat="server" OnClick="lbParmAdd_Click">添加</asp:LinkButton>
+                主Sql：<asp:LinkButton ID="lbMainsqlAdd" runat="server" CommandName="add_mainsql" OnClick="lbAdd_Click">添加</asp:LinkButton>
             </div>
             <div>
                 <table>
@@ -141,6 +141,10 @@
             </asp:Panel>
         </div>
         <div>
+            <div>
+                循环Sql：<asp:LinkButton ID="lbListsqlAdd" runat="server" CommandName="add_listsql"
+                    OnClick="lbAdd_Click">添加</asp:LinkButton>
+            </div>
             <table>
                 <tr>
                     <th>
@@ -154,13 +158,26 @@
                     <ItemTemplate>
                         <tr>
                             <td>
+                                <%#Eval("MainSql") %>
                             </td>
                             <td>
+                                <asp:LinkButton ID="lbListsqlChange" runat="server" CommandName="upd_listsql" CommandArgument=' <%#Eval("Guid") %>'
+                                    OnClick="lbChange_Click">修改</asp:LinkButton>
+                                <asp:LinkButton ID="lbListsqlDel" runat="server" CommandName="del_listsql" CommandArgument=' <%#Eval("Guid") %>'
+                                    OnClick="lbChange_Click">删除</asp:LinkButton>
                             </td>
                         </tr>
                     </ItemTemplate>
                 </asp:Repeater>
             </table>
+            <asp:Panel ID="pListSql" runat="server">
+                <asp:HiddenField ID="hfListsqlId" runat="server" />
+                主sql：<asp:TextBox ID="tbListsql" runat="server"></asp:TextBox>
+                <asp:Button ID="btnListSql" runat="server" Text="确认操作" OnClick="btnListSql_Click" />
+                &nbsp;
+                <asp:Button ID="btnListCancel" runat="server" Text="取消" CommandName="cancel_listsql"
+                    OnClick="btnCancel_Click" />
+            </asp:Panel>
         </div>
     </div>
     <asp:Button ID="btnSave" runat="server" OnClick="btnSave_Click" Text="确认修改" />

@@ -7,12 +7,27 @@ using System.Net.Mail;
 
 namespace SrnprCommon.CommonFunction
 {
+
+    /// <summary>
+    /// Description: 发送邮件函数
+    /// Author:Liudpc
+    /// Create Date: 2010-6-30 11:07:02
+    /// </summary>
     public class SendEmailCCF
     {
 
 
 
 
+        /// <summary>
+        /// 
+        /// Description: 发送邮件
+        /// Author:Liudpc
+        /// Create Date: 2010-6-30 11:06:50
+        /// </summary>
+        /// <param name="emailInfo"></param>
+        /// <param name="emailServer"></param>
+        /// <returns></returns>
         public static bool Send(ReplaceFile.DoSendEmailEntityCRF emailInfo,ReplaceFile.ServerEmailEntityCRF emailServer)
         {
 

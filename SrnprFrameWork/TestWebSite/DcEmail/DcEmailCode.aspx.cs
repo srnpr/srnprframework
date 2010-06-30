@@ -219,7 +219,7 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
         {
 
 
-
+            se.SaveTempleteCode(TempCode, tbXmlId.Text.Trim());
 
         }
     }

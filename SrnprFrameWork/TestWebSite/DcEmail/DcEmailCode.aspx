@@ -11,6 +11,14 @@
         <table>
             <tr>
                 <td>
+                    文件名称：
+                </td>
+                <td>
+                    <asp:TextBox ID="tbXmlId" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     标题：
                 </td>
                 <td>

@@ -43,5 +43,31 @@ namespace SrnprCommon.CommonFunction
         }
 
 
+
+        /// <summary>
+        /// 
+        /// Description: 添加子元素
+        /// Author:Liudpc
+        /// Create Date: 2010-6-30 14:11:13
+        /// </summary>
+        /// <param name="xn"></param>
+        /// <param name="sNodeName"></param>
+        /// <param name="sNodeInnerText"></param>
+        /// <returns></returns>
+        public XmlNode AppendChildNode(XmlNode xn, string sNodeName, string sNodeInnerText)
+        {
+            XmlNode xnChild=xn.OwnerDocument.CreateElement(sNodeName);
+
+            if (sNodeInnerText != null)
+            {
+                xnChild.InnerText = sNodeInnerText;
+            }
+
+            xn.AppendChild(xnChild);
+
+            return xnChild;
+        }
+
+
     }
 }

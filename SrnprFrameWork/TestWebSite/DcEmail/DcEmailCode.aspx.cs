@@ -18,8 +18,9 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
 
             if (Request["id"] != null)
             {
-               
 
+                tbXmlId.Text = Request["id"].Trim();
+                tbXmlId.Enabled = false;
                 TempCode = se.GetTempleteCode(Request["id"]);
             }
             else
@@ -214,7 +215,13 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
 
     protected void btnSave_Click(object sender, EventArgs e)
     {
-        
+        if (!string.IsNullOrEmpty(tbXmlId.Text.Trim()))
+        {
+
+
+
+
+        }
     }
  
     protected void btnCancel_Click(object sender, EventArgs e)

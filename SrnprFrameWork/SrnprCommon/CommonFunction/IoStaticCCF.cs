@@ -25,12 +25,17 @@ namespace SrnprCommon.CommonFunction
         /// <returns></returns>
         public static bool CheckDirectory(string sDir)
         {
+
+            
+
             if (!Directory.Exists(sDir))
             {
                 Directory.CreateDirectory(sDir);
             }
             return true;
         }
+
+       
 
     }
 }

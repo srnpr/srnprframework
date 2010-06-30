@@ -34,7 +34,7 @@ namespace SrnprCommon.CommonFunction
             try
             {
 
-
+               
 
                 MailAddress from = new MailAddress(emailServer.SendMailName, emailServer.SendMailDisplayName);
                 MailAddress to = new MailAddress(emailInfo.ToEmail);

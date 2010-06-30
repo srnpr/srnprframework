@@ -15,6 +15,9 @@ namespace SrnprCommon.ReplaceFile
 {
     public class ReplaceXmlCRF
     {
+      
+       
+       
 
 
 
@@ -42,7 +45,7 @@ namespace SrnprCommon.ReplaceFile
 
             return strList.ToArray();
 
-
+        
         }
 
 
@@ -110,16 +113,12 @@ namespace SrnprCommon.ReplaceFile
 
                         TempleteCodeEntityCRF code = GetTempleteCode(sFileName);
                         XmlNode xn = xd.CreateElement("EmailInfo");
-
+                      
                         XmlAppendNode(xd, "Id", sFileName.Substring(sFileName.LastIndexOf("\\") + 1, sFileName.LastIndexOf(sCode) - sFileName.LastIndexOf("\\") - 1), xn);
                         XmlAppendNode(xd, "Title", code.Config.Title, xn);
                         XmlAppendNode(xd, "Description", code.Config.Description, xn);
                         XmlAppendNode(xd, "FilePath", sFileName, xn);
                         xnList.AppendChild(xn);
-
-
-
-
                     }
 
                 }

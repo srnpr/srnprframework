@@ -32,5 +32,25 @@ namespace SrnprCommon.CommonConfig
 
         }
 
+
+
+         /// <summary>
+         /// 
+         /// Description: 重新检测配置文件
+         /// Author:Liudpc
+         /// Create Date: 2010-6-30 12:00:27
+         /// </summary>
+         /// <param name="sPathUrl"></param>
+         /// <returns></returns>
+        public static string GetConfigPath(string sPathUrl)
+        {
+            if (sPathUrl.IndexOf("~/") == 0)
+            {
+                sPathUrl = sPathUrl.Replace("~/", BaseConfigPath);
+            }
+            return sPathUrl;
+        }
+
+
     }
 }

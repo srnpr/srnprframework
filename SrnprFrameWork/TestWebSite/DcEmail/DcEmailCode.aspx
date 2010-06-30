@@ -119,7 +119,7 @@
                         <ItemTemplate>
                             <tr>
                                 <td>
-                                    <%#Eval("MainSql") %>
+                                    <%#Eval("SqlString") %>
                                 </td>
                                 <td>
                                     <asp:LinkButton ID="lbMainsqlChange" runat="server" CommandName="upd_mainsql" CommandArgument=' <%#Eval("Guid") %>'
@@ -158,7 +158,7 @@
                     <ItemTemplate>
                         <tr>
                             <td>
-                                <%#Eval("MainSql") %>
+                                <%#Eval("SqlString")%>
                             </td>
                             <td>
                                 <asp:LinkButton ID="lbListsqlChange" runat="server" CommandName="upd_listsql" CommandArgument=' <%#Eval("Guid") %>'
@@ -173,7 +173,7 @@
             <asp:Panel ID="pListSql" runat="server">
                 <asp:HiddenField ID="hfListsqlId" runat="server" />
                 主sql：<asp:TextBox ID="tbListsql" runat="server"></asp:TextBox>
-                <asp:Button ID="btnListSql" runat="server" Text="确认操作" OnClick="btnListSql_Click" />
+                <asp:Button ID="btnListsql" runat="server" Text="确认操作" OnClick="btnListsql_Click" />
                 &nbsp;
                 <asp:Button ID="btnListCancel" runat="server" Text="取消" CommandName="cancel_listsql"
                     OnClick="btnCancel_Click" />

@@ -175,6 +175,34 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
                 TempCode.MainSql.Remove(imse);
             }
 
+            BindList(TempCode);
+
+        }
+
+        else if (sCommandName == "upd_listsql")
+        {
+            SrnprCommon.ReplaceFile.ItemListSqlEntityCRF ilse = TempCode.ListSql.SingleOrDefault(t => t.Guid == sParmGuid);
+            if (ilse != null)
+            {
+
+                hfListsqlId.Value = sParmGuid;
+                pListSql.Visible = true;
+                btnListsql.Text = "确认修改";
+                tbListsql.Text = ilse.SqlString;
+            }
+
+
+        }
+        else if (sCommandName == "del_listsql")
+        {
+            SrnprCommon.ReplaceFile.ItemListSqlEntityCRF ilse = TempCode.ListSql.SingleOrDefault(t => t.Guid == sParmGuid);
+            if (ilse != null)
+            {
+                TempCode.ListSql.Remove(ilse);
+            }
+
+            BindList(TempCode);
+
         }
 
         
@@ -265,7 +293,7 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
 
         BindList(TempCode);
     }
-    protected void btnListSql_Click(object sender, EventArgs e)
+    protected void btnListsql_Click(object sender, EventArgs e)
     {
         if (!string.IsNullOrEmpty(tbListsql.Text.Trim()))
         {

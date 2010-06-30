@@ -232,7 +232,7 @@ namespace SendEmail
 
             itee.Title = edi.Title;
             itee.Content = edi.Content;
-            return replace.SaveTempleteDesign(design, GetXmlPathByXmlId(edi.XmlId));
+            return replace.SaveTempleteDesign(design, GetXmlPathDesignByXmlId(edi.XmlId));
         }
 
 
@@ -256,7 +256,7 @@ namespace SendEmail
             design.ItemTemplete.Remove(itee);
 
 
-            return replace.SaveTempleteDesign(design, GetXmlPathByXmlId(sXmlId));
+            return replace.SaveTempleteDesign(design, GetXmlPathDesignByXmlId(sXmlId));
 
         }
 
@@ -290,7 +290,7 @@ namespace SendEmail
             design.ItemTemplete.Add(itee);
 
 
-            return replace.SaveTempleteDesign(design, GetXmlPathByXmlId(edi.XmlId));
+            return replace.SaveTempleteDesign(design, GetXmlPathDesignByXmlId(edi.XmlId));
 
 
         }
@@ -309,7 +309,7 @@ namespace SendEmail
         /// <returns></returns>
         public SrnprCommon.BaseEntity.ResultReturnEntityCBE SaveTempleteCode(TempleteCodeEntityCRF code, string sXmlId)
         {
-            return replace.SaveTempleteCode(code, GetXmlPathByXmlId(sXmlId));
+            return replace.SaveTempleteCode(code, GetXmlPathDesignByXmlId(sXmlId));
         }
 
 
@@ -324,7 +324,7 @@ namespace SendEmail
         /// <returns></returns>
         public TempleteDesignEntityCRF GetTempleteDesign(string sXmlId)
         {
-            return replace.GetTempleteDesign(GetXmlPathByXmlId(sXmlId));
+            return replace.GetTempleteDesign(GetXmlPathDesignByXmlId(sXmlId));
 
         }
 
@@ -339,7 +339,7 @@ namespace SendEmail
         /// <returns></returns>
         public TempleteCodeEntityCRF GetTempleteCode(string sXmlId)
         {
-            return replace.GetTempleteCode(ReplaceFileConfigCCC.Config.XmlFileDirectory + sXmlId + ReplaceFileConfigCCC.Config.CodeFileApp);
+            return replace.GetTempleteCode(GetXmlPathCodeByXmlId(sXmlId));
         }
 
 
@@ -352,10 +352,24 @@ namespace SendEmail
         /// </summary>
         /// <param name="sXmlId"></param>
         /// <returns></returns>
-        private string GetXmlPathByXmlId(string sXmlId)
+        private string GetXmlPathDesignByXmlId(string sXmlId)
         {
             return ReplaceFileConfigCCC.Config.XmlFileDirectory + sXmlId + ReplaceFileConfigCCC.Config.DesignFileApp;
 
+        }
+
+
+        /// <summary>
+        /// 
+        /// Description: 根据xml编号得到代码文件路径
+        /// Author:Liudpc
+        /// Create Date: 2010-6-30 11:45:29
+        /// </summary>
+        /// <param name="sXmlId"></param>
+        /// <returns></returns>
+        private string GetXmlPathCodeByXmlId(string sXmlId)
+        {
+            return ReplaceFileConfigCCC.Config.XmlFileDirectory + sXmlId + ReplaceFileConfigCCC.Config.CodeFileApp;
         }
 
 

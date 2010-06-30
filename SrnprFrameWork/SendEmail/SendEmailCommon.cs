@@ -309,7 +309,7 @@ namespace SendEmail
         /// <returns></returns>
         public SrnprCommon.BaseEntity.ResultReturnEntityCBE SaveTempleteCode(TempleteCodeEntityCRF code, string sXmlId)
         {
-            return replace.SaveTempleteCode(code, GetXmlPathDesignByXmlId(sXmlId));
+            return replace.SaveTempleteCode(code, GetXmlPathCodeByXmlId(sXmlId));
         }
 
 

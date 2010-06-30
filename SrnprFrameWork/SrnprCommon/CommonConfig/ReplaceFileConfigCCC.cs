@@ -51,10 +51,19 @@ namespace SrnprCommon.CommonConfig
                         Directory.CreateDirectory(replaceEntity.XmlFileDirectory);
                     }
 
-                    replaceEntity.XmlFilehistoryDir = XmlStaticCCF.GetChildValueByName(xnRoot, "Config/ListFilePath");
+                    replaceEntity.XmlFileHistoryDir = XmlStaticCCF.GetChildValueByName(xnRoot, "Config/ListFilePath");
 
                     replaceEntity.CodeFileApp = xnRoot.SelectSingleNode("Config/CodeFileApp").InnerText.Trim();
                     replaceEntity.DesignFileApp = xnRoot.SelectSingleNode("Config/DesignFileApp").InnerText.Trim();
+
+
+
+                    replaceEntity.ListFileDir = XmlStaticCCF.GetChildValueByName(xnRoot, "Config/ListFileDir");
+                    if (!Directory.Exists(replaceEntity.ListFileDir))
+                    {
+                        Directory.CreateDirectory(replaceEntity.ListFileDir);
+                    }
+
                     replaceEntity.ListFilePath = xnRoot.SelectSingleNode("Config/ListFilePath").InnerText.Trim();
 
 

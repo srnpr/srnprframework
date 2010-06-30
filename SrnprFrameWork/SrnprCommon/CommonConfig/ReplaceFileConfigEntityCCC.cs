@@ -89,11 +89,20 @@ namespace SrnprCommon.CommonConfig
 
 
         /// <summary>
-        /// Description: xml文件历史路径
+        /// Description: xml文件历史目录
         /// Author:Liudpc
         /// Create Date: 2010-6-30 12:08:08
         /// </summary>
-        public string XmlFilehistoryDir { get; set; }
+        public string XmlFileHistoryDir { get; set; }
+
+
+
+        /// <summary>
+        /// Description: 列表文件目录
+        /// Author:Liudpc
+        /// Create Date: 2010-6-30 13:08:36
+        /// </summary>
+        public string ListFileDir { get; set; }
 
 
         /// <summary>

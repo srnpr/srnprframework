@@ -21,16 +21,25 @@ namespace SrnprCommon.CommonFunction
         /// <returns></returns>
         public static string GetChildValueByName(XmlNode xnFather, string sNodeName)
         {
-            XmlNode xn = xnFather.SelectSingleNode(sNodeName);
-            if (xn != null)
-            {
-                return xn.InnerText.Trim();
+            
+            return xnFather.SelectSingleNode(sNodeName) != null ? xnFather.SelectSingleNode(sNodeName).InnerText.Trim() : null;
+        }
 
-            }
-            else
-            {
-                return null;
-            }
+
+
+        /// <summary>
+        /// 
+        /// Description: 得到属性的值
+        /// Author:Liudpc
+        /// Create Date: 2010-6-30 13:21:29
+        /// </summary>
+        /// <param name="xn"></param>
+        /// <param name="sAttName"></param>
+        /// <returns></returns>
+        public static string GetAttValueByName(XmlNode xn, string sAttName)
+        {
+            return xn.Attributes[sAttName] != null ? xn.Attributes[sAttName].Value.Trim() : null;
+
         }
 
 

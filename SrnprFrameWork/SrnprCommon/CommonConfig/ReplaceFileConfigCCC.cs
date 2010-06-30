@@ -36,15 +36,17 @@ namespace SrnprCommon.CommonConfig
 
                     XmlDocument xdConfig = new XmlDocument();
                     xdConfig.Load(CommonConfig.FrameWorkConfigCCC.GetFrameWorkConfigRoot().CommonConfigPath);
+
+
                     XmlDocument xd = new XmlDocument();
-                    xd.Load(FrameWorkConfigCCC.GetConfigPath(xdConfig.DocumentElement.SelectSingleNode("ReplaceFile/ReplaceFilePath").InnerText.Trim()));
+                    xd.Load(FrameWorkConfigCCC.GetConfigPath(XmlStaticCCF.GetChildValueByName(xdConfig.DocumentElement,"ReplaceFile/ReplaceFilePath")));
                     XmlNode xnRoot = xd.DocumentElement;
 
 
 
-                    replaceEntity.SplitString = xnRoot.SelectSingleNode("Config/SplitString").InnerText.Trim();
-                    replaceEntity.ReplaceFrom = xnRoot.SelectSingleNode("Config/ReplaceFrom").InnerText.Trim();
-                    replaceEntity.MainParmReplace = xnRoot.SelectSingleNode("Config/MainParmReplace").InnerText.Trim();
+                    replaceEntity.SplitString = XmlStaticCCF.GetChildValueByName(xnRoot,"Config/SplitString");
+                    replaceEntity.ReplaceFrom = XmlStaticCCF.GetChildValueByName(xnRoot,"Config/ReplaceFrom");
+                    replaceEntity.MainParmReplace = XmlStaticCCF.GetChildValueByName(xnRoot,"Config/MainParmReplace");
 
                     replaceEntity.XmlFileDirectory = FrameWorkConfigCCC.GetConfigPath(XmlStaticCCF.GetChildValueByName(xnRoot,"Config/XmlFileDirectory"));
                     IoStaticCCF.CheckDirectory(replaceEntity.XmlFileDirectory);
@@ -53,8 +55,8 @@ namespace SrnprCommon.CommonConfig
                     IoStaticCCF.CheckDirectory(replaceEntity.XmlFileHistoryDir);
 
 
-                    replaceEntity.CodeFileApp = xnRoot.SelectSingleNode("Config/CodeFileApp").InnerText.Trim();
-                    replaceEntity.DesignFileApp = xnRoot.SelectSingleNode("Config/DesignFileApp").InnerText.Trim();
+                    replaceEntity.CodeFileApp = XmlStaticCCF.GetChildValueByName(xnRoot,"Config/CodeFileApp");
+                    replaceEntity.DesignFileApp = XmlStaticCCF.GetChildValueByName(xnRoot,"Config/DesignFileApp");
 
 
 
@@ -62,7 +64,7 @@ namespace SrnprCommon.CommonConfig
 
                     IoStaticCCF.CheckDirectory(replaceEntity.ListFileDir);
 
-                    replaceEntity.ListFilePath = xnRoot.SelectSingleNode("Config/ListFilePath").InnerText.Trim();
+                    replaceEntity.ListFilePath = XmlStaticCCF.GetChildValueByName(xnRoot,"Config/ListFilePath");
 
 
                     foreach (XmlNode xn in xnRoot.SelectNodes("DataServerInfo/DataServer"))
@@ -81,7 +83,7 @@ namespace SrnprCommon.CommonConfig
                                 break;
                         }
 
-                        db.ConnString = xn.Attributes["connString"].Value.Trim();
+                        db.ConnString = XmlStaticCCF.GetAttValueByName(xn,"connString");
 
 
                         replaceEntity.DataServerList.Add(db);

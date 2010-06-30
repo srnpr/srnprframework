@@ -9,14 +9,14 @@
 		<ListParmReplace>[#{0}]</ListParmReplace>
 		<ListParmReplace>[#列表开始]</ListParmReplace>
 		<ListParmReplace>[#{0}]</ListParmReplace>
-		
-		<XmlFileDirectory>D:\SrnprFrameWork\ReplaceFile\EmailInfo\</XmlFileDirectory>
 
+		<XmlFileDirectory>~\ReplaceFile\EmailInfo\</XmlFileDirectory>
+		<XmlFileHistoryDir>~\ReplaceFile\EmailBack\</XmlFileHistoryDir>
 		<CodeFileApp>.xml</CodeFileApp>
 		<DesignFileApp>.ds.xml</DesignFileApp>
+		<ListFileDir>~\ReplaceFile\EmailList\</ListFileDir>
+		<ListFilePath>EmailList.xml</ListFilePath>
 
-		<ListFilePath>D:\SrnprFrameWork\ReplaceFile\EmailList.xml</ListFilePath>
-		
 	</Config>
 	
 	<!--服务器信息系列-->

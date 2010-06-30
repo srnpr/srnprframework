@@ -9,6 +9,12 @@ using SrnprCommon.CommonFunction;
 
 namespace SrnprCommon.CommonConfig
 {
+
+    /// <summary>
+    /// Description: 文件替换配置
+    /// Author:Liudpc
+    /// Create Date: 2010-6-30 13:23:02
+    /// </summary>
     public class ReplaceFileConfigCCC
     {
 
@@ -20,6 +26,11 @@ namespace SrnprCommon.CommonConfig
         private static ReplaceFileConfigEntityCCC replaceEntity;
 
 
+        /// <summary>
+        /// Description: 文件替换配置参数
+        /// Author:Liudpc
+        /// Create Date: 2010-6-30 13:22:50
+        /// </summary>
         public  static ReplaceFileConfigEntityCCC Config
         {
 

@@ -7,6 +7,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using SrnprCommon.CommonConfig;
 using SrnprCommon.EnumCommon;
+using SrnprCommon.CommonFunction;
 using System.Data;
 using System.Data.SqlClient;
 using SrnprCommon.DataHelper;
@@ -577,9 +578,12 @@ namespace SrnprCommon.ReplaceFile
                 foreach (var v in code.Parm)
                 {
                     XmlNode xnParm = xd.CreateElement("Parm");
-                    xnParm.Attributes["parmText"].Value = v.ParmText;
-                    xnParm.Attributes["parmName"].Value = v.ParmName;
-                    xnParm.Attributes["guid"].Value = v.Guid;
+                   
+                    XmlStaticCCF.AppendAtt(xnParm, "parmText", v.ParmText);
+                    XmlStaticCCF.AppendAtt(xnParm, "parmName", v.ParmName);
+                    XmlStaticCCF.AppendAtt(xnParm, "guid", v.Guid);
+                    
+
                     xnParmItem.AppendChild(xnParm);
                 }
 
@@ -594,10 +598,9 @@ namespace SrnprCommon.ReplaceFile
 
                 foreach (var v in code.MainSql)
                 {
-                    XmlNode xnMainSql = xd.CreateElement("MainSql");
-                    xnMainSql.Attributes["guid"].Value = v.Guid;
-                    xnMainSql.InnerText = v.SqlString;
-                    xnMainItem.AppendChild(xnMainSql);
+                    XmlNode xnMainSql =XmlStaticCCF.AppendChildNode(xnMainItem,"MainSql",v.SqlString);
+                    XmlStaticCCF.AppendAtt(xnMainSql, "guid", v.Guid);
+                   
                 }
 
                 xnReplaceFileCode.AppendChild(xnMainItem);
@@ -611,10 +614,8 @@ namespace SrnprCommon.ReplaceFile
 
                 foreach (var v in code.ListSql)
                 {
-                    XmlNode xnListSql = xd.CreateElement("ListSql");
-                    xnListSql.Attributes["guid"].Value = v.Guid;
-                    xnListSql.InnerText = v.SqlString;
-                    xnListItem.AppendChild(xnListSql);
+                    XmlNode xnListSql = XmlStaticCCF.AppendChildNode(xnListItem,"ListSql",v.SqlString);
+                    XmlStaticCCF.AppendAtt(xnListSql, "guid", v.Guid);
                 }
 
                 xnReplaceFileCode.AppendChild(xnListItem);

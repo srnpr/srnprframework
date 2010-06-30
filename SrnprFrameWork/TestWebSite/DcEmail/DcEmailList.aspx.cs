@@ -23,7 +23,7 @@ public partial class DcEmail_DcEmailList : System.Web.UI.Page
     private void BindRP()
     {
 
-        rpList.DataSource = new SendEmail.SendEmail().GetListFileInfoByFilePath();
+        rpList.DataSource = new SendEmail.SendEmailCommon().GetListFileInfoByFilePath();
         rpList.DataBind();
        
     }
@@ -31,7 +31,7 @@ public partial class DcEmail_DcEmailList : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-         new SendEmail.SendEmail().RecheckAllEmailFile();
+         new SendEmail.SendEmailCommon().RecheckAllEmailFile();
 
         BindRP();
 

@@ -46,7 +46,7 @@ public partial class DcEmail_DcEmailDesign : System.Web.UI.Page
                     hfTempId.Value = sGuid;
 
 
-                    EmailDesignInfo eInfo= new SendEmail.SendEmail().GetDesign(sId);
+                    EmailDesignInfo eInfo= new SendEmail.SendEmailCommon().GetDesign(sId);
 
                     EmailDesignItem eItem = eInfo.ListItem.SingleOrDefault(t => t.TempleteGuid == sGuid);
 
@@ -82,7 +82,7 @@ public partial class DcEmail_DcEmailDesign : System.Web.UI.Page
                     break;
                 case 3:
                     pShow.Visible = false;
-                    new SendEmail.SendEmail().DelItemToXml(sId, sGuid);
+                    new SendEmail.SendEmailCommon().DelItemToXml(sId, sGuid);
 
                     BindRP();
 
@@ -101,7 +101,7 @@ public partial class DcEmail_DcEmailDesign : System.Web.UI.Page
 
     protected void BindRP()
     {
-        SendEmail.SendEmail se = new SendEmail.SendEmail();
+        SendEmail.SendEmailCommon se = new SendEmail.SendEmailCommon();
 
         SendEmail.EmailDesignInfo edi = se.GetDesign(sId);
 
@@ -137,7 +137,7 @@ public partial class DcEmail_DcEmailDesign : System.Web.UI.Page
 
     protected void btnSave_Click(object sender, EventArgs e)
     {
-        SendEmail.SendEmail se= new SendEmail.SendEmail();
+        SendEmail.SendEmailCommon se= new SendEmail.SendEmailCommon();
 
         EmailDesignItem edi = new EmailDesignItem();
 

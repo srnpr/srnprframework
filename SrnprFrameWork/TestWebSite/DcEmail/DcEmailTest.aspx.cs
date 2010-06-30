@@ -14,7 +14,7 @@ public partial class DcEmail_DcEmailTest : System.Web.UI.Page
 
     string sInputNameLeft = "dev_dcemailtest_input_parms_";
 
-    SendEmail.SendEmail se = new SendEmail.SendEmail();
+    SendEmail.SendEmailCommon se = new SendEmail.SendEmailCommon();
     protected void Page_Load(object sender, EventArgs e)
     {
         sXmlId = Request["id"].ToString().Trim();

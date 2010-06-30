@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 public partial class DcEmail_DcEmailCode : System.Web.UI.Page
 {
 
-    SendEmail.SendEmail se = new SendEmail.SendEmail();
+    SendEmail.SendEmailCommon se = new SendEmail.SendEmailCommon();
     protected void Page_Load(object sender, EventArgs e)
     {
 

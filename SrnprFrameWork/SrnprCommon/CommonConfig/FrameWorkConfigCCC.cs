@@ -7,12 +7,27 @@ using System.Xml;
 
 namespace SrnprCommon.CommonConfig
 {
+
+    /// <summary>
+    /// Description: 整体配置文件
+    /// Author:Liudpc
+    /// Create Date: 2010-6-30 12:01:00
+    /// </summary>
      class FrameWorkConfigCCC
     {
         private static FrameWorkConfigEntityCCC frameConfig;
 
         private static string BaseConfigPath = "D:\\SrnprFrameWork\\";
 
+
+
+         /// <summary>
+         /// 
+         /// Description: 得到最基本配置
+         /// Author:Liudpc
+         /// Create Date: 2010-6-30 12:01:13
+         /// </summary>
+         /// <returns></returns>
         public static FrameWorkConfigEntityCCC GetFrameWorkConfigRoot()
         {
             if (frameConfig == null)

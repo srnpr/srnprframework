@@ -530,6 +530,41 @@ namespace SrnprCommon.ReplaceFile
         }
 
 
+        /// <summary>
+        /// 
+        /// Description: 保存代码xml
+        /// Author:Liudpc
+        /// Create Date: 2010-6-30 11:11:40
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="sSavePath"></param>
+        /// <returns></returns>
+        public BaseEntity.ResultReturnEntityCBE SaveTempleteCode(TempleteCodeEntityCRF code, string sSavePath)
+        {
+            BaseEntity.ResultReturnEntityCBE rre = new SrnprCommon.BaseEntity.ResultReturnEntityCBE();
+
+            
+            XmlDocument xd = new XmlDocument();
+            XmlNode xnReplaceFileRoot = xd.CreateElement("ReplaceFileRoot");
+            XmlNode xnReplaceFile = xd.CreateElement("ReplaceFile");
+            XmlNode xnReplaceFileCode = xd.CreateElement("ReplaceFileCode");
+
+
+            #region 开始保存配置文件
+
+
+
+            #endregion
+
+
+
+
+
+
+            return rre;
+        }
+
+
 
 
         /// <summary>

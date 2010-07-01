@@ -53,11 +53,11 @@ namespace SrnprCommon.CommonConfig
         {
             FrameWorkConfigEntityCCC fwce = new FrameWorkConfigEntityCCC();
             XmlDocument xd = new XmlDocument();
-            string sPath=BaseConfigPath + "SrnprFrameWorkConfigSFW.xml";
+            string sPath=BaseConfigPath + "\\Config\\SrnprFrameWorkConfigSFW.xml";
 
             xd.Load(sPath);
 
-            FileSystemWatcher fsw = new FileSystemWatcher(sPath);
+            FileSystemWatcher fsw = new FileSystemWatcher(BaseConfigPath + "\\Config\\");
             fsw.Changed += new FileSystemEventHandler(fsw_Changed);
             fwce.CommonConfigPath = GetConfigPath(xd.DocumentElement.SelectSingleNode("CommonConfig/ConfigFilePath").InnerText);
 

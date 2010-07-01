@@ -23,7 +23,85 @@ namespace SrnprCommon.CommonConfig
 
 
 
-        private static ReplaceFileConfigEntityCCC replaceEntity;
+        private static ReplaceFileConfigEntityCCC rcEntity;
+
+
+
+        public static bool LoadConfig()
+        {
+
+            ReplaceFileConfigEntityCCC rfce = new ReplaceFileConfigEntityCCC();
+            rfce.DataServerList = new List<ServerDatabaseEntityCRF>();
+            rfce.EmailServerList = new List<ServerEmailEntityCRF>();
+            XmlDocument xdConfig = new XmlDocument();
+            xdConfig.Load(CommonConfig.FrameWorkConfigCCC.GetFrameWorkConfigRoot().CommonConfigPath);
+
+
+            XmlDocument xd = new XmlDocument();
+            xd.Load(FrameWorkConfigCCC.GetConfigPath(XmlStaticCCF.GetChildValueByName(xdConfig.DocumentElement, "ReplaceFile/ReplaceFilePath")));
+            XmlNode xnRoot = xd.DocumentElement;
+
+
+
+            rfce.SplitString = XmlStaticCCF.GetChildValueByName(xnRoot, "Config/SplitString");
+            rfce.ReplaceFrom = XmlStaticCCF.GetChildValueByName(xnRoot, "Config/ReplaceFrom");
+            rfce.MainParmReplace = XmlStaticCCF.GetChildValueByName(xnRoot, "Config/MainParmReplace");
+
+            rfce.XmlFileDirectory = FrameWorkConfigCCC.GetConfigPath(XmlStaticCCF.GetChildValueByName(xnRoot, "Config/XmlFileDirectory"));
+            IoStaticCCF.CheckDirectory(rfce.XmlFileDirectory);
+
+            rfce.XmlFileHistoryDir = FrameWorkConfigCCC.GetConfigPath(XmlStaticCCF.GetChildValueByName(xnRoot, "Config/XmlFileHistoryDir"));
+            IoStaticCCF.CheckDirectory(rfce.XmlFileHistoryDir);
+
+
+            rfce.CodeFileApp = XmlStaticCCF.GetChildValueByName(xnRoot, "Config/CodeFileApp");
+            rfce.DesignFileApp = XmlStaticCCF.GetChildValueByName(xnRoot, "Config/DesignFileApp");
+
+
+
+            rfce.ListFileDir = FrameWorkConfigCCC.GetConfigPath(XmlStaticCCF.GetChildValueByName(xnRoot, "Config/ListFileDir"));
+
+            IoStaticCCF.CheckDirectory(rfce.ListFileDir);
+
+            rfce.ListFilePath = rfce.ListFileDir + XmlStaticCCF.GetChildValueByName(xnRoot, "Config/ListFilePath");
+
+
+            foreach (XmlNode xn in xnRoot.SelectNodes("DataServerInfo/DataServer"))
+            {
+                ServerDatabaseEntityCRF db = new ServerDatabaseEntityCRF();
+                db.Id = xn.Attributes["id"].Value.Trim();
+
+                switch (xn.Attributes["serverType"].Value.Trim())
+                {
+                    case "mssql":
+                        db.ServerType = EnumCommon.DataServerType.MsSql;
+                        break;
+
+                    default:
+                        db.ServerType = EnumCommon.DataServerType.MsSql;
+                        break;
+                }
+
+                db.ConnString = XmlStaticCCF.GetAttValueByName(xn, "connString");
+
+
+                rfce.DataServerList.Add(db);
+            }
+
+
+            foreach (XmlNode xn in xnRoot.SelectNodes("EmailServerInfo/EmailServer"))
+            {
+                ServerEmailEntityCRF em = new ServerEmailEntityCRF();
+                em.Id = xn.Attributes["id"].Value.Trim();
+
+                rfce.EmailServerList.Add(em);
+            }
+
+            rcEntity = rfce;
+            return true;
+        }
+
+
 
 
         /// <summary>
@@ -36,94 +114,13 @@ namespace SrnprCommon.CommonConfig
 
             get
             {
-                if (replaceEntity == null)
+                if (rcEntity == null)
                 {
-
-                    replaceEntity = new ReplaceFileConfigEntityCCC();
-
-                    replaceEntity.DataServerList = new List<ServerDatabaseEntityCRF>();
-                    replaceEntity.EmailServerList = new List<ServerEmailEntityCRF>();
-
-
-                    XmlDocument xdConfig = new XmlDocument();
-                    xdConfig.Load(CommonConfig.FrameWorkConfigCCC.GetFrameWorkConfigRoot().CommonConfigPath);
-
-
-                    XmlDocument xd = new XmlDocument();
-                    xd.Load(FrameWorkConfigCCC.GetConfigPath(XmlStaticCCF.GetChildValueByName(xdConfig.DocumentElement,"ReplaceFile/ReplaceFilePath")));
-                    XmlNode xnRoot = xd.DocumentElement;
-
-
-
-                    replaceEntity.SplitString = XmlStaticCCF.GetChildValueByName(xnRoot,"Config/SplitString");
-                    replaceEntity.ReplaceFrom = XmlStaticCCF.GetChildValueByName(xnRoot,"Config/ReplaceFrom");
-                    replaceEntity.MainParmReplace = XmlStaticCCF.GetChildValueByName(xnRoot,"Config/MainParmReplace");
-
-                    replaceEntity.XmlFileDirectory = FrameWorkConfigCCC.GetConfigPath(XmlStaticCCF.GetChildValueByName(xnRoot,"Config/XmlFileDirectory"));
-                    IoStaticCCF.CheckDirectory(replaceEntity.XmlFileDirectory);
-
-                    replaceEntity.XmlFileHistoryDir =  FrameWorkConfigCCC.GetConfigPath(XmlStaticCCF.GetChildValueByName(xnRoot, "Config/XmlFileHistoryDir"));
-                    IoStaticCCF.CheckDirectory(replaceEntity.XmlFileHistoryDir);
-
-
-                    replaceEntity.CodeFileApp = XmlStaticCCF.GetChildValueByName(xnRoot,"Config/CodeFileApp");
-                    replaceEntity.DesignFileApp = XmlStaticCCF.GetChildValueByName(xnRoot,"Config/DesignFileApp");
-
-
-
-                    replaceEntity.ListFileDir = FrameWorkConfigCCC.GetConfigPath( XmlStaticCCF.GetChildValueByName(xnRoot, "Config/ListFileDir"));
-
-                    IoStaticCCF.CheckDirectory(replaceEntity.ListFileDir);
-
-                    replaceEntity.ListFilePath =replaceEntity.ListFileDir + XmlStaticCCF.GetChildValueByName(xnRoot,"Config/ListFilePath");
-
-
-                    foreach (XmlNode xn in xnRoot.SelectNodes("DataServerInfo/DataServer"))
-                    {
-                        ServerDatabaseEntityCRF db = new ServerDatabaseEntityCRF();
-                        db.Id = xn.Attributes["id"].Value.Trim();
-
-                        switch (xn.Attributes["serverType"].Value.Trim())
-                        {
-                            case "mssql":
-                                db.ServerType = EnumCommon.DataServerType.MsSql;
-                                break;
-
-                            default:
-                                db.ServerType = EnumCommon.DataServerType.MsSql;
-                                break;
-                        }
-
-                        db.ConnString = XmlStaticCCF.GetAttValueByName(xn,"connString");
-
-
-                        replaceEntity.DataServerList.Add(db);
-                    }
-
-
-                    foreach (XmlNode xn in xnRoot.SelectNodes("EmailServerInfo/EmailServer"))
-                    {
-                        ServerEmailEntityCRF em = new ServerEmailEntityCRF();
-                        em.Id = xn.Attributes["id"].Value.Trim();
-
-                        replaceEntity.EmailServerList.Add(em);
-                    }
-
-
-
-
-
-
-
+                    LoadConfig();
 
                 }
 
-
-
-
-
-
-                return replaceEntity;
+                return rcEntity;
             }
 
 

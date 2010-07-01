@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
-
+using System.IO;
 
 namespace SrnprCommon.CommonConfig
 {
@@ -32,16 +32,49 @@ namespace SrnprCommon.CommonConfig
         {
             if (frameConfig == null)
             {
-                frameConfig = new FrameWorkConfigEntityCCC();
-                XmlDocument xd = new XmlDocument();
-                xd.Load(BaseConfigPath+"SrnprFrameWorkConfigSFW.xml");
-               frameConfig.CommonConfigPath=GetConfigPath( xd.DocumentElement.SelectSingleNode("CommonConfig/ConfigFilePath").InnerText);
-
-
-
+                LoadConfig();
             }
 
             return frameConfig;
+
+        }
+
+
+
+
+
+        private static void LoadConfig()
+        {
+            FrameWorkConfigEntityCCC fwce = new FrameWorkConfigEntityCCC();
+            XmlDocument xd = new XmlDocument();
+            string sPath=BaseConfigPath + "SrnprFrameWorkConfigSFW.xml";
+
+            xd.Load(sPath);
+
+            FileSystemWatcher fsw = new FileSystemWatcher(sPath);
+            fsw.Changed += new FileSystemEventHandler(fsw_Changed);
+            fwce.CommonConfigPath = GetConfigPath(xd.DocumentElement.SelectSingleNode("CommonConfig/ConfigFilePath").InnerText);
+
+            frameConfig = fwce;
+        }
+
+
+
+
+
+
+         /// <summary>
+         /// 
+         /// Description: 如果配置文件有更改则调用
+         /// Author:Liudpc
+         /// Create Date: 2010-7-1 10:48:45
+         /// </summary>
+         /// <param name="sender"></param>
+         /// <param name="e"></param>
+        static void fsw_Changed(object sender, FileSystemEventArgs e)
+        {
+            FrameWorkConfigCCC.LoadConfig();
+            ReplaceFileConfigCCC.LoadConfig();
 
         }
 

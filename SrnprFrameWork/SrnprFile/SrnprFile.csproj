@@ -65,6 +65,7 @@
     <Content Include="DragFile\ElementDragXmlFDF_format.xml" />
     <Content Include="FraomeWork\SrnprFrameWorkConfigSFW.xml" />
     <Content Include="LogFile\LogFileConfigFLF.xml" />
+    <Content Include="LogFile\LogFrameworkFLF.xml" />
     <Content Include="LogFile\ReplaceFileLogFLF.xml" />
     <Content Include="ReplaceFile\DcEmailCodeFRF.xml" />
     <Content Include="ReplaceFile\DcEmailConfigTestFRF.xml" />

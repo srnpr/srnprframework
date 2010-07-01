@@ -546,7 +546,6 @@ namespace SrnprCommon.ReplaceFile
 
             if (rre.ResultFlag)
             {
-
                 if (string.IsNullOrEmpty(code.Config.XmlGuid))
                 {
                     code.Config.XmlGuid = Guid.NewGuid().ToString();
@@ -560,7 +559,6 @@ namespace SrnprCommon.ReplaceFile
                 {
                     code.Config.CreateDate = code.Config.UpdateDate;
                 }
-
             }
 
 

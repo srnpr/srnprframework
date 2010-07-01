@@ -27,6 +27,9 @@
 													<xs:element name="StateSql"  minOccurs="0" maxOccurs="1" type="xs:string"></xs:element>
 													
 													<xs:element name="Version"  minOccurs="1" maxOccurs="1" type="xs:string"></xs:element>
+
+													<xs:element name="XmlGuid"  minOccurs="1" maxOccurs="1" type="xs:string"></xs:element>
+													<xs:element name="XmlFileId"  minOccurs="1" maxOccurs="1" type="xs:string"></xs:element>
 												</xs:sequence>
 											</xs:complexType>
 										</xs:element>

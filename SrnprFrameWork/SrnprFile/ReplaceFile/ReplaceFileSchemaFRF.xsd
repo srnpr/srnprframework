@@ -30,6 +30,8 @@
 
 													<xs:element name="XmlGuid"  minOccurs="1" maxOccurs="1" type="xs:string"></xs:element>
 													<xs:element name="XmlFileId"  minOccurs="1" maxOccurs="1" type="xs:string"></xs:element>
+													<xs:element name="CreateDate"  minOccurs="1" maxOccurs="1" type="xs:string"></xs:element>
+													<xs:element name="UpdateDate"  minOccurs="1" maxOccurs="1" type="xs:string"></xs:element>
 												</xs:sequence>
 											</xs:complexType>
 										</xs:element>

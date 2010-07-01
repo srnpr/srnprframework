@@ -30,6 +30,8 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
                 tc.Parm = new List<SrnprCommon.ReplaceFile.ItemPramEntityCRF>();
                 tc.MainSql=new List<SrnprCommon.ReplaceFile.ItemMainSqlEntityCRF>();
                 tc.ListSql=new List<SrnprCommon.ReplaceFile.ItemListSqlEntityCRF>();
+               
+                
                 TempCode=tc;
             }
 
@@ -226,6 +228,9 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
             TempCode.Config.Used = true;
             TempCode.Config.Version = ddlVersion.SelectedValue;
 
+            TempCode.Config.XmlFileId = tbXmlId.Text.Trim();
+
+            
 
 
             se.SaveTempleteCode(TempCode, tbXmlId.Text.Trim());

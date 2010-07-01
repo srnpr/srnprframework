@@ -218,6 +218,15 @@ public partial class DcEmail_DcEmailCode : System.Web.UI.Page
         if (!string.IsNullOrEmpty(tbXmlId.Text.Trim()))
         {
 
+            TempCode.Config.Title = tbTitle.Text.Trim();
+            TempCode.Config.DataServerId = ddlDataBase.SelectedValue;
+            TempCode.Config.Description = tbDescription.Text.Trim();
+            TempCode.Config.EmailServerId = ddlServerEmail.SelectedValue;
+            TempCode.Config.StateSql = tbStateSql.Text.Trim();
+            TempCode.Config.Used = true;
+            TempCode.Config.Version = ddlVersion.SelectedValue;
+
+
 
             se.SaveTempleteCode(TempCode, tbXmlId.Text.Trim());
             se.RecheckAllEmailFile();

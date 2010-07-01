@@ -56,9 +56,17 @@
                     版本标识：
                 </td>
                 <td>
-                    <asp:DropDownList ID="DropDownList1" runat="server">
+                    <asp:DropDownList ID="ddlVersion" runat="server">
                         <asp:ListItem Text="2.0.0.0" Value="2.0.0.0"></asp:ListItem>
                     </asp:DropDownList>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    状态Sql：
+                </td>
+                <td>
+                   <asp:TextBox ID="tbStateSql" runat="server"></asp:TextBox>
                 </td>
             </tr>
         </table>

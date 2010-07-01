@@ -575,14 +575,18 @@ namespace SrnprCommon.ReplaceFile
 
 
                 XmlNode xnReplaceFileRoot = xd.CreateElement("ReplaceFileRoot");
-                XmlNode xnReplaceFile = xd.CreateElement("ReplaceFile");
-                XmlNode xnReplaceFileCode = xd.CreateElement("ReplaceFileCode");
+                xd.AppendChild(xnReplaceFileRoot);
+                //XmlNode xnReplaceFile = xd.CreateElement("ReplaceFile");
+                //XmlNode xnReplaceFileCode = xd.CreateElement("ReplaceFileCode");
+
+                XmlNode xnReplaceFileCode = XmlStaticCCF.AppendChildNode(XmlStaticCCF.AppendChildNode(xnReplaceFileRoot, "ReplaceFile"), "ReplaceFileCode");
+
 
 
                 #region 开始保存配置文件
                 if (rre.ResultFlag)
                 {
-                    XmlNode xnConfigItem = xd.CreateElement("ConfigItem");
+                    XmlNode xnConfigItem = XmlStaticCCF.AppendChildNode(xnReplaceFileCode, "ConfigItem");
                     XmlAppendNode(xd, "Used", code.Config.Used ? "true" : "false", xnConfigItem);
                     XmlAppendNode(xd, "Title", code.Config.Title, xnConfigItem);
                     XmlAppendNode(xd, "Description", code.Config.Description, xnConfigItem);
@@ -592,11 +596,11 @@ namespace SrnprCommon.ReplaceFile
                     XmlAppendNode(xd, "Version", code.Config.Version, xnConfigItem);
 
 
-                    XmlStaticCCF.AppendAtt(xd, "XmlGuid",code.Config.XmlGuid);
-                    XmlStaticCCF.AppendAtt(xd, "XmlFileId", code.Config.XmlFileId);
-                    XmlStaticCCF.AppendAtt(xd, "CreateDate", code.Config.CreateDate);
-                    XmlStaticCCF.AppendAtt(xd, "UpdateDate", code.Config.UpdateDate);
-                    xnReplaceFileCode.AppendChild(xnConfigItem);
+                    XmlStaticCCF.AppendAtt(xnConfigItem, "XmlGuid", code.Config.XmlGuid);
+                    XmlStaticCCF.AppendAtt(xnConfigItem, "XmlFileId", code.Config.XmlFileId);
+                    XmlStaticCCF.AppendAtt(xnConfigItem, "CreateDate", code.Config.CreateDate);
+                    XmlStaticCCF.AppendAtt(xnConfigItem, "UpdateDate", code.Config.UpdateDate);
+                  
                 }
                 #endregion
 
@@ -604,29 +608,26 @@ namespace SrnprCommon.ReplaceFile
                 #region 开始保存输入参数
                 if (rre.ResultFlag)
                 {
-                    XmlNode xnParmItem = xd.CreateElement("ParmItem");
-
+                    XmlNode xnParmItem = XmlStaticCCF.AppendChildNode(xnReplaceFileCode,"ParmItem");
+                   
                     foreach (var v in code.Parm)
                     {
-                        XmlNode xnParm = xd.CreateElement("Parm");
+                        XmlNode xnParm = XmlStaticCCF.AppendChildNode(xnParmItem,"Parm")  ;
 
                         XmlStaticCCF.AppendAtt(xnParm, "parmText", v.ParmText);
                         XmlStaticCCF.AppendAtt(xnParm, "parmName", v.ParmName);
                         XmlStaticCCF.AppendAtt(xnParm, "guid", v.Guid);
                         
-
-
-                        xnParmItem.AppendChild(xnParm);
                     }
 
-                    xnReplaceFileCode.AppendChild(xnParmItem);
+                   
                 }
                 #endregion
 
                 #region 开始保存主Sql
                 if (rre.ResultFlag)
                 {
-                    XmlNode xnMainItem = xd.CreateElement("MainItem");
+                    XmlNode xnMainItem = XmlStaticCCF.AppendChildNode(xnReplaceFileCode, "MainItem");
 
                     foreach (var v in code.MainSql)
                     {
@@ -634,8 +635,7 @@ namespace SrnprCommon.ReplaceFile
                         XmlStaticCCF.AppendAtt(xnMainSql, "guid", v.Guid);
 
                     }
-
-                    xnReplaceFileCode.AppendChild(xnMainItem);
+                   
                 }
                 #endregion
 
@@ -655,10 +655,7 @@ namespace SrnprCommon.ReplaceFile
                 #endregion
 
 
-                xnReplaceFile.AppendChild(xnReplaceFileCode);
-                xnReplaceFileRoot.AppendChild(xnReplaceFile);
-
-                xd.AppendChild(xnReplaceFileRoot);
+              
 
                 xd.Save(sSavePath);
             }

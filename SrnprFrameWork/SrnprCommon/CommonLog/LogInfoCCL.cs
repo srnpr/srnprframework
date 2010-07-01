@@ -9,7 +9,7 @@ namespace SrnprCommon.CommonLog
     {
 
 
-        public static string GetLogInfo(string sLogId,params string[] strMessage)
+        public static string GetLogMessage(string sLogId,params string[] strMessage)
         {
 
             return "";

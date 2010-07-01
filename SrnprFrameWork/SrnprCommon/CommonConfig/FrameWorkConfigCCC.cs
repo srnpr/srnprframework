@@ -43,6 +43,12 @@ namespace SrnprCommon.CommonConfig
 
 
 
+         /// <summary>
+         /// 
+         /// Description: 重新加载配置文件
+         /// Author:Liudpc
+         /// Create Date: 2010-7-1 10:51:16
+         /// </summary>
         private static void LoadConfig()
         {
             FrameWorkConfigEntityCCC fwce = new FrameWorkConfigEntityCCC();
@@ -58,11 +64,6 @@ namespace SrnprCommon.CommonConfig
             frameConfig = fwce;
         }
 
-
-
-
-
-
          /// <summary>
          /// 
          /// Description: 如果配置文件有更改则调用
@@ -75,14 +76,13 @@ namespace SrnprCommon.CommonConfig
         {
             FrameWorkConfigCCC.LoadConfig();
             ReplaceFileConfigCCC.LoadConfig();
-
         }
 
 
 
          /// <summary>
          /// 
-         /// Description: 重新检测配置文件
+         /// Description: 重新检测配置文件的路径并替换掉
          /// Author:Liudpc
          /// Create Date: 2010-6-30 12:00:27
          /// </summary>

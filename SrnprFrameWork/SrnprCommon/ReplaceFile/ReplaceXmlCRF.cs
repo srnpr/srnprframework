@@ -591,6 +591,11 @@ namespace SrnprCommon.ReplaceFile
                     XmlAppendNode(xd, "StateSql", code.Config.StateSql, xnConfigItem);
                     XmlAppendNode(xd, "Version", code.Config.Version, xnConfigItem);
 
+
+                    XmlStaticCCF.AppendAtt(xd, "XmlGuid",code.Config.XmlGuid);
+                    XmlStaticCCF.AppendAtt(xd, "XmlFileId", code.Config.XmlFileId);
+                    XmlStaticCCF.AppendAtt(xd, "CreateDate", code.Config.CreateDate);
+                    XmlStaticCCF.AppendAtt(xd, "UpdateDate", code.Config.UpdateDate);
                     xnReplaceFileCode.AppendChild(xnConfigItem);
                 }
                 #endregion
@@ -608,6 +613,7 @@ namespace SrnprCommon.ReplaceFile
                         XmlStaticCCF.AppendAtt(xnParm, "parmText", v.ParmText);
                         XmlStaticCCF.AppendAtt(xnParm, "parmName", v.ParmName);
                         XmlStaticCCF.AppendAtt(xnParm, "guid", v.Guid);
+                        
 
 
                         xnParmItem.AppendChild(xnParm);

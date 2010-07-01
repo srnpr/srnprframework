@@ -543,92 +543,121 @@ namespace SrnprCommon.ReplaceFile
         {
             BaseEntity.ResultReturnEntityCBE rre = new SrnprCommon.BaseEntity.ResultReturnEntityCBE();
             rre.ResultFlag = true;
-            XmlDocument xd = new XmlDocument();
 
-
-
-
-            XmlNode xnReplaceFileRoot = xd.CreateElement("ReplaceFileRoot");
-            XmlNode xnReplaceFile = xd.CreateElement("ReplaceFile");
-            XmlNode xnReplaceFileCode = xd.CreateElement("ReplaceFileCode");
-
-
-            #region 开始保存配置文件
             if (rre.ResultFlag)
             {
-                XmlNode xnConfigItem = xd.CreateElement("ConfigItem");
-                XmlAppendNode(xd, "Used", code.Config.Used ? "true" : "false", xnConfigItem);
-                XmlAppendNode(xd, "Title", code.Config.Title, xnConfigItem);
-                XmlAppendNode(xd, "Description", code.Config.Description, xnConfigItem);
-                XmlAppendNode(xd, "DataServerId", code.Config.DataServerId, xnConfigItem);
-                XmlAppendNode(xd, "EmailServerId", code.Config.EmailServerId, xnConfigItem);
-                XmlAppendNode(xd, "StateSql", code.Config.StateSql, xnConfigItem);
-                XmlAppendNode(xd, "Version", code.Config.Version, xnConfigItem);
 
-                xnReplaceFileCode.AppendChild(xnConfigItem);
-            }
-            #endregion
-
-
-            #region 开始保存输入参数
-            if (rre.ResultFlag)
-            {
-                XmlNode xnParmItem = xd.CreateElement("ParmItem");
-
-                foreach (var v in code.Parm)
+                if (string.IsNullOrEmpty(code.Config.XmlGuid))
                 {
-                    XmlNode xnParm = xd.CreateElement("Parm");
-                   
-                    XmlStaticCCF.AppendAtt(xnParm, "parmText", v.ParmText);
-                    XmlStaticCCF.AppendAtt(xnParm, "parmName", v.ParmName);
-                    XmlStaticCCF.AppendAtt(xnParm, "guid", v.Guid);
-                    
-
-                    xnParmItem.AppendChild(xnParm);
+                    code.Config.XmlGuid = Guid.NewGuid().ToString();
                 }
 
-                xnReplaceFileCode.AppendChild(xnParmItem);
-            }
-            #endregion
-
-            #region 开始保存主Sql
-            if (rre.ResultFlag)
-            {
-                XmlNode xnMainItem = xd.CreateElement("MainItem");
-
-                foreach (var v in code.MainSql)
+                if (string.IsNullOrEmpty(code.Config.UpdateDate))
                 {
-                    XmlNode xnMainSql =XmlStaticCCF.AppendChildNode(xnMainItem,"MainSql",v.SqlString);
-                    XmlStaticCCF.AppendAtt(xnMainSql, "guid", v.Guid);
-                   
+                    code.Config.UpdateDate = DateTime.Now.ToString();
+                }
+                if (string.IsNullOrEmpty(code.Config.CreateDate))
+                {
+                    code.Config.CreateDate = code.Config.UpdateDate;
                 }
 
-                xnReplaceFileCode.AppendChild(xnMainItem);
             }
-            #endregion
 
-            #region 开始保存循环Sql
+
+
+
+
+
+
             if (rre.ResultFlag)
             {
-                XmlNode xnListItem = xd.CreateElement("ListItem");
+                XmlDocument xd = new XmlDocument();
 
-                foreach (var v in code.ListSql)
+
+
+
+                XmlNode xnReplaceFileRoot = xd.CreateElement("ReplaceFileRoot");
+                XmlNode xnReplaceFile = xd.CreateElement("ReplaceFile");
+                XmlNode xnReplaceFileCode = xd.CreateElement("ReplaceFileCode");
+
+
+                #region 开始保存配置文件
+                if (rre.ResultFlag)
                 {
-                    XmlNode xnListSql = XmlStaticCCF.AppendChildNode(xnListItem,"ListSql",v.SqlString);
-                    XmlStaticCCF.AppendAtt(xnListSql, "guid", v.Guid);
+                    XmlNode xnConfigItem = xd.CreateElement("ConfigItem");
+                    XmlAppendNode(xd, "Used", code.Config.Used ? "true" : "false", xnConfigItem);
+                    XmlAppendNode(xd, "Title", code.Config.Title, xnConfigItem);
+                    XmlAppendNode(xd, "Description", code.Config.Description, xnConfigItem);
+                    XmlAppendNode(xd, "DataServerId", code.Config.DataServerId, xnConfigItem);
+                    XmlAppendNode(xd, "EmailServerId", code.Config.EmailServerId, xnConfigItem);
+                    XmlAppendNode(xd, "StateSql", code.Config.StateSql, xnConfigItem);
+                    XmlAppendNode(xd, "Version", code.Config.Version, xnConfigItem);
+
+                    xnReplaceFileCode.AppendChild(xnConfigItem);
                 }
+                #endregion
 
-                xnReplaceFileCode.AppendChild(xnListItem);
+
+                #region 开始保存输入参数
+                if (rre.ResultFlag)
+                {
+                    XmlNode xnParmItem = xd.CreateElement("ParmItem");
+
+                    foreach (var v in code.Parm)
+                    {
+                        XmlNode xnParm = xd.CreateElement("Parm");
+
+                        XmlStaticCCF.AppendAtt(xnParm, "parmText", v.ParmText);
+                        XmlStaticCCF.AppendAtt(xnParm, "parmName", v.ParmName);
+                        XmlStaticCCF.AppendAtt(xnParm, "guid", v.Guid);
+
+
+                        xnParmItem.AppendChild(xnParm);
+                    }
+
+                    xnReplaceFileCode.AppendChild(xnParmItem);
+                }
+                #endregion
+
+                #region 开始保存主Sql
+                if (rre.ResultFlag)
+                {
+                    XmlNode xnMainItem = xd.CreateElement("MainItem");
+
+                    foreach (var v in code.MainSql)
+                    {
+                        XmlNode xnMainSql = XmlStaticCCF.AppendChildNode(xnMainItem, "MainSql", v.SqlString);
+                        XmlStaticCCF.AppendAtt(xnMainSql, "guid", v.Guid);
+
+                    }
+
+                    xnReplaceFileCode.AppendChild(xnMainItem);
+                }
+                #endregion
+
+                #region 开始保存循环Sql
+                if (rre.ResultFlag)
+                {
+                    XmlNode xnListItem = xd.CreateElement("ListItem");
+
+                    foreach (var v in code.ListSql)
+                    {
+                        XmlNode xnListSql = XmlStaticCCF.AppendChildNode(xnListItem, "ListSql", v.SqlString);
+                        XmlStaticCCF.AppendAtt(xnListSql, "guid", v.Guid);
+                    }
+
+                    xnReplaceFileCode.AppendChild(xnListItem);
+                }
+                #endregion
+
+
+                xnReplaceFile.AppendChild(xnReplaceFileCode);
+                xnReplaceFileRoot.AppendChild(xnReplaceFile);
+
+                xd.AppendChild(xnReplaceFileRoot);
+
+                xd.Save(sSavePath);
             }
-            #endregion
-
-
-            xnReplaceFile.AppendChild(xnReplaceFileCode);
-            xnReplaceFileRoot.AppendChild(xnReplaceFile);
-
-            xd.AppendChild(xnReplaceFileRoot);
-
-            xd.Save(sSavePath);
 
             return rre;
         }

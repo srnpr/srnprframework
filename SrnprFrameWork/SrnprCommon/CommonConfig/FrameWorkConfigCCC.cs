@@ -59,6 +59,9 @@ namespace SrnprCommon.CommonConfig
 
             FileSystemWatcher fsw = new FileSystemWatcher(BaseConfigPath + "\\Config\\");
             fsw.Changed += new FileSystemEventHandler(fsw_Changed);
+            fsw.EnableRaisingEvents = true;
+
+
             fwce.CommonConfigPath = GetConfigPath(xd.DocumentElement.SelectSingleNode("CommonConfig/ConfigFilePath").InnerText);
 
             frameConfig = fwce;

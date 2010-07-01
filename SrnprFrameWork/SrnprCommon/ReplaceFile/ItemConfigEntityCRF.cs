@@ -70,5 +70,40 @@ namespace SrnprCommon.ReplaceFile
         /// </summary>
         public string Version { get; set; }
 
+
+
+        /// <summary>
+        /// Description: XML文件的唯一编号
+        /// Author:Liudpc
+        /// Create Date: 2010-7-1 9:48:56
+        /// </summary>
+        public string XmlGuid { get; set; }
+
+
+        /// <summary>
+        /// Description: Xml文件名称
+        /// Author:Liudpc
+        /// Create Date: 2010-7-1 9:51:19
+        /// </summary>
+        public string XmlFileId { get; set; }
+
+
+        /// <summary>
+        /// Description: 创建时间
+        /// Author:Liudpc
+        /// Create Date: 2010-7-1 9:51:48
+        /// </summary>
+        public string CreateDate { get; set; }
+
+
+        /// <summary>
+        /// Description: 最后一次修改时间
+        /// Author:Liudpc
+        /// Create Date: 2010-7-1 9:52:05
+        /// </summary>
+        public string UpdateDate { get; set; }
+
+
+
     }
 }

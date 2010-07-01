@@ -3,9 +3,8 @@
 
 
 	<FrameWorkConfig>
-
-		<LogFileList>~\Log\LogFrameworkFLF.xml</LogFileList>
-		
+		<LogFrameWorkFileDir>~\Log\</LogFrameWorkFileDir>
+		<LogFrameWorkFileName>~\Log\LogFrameworkFLF.xml</LogFrameWorkFileName>
 	</FrameWorkConfig>
 
 

@@ -788,9 +788,10 @@ namespace SrnprCommon.ReplaceFile
                             {
 
                                 ItemTempleteEmailInfoEntityCRF itee = new ItemTempleteEmailInfoEntityCRF();
-                                itee.Guid = xnTemplete.Attributes["guid"].Value.Trim();
-                                itee.Title = xnTempleteInfo.SelectSingleNode("Title").InnerText;
-                                itee.Content = xnTempleteInfo.SelectSingleNode("Content").InnerText;
+
+                                itee.Guid = XmlStaticCCF.GetAttValueByName(xnTemplete, "guid");
+                                itee.Title = XmlStaticCCF.GetChildValueByName(xnTempleteInfo,"Title");
+                                itee.Content =  XmlStaticCCF.GetChildValueByName(xnTempleteInfo, "Content");
 
                                 returnDesignEntity.ItemTemplete.Add(itee);
                             }

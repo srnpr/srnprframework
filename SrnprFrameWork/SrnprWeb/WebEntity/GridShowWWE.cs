@@ -12,7 +12,7 @@ namespace SrnprWeb.WebEntity
 
 
 
-        public List<GridShowListWWE> ShowList
+        public List<GridShowColumnWWE> ColumnList
         {
             get;
             set;

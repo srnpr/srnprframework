@@ -31,6 +31,22 @@ namespace SrnprWeb.WebWidget
             }
         }
 
+
+        private string _xmlConfigName = "";
+        public string XmlConfigName
+        {
+            get
+            {
+                return _xmlConfigName;
+            }
+            set
+            {
+                _xmlConfigName = value;
+            }
+        }
+
+
+
         protected override void RenderContents(HtmlTextWriter output)
         {
             output.Write(Text);

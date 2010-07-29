@@ -12,6 +12,22 @@ namespace SrnprWeb.WebEntity
 
 
 
+
+
+        public GridShowTableWWE TableInfo { get; set; }
+
+
+        
+
+
+
+        public List<GridShowParamWWE> ParamList
+        {
+            get;
+            set;
+        }
+
+
         public List<GridShowColumnWWE> ColumnList
         {
             get;

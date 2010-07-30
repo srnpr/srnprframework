@@ -9,13 +9,18 @@
     <!--
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
     -->
-    <script type="text/javascript" src="/WebFile/jquery-1.3.2.min-vsdoc.js"></script>
+    <script type="text/javascript" src="/WebFile/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="/WebFile/json2.js"></script>
     <script type="text/javascript" src="/WebFile/SrnprWebJsGridShowFWF.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
     <sw:GridShowWWW ID="GSShow" runat="server" XmlConfigName="" Text="aaa" />
+    
+    
+    <textarea id="jsonshow" rows="20" cols="100"></textarea>
+
     </div>
     </form>
 </body>

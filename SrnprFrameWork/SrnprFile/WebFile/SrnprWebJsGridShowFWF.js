@@ -4,6 +4,65 @@
 
 
 
+
+
+if (!this.SWJGSF)
+{
+
+    this.SWJGSF = {};
+    }
+
+        (
+        function()
+        {
+            var t = {
+
+            PI: 0,
+            PS: 0, 
+            PC: 0
+
+
+        };    
+        
+        
+        
+    
+
+
+        
+
+
+    }
+
+    )
+    ();
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var x = { a: "ddd", b: "dfafdaf" };
 
 

@@ -7,5 +7,17 @@ namespace SrnprWeb.WebEntity
 {
     public class GridShowRequestWWE
     {
+
+
+
+        public long PI { get; set; }
+
+        public long PS { get; set; }
+
+        public long PC { get; set; }
+
+
+
+
     }
 }

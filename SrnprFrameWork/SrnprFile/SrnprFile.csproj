@@ -72,6 +72,7 @@
     <Content Include="WebFile\SrnprWebCssDragElementFWF.css" />
     <Content Include="WebFile\SrnprWebJsCommonFWF.js" />
     <Content Include="WebFile\SrnprWebJsDragElementFWF.js" />
+    <Content Include="WebFile\SrnprWebJsGridShowFWF.js" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ConfigFile\SrnprWebConfigRegFCF.reg" />

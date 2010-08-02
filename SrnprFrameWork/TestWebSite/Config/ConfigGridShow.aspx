@@ -36,33 +36,104 @@
                 </tr>
             </table>
         </div>
-        <asp:Repeater ID="RPDataColumn" runat="server">
-            <HeaderTemplate>
-                <table>
+        <table>
+            <tr>
+                <th>
+                    表头名称
+                </th>
+                <th>
+                    数据列
+                </th>
+                <th>
+                    操作
+                </th>
+            </tr>
+            <asp:Repeater ID="RPDataColumn" runat="server">
+                <HeaderTemplate>
+                </HeaderTemplate>
+                <ItemTemplate>
                     <tr>
-                        <th>
-                            表头名称
-                        </th>
-                        <th>
-                            数据列
-                        </th>
+                        <td>
+                            <%#Eval("HeaderText")%>
+                        </td>
+                        <td>
+                            <%#Eval("ColumnData")%>
+                        </td>
+                        <td>
+                        </td>
                     </tr>
-            </HeaderTemplate>
-            <ItemTemplate>
-                <tr>
-                    <td>
-                        <%#Eval("HeaderText")%>
-                    </td>
-                    <td>
-                        <%#Eval("ColumnData")%>
-                    </td>
-                </tr>
-            </ItemTemplate>
-            <FooterTemplate>
-                </table>
-            </FooterTemplate>
-        </asp:Repeater>
+                </ItemTemplate>
+                <FooterTemplate>
+                </FooterTemplate>
+            </asp:Repeater>
+            <tr>
+                <td>
+                    <asp:TextBox ID="TBHeaderText" runat="server"></asp:TextBox>
+                </td>
+                <td>
+                    <asp:TextBox ID="TBColumnData" runat="server"></asp:TextBox>
+                </td>
+                <td>
+                    <asp:Button ID="btnAddDataColumn" runat="server" Text="添加" OnClick="btnAddDataColumn_Click" />
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+            <th>
+                    数据字段
+                </th>
+                
+                <th>
+                    参数查询类型
+                </th>
+                <th>
+                    参数名称
+                </th>
+                <th>
+                    操作
+                </th>
+            </tr>
+            <asp:Repeater ID="RPParams" runat="server">
+                <ItemTemplate>
+                    <tr><td>
+                            <%#Eval("ColumnField")%>
+                        </td>
+                       
+                        <td>
+                            <%#Eval("ParamOperator")%>
+                        </td>
+                         <td>
+                            <%#Eval("ParamName")%>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                </ItemTemplate>
+            </asp:Repeater>
+            <tr><td>
+                   <asp:TextBox ID="tbColumnField" runat="server"></asp:TextBox>
+                </td>
+                
+                <td>
+                    <asp:DropDownList ID="ddlParamOperator" runat="server">
+                    <asp:ListItem Text="=" Value="="></asp:ListItem>
+                    <asp:ListItem Text="like" Value="like"></asp:ListItem>
+                    </asp:DropDownList>
+                </td>
+                <td>
+                   <asp:TextBox ID="tbParamName" runat="server"></asp:TextBox>
+                </td>
+                <td>
+                
+                    <asp:Button ID="btnAddParams" runat="server" onclick="btnAddParams_Click" 
+                        Text="添加" />
+                
+                </td>
+            </tr>
+        </table>
     </div>
+    <asp:Button ID="btnSave" runat="server" OnClick="btnSave_Click" Text="保存设置" />
     </form>
 </body>
 </html>

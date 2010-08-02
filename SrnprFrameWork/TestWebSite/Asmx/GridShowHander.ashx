@@ -16,6 +16,13 @@ public class GridShowHander : IHttpHandler {
 
         string s = context.Request["json"];
 
+
+
+
+
+
+        var t=JSONHelper.Deserialize<SrnprWeb.WebEntity.GridShowRequestWWE>(s);
+        
         context.Response.Write(GetData());
 
 

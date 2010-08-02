@@ -10,31 +10,32 @@ if (!this.SWJGSF)
 {
 
     this.SWJGSF = {};
-    }
-
-        (
-        function()
-        {
+}
+    
+    
+    
+    
+    
+(
+    function()
+    {
             var t = {
 
             PI: 0,
             PS: 0, 
-            PC: 0
+            PC: 0};
 
 
-        };    
+
+
+            $.ajax({ url: "/Asmx/GridShowHander.ashx", type: "POST", data: "json=" + JSON.stringify(x), success: GetJson });
         
         
         
-    
-
-
-        
-
 
     }
 
-    )
+)
     ();
     
 
@@ -66,7 +67,7 @@ if (!this.SWJGSF)
 var x = { a: "ddd", b: "dfafdaf" };
 
 
-$.ajax({ url: "/Asmx/GridShowHander.ashx", type: "POST", data: "json="+JSON.stringify(x) , success: GetJson });
+
 
 
 

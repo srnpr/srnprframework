@@ -9,11 +9,16 @@ namespace SrnprWeb.WebEntity
     {
 
 
+        public string Guid { get; set; }
 
 
 
 
-
+        /// <summary>
+        /// Description: 数据信息
+        /// Author:Liudpc
+        /// Create Date: 2010-8-2 15:23:03
+        /// </summary>
         public GridShowDataWWE TableInfo { get; set; }
 
 

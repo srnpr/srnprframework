@@ -9,6 +9,7 @@ namespace SrnprWeb.WebEntity
     {
 
 
+        public string Guid { get; set; }
 
 
         /// <summary>

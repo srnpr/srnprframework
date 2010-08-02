@@ -74,6 +74,8 @@
     <Compile Include="WebEntity\DragFieldWWE.cs" />
     <Compile Include="WebEntity\FileUploadInfoWWE.cs" />
     <Compile Include="WebEntity\GridShowColumnWWE.cs" />
+    <Compile Include="WebEntity\GridShowListItemWWE.cs" />
+    <Compile Include="WebEntity\GridShowListWWE.cs" />
     <Compile Include="WebEntity\GridShowRequestWWE.cs" />
     <Compile Include="WebEntity\GridShowParamWWE.cs" />
     <Compile Include="WebEntity\GridShowResponseWWE.cs" />

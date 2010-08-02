@@ -58,7 +58,7 @@ namespace SrnprWeb.WebProcess
 
 
 
-        public string GetResponseString(string sJson)
+        public  string GetResponseString(string sJson)
         {
 
 
@@ -67,7 +67,7 @@ namespace SrnprWeb.WebProcess
 
             SrnprWeb.WebProcess.GridShowWWP gsw = new SrnprWeb.WebProcess.GridShowWWP();
 
-            return CommonFunction.JsonHelper.Serialize<SrnprWeb.WebEntity.GridShowResponseWWE>(gsw.GetHtmlByEntity(gsw.InitTemp(), t));
+            return CommonFunction.JsonHelper.Serialize<SrnprWeb.WebEntity.GridShowResponseWWE>(gsw.GetHtmlByEntity(GetEntityById(t.Id), t));
         }
 
 
@@ -103,6 +103,25 @@ namespace SrnprWeb.WebProcess
 
 
         }
+
+
+        public static string WidgetRequestString(string sId,string sClientId)
+        {
+            WebEntity.GridShowRequestWWE req = new GridShowRequestWWE();
+
+            req.Id = sId;
+            req.PageIndex = 1;
+            req.PageSize = 10;
+            req.ProcessType = "";
+            req.RowsCount = -1;
+            req.ClientId = sClientId;
+
+            return CommonFunction.JsonHelper.Serialize<WebEntity.GridShowRequestWWE>(req);
+
+
+        }
+
+
 
 
 

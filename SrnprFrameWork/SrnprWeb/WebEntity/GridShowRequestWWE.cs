@@ -41,6 +41,14 @@ namespace SrnprWeb.WebEntity
 
 
 
+        /// <summary>
+        /// Description: 客户端编号
+        /// Author:Liudpc
+        /// Create Date: 2010-8-2 16:56:10
+        /// </summary>
+        public string ClientId { get; set; }
+
+
 
         /// <summary>
         /// Description: 处理类型 默认为空 由服务端处理 取值范围：client,server

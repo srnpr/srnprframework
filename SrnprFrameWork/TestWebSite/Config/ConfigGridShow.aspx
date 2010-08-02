@@ -71,6 +71,9 @@
                             <%#Eval("ColumnData")%>
                         </td>
                         <td>
+                        
+                        <a href="javascript:SubmitCheck('d_d','<%#Eval("Guid") %>')">删除</a>
+                        
                         </td>
                     </tr>
                 </ItemTemplate>
@@ -118,6 +121,7 @@
                             <%#Eval("ParamName")%>
                         </td>
                         <td>
+                        <a href="javascript:SubmitCheck('d_p','<%#Eval("Guid") %>')">删除</a>
                         </td>
                     </tr>
                 </ItemTemplate>
@@ -146,6 +150,19 @@
     </div>
     <asp:Button ID="btnSave" runat="server" OnClick="btnSave_Click" Text="保存设置" />
     <a href="ConfigGridShowList.aspx">返回列表</a>
+    
+    <input type="hidden" name="submittype" id="submittype" />
+    <input type="hidden" name="submitid" id="submitid" />
+    <script type="text/javascript">
+        function SubmitCheck(t,guid)
+        {
+            document.getElementById("submittype").value = t;
+            document.getElementById("submitid").value = guid;
+            document.getElementById("submitid").form.submit();
+        }
+    
+    </script>
+    
     </form>
 </body>
 </html>

@@ -16,9 +16,9 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    <sw:GridShowWWW ID="GSShow" runat="server" XmlConfigName="" Text="aaa" />
+    <sw:GridShowWWW ID="GSShow" runat="server" XmlConfigName="TestSalesOrderList" />
     
-    
+     <sw:GridShowWWW ID="GSShow2" runat="server" XmlConfigName="TestSalesOrderRecord" />
     <textarea id="jsonshow" rows="20" cols="100"></textarea>
 
     </div>

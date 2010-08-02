@@ -53,7 +53,7 @@ namespace SrnprWeb.WebWidget
         {
 
 
-            output.Write(_xmlConfigName);
+            
             output.Write(ShowHtml(GridShowEntity));
         }
 
@@ -64,7 +64,11 @@ namespace SrnprWeb.WebWidget
             StringBuilder sb = new StringBuilder();
 
 
+            string sId = "SWJGSF_Obj_" + base.ClientID;
 
+
+
+            sb.Append("<div id=\"SWJGSF_Div_"+base.ClientID+"\"></div><script>var " + sId + "=" + SrnprWeb.WebProcess.GridShowWWP.WidgetRequestString(XmlConfigName,base.ClientID) + ";SWJGSF.Init(" + sId + ");</script>");
            
 
             return sb.ToString();

@@ -12,16 +12,22 @@ if (!this.SWJGSF)
 (
     function()
     {
-        SWJGSF.ObjTemp = {
-            Id: "ceshi",
-            PageIndex: 1,
-            PageSize: 10,
-            RowsCount: -1,
-            ProcessType: ""
-        };
 
 
         SWJGSF.Obj = {};
+
+
+
+        SWJGSF.Init = function(s)
+        {
+            $("document").ready(function()
+            {
+
+                SWJGSF.Obj[s.Id] = s;
+                SWJGSF.Ajax(s.Id);
+
+            })
+        }
 
 
 
@@ -70,7 +76,7 @@ if (!this.SWJGSF)
 
 
             var obj = JSON.parse(o);
-            
+
             //重新赋上最新版返回参数
             SWJGSF.Obj[id] = obj.Request;
 
@@ -85,7 +91,7 @@ if (!this.SWJGSF)
             sShowHtml += "<div>" + obj.Request.PageIndex + "/" + iPageCount + "页  共计：" + obj.Request.RowsCount + "条<a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "',1)\">首页</a><a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "','-')\">上一页</a><a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "','+')\">下一页</a><a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "','" + iPageCount + "')\">尾页</a></div>";
 
 
-            $("#GSShow").html(sShowHtml);
+            $("#SWJGSF_Div_" + obj.Request.ClientId).html(sShowHtml);
 
             $("#jsonshow").text(sShowHtml);
 
@@ -105,16 +111,7 @@ if (!this.SWJGSF)
 
 
 
-    $("document").ready(function()
-    {
-        var sId = "ceshi";
-
-        SWJGSF.Obj[sId] = SWJGSF.ObjTemp;
-        SWJGSF.Obj[sId].Id = sId;
-
-        SWJGSF.Ajax(sId);
-
-    });
+  
 
 
 

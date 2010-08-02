@@ -38,6 +38,7 @@ public partial class Config_ConfigGridShow : System.Web.UI.Page
                 TBTableName.Text = x.TableInfo.TableName;
                 TBDataBaseId.Text = x.TableInfo.DataBaseId;
                 TBId.Text = x.Id.Trim();
+                tbDescription.Text = x.Description.Trim();
 
                 GSEntity = x;
                 BindDataColumn();
@@ -57,6 +58,30 @@ public partial class Config_ConfigGridShow : System.Web.UI.Page
                 GSEntity = gsw;
             }
         }
+
+
+        if (!string.IsNullOrEmpty(Request["submittype"]))
+        {
+            string sId = Request["submitid"].Trim();
+            switch (Request["submittype"].Trim())
+            {
+                case "d_d":
+                    GSEntity.ColumnList.Remove(GSEntity.ColumnList.SingleOrDefault(t => t.Guid == sId));
+                    BindDataColumn();
+                    break;
+                case "d_p":
+                    GSEntity.ParamList.Remove(GSEntity.ParamList.SingleOrDefault(t => t.Guid == sId));
+                    BindParams();
+                    break;
+
+
+
+            }
+
+
+        }
+
+
 
 
     }

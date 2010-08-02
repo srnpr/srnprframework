@@ -2,47 +2,64 @@
 /// <reference path="json2.js"/>
 
 
-
-
-
-
 if (!this.SWJGSF)
 {
 
     this.SWJGSF = {};
 }
-    
-    
-    
-    
+
     
 (
     function()
     {
-            var t = {
+        SWJGSF.ObjTemp = {
+            Id: "",
+            PageIndex: 1,
+            PageSize: 10,
+            RowsCount: -1,
+            ProcessType:""
+        };
 
-            PI: 0,
-            PS: 0, 
-            PC: 0};
+
+
+        SWJGSF.Ajax = function(o)
+        {
+            $.ajax({ url: "/Asmx/GridShowHander.ashx", type: "POST", data: "json=" + JSON.stringify(o), success: SWJGSF.AjaxSuccess });
+        }
 
 
 
 
-            $.ajax({ url: "/Asmx/GridShowHander.ashx", type: "POST", data: "json=" + JSON.stringify(x), success: GetJson });
-        
-        
-        
+        //执行成功时
+        SWJGSF.AjaxSuccess = function(o)
+        {
+
+
+            var obj = JSON.parse(o);
+
+
+
+            $("#GSShow").html(obj.HtmlString);
+
+            $("#jsonshow").text(obj.HtmlString);
+
+
+            //alert(obj.ListString[0].length);
+        }
+
+
+
+
 
     }
 
-)
-    ();
-    
+)();
 
 
 
 
 
+    $("document").ready(function() { SWJGSF.Ajax(SWJGSF.ObjTemp) });
 
 
 
@@ -81,10 +98,7 @@ function GetJson(t)
 {
 
 
-    $("#jsonshow").html(t);
-
-    var obj = jQuery.parseJSON(t);
-    alert(obj.ListString[0].length);
+   
 
 }
 

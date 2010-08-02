@@ -8,7 +8,7 @@ using System.Collections;
 
 namespace SrnprCommon.DataHelper
 {
-    class SqlHelperCDH
+    public class SqlHelperCDH
     {
         // Hashtable to store cached parameters
         private static Hashtable parmCache = Hashtable.Synchronized(new Hashtable());

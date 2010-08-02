@@ -8,8 +8,11 @@ namespace SrnprWeb.WebEntity
     public class GridShowResponseWWE
     {
 
-        public GridShowRequestWWE Resuest { get; set; }
+        public GridShowRequestWWE Request { get; set; }
 
+
+
+        public string HtmlString { get; set; }
 
         public List<List<string>> DataItem { get; set; }
 

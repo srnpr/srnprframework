@@ -22,8 +22,14 @@ public class GridShowHander : IHttpHandler {
 
 
         var t=JSONHelper.Deserialize<SrnprWeb.WebEntity.GridShowRequestWWE>(s);
-        
-        context.Response.Write(GetData());
+
+
+        SrnprWeb.WebProcess.GridShowWWP gsw = new SrnprWeb.WebProcess.GridShowWWP();
+
+        string sRes = JSONHelper.Serialize < SrnprWeb.WebEntity.GridShowResponseWWE >( gsw.GetHtmlByEntity(gsw.InitTemp(), t));
+
+
+        context.Response.Write(sRes);
 
 
         

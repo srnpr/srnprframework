@@ -68,7 +68,7 @@ public class JSONHelper
         DataContractJsonSerializer serializer = new DataContractJsonSerializer(obj.GetType());
         MemoryStream ms = new MemoryStream();
         serializer.WriteObject(ms, obj);
-        string retVal = Encoding.Default.GetString(ms.ToArray());
+        string retVal = Encoding.UTF8.GetString(ms.ToArray());
         return retVal;
     }
     public static T Deserialize<T>(string json)

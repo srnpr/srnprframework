@@ -9,6 +9,24 @@ namespace SrnprWeb.WebEntity
     {
 
 
+
+
+        /// <summary>
+        /// Description: 唯一主键
+        /// Author:Liudpc
+        /// Create Date: 2010-8-2 12:15:23
+        /// </summary>
+        public string KeyColumn { get; set; }
+
+
+        /// <summary>
+        /// Description: 数据库编号
+        /// Author:Liudpc
+        /// Create Date: 2010-8-2 11:34:14
+        /// </summary>
+        public string DataBaseId { get; set; }
+
+
         /// <summary>
         /// Description: 表名
         /// Author:Liudpc

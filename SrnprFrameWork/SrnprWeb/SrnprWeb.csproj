@@ -67,7 +67,7 @@
     <Compile Include="WebEntity\GridShowRequestWWE.cs" />
     <Compile Include="WebEntity\GridShowParamWWE.cs" />
     <Compile Include="WebEntity\GridShowResponseWWE.cs" />
-    <Compile Include="WebEntity\GridShowTableWWE.cs" />
+    <Compile Include="WebEntity\GridShowDataWWE.cs" />
     <Compile Include="WebEntity\GridShowWWE.cs" />
     <Compile Include="WebEntity\PageSerchConfigWWE.cs" />
     <Compile Include="WebProcess\WidgetDragWWP.cs" />

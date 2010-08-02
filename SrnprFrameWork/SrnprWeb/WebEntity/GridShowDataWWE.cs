@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SrnprWeb.WebEntity
 {
-    public class GridShowTableWWE
+    public class GridShowDataWWE
     {
 
 

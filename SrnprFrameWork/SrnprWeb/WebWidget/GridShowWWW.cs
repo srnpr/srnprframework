@@ -64,19 +64,14 @@ namespace SrnprWeb.WebWidget
             StringBuilder sb = new StringBuilder();
 
 
+
             sb.Append("<table>");
-
-
             sb.Append("<tr>");
             for (int i = 0, j = gsw.ColumnList.Count; i < j; i++)
             {
                 sb.Append("<th>"+gsw.ColumnList[i].HeaderText+"</th>");
             }
             sb.Append("</tr>");
-
-
-
-
 
 
 

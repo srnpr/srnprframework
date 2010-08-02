@@ -14,7 +14,7 @@ namespace SrnprWeb.WebEntity
 
 
 
-        public GridShowTableWWE TableInfo { get; set; }
+        public GridShowDataWWE TableInfo { get; set; }
 
 
         

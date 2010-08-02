@@ -22,15 +22,26 @@ public partial class Config_ConfigGridShow : System.Web.UI.Page
         }
     }
 
-
+    protected string sMessage = "";
     protected void Page_Load(object sender, EventArgs e)
     {
 
 
         if (!IsPostBack)
         {
-            if (Request["id"] != null)
+            if (!string.IsNullOrEmpty( Request["id"]) )
             {
+                TBId.Enabled = false;
+
+                var x = SrnprWeb.WebProcess.GridShowWWP.GetEntityById(Request["id"].Trim());
+
+                TBTableName.Text = x.TableInfo.TableName;
+                TBDataBaseId.Text = x.TableInfo.DataBaseId;
+                TBId.Text = x.Id.Trim();
+
+                GSEntity = x;
+                BindDataColumn();
+                BindParams();
 
 
             }
@@ -40,6 +51,8 @@ public partial class Config_ConfigGridShow : System.Web.UI.Page
                 gsw.TableInfo = new SrnprWeb.WebEntity.GridShowDataWWE();
                 gsw.ParamList = new List<SrnprWeb.WebEntity.GridShowParamWWE>();
                 gsw.ColumnList = new List<SrnprWeb.WebEntity.GridShowColumnWWE>();
+                gsw.Guid = Guid.NewGuid().ToString();
+
 
                 GSEntity = gsw;
             }
@@ -87,7 +100,73 @@ public partial class Config_ConfigGridShow : System.Web.UI.Page
     protected void btnSave_Click(object sender, EventArgs e)
     {
 
+
+        if (TBId != null)
+        {
+            var tList = SrnprWeb.WebProcess.GridShowWWP.GetList();
+
+            var tE = tList.ItemList.SingleOrDefault(t => t.Id == TBId.Text.Trim());
+
+            if (!TBId.Enabled || tE == null)
+            {
+                var tEntity = GSEntity;
+
+                tEntity.Id = TBId.Text.Trim();
+                tEntity.TableInfo.TableName = TBTableName.Text.Trim();
+                tEntity.TableInfo.DataBaseId = TBDataBaseId.Text.Trim();
+                tEntity.TableInfo.KeyColumn = tEntity.ColumnList.FirstOrDefault(x => x.ColumnData != "").ColumnData;
+                tEntity.TableInfo.WhereString = "";
+                tEntity.Description = tbDescription.Text.Trim();
+
+
+
+                if (tE == null)
+                {
+
+                    SrnprWeb.WebEntity.GridShowListItemWWE gsli = new GridShowListItemWWE();
+                    gsli.Id = tEntity.Id;
+
+                    gsli.Guid = tEntity.Guid;
+                    gsli.Description = tEntity.Description;
+
+                    tList.ItemList.Add(gsli);
+                }
+                else
+                {
+                    tE.Description = tEntity.Description;
+
+                }
+
+
+                SrnprWeb.WebProcess.GridShowWWP.SaveFileByEntity(tEntity);
+
+                SrnprWeb.WebProcess.GridShowWWP.SaveList(tList);
+
+                BindMessage("创建成功！");
+
+            }
+            else
+            {
+                BindMessage("编号已存在！");
+            }
+
+
+
+        }
+        else
+        {
+            BindMessage("编号不能空！");
+        }
+
+
     }
+
+    protected void BindMessage(string sMsg)
+    {
+        sMessage = sMsg;
+    }
+
+
     protected void btnAddParams_Click(object sender, EventArgs e)
     {
         GridShowParamWWE gsp = new GridShowParamWWE();

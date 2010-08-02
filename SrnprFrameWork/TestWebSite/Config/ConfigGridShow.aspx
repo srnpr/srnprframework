@@ -8,6 +8,9 @@
 <body>
     <form id="form1" runat="server">
     <div>
+    
+    <div><%=sMessage %></div>
+    
         <div>
             <table>
                 <tr>
@@ -32,6 +35,14 @@
                     </td>
                     <td>
                         <asp:TextBox ID="TBTableName" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                 <tr>
+                    <td>
+                        描述：
+                    </td>
+                    <td>
+                        <asp:TextBox ID="tbDescription" runat="server"></asp:TextBox>
                     </td>
                 </tr>
             </table>
@@ -134,6 +145,7 @@
         </table>
     </div>
     <asp:Button ID="btnSave" runat="server" OnClick="btnSave_Click" Text="保存设置" />
+    <a href="ConfigGridShowList.aspx">返回列表</a>
     </form>
 </body>
 </html>

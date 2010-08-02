@@ -4,11 +4,58 @@ using System.Linq;
 using System.Text;
 using SrnprWeb.WebEntity;
 using System.Data;
+using System.IO;
+
 
 namespace SrnprWeb.WebProcess
 {
     public class GridShowWWP
     {
+
+        private static string sFilePath = "D:\\SrnprFrameWork\\WebWidget\\";
+        private static string sFileExt = "GridShow\\{0}.www.gs.xml";
+
+        private static string GridShowList = "GridShowList\\GridShowList.xml";
+
+
+        public static void SaveFileByEntity(WebEntity.GridShowWWE gsw)
+        {
+            SrnprCommon.CommonFunction.EntitySerializerCCF<WebEntity.GridShowWWE>.EntityToXml(gsw, sFilePath +string.Format(sFileExt,gsw.Id) );
+
+        }
+
+        public static WebEntity.GridShowWWE GetEntityById(string sId)
+        {
+            return SrnprCommon.CommonFunction.EntitySerializerCCF<WebEntity.GridShowWWE>.XmlToEntity(sFilePath + string.Format(sFileExt, sId));
+        }
+
+
+        public static WebEntity.GridShowListWWE GetList()
+        {
+
+            if (File.Exists(sFilePath + GridShowList))
+            {
+                return SrnprCommon.CommonFunction.EntitySerializerCCF<WebEntity.GridShowListWWE>.XmlToEntity(sFilePath + GridShowList);
+            }
+            else
+            {
+                WebEntity.GridShowListWWE gsl=new GridShowListWWE();
+                gsl.ItemList=new List<GridShowListItemWWE>();
+                return gsl;
+            }
+
+        }
+
+        public static void SaveList(WebEntity.GridShowListWWE gsl)
+        {
+            SrnprCommon.CommonFunction.EntitySerializerCCF<WebEntity.GridShowListWWE>.EntityToXml(gsl, sFilePath + GridShowList);
+        }
+
+
+
+
+
+
 
 
         public string GetResponseString(string sJson)

@@ -9,10 +9,25 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    <a href="ConfigGridShow.aspx" target="_blank">新建</a>
+    <a href="ConfigGridShow.aspx">新建</a>
     
+    <div>
+    <table>
+    <tr>
+    <th>编号</th>
+    <th>描述</th>
+    <th>操作</th>
+    </tr>
+   
+    <asp:Repeater ID="rpList" runat="server">
+    <ItemTemplate>
+    <tr><td><%#Eval("Id") %></td><td><%#Eval("Description") %></td><td><a href="ConfigGridShow.aspx?id=<%#Eval("Id") %>">修改</a></td></tr>
     
+    </ItemTemplate>
     
+    </asp:Repeater>
+     </table>
+     </div>
     </div>
     </form>
 </body>

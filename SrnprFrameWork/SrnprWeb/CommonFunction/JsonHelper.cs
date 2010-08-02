@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
+using System.IO;
+using System.Web;
+using System.Web.Services;
 using System.Runtime.Serialization.Json;  
 
 namespace SrnprWeb.CommonFunction
 {
-    class JsonHelper
+    public class JsonHelper
     {
 
         public static string Serialize<T>(T obj)

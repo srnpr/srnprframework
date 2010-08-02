@@ -11,6 +11,20 @@ namespace SrnprWeb.WebProcess
     {
 
 
+        public string GetResponseString(string sJson)
+        {
+
+
+            var t =  CommonFunction.JsonHelper.Deserialize<SrnprWeb.WebEntity.GridShowRequestWWE>(sJson);
+
+
+            SrnprWeb.WebProcess.GridShowWWP gsw = new SrnprWeb.WebProcess.GridShowWWP();
+
+            return CommonFunction.JsonHelper.Serialize<SrnprWeb.WebEntity.GridShowResponseWWE>(gsw.GetHtmlByEntity(gsw.InitTemp(), t));
+        }
+
+
+
 
 
 

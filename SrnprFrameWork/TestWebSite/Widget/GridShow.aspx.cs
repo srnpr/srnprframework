@@ -16,7 +16,7 @@ public partial class Widget_GridShow : System.Web.UI.Page
         SrnprWeb.WebEntity.GridShowWWE gsw = new SrnprWeb.WebEntity.GridShowWWE();
         gsw.ColumnList = new List<SrnprWeb.WebEntity.GridShowColumnWWE>();
         gsw.ParamList = new List<SrnprWeb.WebEntity.GridShowParamWWE>();
-        gsw.TableInfo = new SrnprWeb.WebEntity.GridShowTableWWE();
+        gsw.TableInfo = new SrnprWeb.WebEntity.GridShowDataWWE();
 
 
 

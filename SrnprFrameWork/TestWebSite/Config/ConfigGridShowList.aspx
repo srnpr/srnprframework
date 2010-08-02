@@ -9,6 +9,9 @@
 <body>
     <form id="form1" runat="server">
     <div>
+    <a href="ConfigGridShow.aspx" target="_blank">新建</a>
+    
+    
     
     </div>
     </form>

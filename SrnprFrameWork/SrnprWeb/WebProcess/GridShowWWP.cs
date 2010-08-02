@@ -51,14 +51,37 @@ namespace SrnprWeb.WebProcess
             string sSql = "select * from (select " + string.Join(",", gsw.ColumnList.Select(t => t.ColumnData).ToArray()) + " ,ROW_NUMBER() over(order by " + gsw.TableInfo.KeyColumn  + ") as srspdatapageno from " + gsw.TableInfo.TableName + gsw.TableInfo.WhereString + " )srspdatapagetable where srspdatapagetable.srspdatapageno between " + ((iPageIndex - 1) * iPageSize + 1).ToString() + " and " + (iPageIndex * iPageSize).ToString();
 
 
-            
 
 
 
-            return SrnprCommon.DataHelper.SqlHelperCDH.ExecuteDataTable(System.Configuration.ConfigurationSettings.AppSettings[gsw.TableInfo.DataBaseId].Trim(), sSql);
+
+            return SrnprCommon.DataHelper.SqlHelperCDH.ExecuteDataTable(GetConnString(gsw.TableInfo.DataBaseId), sSql);
 
 
         }
+
+
+        public string GetConnString(string sDataBaseId)
+        {
+            return System.Configuration.ConfigurationSettings.AppSettings[sDataBaseId].Trim();
+        }
+
+
+        /// <summary>
+        /// 
+        /// Description: 得到 数据集的总数
+        /// Author:Liudpc
+        /// Create Date: 2010-8-2 13:10:24
+        /// </summary>
+        /// <param name="gsw"></param>
+        /// <returns></returns>
+        public long GetDataCount(WebEntity.GridShowWWE gsw)
+        {
+            string sSql = "select count(1) from "+gsw.TableInfo.TableName+gsw.TableInfo.WhereString;
+            return long.Parse(SrnprCommon.DataHelper.SqlHelperCDH.ExecuteScalar(GetConnString(gsw.TableInfo.DataBaseId), sSql).ToString());
+
+        }
+
 
 
 
@@ -75,6 +98,12 @@ namespace SrnprWeb.WebProcess
 
 
             DataTable dt = GetDataByEntity(gsw,request.PageIndex,request.PageSize);
+
+
+            if (request.RowsCount == -1)
+            {
+                request.RowsCount = GetDataCount(gsw);
+            }
 
 
 

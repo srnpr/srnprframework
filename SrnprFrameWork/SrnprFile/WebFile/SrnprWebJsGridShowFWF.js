@@ -17,7 +17,7 @@ if (!this.SWJGSF)
             PageIndex: 1,
             PageSize: 10,
             RowsCount: -1,
-            ProcessType:""
+            ProcessType: ""
         };
 
 
@@ -38,10 +38,16 @@ if (!this.SWJGSF)
             var obj = JSON.parse(o);
 
 
+            var sShowHtml = obj.HtmlString;
+            
+            
 
-            $("#GSShow").html(obj.HtmlString);
+            sShowHtml += "<div>"+obj.Request.RowsCount+"</div>";
 
-            $("#jsonshow").text(obj.HtmlString);
+
+            $("#GSShow").html(sShowHtml);
+
+            $("#jsonshow").text(sShowHtml);
 
 
             //alert(obj.ListString[0].length);

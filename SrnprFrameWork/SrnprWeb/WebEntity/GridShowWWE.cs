@@ -31,6 +31,11 @@ namespace SrnprWeb.WebEntity
 
 
 
+        /// <summary>
+        /// Description: 参数列表
+        /// Author:Liudpc
+        /// Create Date: 2010-8-3 9:12:08
+        /// </summary>
         public List<GridShowParamWWE> ParamList
         {
             get;
@@ -38,6 +43,11 @@ namespace SrnprWeb.WebEntity
         }
 
 
+        /// <summary>
+        /// Description: 显示内容列表
+        /// Author:Liudpc
+        /// Create Date: 2010-8-3 9:12:20
+        /// </summary>
         public List<GridShowColumnWWE> ColumnList
         {
             get;

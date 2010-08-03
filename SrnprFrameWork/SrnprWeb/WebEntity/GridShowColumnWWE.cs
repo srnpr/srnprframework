@@ -39,7 +39,7 @@ namespace SrnprWeb.WebEntity
 
 
         /// <summary>
-        /// Description: 显示内容（最高优先级）
+        /// Description: 显示内容（最高优先级,此内容将覆盖掉前置设置）
         /// Author:Liudpc
         /// Create Date: 2010-8-2 18:01:58
         /// </summary>

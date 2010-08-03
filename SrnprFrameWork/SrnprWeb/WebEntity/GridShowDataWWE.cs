@@ -36,8 +36,12 @@ namespace SrnprWeb.WebEntity
 
 
 
-        
-
+        /// <summary>
+        /// Description: 是否排序
+        /// Author:Liudpc
+        /// Create Date: 2010-8-3 17:58:33
+        /// </summary>
+        public bool SortFlag { get; set; }
 
 
         /// <summary>

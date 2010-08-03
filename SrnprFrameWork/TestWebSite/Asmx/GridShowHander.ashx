@@ -13,12 +13,6 @@ public class GridShowHander : IHttpHandler {
         context.Response.Write(new SrnprWeb.WebProcess.GridShowWWP().GetResponseString(s));
         
     }
-
-
-
-    
-    
-    
  
     public bool IsReusable {
         get {

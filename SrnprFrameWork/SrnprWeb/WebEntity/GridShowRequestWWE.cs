@@ -58,5 +58,14 @@ namespace SrnprWeb.WebEntity
         public string ProcessType { get; set; }
 
 
+
+        /// <summary>
+        /// Description: 显示列
+        /// Author:Liudpc
+        /// Create Date: 2010-8-3 10:33:13
+        /// </summary>
+        public List<string> ShowDisplay { get; set; }
+
+
     }
 }

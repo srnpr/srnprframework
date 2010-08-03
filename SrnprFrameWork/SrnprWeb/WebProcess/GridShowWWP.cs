@@ -77,32 +77,7 @@ namespace SrnprWeb.WebProcess
 
 
 
-        public WebEntity.GridShowWWE InitTemp()
-        {
-            GridShowWWE gsw = new GridShowWWE();
-            gsw.TableInfo = new GridShowDataWWE();
-
-            gsw.TableInfo.TableName = "Ope_SalesOrderList";
-            gsw.TableInfo.DataBaseId = "SO";
-            gsw.TableInfo.KeyColumn = "SalesOrderListId";
-
-
-
-            gsw.ParamList = new List<GridShowParamWWE>();
-
-           
-
-
-            gsw.ColumnList = new List<GridShowColumnWWE>();
-
-            gsw.ColumnList.Add(new GridShowColumnWWE() { ColumnData = "ProductName", HeaderText = "商品名称" });
-            gsw.ColumnList.Add(new GridShowColumnWWE { ColumnData = "ProductId", HeaderText = "商品编号" });
-
-
-            return gsw;
-
-
-        }
+       
 
 
         public static string WidgetRequestString(string sId,string sClientId)
@@ -129,18 +104,20 @@ namespace SrnprWeb.WebProcess
         {
 
             string sSql = "select * from (select " + string.Join(",", gsw.ColumnList.Select(t => t.ColumnData).ToArray()) + " ,ROW_NUMBER() over(order by " + gsw.TableInfo.KeyColumn  + ") as srspdatapageno from " + gsw.TableInfo.TableName + gsw.TableInfo.WhereString + " )srspdatapagetable where srspdatapagetable.srspdatapageno between " + ((iPageIndex - 1) * iPageSize + 1).ToString() + " and " + (iPageIndex * iPageSize).ToString();
-
-
-
-
-
-
             return SrnprCommon.DataHelper.SqlHelperCDH.ExecuteDataTable(GetConnString(gsw.TableInfo.DataBaseId), sSql);
 
 
         }
 
 
+        /// <summary>
+        /// 
+        /// Description: 得到连接字符串
+        /// Author:Liudpc
+        /// Create Date: 2010-8-3 10:35:44
+        /// </summary>
+        /// <param name="sDataBaseId"></param>
+        /// <returns></returns>
         public string GetConnString(string sDataBaseId)
         {
             return System.Configuration.ConfigurationSettings.AppSettings[sDataBaseId].Trim();
@@ -167,6 +144,11 @@ namespace SrnprWeb.WebProcess
 
 
 
+        private string GetSelectValue(string s)
+        {
+            return s == "" ? "d" : s;
+
+        }
 
 
         public GridShowResponseWWE GetHtmlByEntity(WebEntity.GridShowWWE gsw,GridShowRequestWWE request)
@@ -180,6 +162,7 @@ namespace SrnprWeb.WebProcess
             DataTable dt = GetDataByEntity(gsw,request.PageIndex,request.PageSize);
 
 
+            //判断如果记录总数为-1，则重新初始化统计
             if (request.RowsCount == -1)
             {
                 request.RowsCount = GetDataCount(gsw);
@@ -194,27 +177,53 @@ namespace SrnprWeb.WebProcess
 
              
                 sb.Append("<div><table>");
-                sb.Append("<tr>");
-                for (int i = 0, j = gsw.ColumnList.Count; i < j; i++)
+               
+
+
+                int iColumnCount=gsw.ColumnList.Count;
+
+
+                if (request.ShowDisplay == null)
                 {
-                    sb.Append("<th>" + gsw.ColumnList[i].HeaderText + "</th>");
-                }
-                sb.Append("</tr>");
+                    request.ShowDisplay = new List<string>();
 
-                for (int i = 0, j = dt.Rows.Count; i < j; i++)
-                {
-                    sb.Append("<tr>");
-
-
-                    for (int n = 0, m = dt.Columns.Count-1; n < m; n++)
+                    for (int i = 0; i < iColumnCount; i++)
                     {
-                        sb.Append("<td>" + dt.Rows[i][n].ToString() + "</td>");
-
+                        if (gsw.ColumnList[i].ShowDisplay != "hidden")
+                        {
+                            request.ShowDisplay.Add(gsw.ColumnList[i].Guid + GetSelectValue(gsw.ColumnList[i].ShowDisplay) + GetSelectValue(gsw.ColumnList[i].OrderType) + ":" + gsw.ColumnList[i].HeaderText);
+                        }
                     }
+                }
 
 
+
+
+                if (iColumnCount > 0)
+                {
+
+                    sb.Append("<tr>");
+                    for (int i = 0, j = gsw.ColumnList.Count; i < j; i++)
+                    {
+                        sb.Append("<th>" + gsw.ColumnList[i].HeaderText + "</th>");
+                    }
                     sb.Append("</tr>");
 
+                    for (int i = 0, j = dt.Rows.Count; i < j; i++)
+                    {
+                        sb.Append("<tr>");
+
+
+                        for (int n = 0, m = dt.Columns.Count - 1; n < m; n++)
+                        {
+                            sb.Append("<td>" + dt.Rows[i][n].ToString() + "</td>");
+
+                        }
+
+
+                        sb.Append("</tr>");
+
+                    }
                 }
 
                 sb.Append("</div></table>");

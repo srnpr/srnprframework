@@ -76,6 +76,7 @@
     <Compile Include="WebEntity\GridShowColumnWWE.cs" />
     <Compile Include="WebEntity\GridShowListItemWWE.cs" />
     <Compile Include="WebEntity\GridShowListWWE.cs" />
+    <Compile Include="WebEntity\GridShowRequestItemWWE.cs" />
     <Compile Include="WebEntity\GridShowRequestWWE.cs" />
     <Compile Include="WebEntity\GridShowParamWWE.cs" />
     <Compile Include="WebEntity\GridShowResponseWWE.cs" />

@@ -108,8 +108,8 @@ public partial class Config_ConfigGridShow : System.Web.UI.Page
         GridShowColumnWWE gsc = new GridShowColumnWWE();
         gsc.HeaderText = TBHeaderText.Text.Trim();
         gsc.ColumnData = TBColumnData.Text.Trim();
-
-
+        gsc.ColumnType = ddlColumnType.SelectedValue.Trim();
+        gsc.ColumnShow = tbColumnShow.Text.Trim();
 
         gsc.Guid = Guid.NewGuid().ToString();
 
@@ -210,4 +210,21 @@ public partial class Config_ConfigGridShow : System.Web.UI.Page
         BindParams();
 
     }
+
+
+
+    public string GetTextByDDL(DropDownList ddl,object sValue)
+    {
+
+
+        if (sValue!=null)
+        {
+            return ddl.Items.FindByValue(sValue.ToString().Trim()).Text.Trim();
+        }
+        else
+        {
+            return ddl.Items[0].Text.Trim();
+        }
+    }
+
 }

@@ -29,6 +29,21 @@ namespace SrnprWeb.WebEntity
         public string ColumnData { get; set; }
 
 
+        /// <summary>
+        /// Description: 显示类型
+        /// Author:Liudpc
+        /// Create Date: 2010-8-2 17:38:47
+        /// </summary>
+        public string ColumnType { get; set; }
+
+
+
+        /// <summary>
+        /// Description: 显示内容（最高优先级）
+        /// Author:Liudpc
+        /// Create Date: 2010-8-2 18:01:58
+        /// </summary>
+        public string ColumnShow { get; set; }
 
 
        

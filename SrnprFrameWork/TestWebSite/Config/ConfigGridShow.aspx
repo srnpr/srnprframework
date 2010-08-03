@@ -54,6 +54,11 @@
                 </th>
                 <th>
                     数据列
+                </th><th>
+                    显示类型
+                </th>
+                <th>
+                    显示内容
                 </th>
                 <th>
                     操作
@@ -72,6 +77,13 @@
                         </td>
                         <td>
                         
+                        <%#GetTextByDDL(ddlColumnType,Eval("ColumnType"))%>
+                        </td>
+                        <td>
+                        <%#Eval("ColumnShow")%>
+                        </td>
+                        <td>
+                        
                         <a href="javascript:SubmitCheck('d_d','<%#Eval("Guid") %>')">删除</a>
                         
                         </td>
@@ -86,6 +98,17 @@
                 </td>
                 <td>
                     <asp:TextBox ID="TBColumnData" runat="server"></asp:TextBox>
+                </td>
+                 <td>
+                    <asp:DropDownList ID="ddlColumnType" runat="server">
+                    <asp:ListItem Text="默认" Value=""></asp:ListItem>
+                    <asp:ListItem Text="单选框" Value="radio"></asp:ListItem>
+                    <asp:ListItem Text="复选框" Value="checkbox"></asp:ListItem>
+                    <asp:ListItem Text="超级链接" Value="link"></asp:ListItem>
+                    </asp:DropDownList>
+                </td>
+                <td>
+                    <asp:TextBox ID="tbColumnShow" runat="server"></asp:TextBox>
                 </td>
                 <td>
                     <asp:Button ID="btnAddDataColumn" runat="server" Text="添加" OnClick="btnAddDataColumn_Click" />

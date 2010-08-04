@@ -221,7 +221,7 @@
     </div>
     <asp:Button ID="btnSave" runat="server" OnClick="btnSave_Click" Text="保存设置" />
     <br /><br />
-    <a href="ConfigGridShowList.aspx">返回列表</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../Widget/GridShowById.aspx">测试</a>
+    <a href="ConfigGridShowList.aspx">返回列表</a>&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" href="../Widget/GridShowById.aspx">测试</a>
     
     <input type="hidden" name="submittype" id="submittype" />
     <input type="hidden" name="submitid" id="submitid" />

@@ -203,7 +203,8 @@ if (!this.SWJGSF)
              }
             );
 
-             SWJGSF.Obj[id].QueryDict = t;
+            SWJGSF.Obj[id].QueryDict = t;
+            SWJGSF.Obj[id].RowsCount = -1;
             
             SWJGSF.Ajax(id);
 

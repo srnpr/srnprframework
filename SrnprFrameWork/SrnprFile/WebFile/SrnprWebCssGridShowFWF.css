@@ -1,0 +1,52 @@
+﻿body
+{
+    font-size:12px;
+}
+
+.SWCGSF_DIV_MAIN
+{
+    
+}
+
+.SWCGSF_DIV_MAIN table
+{
+    background-color:#999;
+    width:100%;
+}
+.SWCGSF_DIV_MAIN table tr
+{
+    padding:3px 5px 3px 5px;
+}
+
+.SWCGSF_TABLE_d
+{
+    cursor:pointer;
+}
+
+
+.SWCGSF_DIV_MAIN table tr th
+{
+    height:20px;
+    line-height:20px;
+    background-color:#ccc;
+}
+.SWCGSF_DIV_MAIN table tr td
+{
+    height:20px;
+    line-height:20px;
+    background-color:#fff;
+}
+
+.SWCGSF_DIV_FOOT_NAV
+{
+    border-left:solid 1px #999;
+    border-bottom:solid 1px #999;
+    border-right:solid 1px #999;
+    background-color:#ebebeb;
+    margin-bottom:20px;
+}
+.SWCGSF_DIV_FOOT_NAV a
+{
+    margin-left:10px;
+    
+}

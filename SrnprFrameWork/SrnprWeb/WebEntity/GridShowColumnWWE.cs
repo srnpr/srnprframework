@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace SrnprWeb.WebEntity
 {
+
+
+    [DataContract(Namespace = "http://srnprframework/srnprweb")]
     public class GridShowColumnWWE:GridShowColumnBaseWWE
     {
 
@@ -36,6 +40,16 @@ namespace SrnprWeb.WebEntity
         /// Create Date: 2010-8-2 18:01:58
         /// </summary>
         public string ColumnShow { get; set; }
+
+
+
+
+        /// <summary>
+        /// Description: 宽度描述
+        /// Author:Liudpc
+        /// Create Date: 2010-8-4 10:43:15
+        /// </summary>
+        public string Width { get; set; }
 
 
 

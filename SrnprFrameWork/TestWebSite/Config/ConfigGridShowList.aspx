@@ -5,14 +5,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link href="/WebFile/SrnprWebCSSGridShowFWF.css" type="text/css" rel="Stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
     <a href="ConfigGridShow.aspx">新建</a>
     
-    <div>
-    <table>
+     <div class="SWCGSF_DIV_MAIN">
+            <table cellpadding="0" cellspacing="1">
     <tr>
     <th>编号</th>
     <th>描述</th>
@@ -21,7 +22,7 @@
    
     <asp:Repeater ID="rpList" runat="server">
     <ItemTemplate>
-    <tr><td><%#Eval("Id") %></td><td><%#Eval("Description") %></td><td><a href="ConfigGridShow.aspx?id=<%#Eval("Id") %>">修改</a></td></tr>
+    <tr><td><%#Eval("Id") %></td><td><%#Eval("Description") %></td><td><a href="ConfigGridShow.aspx?id=<%#Eval("Id") %>">修改</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/Widget/GridShowById.aspx?id=<%#Eval("Id") %>">测试</a></td></tr>
     
     </ItemTemplate>
     

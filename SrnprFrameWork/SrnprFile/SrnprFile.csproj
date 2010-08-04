@@ -74,6 +74,7 @@
     <Content Include="WebFile\jquery-1.4.2.min.js" />
     <Content Include="WebFile\json2.js" />
     <Content Include="WebFile\SrnprWebCssDragElementFWF.css" />
+    <Content Include="WebFile\SrnprWebCssGridShowFWF.css" />
     <Content Include="WebFile\SrnprWebJsCommonFWF.js" />
     <Content Include="WebFile\SrnprWebJsDragElementFWF.js" />
     <Content Include="WebFile\SrnprWebJsGridShowFWF.js" />

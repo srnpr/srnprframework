@@ -111,6 +111,10 @@ public partial class Config_ConfigGridShow : System.Web.UI.Page
         gsc.ColumnType = ddlColumnType.SelectedValue.Trim();
         gsc.ColumnShow = tbColumnShow.Text.Trim();
 
+        gsc.ShowDisplay = ddlShowDisplay.SelectedValue.Trim();
+        gsc.OrderType = ddlOrderType.SelectedValue.Trim();
+        gsc.Width = tbWidth.Text.Trim();
+
         gsc.Guid = Guid.NewGuid().ToString();
 
         GSEntity.ColumnList.Add(gsc);

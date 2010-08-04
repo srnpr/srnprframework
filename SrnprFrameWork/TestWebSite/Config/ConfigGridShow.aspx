@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link href="/WebFile/SrnprWebCSSGridShowFWF.css" type="text/css" rel="Stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -11,8 +12,8 @@
     
     <div><%=sMessage %></div>
     
-        <div>
-            <table>
+        <div class="SWCGSF_DIV_MAIN">
+            <table cellpadding="0" cellspacing="1">
                 <tr>
                     <td>
                         编号：
@@ -47,7 +48,10 @@
                 </tr>
             </table>
         </div>
-        <table>
+        
+        
+        <div class="SWCGSF_DIV_MAIN">
+            <table cellpadding="0" cellspacing="1">
             <tr>
                 <th>
                     表头名称
@@ -55,10 +59,19 @@
                 <th>
                     数据列
                 </th><th>
-                    显示类型
+                    数据显示类型
                 </th>
                 <th>
                     显示内容
+                </th>
+                <th>
+                    显示方式
+                </th>
+                <th>
+                    排序方式
+                </th>
+                <th>
+                    宽度
                 </th>
                 <th>
                     操作
@@ -82,6 +95,17 @@
                         <td>
                         <%#Eval("ColumnShow")%>
                         </td>
+                         <td>
+                        
+                        <%#GetTextByDDL(ddlShowDisplay, Eval("ShowDisplay"))%>
+                        </td>
+                        <td>
+                        
+                        <%#GetTextByDDL(ddlOrderType, Eval("OrderType"))%>
+                        </td>
+                        <td>
+                        <%#Eval("Width")%>
+                        </td>
                         <td>
                         
                         <a href="javascript:SubmitCheck('d_d','<%#Eval("Guid") %>')">删除</a>
@@ -101,21 +125,44 @@
                 </td>
                  <td>
                     <asp:DropDownList ID="ddlColumnType" runat="server">
-                    <asp:ListItem Text="默认" Value=""></asp:ListItem>
-                    <asp:ListItem Text="单选框" Value="radio"></asp:ListItem>
-                    <asp:ListItem Text="复选框" Value="checkbox"></asp:ListItem>
-                    <asp:ListItem Text="超级链接" Value="link"></asp:ListItem>
+                    <asp:ListItem Text="默认" Value="d"></asp:ListItem>
+                    <asp:ListItem Text="单选框" Value="r"></asp:ListItem>
+                    <asp:ListItem Text="复选框" Value="c"></asp:ListItem>
+                    <asp:ListItem Text="超级链接" Value="l"></asp:ListItem>
+                    <asp:ListItem Text="其他" Value="o"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td>
                     <asp:TextBox ID="tbColumnShow" runat="server"></asp:TextBox>
                 </td>
                 <td>
+                    <asp:DropDownList ID="ddlShowDisplay" runat="server">
+                    <asp:ListItem Text="默认" Value="d"></asp:ListItem>
+                    <asp:ListItem Text="不显示" Value="n"></asp:ListItem>
+                    <asp:ListItem Text="永久隐藏" Value="h"></asp:ListItem>
+                    </asp:DropDownList>
+                </td>
+                <td>
+                    <asp:DropDownList ID="ddlOrderType" runat="server">
+                    <asp:ListItem Text="默认" Value="d"></asp:ListItem>
+                    <asp:ListItem Text="默认正序" Value="a"></asp:ListItem>
+                    <asp:ListItem Text="默认倒序" Value="e"></asp:ListItem>
+                    <asp:ListItem Text="不排序" Value="n"></asp:ListItem>
+                    </asp:DropDownList>
+                </td>
+                 <td>
+                    <asp:TextBox ID="tbWidth" runat="server"></asp:TextBox>
+                </td>
+                <td>
                     <asp:Button ID="btnAddDataColumn" runat="server" Text="添加" OnClick="btnAddDataColumn_Click" />
                 </td>
             </tr>
         </table>
-        <table>
+        </div>
+        
+        <br /><br /><br />以下为输入参数集合，暂未启用
+        <div class="SWCGSF_DIV_MAIN">
+            <table cellpadding="0" cellspacing="1">
             <tr>
             <th>
                     数据字段
@@ -170,6 +217,7 @@
                 </td>
             </tr>
         </table>
+        </div>
     </div>
     <asp:Button ID="btnSave" runat="server" OnClick="btnSave_Click" Text="保存设置" />
     <a href="ConfigGridShowList.aspx">返回列表</a>

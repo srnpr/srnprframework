@@ -12,6 +12,10 @@
     <script type="text/javascript" src="http://srnprframeworktest//WebFile/jquery-1.4.2.min.js"></script>
     <script type="text/javascript" src="http://srnprframeworktest//WebFile/json2.js"></script>
     <script type="text/javascript" src="http://srnprframeworktest//WebFile/SrnprWebJsGridShowFWF.js"></script>
+    
+    <script type="text/javascript" src="http://f.xgou.com/AtGang/Common/js/SrnprNetJsAllAlpha.js"></script>
+    <link href="http://srnprframeworktest//WebFile/SrnprWebCSSGridShowFWF.css" type="text/css" rel="Stylesheet" />
+    <link href="http://f.xgou.com/AtGang/Manage/css/ManageAlpha.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">

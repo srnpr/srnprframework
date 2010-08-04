@@ -17,7 +17,7 @@ if (!this.SWJGSF)
         SWJGSF.Obj = {};
 
 
-
+        //初始化
         SWJGSF.Init = function(s)
         {
             $("document").ready(function()
@@ -30,12 +30,13 @@ if (!this.SWJGSF)
         }
 
 
-
+        //提交请求
         SWJGSF.Ajax = function(id)
         {
             $.ajax({ url: "/Asmx/GridShowHander.ashx", type: "POST", data: "json=" + JSON.stringify(SWJGSF.Obj[id]), success: function(x) { SWJGSF.AjaxSuccess(id, x) } });
         }
 
+        //跳转页面
         SWJGSF.PageGoto = function(id, iPage)
         {
 
@@ -88,17 +89,78 @@ if (!this.SWJGSF)
             var iPageCount = Math.floor(obj.Request.RowsCount / obj.Request.PageSize);
 
 
-            sShowHtml += "<div>" + obj.Request.PageIndex + "/" + iPageCount + "页  共计：" + obj.Request.RowsCount + "条<a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "',1)\">首页</a><a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "','-')\">上一页</a><a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "','+')\">下一页</a><a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "','" + iPageCount + "')\">尾页</a></div>";
+            sShowHtml += "<div class=\"SWCGSF_DIV_FOOT_NAV\">" + obj.Request.PageIndex + "/" + iPageCount + "页  共计：" + obj.Request.RowsCount + "条"
+            + "<a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "',1)\">首页</a><a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "','-')\">上一页</a><a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "','+')\">下一页</a><a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "','" + iPageCount + "')\">尾页</a>"
+            + "<a href=\"javascript:SWJGSF.ShowDisplay('" + obj.Request.Id + "')\">自定义</a></div>";
 
 
             $("#SWJGSF_Div_" + obj.Request.ClientId).html(sShowHtml);
 
-            $("#jsonshow").text(sShowHtml);
+
+
+
+
+            $("#jsonshow").text(o);
 
 
             //alert(obj.ListString[0].length);
         }
 
+        //自定义显示字段
+        SWJGSF.ShowDisplay = function(id)
+        {
+
+            var s = "<ul>";
+            for (var i = 0, j = SWJGSF.Obj[id].ShowColumn.length; i < j; i++)
+            {
+                s += "<li><input type=\"checkbox\" id=\"" + SWJGSF.Obj[id].ClientId + "_showcolumn_ckb_" + SWJGSF.Obj[id].ShowColumn[i].Guid + "\" " + (SWJGSF.Obj[id].ShowColumn[i].ShowDisplay == "n" ? "" : "checked=\"checked\"") + " />" + SWJGSF.Obj[id].ShowColumn[i].HeaderText + "</li>";
+            }
+
+            s += "</ul>";
+
+            SrnprNetJsAllAlphaShow({ s: "f", c: s, m: "请选择显示内容", y: "SWJGSF.SetDisplay('" + id + "')", w: "400" })
+        }
+
+        //设置显示字段
+        SWJGSF.SetDisplay = function(id)
+        {
+
+            for (var i = 0, j = SWJGSF.Obj[id].ShowColumn.length; i < j; i++)
+            {
+                if ($("#" + SWJGSF.Obj[id].ClientId + "_showcolumn_ckb_" + SWJGSF.Obj[id].ShowColumn[i].Guid).attr("checked") == true)
+                {
+                    SWJGSF.Obj[id].ShowColumn[i].ShowDisplay = "d";
+                }
+                else
+                {
+                    SWJGSF.Obj[id].ShowColumn[i].ShowDisplay = "n";
+                }
+            }
+
+            SWJGSF.Ajax(id);
+            SrnprNetJsAllAlphaShow({ s: "c" });
+        }
+
+
+        SWJGSF.Sort = function(id, gid)
+        {
+            for (var i = 0, j = SWJGSF.Obj[id].ShowColumn.length; i < j; i++)
+            {
+                if (SWJGSF.Obj[id].ShowColumn[i].Guid == gid)
+                {
+                    SWJGSF.Obj[id].ShowColumn[i].OrderType = SWJGSF.Obj[id].ShowColumn[i].OrderType == "a" ? "e" : "a";
+                }
+                else
+                {
+                    if (SWJGSF.Obj[id].ShowColumn[i].OrderType != "n")
+                    {
+                        SWJGSF.Obj[id].ShowColumn[i].OrderType = "d";
+                    }
+                }
+            }
+
+            SWJGSF.Ajax(id);
+        }
 
 
 
@@ -133,7 +195,6 @@ if (!this.SWJGSF)
 
 
 
-var x = { a: "ddd", b: "dfafdaf" };
 
 
 
@@ -143,16 +204,7 @@ var x = { a: "ddd", b: "dfafdaf" };
 
 
 
-//alert(jQuery.parseJSON(x));
 
-
-function GetJson(t)
-{
-
-
-   
-
-}
 
 
 

@@ -164,6 +164,54 @@ if (!this.SWJGSF)
 
 
 
+        SWJGSF.Query = function(id, sid)
+        {
+            var t = [];
+
+
+            $("#" + sid).children("[paramid][paramid<>'']").each(
+
+             function(index, n)
+             {
+                 var el = $(n);
+                 var vl = el.val();
+                 if (el.is("input") && (n.type == "checkbox" || n.type == "radio") && !n.checked)
+                 {
+                     vl = "";
+                 }
+
+                 if (vl != "")
+                 {
+                     var jLength = t.length;
+
+                     for (var i = 0, j = t.length; i < j; i++)
+                     {
+                         if (t[i].Key == n.paramid)
+                         {
+                             t[i].Value = t[i].Value + "," + vl;
+                             jLength = -1;
+                         }
+                     }
+
+                     if (jLength > -1)
+                     {
+                         t.push({ Key: n.paramid, Value: vl });
+                     }
+
+                 }
+
+             }
+            );
+
+             SWJGSF.Obj[id].QueryDict = t;
+            
+            SWJGSF.Ajax(id);
+
+
+        }
+
+
+
 
     }
 

@@ -165,6 +165,9 @@
             <table cellpadding="0" cellspacing="1">
             <tr>
             <th>
+                    连接操作符
+                </th>
+            <th>
                     数据字段
                 </th>
                 
@@ -180,12 +183,17 @@
             </tr>
             <asp:Repeater ID="RPParams" runat="server">
                 <ItemTemplate>
-                    <tr><td>
+                    <tr>
+                    
+                    <td>
+                            <%#GetTextByDDL(ddlParamQueryType, Eval("ParamQueryType"))%>
+                        </td>
+                    <td>
                             <%#Eval("ColumnField")%>
                         </td>
                        
                         <td>
-                            <%#Eval("ParamOperator")%>
+                            <%#GetTextByDDL(ddlParamOperator, Eval("ParamOperator"))%>
                         </td>
                          <td>
                             <%#Eval("ParamName")%>
@@ -197,13 +205,23 @@
                 </ItemTemplate>
             </asp:Repeater>
             <tr><td>
+                    <asp:DropDownList ID="ddlParamQueryType" runat="server">
+                    <asp:ListItem Value="a" Text="并且"></asp:ListItem>
+                    <asp:ListItem Value="o" Text="或者"></asp:ListItem>
+                    <asp:ListItem Value="d" Text="自定义"></asp:ListItem>
+                    </asp:DropDownList>
+                </td><td>
                    <asp:TextBox ID="tbColumnField" runat="server"></asp:TextBox>
                 </td>
                 
                 <td>
                     <asp:DropDownList ID="ddlParamOperator" runat="server">
-                    <asp:ListItem Text="=" Value="="></asp:ListItem>
-                    <asp:ListItem Text="like" Value="like"></asp:ListItem>
+                    <asp:ListItem Value="e" Text="等于"></asp:ListItem>
+                    <asp:ListItem Value="b" Text="大于"></asp:ListItem>
+                    <asp:ListItem Value="s" Text="小于"></asp:ListItem>
+                    <asp:ListItem Value="l" Text="搜索"></asp:ListItem>
+                    <asp:ListItem Value="d" Text="自定义"></asp:ListItem>
+                    
                     </asp:DropDownList>
                 </td>
                 <td>

@@ -66,7 +66,7 @@ namespace SrnprWeb.WebProcess
 
             var t =  CommonFunction.JsonHelper.Deserialize<SrnprWeb.WebEntity.GridShowRequestWWE>(sJson);
 
-
+        
             SrnprWeb.WebProcess.GridShowWWP gsw = new SrnprWeb.WebProcess.GridShowWWP();
 
             return CommonFunction.JsonHelper.Serialize<SrnprWeb.WebEntity.GridShowResponseWWE>(gsw.GetHtmlByEntity(GetEntityById(t.Id), t));
@@ -105,8 +105,104 @@ namespace SrnprWeb.WebProcess
         public DataTable GetDataByEntity(WebEntity.GridShowWWE gsw, GridShowRequestWWE req,string sOrdeString)
         {
 
-            string sSql = "select * from (select " + string.Join(",", gsw.ColumnList.Select(t => t.ColumnData).ToArray()) + " ,ROW_NUMBER() over(order by " + sOrdeString + ") as srspdatapageno from " + gsw.TableInfo.TableName + gsw.TableInfo.WhereString + " )srspdatapagetable where srspdatapagetable.srspdatapageno between " + ((req.PageIndex - 1) * req.PageSize + 1).ToString() + " and " + (req.PageIndex * req.PageSize).ToString();
-            return SrnprCommon.DataHelper.SqlHelperCDH.ExecuteDataTable(GetConnString(gsw.TableInfo.DataBaseId), sSql);
+            string sWhere = gsw.TableInfo.WhereString;
+
+            Dictionary<string, string> dQuery = new Dictionary<string, string>();
+
+            if (req.QueryDict!=null&& req.QueryDict.Count > 0)
+            {
+
+                
+
+                List<string> listStr = new List<string>();
+
+
+
+
+               
+
+                foreach (KeyValuePair<string, string> kvp in req.QueryDict)
+                {
+
+                    var o = gsw.ParamList.FirstOrDefault(t => t.ParamName == kvp.Key);
+                    if (o != null && !string.IsNullOrEmpty(o.ParamName) && !string.IsNullOrEmpty(o.ColumnField))
+                    {
+
+                        string sParam = "";
+
+
+                        switch (o.ParamQueryType)
+                        {
+                            case "a":
+                                sParam += " and ";
+                                break;
+                            case "o":
+                                sParam += " or ";
+                                break;
+                            case "d":
+                            default:
+                                sParam += " ";
+                                break;
+                        }
+
+
+                        switch (o.ParamOperator)
+                        {
+
+                            case "e":
+                                sParam += o.ColumnField+"=@"+kvp.Key;
+                                dQuery.Add(kvp.Key, kvp.Value);
+                                
+                                break;
+                            case "b":
+                                sParam += o.ColumnField + "=>@" + kvp.Key;
+                                dQuery.Add(kvp.Key, kvp.Value);
+                                break;
+                            case "s":
+                                sParam += o.ColumnField + "=>@" + kvp.Key;
+                                dQuery.Add(kvp.Key, kvp.Value);
+                                break;
+                            case "l":
+                                sParam += o.ColumnField + " like@" + kvp.Key;
+
+                                dQuery.Add(kvp.Key, "%" + kvp.Value + "%");
+                               
+                                break;
+                            case "d":
+                            default:
+                                sParam += o.ParamName;
+                                break;
+                        }
+
+                        listStr.Add(sParam);
+
+                    }
+
+
+                }
+
+
+                if (listStr.Count > 0)
+                {
+
+                    sWhere += (string.IsNullOrEmpty(sWhere)?" 1=1" :"")+ string.Join(" ", listStr.ToArray());
+
+                }
+
+
+                
+            }
+
+
+            if (!string.IsNullOrEmpty(sWhere))
+            {
+                sWhere = " where " + sWhere;
+            }
+
+
+
+            string sSql = "select * from (select " + string.Join(",", gsw.ColumnList.Select(t => t.ColumnData).ToArray()) + " ,ROW_NUMBER() over(order by " + sOrdeString + ") as srspdatapageno from " + gsw.TableInfo.TableName + sWhere + " )srspdatapagetable where srspdatapagetable.srspdatapageno between " + ((req.PageIndex - 1) * req.PageSize + 1).ToString() + " and " + (req.PageIndex * req.PageSize).ToString();
+            return SrnprCommon.DataHelper.SqlHelperCDH.ExecuteDataTable(GetConnString(gsw.TableInfo.DataBaseId), sSql, dQuery);
 
 
         }
@@ -188,7 +284,7 @@ namespace SrnprWeb.WebProcess
             string sOrdeString = "";
 
 
-            //开始判断排序
+            //开始智能分析排序字段
             if (request.ShowColumn.Count > 0)
             {
 
@@ -198,9 +294,10 @@ namespace SrnprWeb.WebProcess
                     vSort = gsw.ColumnList.FirstOrDefault(x => ReckeckOrderColumn(x.ColumnData) != "");
                 }
                 sOrdeString = ReckeckOrderColumn(gsw.ColumnList.SingleOrDefault(t => t.Guid == vSort.Guid).ColumnData) + (vSort.OrderType == "a" ? " asc " : " desc ");
-
-
             }
+
+
+           
 
 
 
@@ -459,6 +556,28 @@ namespace SrnprWeb.WebProcess
 
 
 
+
+
+        private Dictionary<string, string> RecheckJsonDic(string sJson)
+        {
+            Dictionary<string, string> d=new Dictionary<string,string>();
+
+           
+
+
+
+            //var t=Regex.Matches("(?!\")(?<=\").*?(?=\\\")(?!\\\")";
+
+
+
+
+
+
+
+
+
+            return d;
+        }
        
 
 

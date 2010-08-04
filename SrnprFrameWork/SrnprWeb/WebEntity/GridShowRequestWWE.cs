@@ -72,5 +72,19 @@ namespace SrnprWeb.WebEntity
         public List<GridShowColumnBaseWWE> ShowColumn { get; set; }
 
 
+
+     
+
+
+      [DataMember(Order = 7)]
+
+         /// <summary>
+        /// Description: 查询内容
+        /// Author:Liudpc
+        /// Create Date: 2010-8-3 10:33:13
+        /// </summary>
+       public Dictionary<string, string> QueryDict { get; set; }
+
+
     }
 }

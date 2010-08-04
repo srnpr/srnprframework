@@ -153,6 +153,27 @@ namespace SrnprCommon.DataHelper
             return ExecuteDataTable(connectionString, CommandType.Text, cmdText, commandParameters);
         }
 
+
+        private static SqlParameter[] GetSqlParameterByDict(Dictionary<string, string> dictParameters)
+        {
+            List<SqlParameter> sp = new List<SqlParameter>();
+
+            if (dictParameters != null)
+            {
+                foreach (KeyValuePair<string, string> kvp in dictParameters)
+                {
+                    sp.Add(new SqlParameter(kvp.Key.StartsWith("@") ? kvp.Key : ("@" + kvp.Key), kvp.Value));
+                }
+            }
+
+            return sp.ToArray();
+        }
+
+        public static DataTable ExecuteDataTable(string connectionString, string cmdText,Dictionary<string,string> dictParameters)
+        {
+            return ExecuteDataTable(connectionString, CommandType.Text, cmdText, GetSqlParameterByDict(dictParameters));
+        }
+
         public static DataTable ExecuteDataTable(string connectionString, CommandType cmdType, string cmdText, params SqlParameter[] commandParameters)
         {
             SqlCommand cmd = new SqlCommand();

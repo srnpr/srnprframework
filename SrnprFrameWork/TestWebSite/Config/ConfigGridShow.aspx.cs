@@ -202,6 +202,7 @@ public partial class Config_ConfigGridShow : System.Web.UI.Page
         gsp.ColumnField = tbColumnField.Text.Trim();
         gsp.ParamName = tbParamName.Text.Trim();
         gsp.ParamOperator = ddlParamOperator.SelectedValue.Trim();
+        gsp.ParamQueryType = ddlParamQueryType.SelectedValue.Trim();
 
 
         gsp.Guid = Guid.NewGuid().ToString();

@@ -19,6 +19,24 @@
 </head>
 <body>
     <form id="form1" runat="server">
+    
+    
+    <div id="search">
+        <input type="text" paramid="Param1"  />
+    
+    <input type="hidden"  paramid="Param2" value="dd"/>
+    
+    <select paramid="Param3" >
+    <option value="ss1">fdasf</option>
+    </select>
+    
+    <input type="checkbox" name="aa" value="axx"  paramid="afd" />
+    
+    
+    <input type="button" value="查询" onclick="SWJGSF.Query('TestSalesOrderList','search')" />
+    
+    </div>
+    
     <div>
     <sw:GridShowWWW ID="GSShow" runat="server" XmlConfigName="TestSalesOrderList" />
     

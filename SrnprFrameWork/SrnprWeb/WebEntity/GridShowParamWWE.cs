@@ -29,11 +29,20 @@ namespace SrnprWeb.WebEntity
 
 
         /// <summary>
-        /// Description: 参数操作符
+        /// Description: 参数操作符（d:默认自定义,e:等于,b:大于,s:小于,l:搜索）
         /// Author:Liudpc
         /// Create Date: 2010-7-29 16:42:30
         /// </summary>
         public string ParamOperator { get; set; }
+
+
+
+        /// <summary>
+        /// Description: 查询类型（d:默认空,a:且,o:或）
+        /// Author:Liudpc
+        /// Create Date: 2010-8-4 15:14:54
+        /// </summary>
+        public string ParamQueryType { get; set; }
 
 
 

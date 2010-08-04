@@ -24,7 +24,7 @@
     <div id="search">
         <input type="text" paramid="Param1"  />
     
-    <input type="hidden"  paramid="Param2" value="dd"/>
+    <input type="hidden"  paramid="Param2" value="dd" />
     
     <select paramid="Param3" >
     <option value="ss1">fdasf</option>

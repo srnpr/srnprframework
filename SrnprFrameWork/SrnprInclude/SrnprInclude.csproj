@@ -43,4 +43,32 @@
   <ItemGroup>
     <None Include="ckeditor_3.1.zip" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\dccontrol.gif" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\dialogs\srnpr_ck_ct_list.js" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\images\angel_smile.gif" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\images\angry_smile.gif" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\images\broken_heart.gif" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\images\confused_smile.gif" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\images\cry_smile.gif" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\images\devil_smile.gif" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\images\embaressed_smile.gif" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\images\envelope.gif" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\images\heart.gif" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\images\kiss.gif" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\images\lightbulb.gif" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\images\omg_smile.gif" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\images\regular_smile.gif" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\images\sad_smile.gif" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\images\shades_smile.gif" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\images\teeth_smile.gif" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\images\thumbs_down.gif" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\images\thumbs_up.gif" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\images\tounge_smile.gif" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\images\whatchutalkingabout_smile.gif" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\images\wink_smile.gif" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\plugin.js" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\singel_select\peopleselect.gif" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\srnpr_ck_ct_list.gif" />
+  </ItemGroup>
 </Project>

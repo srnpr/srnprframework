@@ -19,10 +19,11 @@
 			<script type="text/javascript">
 			    //<![CDATA[
 
-			    CKEDITOR.replace('editor1',
-					{
-					    fullPage: true
-					});
+			    var editor = CKEDITOR.replace('editor1');
+
+
+
+
 
 			    //]]>
 			</script>

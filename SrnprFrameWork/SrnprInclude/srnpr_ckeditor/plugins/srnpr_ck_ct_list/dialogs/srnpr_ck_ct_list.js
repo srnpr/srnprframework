@@ -4,7 +4,7 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
 {
     var config = editor.config,
 		lang = editor.lang.srnpr_ck_ct_list,
-		images = config.srnpr_ck_ct_list_images,
+
 		columns = config.srnpr_ck_ct_list_columns || 8,
 		i;
 
@@ -21,7 +21,16 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
             return;
 
         var src = target.getAttribute('cke_src'),
-			title = target.getAttribute('title');
+			title = target.getAttribute('title'),
+			id = target.getAttribute('inputid');
+
+        if (document.getElementById("srnpr_ck_ct_list_paramid_" + id) && document.getElementById("srnpr_ck_ct_list_paramid_" + id).value == "")
+        {
+            alert("对不起，请输入控件ID后再执行该操作！");
+            return false;
+        }
+
+
 
         var img = editor.document.createElement('img',
 			{
@@ -31,12 +40,13 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
 				    _cke_saved_src: src,
 				    title: title,
 				    alt: title,
+				    id: document.getElementById("srnpr_ck_ct_list_paramid_" + id).value,
 				    srnpr_srnpr_ck_ct_list_control_id: "aa"
 				}
 			});
 
         editor.insertElement(img);
-
+        document.getElementById("srnpr_ck_ct_list_paramid_" + id).value = "";
         dialog.hide();
         evt.data.preventDefault();
     };
@@ -51,7 +61,7 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
         var rtl = editor.lang.dir == 'rtl';
         switch (keystroke)
         {
-            // UP-ARROW  
+            // UP-ARROW                
             case 38:
                 // relative is TR
                 if ((relative = element.getParent().getParent().getPrevious()))
@@ -61,7 +71,7 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
                 }
                 ev.preventDefault();
                 break;
-            // DOWN-ARROW  
+            // DOWN-ARROW                
             case 40:
                 // relative is TR
                 if ((relative = element.getParent().getParent().getNext()))
@@ -72,14 +82,14 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
                 }
                 ev.preventDefault();
                 break;
-            // ENTER  
-            // SPACE  
+            // ENTER                
+            // SPACE                
             case 32:
                 onClick({ data: ev });
                 ev.preventDefault();
                 break;
 
-            // RIGHT-ARROW  
+            // RIGHT-ARROW                
             case rtl ? 37 : 39:
                 // TAB
             case 9:
@@ -100,7 +110,7 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
                 }
                 break;
 
-            // LEFT-ARROW  
+            // LEFT-ARROW                
             case rtl ? 39 : 37:
                 // SHIFT + TAB
             case CKEDITOR.SHIFT + 9:
@@ -129,8 +139,11 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
     var labelId = 'srnpr_ck_ct_list_emtions_label' + CKEDITOR.tools.getNextNumber();
 
 
-    var GetHtml = function()
+    var GetHtml = function(eConfig)
     {
+
+        var inputId = eConfig.imagespath.replace("/", "");
+
 
         var html =
 	[
@@ -141,7 +154,9 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
 		'><tbody>'
 	];
 
-        var size = images.length;
+        html.push('<tr><td colspan="100">控件ID(必填,全局唯一)：<input type="text"  id="srnpr_ck_ct_list_paramid_' + inputId + '" style="border:solid 1px #999;background-color:#fff;" value=""/></td></tr>');
+
+        var size = eConfig.images.length;
         for (i = 0; i < size; i++)
         {
             if (i % columns === 0)
@@ -155,13 +170,13 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
 					' aria-setsize="' + size + '"',
 					' aria-labelledby="' + srnpr_ck_ct_listLabelId + '"',
 					' class="cke_smile cke_hand" tabindex="-1" onkeydown="CKEDITOR.tools.callFunction( ', onKeydown, ', event, this );">',
-					'<img class="cke_hand" title="', config.srnpr_ck_ct_list_descriptions[i], '"' +
-						' cke_src="', CKEDITOR.tools.htmlEncode(config.srnpr_ck_ct_list_path + images[i]), '" alt="', config.srnpr_ck_ct_list_descriptions[i], '"',
-						' src="', CKEDITOR.tools.htmlEncode(config.srnpr_ck_ct_list_path + images[i]), '"',
+					'<img class="cke_hand" inputid="' + inputId + '" title="', eConfig.descriptions[i], '"' +
+						' cke_src="', CKEDITOR.tools.htmlEncode(config.srnpr_ck_ct_list_path + eConfig.imagespath + "/" + eConfig.images[i]), '" alt="', eConfig.descriptions[i], '"',
+						' src="', CKEDITOR.tools.htmlEncode(config.srnpr_ck_ct_list_path + eConfig.imagespath + "/" + eConfig.images[i]), '"',
             // IE BUG: Below is a workaround to an IE image loading bug to ensure the image sizes are correct.
 						(CKEDITOR.env.ie ? ' onload="this.setAttribute(\'width\', 2); this.removeAttribute(\'width\');" ' : ''),
 					'>' +
-					'<span id="' + srnpr_ck_ct_listLabelId + '" class="cke_voice_label">' + config.srnpr_ck_ct_list_descriptions[i] + '</span>' +
+					'<span id="' + srnpr_ck_ct_listLabelId + '" class="cke_voice_label">' + eConfig.descriptions[i] + '</span>' +
 				'</a>',
  			'</td>');
 
@@ -176,56 +191,80 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
             html.push('</tr>');
         }
 
+
+
         html.push('</tbody></table></div>');
+
+        return html;
 
     }
 
 
 
 
-    alert(GetHtml());
-    var srnpr_ck_ct_listSelector =
-	{
-	    type: 'html',
-	    html: GetHtml().join(''),
-	    onLoad: function(event)
-	    {
-	        dialog = event.sender;
-	    },
-	    focus: function()
-	    {
-	        var firstSmile = this.getElement().getElementsByTag('a').getItem(0);
-	        firstSmile.focus();
-	    },
-	    onClick: onClick,
-	    style: 'width: 100%; border-collapse: separate;'
-	};
+
+
+
+
+    var GetSelector = function(eConfig)
+    {
+        return {
+            type: 'html',
+            html: GetHtml(eConfig).join(''),
+            onLoad: function(event)
+            {
+                dialog = event.sender;
+            },
+            focus: function()
+            {
+                var firstSmile = this.getElement().getElementsByTag('a').getItem(0);
+                firstSmile.focus();
+            },
+            onClick: onClick,
+            style: 'width: 100%; border-collapse: separate;'
+        };
+    }
+
+
+
+    var GetContents = function()
+    {
+        var vCont = new Array();
+
+        for (var n = 0, m = config.srnpr_ck_ct_list_config.length; n < m; n++)
+        {
+            vCont.push(
+
+            {
+                id: 'tab' + n,
+                label: config.srnpr_ck_ct_list_config[n].title,
+                title: config.srnpr_ck_ct_list_config[n].title,
+                expand: true,
+                padding: 0,
+                elements: [
+						GetSelector(config.srnpr_ck_ct_list_config[n])
+					]
+            }
+
+            );
+        }
+
+
+        return vCont;
+
+    }
+
+
+
+
+
+
 
     return {
         title: editor.lang.srnpr_ck_ct_list.title,
-        minWidth: 270,
-        minHeight: 120,
-        contents: [
-			{
-			    id: 'tab1',
-			    label: '单选一号',
-			    title: '',
-			    expand: true,
-			    padding: 0,
-			    elements: [
-						srnpr_ck_ct_listSelector
-					]
-			}, {
-			    id: 'tab2',
-			    label: '单选二号',
-			    title: '',
-			    expand: true,
-			    padding: 0,
-			    elements: [
-						srnpr_ck_ct_listSelector
-					]
-			}
-		],
+        minWidth: 370,
+        minHeight: 220,
+        contents: GetContents(),
         buttons: [CKEDITOR.dialog.cancelButton]
     };
 });

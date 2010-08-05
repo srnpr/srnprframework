@@ -9,7 +9,7 @@ CKEDITOR.plugins.add('srnpr_ck_ct_list',
         editor.lang.srnpr_ck_ct_list = { toolbar: '表情符', title: '插入DC控件', options: '表情图标选项' };
 
 
-    editor.config.srnpr_ck_ct_list_path = editor.config.srnpr_ck_ct_list_path || (this.path + 'singel_select/');
+    editor.config.srnpr_ck_ct_list_path = editor.config.srnpr_ck_ct_list_path || (this.path );
         editor.addCommand('srnpr_ck_ct_list', new CKEDITOR.dialogCommand('srnpr_ck_ct_list'));
         editor.ui.addButton('srnpr_ck_ct_list',
 			{
@@ -26,12 +26,26 @@ CKEDITOR.plugins.add('srnpr_ck_ct_list',
 
 
 
-CKEDITOR.config.srnpr_ck_ct_list_images = [
-	'peopleselect.gif'];
+CKEDITOR.config.srnpr_ck_ct_list_config = [
+{
+    title:'单选控件',
+    imagespath:'singel_select',
+    images: ['peopleselect.gif', 'peopleselect.gif', 'peopleselect.gif', 'peopleselect.gif', 'peopleselect.gif', 'peopleselect.gif', 'peopleselect.gif', 'peopleselect.gif', 'peopleselect.gif', 'peopleselect.gif', 'peopleselect.gif'],
+    descriptions: ['人员单选', '', '', '', '', '', '', '', '', '', '']
 
-CKEDITOR.config.srnpr_ck_ct_list_descriptions =
-	[
-		'员工单选控件'
-	];
+},
+{
+    title: '多选控件',
+    imagespath: 'mul_select',
+    images: ['adicon1.gif', 'adicon2.gif'],
+    descriptions: ['aa', 'bb']
+
+}
+
+
+];
+
+
+
 
 

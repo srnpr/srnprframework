@@ -44,6 +44,7 @@
     <None Include="ckeditor_3.1.zip" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="srnpr_ckeditor\config.js" />
     <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\dccontrol.gif" />
     <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\dialogs\srnpr_ck_ct_list.js" />
     <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\images\angel_smile.gif" />

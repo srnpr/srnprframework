@@ -45,16 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="srnpr_ckeditor\config.js" />
-    <Content Include="srnpr_ckeditor\plugins\forms\dialogs\button.js" />
-    <Content Include="srnpr_ckeditor\plugins\forms\dialogs\checkbox.js" />
-    <Content Include="srnpr_ckeditor\plugins\forms\dialogs\form.js" />
-    <Content Include="srnpr_ckeditor\plugins\forms\dialogs\hiddenfield.js" />
-    <Content Include="srnpr_ckeditor\plugins\forms\dialogs\radio.js" />
-    <Content Include="srnpr_ckeditor\plugins\forms\dialogs\select.js" />
-    <Content Include="srnpr_ckeditor\plugins\forms\dialogs\textarea.js" />
-    <Content Include="srnpr_ckeditor\plugins\forms\dialogs\textfield.js" />
-    <Content Include="srnpr_ckeditor\plugins\forms\images\hiddenfield.gif" />
-    <Content Include="srnpr_ckeditor\plugins\forms\plugin.js" />
     <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\dccontrol.gif" />
     <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\dialogs\srnpr_ck_ct_list.js" />
     <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\images\angel_smile.gif" />

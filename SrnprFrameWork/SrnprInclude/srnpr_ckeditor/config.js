@@ -9,13 +9,13 @@ CKEDITOR.editorConfig = function( config )
 	// config.language = 'fr';
     // config.uiColor = '#AADC6E';
   
-    config.extraPlugins = 'srnpr_ck_ct_list';
+    config.extraPlugins = 'srnpr_ck_ct_list,srnpr_ck_forms';
     
     config.toolbar=
    [['Source', '-', 'Save', 'NewPage', 'Preview', '-', 'Templates'], ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'], ['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
    
    '/', ['Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript', 'Superscript'], ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', 'Blockquote', 'CreateDiv'], ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'], ['Link', 'Unlink', 'Anchor'], ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak'],
-   '/', ['srnpr_ck_ct_list'],
+   '/', ['srnpr_ck_ct_list', 'srnpr_ck_forms_TextField'],
     '-', ['TextField', 'Form', 'Checkbox', 'Radio', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField'],
    '/',['Styles','Format','Font','FontSize'],['TextColor','BGColor'],['Maximize','ShowBlocks','-','About']];
 

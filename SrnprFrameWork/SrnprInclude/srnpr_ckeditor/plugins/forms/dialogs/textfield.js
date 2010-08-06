@@ -1,8 +1,6 @@
-﻿/*
-Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
-For licensing, see LICENSE.html or http://ckeditor.com/license
-*/
-CKEDITOR.dialog.add('textfield', function(editor)
+﻿
+
+CKEDITOR.dialog.add('srnpr_ck_forms_textfield', function(editor)
 {
     var autoAttributes =
 	{
@@ -38,7 +36,7 @@ CKEDITOR.dialog.add('textfield', function(editor)
             var editor,
 				element = this.textField,
 				isInsertMode = !element;
-
+            
             if (isInsertMode)
             {
                 editor = this.getParentEditor();
@@ -46,6 +44,8 @@ CKEDITOR.dialog.add('textfield', function(editor)
                 element.setAttribute('type', 'text');
                 
             }
+
+            
 
             if (isInsertMode)
                 editor.insertElement(element);
@@ -117,7 +117,8 @@ CKEDITOR.dialog.add('textfield', function(editor)
 							            element.removeAttribute('_cke_saved_name');
 							            element.removeAttribute('name');
 							        }
-							    }
+							    },
+							    validate: CKEDITOR.dialog.validate.notEmpty('aaa')
 							},
 							{
 							    id: 'value',

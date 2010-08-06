@@ -7,7 +7,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
  * @file Forms Plugin
  */
 
-CKEDITOR.plugins.add( 'forms',
+CKEDITOR.plugins.add('srnpr_ck_forms',
 {
 	init : function( editor )
 	{
@@ -46,15 +46,15 @@ CKEDITOR.plugins.add( 'forms',
 		};
 
 		var dialogPath = this.path + 'dialogs/';
-		addButtonCommand( 'Form',			'form',			dialogPath + 'form.js' );
-		addButtonCommand( 'Checkbox',		'checkbox',		dialogPath + 'checkbox.js' );
-		addButtonCommand( 'Radio',			'radio',		dialogPath + 'radio.js' );
-		addButtonCommand( 'TextField',		'textfield',	dialogPath + 'textfield.js' );
-		addButtonCommand( 'Textarea',		'textarea',		dialogPath + 'textarea.js' );
-		addButtonCommand( 'Select',			'select',		dialogPath + 'select.js' );
-		addButtonCommand( 'Button',			'button',		dialogPath + 'button.js' );
-		addButtonCommand( 'ImageButton',	'imagebutton',	CKEDITOR.plugins.getPath('image') + 'dialogs/image.js' );
-		addButtonCommand( 'HiddenField',	'hiddenfield',	dialogPath + 'hiddenfield.js' );
+		//addButtonCommand( 'Form',			'form',			dialogPath + 'form.js' );
+		//addButtonCommand( 'Checkbox',		'checkbox',		dialogPath + 'checkbox.js' );
+		//addButtonCommand( 'Radio',			'radio',		dialogPath + 'radio.js' );
+		addButtonCommand('srnpr_ck_forms_TextField', 'srnpr_ck_forms_textfield', dialogPath + 'textfield.js');
+		//addButtonCommand( 'Textarea',		'textarea',		dialogPath + 'textarea.js' );
+		//addButtonCommand( 'Select',			'select',		dialogPath + 'select.js' );
+		//addButtonCommand( 'Button',			'button',		dialogPath + 'button.js' );
+		//addButtonCommand( 'ImageButton',	'imagebutton',	CKEDITOR.plugins.getPath('image') + 'dialogs/image.js' );
+		//addButtonCommand( 'HiddenField',	'hiddenfield',	dialogPath + 'hiddenfield.js' );
 
 		// If the "menu" plugin is loaded, register the menu items.
 		if ( editor.addMenuItems )

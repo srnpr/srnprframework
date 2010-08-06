@@ -71,5 +71,15 @@
     <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\plugin.js" />
     <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\singel_select\peopleselect.gif" />
     <Content Include="srnpr_ckeditor\plugins\srnpr_ck_ct_list\srnpr_ck_ct_list.gif" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_forms\dialogs\button.js" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_forms\dialogs\checkbox.js" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_forms\dialogs\form.js" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_forms\dialogs\hiddenfield.js" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_forms\dialogs\radio.js" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_forms\dialogs\select.js" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_forms\dialogs\textarea.js" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_forms\dialogs\textfield.js" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_forms\images\hiddenfield.gif" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_forms\plugin.js" />
   </ItemGroup>
 </Project>

@@ -9,249 +9,253 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 CKEDITOR.plugins.add('srnpr_ck_forms',
 {
-	init : function( editor )
-	{
-		var lang = editor.lang;
+    init: function(editor)
+    {
+        var lang = editor.lang;
 
-		editor.addCss(
+        
+
+
+
+        editor.addCss(
 			'form' +
 			'{' +
 				'border: 1px dotted #FF0000;' +
 				'padding: 2px;' +
-			'}\n' );
+			'}\n');
 
-		editor.addCss(
+        editor.addCss(
 			'img.cke_hidden' +
 			'{' +
-				'background-image: url(' + CKEDITOR.getUrl( this.path + 'images/hiddenfield.gif' ) + ');' +
+				'background-image: url(' + CKEDITOR.getUrl(this.path + 'images/hiddenfield.gif') + ');' +
 				'background-position: center center;' +
 				'background-repeat: no-repeat;' +
 				'border: 1px solid #a9a9a9;' +
 				'width: 16px !important;' +
 				'height: 16px !important;' +
-			'}' );
+			'}');
 
-		// All buttons use the same code to register. So, to avoid
-		// duplications, let's use this tool function.
-		var addButtonCommand = function( buttonName, commandName, dialogFile )
-		{
-			editor.addCommand( commandName, new CKEDITOR.dialogCommand( commandName ) );
+        // All buttons use the same code to register. So, to avoid
+        // duplications, let's use this tool function.
+        var addButtonCommand = function(buttonName, commandName, dialogFile)
+        {
+            editor.addCommand(commandName, new CKEDITOR.dialogCommand(commandName));
 
-			editor.ui.addButton( buttonName,
+            editor.ui.addButton(buttonName,
 				{
-					label : lang.common[ buttonName.charAt(0).toLowerCase() + buttonName.slice(1) ],
-					command : commandName
+				    label: lang.common[buttonName.charAt(0).toLowerCase() + buttonName.slice(1)],
+				    command: commandName
 				});
-			CKEDITOR.dialog.add( commandName, dialogFile );
-		};
+            CKEDITOR.dialog.add(commandName, dialogFile);
+        };
 
-		var dialogPath = this.path + 'dialogs/';
-		//addButtonCommand( 'Form',			'form',			dialogPath + 'form.js' );
-		//addButtonCommand( 'Checkbox',		'checkbox',		dialogPath + 'checkbox.js' );
-		//addButtonCommand( 'Radio',			'radio',		dialogPath + 'radio.js' );
-		addButtonCommand('srnpr_ck_forms_TextField', 'srnpr_ck_forms_textfield', dialogPath + 'textfield.js');
-		//addButtonCommand( 'Textarea',		'textarea',		dialogPath + 'textarea.js' );
-		//addButtonCommand( 'Select',			'select',		dialogPath + 'select.js' );
-		//addButtonCommand( 'Button',			'button',		dialogPath + 'button.js' );
-		//addButtonCommand( 'ImageButton',	'imagebutton',	CKEDITOR.plugins.getPath('image') + 'dialogs/image.js' );
-		//addButtonCommand( 'HiddenField',	'hiddenfield',	dialogPath + 'hiddenfield.js' );
+        var dialogPath = this.path + 'dialogs/';
+        //addButtonCommand( 'Form',			'form',			dialogPath + 'form.js' );
+        //addButtonCommand( 'Checkbox',		'checkbox',		dialogPath + 'checkbox.js' );
+        //addButtonCommand( 'Radio',			'radio',		dialogPath + 'radio.js' );
+        addButtonCommand('srnpr_ck_forms_TextField', 'srnpr_ck_forms_textfield', dialogPath + 'textfield.js');
+        //addButtonCommand( 'Textarea',		'textarea',		dialogPath + 'textarea.js' );
+        //addButtonCommand( 'Select',			'select',		dialogPath + 'select.js' );
+        //addButtonCommand( 'Button',			'button',		dialogPath + 'button.js' );
+        //addButtonCommand( 'ImageButton',	'imagebutton',	CKEDITOR.plugins.getPath('image') + 'dialogs/image.js' );
+        //addButtonCommand( 'HiddenField',	'hiddenfield',	dialogPath + 'hiddenfield.js' );
 
-		// If the "menu" plugin is loaded, register the menu items.
-		if ( editor.addMenuItems )
-		{
-			editor.addMenuItems(
+        // If the "menu" plugin is loaded, register the menu items.
+        if (editor.addMenuItems)
+        {
+            editor.addMenuItems(
 				{
-					form :
+				    form:
 					{
-						label : lang.form.menu,
-						command : 'form',
-						group : 'form'
+					    label: lang.form.menu,
+					    command: 'form',
+					    group: 'form'
 					},
 
-					checkbox :
+				    checkbox:
 					{
-						label : lang.checkboxAndRadio.checkboxTitle,
-						command : 'checkbox',
-						group : 'checkbox'
+					    label: lang.checkboxAndRadio.checkboxTitle,
+					    command: 'checkbox',
+					    group: 'checkbox'
 					},
 
-					radio :
+				    radio:
 					{
-						label : lang.checkboxAndRadio.radioTitle,
-						command : 'radio',
-						group : 'radio'
+					    label: lang.checkboxAndRadio.radioTitle,
+					    command: 'radio',
+					    group: 'radio'
 					},
 
-					textfield :
+				    textfield:
 					{
-						label : lang.textfield.title,
-						command : 'textfield',
-						group : 'textfield'
+					    label: lang.textfield.title,
+					    command: 'textfield',
+					    group: 'textfield'
 					},
 
-					hiddenfield :
+				    hiddenfield:
 					{
-						label : lang.hidden.title,
-						command : 'hiddenfield',
-						group : 'hiddenfield'
+					    label: lang.hidden.title,
+					    command: 'hiddenfield',
+					    group: 'hiddenfield'
 					},
 
-					imagebutton :
+				    imagebutton:
 					{
-						label : lang.image.titleButton,
-						command : 'imagebutton',
-						group : 'imagebutton'
+					    label: lang.image.titleButton,
+					    command: 'imagebutton',
+					    group: 'imagebutton'
 					},
 
-					button :
+				    button:
 					{
-						label : lang.button.title,
-						command : 'button',
-						group : 'button'
+					    label: lang.button.title,
+					    command: 'button',
+					    group: 'button'
 					},
 
-					select :
+				    select:
 					{
-						label : lang.select.title,
-						command : 'select',
-						group : 'select'
+					    label: lang.select.title,
+					    command: 'select',
+					    group: 'select'
 					},
 
-					textarea :
+				    textarea:
 					{
-						label : lang.textarea.title,
-						command : 'textarea',
-						group : 'textarea'
+					    label: lang.textarea.title,
+					    command: 'textarea',
+					    group: 'textarea'
 					}
 				});
-		}
+        }
 
-		// If the "contextmenu" plugin is loaded, register the listeners.
-		if ( editor.contextMenu )
-		{
-			editor.contextMenu.addListener( function( element )
-				{
-					if ( element && element.hasAscendant( 'form', true ) )
-						return { form : CKEDITOR.TRISTATE_OFF };
-				});
+        // If the "contextmenu" plugin is loaded, register the listeners.
+        if (editor.contextMenu)
+        {
+            editor.contextMenu.addListener(function(element)
+            {
+                if (element && element.hasAscendant('form', true))
+                    return { form: CKEDITOR.TRISTATE_OFF };
+            });
 
-			editor.contextMenu.addListener( function( element )
-				{
-					if ( element )
-					{
-						var name = element.getName();
+            editor.contextMenu.addListener(function(element)
+            {
+                if (element)
+                {
+                    var name = element.getName();
 
-						if ( name == 'select' )
-							return { select : CKEDITOR.TRISTATE_OFF };
+                    if (name == 'select')
+                        return { select: CKEDITOR.TRISTATE_OFF };
 
-						if ( name == 'textarea' )
-							return { textarea : CKEDITOR.TRISTATE_OFF };
+                    if (name == 'textarea')
+                        return { textarea: CKEDITOR.TRISTATE_OFF };
 
-						if ( name == 'input' )
-						{
-							var type = element.getAttribute( 'type' );
+                    if (name == 'input')
+                    {
+                        var type = element.getAttribute('type');
 
-							if ( type == 'text' || type == 'password' )
-								return { textfield : CKEDITOR.TRISTATE_OFF };
+                        if (type == 'text' || type == 'password')
+                            return { textfield: CKEDITOR.TRISTATE_OFF };
 
-							if ( type == 'button' || type == 'submit' || type == 'reset' )
-								return { button : CKEDITOR.TRISTATE_OFF };
+                        if (type == 'button' || type == 'submit' || type == 'reset')
+                            return { button: CKEDITOR.TRISTATE_OFF };
 
-							if ( type == 'checkbox' )
-								return { checkbox : CKEDITOR.TRISTATE_OFF };
+                        if (type == 'checkbox')
+                            return { checkbox: CKEDITOR.TRISTATE_OFF };
 
-							if ( type == 'radio' )
-								return { radio : CKEDITOR.TRISTATE_OFF };
+                        if (type == 'radio')
+                            return { radio: CKEDITOR.TRISTATE_OFF };
 
-							if ( type == 'image' )
-								return { imagebutton : CKEDITOR.TRISTATE_OFF };
-						}
+                        if (type == 'image')
+                            return { imagebutton: CKEDITOR.TRISTATE_OFF };
+                    }
 
-						if ( name == 'img' && element.getAttribute( '_cke_real_element_type' ) == 'hiddenfield' )
-							return { hiddenfield : CKEDITOR.TRISTATE_OFF };
-					}
-				});
-		}
+                    if (name == 'img' && element.getAttribute('_cke_real_element_type') == 'hiddenfield')
+                        return { hiddenfield: CKEDITOR.TRISTATE_OFF };
+                }
+            });
+        }
 
-		editor.on( 'doubleclick', function( evt )
-			{
-				var element = evt.data.element;
+        editor.on('doubleclick', function(evt)
+        {
+            var element = evt.data.element;
 
-				if ( element.is( 'form' ) )
-					evt.data.dialog = 'form';
-				else if ( element.is( 'select' ) )
-					evt.data.dialog = 'select';
-				else if ( element.is( 'textarea' ) )
-					evt.data.dialog = 'textarea';
-				else if ( element.is( 'img' ) && element.getAttribute( '_cke_real_element_type' ) == 'hiddenfield' )
-					evt.data.dialog = 'hiddenfield';
-				else if ( element.is( 'input' ) )
-				{
-					var type = element.getAttribute( 'type' );
+            if (element.is('form'))
+                evt.data.dialog = 'form';
+            else if (element.is('select'))
+                evt.data.dialog = 'select';
+            else if (element.is('textarea'))
+                evt.data.dialog = 'textarea';
+            else if (element.is('img') && element.getAttribute('_cke_real_element_type') == 'hiddenfield')
+                evt.data.dialog = 'hiddenfield';
+            else if (element.is('input'))
+            {
+                var type = element.getAttribute('type');
 
-					switch ( type )
-					{
-						case 'text' : case 'password':
-							evt.data.dialog = 'textfield';
-							break;
-						case 'button' : case 'submit' : case 'reset' :
-							evt.data.dialog = 'button';
-							break;
-						case 'checkbox' :
-							evt.data.dialog = 'checkbox';
-							break;
-						case 'radio' :
-							evt.data.dialog = 'radio';
-							break;
-						case 'image' :
-							evt.data.dialog = 'imagebutton';
-							break;
-					}
-				}
-			});
-	},
+                switch (type)
+                {
+                    case 'text': case 'password':
+                        evt.data.dialog = 'srnpr_ck_forms_textfield';
+                        break;
+                    case 'button': case 'submit': case 'reset':
+                        evt.data.dialog = 'button';
+                        break;
+                    case 'checkbox':
+                        evt.data.dialog = 'checkbox';
+                        break;
+                    case 'radio':
+                        evt.data.dialog = 'radio';
+                        break;
+                    case 'image':
+                        evt.data.dialog = 'imagebutton';
+                        break;
+                }
+            }
+        });
+    },
 
-	afterInit : function( editor )
-	{
-		var dataProcessor = editor.dataProcessor,
+    afterInit: function(editor)
+    {
+        var dataProcessor = editor.dataProcessor,
 			htmlFilter = dataProcessor && dataProcessor.htmlFilter,
 			dataFilter = dataProcessor && dataProcessor.dataFilter;
 
-		// Cleanup certain IE form elements default values.
-		if ( CKEDITOR.env.ie )
-		{
-			htmlFilter && htmlFilter.addRules(
+        // Cleanup certain IE form elements default values.
+        if (CKEDITOR.env.ie)
+        {
+            htmlFilter && htmlFilter.addRules(
 			{
-				elements :
+			    elements:
 				{
-					input : function( input )
-					{
-						var attrs = input.attributes,
+				    input: function(input)
+				    {
+				        var attrs = input.attributes,
 							type = attrs.type;
-						if ( type == 'checkbox' || type == 'radio' )
-							attrs.value == 'on' && delete attrs.value;
-					}
+				        if (type == 'checkbox' || type == 'radio')
+				            attrs.value == 'on' && delete attrs.value;
+				    }
 				}
-			} );
-		}
+			});
+        }
 
-		if ( dataFilter )
-		{
-			dataFilter.addRules(
+        if (dataFilter)
+        {
+            dataFilter.addRules(
 			{
-				elements :
+			    elements:
 				{
-					input : function( element )
-					{
-						if ( element.attributes.type == 'hidden' )
-							return editor.createFakeParserElement( element, 'cke_hidden', 'hiddenfield' );
-					}
+				    input: function(element)
+				    {
+				        if (element.attributes.type == 'hidden')
+				            return editor.createFakeParserElement(element, 'cke_hidden', 'hiddenfield');
+				    }
 				}
-			} );
-		}
-	},
-	requires : [ 'image', 'fakeobjects' ]
-} );
+			});
+        }
+    },
+    requires: ['image', 'fakeobjects']
+});
 
 if ( CKEDITOR.env.ie )
 {

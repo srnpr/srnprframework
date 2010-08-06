@@ -96,7 +96,7 @@ CKEDITOR.dialog.add('srnpr_ck_forms_textfield', function(editor)
 							{
 							    id: '_cke_saved_name',
 							    type: 'text',
-							    label: editor.lang.textfield.name,
+							    label: editor.config.srnprck.param.title,
 							    'default': '',
 							    accessKey: 'N',
 							    setup: function(element)
@@ -118,7 +118,7 @@ CKEDITOR.dialog.add('srnpr_ck_forms_textfield', function(editor)
 							            element.removeAttribute('name');
 							        }
 							    },
-							    validate: CKEDITOR.dialog.validate.notEmpty('aaa')
+							    validate: CKEDITOR.dialog.validate.notEmpty(editor.config.srnprck.param.emptymsg)
 							},
 							{
 							    id: 'value',

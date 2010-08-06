@@ -26,7 +26,7 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
 
         if (document.getElementById("srnpr_ck_ct_list_paramid_" + id) && document.getElementById("srnpr_ck_ct_list_paramid_" + id).value == "")
         {
-            alert("对不起，请输入控件ID后再执行该操作！");
+            alert(editor.config.srnprck.param.emptymsg);
             return false;
         }
 
@@ -154,7 +154,7 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
 		'><tbody>'
 	];
 
-        html.push('<tr><td colspan="100">控件ID(必填,全局唯一)：<input type="text"  id="srnpr_ck_ct_list_paramid_' + inputId + '" style="border:solid 1px #999;background-color:#fff;" value=""/></td></tr>');
+        html.push('<tr><td colspan="100">'+editor.config.srnprck.param.title+'：<input type="text"  id="srnpr_ck_ct_list_paramid_' + inputId + '" style="border:solid 1px #999;background-color:#fff;" value=""/></td></tr>');
 
         var size = eConfig.images.length;
         for (i = 0; i < size; i++)

@@ -53,7 +53,8 @@ CKEDITOR.dialog.add( 'hiddenfield', function( editor )
 					{
 						id : '_cke_saved_name',
 						type : 'text',
-						label : editor.lang.hidden.name,
+						label: editor.config.srnprck.param.title,
+						validate: CKEDITOR.dialog.validate.notEmpty(editor.config.srnprck.param.emptymsg),
 						'default' : '',
 						accessKey : 'N',
 						setup : function( element )
@@ -71,6 +72,7 @@ CKEDITOR.dialog.add( 'hiddenfield', function( editor )
 							{
 								element.removeAttribute( 'name' );
 							}
+							element.setAttribute(editor.config.srnprck.param.id, this.getValue());
 						}
 					},
 					{

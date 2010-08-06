@@ -9,6 +9,9 @@ CKEDITOR.editorConfig = function(config)
     // config.language = 'fr';
     // config.uiColor = '#AADC6E';
 
+    config.skin = 'office2003';
+
+
     config.extraPlugins = 'srnpr_ck_ct_list,srnpr_ck_forms';
 
     config.toolbar =
@@ -22,9 +25,9 @@ CKEDITOR.editorConfig = function(config)
 
 
     //移除掉系统插件
-    config.removePlugins="forms";
+    config.removePlugins = "forms";
 
-    
+
 
     config.srnprck =
    {
@@ -33,8 +36,14 @@ CKEDITOR.editorConfig = function(config)
            id: 'paramid',
            title: '参数名称',
            emptymsg: '参数名称不能为空！'
-       }
+       },
+       ct_list:
+       {
+
+
+
    }
+}
 
 };
 

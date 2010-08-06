@@ -185,7 +185,8 @@ CKEDITOR.dialog.add( 'select', function( editor )
 						type : 'text',
 						widths : [ '25%','75%' ],
 						labelLayout : 'horizontal',
-						label : editor.lang.common.name,
+						label: editor.config.srnprck.param.title,
+						validate: CKEDITOR.dialog.validate.notEmpty(editor.config.srnprck.param.emptymsg),
 						'default' : '',
 						accessKey : 'N',
 						align : 'center',
@@ -211,6 +212,7 @@ CKEDITOR.dialog.add( 'select', function( editor )
 								element.removeAttribute( '_cke_saved_name' ) ;
 								element.removeAttribute( 'name' );
 							}
+							element.setAttribute(editor.config.srnprck.param.id, this.getValue());
 						}
 					},
 					{

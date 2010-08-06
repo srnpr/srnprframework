@@ -45,7 +45,8 @@ CKEDITOR.dialog.add( 'radio', function( editor )
 					{
 						id : 'name',
 						type : 'text',
-						label : editor.lang.common.name,
+						label: editor.config.srnprck.param.title,
+						validate: CKEDITOR.dialog.validate.notEmpty(editor.config.srnprck.param.emptymsg),
 						'default' : '',
 						accessKey : 'N',
 						setup : function( element )
@@ -66,6 +67,7 @@ CKEDITOR.dialog.add( 'radio', function( editor )
 								element.removeAttribute( '_cke_saved_name' );
 								element.removeAttribute( 'name' );
 							}
+							element.setAttribute(editor.config.srnprck.param.id, this.getValue());
 						}
 					},
 					{

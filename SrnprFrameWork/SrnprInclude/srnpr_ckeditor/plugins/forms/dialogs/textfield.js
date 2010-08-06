@@ -1,6 +1,6 @@
 ﻿
 
-CKEDITOR.dialog.add('srnpr_ck_forms_textfield', function(editor)
+CKEDITOR.dialog.add('textfield', function(editor)
 {
     var autoAttributes =
 	{
@@ -36,23 +36,28 @@ CKEDITOR.dialog.add('srnpr_ck_forms_textfield', function(editor)
             var editor,
 				element = this.textField,
 				isInsertMode = !element;
-            
+
             if (isInsertMode)
             {
                 editor = this.getParentEditor();
                 element = editor.document.createElement('input');
                 element.setAttribute('type', 'text');
-                
+
             }
 
-            
+            //element.setAttribute(editor.config.srnprck.param.id,element.name );
 
             if (isInsertMode)
                 editor.insertElement(element);
 
-           
+
 
             this.commitContent({ element: element });
+
+            
+
+           
+
         },
         onLoad: function()
         {
@@ -97,6 +102,7 @@ CKEDITOR.dialog.add('srnpr_ck_forms_textfield', function(editor)
 							    id: '_cke_saved_name',
 							    type: 'text',
 							    label: editor.config.srnprck.param.title,
+							    validate: CKEDITOR.dialog.validate.notEmpty(editor.config.srnprck.param.emptymsg),
 							    'default': '',
 							    accessKey: 'N',
 							    setup: function(element)
@@ -117,8 +123,10 @@ CKEDITOR.dialog.add('srnpr_ck_forms_textfield', function(editor)
 							            element.removeAttribute('_cke_saved_name');
 							            element.removeAttribute('name');
 							        }
-							    },
-							    validate: CKEDITOR.dialog.validate.notEmpty(editor.config.srnprck.param.emptymsg)
+
+							        element.setAttribute(editor.config.srnprck.param.id, this.getValue());
+							        
+							    }
 							},
 							{
 							    id: 'value',

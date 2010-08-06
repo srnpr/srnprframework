@@ -51,14 +51,14 @@ CKEDITOR.plugins.add('srnpr_ck_forms',
 
         var dialogPath = this.path + 'dialogs/';
         //addButtonCommand( 'Form',			'form',			dialogPath + 'form.js' );
-        //addButtonCommand( 'Checkbox',		'checkbox',		dialogPath + 'checkbox.js' );
-        //addButtonCommand( 'Radio',			'radio',		dialogPath + 'radio.js' );
-        addButtonCommand('srnpr_ck_forms_TextField', 'srnpr_ck_forms_textfield', dialogPath + 'textfield.js');
-        //addButtonCommand( 'Textarea',		'textarea',		dialogPath + 'textarea.js' );
-        //addButtonCommand( 'Select',			'select',		dialogPath + 'select.js' );
-        //addButtonCommand( 'Button',			'button',		dialogPath + 'button.js' );
-        //addButtonCommand( 'ImageButton',	'imagebutton',	CKEDITOR.plugins.getPath('image') + 'dialogs/image.js' );
-        //addButtonCommand( 'HiddenField',	'hiddenfield',	dialogPath + 'hiddenfield.js' );
+        addButtonCommand( 'Checkbox',		'checkbox',		dialogPath + 'checkbox.js' );
+        addButtonCommand( 'Radio',			'radio',		dialogPath + 'radio.js' );
+        addButtonCommand('TextField', 'textfield', dialogPath + 'textfield.js');
+        addButtonCommand( 'Textarea',		'textarea',		dialogPath + 'textarea.js' );
+        addButtonCommand( 'Select',			'select',		dialogPath + 'select.js' );
+        addButtonCommand( 'Button',			'button',		dialogPath + 'button.js' );
+        addButtonCommand( 'ImageButton',	'imagebutton',	CKEDITOR.plugins.getPath('image') + 'dialogs/image.js' );
+        addButtonCommand( 'HiddenField',	'hiddenfield',	dialogPath + 'hiddenfield.js' );
 
         // If the "menu" plugin is loaded, register the menu items.
         if (editor.addMenuItems)
@@ -196,7 +196,7 @@ CKEDITOR.plugins.add('srnpr_ck_forms',
                 switch (type)
                 {
                     case 'text': case 'password':
-                        evt.data.dialog = 'srnpr_ck_forms_textfield';
+                        evt.data.dialog = 'textfield';
                         break;
                     case 'button': case 'submit': case 'reset':
                         evt.data.dialog = 'button';

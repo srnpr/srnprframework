@@ -5,7 +5,15 @@ using System.Text;
 
 namespace SrnprWeb.WebProcess
 {
-    class PageShowWWP
+    public class PageShowWWP
     {
+
+
+        private static string sFilePath = "D:\\SrnprFrameWork\\WebWidget\\";
+        private static string sFileExt = "PageShow\\{0}.www.ps.xml";
+
+        private static string GridShowList = "GridShowList\\GridShowList.xml";
+
+
     }
 }

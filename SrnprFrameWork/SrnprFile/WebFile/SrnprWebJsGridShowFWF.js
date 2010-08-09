@@ -168,11 +168,24 @@ if (!this.SWJGSF)
         {
             var t = [];
 
+            var vElm;
 
-            $("#" + sid).children("[paramid][paramid<>'']").each(
+            if (sid != undefined)
+            {
+                vElms = $("#" + sid).children("[paramid][paramid<>'']");
+            }
+            else
+            {
+                vElms = $("[paramid][paramid<>'']");
+            }
+
+
+
+            vElms.each(
 
              function(index, n)
              {
+
                  var el = $(n);
                  var vl = el.val();
                  if (el.is("input") && (n.type == "checkbox" || n.type == "radio") && !n.checked)
@@ -203,9 +216,11 @@ if (!this.SWJGSF)
              }
             );
 
+
+
             SWJGSF.Obj[id].QueryDict = t;
             SWJGSF.Obj[id].RowsCount = -1;
-            
+
             SWJGSF.Ajax(id);
 
 

@@ -5,15 +5,13 @@ CKEDITOR.plugins.add('srnpr_ck_gridshow',
 
     init: function(editor)
     {
-        if (!editor.lang.srnpr_ck_gridshow)
-            editor.lang.srnpr_ck_gridshow = { toolbar: '表情符', title: '插入DC控件', options: '表情图标选项' };
 
-
-        editor.config.srnpr_ck_gridshow_path = editor.config.srnpr_ck_gridshow_path || (this.path);
+        editor.config.srnpr_ck_gridshow_config.path = editor.config.srnpr_ck_gridshow_config.path || (this.path);
+        
         editor.addCommand('srnpr_ck_gridshow', new CKEDITOR.dialogCommand('srnpr_ck_gridshow'));
         editor.ui.addButton('srnpr_ck_gridshow',
 			{
-			    label: editor.lang.srnpr_ck_gridshow.toolbar,
+			    label: editor.config.srnpr_ck_gridshow_config.lang.toolbar,
 			    command: 'srnpr_ck_gridshow',
 			    icon: CKEDITOR.plugins.getPath('srnpr_ck_gridshow') + 'srnpr_ck_gridshow.gif'
 			});
@@ -42,6 +40,13 @@ CKEDITOR.plugins.add('srnpr_ck_gridshow',
 CKEDITOR.config.srnpr_ck_gridshow_config =
 {
     srnpr_srnpr_ck_gridshow_control_id: "srnpr_srnpr_ck_gridshow_control_id",
+    path:null,
+    lang:
+    { toolbar: '数据显示', title: '插入数据显示控件', xmlid: '数据显示编号', xmlemptymsg: '数据显示编号不能为空' },
+    
+    
+    
+    
 group:
 [
 {

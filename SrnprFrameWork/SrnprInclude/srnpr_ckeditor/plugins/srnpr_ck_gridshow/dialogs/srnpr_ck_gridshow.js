@@ -3,7 +3,7 @@
 CKEDITOR.dialog.add('srnpr_ck_gridshow', function(editor)
 {
     return {
-        title: editor.lang.hidden.title,
+        title: editor.config.srnpr_ck_gridshow_config.lang.title,
         hiddenField: null,
         minWidth: 350,
         minHeight: 110,
@@ -31,7 +31,8 @@ CKEDITOR.dialog.add('srnpr_ck_gridshow', function(editor)
 			    attributes:
 				{
 				    srnpr_srnpr_ck_control_type_id: editor.config.srnprck.srnpr_srnpr_ck_control_type_id.gridshow,
-				    id:name,
+				    id: name,
+				    src: editor.config.srnpr_ck_gridshow_config.path + "/gridshow.png",
 				    srnpr_ck_gridshow_xmlid: srnpr_ck_gridshow_xmlid
 				}
 			});
@@ -44,8 +45,8 @@ CKEDITOR.dialog.add('srnpr_ck_gridshow', function(editor)
         contents: [
 			{
 			    id: 'info',
-			    label: editor.lang.hidden.title,
-			    title: editor.lang.hidden.title,
+			    label: editor.config.srnpr_ck_gridshow_config.lang.title,
+			    title: editor.config.srnpr_ck_gridshow_config.lang.title,
 			    elements: [
 					{
 					    id: '_cke_saved_name',
@@ -75,7 +76,8 @@ CKEDITOR.dialog.add('srnpr_ck_gridshow', function(editor)
 					{
 					    id: 'srnpr_ck_gridshow_xmlid',
 					    type: 'text',
-					    label: editor.lang.hidden.value,
+					    label: editor.config.srnpr_ck_gridshow_config.lang.xmlid,
+					    validate: CKEDITOR.dialog.validate.notEmpty(editor.config.srnpr_ck_gridshow_config.lang.xmlemptymsg),
 					    'default': '',
 					    accessKey: 'V',
 					    setup: function(element)

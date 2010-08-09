@@ -46,7 +46,10 @@ namespace SrnprWeb.WebWidget
 
         protected override void RenderContents(HtmlTextWriter output)
         {
-            output.Write(WebProcess.GridShowWWP.GetShowHtml(GridShowEntity,base.ClientID));
+
+            
+
+            output.Write(WebProcess.GridShowWWP.GetShowHtml(XmlConfigName,base.ClientID));
         }
 
 

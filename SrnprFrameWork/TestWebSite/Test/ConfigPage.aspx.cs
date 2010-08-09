@@ -57,10 +57,10 @@ public partial class Test_ConfigPage : System.Web.UI.Page
 
 
         //开始判断检测控件
-        if (sCont.IndexOf("srnpr_ck_ct_list") > -1)
+        if (sCont.IndexOf("srnpr_srnpr_ck_control_type_id") > -1)
         {
 
-            Regex re = new Regex("<img.*?srnpr_ck_ct_list.*?/>");
+            Regex re = new Regex("<img.*?srnpr_srnpr_ck_control_type_id.*?/>");
 
             MatchCollection mc = re.Matches(sCont);
 
@@ -68,20 +68,18 @@ public partial class Test_ConfigPage : System.Web.UI.Page
             {
                 Dictionary<string, string> dKvp = GetElementProp(mc[i].Value.ToString());
 
-                if (dKvp.ContainsKey("src") && dKvp.ContainsKey("id"))
+                if (dKvp["srnpr_srnpr_ck_control_type_id"] == "gridshow")
                 {
-                   SrnprWeb.WebEntity.GridShowWWE gsw=new SrnprWeb.WebEntity.GridShowWWE();
-                   string sId=dKvp["id"];
-                    if(sId.IndexOf('_')>-1)
+
+                    if (dKvp.ContainsKey("src") && dKvp.ContainsKey("id"))
                     {
-                        sId=sId.Substring(0,sId.IndexOf('_'));
+                        
+
+                        sCont = sCont.Replace(mc[i].Value, SrnprWeb.WebProcess.GridShowWWP.GetShowHtml(dKvp["srnpr_ck_gridshow_xmlid"], dKvp["id"]));
+
+
+
                     }
-                    gsw.Id=sId;
-
-                    sCont=sCont.Replace(mc[i].Value,  SrnprWeb.WebProcess.GridShowWWP.GetShowHtml(gsw, dKvp["id"]));
-
-
-
                 }
 
 

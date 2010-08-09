@@ -39,6 +39,21 @@ namespace SrnprWeb.WebWidget
         protected override void RenderContents(HtmlTextWriter output)
         {
             //output.Write(XmlConfigName);
+
+            if (!string.IsNullOrEmpty(XmlConfigName))
+            {
+
+                WebEntity.PageShowWWE psw = WebProcess.PageShowWWP.GetEntityById(XmlConfigName);
+
+                output.Write(psw.HtmlContent);
+
+
+                GridShowWWW gsw = new GridShowWWW();
+                gsw.XmlConfigName = "";
+                base.Controls.Add(gsw);
+            }
+
+
         }
     }
 }

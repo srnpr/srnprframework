@@ -55,6 +55,33 @@ namespace SrnprWeb.WebProcess
 
 
 
+        /// <summary>
+        /// 
+        /// Description: 返回显示内容
+        /// Author:Liudpc
+        /// Create Date: 2010-8-9 11:46:59
+        /// </summary>
+        /// <param name="gsw"></param>
+        /// <param name="sId"></param>
+        /// <returns></returns>
+        public static string GetShowHtml(WebEntity.GridShowWWE gsw, string sId)
+        {
+
+            StringBuilder sb = new StringBuilder();
+
+            //定义参数名称
+            string sObjId = "SWJGSF_Obj_" + sId;
+
+
+            //开始输出执行逻辑
+            sb.Append("<div id=\"SWJGSF_Div_" + sId + "\"></div><script>var " + sObjId + "=" + SrnprWeb.WebProcess.GridShowWWP.WidgetRequestString(gsw.Id, sId) + ";SWJGSF.Init('" + sObjId + "');</script>");
+
+
+            return sb.ToString();
+        }
+
+
+
 
 
 

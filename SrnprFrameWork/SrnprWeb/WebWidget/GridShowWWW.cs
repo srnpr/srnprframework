@@ -44,50 +44,10 @@ namespace SrnprWeb.WebWidget
         }
 
 
-
-
-
-
-
-
         protected override void RenderContents(HtmlTextWriter output)
         {
-            output.Write(ShowHtml(GridShowEntity));
+            output.Write(WebProcess.GridShowWWP.GetShowHtml(GridShowEntity,base.ClientID));
         }
-
-
-
-        /// <summary>
-        /// 
-        /// Description: 显示最终生成的内容
-        /// Author:Liudpc
-        /// Create Date: 2010-8-3 9:10:03
-        /// </summary>
-        /// <param name="gsw"></param>
-        /// <returns></returns>
-        protected string ShowHtml(WebEntity.GridShowWWE gsw)
-        {
-            StringBuilder sb = new StringBuilder();
-
-            //定义参数名称
-            string sId = "SWJGSF_Obj_" + base.ClientID;
-
-
-            //开始输出执行逻辑
-            sb.Append("<div id=\"SWJGSF_Div_"+base.ClientID+"\"></div><script>var " + sId + "=" + SrnprWeb.WebProcess.GridShowWWP.WidgetRequestString(XmlConfigName,base.ClientID) + ";SWJGSF.Init(" + sId + ");</script>");
-           
-
-            return sb.ToString();
-
-
-        }
-
-
-
-
-
-
-
 
 
 

@@ -33,6 +33,11 @@
 		</p>
         <p>
 			<asp:Button ID="btnOk" runat="server" onclick="btnOk_Click" Text="提交" />
+			
+			<br />
+			<br />
+			
+			<a href="../Widget/PageShow.aspx" target="_blank"> 测试查看</a>
 		</p>
     </div>
     </form>

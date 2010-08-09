@@ -81,8 +81,5 @@
     <Content Include="srnpr_ckeditor\plugins\srnpr_ck_forms\dialogs\textfield.js" />
     <Content Include="srnpr_ckeditor\plugins\srnpr_ck_forms\images\hiddenfield.gif" />
     <Content Include="srnpr_ckeditor\plugins\srnpr_ck_forms\plugin.js" />
-    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_gridshow\dialogs\srnpr_ck_gridshow.js" />
-    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_gridshow\plugin.js" />
-    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_gridshow\srnpr_ck_gridshow.gif" />
   </ItemGroup>
 </Project>

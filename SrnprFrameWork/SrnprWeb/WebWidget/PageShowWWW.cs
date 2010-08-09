@@ -13,27 +13,32 @@ namespace SrnprWeb.WebWidget
     [ToolboxData("<{0}:PageShowWWW runat=server></{0}:PageShowWWW>")]
     public class PageShowWWW : WebControl
     {
+        private string _xmlConfigName = "";
         [Bindable(true)]
         [Category("Appearance")]
         [DefaultValue("")]
         [Localizable(true)]
-        public string Text
+        [Description("配置文件名称，与xml文件保持一致")]
+        public string XmlConfigName
         {
             get
             {
-                String s = (String)ViewState["Text"];
-                return ((s == null) ? String.Empty : s);
+                return _xmlConfigName;
             }
-
             set
             {
-                ViewState["Text"] = value;
+                _xmlConfigName = value;
             }
         }
 
+
+
+
+
+
         protected override void RenderContents(HtmlTextWriter output)
         {
-            output.Write(Text);
+            //output.Write(XmlConfigName);
         }
     }
 }

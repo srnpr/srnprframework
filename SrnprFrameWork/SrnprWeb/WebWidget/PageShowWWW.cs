@@ -45,15 +45,21 @@ namespace SrnprWeb.WebWidget
 
                 WebEntity.PageShowWWE psw = WebProcess.PageShowWWP.GetEntityById(XmlConfigName);
 
-                output.Write(psw.HtmlContent);
+
+                output.Write(WebProcess.PageShowWWP.GetShowHtml(psw,base.ClientID));
 
 
-                GridShowWWW gsw = new GridShowWWW();
-                gsw.XmlConfigName = "";
-                base.Controls.Add(gsw);
+              
             }
 
 
         }
+
+
+
+       
+
+
+
     }
 }

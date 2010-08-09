@@ -74,7 +74,7 @@ namespace SrnprWeb.WebProcess
 
 
             //开始输出执行逻辑
-            sb.Append("<div id=\"SWJGSF_Div_" + sId + "\"></div><script>var " + sObjId + "=" + SrnprWeb.WebProcess.GridShowWWP.WidgetRequestString(gsw.Id, sId) + ";SWJGSF.Init('" + sObjId + "');</script>");
+            sb.Append("<div id=\"SWJGSF_Div_" + sId + "\"></div><script>var " + sObjId + "=" + SrnprWeb.WebProcess.GridShowWWP.WidgetRequestString(gsw.Id, sId) + ";SWJGSF.Init(" + sObjId + ");</script>");
 
 
             return sb.ToString();

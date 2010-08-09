@@ -26,7 +26,27 @@ namespace SrnprWeb.WebProcess
             return SrnprCommon.CommonFunction.EntitySerializerCCF<WebEntity.PageShowWWE>.XmlToEntity(sFilePath + string.Format(sFileExt, sId));
         }
 
+        public static string GetShowHtml(WebEntity.PageShowWWE psw, string sId)
+        {
+            StringBuilder sb = new StringBuilder();
 
+            sb.Append(psw.Content);
+
+            return sb.ToString();
+        }
+
+
+        public static string RecheckContent(string sContent)
+        {
+            string str = sContent;
+
+           
+
+
+
+
+            return str;
+        }
 
 
     }

@@ -61,7 +61,7 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
         var rtl = editor.lang.dir == 'rtl';
         switch (keystroke)
         {
-            // UP-ARROW                
+            // UP-ARROW                     
             case 38:
                 // relative is TR
                 if ((relative = element.getParent().getParent().getPrevious()))
@@ -71,7 +71,7 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
                 }
                 ev.preventDefault();
                 break;
-            // DOWN-ARROW                
+            // DOWN-ARROW                     
             case 40:
                 // relative is TR
                 if ((relative = element.getParent().getParent().getNext()))
@@ -82,14 +82,14 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
                 }
                 ev.preventDefault();
                 break;
-            // ENTER                
-            // SPACE                
+            // ENTER                     
+            // SPACE                     
             case 32:
                 onClick({ data: ev });
                 ev.preventDefault();
                 break;
 
-            // RIGHT-ARROW                
+            // RIGHT-ARROW                     
             case rtl ? 37 : 39:
                 // TAB
             case 9:
@@ -110,7 +110,7 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
                 }
                 break;
 
-            // LEFT-ARROW                
+            // LEFT-ARROW                     
             case rtl ? 39 : 37:
                 // SHIFT + TAB
             case CKEDITOR.SHIFT + 9:
@@ -154,7 +154,7 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
 		'><tbody>'
 	];
 
-        html.push('<tr><td colspan="100">'+editor.config.srnprck.param.title+'：<input type="text"  id="srnpr_ck_ct_list_paramid_' + inputId + '" style="border:solid 1px #999;background-color:#fff;" value=""/></td></tr>');
+        html.push('<tr><td colspan="100">' + editor.config.srnprck.param.title + '：<input type="text"  id="srnpr_ck_ct_list_paramid_' + inputId + '" style="border:solid 1px #999;background-color:#fff;" value=""/></td></tr>');
 
         var size = eConfig.images.length;
         for (i = 0; i < size; i++)
@@ -231,18 +231,18 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
     {
         var vCont = new Array();
 
-        for (var n = 0, m = config.srnpr_ck_ct_list_config.length; n < m; n++)
+        for (var n = 0, m = config.srnpr_ck_ct_list_config.group.length; n < m; n++)
         {
             vCont.push(
 
             {
                 id: 'tab' + n,
-                label: config.srnpr_ck_ct_list_config[n].title,
-                title: config.srnpr_ck_ct_list_config[n].title,
+                label: config.srnpr_ck_ct_list_config.group[n].title,
+                title: config.srnpr_ck_ct_list_config.group[n].title,
                 expand: true,
                 padding: 0,
                 elements: [
-						GetSelector(config.srnpr_ck_ct_list_config[n])
+						GetSelector(config.srnpr_ck_ct_list_config.group[n])
 					]
             }
 
@@ -265,6 +265,39 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
         minWidth: 370,
         minHeight: 220,
         contents: GetContents(),
-        buttons: [CKEDITOR.dialog.cancelButton]
+        buttons: [CKEDITOR.dialog.cancelButton],
+        onShow: function()
+        {
+
+
+            var element = this.getParentEditor().getSelection().getSelectedElement();
+
+            if (element && element.getName() == "img" && element.getId())
+            {
+                for (var n = 0, m = config.srnpr_ck_ct_list_config.group.length; n < m; n++)
+                {
+
+                    var inputId = config.srnpr_ck_ct_list_config.group[n].imagespath.replace("/", "");
+                    if (document.getElementById("srnpr_ck_ct_list_paramid_" + inputId))
+                    {
+                        document.getElementById("srnpr_ck_ct_list_paramid_" + inputId).value = element.getId();
+                    }
+                }
+            }
+            else
+            {
+               
+                for (var n = 0, m = config.srnpr_ck_ct_list_config.group.length; n < m; n++)
+                {
+
+                    var inputId = config.srnpr_ck_ct_list_config.group[n].imagespath.replace("/", "");
+                    if (document.getElementById("srnpr_ck_ct_list_paramid_" + inputId))
+                    {
+                        document.getElementById("srnpr_ck_ct_list_paramid_" + inputId).value = "";
+                    }
+                }
+                
+            }
+        }
     };
 });

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ConfigPage.aspx.cs" Inherits="Test_ConfigPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ConfigPage.aspx.cs" Inherits="Test_ConfigPage" ValidateRequest="false" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -13,19 +13,26 @@
     <div>
   
 		<p>
-			<label for="editor1">
+			<label for="tbEditor">
 				Editor 1:</label><br />
-			<textarea cols="80" id="editor1" name="editor1" rows="10">&lt;html&gt;&lt;head&gt;&lt;title&gt;CKEditor Sample&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;This is some &lt;strong&gt;sample text&lt;/strong&gt;. You are using &lt;a href="http://ckeditor.com/"&gt;CKEditor&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</textarea>
+				
+				
+				<asp:TextBox ID="tbEditor" runat="server" TextMode="MultiLine"  cols="80"  rows="10"></asp:TextBox>
+				
+			
 			<script type="text/javascript">
 			    //<![CDATA[
 
-			    var editor = CKEDITOR.replace('editor1');
+			    var editor = CKEDITOR.replace('<%=tbEditor.ClientID %>');
 
 
 
 
 			    //]]>
 			</script>
+		</p>
+        <p>
+			<asp:Button ID="btnOk" runat="server" onclick="btnOk_Click" Text="提交" />
 		</p>
     </div>
     </form>

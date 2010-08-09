@@ -11,4 +11,8 @@ public partial class Test_ConfigPage : System.Web.UI.Page
     {
 
     }
+    protected void btnOk_Click(object sender, EventArgs e)
+    {
+        
+    }
 }

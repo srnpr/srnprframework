@@ -89,6 +89,7 @@
     <Compile Include="WebWidget\CkeditorWWW.cs" />
     <Compile Include="WebWidget\GridShowWWW.cs" />
     <Compile Include="WebWidget\PageSerchWWW.cs" />
+    <Compile Include="WebWidget\PageShowWWW.cs" />
     <Compile Include="WebWidget\WidgetFileUploadWWW.cs" />
     <Compile Include="WebXml\ReplaceXmlWWX.cs" />
   </ItemGroup>

@@ -1,32 +1,32 @@
 ﻿
-CKEDITOR.plugins.add('srnpr_ck_ct_list',
+CKEDITOR.plugins.add('srnpr_ck_gridshow',
 {
     requires: ['dialog'],
 
     init: function(editor)
     {
-        if (!editor.lang.srnpr_ck_ct_list)
-            editor.lang.srnpr_ck_ct_list = { toolbar: '表情符', title: '插入DC控件', options: '表情图标选项' };
+        if (!editor.lang.srnpr_ck_gridshow)
+            editor.lang.srnpr_ck_gridshow = { toolbar: '表情符', title: '插入DC控件', options: '表情图标选项' };
 
 
-        editor.config.srnpr_ck_ct_list_path = editor.config.srnpr_ck_ct_list_path || (this.path);
-        editor.addCommand('srnpr_ck_ct_list', new CKEDITOR.dialogCommand('srnpr_ck_ct_list'));
-        editor.ui.addButton('srnpr_ck_ct_list',
+        editor.config.srnpr_ck_gridshow_path = editor.config.srnpr_ck_gridshow_path || (this.path);
+        editor.addCommand('srnpr_ck_gridshow', new CKEDITOR.dialogCommand('srnpr_ck_gridshow'));
+        editor.ui.addButton('srnpr_ck_gridshow',
 			{
-			    label: editor.lang.srnpr_ck_ct_list.toolbar,
-			    command: 'srnpr_ck_ct_list',
-			    icon: CKEDITOR.plugins.getPath('srnpr_ck_ct_list') + 'srnpr_ck_ct_list.gif'
+			    label: editor.lang.srnpr_ck_gridshow.toolbar,
+			    command: 'srnpr_ck_gridshow',
+			    icon: CKEDITOR.plugins.getPath('srnpr_ck_gridshow') + 'srnpr_ck_gridshow.gif'
 			});
-			CKEDITOR.dialog.add('srnpr_ck_ct_list', this.path + 'dialogs/srnpr_ck_ct_list.js');
+			CKEDITOR.dialog.add('srnpr_ck_gridshow', this.path + 'dialogs/srnpr_ck_gridshow.js');
         
         
         editor.on('doubleclick', function(evt)
         {
             var element = evt.data.element;
 
-            if (element.is('img') && element.getAttribute('srnpr_srnpr_ck_ct_list_control_id') == 'aa')
+            if (element.is('img') && element.getAttribute('srnpr_srnpr_ck_gridshow_control_id') == 'aa')
             {
-                evt.data.dialog = 'srnpr_ck_ct_list';
+                evt.data.dialog = 'srnpr_ck_gridshow';
             }
         });
 
@@ -39,9 +39,9 @@ CKEDITOR.plugins.add('srnpr_ck_ct_list',
 
 
 
-CKEDITOR.config.srnpr_ck_ct_list_config =
+CKEDITOR.config.srnpr_ck_gridshow_config =
 {
-    srnpr_srnpr_ck_ct_list_control_id: "srnpr_srnpr_ck_ct_list_control_id",
+    srnpr_srnpr_ck_gridshow_control_id: "srnpr_srnpr_ck_gridshow_control_id",
 group:
 [
 {

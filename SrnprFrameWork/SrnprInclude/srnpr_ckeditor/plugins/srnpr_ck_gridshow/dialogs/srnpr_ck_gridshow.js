@@ -1,11 +1,11 @@
 ﻿
 
-CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
+CKEDITOR.dialog.add('srnpr_ck_gridshow', function(editor)
 {
     var config = editor.config,
-		lang = editor.lang.srnpr_ck_ct_list,
+		lang = editor.lang.srnpr_ck_gridshow,
 
-		columns = config.srnpr_ck_ct_list_columns || 8,
+		columns = config.srnpr_ck_gridshow_columns || 8,
 		i;
 
 
@@ -24,7 +24,7 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
 			title = target.getAttribute('title'),
 			id = target.getAttribute('inputid');
 
-        if (document.getElementById("srnpr_ck_ct_list_paramid_" + id) && document.getElementById("srnpr_ck_ct_list_paramid_" + id).value == "")
+        if (document.getElementById("srnpr_ck_gridshow_paramid_" + id) && document.getElementById("srnpr_ck_gridshow_paramid_" + id).value == "")
         {
             alert(editor.config.srnprck.param.emptymsg);
             return false;
@@ -40,13 +40,13 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
 				    _cke_saved_src: src,
 				    title: title,
 				    alt: title,
-				    id: document.getElementById("srnpr_ck_ct_list_paramid_" + id).value,
-				    srnpr_srnpr_ck_ct_list_control_id: "aa"
+				    id: document.getElementById("srnpr_ck_gridshow_paramid_" + id).value,
+				    srnpr_srnpr_ck_gridshow_control_id: "aa"
 				}
 			});
 
         editor.insertElement(img);
-        document.getElementById("srnpr_ck_ct_list_paramid_" + id).value = "";
+        document.getElementById("srnpr_ck_gridshow_paramid_" + id).value = "";
         dialog.hide();
         evt.data.preventDefault();
     };
@@ -135,8 +135,8 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
         }
     });
 
-    // Build the HTML for the srnpr_ck_ct_list images table.
-    var labelId = 'srnpr_ck_ct_list_emtions_label' + CKEDITOR.tools.getNextNumber();
+    // Build the HTML for the srnpr_ck_gridshow images table.
+    var labelId = 'srnpr_ck_gridshow_emtions_label' + CKEDITOR.tools.getNextNumber();
 
 
     var GetHtml = function(eConfig)
@@ -154,7 +154,7 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
 		'><tbody>'
 	];
 
-        html.push('<tr><td colspan="100">' + editor.config.srnprck.param.title + '：<input type="text"  id="srnpr_ck_ct_list_paramid_' + inputId + '" style="border:solid 1px #999;background-color:#fff;" value=""/></td></tr>');
+        html.push('<tr><td colspan="100">' + editor.config.srnprck.param.title + '：<input type="text"  id="srnpr_ck_gridshow_paramid_' + inputId + '" style="border:solid 1px #999;background-color:#fff;" value=""/></td></tr>');
 
         var size = eConfig.images.length;
         for (i = 0; i < size; i++)
@@ -162,21 +162,21 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
             if (i % columns === 0)
                 html.push('<tr>');
 
-            var srnpr_ck_ct_listLabelId = 'cke_smile_label_' + i + '_' + CKEDITOR.tools.getNextNumber();
+            var srnpr_ck_gridshowLabelId = 'cke_smile_label_' + i + '_' + CKEDITOR.tools.getNextNumber();
             html.push(
 			'<td class="cke_dark_background cke_centered" style="vertical-align: middle;">' +
 				'<a href="javascript:void(0)" role="option"',
 					' aria-posinset="' + (i + 1) + '"',
 					' aria-setsize="' + size + '"',
-					' aria-labelledby="' + srnpr_ck_ct_listLabelId + '"',
+					' aria-labelledby="' + srnpr_ck_gridshowLabelId + '"',
 					' class="cke_smile cke_hand" tabindex="-1" onkeydown="CKEDITOR.tools.callFunction( ', onKeydown, ', event, this );">',
 					'<img class="cke_hand" inputid="' + inputId + '" title="', eConfig.descriptions[i], '"' +
-						' cke_src="', CKEDITOR.tools.htmlEncode(config.srnpr_ck_ct_list_path + eConfig.imagespath + "/" + eConfig.images[i]), '" alt="', eConfig.descriptions[i], '"',
-						' src="', CKEDITOR.tools.htmlEncode(config.srnpr_ck_ct_list_path + eConfig.imagespath + "/" + eConfig.images[i]), '"',
+						' cke_src="', CKEDITOR.tools.htmlEncode(config.srnpr_ck_gridshow_path + eConfig.imagespath + "/" + eConfig.images[i]), '" alt="', eConfig.descriptions[i], '"',
+						' src="', CKEDITOR.tools.htmlEncode(config.srnpr_ck_gridshow_path + eConfig.imagespath + "/" + eConfig.images[i]), '"',
             // IE BUG: Below is a workaround to an IE image loading bug to ensure the image sizes are correct.
 						(CKEDITOR.env.ie ? ' onload="this.setAttribute(\'width\', 2); this.removeAttribute(\'width\');" ' : ''),
 					'>' +
-					'<span id="' + srnpr_ck_ct_listLabelId + '" class="cke_voice_label">' + eConfig.descriptions[i] + '</span>' +
+					'<span id="' + srnpr_ck_gridshowLabelId + '" class="cke_voice_label">' + eConfig.descriptions[i] + '</span>' +
 				'</a>',
  			'</td>');
 
@@ -231,18 +231,18 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
     {
         var vCont = new Array();
 
-        for (var n = 0, m = config.srnpr_ck_ct_list_config.group.length; n < m; n++)
+        for (var n = 0, m = config.srnpr_ck_gridshow_config.group.length; n < m; n++)
         {
             vCont.push(
 
             {
                 id: 'tab' + n,
-                label: config.srnpr_ck_ct_list_config.group[n].title,
-                title: config.srnpr_ck_ct_list_config.group[n].title,
+                label: config.srnpr_ck_gridshow_config.group[n].title,
+                title: config.srnpr_ck_gridshow_config.group[n].title,
                 expand: true,
                 padding: 0,
                 elements: [
-						GetSelector(config.srnpr_ck_ct_list_config.group[n])
+						GetSelector(config.srnpr_ck_gridshow_config.group[n])
 					]
             }
 
@@ -261,7 +261,7 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
 
 
     return {
-        title: editor.lang.srnpr_ck_ct_list.title,
+        title: editor.lang.srnpr_ck_gridshow.title,
         minWidth: 370,
         minHeight: 220,
         contents: GetContents(),
@@ -274,26 +274,26 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
 
             if (element && element.getName() == "img" && element.getId())
             {
-                for (var n = 0, m = config.srnpr_ck_ct_list_config.group.length; n < m; n++)
+                for (var n = 0, m = config.srnpr_ck_gridshow_config.group.length; n < m; n++)
                 {
 
-                    var inputId = config.srnpr_ck_ct_list_config.group[n].imagespath.replace("/", "");
-                    if (document.getElementById("srnpr_ck_ct_list_paramid_" + inputId))
+                    var inputId = config.srnpr_ck_gridshow_config.group[n].imagespath.replace("/", "");
+                    if (document.getElementById("srnpr_ck_gridshow_paramid_" + inputId))
                     {
-                        document.getElementById("srnpr_ck_ct_list_paramid_" + inputId).value = element.getId();
+                        document.getElementById("srnpr_ck_gridshow_paramid_" + inputId).value = element.getId();
                     }
                 }
             }
             else
             {
                
-                for (var n = 0, m = config.srnpr_ck_ct_list_config.group.length; n < m; n++)
+                for (var n = 0, m = config.srnpr_ck_gridshow_config.group.length; n < m; n++)
                 {
 
-                    var inputId = config.srnpr_ck_ct_list_config.group[n].imagespath.replace("/", "");
-                    if (document.getElementById("srnpr_ck_ct_list_paramid_" + inputId))
+                    var inputId = config.srnpr_ck_gridshow_config.group[n].imagespath.replace("/", "");
+                    if (document.getElementById("srnpr_ck_gridshow_paramid_" + inputId))
                     {
-                        document.getElementById("srnpr_ck_ct_list_paramid_" + inputId).value = "";
+                        document.getElementById("srnpr_ck_gridshow_paramid_" + inputId).value = "";
                     }
                 }
                 

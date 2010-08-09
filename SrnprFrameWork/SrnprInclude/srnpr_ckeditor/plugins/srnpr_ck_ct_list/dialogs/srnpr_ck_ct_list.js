@@ -41,7 +41,7 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
 				    title: title,
 				    alt: title,
 				    id: document.getElementById("srnpr_ck_ct_list_paramid_" + id).value,
-				    srnpr_srnpr_ck_ct_list_control_id: "aa"
+				    srnpr_srnpr_ck_control_type_id: "ct_list"
 				}
 			});
 

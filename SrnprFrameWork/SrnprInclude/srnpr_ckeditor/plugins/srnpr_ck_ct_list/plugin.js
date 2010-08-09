@@ -24,7 +24,7 @@ CKEDITOR.plugins.add('srnpr_ck_ct_list',
         {
             var element = evt.data.element;
 
-            if (element.is('img') && element.getAttribute('srnpr_srnpr_ck_ct_list_control_id') == 'aa')
+            if (element.is('img') && element.getAttribute('srnpr_srnpr_ck_control_type_id') == 'ct_list')
             {
                 evt.data.dialog = 'srnpr_ck_ct_list';
             }

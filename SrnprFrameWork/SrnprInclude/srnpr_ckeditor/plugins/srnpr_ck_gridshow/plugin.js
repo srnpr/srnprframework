@@ -24,7 +24,7 @@ CKEDITOR.plugins.add('srnpr_ck_gridshow',
         {
             var element = evt.data.element;
 
-            if (element.is('img') && element.getAttribute('srnpr_srnpr_ck_gridshow_control_id') == 'aa')
+            if (element.is('img') && element.getAttribute('srnpr_srnpr_ck_control_type_id') == editor.config.srnprck.srnpr_srnpr_ck_control_type_id.gridshow)
             {
                 evt.data.dialog = 'srnpr_ck_gridshow';
             }

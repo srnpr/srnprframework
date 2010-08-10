@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 public partial class Test_ConfigPage : System.Web.UI.Page
 {
 
-    private string sId = "tttt";
+    protected string sId = "xxx";
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -19,6 +19,12 @@ public partial class Test_ConfigPage : System.Web.UI.Page
         if (!IsPostBack)
         {
             tbEditor.Text = SrnprWeb.WebProcess.PageShowWWP.GetEntityById(sId).HtmlContent;
+
+            if(string.IsNullOrEmpty(tbEditor.Text.Trim()))
+            {
+                tbEditor.Text=SrnprWeb.WebProcess.PageShowWWP.GetTempletesById("query");
+            }
+
         }
 
 

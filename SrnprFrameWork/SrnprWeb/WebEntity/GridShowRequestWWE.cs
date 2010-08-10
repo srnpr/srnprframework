@@ -57,7 +57,7 @@ namespace SrnprWeb.WebEntity
 
       [DataMember(Order = 5)]
         /// <summary>
-        /// Description: 处理类型 默认为空 由服务端处理 取值范围：client,server
+        /// Description: 处理类型 默认为空 由服务端处理 取值范围：client,server,demo
         /// Author:Liudpc
         /// Create Date: 2010-8-2 12:07:46
         /// </summary>

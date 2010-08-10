@@ -19,10 +19,13 @@ if (!this.SWJGSF)
         //初始化
         SWJGSF.Init = function(s)
         {
+
+            SWJGSF.Obj[s.Id] = s;
+        
             $("document").ready(function()
             {
 
-                SWJGSF.Obj[s.Id] = s;
+                
                 SWJGSF.Ajax(s.Id);
 
             })
@@ -90,7 +93,7 @@ if (!this.SWJGSF)
 
 
 
-            sShowHtml += "<div class=\"SWCGSF_DIV_FOOT_NAV\">" + (iPageCount>0? obj.Request.PageIndex:0) + "/" + iPageCount + "页  共计：" + obj.Request.RowsCount + "条";
+            sShowHtml += "<div class=\"SWCGSF_DIV_FOOT_NAV\">" + (iPageCount > 0 ? obj.Request.PageIndex : 0) + "/" + iPageCount + "页  共计：" + obj.Request.RowsCount + "条";
 
             if (obj.Request.RowsCount > 0)
                 sShowHtml += "<a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "',1)\">首页</a><a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "','-')\">上一页</a><a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "','+')\">下一页</a><a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "','" + iPageCount + "')\">尾页</a>"
@@ -166,15 +169,63 @@ if (!this.SWJGSF)
         }
 
 
+        SWJGSF.Demo = function()
+        {
+            for (var p in SWJGSF.Obj)
+            {
+
+                SWJGSF.Obj[p].ProcessType = "demo";
+                
+
+            }
+           
+        }
+
+
+
         //执行查询 第二参数为空时则遍历所有
         SWJGSF.Query = function(id, sid)
         {
+            var a = function() { };
+
+            if (id == undefined)
+            {
+                id = "[0]";
+            }
+            if (id.indexOf('[') > -1)
+            {
+
+                var sIndex = id.replace('[', '').replace(']', '');
+
+                if (!isNaN(sIndex))
+                {
+                    var index = 0;
+                    for (var p in SWJGSF.Obj)
+                    {
+                        if (sIndex == index)
+                        {
+                            id = SWJGSF.Obj[p].Id;
+                        }
+                        index++;
+                    }
+                }
+
+
+
+            }
+
+
+
+
+
+
+
             //定义提交参数
             var t = [];
 
             var vElms = $("#" + sid).children("[paramid][paramid<>'']");
 
-            if (!vElms||vElms.length == 0)
+            if (!vElms || vElms.length == 0)
             {
                 vElms = $("[paramid][paramid<>'']");
             }

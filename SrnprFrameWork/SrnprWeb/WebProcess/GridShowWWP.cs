@@ -109,6 +109,15 @@ namespace SrnprWeb.WebProcess
        
 
 
+        /// <summary>
+        /// 
+        /// Description: 初始化信息
+        /// Author:Liudpc
+        /// Create Date: 2010-8-10 12:53:12
+        /// </summary>
+        /// <param name="sId"></param>
+        /// <param name="sClientId"></param>
+        /// <returns></returns>
         public static string WidgetRequestString(string sId,string sClientId)
         {
             WebEntity.GridShowRequestWWE req = new GridShowRequestWWE();
@@ -129,6 +138,16 @@ namespace SrnprWeb.WebProcess
 
 
 
+        /// <summary>
+        /// 
+        /// Description: 根据实体取出数据
+        /// Author:Liudpc
+        /// Create Date: 2010-8-10 12:52:35
+        /// </summary>
+        /// <param name="gsw"></param>
+        /// <param name="req"></param>
+        /// <param name="sOrdeString"></param>
+        /// <returns></returns>
         public DataTable GetDataByEntity(WebEntity.GridShowWWE gsw, GridShowRequestWWE req,string sOrdeString)
         {
 
@@ -282,12 +301,6 @@ namespace SrnprWeb.WebProcess
 
 
 
-            
-
-
-           
-
-
             if (request.ShowColumn == null)
             {
                 request.ShowColumn = new List<GridShowColumnBaseWWE>();
@@ -302,7 +315,6 @@ namespace SrnprWeb.WebProcess
             }
 
             string sOrdeString = "";
-
 
             //开始智能分析排序字段
             if (request.ShowColumn.Count > 0)
@@ -322,15 +334,19 @@ namespace SrnprWeb.WebProcess
 
 
 
-            //开始分析排序依据
-            DataTable dt = GetDataByEntity(gsw, request,sOrdeString);
+            
 
 
-
+             DataTable dt=new DataTable();
 
 
             if (request.ProcessType == ""||request.ProcessType=="server")
             {
+
+                //开始分析排序依据
+                dt= GetDataByEntity(gsw, request, sOrdeString);
+
+
                 StringBuilder sb = new StringBuilder();
 
 
@@ -509,6 +525,23 @@ namespace SrnprWeb.WebProcess
                     }
                     response.DataItem.Add(strList);
                 }
+            }
+            else if (request.ProcessType == "demo")
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append("<div class=\"SWCGSF_DIV_MAIN\"><table id=\"GS_table_" + request.ClientId + "\" cellspacing=\"1\" cellpadding=\"0\">");
+               
+                sb.Append("<tr>");
+                for (int i = 0, j = gsw.ColumnList.Count;i<j ; i++)
+                {
+                    if (gsw.ColumnList[i].ShowDisplay !="h")
+                    sb.Append("<th>"+gsw.ColumnList[i].HeaderText+"</th>");
+                }
+                sb.Append("</tr>");
+                sb.Append("</table></div>");
+
+
+                response.HtmlString = sb.ToString();
             }
 
             return response;

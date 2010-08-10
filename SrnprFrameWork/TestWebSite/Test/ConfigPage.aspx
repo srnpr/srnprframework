@@ -7,6 +7,7 @@
     <title></title>
    <script type="text/javascript" src="/srnpr_ckeditor/ckeditor.js"></script>
     
+   
 </head>
 <body>
     <form id="form1" runat="server">
@@ -35,7 +36,7 @@
 			<br />
 			<br />
 			
-			<a href="../Widget/PageShow.aspx" target="_blank"> 测试查看</a>
+			<a href="../Widget/PageShow.aspx?id=<%=sId %>" target="_blank"> 测试查看</a>
 		</p>
     </div>
     </form>

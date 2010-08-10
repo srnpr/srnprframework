@@ -36,6 +36,14 @@ namespace SrnprCommon.CommonFunction
         }
 
 
+        /// <summary>
+        /// 
+        /// Description: 读取文件内容
+        /// Author:Liudpc
+        /// Create Date: 2010-8-10 10:34:46
+        /// </summary>
+        /// <param name="sFilePath">文件路径</param>
+        /// <returns>内容</returns>
         public static string ReadFileContent(string sFilePath)
         {
             string sReturn = "";

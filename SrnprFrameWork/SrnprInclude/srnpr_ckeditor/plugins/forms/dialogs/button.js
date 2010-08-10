@@ -28,7 +28,7 @@ CKEDITOR.dialog.add('button', function(editor)
 				element = this.button,
 
 				isInsertMode = !element;
-            isInsertMode = true;
+            
 
             if (isInsertMode)
             {

@@ -19,5 +19,11 @@
     <sw:PageShowWWW ID="PageShow1" runat="server" />
     </div>
     </form>
+    
+    <script type="text/javascript">
+
+        SWJGSF.Demo();
+    </script>
+    
 </body>
 </html>

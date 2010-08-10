@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 
 namespace SrnprWeb.WebProcess
 {
@@ -11,7 +12,7 @@ namespace SrnprWeb.WebProcess
 
         private static string sFilePath = "D:\\SrnprFrameWork\\WebWidget\\";
         private static string sFileExt = "PageShow\\{0}.www.ps.xml";
-
+        
         private static string PageShowList = "PageShowList\\GridShowList.xml";
 
 
@@ -34,6 +35,15 @@ namespace SrnprWeb.WebProcess
 
             return sb.ToString();
         }
+
+
+        public static string GetTempletesById(string sId)
+        {
+
+            return SrnprCommon.CommonFunction.IoStaticCCF.ReadFileContent(sFilePath + "\\CKTempletes\\"+sId+".www.ckt.html");
+        }
+
+
 
 
         public static string RecheckContent(string sContent)

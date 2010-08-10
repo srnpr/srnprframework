@@ -35,6 +35,19 @@ namespace SrnprCommon.CommonFunction
             return true;
         }
 
+
+        public static string ReadFileContent(string sFilePath)
+        {
+            string sReturn = "";
+            using (StreamReader sr = new StreamReader(sFilePath, UnicodeEncoding.Unicode))
+            {
+               sReturn= sr.ReadToEnd();
+               sr.Close();
+            }
+            return sReturn;
+        }
+
+
        
 
     }

@@ -67,18 +67,21 @@ namespace SrnprWeb.WebProcess
         public static string GetShowHtml(string sXmlId, string sClientId)
         {
 
+            return GetShowHtml(sXmlId, sClientId);
+        }
+
+        public static string GetShowHtml(string sXmlId, string sClientId, string sRequest)
+        {
             StringBuilder sb = new StringBuilder();
 
             //定义参数名称
             string sObjId = "SWJGSF_Obj_" + sClientId;
-
-
             //开始输出执行逻辑
-            sb.Append("<div id=\"SWJGSF_Div_" + sClientId + "\"></div><script>var " + sObjId + "=" + SrnprWeb.WebProcess.GridShowWWP.WidgetRequestString(sXmlId, sClientId) + ";SWJGSF.Init(" + sObjId + ");</script>");
-
+            sb.Append("<div id=\"SWJGSF_Div_" + sClientId + "\"></div><input type=\"hidden\" name=\"SWJGSF_Hidden_" + sClientId + "\" id=\"SWJGSF_Hidden_" + sClientId + "\" value=\"" + sRequest + "\"><script>var " + sObjId + "=" + SrnprWeb.WebProcess.GridShowWWP.WidgetRequestString(sXmlId, sClientId) + ";SWJGSF.Init(" + sObjId + ");</script>");
 
             return sb.ToString();
         }
+
 
 
 

@@ -17,13 +17,11 @@
     <form id="form1" runat="server">
     <div>
     <sw:PageShowWWW ID="PageShow1" runat="server" />
-    </div>
+    </div><input type="submit" value="tt" />
     </form>
     
-    <script type="text/javascript">
-
-        //SWJGSF.Demo();
-    </script>
+    
+    <%=sDemo %>
     
 </body>
 </html>

@@ -22,23 +22,49 @@ if (!this.SWJGSF)
 
             SWJGSF.Obj[s.Id] = s;
 
+
             $("document").ready(function()
             {
-
-
                 SWJGSF.Ajax(s.Id);
 
-            })
+            });
+
+            $("form").submit(function() { SWJGSF.SubmitBefore(s.Id); });
+
+
+        }
+
+
+        SWJGSF.SubmitBefore = function(id)
+        {
+            $("#SWJGSF_Hidden_" + SWJGSF.Obj[id].ClientId).val(JSON.stringify(SWJGSF.Obj[id]));
         }
 
 
         //提交请求
         SWJGSF.Ajax = function(id)
         {
-           
 
-            $.ajax({ url: "/Asmx/GridShowHander.ashx", type: "POST", data: "json=" + JSON.stringify(SWJGSF.Obj[id]), success: function(x) { SWJGSF.AjaxSuccess(id, x) } });
+
+            $.ajax(
+            {
+                url: "/Asmx/GridShowHander.ashx",
+                type: "POST",
+                data: "json=" + JSON.stringify(SWJGSF.Obj[id]),
+                success: function(x) { SWJGSF.AjaxSuccess(id, x); },
+                error: function(XMLHttpRequest, textStatus) { SWJGSF.AlertMsg(textStatus) }
+
+
+
+            });
         }
+
+        SWJGSF.AlertMsg = function(s)
+        {
+            alert(s);
+        }
+
+
 
         //跳转页面
         SWJGSF.PageGoto = function(id, iPage)
@@ -78,7 +104,6 @@ if (!this.SWJGSF)
         //执行成功时
         SWJGSF.AjaxSuccess = function(id, o)
         {
-
 
             var obj = JSON.parse(o);
 
@@ -208,6 +233,7 @@ if (!this.SWJGSF)
             if (id == undefined)
             {
                 id = "[0]";
+
             }
             if (id.indexOf('[') > -1)
             {
@@ -216,9 +242,11 @@ if (!this.SWJGSF)
 
                 if (!isNaN(sIndex))
                 {
+
                     var index = 0;
                     for (var p in SWJGSF.Obj)
                     {
+
                         if (sIndex == index)
                         {
                             id = SWJGSF.Obj[p].Id;
@@ -276,6 +304,7 @@ if (!this.SWJGSF)
                      if (jLength > -1)
                      {
                          t.push({ Key: n.paramid, Value: vl });
+
                      }
 
                  }

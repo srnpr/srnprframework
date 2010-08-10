@@ -35,8 +35,8 @@
 			
 			<br />
 			<br />
-			
-			<a href="../Widget/PageShow.aspx?id=<%=sId %>" target="_blank"> 测试查看</a>
+			<a href="../Widget/PageShow.aspx?demo=demo&id=<%=sId %>" target="_blank"> 查看静态demo</a>
+			<a href="../Widget/PageShow.aspx?id=<%=sId %>" target="_blank"> 查看带实际数据版</a>
 		</p>
     </div>
     </form>

@@ -34,6 +34,31 @@ namespace SrnprWeb.WebWidget
 
 
 
+        private Dictionary<string, string> _requestContent = new Dictionary<string, string>();
+        public Dictionary<string, string> RequestContent
+        {
+            get;
+            set;
+        }
+
+        protected override void OnInit(EventArgs e)
+        {
+
+            if (HttpContext.Current.Request != null)
+            {
+               for(int i=0,j=HttpContext.Current.Request.Form.Count;i<j;i++)
+
+                {
+                    _requestContent[HttpContext.Current.Request.Form.Keys[i]]=HttpContext.Current.Request.Form[i];
+                }
+
+            }
+
+
+            base.OnInit(e);
+
+        }
+
 
 
         protected override void RenderContents(HtmlTextWriter output)

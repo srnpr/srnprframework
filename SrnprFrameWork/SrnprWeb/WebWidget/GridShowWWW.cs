@@ -47,9 +47,16 @@ namespace SrnprWeb.WebWidget
         protected override void RenderContents(HtmlTextWriter output)
         {
 
-            
+            string sClientId = base.ClientID;
+            string sContent = "";
 
-            output.Write(WebProcess.GridShowWWP.GetShowHtml(XmlConfigName,base.ClientID));
+            if (HttpContext.Current.Request["SWJGSF_Hidden_" + sClientId] != null)
+            {
+                sContent = HttpContext.Current.Request["SWJGSF_Hidden_" + sClientId].ToString().Trim();
+            }
+
+
+            output.Write(WebProcess.GridShowWWP.GetShowHtml(XmlConfigName,base.ClientID,sContent));
         }
 
 

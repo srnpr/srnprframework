@@ -9,6 +9,6 @@ public partial class Widget_PageShow : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        PageShow1.XmlConfigName = Request["id"].ToString().Trim();
     }
 }

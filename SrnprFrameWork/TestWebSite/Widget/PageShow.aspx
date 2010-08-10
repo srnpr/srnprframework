@@ -16,7 +16,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    <sw:PageShowWWW ID="PageShow1" runat="server" XmlConfigName="tttt" />
+    <sw:PageShowWWW ID="PageShow1" runat="server" />
     </div>
     </form>
 </body>

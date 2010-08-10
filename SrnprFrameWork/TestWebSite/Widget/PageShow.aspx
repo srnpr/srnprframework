@@ -22,7 +22,7 @@
     
     <script type="text/javascript">
 
-        SWJGSF.Demo();
+        //SWJGSF.Demo();
     </script>
     
 </body>

@@ -21,11 +21,11 @@ if (!this.SWJGSF)
         {
 
             SWJGSF.Obj[s.Id] = s;
-        
+
             $("document").ready(function()
             {
 
-                
+
                 SWJGSF.Ajax(s.Id);
 
             })
@@ -35,6 +35,8 @@ if (!this.SWJGSF)
         //提交请求
         SWJGSF.Ajax = function(id)
         {
+           
+
             $.ajax({ url: "/Asmx/GridShowHander.ashx", type: "POST", data: "json=" + JSON.stringify(SWJGSF.Obj[id]), success: function(x) { SWJGSF.AjaxSuccess(id, x) } });
         }
 
@@ -91,18 +93,32 @@ if (!this.SWJGSF)
             var iPageCount = Math.ceil(obj.Request.RowsCount / obj.Request.PageSize);
 
 
+            if (SWJGSF.Obj[id].ShowColumn)
+            {
+                sShowHtml += "<div class=\"SWCGSF_DIV_FOOT_NAV\">";
+                if (obj.Request.ProcessType == "" || obj.Request.ProcessType == "server")
+                {
+
+                    sShowHtml += +(iPageCount > 0 ? obj.Request.PageIndex : 0) + "/" + iPageCount + "页  共计：" + obj.Request.RowsCount + "条";
+
+                    if (obj.Request.RowsCount > 0)
+                        sShowHtml += "<a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "',1)\">首页</a><a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "','-')\">上一页</a><a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "','+')\">下一页</a><a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "','" + iPageCount + "')\">尾页</a>"
+                    + "<a href=\"javascript:SWJGSF.ShowDisplay('" + obj.Request.Id + "')\">自定义</a>";
+                }
+                else if (obj.Request.ProcessType == "demo")
+                {
+                    sShowHtml += " DEMO  " + "<a href=\"javascript:SWJGSF.ShowDisplay('" + obj.Request.Id + "')\">自定义</a>";
+                }
+                sShowHtml += "</div>";
+            }
+            else
+            {
+                sShowHtml = "对不起，系统无法加载";
+            }
 
 
-            sShowHtml += "<div class=\"SWCGSF_DIV_FOOT_NAV\">" + (iPageCount > 0 ? obj.Request.PageIndex : 0) + "/" + iPageCount + "页  共计：" + obj.Request.RowsCount + "条";
-
-            if (obj.Request.RowsCount > 0)
-                sShowHtml += "<a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "',1)\">首页</a><a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "','-')\">上一页</a><a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "','+')\">下一页</a><a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "','" + iPageCount + "')\">尾页</a>"
-            + "<a href=\"javascript:SWJGSF.ShowDisplay('" + obj.Request.Id + "')\">自定义</a>";
 
 
-
-
-            sShowHtml += "</div>";
             $("#SWJGSF_Div_" + obj.Request.ClientId).html(sShowHtml);
 
 
@@ -124,7 +140,8 @@ if (!this.SWJGSF)
 
             s += "</ul>";
 
-            SrnprNetJsAllAlphaShow({ s: "f", c: s, m: "请选择显示内容", y: "SWJGSF.SetDisplay('" + id + "')", w: "400" })
+            SrnprNetJsAllAlphaShow({ s: "f", c: s, m: "请选择显示内容", y: "SWJGSF.SetDisplay('" + id + "')", w: "400" });
+
         }
 
         //设置显示字段
@@ -175,10 +192,10 @@ if (!this.SWJGSF)
             {
 
                 SWJGSF.Obj[p].ProcessType = "demo";
-                
+
 
             }
-           
+
         }
 
 

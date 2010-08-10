@@ -288,7 +288,7 @@ namespace SrnprWeb.WebProcess
 
         private string GetSelectValue(string s)
         {
-            return s == "" ? "d" : s;
+            return string.IsNullOrEmpty(s) ? "d" : s;
 
         }
 
@@ -300,249 +300,268 @@ namespace SrnprWeb.WebProcess
             response.Request = request;
 
 
-
-            if (request.ShowColumn == null)
+            if (gsw != null)
             {
-                request.ShowColumn = new List<GridShowColumnBaseWWE>();
-
-                foreach (var t in gsw.ColumnList)
+                if (request.ShowColumn == null)
                 {
-                    if (t.ShowDisplay != "h")
+                    request.ShowColumn = new List<GridShowColumnBaseWWE>();
+
+                    foreach (var t in gsw.ColumnList)
                     {
-                        request.ShowColumn.Add(new GridShowColumnBaseWWE() { Guid = t.Guid, HeaderText = t.HeaderText, OrderType = t.OrderType, ShowDisplay = t.ShowDisplay });
+                        if (t.ShowDisplay != "h")
+                        {
+                            request.ShowColumn.Add(new GridShowColumnBaseWWE() { Guid = t.Guid, HeaderText = t.HeaderText, OrderType = t.OrderType, ShowDisplay = t.ShowDisplay });
+                        }
                     }
                 }
-            }
 
-            string sOrdeString = "";
+                string sOrdeString = "";
 
-            //开始智能分析排序字段
-            if (request.ShowColumn.Count > 0)
-            {
-
-                var vSort = request.ShowColumn.FirstOrDefault(t => (t.OrderType == "a" || t.OrderType == "e") );
-                if (vSort == null)
+                //开始智能分析排序字段
+                if (request.ShowColumn.Count > 0)
                 {
-                    vSort = gsw.ColumnList.FirstOrDefault(x => ReckeckOrderColumn(x.ColumnData) != "");
+
+                    var vSort = request.ShowColumn.FirstOrDefault(t => (t.OrderType == "a" || t.OrderType == "e"));
+                    if (vSort == null)
+                    {
+                        vSort = gsw.ColumnList.FirstOrDefault(x => ReckeckOrderColumn(x.ColumnData) != "");
+                    }
+                    sOrdeString = ReckeckOrderColumn(gsw.ColumnList.SingleOrDefault(t => t.Guid == vSort.Guid).ColumnData) + (vSort.OrderType == "a" ? " asc " : " desc ");
                 }
-                sOrdeString = ReckeckOrderColumn(gsw.ColumnList.SingleOrDefault(t => t.Guid == vSort.Guid).ColumnData) + (vSort.OrderType == "a" ? " asc " : " desc ");
-            }
-
-
-           
 
 
 
 
-            
-
-
-             DataTable dt=new DataTable();
-
-
-            if (request.ProcessType == ""||request.ProcessType=="server")
-            {
-
-                //开始分析排序依据
-                dt= GetDataByEntity(gsw, request, sOrdeString);
-
-
-                StringBuilder sb = new StringBuilder();
 
 
 
-                sb.Append("<div class=\"SWCGSF_DIV_MAIN\"><table id=\"GS_table_"+request.ClientId+"\" cellspacing=\"1\" cellpadding=\"0\">");
-               
-
-                
-
-                //定义显示
-                Dictionary<string, string> dShow = new Dictionary<string, string>();
-
-                Dictionary<string, string> dOrder = new Dictionary<string, string>();
-
-
-               if (request.ShowColumn.Count > 0)
-               {
-
-                   for (int i = 0, j = request.ShowColumn.Count; i < j; i++)
-                   {
-                       dShow.Add(request.ShowColumn[i].Guid, request.ShowColumn[i].ShowDisplay);
-                       dOrder.Add(request.ShowColumn[i].Guid, request.ShowColumn[i].OrderType);
-                   }
-
-               }
 
 
 
-                int iColumnCount = gsw.ColumnList.Count;
+                DataTable dt = new DataTable();
 
 
-
-                if (iColumnCount > 0)
+                if (request.ProcessType == "" || request.ProcessType == "server")
                 {
 
-                    
+                    //开始分析排序依据
+                    dt = GetDataByEntity(gsw, request, sOrdeString);
 
-                    sb.Append("<tr>");
-                    for (int i = 0; i < iColumnCount; i++)
+
+                    StringBuilder sb = new StringBuilder();
+
+
+
+                    sb.Append("<div class=\"SWCGSF_DIV_MAIN\"><table id=\"GS_table_" + request.ClientId + "\" cellspacing=\"1\" cellpadding=\"0\">");
+
+
+
+
+                    //定义显示
+                    Dictionary<string, string> dShow = new Dictionary<string, string>();
+
+                    Dictionary<string, string> dOrder = new Dictionary<string, string>();
+
+
+                    if (request.ShowColumn.Count > 0)
                     {
 
-                        if (dShow[gsw.ColumnList[i].Guid] != "h" && dShow[gsw.ColumnList[i].Guid] != "n")
+                        for (int i = 0, j = request.ShowColumn.Count; i < j; i++)
                         {
-                            bool bIsOrder = string.IsNullOrEmpty(ReckeckOrderColumn(gsw.ColumnList[i].ColumnData));
-
-                            var vSort = request.ShowColumn.SingleOrDefault(t => t.Guid == gsw.ColumnList[i].Guid);
-
-
-
-                            string sOrderType = string.IsNullOrEmpty(vSort.OrderType) ? "d" : vSort.OrderType; ;
-
-                            if (string.IsNullOrEmpty(ReckeckOrderColumn(gsw.ColumnList[i].ColumnData)))
-                            {
-                                sOrderType = "n";
-                            }
-                           
-
-
-
-
-
-                            string sSortVisgn = "";
-
-
-
-
-
-                            switch (sOrderType)
-                            {
-                                case "d":
-                                    sSortVisgn = " <a href=\"javascript:SWJGSF.Sort('" + gsw.Id + "','" + vSort.Guid + "')\"> " + vSort.HeaderText + "</a>";
-                                    break;
-                                case "a":
-                                    sSortVisgn = " <a href=\"javascript:SWJGSF.Sort('" + gsw.Id + "','" + vSort.Guid + "')\"> " + vSort.HeaderText + "</a>↑";
-                                    break;
-                                case "e":
-                                    sSortVisgn = " <a href=\"javascript:SWJGSF.Sort('" + gsw.Id + "','" + vSort.Guid + "')\"> " + vSort.HeaderText + "</a>↓";
-                                    break;
-                                case "n":
-                                default:
-                                    sSortVisgn = vSort.HeaderText;
-                                    break;
-                            }
-
-
-
-
-
-
-                            sb.Append("<th class=\"SWCGSF_TABLE_" + sOrderType + "\" "+(string.IsNullOrEmpty(gsw.ColumnList[i].Width)?"":gsw.ColumnList[i].Width)+" >" + sSortVisgn + "</th>");
+                            dShow.Add(request.ShowColumn[i].Guid, request.ShowColumn[i].ShowDisplay);
+                            dOrder.Add(request.ShowColumn[i].Guid, request.ShowColumn[i].OrderType);
                         }
 
+                    }
+
+
+
+                    int iColumnCount = gsw.ColumnList.Count;
+
+
+
+                    if (iColumnCount > 0)
+                    {
+
+
+
+                        sb.Append("<tr>");
+                        for (int i = 0; i < iColumnCount; i++)
+                        {
+
+                            if (dShow[gsw.ColumnList[i].Guid] != "h" && dShow[gsw.ColumnList[i].Guid] != "n")
+                            {
+                                bool bIsOrder = string.IsNullOrEmpty(ReckeckOrderColumn(gsw.ColumnList[i].ColumnData));
+
+                                var vSort = request.ShowColumn.SingleOrDefault(t => t.Guid == gsw.ColumnList[i].Guid);
+
+
+
+                                string sOrderType = string.IsNullOrEmpty(vSort.OrderType) ? "d" : vSort.OrderType; ;
+
+                                if (string.IsNullOrEmpty(ReckeckOrderColumn(gsw.ColumnList[i].ColumnData)))
+                                {
+                                    sOrderType = "n";
+                                }
+
+
+
+
+
+
+                                string sSortVisgn = "";
+
+
+
+
+
+                                switch (sOrderType)
+                                {
+                                    case "d":
+                                        sSortVisgn = " <a href=\"javascript:SWJGSF.Sort('" + gsw.Id + "','" + vSort.Guid + "')\"> " + vSort.HeaderText + "</a>";
+                                        break;
+                                    case "a":
+                                        sSortVisgn = " <a href=\"javascript:SWJGSF.Sort('" + gsw.Id + "','" + vSort.Guid + "')\"> " + vSort.HeaderText + "</a>↑";
+                                        break;
+                                    case "e":
+                                        sSortVisgn = " <a href=\"javascript:SWJGSF.Sort('" + gsw.Id + "','" + vSort.Guid + "')\"> " + vSort.HeaderText + "</a>↓";
+                                        break;
+                                    case "n":
+                                    default:
+                                        sSortVisgn = vSort.HeaderText;
+                                        break;
+                                }
+
+
+
+
+
+
+                                sb.Append("<th class=\"SWCGSF_TABLE_" + sOrderType + "\" " + (string.IsNullOrEmpty(gsw.ColumnList[i].Width) ? "" : gsw.ColumnList[i].Width) + " >" + sSortVisgn + "</th>");
+                            }
+
+                        }
+                        sb.Append("</tr>");
+
+
+
+
+
+
+                        for (int i = 0, j = dt.Rows.Count; i < j; i++)
+                        {
+
+                            sb.Append("<tr class=\"SWCGSF_TR_"+(i%2)+"\">");
+                            for (int n = 0; n < iColumnCount; n++)
+                            {
+
+                                if (dShow[gsw.ColumnList[n].Guid] != "h" && dShow[gsw.ColumnList[n].Guid] != "n")
+                                {
+                                    sb.Append("<td >");
+
+                                    if (!string.IsNullOrEmpty(gsw.ColumnList[n].ColumnData))
+                                    {
+
+                                        string sData = RecheckColumnName(gsw.ColumnList[n].ColumnData);
+
+
+
+                                        switch (gsw.ColumnList[n].ColumnType)
+                                        {
+                                            case "r":
+                                                sb.Append("<input type=\"radio\" name=\"" + request.ClientId + "_column_" + gsw.ColumnList[n].Guid + "\" value=\"" + dt.Rows[i][sData].ToString().Trim() + "\" />" + GetDataRowReplace(gsw.ColumnList[n].ColumnShow, dt.Rows[i]));
+                                                break;
+                                            case "c":
+                                                sb.Append("<input type=\"checkbox\" name=\"" + request.ClientId + "_column_" + gsw.ColumnList[n].Guid + "\" value=\"" + dt.Rows[i][sData].ToString().Trim() + "\" />" + GetDataRowReplace(gsw.ColumnList[n].ColumnShow, dt.Rows[i]));
+                                                break;
+                                            case "l":
+                                                sb.Append("<a target=\"_blank\" href=\"" + GetDataRowReplace(gsw.ColumnList[n].ColumnShow, dt.Rows[i]).Replace("[this]", dt.Rows[i][sData].ToString().Trim()) + "\">" + dt.Rows[i][sData].ToString().Trim() + "</a>");
+                                                break;
+                                            case "d":
+                                            default:
+                                                sb.Append(dt.Rows[i][sData].ToString().Trim());
+                                                break;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        sb.Append(GetDataRowReplace(gsw.ColumnList[n].ColumnShow, dt.Rows[i]));
+                                    }
+
+
+
+                                    sb.Append("</td>");
+                                }
+
+
+
+
+                            }
+                            sb.Append("</tr>");
+                        }
+
+
+
+
+
+                    }
+
+                    sb.Append("</table></div>");
+
+
+                    response.HtmlString = sb.ToString();
+
+                }
+                else if (request.ProcessType == "client")
+                {
+                    response.DataItem = new List<List<string>>();
+
+                    for (int i = 0, j = dt.Rows.Count; i < j; i++)
+                    {
+                        List<string> strList = new List<string>();
+                        for (int n = 0, m = dt.Columns.Count; n < m; n++)
+                        {
+                            strList.Add(dt.Rows[i][n].ToString().Trim());
+
+                        }
+                        response.DataItem.Add(strList);
+                    }
+                }
+                else if (request.ProcessType == "demo")
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("<div class=\"SWCGSF_DIV_MAIN\"><table id=\"GS_table_" + request.ClientId + "\" cellspacing=\"1\" cellpadding=\"0\">");
+
+                    List<string> lTd = new List<string>();
+
+                    sb.Append("<tr>");
+                    for (int i = 0, j = request.ShowColumn.Count; i < j; i++)
+                    {
+                        if (GetSelectValue(request.ShowColumn[i].ShowDisplay) == "d")
+                        {
+                            sb.Append("<th>" + request.ShowColumn[i].HeaderText + "</th>");
+
+                            lTd.Add("<td></td>");
+                        }
                     }
                     sb.Append("</tr>");
 
 
+                    string sTd = "<tr {0}>" + string.Join("", lTd.ToArray()) + "</tr>";
 
-
-
-
-                    for (int i = 0, j = dt.Rows.Count; i < j; i++)
+                    for (int i = 0; i < request.PageSize; i++)
                     {
-
-                        sb.Append("<tr>");
-                        for (int n= 0; n< iColumnCount;n++)
-                        {
-
-                            if (dShow[gsw.ColumnList[n].Guid] != "h" && dShow[gsw.ColumnList[n].Guid] != "n")
-                            {
-                                sb.Append("<td >");
-
-                                if (!string.IsNullOrEmpty(gsw.ColumnList[n].ColumnData))
-                                {
-
-                                    string sData =RecheckColumnName( gsw.ColumnList[n].ColumnData);
-
-
-
-                                    switch (gsw.ColumnList[n].ColumnType)
-                                    {
-                                        case "r":
-                                            sb.Append("<input type=\"radio\" name=\"" + request.ClientId + "_column_" + gsw.ColumnList[n].Guid + "\" value=\"" + dt.Rows[i][sData].ToString().Trim() + "\" />" + GetDataRowReplace(gsw.ColumnList[n].ColumnShow, dt.Rows[i]));
-                                            break;
-                                        case "c":
-                                            sb.Append("<input type=\"checkbox\" name=\"" + request.ClientId + "_column_" + gsw.ColumnList[n].Guid + "\" value=\"" + dt.Rows[i][sData].ToString().Trim() + "\" />" + GetDataRowReplace(gsw.ColumnList[n].ColumnShow, dt.Rows[i]));
-                                            break;
-                                        case "l":
-                                            sb.Append("<a target=\"_blank\" href=\"" + GetDataRowReplace(gsw.ColumnList[n].ColumnShow, dt.Rows[i]).Replace("[this]", dt.Rows[i][sData].ToString().Trim()) + "\">" + dt.Rows[i][sData].ToString().Trim() + "</a>");
-                                            break;
-                                        case "d":
-                                        default:
-                                            sb.Append(dt.Rows[i][sData].ToString().Trim());
-                                            break;
-                                    }
-                                }
-                                else
-                                {
-                                    sb.Append(GetDataRowReplace(gsw.ColumnList[n].ColumnShow, dt.Rows[i]));
-                                }
-
-
-
-                                sb.Append("</td>");
-                            }
-
-
-
-
-                        }
-                        sb.Append("</tr>");
+                        sb.Append(string.Format( sTd," class=\"SWCGSF_TR_"+(i%2)+"\""));
                     }
 
 
+                    sb.Append("</table></div>");
 
 
-                   
-                }
-
-                sb.Append("</table></div>");
-
-                
-                response.HtmlString = sb.ToString();
-
-            }
-            else if(request.ProcessType=="client")
-            {
-                response.DataItem = new List<List<string>>();
-
-                for (int i = 0, j = dt.Rows.Count; i < j; i++)
-                {
-                    List<string> strList = new List<string>();
-                    for (int n = 0, m = dt.Columns.Count; n < m; n++)
-                    {
-                        strList.Add(dt.Rows[i][n].ToString().Trim());
-
-                    }
-                    response.DataItem.Add(strList);
+                    response.HtmlString = sb.ToString();
                 }
             }
-            else if (request.ProcessType == "demo")
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.Append("<div class=\"SWCGSF_DIV_MAIN\"><table id=\"GS_table_" + request.ClientId + "\" cellspacing=\"1\" cellpadding=\"0\">");
-               
-                sb.Append("<tr>");
-                for (int i = 0, j = gsw.ColumnList.Count;i<j ; i++)
-                {
-                    if (gsw.ColumnList[i].ShowDisplay !="h")
-                    sb.Append("<th>"+gsw.ColumnList[i].HeaderText+"</th>");
-                }
-                sb.Append("</tr>");
-                sb.Append("</table></div>");
-
-
-                response.HtmlString = sb.ToString();
-            }
+           
 
             return response;
 

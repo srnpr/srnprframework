@@ -138,6 +138,11 @@ namespace SrnprCommon.DataHelper
             return ExecuteScalar(connectionString, CommandType.Text, cmdText, null);
         }
 
+        public static object ExecuteScalar(string connectionString, string cmdText, Dictionary<string, string> dictParameters)
+        {
+            return ExecuteScalar(connectionString, CommandType.Text, cmdText, GetSqlParameterByDict(dictParameters));
+        }
+
         public static object ExecuteScalar(string connectionString, string cmdText, params SqlParameter[] commandParameters)
         {
             return ExecuteScalar(connectionString, CommandType.Text, cmdText, commandParameters);

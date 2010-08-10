@@ -6,7 +6,6 @@ if (!this.SWJGSF)
 {
 
     this.SWJGSF = {};
-}
 
     
 (
@@ -41,7 +40,7 @@ if (!this.SWJGSF)
         {
 
 
-            var iPageCount = Math.floor(SWJGSF.Obj[id].RowsCount / SWJGSF.Obj[id].PageSize);
+            var iPageCount = Math.ceil(SWJGSF.Obj[id].RowsCount / SWJGSF.Obj[id].PageSize);
 
             if (iPage == "-")
             {
@@ -86,18 +85,22 @@ if (!this.SWJGSF)
 
 
 
-            var iPageCount = Math.floor(obj.Request.RowsCount / obj.Request.PageSize);
+            var iPageCount = Math.ceil(obj.Request.RowsCount / obj.Request.PageSize);
 
 
-            sShowHtml += "<div class=\"SWCGSF_DIV_FOOT_NAV\">" + obj.Request.PageIndex + "/" + iPageCount + "页  共计：" + obj.Request.RowsCount + "条"
-            + "<a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "',1)\">首页</a><a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "','-')\">上一页</a><a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "','+')\">下一页</a><a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "','" + iPageCount + "')\">尾页</a>"
-            + "<a href=\"javascript:SWJGSF.ShowDisplay('" + obj.Request.Id + "')\">自定义</a></div>";
 
 
+            sShowHtml += "<div class=\"SWCGSF_DIV_FOOT_NAV\">" + (iPageCount>0? obj.Request.PageIndex:0) + "/" + iPageCount + "页  共计：" + obj.Request.RowsCount + "条";
+
+            if (obj.Request.RowsCount > 0)
+                sShowHtml += "<a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "',1)\">首页</a><a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "','-')\">上一页</a><a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "','+')\">下一页</a><a href=\"javascript:SWJGSF.PageGoto('" + obj.Request.Id + "','" + iPageCount + "')\">尾页</a>"
+            + "<a href=\"javascript:SWJGSF.ShowDisplay('" + obj.Request.Id + "')\">自定义</a>";
+
+
+
+
+            sShowHtml += "</div>";
             $("#SWJGSF_Div_" + obj.Request.ClientId).html(sShowHtml);
-
-
-
 
 
             $("#jsonshow").text(o);
@@ -141,7 +144,7 @@ if (!this.SWJGSF)
             SrnprNetJsAllAlphaShow({ s: "c" });
         }
 
-
+        //开始执行排序操作
         SWJGSF.Sort = function(id, gid)
         {
             for (var i = 0, j = SWJGSF.Obj[id].ShowColumn.length; i < j; i++)
@@ -163,22 +166,18 @@ if (!this.SWJGSF)
         }
 
 
-
+        //执行查询 第二参数为空时则遍历所有
         SWJGSF.Query = function(id, sid)
         {
+            //定义提交参数
             var t = [];
 
-            var vElm;
+            var vElms = $("#" + sid).children("[paramid][paramid<>'']");
 
-            if (sid != undefined)
-            {
-                vElms = $("#" + sid).children("[paramid][paramid<>'']");
-            }
-            else
+            if (!vElms||vElms.length == 0)
             {
                 vElms = $("[paramid][paramid<>'']");
             }
-
 
 
             vElms.each(
@@ -219,6 +218,7 @@ if (!this.SWJGSF)
 
 
             SWJGSF.Obj[id].QueryDict = t;
+            SWJGSF.Obj[id].PageIndex = 1;
             SWJGSF.Obj[id].RowsCount = -1;
 
             SWJGSF.Ajax(id);
@@ -232,7 +232,7 @@ if (!this.SWJGSF)
     }
 
 )();
-
+}
 
 
 

@@ -139,15 +139,7 @@ namespace SrnprWeb.WebProcess
             if (req.QueryDict!=null&& req.QueryDict.Count > 0)
             {
 
-                
-
                 List<string> listStr = new List<string>();
-
-
-
-
-               
-
                 foreach (KeyValuePair<string, string> kvp in req.QueryDict)
                 {
 
@@ -156,8 +148,6 @@ namespace SrnprWeb.WebProcess
                     {
 
                         string sParam = "";
-
-
                         switch (o.ParamQueryType)
                         {
                             case "a":
@@ -182,11 +172,11 @@ namespace SrnprWeb.WebProcess
                                 
                                 break;
                             case "b":
-                                sParam += o.ColumnField + "=>@" + kvp.Key;
+                                sParam += o.ColumnField + ">@" + kvp.Key;
                                 dQuery.Add(kvp.Key, kvp.Value);
                                 break;
                             case "s":
-                                sParam += o.ColumnField + "=>@" + kvp.Key;
+                                sParam += o.ColumnField + "<@" + kvp.Key;
                                 dQuery.Add(kvp.Key, kvp.Value);
                                 break;
                             case "l":
@@ -225,6 +215,14 @@ namespace SrnprWeb.WebProcess
             {
                 sWhere = " where " + sWhere;
             }
+
+            if (req.RowsCount == -1)
+            {
+                string sSqlCount = "select count(1) from " + gsw.TableInfo.TableName + sWhere;
+                req.RowsCount = long.Parse(SrnprCommon.DataHelper.SqlHelperCDH.ExecuteScalar(GetConnString(gsw.TableInfo.DataBaseId), sSqlCount, dQuery).ToString());
+
+            }
+
 
 
 
@@ -287,12 +285,7 @@ namespace SrnprWeb.WebProcess
             
 
 
-            //判断如果记录总数为-1，则重新初始化统计
-            if (request.RowsCount == -1)
-            {
-                request.RowsCount = GetDataCount(gsw);
-            }
-
+           
 
 
             if (request.ShowColumn == null)

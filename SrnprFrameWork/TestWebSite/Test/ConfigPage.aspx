@@ -26,8 +26,6 @@
 			    var editor = CKEDITOR.replace('<%=tbEditor.ClientID %>');
 
 
-
-
 			    //]]>
 			</script>
 		</p>

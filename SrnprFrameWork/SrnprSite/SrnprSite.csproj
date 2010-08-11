@@ -83,6 +83,13 @@
   <ItemGroup>
     <Content Include="Master\MasterPage.Master" />
     <Content Include="Skin\Blue\MasterPageCssFSF.css" />
+    <Content Include="Skin\Blue\sradmin\sradmintool.gif" />
+    <Content Include="Skin\Blue\sradmin\srmainleftbg1.gif" />
+    <Content Include="Skin\Blue\sradmin\srmainleftbg2.gif" />
+    <Content Include="Skin\Blue\sradmin\srmainoption.gif" />
+    <Content Include="Skin\Blue\sradmin\srmaintopbg.gif" />
+    <Content Include="Skin\Blue\sradmin\srmaintopcenter.gif" />
+    <Content Include="Skin\Blue\sradmin\srmaintophover.gif" />
     <Content Include="Web\PageShow\CreatePage.aspx" />
   </ItemGroup>
   <ItemGroup>

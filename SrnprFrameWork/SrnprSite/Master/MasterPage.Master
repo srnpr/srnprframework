@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link href=" />
+    <link  type="text/css" rel="Stylesheet" href="../Skin/Blue/MasterPageCssFSF.css" />
     <asp:ContentPlaceHolder ID="MasterPage_Head" runat="server">
     </asp:ContentPlaceHolder>
 </head>

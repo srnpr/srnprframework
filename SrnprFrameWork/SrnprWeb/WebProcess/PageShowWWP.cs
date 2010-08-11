@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using SrnprWeb.WebEntity;
 
 namespace SrnprWeb.WebProcess
 {
@@ -35,6 +36,30 @@ namespace SrnprWeb.WebProcess
 
             return sb.ToString();
         }
+
+
+        public static WebEntity.PageShowListWWE GetList()
+        {
+
+            if (File.Exists(sFilePath + PageShowList))
+            {
+                return SrnprCommon.CommonFunction.EntitySerializerCCF<WebEntity.PageShowListWWE>.XmlToEntity(sFilePath + PageShowList);
+            }
+            else
+            {
+                WebEntity.PageShowListWWE gsl = new PageShowListWWE();
+                gsl.ItemList = new List<ItemBaseWWE>();
+                return gsl;
+            }
+
+        }
+
+        public static void SaveList(WebEntity.PageShowListWWE gsl)
+        {
+            SrnprCommon.CommonFunction.EntitySerializerCCF<WebEntity.PageShowListWWE>.EntityToXml(gsl, sFilePath + PageShowList);
+        }
+
+
 
 
         public static string GetTempletesById(string sId)

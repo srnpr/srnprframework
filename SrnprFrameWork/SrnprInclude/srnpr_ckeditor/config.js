@@ -42,14 +42,7 @@ CKEDITOR.editorConfig = function(config)
        {
             gridshow:'gridshow',
             ct_list:'ct_list'
-        },
-       
-       imagePath:
-       {
-           baseUrl: '/srnpr_ckeditor/plugins/srnpr_ck_gridshow'
-       
        },
-       
        
        ct_list:
        {

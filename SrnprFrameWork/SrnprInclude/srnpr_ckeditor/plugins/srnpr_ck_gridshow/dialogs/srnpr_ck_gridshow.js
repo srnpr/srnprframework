@@ -32,7 +32,7 @@ CKEDITOR.dialog.add('srnpr_ck_gridshow', function(editor)
 				{
 				    srnpr_srnpr_ck_control_type_id: editor.config.srnprck.srnpr_srnpr_ck_control_type_id.gridshow,
 				    id: name,
-				    src: editor.config.srnpr_ck_gridshow_config.path + "/gridshow.png",
+				    src: "/srnpr_ckeditor/plugins/srnpr_ck_gridshow/gridshow.png",
 				    srnpr_ck_gridshow_xmlid: srnpr_ck_gridshow_xmlid
 				}
 			});

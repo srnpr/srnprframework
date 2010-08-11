@@ -46,7 +46,7 @@ CKEDITOR.editorConfig = function(config)
        
        imagePath:
        {
-           baseUrl: 'http://f.xgou.com/atgang/CK_File/'
+           baseUrl: '/srnpr_ckeditor/plugins/srnpr_ck_gridshow'
        
        },
        

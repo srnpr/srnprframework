@@ -14,7 +14,7 @@
     
      <br /><br /><br /><br />
      
-     <a href="../Config/ConfigGridShowList.aspx">返回列表</a>
+     <a href="List.aspx">返回列表</a>
      <br /><br />
      
      <a href="javascript:ShowList()">显示返回Json内容</a>

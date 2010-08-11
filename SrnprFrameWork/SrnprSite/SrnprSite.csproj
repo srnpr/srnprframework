@@ -67,12 +67,12 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Master\MasterBlank.Master.cs">
-      <DependentUpon>MasterBlank.Master</DependentUpon>
+    <Compile Include="Master\MasterTarget.Master.cs">
+      <DependentUpon>MasterTarget.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Master\MasterBlank.Master.designer.cs">
-      <DependentUpon>MasterBlank.Master</DependentUpon>
+    <Compile Include="Master\MasterTarget.Master.designer.cs">
+      <DependentUpon>MasterTarget.Master</DependentUpon>
     </Compile>
     <Compile Include="Master\MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
@@ -144,7 +144,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Master\MasterBlank.Master" />
+    <Content Include="Master\MasterTarget.Master" />
     <Content Include="Web\GridShow\Test.aspx" />
   </ItemGroup>
   <ItemGroup>

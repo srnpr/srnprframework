@@ -4,4 +4,18 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MasterPage_Title" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MasterPage_Content" runat="server">
+
+请选择模板类型：
+
+<ul>
+
+
+<li><a>查询页面</a></li>
+
+
+</ul>
+
+
+
+
 </asp:Content>

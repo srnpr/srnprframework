@@ -11,7 +11,7 @@ namespace SrnprSite.Web.PageShow
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            rpList.DataSource = SrnprWeb.WebProcess.GridShowWWP.GetList().ItemList;
+            rpList.DataSource = SrnprWeb.WebProcess.PageShowWWP.GetList().ItemList;
 
             rpList.DataBind();
         }

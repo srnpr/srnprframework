@@ -39,16 +39,8 @@ namespace SrnprSite.Web.PageShow
             string sText = tbEditor.Text.Trim();
 
 
-
-
-            SrnprWeb.WebEntity.PageShowWWE psw = new SrnprWeb.WebEntity.PageShowWWE();
-
-            psw.Id = sId;
-
-            psw.Guid = Guid.NewGuid().ToString();
+            SrnprWeb.WebEntity.PageShowWWE psw = SrnprWeb.WebProcess.PageShowWWP.GetEntityById(sId);
             psw.HtmlContent = sText;
-
-
             psw.Content = RecheckContent(psw.HtmlContent);
 
 

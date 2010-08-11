@@ -82,11 +82,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Master\MasterPage.Master" />
+    <Content Include="Skin\Blue\MasterPageCssFSF.css" />
     <Content Include="Web\PageShow\CreatePage.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Skin\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

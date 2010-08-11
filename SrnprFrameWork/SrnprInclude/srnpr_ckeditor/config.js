@@ -42,7 +42,14 @@ CKEDITOR.editorConfig = function(config)
        {
             gridshow:'gridshow',
             ct_list:'ct_list'
+        },
+       
+       imagePath:
+       {
+           baseUrl: 'http://f.xgou.com/atgang/CK_Site/'
+       
        },
+       
        
        ct_list:
        {

@@ -42,7 +42,7 @@ namespace SrnprWeb.WebProcess
             else
             {
                 WebEntity.GridShowListWWE gsl=new GridShowListWWE();
-                gsl.ItemList=new List<GridShowListItemWWE>();
+                gsl.ItemList=new List<ItemBaseWWE>();
                 return gsl;
             }
 

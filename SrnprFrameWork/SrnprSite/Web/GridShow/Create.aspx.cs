@@ -154,7 +154,7 @@ namespace SrnprSite.Web.GridShow
                     if (tE == null)
                     {
 
-                        SrnprWeb.WebEntity.GridShowListItemWWE gsli = new GridShowListItemWWE();
+                        SrnprWeb.WebEntity.ItemBaseWWE gsli = new ItemBaseWWE();
                         gsli.Id = tEntity.Id;
 
                         gsli.Guid = tEntity.Guid;

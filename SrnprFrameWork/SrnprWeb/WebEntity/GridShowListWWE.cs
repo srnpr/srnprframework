@@ -8,7 +8,7 @@ namespace SrnprWeb.WebEntity
     public class GridShowListWWE
     {
 
-        public List<GridShowListItemWWE> ItemList { get; set; }
+        public List<ItemBaseWWE> ItemList { get; set; }
 
     }
 }

@@ -152,7 +152,7 @@ public partial class Config_ConfigGridShow : System.Web.UI.Page
                 if (tE == null)
                 {
 
-                    SrnprWeb.WebEntity.GridShowListItemWWE gsli = new GridShowListItemWWE();
+                    SrnprWeb.WebEntity.ItemBaseWWE gsli = new ItemBaseWWE();
                     gsli.Id = tEntity.Id;
 
                     gsli.Guid = tEntity.Guid;

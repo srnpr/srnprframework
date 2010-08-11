@@ -5,17 +5,10 @@ using System.Text;
 
 namespace SrnprWeb.WebEntity
 {
-    public class GridShowWWE
+    public class GridShowWWE:ItemBaseWWE
     {
 
 
-        public string Id { get; set; }
-
-
-        public string Guid { get; set; }
-
-
-        public string Description { get; set; }
 
 
 

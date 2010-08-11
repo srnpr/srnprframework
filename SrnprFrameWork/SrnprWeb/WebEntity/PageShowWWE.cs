@@ -11,33 +11,11 @@ namespace SrnprWeb.WebEntity
     /// Author:Liudpc
     /// Create Date: 2010-8-11 13:28:40
     /// </summary>
-    public class PageShowWWE
+    public class PageShowWWE:ItemBaseWWE
     {
 
 
-        /// <summary>
-        /// Description: 编号
-        /// Author:Liudpc
-        /// Create Date: 2010-8-11 13:28:36
-        /// </summary>
-        public string Id { get; set; }
-
-
-
-        /// <summary>
-        /// Description: 唯一编号
-        /// Author:Liudpc
-        /// Create Date: 2010-8-11 13:28:32
-        /// </summary>
-        public string Guid { get; set; }
-
-
-        /// <summary>
-        /// Description: 描述
-        /// Author:Liudpc
-        /// Create Date: 2010-8-11 13:28:50
-        /// </summary>
-        public string Description { get; set; }
+        
 
 
         /// <summary>

@@ -103,6 +103,13 @@
     <Compile Include="Web\GridShow\Test.aspx.designer.cs">
       <DependentUpon>Test.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Web\PageShow\CreateFromCk.aspx.cs">
+      <DependentUpon>CreateFromCk.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\PageShow\CreateFromCk.aspx.designer.cs">
+      <DependentUpon>CreateFromCk.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Web\PageShow\CreatePage.aspx.cs">
       <DependentUpon>CreatePage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -142,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Asmx\GridShowHander.ashx" />
+    <Content Include="Web\PageShow\CreateFromCk.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

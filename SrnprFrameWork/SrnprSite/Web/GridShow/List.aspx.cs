@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace SrnprSite.Web.GridShow
 {
-    public partial class List : System.Web.UI.Page
+    public partial class List : CPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

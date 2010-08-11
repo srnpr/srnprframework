@@ -8,7 +8,7 @@ using SrnprWeb.WebEntity;
 
 namespace SrnprSite.Web.GridShow
 {
-    public partial class Create : System.Web.UI.Page
+    public partial class Create : CPage
     {
 
         public SrnprWeb.WebEntity.GridShowWWE GSEntity

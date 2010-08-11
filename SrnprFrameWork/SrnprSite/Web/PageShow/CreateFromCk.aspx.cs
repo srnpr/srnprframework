@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace SrnprSite.Web.PageShow
 {
-    public partial class CreateFromCk : System.Web.UI.Page
+    public partial class CreateFromCk : CPage
     {
         protected string sId = "";
         protected void Page_Load(object sender, EventArgs e)

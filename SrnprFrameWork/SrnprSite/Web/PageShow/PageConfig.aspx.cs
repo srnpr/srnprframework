@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace SrnprSite.Web.PageShow
 {
-    public partial class PageConfig : System.Web.UI.Page
+    public partial class PageConfig : CPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -17,7 +17,7 @@
    
     <asp:Repeater ID="rpList" runat="server">
     <ItemTemplate>
-    <tr><td><%#Eval("Id") %></td><td><%#Eval("Description") %></td><td><a href="Create.aspx?id=<%#Eval("Id") %>">修改</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="Test.aspx?id=<%#Eval("Id") %>">测试</a></td></tr>
+    <tr><td><%#Eval("Id") %></td><td><%#Eval("Description") %></td><td><a href="CreateFromCk.aspx?id=<%#Eval("Id") %>">修改</a>&nbsp;&nbsp;<a href="PageConfig.aspx?id=<%#Eval("Id") %>">配置</a>&nbsp;&nbsp;<a href="Test.aspx?demo=demo&id=<%#Eval("Id") %>" target="_blank">demo</a>&nbsp;&nbsp;<a href="Test.aspx?id=<%#Eval("Id") %>" target="_blank">数据</a></td></tr>
     
     </ItemTemplate>
     

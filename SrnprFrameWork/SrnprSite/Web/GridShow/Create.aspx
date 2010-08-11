@@ -44,7 +44,7 @@
                 </tr>
             </table>
         </div>
-        
+         <br />
         
         <div class="srdmaintable">
             <table cellpadding="0" cellspacing="1">
@@ -155,9 +155,9 @@
             </tr>
         </table>
         </div>
-        
-        <br /><br /><br />以下为输入参数集合，暂未启用
-        <div class="SWCGSF_DIV_MAIN">
+        <br />
+      
+        <div class="srdmaintable">
             <table cellpadding="0" cellspacing="1">
             <tr>
             <th>

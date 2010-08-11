@@ -173,12 +173,12 @@ namespace SrnprSite.Web.GridShow
 
                     SrnprWeb.WebProcess.GridShowWWP.SaveList(tList);
 
-                    BindMessage("创建成功！");
+                    CPageMessage("创建成功！");
 
                 }
                 else
                 {
-                    BindMessage("编号已存在！");
+                    CPageMessage("编号已存在！");
                 }
 
 
@@ -186,17 +186,13 @@ namespace SrnprSite.Web.GridShow
             }
             else
             {
-                BindMessage("编号不能空！");
+                CPageMessage("编号不能空！");
             }
 
 
         }
 
-        protected void BindMessage(string sMsg)
-        {
-            sMessage = sMsg;
-        }
-
+       
 
         protected void btnAddParams_Click(object sender, EventArgs e)
         {

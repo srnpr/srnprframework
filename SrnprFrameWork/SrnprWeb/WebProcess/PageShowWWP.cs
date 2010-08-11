@@ -13,8 +13,8 @@ namespace SrnprWeb.WebProcess
 
         private static string sFilePath = "D:\\SrnprFrameWork\\WebWidget\\";
         private static string sFileExt = "PageShow\\{0}.www.ps.xml";
-        
-        private static string PageShowList = "PageShowList\\GridShowList.xml";
+
+        private static string PageShowList = "PageShowList\\PageShowList.xml";
 
 
         public static void SaveFileByEntity(WebEntity.PageShowWWE psw)

@@ -5,7 +5,6 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MasterPage_Content" runat="server">
 <div>
-    <a href="ConfigGridShow.aspx">新建</a>
     
      <div class="srdmaintable">
             <table cellpadding="0" cellspacing="1">

@@ -26,7 +26,7 @@
             </tr>
         </table>
         <span class="srsmainbutton srsmainbuttonnext ">
-            <asp:Button ID="btnNext" runat="server" Text="下一步" 
+            <asp:Button ID="btnNext" runat="server" Text="确认提交" 
             onclick="btnNext_Click" /></span>
     </div>
 </asp:Content>

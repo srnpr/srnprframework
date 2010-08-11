@@ -40,6 +40,7 @@ namespace SrnprSite.Web.PageShow
             psw.HtmlContent = sText;
             psw.Content = RecheckContent(psw.HtmlContent);
             SrnprWeb.WebProcess.PageShowWWP.SaveFileByEntity(psw);
+            CPageMessage("保存成功！");
 
         }
 

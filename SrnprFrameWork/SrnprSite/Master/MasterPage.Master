@@ -55,7 +55,7 @@
                                 <div>
                                     <a href="#">页面显示控件</a></div>
                                 <ul>
-                                    <li><a href="#">创建页面根据模板</a></li>
+                                    <li><a href="/Web/PageShow/CreatePage.aspx">创建页面根据模板</a></li>
                                 </ul>
                                 <div>
                                     <a href="#">数据显示控件</a></div>

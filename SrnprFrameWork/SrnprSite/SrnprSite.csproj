@@ -117,6 +117,20 @@
     <Compile Include="Web\PageShow\CreatePage.aspx.designer.cs">
       <DependentUpon>CreatePage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Web\PageShow\PageConfig.aspx.cs">
+      <DependentUpon>PageConfig.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\PageShow\PageConfig.aspx.designer.cs">
+      <DependentUpon>PageConfig.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\PageShow\Test.aspx.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\PageShow\Test.aspx.designer.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Master\MasterPage.Master" />
@@ -149,7 +163,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Asmx\GridShowHander.ashx" />
+    <Content Include="Skin\Blue\sradmin\buttonnext.gif" />
     <Content Include="Web\PageShow\CreateFromCk.aspx" />
+    <Content Include="Web\PageShow\PageConfig.aspx" />
+    <Content Include="Web\PageShow\Test.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

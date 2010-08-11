@@ -198,6 +198,9 @@ div
 
 
 
+
+
+/*左边导航相关*********************************************/
 .srdmainclass
 {
     border: #a3c7e2 1px solid;
@@ -290,6 +293,58 @@ div
 
 
 
+/*通用表格*******************************************/
+
+
+
+.srdmaintable
+{
+    
+}
+
+.srdmaintable table
+{
+    background-color:#cfe5f8;
+    width:100%;
+}
+.srdmaintable table tr
+{
+    padding:3px 5px 3px 5px;
+}
+
+.srdmaintable table tr th
+{
+    height:23px;
+    line-height:23px;
+    background-color:#fff;
+    background-position:bottom 50%;
+    background-repeat:repeat-x;
+    color:#043260;
+    font-size:12px;
+    white-space:normal;
+}
+.srdmaintable table tr td
+{
+    height:1.6em;
+    line-height:1.6em;
+    background-color:#f5fbfe;
+    overflow:hidden;
+}
+.srdmaintable table tr .srtmaintdl
+{
+    text-align:right;
+    padding-right:10px;
+}
+.srdmaintable table tr .srtmaintdr
+{
+    text-align:left;
+    padding-left:10px;
+}
+
+
+
+
+
 /**底部************************************************************************/
 
 /*首页底部*/
@@ -306,6 +361,35 @@ div
     line-height:24px;
     text-align:right;
 }
+
+
+
+
+
+
+
+
+
+
+
+/**按钮*******************************************/
+
+.srsmainbutton input
+{
+      border:solid 1px #999;
+    background-color:#fff;
+    background-repeat:no-repeat;
+    background-position:10px center;
+    text-indent:20px;
+    cursor:pointer;
+}
+
+.srsmainbuttonnext input
+{
+    background-image:url(sradmin/buttonnext.gif);
+  
+}
+
 
 
 /**icon图标**********************************************************************/

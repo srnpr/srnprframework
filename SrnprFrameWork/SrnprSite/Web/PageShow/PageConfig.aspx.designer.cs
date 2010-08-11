@@ -11,24 +11,33 @@
 namespace SrnprSite.Web.PageShow {
     
     
-    public partial class CreateFromCk {
+    public partial class PageConfig {
         
         /// <summary>
-        /// tbEditor 控件。
+        /// tbXmlId 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbEditor;
+        protected global::System.Web.UI.WebControls.TextBox tbXmlId;
         
         /// <summary>
-        /// btnOk 控件。
+        /// tbDescription 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnOk;
+        protected global::System.Web.UI.WebControls.TextBox tbDescription;
+        
+        /// <summary>
+        /// btnNext 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNext;
     }
 }

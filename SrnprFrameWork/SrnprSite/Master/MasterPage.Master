@@ -49,7 +49,7 @@
                                 <div>
                                     <a href="#">数据显示控件</a></div>
                                 <ul>
-                                    <li><a href="../Web/GridShow/List.aspx">配置数据显示列表</a></li>
+                                    <li><a href="/Web/GridShow/List.aspx">配置数据显示列表</a></li>
                                     <li><a href="#">创建数据显示</a></li>
                                     
                                     

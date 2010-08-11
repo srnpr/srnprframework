@@ -64,6 +64,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Master\MasterBlank.Master.cs">
+      <DependentUpon>MasterBlank.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\MasterBlank.Master.designer.cs">
+      <DependentUpon>MasterBlank.Master</DependentUpon>
+    </Compile>
     <Compile Include="Master\MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -118,6 +125,9 @@
       <Project>{38B2E09D-BAD7-4BF2-913C-9695F3A72EE3}</Project>
       <Name>SrnprWeb</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Master\MasterBlank.Master" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

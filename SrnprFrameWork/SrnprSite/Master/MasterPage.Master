@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link type="text/css" rel="Stylesheet" href="/Skin/Blue/MasterPageCssFSF.css" />
+    <link type="text/css" rel="Stylesheet" href="/Skin/Blue/MasterPageCss.css" />
     <script type="text/javascript" src="/Modules/Master/MasterPage.js"></script>
     
     
@@ -75,11 +75,11 @@
                         <asp:ContentPlaceHolder ID="MasterPage_Title" runat="server">
                         </asp:ContentPlaceHolder>
                         </div>
-                        
-                        <div id="srdmainmessage">
+                         <div id="srdmainmessage">
                         
                         </div>
-                        
+                        <div style="clear:both"></div>
+                       
                         <div class="srdmaincenter">
                             <form id="form1" runat="server">
                             <asp:ContentPlaceHolder ID="MasterPage_Content" runat="server">

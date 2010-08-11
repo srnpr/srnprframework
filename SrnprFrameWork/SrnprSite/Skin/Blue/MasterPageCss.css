@@ -39,18 +39,6 @@ div
     z-index:999;
     display:none;
 }
-.srdmainmessage
-{
-    width:400px;
-    margin-left:300px;
-    margin-top:300px;
-    text-align:center;
-    background-color:#FFFFFF;
-    height:20%;
-    position:absolute;
-    z-index:999;
-    display:none;
-}
 
 /**布局****************************************************************/
 
@@ -372,8 +360,29 @@ div
 /**提示**********************************/
 .srdmainmessage
 {
-    background-color:Yellow;
+   margin:20px;
+   border:solid 1px #ccc;
 }
+
+.srdmainmessage .srdmainmessagetitle
+{
+    background-color:#fcfeda;
+    text-align:right;
+    padding-right:10px;
+}
+
+.srdmainmessage .srdmainmessagecontent
+{
+      background-color:#fcfeda;
+    padding:10px;
+    text-indent:15px;
+    font-size:16px;
+    font-weight:bold;
+    
+    color:#999;
+}
+
+
 
 
 /**按钮*******************************************/

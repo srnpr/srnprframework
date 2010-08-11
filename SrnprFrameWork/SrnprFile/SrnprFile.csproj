@@ -69,7 +69,6 @@
     <Content Include="ReplaceFile\DcEmailConfigTestFRF.xml" />
     <Content Include="ReplaceFile\DcEmailCodeFRF.ds.xml" />
     <Content Include="ReplaceFile\DcEmailConfigFormalFRF.xml" />
-    <Content Include="SiteFile\SiteSkinBlue\MasterPageCssFSF.css" />
     <Content Include="WebFile\jquery-1.3.2-vsdoc2.js" />
     <Content Include="WebFile\jquery-1.3.2.min-vsdoc.js" />
     <Content Include="WebFile\jquery-1.4.2.min.js" />

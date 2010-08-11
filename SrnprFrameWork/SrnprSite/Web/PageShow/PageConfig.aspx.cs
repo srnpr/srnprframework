@@ -34,7 +34,11 @@ namespace SrnprSite.Web.PageShow
                 SrnprWeb.WebProcess.PageShowWWP.SaveFileByEntity(psw);
 
 
-                Response.Redirect("CreateFromCk.aspx?id="+tbXmlId.Text.Trim());
+                Response.Redirect("CreateFromCk.aspx?id=" + tbXmlId.Text.Trim());
+            }
+            else
+            {
+                CPageMessage("编号不能为空！");
             }
         }
     }

@@ -71,8 +71,15 @@
                         </div>
                     </td>
                     <td valign="top" style="width:100%">
+                    <div>
                         <asp:ContentPlaceHolder ID="MasterPage_Title" runat="server">
                         </asp:ContentPlaceHolder>
+                        </div>
+                        
+                        <div id="srdmainmessage">
+                        
+                        </div>
+                        
                         <div class="srdmaincenter">
                             <form id="form1" runat="server">
                             <asp:ContentPlaceHolder ID="MasterPage_Content" runat="server">

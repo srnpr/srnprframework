@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MasterPage_Content" runat="server">
 
-请选择模板类型：
+    请选择模板类型：
 
 <ul>
 

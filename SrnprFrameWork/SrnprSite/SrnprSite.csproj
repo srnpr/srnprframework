@@ -137,7 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Master\MasterPage.Master" />
-    <Content Include="Skin\Blue\MasterPageCssFSF.css" />
+    <Content Include="Skin\Blue\MasterPageCss.css" />
     <Content Include="Skin\Blue\sradmin\classnav.gif" />
     <Content Include="Skin\Blue\sradmin\sradmintool.gif" />
     <Content Include="Skin\Blue\sradmin\srmainleftbg1.gif" />

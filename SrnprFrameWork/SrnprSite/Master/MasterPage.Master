@@ -6,6 +6,17 @@
 <head runat="server">
     <title></title>
     <link type="text/css" rel="Stylesheet" href="../Skin/Blue/MasterPageCssFSF.css" />
+    
+    
+    
+    <script type="text/javascript" src="/WebFile/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="/WebFile/json2.js"></script>
+    <script type="text/javascript" src="/WebFile/SrnprWebJsGridShowFWF.js"></script>
+    
+    <script type="text/javascript" src="http://f.xgou.com/AtGang/Common/js/SrnprNetJsAllAlpha.js"></script>
+    <link href="/WebFile/SrnprWebCSSGridShowFWF.css" type="text/css" rel="Stylesheet" />
+    <link href="http://f.xgou.com/AtGang/Manage/css/ManageAlpha.css" rel="stylesheet" type="text/css" />
+    
     <asp:ContentPlaceHolder ID="MasterPage_Head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -15,7 +26,7 @@
             width: 100%;">
             <tbody>
                 <tr>
-                    <td style="height: 129px;" colspan="3">
+                    <td  colspan="3">
                         <div class="srdmaintop">
                             <div class="srdmaintopcenter">
                             </div>
@@ -26,7 +37,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="3" style="height: 26px;">
+                    <td colspan="3">
                         <div class="srdmainoption">
                             <div class="srsmainwelcome">
                                 欢迎您：</div>
@@ -50,23 +61,19 @@
                                     <a href="#">数据显示控件</a></div>
                                 <ul>
                                     <li><a href="/Web/GridShow/List.aspx">配置数据显示列表</a></li>
-                                    <li><a href="#">创建数据显示</a></li>
-                                    
-                                    
-                                    
-                                    
+                                    <li><a href="/Web/GridShow/Create.aspx">创建数据显示</a></li>
                                     </ul>
                             </div>
                         </div>
                     </td>
-                    <td style="width: 8px;">
+                    <td>
                         <div class="srdmainhidden">
                         </div>
                     </td>
-                    <td style="width: 100%" valign="top">
+                    <td valign="top" style="width:100%">
                         <asp:ContentPlaceHolder ID="MasterPage_Title" runat="server">
                         </asp:ContentPlaceHolder>
-                        <div>
+                        <div class="srdmaincenter">
                             <form id="form1" runat="server">
                             <asp:ContentPlaceHolder ID="MasterPage_Content" runat="server">
                             </asp:ContentPlaceHolder>

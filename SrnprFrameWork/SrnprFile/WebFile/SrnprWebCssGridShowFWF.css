@@ -1,7 +1,4 @@
-﻿body
-{
-    font-size:12px;
-}
+﻿
 
 .SWCGSF_DIV_MAIN
 {
@@ -26,7 +23,7 @@
 
 .SWCGSF_DIV_MAIN table .SWCGSF_TR_1 td
 {
-    background-color:#f5fbfe;
+    background-color:#fff;
 }
 
 
@@ -46,7 +43,7 @@
 {
     height:1.6em;
     line-height:1.6em;
-    background-color:#fff;
+    background-color:#f5fbfe;
     word-break:break-all;
     overflow:hidden;
 }

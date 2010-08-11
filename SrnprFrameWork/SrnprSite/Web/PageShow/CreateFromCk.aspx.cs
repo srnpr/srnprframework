@@ -35,19 +35,11 @@ namespace SrnprSite.Web.PageShow
         }
         protected void btnOk_Click(object sender, EventArgs e)
         {
-
             string sText = tbEditor.Text.Trim();
-
-
             SrnprWeb.WebEntity.PageShowWWE psw = SrnprWeb.WebProcess.PageShowWWP.GetEntityById(sId);
             psw.HtmlContent = sText;
             psw.Content = RecheckContent(psw.HtmlContent);
-
-
             SrnprWeb.WebProcess.PageShowWWP.SaveFileByEntity(psw);
-
-
-
 
         }
 

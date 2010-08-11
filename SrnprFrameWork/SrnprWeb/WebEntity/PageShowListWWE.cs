@@ -5,7 +5,11 @@ using System.Text;
 
 namespace SrnprWeb.WebEntity
 {
-    class PageShowListWWE
+    public class PageShowListWWE
     {
+
+
+
+
     }
 }

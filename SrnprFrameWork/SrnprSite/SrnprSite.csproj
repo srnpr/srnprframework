@@ -120,6 +120,13 @@
     <Compile Include="Web\PageShow\CreatePage.aspx.designer.cs">
       <DependentUpon>CreatePage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Web\PageShow\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\PageShow\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Web\PageShow\PageConfig.aspx.cs">
       <DependentUpon>PageConfig.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -169,6 +176,7 @@
     <Content Include="Modules\Master\MasterPage.js" />
     <Content Include="Skin\Blue\sradmin\buttonnext.gif" />
     <Content Include="Web\PageShow\CreateFromCk.aspx" />
+    <Content Include="Web\PageShow\List.aspx" />
     <Content Include="Web\PageShow\PageConfig.aspx" />
     <Content Include="Web\PageShow\Test.aspx" />
   </ItemGroup>

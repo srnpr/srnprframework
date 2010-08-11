@@ -7,7 +7,7 @@
 <div>
     <a href="ConfigGridShow.aspx">新建</a>
     
-     <div class="SWCGSF_DIV_MAIN">
+     <div class="srdmaintable">
             <table cellpadding="0" cellspacing="1">
     <tr>
     <th>编号</th>

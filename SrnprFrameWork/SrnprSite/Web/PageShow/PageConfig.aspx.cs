@@ -34,6 +34,12 @@ namespace SrnprSite.Web.PageShow
                 SrnprWeb.WebProcess.PageShowWWP.SaveFileByEntity(psw);
 
 
+                var t = SrnprWeb.WebProcess.PageShowWWP.GetList();
+                t.ItemList.Add(new SrnprWeb.WebEntity.ItemBaseWWE() { Id = psw.Id, Description = psw.Description, Guid = psw.Guid });
+                SrnprWeb.WebProcess.PageShowWWP.SaveList(t);
+
+
+
                 Response.Redirect("CreateFromCk.aspx?id=" + tbXmlId.Text.Trim());
             }
             else

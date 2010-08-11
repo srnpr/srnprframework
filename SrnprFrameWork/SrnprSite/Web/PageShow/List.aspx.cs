@@ -7,11 +7,13 @@ using System.Web.UI.WebControls;
 
 namespace SrnprSite.Web.PageShow
 {
-    public partial class List : System.Web.UI.Page
+    public partial class List :CPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            rpList.DataSource = SrnprWeb.WebProcess.GridShowWWP.GetList().ItemList;
 
+            rpList.DataBind();
         }
     }
 }

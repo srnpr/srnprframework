@@ -250,6 +250,7 @@ div
     line-height:25px;
     height:25px;
     text-align:left;
+    
 }
 .srdmainclass ul li a
 {
@@ -258,6 +259,10 @@ div
     width:100%;
     text-decoration: none;
     color:Black;
+    text-indent:25px;
+    background-image:url(sradmin/classnav.gif);
+    background-repeat:no-repeat;
+    background-position:5px center;
 }
 .srdmainclass ul li a:hover
 {

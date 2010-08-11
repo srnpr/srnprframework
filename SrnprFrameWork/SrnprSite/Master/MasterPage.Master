@@ -5,76 +5,87 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link  type="text/css" rel="Stylesheet" href="../Skin/Blue/MasterPageCssFSF.css" />
+    <link type="text/css" rel="Stylesheet" href="../Skin/Blue/MasterPageCssFSF.css" />
     <asp:ContentPlaceHolder ID="MasterPage_Head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-
-
-<div>
-    <table cellpadding="0" border="0" cellspacing="0" style="border:0px; height:100%; width:100%;">
-        <tbody>
-            <tr>
-                <td style="height:129px;" colspan="3">
-	                <div class="srdmaintop">
-	                    <div class="srdmaintopcenter">
-	                    </div>
-	                    <ul class="srumaintop" id="srumaintop">
-	                    </ul>
-	                </div>
-	            </td>
-            </tr>
-            <tr>
-                <td colspan="3" style="height:26px;">
-                    <div class="srdmainoption">
-                        <div class="srsmainwelcome">欢迎您：</div>
-                        <div class="srdmaintool" id="srdmaintool">
-                            
+    <div>
+        <table cellpadding="0" border="0" cellspacing="0" style="border: 0px; height: 100%;
+            width: 100%;">
+            <tbody>
+                <tr>
+                    <td style="height: 129px;" colspan="3">
+                        <div class="srdmaintop">
+                            <div class="srdmaintopcenter">
+                            </div>
+                            <ul class="srumaintop" id="srumaintop">
+                                <li><a href="#"><span>控件配置相关</span></a></li>
+                            </ul>
                         </div>
-                        <div class="srdmainhelp">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="height: 26px;">
+                        <div class="srdmainoption">
+                            <div class="srsmainwelcome">
+                                欢迎您：</div>
+                            <div class="srdmaintool" id="srdmaintool">
+                            </div>
+                            <div class="srdmainhelp">
+                            </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-	            <td valign="top">
-		            <div class="srdmainleft">
-		                <div class="srdmainclass" id="srdmainclass">
-		                    <div><a href="#">df</a></div>
-		                    <ul><li><a href="#"> dd</a></li></ul>
-		                    <div><a href="#">df</a></div>
-		                    <ul><li><a href="#"> dd</a></li></ul>
-		                </div>
-		            </div>
-                </td>
-                <td style="width:8px;"><div class="srdmainhidden"></div></td>
-	            <td style="width: 100%" valign="top">
-	            
-	             <asp:ContentPlaceHolder ID="MasterPage_Title" runat="server">
-        </asp:ContentPlaceHolder>
-         <div>
-	            <form id="form1" runat="server">
-	           
-		             <asp:ContentPlaceHolder ID="MasterPage_Content" runat="server">
-        </asp:ContentPlaceHolder>
-        
-         </form>
-         </div>
-	            </td>
-            </tr>
-            <tr>
-                <td style="height:25px;" colspan="3">
-	                <div class="srdmainbottom">
-	                    <div class="srdmainbottomleft">CopyRight © 2008-2010 SRNPR All Right</div>
-	                    <div class="srdmainbottomright">www.dcgou.com</div>
-	                </div>
-                </td>
-            </tr>
-        </tbody>
-
-    </table>
-</div>
-
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top">
+                        <div class="srdmainleft">
+                            <div class="srdmainclass" id="srdmainclass">
+                                <div>
+                                    <a href="#">页面显示控件</a></div>
+                                <ul>
+                                    <li><a href="#">创建页面根据模板</a></li>
+                                </ul>
+                                <div>
+                                    <a href="#">数据显示控件</a></div>
+                                <ul>
+                                    <li><a href="../Web/GridShow/List.aspx">配置数据显示列表</a></li>
+                                    <li><a href="#">创建数据显示</a></li>
+                                    
+                                    
+                                    
+                                    
+                                    </ul>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="width: 8px;">
+                        <div class="srdmainhidden">
+                        </div>
+                    </td>
+                    <td style="width: 100%" valign="top">
+                        <asp:ContentPlaceHolder ID="MasterPage_Title" runat="server">
+                        </asp:ContentPlaceHolder>
+                        <div>
+                            <form id="form1" runat="server">
+                            <asp:ContentPlaceHolder ID="MasterPage_Content" runat="server">
+                            </asp:ContentPlaceHolder>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="height: 25px;" colspan="3">
+                        <div class="srdmainbottom">
+                            <div class="srdmainbottomleft">
+                                CopyRight © 2008-2010 SRNPR All Right</div>
+                            <div class="srdmainbottomright">
+                                www.dcgou.com</div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

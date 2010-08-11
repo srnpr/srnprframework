@@ -12,7 +12,7 @@ namespace SrnprSite
         public void CPageMessage(string sMessage)
         {
 
-            this.Page.ClientScript.RegisterStartupScript(typeof(string), "CPageScript:CPage_Message", "<script type=\"text/javascript\" defer=\"defer\">CPage_Message(\"" + sMessage + "\");</script>", false);
+            this.Page.ClientScript.RegisterStartupScript(typeof(string), "CPageScript:CPage_Message", "<script type=\"text/javascript\" defer=\"defer\">MasterPage.Message(\"" + sMessage + "\");</script>", false);
         }
 
 

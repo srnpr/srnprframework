@@ -67,7 +67,7 @@ namespace SrnprWeb.WebProcess
         public static string GetShowHtml(string sXmlId, string sClientId)
         {
 
-            return GetShowHtml(sXmlId, sClientId);
+            return GetShowHtml(sXmlId, sClientId,"");
         }
 
         public static string GetShowHtml(string sXmlId, string sClientId, string sRequest)

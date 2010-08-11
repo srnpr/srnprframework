@@ -17,7 +17,7 @@
     <form id="form1" runat="server">
     <div>
     <sw:PageShowWWW ID="PageShow1" runat="server" />
-    </div><input type="submit" value="tt" />
+    </div>
     </form>
     
     

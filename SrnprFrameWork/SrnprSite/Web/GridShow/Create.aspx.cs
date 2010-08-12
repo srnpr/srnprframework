@@ -173,7 +173,7 @@ namespace SrnprSite.Web.GridShow
 
                     SrnprWeb.WebProcess.GridShowWWP.SaveList(tList);
 
-                    CPageMessage("创建成功！");
+                    CPageMessage("保存成功！");
 
                 }
                 else

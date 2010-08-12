@@ -5,7 +5,7 @@
 {
     window.MasterPage = {};
 
-
+    
     MasterPage.Message = function(m)
     {
 
@@ -20,6 +20,8 @@
     {
         document.getElementById("srdmainmessage").style.display = "none";
     }
+    
+    
 
 
 

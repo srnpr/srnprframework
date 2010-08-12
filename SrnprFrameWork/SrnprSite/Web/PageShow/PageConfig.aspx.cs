@@ -53,47 +53,47 @@ namespace SrnprSite.Web.PageShow
                 var t = SrnprWeb.WebProcess.PageShowWWP.GetList();
 
 
-              
 
-               
-
+                var oSingle = t.ItemList.SingleOrDefault(x => x.Id == psw.Id);
 
 
-                if (!tbXmlId.Enabled)
+
+
+                if (tbXmlId.Enabled && oSingle != null)
                 {
-                    SrnprWeb.WebProcess.PageShowWWP.SaveList(t);
-                    CPageMessage("修改配置成功！");
+                    CPageMessage("对不起，编号已存在！");
                 }
                 else
                 {
 
-
-                    if (t.ItemList.Count(x => x.Id == tbXmlId.Text.Trim()) == 0)
+                    if (tbXmlId.Enabled)
                     {
-                        t.ItemList.Add(new SrnprWeb.WebEntity.ItemBaseWWE() { Id = psw.Id, Description = psw.Description, Guid = psw.Guid });
+                        oSingle = new SrnprWeb.WebEntity.ItemBaseWWE();
+                    }
 
-                        SrnprWeb.WebProcess.PageShowWWP.SaveList(t);
-                        SrnprWeb.WebProcess.PageShowWWP.SaveFileByEntity(psw);
+                    oSingle.Id = psw.Id;
+                    oSingle.Guid = psw.Guid;
+                    oSingle.Description = psw.Description;
+
+                    if (tbXmlId.Enabled)
+                    {
+                        t.ItemList.Add(oSingle);
+                    }
+
+                    SrnprWeb.WebProcess.PageShowWWP.SaveFileByEntity(psw);
+                    SrnprWeb.WebProcess.PageShowWWP.SaveList(t);
 
 
-
+                    if (tbXmlId.Enabled)
+                    {
                         Response.Redirect("CreateFromCk.aspx?id=" + tbXmlId.Text.Trim());
                     }
                     else
                     {
-                        CPageMessage("对不起，编号已存在！");
+                        CPageMessage("修改配置成功！");
                     }
 
                 }
-
-
-
-
-
-                
-                    
-
-               
             }
             else
             {

@@ -359,7 +359,7 @@ if (!this.SWJGSF)
 
             SWJGSF.SubmitBefore(id);
 
-            SrnprNetJsAllAlphaShow({ s: "l", m: "请选择显示内容", w: "400",h:"100", u: "Excel.aspx?id=SWJGSF_Hidden_" + SWJGSF.Obj[id].ClientId });
+            SrnprNetJsAllAlphaShow({ s: "l", m: "请选择显示内容", w: "400",h:"100", u: "/Web/GridShow/Excel.aspx?id=SWJGSF_Hidden_" + SWJGSF.Obj[id].ClientId });
 
         }
         SWJGSF.ExcelClose = function(id)

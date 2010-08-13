@@ -57,6 +57,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Asmx\GridShowExcel.ashx.cs">
+      <DependentUpon>GridShowExcel.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Asmx\GridShowHander.ashx.cs">
       <DependentUpon>GridShowHander.ashx</DependentUpon>
     </Compile>
@@ -91,6 +94,13 @@
     </Compile>
     <Compile Include="Web\GridShow\Create.aspx.designer.cs">
       <DependentUpon>Create.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\GridShow\Excel.aspx.cs">
+      <DependentUpon>Excel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\GridShow\Excel.aspx.designer.cs">
+      <DependentUpon>Excel.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\GridShow\List.aspx.cs">
       <DependentUpon>List.aspx</DependentUpon>
@@ -179,6 +189,10 @@
     <Content Include="Web\PageShow\List.aspx" />
     <Content Include="Web\PageShow\PageConfig.aspx" />
     <Content Include="Web\PageShow\Test.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Asmx\GridShowExcel.ashx" />
+    <Content Include="Web\GridShow\Excel.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

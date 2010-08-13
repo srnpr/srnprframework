@@ -160,7 +160,6 @@ namespace SrnprWeb.WebProcess
 
             if (req.QueryDict!=null&& req.QueryDict.Count > 0)
             {
-
                 List<string> listStr = new List<string>();
                 foreach (KeyValuePair<string, string> kvp in req.QueryDict)
                 {
@@ -168,7 +167,6 @@ namespace SrnprWeb.WebProcess
                     var o = gsw.ParamList.FirstOrDefault(t => t.ParamName == kvp.Key);
                     if (o != null && !string.IsNullOrEmpty(o.ParamName) && !string.IsNullOrEmpty(o.ColumnField))
                     {
-
                         string sParam = "";
                         switch (o.ParamQueryType)
                         {
@@ -221,6 +219,11 @@ namespace SrnprWeb.WebProcess
                 }
 
 
+                
+
+
+
+
                 if (listStr.Count > 0)
                 {
 
@@ -233,17 +236,93 @@ namespace SrnprWeb.WebProcess
             }
 
 
+
+
+            
+
+
             if (!string.IsNullOrEmpty(sWhere))
             {
                 sWhere = " where " + sWhere;
             }
 
+
+
+
+
+
+
+            string sGroupWhere = sWhere;
+
+
+            if (!string.IsNullOrEmpty(gsw.TableInfo.GroupColumn) && !string.IsNullOrEmpty(req.GroupValue))
+            {
+                string sGroup = gsw.TableInfo.GroupColumn.Split(',')[0];
+
+                dQuery[sGroup] = req.GroupValue;
+                sWhere += (string.IsNullOrEmpty(sWhere) ? " where " : " and ") + sGroup + "=@" + sGroup;
+            }
+
+
+
             if (req.RowsCount == -1)
+            {
+                if (!string.IsNullOrEmpty(gsw.TableInfo.GroupColumn))
+                {
+                    string[] strSplit = gsw.TableInfo.GroupColumn.Split(',');
+
+                    if (strSplit.Length > 0)
+                    {
+                        string sField, sGroup, sSum;
+                        if (strSplit.Length == 1)
+                        {
+                            sGroup = strSplit[0];
+                            sField = sGroup = strSplit[0];
+                            sSum = "1";
+                        }
+                        else if (strSplit.Length == 2)
+                        {
+                            sGroup = strSplit[0];
+                            sField = strSplit[1];
+                            sSum = "1";
+                        }
+                        else
+                        {
+                            sGroup = strSplit[0];
+                            sField = strSplit[1];
+                            sSum = strSplit[2];
+                        }
+
+
+
+                        string sGroupSql = "select (" + sGroup + ") as k,sum(" + sSum + ") as v, (" + sField + ") as d from " + gsw.TableInfo.TableName + sGroupWhere + " group by " + sGroup;
+
+                        DataTable dt = SrnprCommon.DataHelper.SqlHelperCDH.ExecuteDataTable(GetConnString(gsw.TableInfo.DataBaseId), sGroupSql);
+                       
+
+                        List<WebEntity.ItemKvdWWE> kvdList = new List<ItemKvdWWE>();
+
+                        for (int i = 0, j = dt.Rows.Count; i < j; i++)
+                        {
+                            kvdList.Add(new ItemKvdWWE() { K = dt.Rows[i][0].ToString().Trim(), V = dt.Rows[i][1].ToString().Trim(), D = dt.Rows[i][2].ToString().Trim() });
+                        }
+                        req.GroupKvd = kvdList;
+
+
+
+                    }
+                }
+
+            }
+
+
+
+            if (req.RowsCount < 0)
             {
                 string sSqlCount = "select count(1) from " + gsw.TableInfo.TableName + sWhere;
                 req.RowsCount = long.Parse(SrnprCommon.DataHelper.SqlHelperCDH.ExecuteScalar(GetConnString(gsw.TableInfo.DataBaseId), sSqlCount, dQuery).ToString());
-
             }
+                
 
 
 

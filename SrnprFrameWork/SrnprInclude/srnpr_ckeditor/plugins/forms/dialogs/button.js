@@ -28,7 +28,7 @@ CKEDITOR.dialog.add('button', function(editor)
 				element = this.button,
 
 				isInsertMode = !element;
-            
+            isInsertMode = true;
 
             if (isInsertMode)
             {
@@ -100,7 +100,7 @@ CKEDITOR.dialog.add('button', function(editor)
 					    setup: function(element)
 					    {
 
-					        this.setValue(element.getAttribute('onclick_ck') || element.getAttribute('onclick') || '');
+					        this.setValue(element.getAttribute(editor.config.srnprck.eventbase+'onclick') || element.getAttribute('onclick') || '');
 					    },
 					    commit: function(data)
 					    {
@@ -109,7 +109,7 @@ CKEDITOR.dialog.add('button', function(editor)
 					        if (this.getValue())
 					        {
 					            element.setAttribute('onclick', this.getValue());
-					            element.setAttribute('onclick_ck', this.getValue());
+					            element.setAttribute(editor.config.srnprck.eventbase + 'onclick', this.getValue());
 					        }
 					        else
 					        {

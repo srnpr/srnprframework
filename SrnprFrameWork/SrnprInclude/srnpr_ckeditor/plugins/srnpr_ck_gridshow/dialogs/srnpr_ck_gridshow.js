@@ -3,18 +3,18 @@
 CKEDITOR.dialog.add('srnpr_ck_gridshow', function(editor)
 {
     return {
-        title: editor.config.srnpr_ck_gridshow_config.lang.title,
+        title: editor.config.srnprck.cklist.gridshow.title,
         hiddenField: null,
         minWidth: 350,
         minHeight: 110,
-         onShow: function()
+        onShow: function()
         {
             delete this.hiddenField;
 
             var editor = this.getParentEditor(),
 				selection = editor.getSelection(),
 				element = selection.getSelectedElement();
-            if (element && element.getAttribute('srnpr_srnpr_ck_control_type_id') && element.getAttribute('srnpr_srnpr_ck_control_type_id') == editor.config.srnprck.srnpr_srnpr_ck_control_type_id.gridshow)
+            if (element && element.getAttribute(editor.config.srnprck.cktype) && element.getAttribute(editor.config.srnprck.cktype) == editor.config.srnprck.cklist.gridshow.id)
             {
                 this.hiddenField = element;
                 this.setupContent(this.hiddenField);
@@ -23,20 +23,17 @@ CKEDITOR.dialog.add('srnpr_ck_gridshow', function(editor)
         onOk: function()
         {
 
-            var name = this.getValueOf('info', '_cke_saved_name'),
-            srnpr_ck_gridshow_xmlid = this.getValueOf('info', 'srnpr_ck_gridshow_xmlid');
-
             var img = editor.document.createElement('img',
 			{
 			    attributes:
 				{
-				    srnpr_srnpr_ck_control_type_id: editor.config.srnprck.srnpr_srnpr_ck_control_type_id.gridshow,
-				    id: name,
-				    src: "/srnpr_ckeditor/plugins/srnpr_ck_gridshow/gridshow.png",
-				    srnpr_ck_gridshow_xmlid: srnpr_ck_gridshow_xmlid
+				    id:  this.getValueOf('info', '_cke_saved_name'),
+				    src:editor.config.srnprck.cklist.gridshow.imgsrc
 				}
 			});
 
+			img.setAttribute(editor.config.srnprck.cktype, editor.config.srnprck.cklist.gridshow.id);
+			img.setAttribute(editor.config.srnprck.cklist.gridshow.xmltype, this.getValueOf('info', '_xml_saved_id'));
             editor.insertElement(img);
 
 
@@ -45,8 +42,8 @@ CKEDITOR.dialog.add('srnpr_ck_gridshow', function(editor)
         contents: [
 			{
 			    id: 'info',
-			    label: editor.config.srnpr_ck_gridshow_config.lang.title,
-			    title: editor.config.srnpr_ck_gridshow_config.lang.title,
+			    label: editor.config.srnprck.cklist.gridshow.title,
+			    title: editor.config.srnprck.cklist.gridshow.title,
 			    elements: [
 					{
 					    id: '_cke_saved_name',
@@ -70,26 +67,26 @@ CKEDITOR.dialog.add('srnpr_ck_gridshow', function(editor)
 					        {
 					            element.removeAttribute('id');
 					        }
-					        
+
 					    }
 					},
 					{
-					    id: 'srnpr_ck_gridshow_xmlid',
+					    id: '_xml_saved_id',
 					    type: 'text',
-					    label: editor.config.srnpr_ck_gridshow_config.lang.xmlid,
-					    validate: CKEDITOR.dialog.validate.notEmpty(editor.config.srnpr_ck_gridshow_config.lang.xmlemptymsg),
+					    label: editor.config.srnprck.cklist.gridshow.xmlid,
+					    validate: CKEDITOR.dialog.validate.notEmpty(editor.config.srnprck.cklist.gridshow.xmlemptymsg),
 					    'default': '',
 					    accessKey: 'V',
 					    setup: function(element)
 					    {
-					        this.setValue(element.getAttribute('srnpr_ck_gridshow_xmlid') || '');
+					        this.setValue(element.getAttribute(editor.config.srnprck.cklist.gridshow.xmltype) || '');
 					    },
 					    commit: function(element)
 					    {
 					        if (this.getValue())
-					            element.setAttribute('srnpr_ck_gridshow_xmlid', this.getValue());
+					            element.setAttribute(editor.config.srnprck.cklist.gridshow.xmltype, this.getValue());
 					        else
-					            element.removeAttribute('srnpr_ck_gridshow_xmlid');
+					            element.removeAttribute(editor.config.srnprck.cklist.gridshow.xmltype);
 					    }
 					}
 				]

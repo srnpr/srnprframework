@@ -34,6 +34,14 @@
                         <asp:TextBox ID="TBTableName" runat="server"></asp:TextBox>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        分组名称：
+                    </td>
+                    <td>
+                        <asp:TextBox ID="tbGroupColumn" runat="server"></asp:TextBox>(可为空，格式为：[group],[field],[sum])
+                    </td>
+                </tr>
                  <tr>
                     <td>
                         描述：

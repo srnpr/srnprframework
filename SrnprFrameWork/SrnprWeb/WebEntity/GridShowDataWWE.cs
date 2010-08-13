@@ -53,5 +53,14 @@ namespace SrnprWeb.WebEntity
 
 
 
+
+        /// <summary>
+        /// Description: 分组字段
+        /// Author:Liudpc
+        /// Create Date: 2010-8-12 17:04:25
+        /// </summary>
+        public string GroupColumn { get; set; }
+
+
     }
 }

@@ -40,7 +40,7 @@ namespace SrnprWeb.WebEntity
         public long PageSize { get; set; }
       [DataMember(Order =3)]
         /// <summary>
-        /// Description: 数量统计
+        /// Description: 数量统计  为-1时表示重新查询  为-2时表示分组更改标识
         /// Author:Liudpc
         /// Create Date: 2010-8-2 11:18:30
         /// </summary>
@@ -85,6 +85,24 @@ namespace SrnprWeb.WebEntity
         /// </summary>
        public Dictionary<string, string> QueryDict { get; set; }
 
+      [DataMember(Order = 8)]
+      /// <summary>
+      /// Description: 分组字典
+      /// Author:Liudpc
+      /// Create Date: 2010-8-3 10:33:13
+      /// </summary>
+      public List<ItemKvdWWE> GroupKvd { get; set; }
 
+      [DataMember(Order = 9)]
+        /// <summary>
+        /// Description: 分组值
+        /// Author:Liudpc
+        /// Create Date: 2010-8-12 17:52:22
+        /// </summary>
+      public string GroupValue { get; set; }
+
+
+
+    
     }
 }

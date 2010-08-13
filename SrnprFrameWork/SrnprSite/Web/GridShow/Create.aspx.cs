@@ -41,6 +41,7 @@ namespace SrnprSite.Web.GridShow
                     TBDataBaseId.Text = x.TableInfo.DataBaseId;
                     TBId.Text = x.Id.Trim();
                     tbDescription.Text = x.Description.Trim();
+                    tbGroupColumn.Text = x.TableInfo.GroupColumn;
 
                     GSEntity = x;
                     BindDataColumn();
@@ -148,7 +149,7 @@ namespace SrnprSite.Web.GridShow
                     tEntity.TableInfo.KeyColumn = tEntity.ColumnList.FirstOrDefault(x => x.ColumnData != "").ColumnData;
                     tEntity.TableInfo.WhereString = "";
                     tEntity.Description = tbDescription.Text.Trim();
-
+                    tEntity.TableInfo.GroupColumn = tbGroupColumn.Text.Trim();
 
 
                     if (tE == null)

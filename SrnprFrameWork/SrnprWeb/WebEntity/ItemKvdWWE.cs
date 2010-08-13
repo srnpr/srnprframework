@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web.Services;
+using System.Runtime.Serialization.Json;
+using System.Runtime.Serialization;
 
 namespace SrnprWeb.WebEntity
 {
+    [DataContract(Namespace = "http://srnprframework/srnprweb")]
     public class ItemKvdWWE
     {
-
+        [DataMember(Order = 0)]
 
         /// <summary>
         /// Description: Key
@@ -17,7 +21,7 @@ namespace SrnprWeb.WebEntity
         public string K { get; set; }
 
 
-
+        [DataMember(Order = 1)]
         /// <summary>
         /// Description: 值
         /// Author:Liudpc
@@ -25,7 +29,7 @@ namespace SrnprWeb.WebEntity
         /// </summary>
         public string V { get; set; }
 
-
+        [DataMember(Order = 2)]
         /// <summary>
         /// Description: 描述
         /// Author:Liudpc

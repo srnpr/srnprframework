@@ -66,8 +66,11 @@ if (!this.SWJGSF)
 
                     //自定义字段 f函数
                     NavPageUser: '<a href="javascript:{npu:f}">自定义</a>',
+
+                    NavPageExcel: '<a href="javascript:{npe:f}">导出Excel</a>',
+
                     //导航显示样式
-                    NavPageHtml: '<table><tr><td>{nph:nps}</td><td>{nph:npl}{nph:npn}{nph:npr}</td><td>{nph:npu}</td><td style="text-align:right;">{nph:npc}</td></tr></table>',
+                    NavPageHtml: '<table><tr><td>{nph:nps}</td><td>{nph:npl}{nph:npn}{nph:npr}</td><td>{nph:npu}{nph:npe}</td><td style="text-align:right;">{nph:npc}</td></tr></table>',
 
                     NavEveryPage: 10
 
@@ -194,7 +197,7 @@ if (!this.SWJGSF)
             }
 
             SWJGSF.PageGoto(id, SWJGSF.Obj[id].PageIndex);
-            
+
         }
 
 
@@ -241,9 +244,12 @@ if (!this.SWJGSF)
 
                 var iPageCount = Math.ceil(req.RowsCount / req.PageSize);
 
-                var nav_nps = '', nav_npu = '', nav_npl = '', nav_npr = '', nav_npn = '', nav_npc = '';
+                var nav_nps = '', nav_npu = '', nav_npl = '', nav_npr = '', nav_npn = '', nav_npc = '', nav_npe = '';
 
                 nav_npu = so.NavPageUser.replace('{npu:f}', "SWJGSF.ShowDisplay('" + req.Id + "')");
+
+                nav_npe = so.NavPageExcel.replace('{npe:f}', "SWJGSF.Excel('" + req.Id + "')");
+
 
                 if (req.ProcessType == "" || req.ProcessType == "server")
                 {
@@ -260,14 +266,14 @@ if (!this.SWJGSF)
                         var aPageInt = [];
 
                         var iStep = parseInt(so.NavEveryPage);
-                        var iStart = (Math.floor((req.PageIndex-1 )/ iStep) * iStep) ;
+                        var iStart = (Math.floor((req.PageIndex - 1) / iStep) * iStep);
                         var iEnd = parseInt(iStart + iStep);
 
                         if (iEnd > iPageCount) iEnd = iPageCount;
 
-                        for (var iNowIndex = iStart + 1; iNowIndex < iEnd+1; iNowIndex++)
+                        for (var iNowIndex = iStart + 1; iNowIndex < iEnd + 1; iNowIndex++)
                         {
-                            aPageInt.push(so.NavPageNumber.replace('{npn:n}', iNowIndex).replace('{npn:f}', "SWJGSF.PageGoto('" + req.Id + "','" + iNowIndex + "')").replace('{npn:c}',(iNowIndex==req.PageIndex)?"SWCGSF_A_FOOT_NAV_HOVER":""));
+                            aPageInt.push(so.NavPageNumber.replace('{npn:n}', iNowIndex).replace('{npn:f}', "SWJGSF.PageGoto('" + req.Id + "','" + iNowIndex + "')").replace('{npn:c}', (iNowIndex == req.PageIndex) ? "SWCGSF_A_FOOT_NAV_HOVER" : ""));
                         }
 
 
@@ -302,6 +308,7 @@ if (!this.SWJGSF)
                 .replace("{nph:npr}", nav_npr)
                 .replace("{nph:npn}", nav_npn)
                 .replace("{nph:npc}", nav_npc)
+                .replace("{nph:npe}", nav_npe)
 
                 + '</div>'
                 );
@@ -342,6 +349,22 @@ if (!this.SWJGSF)
 
             //alert(obj.ListString[0].length);
         }
+
+
+
+
+        //导出Excel
+        SWJGSF.Excel = function(id)
+        {
+
+            SWJGSF.SubmitBefore(id);
+
+            SrnprNetJsAllAlphaShow({ s: "l", m: "请选择显示内容", w: "400", u: "Excel.aspx?id=SWJGSF_Hidden_" + SWJGSF.Obj[id].ClientId });
+
+        }
+
+
+
 
         //自定义显示字段
         SWJGSF.ShowDisplay = function(id)
@@ -401,6 +424,7 @@ if (!this.SWJGSF)
         }
 
 
+        //设置显示类型
         SWJGSF.Demo = function()
         {
             for (var p in SWJGSF.Obj)

@@ -11,10 +11,46 @@
     <div>
     <input type="hidden" name="json" id="json" />
     
-        <asp:Button ID="btnExcel" runat="server" onclick="btnExcel_Click" 
-            Text="导出到Excel" />
+   
+    <asp:HiddenField  ID="hfJson" runat="server"  ></asp:HiddenField>
     
+        <asp:Button ID="btnExcel" runat="server" onclick="btnExcel_Click" 
+            Text="导出当前页" OnClientClick="return SubmitCheck()" />
+        <asp:Button ID="btnExcelAll" runat="server" Text="导出所有页" 
+            onclick="btnExcelAll_Click"  OnClientClick="return SubmitCheck()" />
     </div>
+    
+    
+    <script type="text/javascript">
+
+        function SubmitCheck()
+        {
+            var id = "<%=sId %>";
+
+
+            var bReturn = false;
+
+
+            if (parent && parent.document.getElementById(id))
+            {
+
+                var v = parent.document.getElementById(id).value;
+                if (v)
+                {
+                    document.getElementById("<%=hfJson.ClientID %>").value = v;
+                    bReturn = true;
+                }
+
+            }
+
+            return bReturn;
+
+
+           
+            
+        }
+    
+    </script>
     </form>
 </body>
 </html>

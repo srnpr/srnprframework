@@ -22,7 +22,7 @@ namespace SrnprSite.Asmx
             string s = context.Request["json"];
            
 
-            DataTable dt = new SrnprWeb.WebProcess.GridShowWWP().GetDataTable(s);
+            DataTable dt = new SrnprWeb.WebProcess.GridShowWWP().GetDataTable(s,0);
             
             HttpResponse resp;
             resp = context.Response;

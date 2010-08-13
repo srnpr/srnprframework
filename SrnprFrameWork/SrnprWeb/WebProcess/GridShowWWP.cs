@@ -97,11 +97,124 @@ namespace SrnprWeb.WebProcess
             var t =  CommonFunction.JsonHelper.Deserialize<SrnprWeb.WebEntity.GridShowRequestWWE>(sJson);
 
         
-            SrnprWeb.WebProcess.GridShowWWP gsw = new SrnprWeb.WebProcess.GridShowWWP();
+           // SrnprWeb.WebProcess.GridShowWWP gsw = new SrnprWeb.WebProcess.GridShowWWP();
 
-            return CommonFunction.JsonHelper.Serialize<SrnprWeb.WebEntity.GridShowResponseWWE>(gsw.GetHtmlByEntity(GetEntityById(t.Id), t));
+            return CommonFunction.JsonHelper.Serialize<SrnprWeb.WebEntity.GridShowResponseWWE>(GetHtmlByEntity(GetEntityById(t.Id), t));
         }
 
+
+
+        /// <summary>
+        /// 
+        /// Description: 得到处理数据集合
+        /// Author:Liudpc
+        /// Create Date: 2010-8-13 16:40:43
+        /// </summary>
+        /// <param name="sJson"></param>
+        /// <param name="iType">0为当前页  1为所有页</param>
+        /// <returns></returns>
+        public  DataTable GetDataTable(string sJson,int iType)
+        {
+            var tJson = CommonFunction.JsonHelper.Deserialize<SrnprWeb.WebEntity.GridShowRequestWWE>(sJson);
+
+            if (iType== 1)
+            {
+                tJson.PageSize = tJson.RowsCount;
+                tJson.PageIndex = 1;
+
+            }
+           
+
+
+            var Ent=GetEntityById(tJson.Id);
+
+            DataTable dtOld= GetDataByEntity(Ent, tJson);
+
+
+            List<string> remove=new List<string>();
+            for (int i = 0, j = dtOld.Columns.Count; i < j; i++)
+            {
+                string sName = dtOld.Columns[i].ColumnName;
+
+                var tc = Ent.ColumnList.SingleOrDefault(x => RecheckColumnName(x.ColumnData) == sName);
+
+                if (tc != null)
+                {
+
+                    var te = tJson.ShowColumn.SingleOrDefault(x => x.Guid == tc.Guid);
+
+                    if (te != null && GetSelectValue(te.ShowDisplay) == "d")
+                    {
+                        dtOld.Columns[i].ColumnName = te.HeaderText;
+
+                    }
+                    else
+                    {
+                        remove.Add(sName);
+                    }
+
+                }
+                else
+                {
+                    remove.Add(sName);
+                }
+
+
+            }
+
+
+            for (int i = 0, j = remove.Count; i < j; i++)
+            {
+                dtOld.Columns.Remove(remove[i]);
+            }
+
+
+                /*
+
+            DataTable dt = new DataTable();
+            dt.TableName = "Excel";
+
+
+           
+
+
+            List<ItemKvdWWE> kvdList = new List<ItemKvdWWE>();
+
+            for (int i = 0, j = t.ShowColumn.Count; i < j; i++)
+            {
+
+                if (t.ShowColumn[i].ShowDisplay == GetSelectValue(t.ShowColumn[i].ShowDisplay))
+                {
+                    kvdList.Add(new ItemKvdWWE() { K = t.ShowColumn[i].Guid, D = t.ShowColumn[i].ShowDisplay, V = RecheckColumnName(Ent.ColumnList.Single(x => x.Guid == t.ShowColumn[i].Guid).ColumnData) });
+                }
+
+            }
+
+
+
+
+            foreach (var k in kvdList)
+            {
+                dt.Columns.Add(k.D);
+            }
+
+
+            for (int i = 0, j = dtOld.Rows.Count; i < j; i++)
+            {
+
+            }
+
+
+                */
+            
+
+
+
+
+
+            return dtOld;
+
+        }
 
 
 
@@ -151,8 +264,25 @@ namespace SrnprWeb.WebProcess
         /// <param name="req"></param>
         /// <param name="sOrdeString"></param>
         /// <returns></returns>
-        public DataTable GetDataByEntity(WebEntity.GridShowWWE gsw, GridShowRequestWWE req,string sOrdeString)
+        public DataTable GetDataByEntity(WebEntity.GridShowWWE gsw, GridShowRequestWWE req)
         {
+
+
+            string sOrdeString = "";
+
+            //开始智能分析排序字段
+            if (req.ShowColumn.Count > 0)
+            {
+
+                var vSort = req.ShowColumn.FirstOrDefault(t => (t.OrderType == "a" || t.OrderType == "e"));
+                if (vSort == null)
+                {
+                    vSort = gsw.ColumnList.FirstOrDefault(x => ReckeckOrderColumn(x.ColumnData) != "");
+                }
+                sOrdeString = ReckeckOrderColumn(gsw.ColumnList.SingleOrDefault(t => t.Guid == vSort.Guid).ColumnData) + (vSort.OrderType == "a" ? " asc " : " desc ");
+            }
+
+
 
             string sWhere = gsw.TableInfo.WhereString;
 
@@ -397,26 +527,7 @@ namespace SrnprWeb.WebProcess
                     }
                 }
 
-                string sOrdeString = "";
-
-                //开始智能分析排序字段
-                if (request.ShowColumn.Count > 0)
-                {
-
-                    var vSort = request.ShowColumn.FirstOrDefault(t => (t.OrderType == "a" || t.OrderType == "e"));
-                    if (vSort == null)
-                    {
-                        vSort = gsw.ColumnList.FirstOrDefault(x => ReckeckOrderColumn(x.ColumnData) != "");
-                    }
-                    sOrdeString = ReckeckOrderColumn(gsw.ColumnList.SingleOrDefault(t => t.Guid == vSort.Guid).ColumnData) + (vSort.OrderType == "a" ? " asc " : " desc ");
-                }
-
-
-
-
-
-
-
+               
 
 
 
@@ -427,7 +538,7 @@ namespace SrnprWeb.WebProcess
                 {
 
                     //开始分析排序依据
-                    dt = GetDataByEntity(gsw, request, sOrdeString);
+                    dt = GetDataByEntity(gsw, request);
 
 
                     StringBuilder sb = new StringBuilder();

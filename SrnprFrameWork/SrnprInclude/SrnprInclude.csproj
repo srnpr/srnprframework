@@ -88,6 +88,6 @@
     <Content Include="srnpr_ckeditor\plugins\srnpr_ck_gridshow\srnpr_ck_gridshow.gif" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="srnpr_ckeditor\plugins\Srnpr_ck_webtab\" />
+    <Folder Include="srnpr_ckeditor\plugins\srnpr_ck_webtab\" />
   </ItemGroup>
 </Project>

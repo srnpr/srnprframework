@@ -11,7 +11,7 @@
 
 
 <li><a href="PageConfig.aspx?temp=query">查询页面</a></li>
-
+<li><a href="PageConfig.aspx?temp=add">创建页面</a></li>
 
 </ul>
 

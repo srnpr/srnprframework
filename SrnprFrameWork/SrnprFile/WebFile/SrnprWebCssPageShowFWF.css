@@ -1,0 +1,21 @@
+﻿
+
+
+
+
+
+ol li
+{
+    background-image:url(http://f.xgou.com/AtGang/UI_C/images_css/bg_tab12_out.gif);
+    background-repeat:repeat-x;
+    border-right:solid 1px #99cccc;
+    border-top:solid 1px #99cccc;
+    border-left:solid 1px #99cccc;
+    float:left;
+    height:22px;
+    font-size:14px;
+    font-weight:bold;
+    margin-right:3px;
+    padding:4px 4px 0px 4px;
+    list-style-type:none;
+}

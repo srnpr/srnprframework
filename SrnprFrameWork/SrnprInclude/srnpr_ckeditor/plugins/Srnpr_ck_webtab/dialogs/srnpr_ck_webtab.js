@@ -1,6 +1,6 @@
 ﻿
 
-CKEDITOR.dialog.add('textfield', function(editor)
+CKEDITOR.dialog.add('srnpr_ck_webtab', function(editor)
 {
     var autoAttributes =
 	{

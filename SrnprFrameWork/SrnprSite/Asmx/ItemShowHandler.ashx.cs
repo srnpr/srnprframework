@@ -8,8 +8,7 @@ namespace SrnprSite.Asmx
     /// <summary>
     /// $codebehindclassname$ 的摘要说明
     /// </summary>
-    [WebService(Namespace = "http://tempuri.org/")]
-    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    
     public class ItemShowHandler : IHttpHandler
     {
 

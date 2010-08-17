@@ -1,16 +1,16 @@
 ﻿
 
-if (!window.SW)
+if (!window.SWW)
 {
-    window.SW =
+    window.SWW =
    {
-       SW_BasePath: (function()
+       SWW_BasePath: (function()
        {
            var d = '';
            var e = document.getElementsByTagName('script');
            for (var f = 0; f < e.length; f++)
            {
-               var g = e[f].src.match(/(^|.*[\\\/])SrnprWebJsWebWidgetFWF.js(?:\?.*)?$/i);
+               var g = e[f].src.match(/(^|.*[\\\/])SrnprWebJSWWebWidgetFWF.js(?:\?.*)?$/i);
                if (g)
                {
                    d = g[1];
@@ -32,51 +32,56 @@ if (!window.SW)
        )
        (),
 
-       SW_JS:
+       SWW_JS:
        {
-           GS: { u: 'SrnprWebJsGridShowFWF.js', n: ['IS'] },
-           IS: 'SrnprWebJsItemShowFWF.js'
+           Json:'json2.js',
+           JQuery:'jquery-1.4.2.min.js',
+           GS: { u: 'SrnprWebJsGridShowFWF.js', n: ['IS','JQuery','Json'] },
+           IS: 'SrnprWebJsItemShowFWF.js',
+           
        },
 
-       SW_JSLoad: {}
+       SWW_JSLoad: {}
        ,
 
-       SW_Alert: function(m)
+       SWW_Alert: function(m)
        {
            alert(m);
        },
 
-       SW_AddScript: function(u)
+       SWW_AddScript: function(u)
        {
            document.write('<script type="text/javascript" src="' + u + '"></script>');
            alert(u);
        },
-       SW_Init: function(t)
+       G: function(t)
        {
-           if (!SW[t] && SW.SW_JS[t] && !SW.SW_JSLoad[t])
+           if (!this[t] && this.SWW_JS[t] && !this.SWW_JSLoad[t])
            {
                var u = '';
-               if ("string" == typeof (SW.SW_JS[t]))
+               if ("string" == typeof (this.SWW_JS[t]))
                {
-                   u = SW.SW_BasePath + SW.SW_JS[t];
+                   u = this.SWW_BasePath + this.SWW_JS[t];
                }
                else
                {
-                   if (SW.SW_JS[t].n)
+                   if (this.SWW_JS[t].n)
                    {
-                       for (var i = 0; i < SW.SW_JS[t].n.length; i++)
+                       for (var i = 0; i < this.SWW_JS[t].n.length; i++)
                        {
-                           SW.SW_Init(SW.SW_JS[t].n[i]);
+                           this.G(this.SWW_JS[t].n[i]);
                        }
                    }
-                   u = SW.SW_BasePath + SW.SW_JS[t].u;
+                   u = this.SWW_BasePath + this.SWW_JS[t].u;
                }
 
-               SW.SW_JSLoad[t] = Date().toString();
-              
-               SW.SW_AddScript(u);
+               this.SWW_JSLoad[t] = Date().toString();
+
+               this.SWW_AddScript(u);
 
            }
+
+           return this[t];
        }
 
    }
@@ -88,5 +93,5 @@ if (!window.SW)
 
 
 
-//alert(SW.basePath);
+//alert(this.basePath);
 

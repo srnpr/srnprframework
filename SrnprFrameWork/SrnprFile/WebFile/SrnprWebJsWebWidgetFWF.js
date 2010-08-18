@@ -38,7 +38,7 @@ if (!window.SWW)
            Json:'json2.js',
            JQuery:'jquery-1.4.2.min.js',
            GS: { u: 'SrnprWebJsGridShowFWF.js', n: ['IS','JQuery','Json'] },
-           IS: 'SrnprWebJsItemShowFWF.js'
+           LS: 'SrnprWebJsListShowFWF.js'
            
        },
 

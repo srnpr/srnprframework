@@ -1,9 +1,9 @@
 ﻿/// <reference path="SrnprWebJsWebWidgetFWF.js"/>
 
 
-if (SWW && !SWW.IS)
+if (SWW && !SWW.LS)
 {
-    SWW.IS =
+    SWW.LS =
     {
         Obj:{},
         Init: function()

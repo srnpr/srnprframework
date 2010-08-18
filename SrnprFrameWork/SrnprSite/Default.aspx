@@ -5,4 +5,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MasterPage_Title" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MasterPage_Content" runat="server">
+
+
+
+<script>
+    SWW.I("LS", { a: 'testLS' });
+
+</script>
+
+
+
 </asp:Content>

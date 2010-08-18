@@ -79,7 +79,7 @@
     <Content Include="WebFile\SrnprWebJsCommonFWF.js" />
     <Content Include="WebFile\SrnprWebJsDragElementFWF.js" />
     <Content Include="WebFile\SrnprWebJsGridShowFWF.js" />
-    <Content Include="WebFile\SrnprWebJsItemShowFWF.js" />
+    <Content Include="WebFile\SrnprWebJsDataShowFWF.js" />
     <Content Include="WebFile\SrnprWebJsWebWidgetFWF.js" />
   </ItemGroup>
   <ItemGroup>

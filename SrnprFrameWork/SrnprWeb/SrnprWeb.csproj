@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="CommonFunction\GetWebServicesWCF.cs" />
     <Compile Include="CommonFunction\JsonHelper.cs" />
+    <Compile Include="EnumType\WidgetEmumWET.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebEntity\DragFieldWWE.cs" />
     <Compile Include="WebEntity\FileUploadInfoWWE.cs" />
@@ -84,10 +85,12 @@
     <Compile Include="WebEntity\GridShowWWE.cs" />
     <Compile Include="WebEntity\ItemBaseWWE.cs" />
     <Compile Include="WebEntity\ItemKvdWWE.cs" />
+    <Compile Include="WebEntity\ListShowRequestWWE.cs" />
     <Compile Include="WebEntity\PageSerchConfigWWE.cs" />
     <Compile Include="WebEntity\PageShowListWWE.cs" />
     <Compile Include="WebEntity\PageShowWWE.cs" />
     <Compile Include="WebInterface\WidgetRequestWWI.cs" />
+    <Compile Include="WebInterface\WidgetResponseWWI.cs" />
     <Compile Include="WebProcess\GridShowWWP.cs" />
     <Compile Include="WebProcess\ListShowWWP.cs" />
     <Compile Include="WebProcess\PageShowWWP.cs" />

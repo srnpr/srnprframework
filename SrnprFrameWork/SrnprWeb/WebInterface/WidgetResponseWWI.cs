@@ -5,7 +5,12 @@ using System.Text;
 
 namespace SrnprWeb.WebInterface
 {
-    public class WidgetResponseWWI
+    public interface WidgetResponseWWI
     {
+
+        string Guid { get; set; }
+
+
+        EnumType.WidgetType WidgetType { get; }
     }
 }

@@ -86,9 +86,12 @@
     <Compile Include="WebEntity\ItemBaseWWE.cs" />
     <Compile Include="WebEntity\ItemKvdWWE.cs" />
     <Compile Include="WebEntity\ListShowRequestWWE.cs" />
+    <Compile Include="WebEntity\ListShowResponseWWE.cs" />
     <Compile Include="WebEntity\PageSerchConfigWWE.cs" />
     <Compile Include="WebEntity\PageShowListWWE.cs" />
     <Compile Include="WebEntity\PageShowWWE.cs" />
+    <Compile Include="WebEntity\WidgetRequestWWE.cs" />
+    <Compile Include="WebEntity\WidgetResponseWWE.cs" />
     <Compile Include="WebInterface\WidgetRequestWWI.cs" />
     <Compile Include="WebInterface\WidgetResponseWWI.cs" />
     <Compile Include="WebProcess\GridShowWWP.cs" />

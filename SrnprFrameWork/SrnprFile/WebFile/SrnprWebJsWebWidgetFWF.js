@@ -29,6 +29,12 @@ if (!window.SWW)
 
        J_Ready: function(f)
        {
+           ///	<summary>
+           ///  脚本文件加载完成后调用函数
+           ///	</summary>
+           ///	<param name="f" type="string">
+           ///		函数
+           ///	</param>
            this.J().ready(f);
        },
        O: {},
@@ -86,13 +92,19 @@ if (!window.SWW)
                
                SWW.J.getScript(this.BasePath() + u);
            },
-           //系统加载脚本文件
+           //系统加载脚本文件  u：脚本文件名称  n：需要加载的其他脚本  w：window基本名称（全局）
            JS:
            {
-               C: 'SrnprWebJsConfigFWF.js',
+               
+               SWW: 'SrnprWebJsWebWidgetFWF.js',
                Json: 'json2.js',
+
                JQuery: { u: 'jquery-1.4.2.min.js', w: 'jQuery' },
-               GS: { u: 'SrnprWebJsGridShowFWF.js', n: ['IS', 'JQuery', 'Json'] },
+
+               C: 'SrnprWebJsConfigFWF.js',
+               
+               
+               GS: { u: 'SrnprWebJsGridShowFWF.js', n: [ 'JQuery', 'Json'] },
                LS: 'SrnprWebJsListShowFWF.js'
 
            },

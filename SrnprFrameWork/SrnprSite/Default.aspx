@@ -9,8 +9,8 @@
 
 
 <script>
-    SWW.I("LS", { a: 'testLS' });
-
+    SWW.I("LS", { a: 'testLSs' });
+    //SWW.I("LS", { a: 'dddd' });
 </script>
 
 

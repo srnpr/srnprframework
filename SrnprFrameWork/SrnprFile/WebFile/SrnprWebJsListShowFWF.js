@@ -14,6 +14,8 @@ if (SWW && !SWW.LS)
     {
         O_List: {},
 
+
+
         S_Name: 'LS',
 
 
@@ -22,10 +24,20 @@ if (SWW && !SWW.LS)
             return SWW.O[this.S_Name];
         },
 
+
+
+
         F_Init: function(o)
         {
-            var oList = SWW.O.LS;
-            alert(oList[0].a);
+            var oList = this.F_GetObjArray();
+            if (oList)
+            {
+                for (var i = 0, j = oList.length; i < j; i++)
+                {
+
+                    alert(oList[i].a);
+                }
+            }
         }
     }
 
@@ -36,7 +48,6 @@ if (SWW && !SWW.LS)
         SWW.J_Ready(function() { SWW.LS.F_Init() });
     }
 }
-
 
 
 

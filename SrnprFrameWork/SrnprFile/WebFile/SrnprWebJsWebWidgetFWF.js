@@ -89,26 +89,28 @@ if (!window.SWW)
                ///	<param name="u" type="string">
                ///		地址
                ///	</param>
-               
+
                SWW.J.getScript(this.BasePath() + u);
            },
            //系统加载脚本文件  u：脚本文件名称  n：需要加载的其他脚本  w：window基本名称（全局）
            JS:
            {
-               
+
                SWW: 'SrnprWebJsWebWidgetFWF.js',
                Json: 'json2.js',
 
                JQuery: { u: 'jquery-1.4.2.min.js', w: 'jQuery' },
 
                C: 'SrnprWebJsConfigFWF.js',
-               
-               
-               GS: { u: 'SrnprWebJsGridShowFWF.js', n: [ 'JQuery', 'Json'] },
-               LS: 'SrnprWebJsListShowFWF.js'
+
+
+               GS: { u: 'SrnprWebJsGridShowFWF.js', n: ['JQuery', 'Json'] },
+               LS: 'SrnprWebJsListShowFWF.js',
+
+               Temp: {u:'文件地址',n:'需要加载的其他项目',w:'Window属性判断(如果有则不加载)'}
 
            },
-           JSLoad:{}
+           JSLoad: {}
        },
        I: function(t, o)
        {

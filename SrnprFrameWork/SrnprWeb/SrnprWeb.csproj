@@ -88,6 +88,7 @@
     <Compile Include="WebEntity\PageShowListWWE.cs" />
     <Compile Include="WebEntity\PageShowWWE.cs" />
     <Compile Include="WebProcess\GridShowWWP.cs" />
+    <Compile Include="WebProcess\ListShowWWP.cs" />
     <Compile Include="WebProcess\PageShowWWP.cs" />
     <Compile Include="WebProcess\WidgetDragWWP.cs" />
     <Compile Include="WebWidget\CkeditorWWW.cs" />

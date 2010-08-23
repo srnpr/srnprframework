@@ -26,12 +26,14 @@ namespace SrnprWeb.WebEntity
 
         #endregion
 
+
+
         #region WidgetRequestWWI 成员
 
 
-        SrnprWeb.EnumType.WidgetType SrnprWeb.WebInterface.WidgetRequestWWI.WidgetType
+        public SrnprWeb.EnumType.WidgetType WidgetType
         {
-            get { return EnumType.WidgetType.LS; }
+            get { return SrnprWeb.EnumType.WidgetType.LS; }
         }
 
         #endregion

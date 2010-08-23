@@ -91,6 +91,13 @@
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test\Widget_ListShow.aspx.cs">
+      <DependentUpon>Widget_ListShow.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test\Widget_ListShow.aspx.designer.cs">
+      <DependentUpon>Widget_ListShow.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Web\GridShow\Create.aspx.cs">
       <DependentUpon>Create.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -199,10 +206,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Asmx\ItemShowHandler.ashx" />
+    <Content Include="Test\Widget_ListShow.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Test\" />
     <Folder Include="Web\ListShow\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

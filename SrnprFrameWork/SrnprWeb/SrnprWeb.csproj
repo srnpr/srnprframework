@@ -92,6 +92,7 @@
     <Compile Include="WebEntity\PageShowWWE.cs" />
     <Compile Include="WebEntity\WidgetRequestWWE.cs" />
     <Compile Include="WebEntity\WidgetResponseWWE.cs" />
+    <Compile Include="WebInterface\WidgetProcessWWI.cs" />
     <Compile Include="WebInterface\WidgetRequestWWI.cs" />
     <Compile Include="WebInterface\WidgetResponseWWI.cs" />
     <Compile Include="WebProcess\GridShowWWP.cs" />

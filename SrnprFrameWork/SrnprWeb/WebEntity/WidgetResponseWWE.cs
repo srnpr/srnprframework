@@ -12,7 +12,10 @@ namespace SrnprWeb.WebEntity
         public EnumType.WidgetType WidgetType { get; set; }
 
 
-        public WebInterface.WidgetResponseWWI Request { get; set; }
+        public WebInterface.WidgetResponseWWI Response { get; set; }
+
+
+        public WebInterface.WidgetRequestWWI Request { get; set; }
 
     }
 }

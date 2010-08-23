@@ -16,6 +16,13 @@ namespace SrnprSite.Asmx
         {
             context.Response.ContentType = "text/plain";
             context.Response.Write("Hello World");
+
+
+
+
+
+
+
         }
 
         public bool IsReusable
@@ -26,4 +33,9 @@ namespace SrnprSite.Asmx
             }
         }
     }
+
+
+    
+
+
 }

@@ -95,6 +95,7 @@
     <Compile Include="WebProcess\ListShowWWP.cs" />
     <Compile Include="WebProcess\PageShowWWP.cs" />
     <Compile Include="WebProcess\WidgetDragWWP.cs" />
+    <Compile Include="WebProcess\WidgetProcessWWP.cs" />
     <Compile Include="WebWidget\CkeditorWWW.cs" />
     <Compile Include="WebWidget\GridShowWWW.cs" />
     <Compile Include="WebWidget\PageSerchWWW.cs" />

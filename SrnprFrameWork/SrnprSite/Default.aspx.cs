@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Services;
 
 namespace SrnprSite
 {
@@ -11,7 +12,14 @@ namespace SrnprSite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            var f = new SrnprWeb.WebProcess.ListShowWWP();
+           
+
+            string s = SrnprWeb.CommonFunction.JsonHelper.Serialize<SrnprWeb.WebInterface.WidgetRequestWWI>( f.GetRequest());
 
         }
     }
+
+   
+   
 }

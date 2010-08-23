@@ -25,8 +25,6 @@ if (SWW && !SWW.LS)
         },
 
 
-
-
         F_Init: function(o)
         {
             var oList = this.F_GetObjArray();
@@ -34,7 +32,6 @@ if (SWW && !SWW.LS)
             {
                 for (var i = 0, j = oList.length; i < j; i++)
                 {
-
                     alert(oList[i].a);
                 }
             }

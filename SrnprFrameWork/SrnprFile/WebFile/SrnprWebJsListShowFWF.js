@@ -14,21 +14,12 @@ if (SWW && !SWW.LS)
     {
         O_List: {},
 
-
-
         S_Name: 'LS',
-
-
-
 
 
         F_Init: function(o)
         {
-
             alert(o.WidgetType);
-
-           
-
         }
     }
 

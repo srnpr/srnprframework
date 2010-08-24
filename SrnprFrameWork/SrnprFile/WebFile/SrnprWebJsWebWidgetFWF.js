@@ -135,7 +135,9 @@ if (!window.SWW)
 
                if (SWW.O)
                {
+                   //定义是否加载完成
                    var bFlag = true;
+                   
                    //开始判断是否所有加载完成
                    if (bFlag)
                    {
@@ -153,6 +155,7 @@ if (!window.SWW)
                            }
                        }
                    }
+
 
                    //如果所有加载完成
                    if (bFlag)
@@ -212,6 +215,7 @@ if (!window.SWW)
            //判断是否已经存在加载的对象
            if (!this[t] && this.Z.JS[t] && !this.Z.JSLoad[t] && (!this.Z.JS[t].w || !window[this.Z.JS[t].w]))
            {
+               //定义文件
                var u = '';
                if ("string" == typeof (this.Z.JS[t]))
                {
@@ -219,6 +223,7 @@ if (!window.SWW)
                }
                else
                {
+                   //判断是否有需要加载的内容
                    if (this.Z.JS[t].n)
                    {
                        for (var i = 0; i < this.Z.JS[t].n.length; i++)
@@ -235,7 +240,11 @@ if (!window.SWW)
        },
        C:
        {
+
+           InitNowCount: 0,
+           InitMaxCount: 10,
             
+       
             Version:'1.0.0.0'
         }
 

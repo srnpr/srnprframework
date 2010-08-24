@@ -15,7 +15,7 @@ namespace SrnprSite
 
 
 
-           var s= SrnprWeb.WebProcess.WidgetProcessWWP.Response("");
+        
 
            
 

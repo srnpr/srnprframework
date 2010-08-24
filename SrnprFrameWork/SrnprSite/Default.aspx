@@ -9,7 +9,15 @@
 
 
 <script>
-    SWW.I("LS", { a: 'testLSs' });
+
+
+    var t = {};
+    t.MyString = "aa";
+    t.Guid = "ff";
+    t.WidgetType = "LS";
+
+
+    SWW.I("LS", t);
     //SWW.I("LS", { a: 'dddd' });
 </script>
 

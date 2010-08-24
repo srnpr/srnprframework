@@ -19,31 +19,22 @@ if (SWW && !SWW.LS)
         S_Name: 'LS',
 
 
-        F_GetObjArray: function()
-        {
-            return SWW.O[this.S_Name];
-        },
+
 
 
         F_Init: function(o)
         {
-            var oList = this.F_GetObjArray();
-            if (oList)
-            {
-                for (var i = 0, j = oList.length; i < j; i++)
-                {
-                    alert(oList[i].a);
-                }
-            }
+
+            alert(o.WidgetType);
+
+           
+
         }
     }
 
 
 
-    if (SWW.LS.F_GetObjArray())
-    {
-        SWW.J_Ready(function() { SWW.LS.F_Init() });
-    }
+  
 }
 
 

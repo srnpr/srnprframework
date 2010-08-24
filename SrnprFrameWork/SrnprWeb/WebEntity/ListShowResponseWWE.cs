@@ -19,6 +19,7 @@ namespace SrnprWeb.WebEntity
     /// Create Date: 2010-8-24 10:10:20
     /// </summary>
     [DataContract(Namespace = "http://srnprframework/srnprweb")]
+    [KnownType(typeof(ListShowResponseWWE))]
     public class ListShowResponseWWE:ListShowBaseWWE, WebInterface.WidgetResponseWWI
     {
       

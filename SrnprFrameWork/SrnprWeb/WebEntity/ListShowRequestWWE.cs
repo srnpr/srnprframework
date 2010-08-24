@@ -9,42 +9,27 @@ using System.Web.Services;
 
 namespace SrnprWeb.WebEntity
 {
+
+
+    /// <summary>
+    /// 
+    /// Description: 列表显示请求
+    /// Author:Liudpc
+    /// Create Date: 2010-8-24 10:10:05
+    /// </summary>
     [DataContract(Namespace = "http://srnprframework/srnprweb")]
     [KnownType(typeof(ListShowRequestWWE))]
-    
-    public class ListShowRequestWWE:WebInterface.WidgetRequestWWI
+    public class ListShowRequestWWE:ListShowBaseWWE, WebInterface.WidgetRequestWWI
     {
 
-      
+        [DataMember(Order = 101)]
+        public string MyString { get; set; }
 
 
 
 
 
 
-
-        #region WidgetRequestWWI 成员
-        [DataMember(Order = 0)]
         
-        public string Guid
-        {
-            get;
-            set;
-        }
-
-        #endregion
-
-
-
-        #region WidgetRequestWWI 成员
-        
-        [DataMember(Order = 1)]
-        public string WidgetType
-        {
-            get { return "LS"; }
-            set { }
-        }
-
-        #endregion
     }
 }

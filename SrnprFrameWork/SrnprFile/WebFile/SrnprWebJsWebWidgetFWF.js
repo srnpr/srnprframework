@@ -105,9 +105,9 @@ if (!window.SWW)
 
 
                GS: { u: 'SrnprWebJsGridShowFWF.js', n: ['JQuery', 'Json'] },
-               LS: 'SrnprWebJsListShowFWF.js',
+               LS: { u: 'SrnprWebJsListShowFWF.js', n: ['JQuery', 'Json'] },
 
-               Temp: {u:'文件地址',n:'需要加载的其他项目',w:'Window属性判断(如果有则不加载)'}
+               Temp: { u: '文件地址', n: '需要加载的其他项目', w: 'Window属性判断(如果有则不加载)' }
 
            },
            JSLoad: {}

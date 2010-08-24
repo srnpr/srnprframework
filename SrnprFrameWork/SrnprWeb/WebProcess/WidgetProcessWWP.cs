@@ -29,31 +29,31 @@ namespace SrnprWeb.WebProcess
         public static WebEntity.WidgetResponseWWE GetResponse(WebEntity.WidgetRequestWWE req)
         {
 
+
+            
+
+
             WebEntity.WidgetResponseWWE res=new SrnprWeb.WebEntity.WidgetResponseWWE();
+            res.RQ = new List<SrnprWeb.WebInterface.WidgetRequestWWI>();
+            res.RS = new List<SrnprWeb.WebInterface.WidgetResponseWWI>();
 
 
 
-            switch (req.WidgetType)
+            foreach (var t in req.RQ)
             {
-                case SrnprWeb.EnumType.WidgetType.LS:
+                switch (t.WidgetType)
+                {
+                    case "LS":
 
-                    res.Response = LSW.GetResponse(req.Request);
+                        res.RS.Add(LSW.GetResponse(t));
+                        res.RQ.Add(t);
 
-                    break;
-                default:
-                    res.Response = null;
-                    break;
+                        break;
+
+                }
+
 
             }
-
-
-            res.Request = req.Request;
-
-            if (res.Response != null)
-            {
-                res.WidgetType = res.Response.WidgetType;
-            }
-
 
             return res;
 

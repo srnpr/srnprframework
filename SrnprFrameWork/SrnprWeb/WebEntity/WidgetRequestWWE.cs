@@ -15,10 +15,7 @@ namespace SrnprWeb.WebEntity
     {
 
         [DataMember(Order = 0)]
-        public EnumType.WidgetType WidgetType { get; set; }
-
-        [DataMember(Order = 1)]
-        public WebInterface.WidgetRequestWWI Request { get; set; }
+        public List<WebInterface.WidgetRequestWWI> RQ { get; set; }
 
 
 

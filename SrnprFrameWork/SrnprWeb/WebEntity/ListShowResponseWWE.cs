@@ -11,23 +11,16 @@ using System.Web.Services;
 namespace SrnprWeb.WebEntity
 {
 
-    [DataContract(Namespace = "http://srnprframework/srnprweb")]
-    public class ListShowResponseWWE:WebInterface.WidgetResponseWWI
-    {
-        #region WidgetResponseWWI 成员
-        [DataMember(Order = 0)]
-        public string Guid
-        {
-            get;
-            set;
-        }
-        [DataMember(Order = 1)]
-        public string WidgetType
-        {
-            get { return "LS"; }
-            set { }
-        }
 
-        #endregion
+    /// <summary>
+    /// 
+    /// Description: 列表显示回应
+    /// Author:Liudpc
+    /// Create Date: 2010-8-24 10:10:20
+    /// </summary>
+    [DataContract(Namespace = "http://srnprframework/srnprweb")]
+    public class ListShowResponseWWE:ListShowBaseWWE, WebInterface.WidgetResponseWWI
+    {
+      
     }
 }

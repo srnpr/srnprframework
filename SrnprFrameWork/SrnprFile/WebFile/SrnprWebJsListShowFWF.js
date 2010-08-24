@@ -20,6 +20,8 @@ if (SWW && !SWW.LS)
         F_Init: function(o)
         {
             alert(o.WidgetType);
+            
+            
         }
     }
 

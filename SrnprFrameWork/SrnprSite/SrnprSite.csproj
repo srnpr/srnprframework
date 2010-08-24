@@ -66,6 +66,9 @@
     <Compile Include="Asmx\ItemShowHandler.ashx.cs">
       <DependentUpon>ItemShowHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Asmx\WebWidgetHandler.ashx.cs">
+      <DependentUpon>WebWidgetHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="CPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -207,6 +210,9 @@
   <ItemGroup>
     <Content Include="Asmx\ItemShowHandler.ashx" />
     <Content Include="Test\Widget_ListShow.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Asmx\WebWidgetHandler.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

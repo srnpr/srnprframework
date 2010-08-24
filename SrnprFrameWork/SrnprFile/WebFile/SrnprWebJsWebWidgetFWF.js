@@ -11,6 +11,7 @@ Description: 核心类文件 所有widget使用的初始化及加载文件
             I：初始化
             F：函数
             Z：基类使用自身操作
+            M：消息系列
             
             
             
@@ -23,6 +24,51 @@ if (!window.SWW)
 {
     window.SWW =
    {
+
+       //配置
+       C:
+       {
+           //系统加载脚本文件  u：脚本文件名称  n：需要加载的其他脚本  w：window基本名称（全局）
+           JS:
+           {
+
+               Json: 'json2.js',
+               JQuery: { u: 'jquery-1.4.2.min.js', w: 'jQuery' },
+               C: 'SrnprWebJsConfigFWF.js',
+               GS: { u: 'SrnprWebJsGridShowFWF.js', n: ['JQuery', 'Json'] },
+               LS: { u: 'SrnprWebJsListShowFWF.js', n: ['JQuery', 'Json'] },
+               SWW: 'SrnprWebJsWebWidgetFWF.js'
+           },
+           //已经加载的js配置
+           JSLoad: {},
+
+
+           //初始化时配置
+           Init:
+           {
+               //当前加载次数
+               N: 0,
+               //最大加载次数
+               M: 20,
+               //加载时间间隔
+               T: 100
+           },
+
+           Version: '1.0.0.0'
+       },
+       //消息系列
+       M:
+        {
+            //系统错误时提示消息
+            SE:
+            {
+                ET: '【系统消息】：系统出现异常错误，请联系管理员',
+                EN: '\n【错误标识】：',
+                EM: '\n【错误内容】：',
+                IM: '系统尝试初始化失败！'
+            }
+
+        },
 
        //Jquery适配器  
        J: jQuery,
@@ -37,7 +83,7 @@ if (!window.SWW)
            ///	</param>
            this.J().ready(f);
        },
-       O: {},
+       O: { Req: {}, Res: {} },
        F:
        {
            Alert: function(m)
@@ -50,7 +96,7 @@ if (!window.SWW)
                ///	</param>
                alert(m);
            },
-           SystemError: function(n, m, e)
+           Error: function(n, m, e)
            {
                ///	<summary>
                ///  出现严重错误时提示
@@ -64,7 +110,8 @@ if (!window.SWW)
                ///	<param name="e" type="string">
                ///		解决方案
                ///	</param>
-               this.Alert('【系统消息】：系统出现异常错误，请联系管理员' + (n ? '\n【错误标识】：' + n : '') + (m ? '\n【错误内容】：' + m : ''));
+
+               this.Alert(SWW.M.SE.ET + (n ? SWW.M.SE.EN + n : '') + (m ? SWW.M.SE.EM + m : ''));
            }
        },
        Z:
@@ -108,24 +155,23 @@ if (!window.SWW)
 
                SWW.J.getScript(this.BasePath() + u);
            },
-           //系统加载脚本文件  u：脚本文件名称  n：需要加载的其他脚本  w：window基本名称（全局）
-           JS:
+
+           Ajax: function(e)
            {
-
-               SWW: 'SrnprWebJsWebWidgetFWF.js',
-               Json: 'json2.js',
-
-               JQuery: { u: 'jquery-1.4.2.min.js', w: 'jQuery' },
-
-               C: 'SrnprWebJsConfigFWF.js',
-
-
-               GS: { u: 'SrnprWebJsGridShowFWF.js', n: ['JQuery', 'Json'] },
-               LS: { u: 'SrnprWebJsListShowFWF.js', n: ['JQuery', 'Json'] },
-
-               Temp: { u: '文件地址', n: '需要加载的其他项目', w: 'Window属性判断(如果有则不加载)' }
-
+               var t = {};
+               t.RQ = e;
+               alert(JSON.stringify(t));
+               SWW.J.ajax(
+                {
+                    url: "/Asmx/GridShowHander.ashx",
+                    type: "POST",
+                    data: "json=" + JSON.stringify(t),
+                    success: function(x) { SWJGSF.AjaxSuccess(t, x); },
+                    error: function(XMLHttpRequest, textStatus) { SWW.F.Error('sww.z.ajax', textStatus) }
+                });
            },
+
+
            Init: function()
            {
                ///	<summary>
@@ -137,15 +183,13 @@ if (!window.SWW)
                {
                    //定义是否加载完成
                    var bFlag = true;
-                   
+
                    //开始判断是否所有加载完成
                    if (bFlag)
                    {
-                       for (var p in SWW.O)
+                       for (var p in SWW.O.Req)
                        {
-                           var t = p.toString();
-
-                           for (var i = 0, j = SWW.O[t].length; i < j; i++)
+                           for (var i = 0, j = SWW.O.Req[p].length; i < j; i++)
                            {
                                if (!SWW[p])
                                {
@@ -156,34 +200,43 @@ if (!window.SWW)
                        }
                    }
 
+                   SWW.C.Init.N++;
 
-                   //如果所有加载完成
-                   if (bFlag)
+                   if (SWW.C.Init.N < SWW.C.Init.M)
                    {
-                       for (var p in SWW.O)
-                       {
-                           var t = p.toString();
 
-                           for (var i = 0, j = SWW.O[t].length; i < j; i++)
+                       //如果所有加载完成
+                       if (bFlag)
+                       {
+
+                           var sub = [];
+                           for (var t in SWW.O.Req)
                            {
-                               SWW[t].F_Init(SWW.O[t][i]);
+                               for (var n = 0, m = SWW.O.Req[t].length; n < m; n++)
+                               {
+                                   //SWW[t].F_Init(SWW.O.Req[t][n]);
+                                   sub.push(SWW.O.Req[t][n]);
+                               }
                            }
+
+                           this.Ajax(sub);
+
+                       }
+                       else
+                       {
+                           //重新调用执行
+                           setTimeout("SWW.Z.Init()", SWW.C.Init.T);
                        }
                    }
                    else
                    {
-                       //重新调用执行
-                       setTimeout("SWW.Z.Init()", 100);
+                       SWW.F.Error('sww.z.init', SWW.M.SE.IM);
                    }
                }
 
 
 
-           },
-
-
-
-           JSLoad: {}
+           }
        },
        I: function(t, o)
        {
@@ -200,72 +253,53 @@ if (!window.SWW)
 
 
 
+
            //判断是否存在参数
            if (o)
            {
-               if (!this.O[t])
+               if (!this.O.Req[t])
                {
-                   this.O[t] = [];
+                   this.O.Req[t] = [];
                }
 
-               this.O[t].push(o);
+               this.O.Req[t].push(o);
            }
 
-
            //判断是否已经存在加载的对象
-           if (!this[t] && this.Z.JS[t] && !this.Z.JSLoad[t] && (!this.Z.JS[t].w || !window[this.Z.JS[t].w]))
+           if (!this[t] && this.C.JS[t] && !this.C.JSLoad[t] && (!this.C.JS[t].w || !window[this.C.JS[t].w]))
            {
                //定义文件
                var u = '';
-               if ("string" == typeof (this.Z.JS[t]))
+               if ("string" == typeof (this.C.JS[t]))
                {
-                   u = this.Z.JS[t];
+                   u = this.C.JS[t];
                }
                else
                {
                    //判断是否有需要加载的内容
-                   if (this.Z.JS[t].n)
+                   if (this.C.JS[t].n)
                    {
-                       for (var i = 0; i < this.Z.JS[t].n.length; i++)
+                       for (var i = 0; i < this.C.JS[t].n.length; i++)
                        {
-                           this.I(this.Z.JS[t].n[i]);
+                           this.I(this.C.JS[t].n[i]);
                        }
                    }
-                   u = this.Z.JS[t].u;
+                   u = this.C.JS[t].u;
                }
-               this.Z.JSLoad[t] = Date().toString();
+               this.C.JSLoad[t] = Date().toString();
                this.Z.AddScript(u);
            }
 
-       },
-       C:
-       {
+       }
 
-           InitNowCount: 0,
-           InitMaxCount: 10,
-            
-       
-            Version:'1.0.0.0'
-        }
+
+   }
 
 
 }
 
 
 
-   
 
-
-    //系统初始化时加载
-   SWW.J_Ready(function()
-   {
-       SWW.Z.Init();
-   }
-   );
-  
-
-}
-
-
-
+SWW.J_Ready(function() { SWW.Z.Init();SWW.F.Error('dd') });
 

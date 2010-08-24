@@ -2,9 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization.Json;
+using System.Runtime.Serialization;
+using System.Web;
+using System.Web.Services;
+using SrnprWeb.WebEntity;
 
 namespace SrnprWeb.WebInterface
 {
+    
+   
     public interface WidgetRequestWWI
     {
 
@@ -12,7 +19,7 @@ namespace SrnprWeb.WebInterface
          string Guid { get; set; }
 
 
-         EnumType.WidgetType WidgetType { get;  }
+         string WidgetType { get; set; }
 
     }
 }

@@ -2,28 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization.Json;
+using System.Runtime.Serialization;
+using System.Web;
+using System.Web.Services;
+
 
 namespace SrnprWeb.WebEntity
 {
+
+    [DataContract(Namespace = "http://srnprframework/srnprweb")]
     public class ListShowResponseWWE:WebInterface.WidgetResponseWWI
     {
         #region WidgetResponseWWI 成员
-
+        [DataMember(Order = 0)]
         public string Guid
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get;
+            set;
         }
-
-        public SrnprWeb.EnumType.WidgetType WidgetType
+        [DataMember(Order = 1)]
+        public string WidgetType
         {
-            get { return SrnprWeb.EnumType.WidgetType.LS; }
+            get { return "LS"; }
+            set { }
         }
 
         #endregion

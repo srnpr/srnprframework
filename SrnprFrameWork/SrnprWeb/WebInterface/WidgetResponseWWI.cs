@@ -11,6 +11,6 @@ namespace SrnprWeb.WebInterface
         string Guid { get; set; }
 
 
-        EnumType.WidgetType WidgetType { get; }
+        string WidgetType { get; set; }
     }
 }

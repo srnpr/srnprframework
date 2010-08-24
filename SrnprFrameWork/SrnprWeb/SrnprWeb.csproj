@@ -85,6 +85,7 @@
     <Compile Include="WebEntity\GridShowWWE.cs" />
     <Compile Include="WebEntity\ItemBaseWWE.cs" />
     <Compile Include="WebEntity\ItemKvdWWE.cs" />
+    <Compile Include="WebEntity\ListShowBaseWWE.cs" />
     <Compile Include="WebEntity\ListShowRequestWWE.cs" />
     <Compile Include="WebEntity\ListShowResponseWWE.cs" />
     <Compile Include="WebEntity\PageSerchConfigWWE.cs" />

@@ -12,6 +12,7 @@
 
 
     var t = {};
+    t.__type = "ListShowRequestWWE:http:\/\/srnprframework\/srnprweb";
     t.MyString = "aa";
     t.Guid = "ff";
     t.WidgetType = "LS";

@@ -19,10 +19,16 @@ if (SWW && !SWW.LS)
 
         F_Init: function(o)
         {
-            alert(o.WidgetType);
-            
-            
+            //alert(o.WidgetType);
+        },
+
+        F_Success: function(q,s)
+        {
+            alert(q.WidgetType);
         }
+
+
+
     }
 
 

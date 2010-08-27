@@ -31,14 +31,26 @@ if (!window.SWW)
            //系统加载脚本文件  u：脚本文件名称  n：需要加载的其他脚本  w：window基本名称（全局）
            JS:
            {
-
                Json: 'json2.js',
                JQuery: { u: 'jquery-1.4.2.min.js', w: 'jQuery' },
                C: 'SrnprWebJsConfigFWF.js',
                GS: { u: 'SrnprWebJsGridShowFWF.js', n: ['JQuery', 'Json'] },
-               LS: { u: 'SrnprWebJsListShowFWF.js', n: ['JQuery', 'Json'] },
+               LS: { u: 'SrnprWebJsListShowFWF.js', n: ['JQuery', 'Json'], q: 'ListShowRequestWWE' },
                SWW: 'SrnprWebJsWebWidgetFWF.js'
            },
+            
+            //Ajax相关
+           Ajax:
+           {
+               Url: '/Asmx/WebWidgetHandler.ashx'
+           },
+           
+           
+           
+           //基本命名空间
+           BaseNamespace: 'http://srnprframework/srnprweb',
+           
+           
            //已经加载的js配置
            JSLoad: {},
 
@@ -65,7 +77,8 @@ if (!window.SWW)
                 ET: '【系统消息】：系统出现异常错误，请联系管理员',
                 EN: '\n【错误标识】：',
                 EM: '\n【错误内容】：',
-                IM: '系统尝试初始化失败！'
+                IM: '系统尝试初始化失败！',
+                AS:'无法加载类型'
             }
 
         },
@@ -116,6 +129,7 @@ if (!window.SWW)
        },
        Z:
        {
+       
            BasePath: function()
            {
                ///	<summary>
@@ -158,17 +172,49 @@ if (!window.SWW)
 
            Ajax: function(e)
            {
+               ///	<summary>
+               ///  提交请求
+               ///	</summary>
+               ///	<param name="e" type="string">
+               ///		调用的元素数组
+               ///	</param>
+           
+           
                var t = {};
                t.RQ = e;
-               alert(JSON.stringify(t));
                SWW.J.ajax(
                 {
-                    url: "/Asmx/GridShowHander.ashx",
+                    url: SWW.C.Ajax.Url,
                     type: "POST",
                     data: "json=" + JSON.stringify(t),
-                    success: function(x) { SWJGSF.AjaxSuccess(t, x); },
+                    success: function(s) { SWW.Z.AjaxSuccess(s); },
                     error: function(XMLHttpRequest, textStatus) { SWW.F.Error('sww.z.ajax', textStatus) }
                 });
+           },
+
+           AjaxSuccess: function(s)
+           {
+               ///	<summary>
+               ///  执行成功时调用
+               ///	</summary>
+               ///	<param name="s" type="string">
+               ///		响应内容
+               ///	</param>
+           
+               SWW.O.Res = JSON.parse(s);
+
+               for (var i = 0, j = SWW.O.Res.RS.length; i < j; i++)
+               {
+                   if (SWW.O.Res.RS[i].WidgetType && SWW[SWW.O.Res.RS[i].WidgetType])
+                   {
+                       SWW[SWW.O.Res.RS[i].WidgetType].F_Success(SWW.O.Res.RQ[i], SWW.O.Res.RS[i]);
+                   }
+                   else
+                   {
+                       SWW.F.Error('sww.z.ajaxsuccess', x);
+                   }
+
+               }
            },
 
 
@@ -200,8 +246,10 @@ if (!window.SWW)
                        }
                    }
 
+                   //累加当前调用次数
                    SWW.C.Init.N++;
 
+                    //判断是否超过最大限制
                    if (SWW.C.Init.N < SWW.C.Init.M)
                    {
 
@@ -215,6 +263,11 @@ if (!window.SWW)
                                for (var n = 0, m = SWW.O.Req[t].length; n < m; n++)
                                {
                                    //SWW[t].F_Init(SWW.O.Req[t][n]);
+
+                                   if (SWW.C.JS[t] && SWW.C.JS[t].q)
+                                   {
+                                       SWW.O.Req[t][n].__type = SWW.C.JS[t].q + ':' + SWW.C.BaseNamespace;
+                                   }
                                    sub.push(SWW.O.Req[t][n]);
                                }
                            }
@@ -301,5 +354,5 @@ if (!window.SWW)
 
 
 
-SWW.J_Ready(function() { SWW.Z.Init();SWW.F.Error('dd') });
+SWW.J_Ready(function() { SWW.Z.Init(); });
 

@@ -27,7 +27,7 @@ namespace SrnprWeb.WebProcess
         /// </summary>
         /// <param name="req"></param>
         /// <returns></returns>
-        public static WebEntity.WidgetResponseWWE GetResponse(WebEntity.WidgetRequestWWE req)
+        public static WebEntity.WidgetResponseWWE GetResponse(WebEntity.WidgetRequestWWE req, Dictionary<int, SrnprWeb.WebEntity.WidgetProcessWWE> dic)
         {
 
 
@@ -63,23 +63,51 @@ namespace SrnprWeb.WebProcess
 
 
 
+        /// <summary>
+        /// 
+        /// Description: 返回输出信息
+        /// Author:Liudpc
+        /// Create Date: 2010-8-27 10:42:59
+        /// </summary>
+        /// <param name="sRequest"></param>
+        /// <returns></returns>
         public static string Response(string sRequest)
         {
-            return CommonFunction.JsonHelper.Serialize<WebEntity.WidgetResponseWWE>(GetResponse(CommonFunction.JsonHelper.Deserialize<WebEntity.WidgetRequestWWE>(sRequest)));
+            return CommonFunction.JsonHelper.Serialize<WebEntity.WidgetResponseWWE>(GetResponse(CommonFunction.JsonHelper.Deserialize<WebEntity.WidgetRequestWWE>(sRequest),null));
 
 
         }
 
 
+
+
+        /// <summary>
+        /// 
+        /// Description: 反序列化输入参数
+        /// Author:Liudpc
+        /// Create Date: 2010-8-27 10:42:41
+        /// </summary>
+        /// <param name="sRequest"></param>
+        /// <returns></returns>
         public static WidgetRequestWWE DeserializeRequest(string sRequest)
         {
             return CommonFunction.JsonHelper.Deserialize<WebEntity.WidgetRequestWWE>(sRequest);
         }
 
 
-        public static string Response(WidgetRequestWWE req)
+
+
+        /// <summary>
+        /// 
+        /// Description: 返回输出信息
+        /// Author:Liudpc
+        /// Create Date: 2010-8-27 10:39:13
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        public static string Response(WidgetRequestWWE req,Dictionary<int, SrnprWeb.WebEntity.WidgetProcessWWE> dic)
         {
-            return CommonFunction.JsonHelper.Serialize<WebEntity.WidgetResponseWWE>(GetResponse(req));
+            return CommonFunction.JsonHelper.Serialize<WebEntity.WidgetResponseWWE>(GetResponse(req,dic));
 
 
         }

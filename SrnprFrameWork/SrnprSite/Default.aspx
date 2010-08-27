@@ -16,6 +16,7 @@
     t.MyString = "aa";
     t.Guid = "ff";
     t.WidgetType = "LS";
+    t.Id = "abc";
 
 
     SWW.I("LS", t);

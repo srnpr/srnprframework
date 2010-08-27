@@ -27,14 +27,14 @@ namespace SrnprSite.Asmx
 
 
 
-            
-
-          
 
 
 
 
-            string sRes = SrnprWeb.WebProcess.WidgetProcessWWP.Response(req);
+
+
+
+            string sRes = SrnprWeb.WebProcess.WidgetProcessWWP.Response(req, DicProcess(req));
 
             context.Response.Write(sRes);
         }
@@ -42,6 +42,14 @@ namespace SrnprSite.Asmx
 
 
 
+        /// <summary>
+        /// 
+        /// Description: 返回附加的数据
+        /// Author:Liudpc
+        /// Create Date: 2010-8-27 10:38:44
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
         public Dictionary<int, SrnprWeb.WebEntity.WidgetProcessWWE> DicProcess(SrnprWeb.WebEntity.WidgetRequestWWE req)
         {
 
@@ -57,13 +65,14 @@ namespace SrnprSite.Asmx
 
                     case "LS":
 
-                        switch (req.RQ[i].Id)
+                        DataTable dt = GetTableById(req.RQ[i].Id);
+
+                        if (dt != null)
                         {
-                            case "":
-
-
-                                break;
+                            dic[i] = new SrnprWeb.WebEntity.WidgetProcessWWE();
+                            dic[i].DataInfo = dt;
                         }
+
                         break;
                 }
 
@@ -81,6 +90,35 @@ namespace SrnprSite.Asmx
             return dic;
         }
 
+
+
+
+        public DataTable GetTableById(string sId)
+        {
+
+            DataTable dt = new DataTable();
+
+            switch (sId)
+            {
+                case "abc":
+
+
+                    List<SrnprWeb.WebEntity.ItemKvdWWE> kvd = new List<SrnprWeb.WebEntity.ItemKvdWWE>();
+                    kvd.Add(new SrnprWeb.WebEntity.ItemKvdWWE() { K = "kkk", V = "vvv", D = "ddd" });
+
+                    dt = SrnprCommon.CommonFunction.ListStaticCCF.ListToDataTable<SrnprWeb.WebEntity.ItemKvdWWE>(kvd);
+
+
+
+                    break;
+                case "":
+
+                    break;
+            }
+
+            return dt;
+
+        }
 
 
 

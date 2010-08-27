@@ -19,7 +19,7 @@ namespace SrnprWeb.WebEntity
     /// Create Date: 2010-8-24 10:09:07
     /// </summary>
     [DataContract(Namespace = "http://srnprframework/srnprweb")]
-    public class ListShowBaseWWE
+    public class WidgetShowBaseWWE
     {
 
         /// <summary>
@@ -48,6 +48,20 @@ namespace SrnprWeb.WebEntity
         {
             get { return "LS"; }
             set { }
+        }
+
+
+
+        /// <summary>
+        /// Description: 编号
+        /// Author:Liudpc
+        /// Create Date: 2010-8-27 10:32:16
+        /// </summary>
+        [DataMember(Order = 2)]
+        public string Id
+        {
+            get;
+            set;
         }
 
        

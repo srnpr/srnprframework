@@ -19,7 +19,7 @@ namespace SrnprWeb.WebEntity
     /// </summary>
     [DataContract(Namespace = "http://srnprframework/srnprweb")]
     [KnownType(typeof(ListShowRequestWWE))]
-    public class ListShowRequestWWE:ListShowBaseWWE, WebInterface.WidgetRequestWWI
+    public class ListShowRequestWWE:WidgetShowBaseWWE, WebInterface.WidgetRequestWWI
     {
 
         [DataMember(Order = 101)]

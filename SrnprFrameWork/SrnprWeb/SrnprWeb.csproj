@@ -85,12 +85,13 @@
     <Compile Include="WebEntity\GridShowWWE.cs" />
     <Compile Include="WebEntity\ItemBaseWWE.cs" />
     <Compile Include="WebEntity\ItemKvdWWE.cs" />
-    <Compile Include="WebEntity\ListShowBaseWWE.cs" />
+    <Compile Include="WebEntity\WidgetShowBaseWWE.cs" />
     <Compile Include="WebEntity\ListShowRequestWWE.cs" />
     <Compile Include="WebEntity\ListShowResponseWWE.cs" />
     <Compile Include="WebEntity\PageSerchConfigWWE.cs" />
     <Compile Include="WebEntity\PageShowListWWE.cs" />
     <Compile Include="WebEntity\PageShowWWE.cs" />
+    <Compile Include="WebEntity\WidgetProcessWWE.cs" />
     <Compile Include="WebEntity\WidgetRequestWWE.cs" />
     <Compile Include="WebEntity\WidgetResponseWWE.cs" />
     <Compile Include="WebInterface\WidgetProcessWWI.cs" />

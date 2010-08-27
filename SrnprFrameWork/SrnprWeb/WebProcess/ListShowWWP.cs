@@ -10,11 +10,20 @@ namespace SrnprWeb.WebProcess
     {
 
 
+
+       
+
         #region WidgetProcessWWI 成员
 
         public WebInterface.WidgetResponseWWI GetResponse(WebInterface.WidgetRequestWWI req)
         {
             ListShowResponseWWE res = new ListShowResponseWWE();
+
+
+
+
+
+
 
             return res;
         }

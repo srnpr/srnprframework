@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SrnprWeb.WebEntity;
 
 namespace SrnprWeb.WebProcess
 {
@@ -65,6 +66,20 @@ namespace SrnprWeb.WebProcess
         public static string Response(string sRequest)
         {
             return CommonFunction.JsonHelper.Serialize<WebEntity.WidgetResponseWWE>(GetResponse(CommonFunction.JsonHelper.Deserialize<WebEntity.WidgetRequestWWE>(sRequest)));
+
+
+        }
+
+
+        public static WidgetRequestWWE DeserializeRequest(string sRequest)
+        {
+            return CommonFunction.JsonHelper.Deserialize<WebEntity.WidgetRequestWWE>(sRequest);
+        }
+
+
+        public static string Response(WidgetRequestWWE req)
+        {
+            return CommonFunction.JsonHelper.Serialize<WebEntity.WidgetResponseWWE>(GetResponse(req));
 
 
         }

@@ -6,18 +6,23 @@
 <head runat="server">
     <title></title>
     <link type="text/css" rel="Stylesheet" href="/Skin/Blue/MasterPageCss.css" />
+
     <script type="text/javascript" src="/Modules/Master/MasterPage.js"></script>
-    
-    
+
     <script type="text/javascript" src="/WebFile/jquery-1.4.2.min.js"></script>
+
     <script type="text/javascript" src="/WebFile/json2.js"></script>
+
     <script type="text/javascript" src="/WebFile/SrnprWebJsGridShowFWF.js"></script>
+
     <script type="text/javascript" src="/WebFile/SrnprWebJsWebWidgetFWF.js"></script>
+
     <script type="text/javascript" src="http://f.xgou.com/AtGang/Common/js/SrnprNetJsAllAlpha.js"></script>
+
     <link href="/WebFile/SrnprWebCSSGridShowFWF.css" type="text/css" rel="Stylesheet" />
     <link href="/WebFile/SrnprWebCSSPageShowFWF.css" type="text/css" rel="Stylesheet" />
-    <link href="http://f.xgou.com/AtGang/Manage/css/ManageAlpha.css" rel="stylesheet" type="text/css" />
-    
+    <link href="http://f.xgou.com/AtGang/Manage/css/ManageAlpha.css" rel="stylesheet"
+        type="text/css" />
     <asp:ContentPlaceHolder ID="MasterPage_Head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -27,7 +32,7 @@
             width: 100%;">
             <tbody>
                 <tr>
-                    <td  colspan="3">
+                    <td colspan="3">
                         <div class="srdmaintop">
                             <div class="srdmaintopcenter">
                             </div>
@@ -56,7 +61,7 @@
                                 <div>
                                     <a href="#">页面显示控件</a></div>
                                 <ul>
-                                <li><a href="/Web/PageShow/List.aspx">页面显示列表</a></li>
+                                    <li><a href="/Web/PageShow/List.aspx">页面显示列表</a></li>
                                     <li><a href="/Web/PageShow/CreatePage.aspx">创建页面根据模板</a></li>
                                 </ul>
                                 <div>
@@ -64,7 +69,13 @@
                                 <ul>
                                     <li><a href="/Web/GridShow/List.aspx">配置数据显示列表</a></li>
                                     <li><a href="/Web/GridShow/Create.aspx">创建数据显示</a></li>
-                                    </ul>
+                                </ul>
+                                <div>
+                                    <a href="#">数据列表控件</a></div>
+                                <ul>
+                                    <li><a href="/Web/ListShow/Test.aspx">测试数据返回</a></li>
+                                   
+                                </ul>
                             </div>
                         </div>
                     </td>
@@ -72,16 +83,15 @@
                         <div class="srdmainhidden">
                         </div>
                     </td>
-                    <td valign="top" style="width:100%">
-                    <div>
-                        <asp:ContentPlaceHolder ID="MasterPage_Title" runat="server">
-                        </asp:ContentPlaceHolder>
+                    <td valign="top" style="width: 100%">
+                        <div>
+                            <asp:ContentPlaceHolder ID="MasterPage_Title" runat="server">
+                            </asp:ContentPlaceHolder>
                         </div>
-                         <div id="srdmainmessage">
-                        
+                        <div id="srdmainmessage">
                         </div>
-                        <div style="clear:both"></div>
-                       
+                        <div style="clear: both">
+                        </div>
                         <div class="srdmaincenter">
                             <form id="form1" runat="server">
                             <asp:ContentPlaceHolder ID="MasterPage_Content" runat="server">
@@ -103,6 +113,5 @@
             </tbody>
         </table>
     </div>
-    
 </body>
 </html>

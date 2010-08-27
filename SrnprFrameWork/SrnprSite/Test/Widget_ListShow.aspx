@@ -1,18 +1,15 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Widget_ListShow.aspx.cs" Inherits="SrnprSite.Test.Widget_ListShow" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"   MasterPageFile="~/Master/MasterPage.Master" CodeBehind="Widget_ListShow.aspx.cs" Inherits="SrnprSite.Test.Widget_ListShow" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head runat="server">
-    <title></title>
-    
-    <script type="text/javascript" src="/WebFile/SrnprWebJsWebWidgetFWF.js"></script>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-    
+<asp:Content ID="Content3" ContentPlaceHolderID="MasterPage_Content" runat="server">
+<div>
+  
+		
+		
+				
+				
+			
+		
     </div>
-    </form>
-</body>
+</asp:Content>
+
 </html>

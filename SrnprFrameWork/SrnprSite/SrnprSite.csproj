@@ -129,6 +129,13 @@
     <Compile Include="Web\GridShow\Test.aspx.designer.cs">
       <DependentUpon>Test.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Web\ListShow\Test.aspx.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\ListShow\Test.aspx.designer.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Web\PageShow\CreateFromCk.aspx.cs">
       <DependentUpon>CreateFromCk.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -213,10 +220,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Asmx\WebWidgetHandler.ashx" />
+    <Content Include="Web\ListShow\Test.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Web\ListShow\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

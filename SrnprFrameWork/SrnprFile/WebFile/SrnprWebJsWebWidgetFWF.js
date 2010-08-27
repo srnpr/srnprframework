@@ -12,6 +12,7 @@ Description: 核心类文件 所有widget使用的初始化及加载文件
             F：函数
             Z：基类使用自身操作
             M：消息系列
+            A：扩展系列
             
             
             
@@ -38,19 +39,19 @@ if (!window.SWW)
                LS: { u: 'SrnprWebJsListShowFWF.js', n: ['JQuery', 'Json'], q: 'ListShowRequestWWE' },
                SWW: 'SrnprWebJsWebWidgetFWF.js'
            },
-            
-            //Ajax相关
+
+           //Ajax相关
            Ajax:
            {
                Url: '/Asmx/WebWidgetHandler.ashx'
            },
-           
-           
-           
+
+
+
            //基本命名空间
            BaseNamespace: 'http://srnprframework/srnprweb',
-           
-           
+
+
            //已经加载的js配置
            JSLoad: {},
 
@@ -63,7 +64,9 @@ if (!window.SWW)
                //最大加载次数
                M: 20,
                //加载时间间隔
-               T: 100
+               T: 100,
+               //是否加载
+               LoadFlag: false
            },
 
            Version: '1.0.0.0'
@@ -78,7 +81,7 @@ if (!window.SWW)
                 EN: '\n【错误标识】：',
                 EM: '\n【错误内容】：',
                 IM: '系统尝试初始化失败！',
-                AS:'无法加载类型'
+                AS: '无法加载类型'
             }
 
         },
@@ -96,7 +99,38 @@ if (!window.SWW)
            ///	</param>
            this.J().ready(f);
        },
-       O: { Req: {}, Res: {} },
+       O: { Req: {}, Res: {}, AF: {} },
+       A: function(t, f, id, fu)
+       {
+           ///	<summary>
+           ///  扩展调用接口
+           ///	</summary>
+           ///	<param name="t" type="string">
+           ///		类型
+           ///	</param>
+           ///	<param name="f" type="string">
+           ///		函数操作 目前支持：Success(返回值成功时)
+           ///	</param>
+           ///	<param name="id" type="string">
+           ///		编号
+           ///	</param>
+           ///	<param name="fu" type="string">
+           ///		函数  扩展当操作执行时的执行函数 不同函数所需参数不一致
+           ///	</param>
+
+
+           if (!SWW.O.AF[t])
+           {
+               SWW.O.AF[t] = {};
+           }
+           if (!SWW.O.AF[t][f])
+           {
+               SWW.O.AF[t][f] = {};
+           }
+           SWW.O.AF[t][f][id] = fu;
+
+
+       },
        F:
        {
            Alert: function(m)
@@ -129,7 +163,7 @@ if (!window.SWW)
        },
        Z:
        {
-       
+
            BasePath: function()
            {
                ///	<summary>
@@ -178,8 +212,8 @@ if (!window.SWW)
                ///	<param name="e" type="string">
                ///		调用的元素数组
                ///	</param>
-           
-           
+
+
                var t = {};
                t.RQ = e;
                SWW.J.ajax(
@@ -200,7 +234,7 @@ if (!window.SWW)
                ///	<param name="s" type="string">
                ///		响应内容
                ///	</param>
-           
+
                SWW.O.Res = JSON.parse(s);
 
                for (var i = 0, j = SWW.O.Res.RS.length; i < j; i++)
@@ -208,12 +242,36 @@ if (!window.SWW)
                    if (SWW.O.Res.RS[i].WidgetType && SWW[SWW.O.Res.RS[i].WidgetType])
                    {
                        SWW[SWW.O.Res.RS[i].WidgetType].F_Success(SWW.O.Res.RQ[i], SWW.O.Res.RS[i]);
+
+
+
+                       //加载成功时调用
+                       if (SWW.O.AF[SWW.O.Res.RS[i].WidgetType] && SWW.O.AF[SWW.O.Res.RS[i].WidgetType].Success[SWW.O.Res.RQ[i].Id])
+                       {
+                           SWW.O.AF[SWW.O.Res.RS[i].WidgetType].Success[SWW.O.Res.RQ[i].Id](SWW.O.Res.RQ[i], SWW.O.Res.RS[i], s);
+                       }
+
+
                    }
                    else
                    {
                        SWW.F.Error('sww.z.ajaxsuccess', x);
                    }
 
+               }
+           },
+
+           CheckInit: function()
+           {
+               ///	<summary>
+               ///  判断系统初始化加载加载
+               ///	</summary>
+               
+               
+               if (!SWW.C.Init.LoadFlag)
+               {
+                   SWW.J_Ready(function() { SWW.Z.Init(); });
+                   SWW.C.Init.LoadFlag = true;
                }
            },
 
@@ -249,7 +307,7 @@ if (!window.SWW)
                    //累加当前调用次数
                    SWW.C.Init.N++;
 
-                    //判断是否超过最大限制
+                   //判断是否超过最大限制
                    if (SWW.C.Init.N < SWW.C.Init.M)
                    {
 
@@ -341,7 +399,16 @@ if (!window.SWW)
                }
                this.C.JSLoad[t] = Date().toString();
                this.Z.AddScript(u);
+
+
            }
+
+
+
+
+
+           this.Z.CheckInit();
+
 
        }
 
@@ -354,5 +421,4 @@ if (!window.SWW)
 
 
 
-SWW.J_Ready(function() { SWW.Z.Init(); });
 

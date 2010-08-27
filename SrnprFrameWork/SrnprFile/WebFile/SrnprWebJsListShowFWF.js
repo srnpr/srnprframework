@@ -24,7 +24,7 @@ if (SWW && !SWW.LS)
 
         F_Success: function(q,s)
         {
-            alert(q.WidgetType);
+            //alert(q.WidgetType);
         }
 
 

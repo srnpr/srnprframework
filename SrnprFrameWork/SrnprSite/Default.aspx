@@ -8,20 +8,6 @@
 
 
 
-<script>
-
-
-    var t = {};
-    t.__type = "ListShowRequestWWE:http:\/\/srnprframework\/srnprweb";
-    t.MyString = "aa";
-    t.Guid = "ff";
-    t.WidgetType = "LS";
-    t.Id = "abc";
-
-
-    SWW.I("LS", t);
-    //SWW.I("LS", { a: 'dddd' });
-</script>
 
 
 

@@ -11,6 +11,6 @@
 namespace SrnprSite.Web.ListShow {
     
     
-    public partial class GetResponse {
+    public partial class Test {
     }
 }

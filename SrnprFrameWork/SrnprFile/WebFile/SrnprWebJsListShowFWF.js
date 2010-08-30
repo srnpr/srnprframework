@@ -37,7 +37,7 @@ if (SWW && !SWW.LS)
                     {
                         aHtml.push('<option value="' + s.Kvd[i].V + '">' + s.Kvd[i].K + '</option>');
                     }
-                    sShow = '<select>' + aHtml.join('') + '</select>';
+                    sShow = '<select name="'+q.PId+'">' + aHtml.join('') + '</select>';
                     break;
                 case 'radio':
                     for (var i = 0, j = s.Kvd.length; i < j; i++)

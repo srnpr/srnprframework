@@ -160,7 +160,13 @@ if (!window.SWW)
                ///	</param>
 
                this.Alert(SWW.M.SE.ET + (n ? SWW.M.SE.EN + n : '') + (m ? SWW.M.SE.EM + m : ''));
+           },
+
+           Run: function(r)
+           {
+               return SWW.Z.Ajax(r);
            }
+
        },
        Z:
        {
@@ -216,7 +222,39 @@ if (!window.SWW)
 
 
                var t = {};
-               t.RQ = e;
+               if (e.length)
+               {
+                   t.RQ = e;
+               } else
+               {
+                   t.RQ = [];
+                   t.RQ.push(e);
+               }
+
+
+
+               //开始检测是否定义了正确的类型并是否需要重新初始化
+               for (var i = 0, j = t.RQ.length; i < j; i++)
+               {
+                   if (t.RQ[i].WidgetType && !t.RQ[i].__type)
+                   {
+                       if (SWW.C.JS[t.RQ[i].WidgetType] && SWW.C.JS[t.RQ[i].WidgetType].q)
+                       {
+                           var oe = SWW.O.Base;
+                           oe.__type = SWW.C.JS[t.RQ[i].WidgetType].q + ':' + SWW.C.BaseNamespace;
+                           for (var p in t.RQ[i])
+                           {
+                               oe[p] = t.RQ[i][p];
+                           }
+                           t.RQ[i] = oe;
+                       }
+
+                   }
+
+               }
+
+
+               //开始提交数据
                SWW.J.ajax(
                 {
                     url: SWW.C.Ajax.Url,
@@ -243,8 +281,6 @@ if (!window.SWW)
                    if (SWW.O.Res.RS[i].WidgetType && SWW[SWW.O.Res.RS[i].WidgetType])
                    {
                        SWW[SWW.O.Res.RS[i].WidgetType].F_Success(SWW.O.Res.RQ[i], SWW.O.Res.RS[i]);
-
-
 
                        //加载成功时调用
                        if (SWW.O.AF[SWW.O.Res.RS[i].WidgetType] && SWW.O.AF[SWW.O.Res.RS[i].WidgetType].Success[SWW.O.Res.RQ[i].Id])
@@ -323,26 +359,7 @@ if (!window.SWW)
                                {
                                    //SWW[t].F_Init(SWW.O.Req[t][n]);
 
-                                   if (SWW.C.JS[t] && SWW.C.JS[t].q && !SWW.O.Req[t][n].__type)
-                                   {
-                                       var oe = SWW.O.Base;
 
-
-                                       oe.__type = SWW.C.JS[t].q + ':' + SWW.C.BaseNamespace;
-
-                                       for (var p in SWW.O.Req[t][n])
-                                       {
-                                           oe[p] = SWW.O.Req[t][n][p];
-                                       }
-
-
-
-                                       //SWW.O.Req[t][n].__type = SWW.C.JS[t].q + ':' + SWW.C.BaseNamespace;
-
-                                       SWW.O.Req[t][n] = oe;
-
-
-                                   }
                                    sub.push(SWW.O.Req[t][n]);
                                }
                            }

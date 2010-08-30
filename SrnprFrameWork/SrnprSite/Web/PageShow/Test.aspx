@@ -7,6 +7,7 @@
     <title></title>
     <script type="text/javascript" src="/WebFile/jquery-1.4.2.min.js"></script>
     <script type="text/javascript" src="/WebFile/json2.js"></script>
+    <script type="text/javascript" src="/WebFile/SrnprWebJsWebWidgetFWF.js"></script>
     <script type="text/javascript" src="/WebFile/SrnprWebJsGridShowFWF.js"></script>
     
     <script type="text/javascript" src="http://f.xgou.com/AtGang/Common/js/SrnprNetJsAllAlpha.js"></script>

@@ -71,7 +71,7 @@ Guid : "ff",
     t3.MyString = "aa";
     t3.Guid = "abcdeff";
     t3.WidgetType = "LS";
-    t3.Id = "abc";
+    t3.Id = "t3";
     t3.SId = "ddddd3";
     t3.ShowType = "checkbox";
     t3.PId = "t3";
@@ -85,11 +85,11 @@ Guid : "ff",
    
     
 
-    SWW.A('LS', 'Success', t.Id,
+    SWW.A('GS', 'Success', undefined,
       function(rq, rs, s)
     {
 
-        SWW.J("#dshow").text(s);
+        //SWW.J("#dshow").text(s);
         SWW.J("#tshow").val(s);
     }
     )

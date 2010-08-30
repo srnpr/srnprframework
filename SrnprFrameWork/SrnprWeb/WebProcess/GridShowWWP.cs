@@ -75,9 +75,9 @@ namespace SrnprWeb.WebProcess
             StringBuilder sb = new StringBuilder();
 
             //定义参数名称
-            string sObjId = "SWJGSF_Obj_" + sClientId;
+            string sObjId = "SWJGSF_Obj_" + sClientId.Replace('.','_');
             //开始输出执行逻辑
-            sb.Append("<div id=\"SWJGSF_Div_" + sClientId + "\"></div><input type=\"hidden\" name=\"SWJGSF_Hidden_" + sClientId + "\" id=\"SWJGSF_Hidden_" + sClientId + "\" value=\"" + sRequest + "\"><script>var " + sObjId + "=" + SrnprWeb.WebProcess.GridShowWWP.WidgetRequestString(sXmlId, sClientId) + ";SWJGSF.Init(" + sObjId + ");</script>");
+            sb.Append("<div id=\"SWJGSF_Div_" + sClientId + "\"></div><input type=\"hidden\" name=\"SWJGSF_Hidden_" + sClientId + "\" id=\"SWJGSF_Hidden_" + sClientId + "\" value=\"" + sRequest + "\"><script>var " + sObjId + "=" + SrnprWeb.WebProcess.GridShowWWP.WidgetRequestString(sXmlId, sClientId) + ";SWW.I(" + sObjId + ");</script>");
 
             return sb.ToString();
         }
@@ -274,23 +274,30 @@ namespace SrnprWeb.WebProcess
 
 
 
+           
+
+
 
             req.RowsCount = dtSource.Rows.Count;
 
+             DataTable dtNew = new DataTable();
+
+             for (int i = 0, j = dtSource.Columns.Count; i < j; i++)
+             {
+                 dtNew.Columns.Add(dtSource.Columns[i].ColumnName);
+             }
+
+           
+
+            for (long i = (req.PageIndex - 1) * req.PageSize, j = Math.Min(req.PageIndex * req.PageSize, req.RowsCount); i < j; i++)
+            {
+                dtNew.Rows.Add(dtSource.Rows[(int)i].ItemArray);
+            }
 
 
 
 
-
-
-
-
-
-
-
-
-
-            return dtSource;
+            return dtNew;
         }
 
 
@@ -435,7 +442,7 @@ namespace SrnprWeb.WebProcess
             }
 
 
-
+            //判断分组是否存在
             if (req.RowsCount == -1)
             {
                 if (!string.IsNullOrEmpty(gsw.TableInfo.GroupColumn))

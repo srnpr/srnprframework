@@ -9,9 +9,15 @@
 
 <input type="text" value="abc" />
 <input type="button" value="提交" />
+<div id="ddddd"></div>
+
 
 <div id="dshow"></div>
 
+
+
+
+<textarea id="tshow" rows="30" cols="100"></textarea>
 
 <script>
 
@@ -24,6 +30,8 @@
     t.Guid = "ff";
     t.WidgetType = "LS";
     t.Id = "abc";
+    t.CId = "ddddd";
+    t.ShowType = "select";
     SWW.I("LS", t);
     //SWW.I("LS", { a: 'dddd' });
 
@@ -36,7 +44,8 @@
       function(rq, rs, s)
     {
 
-        SWW.J("#dshow").html(s);
+        SWW.J("#dshow").text(s);
+        SWW.J("#tshow").val(s);
     }
     )
 

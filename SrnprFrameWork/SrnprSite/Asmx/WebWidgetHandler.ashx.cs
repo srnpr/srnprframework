@@ -79,14 +79,6 @@ namespace SrnprSite.Asmx
 
 
             }
-
-
-
-
-
-
-
-
             return dic;
         }
 
@@ -106,8 +98,8 @@ namespace SrnprSite.Asmx
                     List<SrnprWeb.WebEntity.ItemKvdWWE> kvd = new List<SrnprWeb.WebEntity.ItemKvdWWE>();
                     kvd.Add(new SrnprWeb.WebEntity.ItemKvdWWE() { K = "kkk", V = "vvv", D = "ddd" });
 
-                    dt = SrnprCommon.CommonFunction.ListStaticCCF.ListToDataTable<SrnprWeb.WebEntity.ItemKvdWWE>(kvd);
 
+                    dt = SrnprCommon.CommonFunction.ListStaticCCF.ListToDataTable<SrnprWeb.WebEntity.ItemKvdWWE>(kvd);
 
 
                     break;

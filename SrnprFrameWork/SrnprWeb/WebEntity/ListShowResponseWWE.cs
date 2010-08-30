@@ -22,6 +22,17 @@ namespace SrnprWeb.WebEntity
     [KnownType(typeof(ListShowResponseWWE))]
     public class ListShowResponseWWE:WidgetShowBaseWWE, WebInterface.WidgetResponseWWI
     {
+
+
+
+        [DataMember(Order = 101)]
+        public string HtmlString { get; set; }
+
+
+
+        [DataMember(Order = 102)]
+        public List<ItemKvdWWE> Kvd { get; set; }
+
       
     }
 }

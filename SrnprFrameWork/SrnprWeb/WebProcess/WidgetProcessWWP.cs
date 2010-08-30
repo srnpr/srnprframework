@@ -40,14 +40,14 @@ namespace SrnprWeb.WebProcess
 
 
 
-            foreach (var t in req.RQ)
+            for (int i=0,j= req.RQ.Count;i<j;i++)
             {
-                switch (t.WidgetType)
+                switch (req.RQ[i].WidgetType)
                 {
                     case "LS":
 
-                        res.RS.Add(LSW.GetResponse(t));
-                        res.RQ.Add(t);
+                        res.RS.Add(LSW.GetResponse(req.RQ[i],dic.ContainsKey(i)?dic[i]:null));
+                        res.RQ.Add(req.RQ[i]);
 
                         break;
 

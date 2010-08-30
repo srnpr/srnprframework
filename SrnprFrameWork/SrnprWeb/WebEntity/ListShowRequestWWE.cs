@@ -28,6 +28,15 @@ namespace SrnprWeb.WebEntity
 
 
 
+        /// <summary>
+        /// 
+        /// Description: 显示类型
+        /// Author:Liudpc
+        /// Create Date: 2010-8-27 16:43:00
+        /// </summary>
+        [DataMember(Order = 102)]
+        public string ShowType { get; set; }
+
 
 
         

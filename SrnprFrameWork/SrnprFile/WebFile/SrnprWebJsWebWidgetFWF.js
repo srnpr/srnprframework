@@ -35,7 +35,7 @@ if (!window.SWW)
                Json: 'json2.js',
                JQuery: { u: 'jquery-1.4.2.min.js', w: 'jQuery' },
                C: 'SrnprWebJsConfigFWF.js',
-               GS: { u: 'SrnprWebJsGridShowFWF.js', n: ['JQuery', 'Json'] },
+               GS: { u: 'SrnprWebJsGridShowFWF.js', n: ['JQuery', 'Json'], q: 'GridShowRequestWWE' },
                LS: { u: 'SrnprWebJsListShowFWF.js', n: ['JQuery', 'Json'], q: 'ListShowRequestWWE' },
                SWW: 'SrnprWebJsWebWidgetFWF.js'
            },
@@ -65,12 +65,13 @@ if (!window.SWW)
                M: 20,
                //加载时间间隔
                T: 100,
-               //是否加载
+               //是否添加ready加载函数
                LoadFlag: false
            },
 
            Version: '1.0.0.0'
        },
+
        //消息系列
        M:
         {
@@ -99,7 +100,7 @@ if (!window.SWW)
            ///	</param>
            this.J().ready(f);
        },
-       O: { Req: {}, Res: {}, AF: {} },
+       O: { Req: {}, Res: {}, AF: {}, Base: { __type: ''} },
        A: function(t, f, id, fu)
        {
            ///	<summary>
@@ -266,8 +267,8 @@ if (!window.SWW)
                ///	<summary>
                ///  判断系统初始化加载加载
                ///	</summary>
-               
-               
+
+
                if (!SWW.C.Init.LoadFlag)
                {
                    SWW.J_Ready(function() { SWW.Z.Init(); });
@@ -322,9 +323,25 @@ if (!window.SWW)
                                {
                                    //SWW[t].F_Init(SWW.O.Req[t][n]);
 
-                                   if (SWW.C.JS[t] && SWW.C.JS[t].q)
+                                   if (SWW.C.JS[t] && SWW.C.JS[t].q && !SWW.O.Req[t][n].__type)
                                    {
-                                       SWW.O.Req[t][n].__type = SWW.C.JS[t].q + ':' + SWW.C.BaseNamespace;
+                                       var oe = SWW.O.Base;
+
+
+                                       oe.__type = SWW.C.JS[t].q + ':' + SWW.C.BaseNamespace;
+
+                                       for (var p in SWW.O.Req[t][n])
+                                       {
+                                           oe[p] = SWW.O.Req[t][n][p];
+                                       }
+
+
+
+                                       //SWW.O.Req[t][n].__type = SWW.C.JS[t].q + ':' + SWW.C.BaseNamespace;
+
+                                       SWW.O.Req[t][n] = oe;
+
+
                                    }
                                    sub.push(SWW.O.Req[t][n]);
                                }
@@ -361,6 +378,13 @@ if (!window.SWW)
            ///		操作的对象
            ///	</param>
 
+
+           //开始自动判断参数传入类型
+           if (typeof (t) != "string" && t.WidgetType)
+           {
+               o = t;
+               t = o.WidgetType;
+           }
 
 
 
@@ -407,6 +431,7 @@ if (!window.SWW)
 
 
 
+           //开始加载初始化函数
            this.Z.CheckInit();
 
 

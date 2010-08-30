@@ -24,16 +24,6 @@ namespace SrnprSite.Asmx
 
             SrnprWeb.WebEntity.WidgetRequestWWE req = SrnprWeb.WebProcess.WidgetProcessWWP.DeserializeRequest(s);
 
-
-
-
-
-
-
-
-
-
-
             string sRes = SrnprWeb.WebProcess.WidgetProcessWWP.Response(req, DicProcess(req));
 
             context.Response.Write(sRes);
@@ -65,7 +55,7 @@ namespace SrnprSite.Asmx
 
                     case "LS":
 
-                        DataTable dt = GetTableById(req.RQ[i].Id);
+                        DataTable dt = GetLSTableById(req.RQ[i].Id);
 
                         if (dt != null)
                         {
@@ -85,7 +75,7 @@ namespace SrnprSite.Asmx
 
 
 
-        public DataTable GetTableById(string sId)
+        public DataTable GetLSTableById(string sId)
         {
 
             DataTable dt = new DataTable();

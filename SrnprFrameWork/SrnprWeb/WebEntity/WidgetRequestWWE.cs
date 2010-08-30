@@ -11,6 +11,7 @@ namespace SrnprWeb.WebEntity
 {
     [DataContract(Namespace = "http://srnprframework/srnprweb")]
     [KnownType(typeof(ListShowRequestWWE))]
+    [KnownType(typeof(GridShowRequestWWE))]
     public class WidgetRequestWWE
     {
 

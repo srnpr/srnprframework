@@ -11,7 +11,7 @@ using System.Text.RegularExpressions;
 
 namespace SrnprWeb.WebProcess
 {
-    public class GridShowWWP
+    public class GridShowWWP : WebInterface.WidgetProcessWWI
     {
 
         private static string sFilePath = "D:\\SrnprFrameWork\\WebWidget\\";
@@ -843,12 +843,24 @@ namespace SrnprWeb.WebProcess
 
             return d;
         }
-       
 
 
 
 
 
+        public WebInterface.WidgetResponseWWI GetResponse(WebInterface.WidgetRequestWWI request, WidgetProcessWWE pro)
+        {
+            return GetHtmlByEntity(GetEntityById(request.Id), (GridShowRequestWWE)request);
+        }
 
+
+        #region WidgetProcessWWI 成员
+
+        public SrnprWeb.WebInterface.WidgetResponseWWI GetResponse(SrnprWeb.WebInterface.WidgetRequestWWI req)
+        {
+            return GetResponse(req, null);
+        }
+
+        #endregion
     }
 }

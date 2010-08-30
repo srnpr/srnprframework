@@ -22,9 +22,20 @@ namespace SrnprWeb.WebEntity
     public class ListShowRequestWWE:WidgetShowBaseWWE, WebInterface.WidgetRequestWWI
     {
 
-       
 
 
+        /// <summary>
+        /// 
+        /// Description: 类型
+        /// Author:Liudpc
+        /// Create Date: 2010-8-24 10:09:46
+        /// </summary>
+        [DataMember(Order = 101)]
+        public string WidgetType
+        {
+            get { return "LS"; }
+            set { }
+        }
 
 
         /// <summary>

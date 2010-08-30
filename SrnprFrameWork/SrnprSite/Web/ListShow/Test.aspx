@@ -4,11 +4,27 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MasterPage_Title" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MasterPage_Content" runat="server">
+<div id="SWJGSF_Div_dff"></div><input type="hidden" name="SWJGSF_Hidden_dff" id="SWJGSF_Hidden_dff" value="">
+<script>
+
+
+    var SWJGSF_Obj_dff = {
+    
+    "Id": "dff",
+    "PageIndex": 1,
+Guid : "ff",
+    WidgetType : "GS",
+    "PageSize": 10, 
+      "RowsCount": -1, "ClientId": "dff", "ProcessType": "", "ShowColumn": null, 
+    
+    "QueryDict": null };
+    //SWJGSF.Init(SWJGSF_Obj_dff);
+
+    SWW.I( SWJGSF_Obj_dff);
+ </script>
 
 
 
-<input type="text" value="abc" />
-<input type="button" value="提交" />
 <div id="ddddd"></div>
 <div id="ddddd2"></div>
 <div id="ddddd3"></div>
@@ -16,7 +32,8 @@
 
 
 
-
+<input type="text" value="abc" />
+<input type="button" value="提交" />
 <textarea id="tshow" rows="30" cols="100"></textarea>
 
 <script>

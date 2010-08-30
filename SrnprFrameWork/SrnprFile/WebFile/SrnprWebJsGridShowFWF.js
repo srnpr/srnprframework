@@ -207,7 +207,8 @@ if (!this.SWJGSF)
         SWJGSF.AjaxSuccess = function(id, o)
         {
 
-            var obj = JSON.parse(o);
+
+            var obj = typeof (o) == "string" ? JSON.parse(o) : o;
 
             //重新赋上最新版返回参数
             var req = SWJGSF.Obj[id] = obj.Request;
@@ -359,12 +360,12 @@ if (!this.SWJGSF)
 
             SWJGSF.SubmitBefore(id);
 
-            SrnprNetJsAllAlphaShow({ s: "l", m: "请选择显示内容", w: "400",h:"100", u: "/Web/GridShow/Excel.aspx?id=SWJGSF_Hidden_" + SWJGSF.Obj[id].ClientId });
+            SrnprNetJsAllAlphaShow({ s: "l", m: "请选择显示内容", w: "400", h: "100", u: "/Web/GridShow/Excel.aspx?id=SWJGSF_Hidden_" + SWJGSF.Obj[id].ClientId });
 
         }
         SWJGSF.ExcelClose = function(id)
         {
-            SrnprNetJsAllAlphaShow({ s: "c"});
+            SrnprNetJsAllAlphaShow({ s: "c" });
         }
 
 
@@ -427,6 +428,11 @@ if (!this.SWJGSF)
             }
 
             SWJGSF.Ajax(id);
+        }
+
+        SWJGSF.F_Success = function(q, s)
+        {
+            SWJGSF.AjaxSuccess(q.Id, s);
         }
 
 
@@ -551,6 +557,14 @@ if (!this.SWJGSF)
 )();
 }
 
+
+
+
+if (SWW && !SWW.GS)
+{
+
+    SWW.GS = SWJGSF;
+}
 
 
 

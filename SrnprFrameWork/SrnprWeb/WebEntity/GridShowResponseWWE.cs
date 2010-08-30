@@ -7,16 +7,31 @@ using System.Runtime.Serialization;
 namespace SrnprWeb.WebEntity
 {
     [DataContract(Namespace = "http://srnprframework/srnprweb")]
-    public class GridShowResponseWWE
+    [KnownType(typeof(GridShowResponseWWE))]
+    public class GridShowResponseWWE : WidgetShowBaseWWE, WebInterface.WidgetResponseWWI
     {
-        [DataMember(Order = 0)]
+        [DataMember(Order = 100)]
         public GridShowRequestWWE Request { get; set; }
 
 
-        [DataMember(Order = 1)]
+        [DataMember(Order = 101)]
         public string HtmlString { get; set; }
 
         public List<List<string>> DataItem { get; set; }
+
+
+        /// <summary>
+        /// 
+        /// Description: 类型
+        /// Author:Liudpc
+        /// Create Date: 2010-8-24 10:09:46
+        /// </summary>
+        [DataMember(Order = 101)]
+        public string WidgetType
+        {
+            get { return "GS"; }
+            set { }
+        }
 
     }
 }

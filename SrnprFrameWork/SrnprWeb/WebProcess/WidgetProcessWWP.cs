@@ -17,6 +17,8 @@ namespace SrnprWeb.WebProcess
     {
         private static ListShowWWP LSW = new ListShowWWP();
 
+        private static GridShowWWP GSW = new GridShowWWP();
+
 
 
         /// <summary>
@@ -49,6 +51,11 @@ namespace SrnprWeb.WebProcess
                         res.RS.Add(LSW.GetResponse(req.RQ[i],dic.ContainsKey(i)?dic[i]:null));
                         res.RQ.Add(req.RQ[i]);
 
+                        break;
+
+                    case "GS":
+                        res.RS.Add(GSW.GetResponse(req.RQ[i], dic.ContainsKey(i) ? dic[i] : null));
+                        res.RQ.Add(req.RQ[i]);
                         break;
 
                 }

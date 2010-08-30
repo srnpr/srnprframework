@@ -12,7 +12,7 @@
 
     "Id": "test.gs.listkvd",
     "PageIndex": 1,
-Guid : "ff",
+    Guid : "ff",
     WidgetType : "GS",
     "PageSize": 10, 
       "RowsCount": -1, "ClientId": "dff", "ProcessType": "", "ShowColumn": null, 
@@ -20,7 +20,7 @@ Guid : "ff",
     "QueryDict": null };
     //SWJGSF.Init(SWJGSF_Obj_dff);
 
-    SWW.I( SWJGSF_Obj_dff);
+    //SWW.I( 'GS',SWJGSF_Obj_dff);
  </script>
 
 
@@ -41,24 +41,32 @@ Guid : "ff",
 
 
 
-    var t = {};
-    t.__type = "ListShowRequestWWE:http:\/\/srnprframework\/srnprweb";
-    t.MyString = "aa";
-    t.Guid = "ff";
-    t.WidgetType = "LS";
-    t.Id = "abc";
-    t.SId = "ddddd";
-    t.ShowType = "select";
-    t.PId = "t";
-    
-    
-    
-    SWW.I("LS", t);
+    var t =
+    {
+  
+        WidgetType: 'LS',
+        Id: 'abc',
+        SId: 'ddddd',
+        ShowType: 'select',
+        PId: 't',
+        
+        OnChange: function()
+        {
+        }
+    };
+
+    SWW.I("LS",t);
+
+
+
+
+
+   
 
     var t2 = {};
     t2.__type = "ListShowRequestWWE:http:\/\/srnprframework\/srnprweb";
-    t2.MyString = "aa";
-    t2.Guid = "abcdeff";
+    
+    
     t2.WidgetType = "LS";
     t2.Id = "abc";
     t2.SId = "ddddd2";
@@ -68,8 +76,8 @@ Guid : "ff",
 
     var t3 = {};
     t3.__type = "ListShowRequestWWE:http:\/\/srnprframework\/srnprweb";
-    t3.MyString = "aa";
-    t3.Guid = "abcdeff";
+    
+    
     t3.WidgetType = "LS";
     t3.Id = "t3";
     t3.SId = "ddddd3";
@@ -80,20 +88,22 @@ Guid : "ff",
    
     //SWW.I("LS", { a: 'dddd' });
 
+    SWW.A('LS', 'Success', t.Id,
+    
+      function(o)
+      {
+
+          //SWW.J("#dshow").text(s);
+        
+          SWW.J("#tshow").val(o.s);
+      }
+    )
+
+
+
 
 
    
-    
-
-    SWW.A('GS', 'Success', undefined,
-      function(rq, rs, s)
-    {
-
-        //SWW.J("#dshow").text(s);
-        SWW.J("#tshow").val(s);
-    }
-    )
-
 
 </script>
 

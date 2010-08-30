@@ -22,9 +22,24 @@ if (SWW && !SWW.LS)
             //alert(o.WidgetType);
         },
 
-        F_Success: function(q, s)
+        F_Change: function(g, o)
         {
-            //alert(q.WidgetType);
+
+            
+        },
+
+        F_Success: function(o)
+        {
+            ///	<summary>
+            ///  成功后执行
+            ///	</summary>
+
+
+            this.O_List[o.q.Guid] = o;
+
+            var q = o.q;
+            var s = o.s;
+
 
             var aHtml = [];
 
@@ -37,14 +52,14 @@ if (SWW && !SWW.LS)
                     {
                         aHtml.push('<option value="' + s.Kvd[i].V + '">' + s.Kvd[i].K + '</option>');
                     }
-                    sShow = '<select name="'+q.PId+'">' + aHtml.join('') + '</select>';
+                    sShow = '<select id="'+q.Guid+'" name="' + q.PId + '" onchange="SWW.LS.F_Change(\'' + q.Guid + '\',this)">' + aHtml.join('') + '</select>';
                     break;
                 case 'radio':
                     for (var i = 0, j = s.Kvd.length; i < j; i++)
                     {
-                        aHtml.push('<input name="'+q.PId+'" type="radio" value="' + s.Kvd[i].V + '">' + s.Kvd[i].K);
+                        aHtml.push('<input name="' + q.PId + '" type="radio" value="' + s.Kvd[i].V + '">' + s.Kvd[i].K);
                     }
-                    sShow =  aHtml.join('');
+                    sShow = aHtml.join('');
                     break;
                 case 'checkbox':
                     for (var i = 0, j = s.Kvd.length; i < j; i++)

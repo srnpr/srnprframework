@@ -9,7 +9,7 @@ Description: 核心类文件 所有widget使用的初始化及加载文件
             O：表示对象系列
             C：配置文件
             I：初始化
-            F：函数
+            F：外部调用函数
             Z：基类使用自身操作
             M：消息系列
             A：扩展系列
@@ -100,7 +100,8 @@ if (!window.SWW)
            ///	</param>
            this.J().ready(f);
        },
-       O: { Req: {}, Res: {}, AF: {}, Base: { __type: ''} },
+       //Req提交参数  Res返回参数  AF扩展函数  Guid唯一标识集
+       O: { Req: {}, Res: {}, AF: {}, Guid: {} },
        A: function(t, f, id, fu)
        {
            ///	<summary>
@@ -110,7 +111,7 @@ if (!window.SWW)
            ///		类型
            ///	</param>
            ///	<param name="f" type="string">
-           ///		函数操作 目前支持：Success(返回值成功时)
+           ///		函数操作 目前支持：Success(调用Ajax成功后)
            ///	</param>
            ///	<param name="id" type="string">
            ///		编号
@@ -118,6 +119,9 @@ if (!window.SWW)
            ///	<param name="fu" type="string">
            ///		函数  扩展当操作执行时的执行函数 不同函数所需参数不一致
            ///	</param>
+
+
+
 
 
            if (!SWW.O.AF[t])
@@ -128,6 +132,11 @@ if (!window.SWW)
            {
                SWW.O.AF[t][f] = {};
            }
+
+
+
+
+
            SWW.O.AF[t][f][id] = fu;
 
 
@@ -164,7 +173,122 @@ if (!window.SWW)
 
            Run: function(r)
            {
+               ///	<summary>
+               ///  执行提交函数
+               ///	</summary>
+               ///	<param name="r" type="string">
+               ///		request
+               ///	</param>
+
                return SWW.Z.Ajax(r);
+           },
+
+           GetGuid: function(r)
+           {
+               ///	<summary>
+               ///  生成Guid
+               ///	</summary>
+
+                var a = (r ? r : '8-12-16-20').split('-');
+               var al = a.length;
+               var guid = "guid";
+               for (var i = 1 + guid.length; i <= 32; i++)
+               {
+                   var g = Math.floor(Math.random() * 16.0).toString(16);
+                   guid += g;
+                   for (var n = 0; n < al; n++)
+                   {
+                       if (i == a[n])
+                       {
+                           guid += '-';
+                       }
+                   }
+               }
+
+               //判断是否重复
+               if (SWW.O.Guid[guid])
+               {
+                   guid = this.GetGuid();
+               }
+               else
+               {
+                   SWW.O.Guid[guid] = guid;
+               }
+
+               return guid;
+
+           },
+
+           ItemBase: function()
+           {
+               ///	<summary>
+               ///  返回基本对象
+               ///	</summary>
+
+               return { __type: '' };
+           },
+
+
+           InitReq: function(e)
+           {
+               ///	<summary>
+               ///  重新初始化对象
+               ///	</summary>
+               ///	<param name="e" type="string">
+               ///		request
+               ///	</param>
+
+               if (e && e.WidgetType && (!e.__type || !e.Guid))
+               {
+                   var o = this.ItemBase();
+                   if (!e.__type && SWW.C.JS[e.WidgetType] && SWW.C.JS[e.WidgetType].q)
+                   {
+                       o.__type = SWW.C.JS[e.WidgetType].q + ':' + SWW.C.BaseNamespace;
+
+                   }
+                   if (!e.Guid)
+                   {
+                       e.Guid = this.GetGuid();
+                   }
+                   for (var p in e)
+                   {
+                       o[p] = e[p];
+                   }
+                   e = o;
+               }
+               return e;
+           },
+
+           ExecFunc: function(o)
+           {
+               //	<summary>
+               ///  执行函数
+               ///	</summary>
+               ///	<param name="t" type="obj">
+               ///		对象{t:类型,f:函数名称,e:参数}
+               ///	</param>
+
+               if (SWW[o.t] && SWW[o.t][o.f])
+               {
+                   SWW[o.t][o.f](o.e);
+               }
+           },
+
+           ExecAF: function(o)
+           {
+
+               //	<summary>
+               ///  执行函数
+               ///	</summary>
+               ///	<param name="t" type="obj">
+               ///		对象{f:函数名称,q:request,e:参数}
+               ///	</param>
+
+               if (SWW.O.AF[o.q.WidgetType] && SWW.O.AF[o.q.WidgetType][o.f][o.q.Id])
+               {
+                   SWW.O.AF[o.q.WidgetType][o.f][o.q.Id](o.e);
+               }
+
            }
 
        },
@@ -232,24 +356,10 @@ if (!window.SWW)
                }
 
 
-
                //开始检测是否定义了正确的类型并是否需要重新初始化
                for (var i = 0, j = t.RQ.length; i < j; i++)
                {
-                   if (t.RQ[i].WidgetType && !t.RQ[i].__type)
-                   {
-                       if (SWW.C.JS[t.RQ[i].WidgetType] && SWW.C.JS[t.RQ[i].WidgetType].q)
-                       {
-                           var oe = SWW.O.Base;
-                           oe.__type = SWW.C.JS[t.RQ[i].WidgetType].q + ':' + SWW.C.BaseNamespace;
-                           for (var p in t.RQ[i])
-                           {
-                               oe[p] = t.RQ[i][p];
-                           }
-                           t.RQ[i] = oe;
-                       }
-
-                   }
+                   t.RQ[i] = SWW.F.InitReq(t.RQ[i]);
 
                }
 
@@ -280,14 +390,13 @@ if (!window.SWW)
                {
                    if (SWW.O.Res.RS[i].WidgetType && SWW[SWW.O.Res.RS[i].WidgetType])
                    {
-                       SWW[SWW.O.Res.RS[i].WidgetType].F_Success(SWW.O.Res.RQ[i], SWW.O.Res.RS[i]);
 
-                       //加载成功时调用
-                       if (SWW.O.AF[SWW.O.Res.RS[i].WidgetType] && SWW.O.AF[SWW.O.Res.RS[i].WidgetType].Success[SWW.O.Res.RQ[i].Id])
-                       {
-                           SWW.O.AF[SWW.O.Res.RS[i].WidgetType].Success[SWW.O.Res.RQ[i].Id](SWW.O.Res.RQ[i], SWW.O.Res.RS[i], s);
-                       }
 
+                       //执行函数
+                       SWW.F.ExecFunc({ t: SWW.O.Res.RS[i].WidgetType, f: 'F_Success', e: { q: SWW.O.Res.RQ[i], s: SWW.O.Res.RS[i]} });
+
+                       //执行扩展函数
+                       SWW.F.ExecAF({ f: 'Success', q: SWW.O.Res.RQ[i], e: { s: s} });
 
                    }
                    else
@@ -344,7 +453,7 @@ if (!window.SWW)
                    //累加当前调用次数
                    SWW.C.Init.N++;
 
-                   //判断是否超过最大限制
+                   //判断是否超过最大调用次数限制
                    if (SWW.C.Init.N < SWW.C.Init.M)
                    {
 
@@ -357,10 +466,7 @@ if (!window.SWW)
                            {
                                for (var n = 0, m = SWW.O.Req[t].length; n < m; n++)
                                {
-                                   //SWW[t].F_Init(SWW.O.Req[t][n]);
-
-
-                                   sub.push(SWW.O.Req[t][n]);
+                                   sub.push(SWW.F.InitReq(SWW.O.Req[t][n]));
                                }
                            }
 

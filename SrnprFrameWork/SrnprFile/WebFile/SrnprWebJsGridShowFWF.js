@@ -442,10 +442,10 @@ if (!this.SWJGSF)
             SWJGSF.Ajax(id);
         }
 
-        SWJGSF.F_Success = function(q, s)
+        SWJGSF.F_Success = function(o)
         {
-            SWJGSF.Obj[q.Id] = q;
-            SWJGSF.AjaxSuccess(q.Id, s);
+            SWJGSF.Obj[o.q.Id] = o.q;
+            SWJGSF.AjaxSuccess(o.q.Id, o.s);
         }
 
 
@@ -454,10 +454,7 @@ if (!this.SWJGSF)
         {
             for (var p in SWJGSF.Obj)
             {
-
                 SWJGSF.Obj[p].ProcessType = "demo";
-
-
             }
 
         }

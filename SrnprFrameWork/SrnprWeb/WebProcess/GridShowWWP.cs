@@ -99,7 +99,7 @@ namespace SrnprWeb.WebProcess
         
            // SrnprWeb.WebProcess.GridShowWWP gsw = new SrnprWeb.WebProcess.GridShowWWP();
 
-            return CommonFunction.JsonHelper.Serialize<SrnprWeb.WebEntity.GridShowResponseWWE>(GetHtmlByEntity(GetEntityById(t.Id), t));
+            return CommonFunction.JsonHelper.Serialize<SrnprWeb.WebEntity.GridShowResponseWWE>(GetHtmlByEntity(GetEntityById(t.Id), t,null));
         }
 
 
@@ -251,6 +251,47 @@ namespace SrnprWeb.WebProcess
         }
 
 
+
+
+
+        /// <summary>
+        /// 
+        /// Description: 根据表得到信息
+        /// Author:Liudpc
+        /// Create Date: 2010-8-30 13:53:39
+        /// </summary>
+        /// <param name="gsw"></param>
+        /// <param name="req"></param>
+        /// <param name="pro"></param>
+        /// <returns></returns>
+        public DataTable GetDataByTable(GridShowWWE gsw, GridShowRequestWWE req, WidgetProcessWWE pro)
+        {
+
+
+            DataTable dtSource = pro.DataInfo;
+
+
+
+
+
+
+            req.RowsCount = dtSource.Rows.Count;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            return dtSource;
+        }
 
 
 
@@ -505,7 +546,7 @@ namespace SrnprWeb.WebProcess
         }
 
 
-        public GridShowResponseWWE GetHtmlByEntity(WebEntity.GridShowWWE gsw,GridShowRequestWWE request)
+        public GridShowResponseWWE GetHtmlByEntity(WebEntity.GridShowWWE gsw, GridShowRequestWWE request, WidgetProcessWWE pro)
         {
 
             GridShowResponseWWE response = new GridShowResponseWWE();
@@ -538,7 +579,19 @@ namespace SrnprWeb.WebProcess
                 {
 
                     //开始分析排序依据
-                    dt = GetDataByEntity(gsw, request);
+                    
+
+                    if (pro != null && pro.DataInfo != null&&pro.DataFlag)
+                    {
+                        dt = GetDataByTable(gsw, request,pro);
+                    }
+                    else
+                    {
+                        dt = GetDataByEntity(gsw, request);
+                    }
+
+
+
 
 
                     StringBuilder sb = new StringBuilder();
@@ -850,7 +903,7 @@ namespace SrnprWeb.WebProcess
 
         public WebInterface.WidgetResponseWWI GetResponse(WebInterface.WidgetRequestWWI request, WidgetProcessWWE pro)
         {
-            return GetHtmlByEntity(GetEntityById(request.Id), (GridShowRequestWWE)request);
+            return GetHtmlByEntity(GetEntityById(request.Id), (GridShowRequestWWE)request,pro);
         }
 
 

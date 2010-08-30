@@ -9,8 +9,8 @@
 
 
     var SWJGSF_Obj_dff = {
-    
-    "Id": "dff",
+
+    "Id": "test.gs.listkvd",
     "PageIndex": 1,
 Guid : "ff",
     WidgetType : "GS",

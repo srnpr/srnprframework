@@ -55,12 +55,24 @@ namespace SrnprSite.Asmx
 
                     case "LS":
 
-                        DataTable dt = GetLSTableById(req.RQ[i].Id);
+                        DataTable dtls = GetLSTableById(req.RQ[i].Id);
 
-                        if (dt != null)
+                        if (dtls != null)
                         {
                             dic[i] = new SrnprWeb.WebEntity.WidgetProcessWWE();
-                            dic[i].DataInfo = dt;
+                            dic[i].DataInfo = dtls;
+                        }
+
+                        break;
+                    case "GS":
+
+                        DataTable dtgs = GetGSTableById(req.RQ[i].Id);
+
+                        if (dtgs != null&&dtgs.Columns.Count>0)
+                        {
+                            dic[i] = new SrnprWeb.WebEntity.WidgetProcessWWE();
+                            dic[i].DataInfo = dtgs;
+                            dic[i].DataFlag = true;
                         }
 
                         break;
@@ -101,6 +113,68 @@ namespace SrnprSite.Asmx
             return dt;
 
         }
+
+
+
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// Description: GridShow加载数据
+        /// Author:Liudpc
+        /// Create Date: 2010-8-30 14:01:58
+        /// </summary>
+        /// <param name="sId"></param>
+        /// <returns></returns>
+        public DataTable GetGSTableById(string sId)
+        {
+
+            DataTable dt = new DataTable();
+
+            switch (sId)
+            {
+                case "test.gs.listkvd":
+
+                    dt.TableName = "test.gs.listkvd";
+
+                    List<SrnprWeb.WebEntity.ItemKvdWWE> kvd = new List<SrnprWeb.WebEntity.ItemKvdWWE>();
+                    kvd.Add(new SrnprWeb.WebEntity.ItemKvdWWE() { K = "kkk1", V = "vvv1", D = "ddd1" });
+                    kvd.Add(new SrnprWeb.WebEntity.ItemKvdWWE() { K = "kkk1", V = "vvv1", D = "ddd1" });
+                    kvd.Add(new SrnprWeb.WebEntity.ItemKvdWWE() { K = "kkk1", V = "vvv1", D = "ddd1" });
+                    kvd.Add(new SrnprWeb.WebEntity.ItemKvdWWE() { K = "kkk1", V = "vvv1", D = "ddd1" });
+                    kvd.Add(new SrnprWeb.WebEntity.ItemKvdWWE() { K = "kkk1", V = "vvv1", D = "ddd1" });
+                    kvd.Add(new SrnprWeb.WebEntity.ItemKvdWWE() { K = "kkk1", V = "vvv1", D = "ddd1" });
+                    kvd.Add(new SrnprWeb.WebEntity.ItemKvdWWE() { K = "kkk1", V = "vvv1", D = "ddd1" });
+                    kvd.Add(new SrnprWeb.WebEntity.ItemKvdWWE() { K = "kkk1", V = "vvv1", D = "ddd1" });
+
+                    kvd.Add(new SrnprWeb.WebEntity.ItemKvdWWE() { K = "kkk1", V = "vvv1", D = "ddd1" });
+                    kvd.Add(new SrnprWeb.WebEntity.ItemKvdWWE() { K = "kkk1", V = "vvv1", D = "ddd1" });
+                    kvd.Add(new SrnprWeb.WebEntity.ItemKvdWWE() { K = "kkk1", V = "vvv1", D = "ddd1" });
+                    kvd.Add(new SrnprWeb.WebEntity.ItemKvdWWE() { K = "kkk1", V = "vvv1", D = "ddd1" });
+                    kvd.Add(new SrnprWeb.WebEntity.ItemKvdWWE() { K = "kkk1", V = "vvv1", D = "ddd1" });
+                    kvd.Add(new SrnprWeb.WebEntity.ItemKvdWWE() { K = "kkk1", V = "vvv1", D = "ddd1" });
+
+                    kvd.Add(new SrnprWeb.WebEntity.ItemKvdWWE() { K = "kkk1", V = "vvv1", D = "ddd1" });
+                    kvd.Add(new SrnprWeb.WebEntity.ItemKvdWWE() { K = "kkk1", V = "vvv1", D = "ddd1" });
+                    kvd.Add(new SrnprWeb.WebEntity.ItemKvdWWE() { K = "kkk2", V = "vvv2", D = "ddd2" });
+
+                    dt = SrnprCommon.CommonFunction.ListStaticCCF.ListToDataTable<SrnprWeb.WebEntity.ItemKvdWWE>(kvd);
+
+
+                    break;
+                case "":
+
+                    break;
+            }
+
+            return dt;
+
+        }
+
+
 
 
 

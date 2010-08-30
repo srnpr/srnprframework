@@ -47,6 +47,13 @@ namespace SrnprWeb.WebEntity
         public string SId { get; set; }
 
 
+        /// <summary>
+        /// Description: 提交参数编号
+        /// Author:Liudpc
+        /// Create Date: 2010-8-30 10:06:53
+        /// </summary>
+        [DataMember(Order = 103)]
+        public string PId { get; set; }
 
         
     }

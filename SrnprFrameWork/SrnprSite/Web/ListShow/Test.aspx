@@ -10,8 +10,8 @@
 <input type="text" value="abc" />
 <input type="button" value="提交" />
 <div id="ddddd"></div>
-
-
+<div id="ddddd2"></div>
+<div id="ddddd3"></div>
 <div id="dshow"></div>
 
 
@@ -32,7 +32,35 @@
     t.Id = "abc";
     t.SId = "ddddd";
     t.ShowType = "select";
+    t.PId = "t";
+    
+    
+    
     SWW.I("LS", t);
+
+    var t2 = {};
+    t2.__type = "ListShowRequestWWE:http:\/\/srnprframework\/srnprweb";
+    t2.MyString = "aa";
+    t2.Guid = "abcdeff";
+    t2.WidgetType = "LS";
+    t2.Id = "abc";
+    t2.SId = "ddddd2";
+    t2.ShowType = "radio";
+    t2.PId = "t2";
+    SWW.I("LS", t2);
+
+    var t3 = {};
+    t3.__type = "ListShowRequestWWE:http:\/\/srnprframework\/srnprweb";
+    t3.MyString = "aa";
+    t3.Guid = "abcdeff";
+    t3.WidgetType = "LS";
+    t3.Id = "abc";
+    t3.SId = "ddddd3";
+    t3.ShowType = "checkbox";
+    t3.PId = "t3";
+    SWW.I("LS", t3);
+    
+   
     //SWW.I("LS", { a: 'dddd' });
 
 

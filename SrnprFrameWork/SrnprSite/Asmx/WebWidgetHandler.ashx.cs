@@ -96,8 +96,8 @@ namespace SrnprSite.Asmx
 
 
                     List<SrnprWeb.WebEntity.ItemKvdWWE> kvd = new List<SrnprWeb.WebEntity.ItemKvdWWE>();
-                    kvd.Add(new SrnprWeb.WebEntity.ItemKvdWWE() { K = "kkk", V = "vvv", D = "ddd" });
-
+                    kvd.Add(new SrnprWeb.WebEntity.ItemKvdWWE() { K = "kkk1", V = "vvv1", D = "ddd1" });
+                    kvd.Add(new SrnprWeb.WebEntity.ItemKvdWWE() { K = "kkk2", V = "vvv2", D = "ddd2" });
 
                     dt = SrnprCommon.CommonFunction.ListStaticCCF.ListToDataTable<SrnprWeb.WebEntity.ItemKvdWWE>(kvd);
 

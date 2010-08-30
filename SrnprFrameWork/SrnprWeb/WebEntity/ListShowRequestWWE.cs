@@ -22,8 +22,7 @@ namespace SrnprWeb.WebEntity
     public class ListShowRequestWWE:WidgetShowBaseWWE, WebInterface.WidgetRequestWWI
     {
 
-        [DataMember(Order = 101)]
-        public string MyString { get; set; }
+       
 
 
 
@@ -36,6 +35,16 @@ namespace SrnprWeb.WebEntity
         /// </summary>
         [DataMember(Order = 102)]
         public string ShowType { get; set; }
+
+
+
+        /// <summary>
+        /// Description: 显示控件
+        /// Author:Liudpc
+        /// Create Date: 2010-8-30 10:06:53
+        /// </summary>
+        [DataMember(Order = 103)]
+        public string SId { get; set; }
 
 
 

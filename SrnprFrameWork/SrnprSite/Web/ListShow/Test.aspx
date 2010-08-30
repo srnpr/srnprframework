@@ -30,7 +30,7 @@
     t.Guid = "ff";
     t.WidgetType = "LS";
     t.Id = "abc";
-    t.CId = "ddddd";
+    t.SId = "ddddd";
     t.ShowType = "select";
     SWW.I("LS", t);
     //SWW.I("LS", { a: 'dddd' });

@@ -89,14 +89,21 @@ if (!this.SWJGSF)
         SWJGSF.Init = function(s)
         {
 
+
+            /*
             SWJGSF.Obj[s.Id] = s;
 
 
             $("document").ready(function()
             {
-                SWJGSF.Ajax(s.Id);
+            SWJGSF.Ajax(s.Id);
 
             });
+            */
+            
+            
+            s.WidgetType = "GS";
+            SWW.I(s);
 
             $("form").submit(function() { SWJGSF.SubmitBefore(s.Id); });
 
@@ -114,18 +121,22 @@ if (!this.SWJGSF)
         SWJGSF.Ajax = function(id)
         {
 
-
+            /*
             $.ajax(
             {
-                url: "/Asmx/GridShowHander.ashx",
-                type: "POST",
-                data: "json=" + JSON.stringify(SWJGSF.Obj[id]),
-                success: function(x) { SWJGSF.AjaxSuccess(id, x); },
-                error: function(XMLHttpRequest, textStatus) { SWJGSF.AlertMsg(textStatus) }
-
-
+            url: "/Asmx/GridShowHander.ashx",
+            type: "POST",
+            data: "json=" + JSON.stringify(SWJGSF.Obj[id]),
+            success: function(x) { SWJGSF.AjaxSuccess(id, x); },
+            error: function(XMLHttpRequest, textStatus) { SWJGSF.AlertMsg(textStatus) }
 
             });
+            */
+
+
+
+
+            SWW.Z.Ajax(SWJGSF.Obj[id]);
         }
 
         SWJGSF.AlertMsg = function(s)
@@ -212,6 +223,7 @@ if (!this.SWJGSF)
 
             //重新赋上最新版返回参数
             var req = SWJGSF.Obj[id] = obj.Request;
+
 
             //开始尝试初始化设置
             var so = SWJGSF.SetInit(id);
@@ -432,6 +444,7 @@ if (!this.SWJGSF)
 
         SWJGSF.F_Success = function(q, s)
         {
+            SWJGSF.Obj[q.Id] = q;
             SWJGSF.AjaxSuccess(q.Id, s);
         }
 

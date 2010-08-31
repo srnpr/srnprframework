@@ -84,7 +84,7 @@ if (!window.SWW)
 
                 IM: '系统尝试初始化失败！',
                 AS: '无法加载类型',
-                FEF: '加载类型{0}函数名{1}是错误，参数为：{2}'
+                FEF: '加载类型{0}函数名{1}时错误，参数为：{2}'
             }
 
         },
@@ -170,7 +170,6 @@ if (!window.SWW)
                    {
                        o.m = o.m.replace('{' + i + '}', o.p[i]);
                    }
-
                }
 
                this.Alert(SWW.M.SE.ET + (o.n ? SWW.M.SE.EN + o.n : '') + (o.m ? SWW.M.SE.EM + o.m : ''));
@@ -420,19 +419,21 @@ if (!window.SWW)
                ///		响应内容
                ///	</param>
 
-               SWW.O.Res = JSON.parse(s);
+               
 
-               for (var i = 0, j = SWW.O.Res.RS.length; i < j; i++)
+               var json = JSON.parse(s);
+
+               for (var i = 0, j = json.RS.length; i < j; i++)
                {
-                   if (SWW.O.Res.RS[i].WidgetType && SWW[SWW.O.Res.RS[i].WidgetType])
+                   if (json.RS[i].WidgetType && SWW[json.RS[i].WidgetType])
                    {
 
-
+                       SWW.O.Res[json.RQ[i].Guid] = json.RS[i];
                        //执行函数
-                       SWW.F.ExecFunc({ t: SWW.O.Res.RS[i].WidgetType, f: 'F_Success', e: { q: SWW.O.Res.RQ[i], s: SWW.O.Res.RS[i]} });
+                       SWW.F.ExecFunc({ t: json.RS[i].WidgetType, f: 'F_Success', e: { q: json.RQ[i], s: json.RS[i]} });
 
                        //执行扩展函数
-                       SWW.F.ExecAF({ f: 'Success', q: SWW.O.Res.RQ[i], e: { s: s} });
+                       SWW.F.ExecAF({ f: 'Success', q: json.RQ[i], e: { s: s} });
 
                    }
                    else
@@ -475,14 +476,13 @@ if (!window.SWW)
                    {
                        for (var p in SWW.O.Req)
                        {
-                           for (var i = 0, j = SWW.O.Req[p].length; i < j; i++)
+
+                           if (!SWW[SWW.O.Req[p].WidgetType])
                            {
-                               if (!SWW[p])
-                               {
-                                   bFlag = false;
-                                   i = j;
-                               }
+                               bFlag = false;
+                               break;
                            }
+
                        }
                    }
 
@@ -496,18 +496,12 @@ if (!window.SWW)
                        //如果所有加载完成
                        if (bFlag)
                        {
-
                            var sub = [];
                            for (var t in SWW.O.Req)
                            {
-                               for (var n = 0, m = SWW.O.Req[t].length; n < m; n++)
-                               {
-                                   sub.push(SWW.F.InitReq(SWW.O.Req[t][n]));
-                               }
+                               sub.push(SWW.O.Req[t]);
                            }
-
                            this.Ajax(sub);
-
                        }
                        else
                        {
@@ -517,6 +511,7 @@ if (!window.SWW)
                    }
                    else
                    {
+                       //提示错误信息
                        SWW.F.Error({ n: 'SWW.Z.Init', m: SWW.M.SE.IM });
                    }
                }
@@ -552,12 +547,9 @@ if (!window.SWW)
            //判断是否存在参数
            if (o)
            {
-               if (!this.O.Req[t])
-               {
-                   this.O.Req[t] = [];
-               }
+               o = SWW.F.InitReq(o);
+               this.O.Req[o.Guid] = o;
 
-               this.O.Req[t].push(o);
            }
 
            //判断是否已经存在加载的对象

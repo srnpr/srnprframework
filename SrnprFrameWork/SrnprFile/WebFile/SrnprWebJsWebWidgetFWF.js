@@ -29,7 +29,7 @@ if (!window.SWW)
        //配置
        C:
        {
-           //系统加载脚本文件  u：脚本文件名称  n：需要加载的其他脚本  w：window基本名称（全局）
+           //系统加载脚本文件  u：脚本文件名称  n：需要加载的其他脚本  w：window基本名称（全局）  q：服务端类名称（JSON反向解析使用）
            JS:
            {
                Json: 'json2.js',
@@ -40,7 +40,7 @@ if (!window.SWW)
                SWW: 'SrnprWebJsWebWidgetFWF.js'
            },
 
-           //Ajax相关
+           //Ajax相关配置
            Ajax:
            {
                Url: '/Asmx/WebWidgetHandler.ashx'

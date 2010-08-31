@@ -81,8 +81,10 @@ if (!window.SWW)
                 ET: '【系统消息】：系统出现异常错误，请联系管理员',
                 EN: '\n【错误标识】：',
                 EM: '\n【错误内容】：',
+
                 IM: '系统尝试初始化失败！',
-                AS: '无法加载类型'
+                AS: '无法加载类型',
+                FEF: '加载类型{0}函数名{1}是错误，参数为：{2}'
             }
 
         },
@@ -95,7 +97,7 @@ if (!window.SWW)
            ///	<summary>
            ///  脚本文件加载完成后调用函数
            ///	</summary>
-           ///	<param name="f" type="string">
+           ///	<param name="f" type="function">
            ///		函数
            ///	</param>
            this.J().ready(f);
@@ -153,22 +155,25 @@ if (!window.SWW)
                ///	</param>
                alert(m);
            },
-           Error: function(n, m, e)
+           Error: function(o)
            {
                ///	<summary>
                ///  出现严重错误时提示
                ///	</summary>
-               ///	<param name="n" type="string">
-               ///		错误标识
-               ///	</param>
-               ///	<param name="m" type="string">
-               ///		错误内容
-               ///	</param>
-               ///	<param name="e" type="string">
-               ///		解决方案
+               ///	<param name="o" type="object">
+               ///  错误内容  o{n:错误标识,m:错误内容,[p]:array 替换参数}
                ///	</param>
 
-               this.Alert(SWW.M.SE.ET + (n ? SWW.M.SE.EN + n : '') + (m ? SWW.M.SE.EM + m : ''));
+               if (o.p && o.m)
+               {
+                   for (var i = 0, j = o.p.length; i < j; i++)
+                   {
+                       o.m = o.m.replace('{' + i + '}', o.p[i]);
+                   }
+
+               }
+
+               this.Alert(SWW.M.SE.ET + (o.n ? SWW.M.SE.EN + o.n : '') + (o.m ? SWW.M.SE.EM + o.m : ''));
            },
 
            Run: function(r)
@@ -188,8 +193,10 @@ if (!window.SWW)
                ///	<summary>
                ///  生成Guid
                ///	</summary>
-
-                var a = (r ? r : '8-12-16-20').split('-');
+               ///	<param name="r" type="string">
+               ///		生成模板 example:8-12-16-20
+               ///	</param>
+               var a = (r ? r : '8-12-16-20').split('-');
                var al = a.length;
                var guid = "guid";
                for (var i = 1 + guid.length; i <= 32; i++)
@@ -234,7 +241,7 @@ if (!window.SWW)
                ///	<summary>
                ///  重新初始化对象
                ///	</summary>
-               ///	<param name="e" type="string">
+               ///	<param name="e" type="obj">
                ///		request
                ///	</param>
 
@@ -272,13 +279,41 @@ if (!window.SWW)
                {
                    SWW[o.t][o.f](o.e);
                }
+               else
+               {
+                   SWW.F.Error({ n: 'SWW.F.ExecFunc', m: SWW.M.SE.FEF, p: [o.t, o.f, this.GetObjPrototype(o.e)] });
+
+               }
+           },
+
+
+           GetObjPrototype: function(o)
+           {
+               //	<summary>
+               ///  得到一个对象的属性字符串
+               ///	</summary>
+               ///	<param name="o" type="obj">
+               ///		对象
+               ///	</param>
+
+
+               var r = [];
+
+               for (var p in o)
+               {
+                   r.push('[' + p + ']:' + o[p]);
+               }
+
+               return r.join(';');
+
+
            },
 
            ExecAF: function(o)
            {
 
                //	<summary>
-               ///  执行函数
+               ///  执行扩展函数
                ///	</summary>
                ///	<param name="t" type="obj">
                ///		对象{f:函数名称,q:request,e:参数}
@@ -300,6 +335,7 @@ if (!window.SWW)
                ///	<summary>
                ///  返回文件所在路径
                ///	</summary>
+
                var d = '';
                var e = document.getElementsByTagName('script');
                for (var f = 0; f < e.length; f++)
@@ -371,7 +407,7 @@ if (!window.SWW)
                     type: "POST",
                     data: "json=" + JSON.stringify(t),
                     success: function(s) { SWW.Z.AjaxSuccess(s); },
-                    error: function(XMLHttpRequest, textStatus) { SWW.F.Error('sww.z.ajax', textStatus) }
+                    error: function(XMLHttpRequest, textStatus) { SWW.F.Error({ n: 'SWW.Z.Ajax', m: textStatus }) }
                 });
            },
 
@@ -401,7 +437,7 @@ if (!window.SWW)
                    }
                    else
                    {
-                       SWW.F.Error('sww.z.ajaxsuccess', x);
+                       SWW.F.Error({ n: 'SWW.Z.AjaxSuccess', m: x });
                    }
 
                }
@@ -481,7 +517,7 @@ if (!window.SWW)
                    }
                    else
                    {
-                       SWW.F.Error('sww.z.init', SWW.M.SE.IM);
+                       SWW.F.Error({ n: 'SWW.Z.Init', m: SWW.M.SE.IM });
                    }
                }
 
@@ -489,6 +525,7 @@ if (!window.SWW)
 
            }
        },
+
        I: function(t, o)
        {
            ///	<summary>

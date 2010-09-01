@@ -1,6 +1,6 @@
 ﻿
 
-CKEDITOR.dialog.add('srnpr_ck_gridshow', function(editor)
+CKEDITOR.dialog.add('srnpr_ck_listshow', function(editor)
 {
     return {
         title: editor.config.srnprck.cklist.gridshow.title,

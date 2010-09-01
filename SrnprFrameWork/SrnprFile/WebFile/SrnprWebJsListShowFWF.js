@@ -14,7 +14,7 @@ if (SWW && !SWW.LS)
     {
         O_List: {},
 
-        S_Name: 'LS',
+        S_WidgetType: 'LS',
 
 
         F_Init: function(o)
@@ -33,7 +33,9 @@ if (SWW && !SWW.LS)
             ///	<summary>
             ///  成功后执行
             ///	</summary>
-
+            ///	<param name="r" type="object">
+            ///		成功执行时参数
+            ///	</param>
 
             this.O_List[o.q.Guid] = o;
 

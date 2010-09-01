@@ -25,7 +25,6 @@ if (!window.SWW)
 {
     window.SWW =
    {
-
        //配置
        C:
        {
@@ -45,16 +44,12 @@ if (!window.SWW)
            {
                Url: '/Asmx/WebWidgetHandler.ashx'
            },
-
-
-
+           
            //基本命名空间
            BaseNamespace: 'http://srnprframework/srnprweb',
 
-
            //已经加载的js配置
            JSLoad: {},
-
 
            //初始化时配置
            Init:
@@ -180,7 +175,7 @@ if (!window.SWW)
                ///	<summary>
                ///  执行提交函数
                ///	</summary>
-               ///	<param name="r" type="string">
+               ///	<param name="r" type="object">
                ///		request
                ///	</param>
 
@@ -267,11 +262,13 @@ if (!window.SWW)
 
            ExecFunc: function(o)
            {
-               //	<summary>
+               ///	<summary>
                ///  执行函数
                ///	</summary>
-               ///	<param name="t" type="obj">
-               ///		对象{t:类型,f:函数名称,e:参数}
+               ///	<param name="o" type="object">
+               ///	对象{t:类型,f:函数名称,e:参数}
+               ///  目前支持函数：
+               ///  F_Success({q:提交对象,s:返回对象})
                ///	</param>
 
                if (SWW[o.t] && SWW[o.t][o.f])
@@ -280,7 +277,7 @@ if (!window.SWW)
                }
                else
                {
-                   SWW.F.Error({ n: 'SWW.F.ExecFunc', m: SWW.M.SE.FEF, p: [o.t, o.f, this.GetObjPrototype(o.e)] });
+                   //SWW.F.Error({ n: 'SWW.F.ExecFunc', m: SWW.M.SE.FEF, p: [o.t, o.f, this.GetObjPrototype(o.e)] });
 
                }
            },
@@ -288,7 +285,7 @@ if (!window.SWW)
 
            GetObjPrototype: function(o)
            {
-               //	<summary>
+               ///	<summary>
                ///  得到一个对象的属性字符串
                ///	</summary>
                ///	<param name="o" type="obj">
@@ -311,7 +308,7 @@ if (!window.SWW)
            ExecAF: function(o)
            {
 
-               //	<summary>
+               ///	<summary>
                ///  执行扩展函数
                ///	</summary>
                ///	<param name="t" type="obj">
@@ -429,7 +426,8 @@ if (!window.SWW)
                    {
 
                        SWW.O.Res[json.RQ[i].Guid] = json.RS[i];
-                       //执行函数
+                       
+                       //执行标准函数
                        SWW.F.ExecFunc({ t: json.RS[i].WidgetType, f: 'F_Success', e: { q: json.RQ[i], s: json.RS[i]} });
 
                        //执行扩展函数
@@ -482,7 +480,6 @@ if (!window.SWW)
                                bFlag = false;
                                break;
                            }
-
                        }
                    }
 
@@ -542,9 +539,7 @@ if (!window.SWW)
            }
 
 
-
-
-           //判断是否存在参数
+           //判断是否存在参数并且重新初始化
            if (o)
            {
                o = SWW.F.InitReq(o);

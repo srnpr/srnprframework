@@ -31,7 +31,7 @@ CKEDITOR.editorConfig = function(config)
 
     config.srnprck =
    {
-        //参数
+       //参数
        param:
        {
            id: 'paramid',
@@ -41,47 +41,48 @@ CKEDITOR.editorConfig = function(config)
 
        cktype: 'srnpr_srnpr_ck_control_type_id',
        eventbase: 'srnprck_eventbase_',
-       
+
        cklist:
        {
-          gridshow:
+           gridshow:
           {
               id: 'gridshow',
-              xmltype:'srnpr_ck_gridshow_xmlid',
-             imgsrc:'/srnpr_ckeditor/plugins/srnpr_ck_gridshow/gridshow.png',
-            toolbar: '数据显示',
-            title: '插入数据显示控件',
-            
-            
-            xmlid: '数据显示编号', 
-            xmlemptymsg: '数据显示编号不能为空'
+              xmltype: 'srnpr_ck_gridshow_xmlid',
+              imgsrc: '/srnpr_ckeditor/plugins/srnpr_ck_gridshow/gridshow.png',
+              toolbar: '数据显示',
+              title: '插入数据显示控件',
+              xmlid: '数据显示编号',
+              xmlemptymsg: '数据显示编号不能为空'
           }
           ,
-          ct_list:
+           ct_list:
           {
               id: 'ct_list'
+          },
+           listshow:
+          {
+              id: 'listshow'
+          
           }
        },
-       
-       
-       
-       
+
+
+
+
        //控件编号
        srnpr_srnpr_ck_control_type_id:
        {
-            gridshow:'gridshow',
-            ct_list:'ct_list'
+           gridshow: 'gridshow',
+           listshow: 'listshow',
+           ct_list: 'ct_list'
        },
-       
        ct_list:
        {
 
+   },
 
 
-        },
-        
-        
-        version:"1.0.0.0"
+   version: "1.0.0.0"
 }
 
 };

@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SrnprCommon", "SrnprCommon\SrnprCommon.csproj", "{46C3A095-0B3B-471F-8465-812ABCCEA40C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SrnprWeb", "SrnprWeb\SrnprWeb.csproj", "{38B2E09D-BAD7-4BF2-913C-9695F3A72EE3}"
@@ -11,7 +11,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "TestWebSite", "TestWebSite\
 		SccAuxPath = "Svn"
 		SccLocalPath = "Svn"
 		SccProvider = "SubversionScc"
-		TargetFramework = "3.5"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv3.5"
 		ProjectReferences = "{46C3A095-0B3B-471F-8465-812ABCCEA40C}|SrnprCommon.dll;{38B2E09D-BAD7-4BF2-913C-9695F3A72EE3}|SrnprWeb.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/TestWebSite"
 		Debug.AspNetCompiler.PhysicalPath = "TestWebSite\"

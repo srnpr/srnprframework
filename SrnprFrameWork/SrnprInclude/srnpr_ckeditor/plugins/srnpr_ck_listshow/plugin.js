@@ -11,7 +11,7 @@ CKEDITOR.plugins.add('srnpr_ck_listshow',
         editor.addCommand('srnpr_ck_listshow', new CKEDITOR.dialogCommand('srnpr_ck_listshow'));
         editor.ui.addButton('srnpr_ck_listshow',
 			{
-			    label: editor.config.srnprck.cklist.gridshow.toolbar,
+			    label: editor.config.srnprck.cklist.listshow.toolbar,
 			    command: 'srnpr_ck_listshow',
 			    icon: CKEDITOR.plugins.getPath('srnpr_ck_listshow') + 'srnpr_ck_listshow.gif'
 			});
@@ -22,7 +22,7 @@ CKEDITOR.plugins.add('srnpr_ck_listshow',
         {
             var element = evt.data.element;
 
-            if (element.is('img') && element.getAttribute(editor.config.srnprck.cktype) == editor.config.srnprck.cklist.gridshow.id)
+            if (element.is('img') && element.getAttribute(editor.config.srnprck.cktype) == editor.config.srnprck.cklist.listshow.id)
             {
                 evt.data.dialog = 'srnpr_ck_listshow';
             }

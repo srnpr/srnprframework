@@ -61,7 +61,13 @@ CKEDITOR.editorConfig = function(config)
           },
            listshow:
           {
-              id: 'listshow'
+              id: 'listshow',
+              xmltype: 'srnpr_ck_listshow_xmlid',
+              imgsrc: '/srnpr_ckeditor/plugins/srnpr_ck_listshow/listshow.png',
+              toolbar: '数据显示',
+              title: '插入数据显示控件',
+              xmlid: '数据显示编号',
+              xmlemptymsg: '数据显示编号不能为空'
           
           }
        },

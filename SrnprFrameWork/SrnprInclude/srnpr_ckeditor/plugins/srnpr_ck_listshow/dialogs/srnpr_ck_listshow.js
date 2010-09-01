@@ -3,7 +3,7 @@
 CKEDITOR.dialog.add('srnpr_ck_listshow', function(editor)
 {
     return {
-        title: editor.config.srnprck.cklist.gridshow.title,
+        title: editor.config.srnprck.cklist.listshow.title,
         hiddenField: null,
         minWidth: 350,
         minHeight: 110,
@@ -14,7 +14,7 @@ CKEDITOR.dialog.add('srnpr_ck_listshow', function(editor)
             var editor = this.getParentEditor(),
 				selection = editor.getSelection(),
 				element = selection.getSelectedElement();
-            if (element && element.getAttribute(editor.config.srnprck.cktype) && element.getAttribute(editor.config.srnprck.cktype) == editor.config.srnprck.cklist.gridshow.id)
+            if (element && element.getAttribute(editor.config.srnprck.cktype) && element.getAttribute(editor.config.srnprck.cktype) == editor.config.srnprck.cklist.listshow.id)
             {
                 this.hiddenField = element;
                 this.setupContent(this.hiddenField);
@@ -28,12 +28,12 @@ CKEDITOR.dialog.add('srnpr_ck_listshow', function(editor)
 			    attributes:
 				{
 				    id:  this.getValueOf('info', '_cke_saved_name'),
-				    src:editor.config.srnprck.cklist.gridshow.imgsrc
+				    src:editor.config.srnprck.cklist.listshow.imgsrc
 				}
 			});
 
-			img.setAttribute(editor.config.srnprck.cktype, editor.config.srnprck.cklist.gridshow.id);
-			img.setAttribute(editor.config.srnprck.cklist.gridshow.xmltype, this.getValueOf('info', '_xml_saved_id'));
+			img.setAttribute(editor.config.srnprck.cktype, editor.config.srnprck.cklist.listshow.id);
+			img.setAttribute(editor.config.srnprck.cklist.listshow.xmltype, this.getValueOf('info', '_xml_saved_id'));
             editor.insertElement(img);
 
 
@@ -42,8 +42,8 @@ CKEDITOR.dialog.add('srnpr_ck_listshow', function(editor)
         contents: [
 			{
 			    id: 'info',
-			    label: editor.config.srnprck.cklist.gridshow.title,
-			    title: editor.config.srnprck.cklist.gridshow.title,
+			    label: editor.config.srnprck.cklist.listshow.title,
+			    title: editor.config.srnprck.cklist.listshow.title,
 			    elements: [
 					{
 					    id: '_cke_saved_name',
@@ -73,20 +73,20 @@ CKEDITOR.dialog.add('srnpr_ck_listshow', function(editor)
 					{
 					    id: '_xml_saved_id',
 					    type: 'text',
-					    label: editor.config.srnprck.cklist.gridshow.xmlid,
-					    validate: CKEDITOR.dialog.validate.notEmpty(editor.config.srnprck.cklist.gridshow.xmlemptymsg),
+					    label: editor.config.srnprck.cklist.listshow.xmlid,
+					    validate: CKEDITOR.dialog.validate.notEmpty(editor.config.srnprck.cklist.listshow.xmlemptymsg),
 					    'default': '',
 					    accessKey: 'V',
 					    setup: function(element)
 					    {
-					        this.setValue(element.getAttribute(editor.config.srnprck.cklist.gridshow.xmltype) || '');
+					        this.setValue(element.getAttribute(editor.config.srnprck.cklist.listshow.xmltype) || '');
 					    },
 					    commit: function(element)
 					    {
 					        if (this.getValue())
-					            element.setAttribute(editor.config.srnprck.cklist.gridshow.xmltype, this.getValue());
+					            element.setAttribute(editor.config.srnprck.cklist.listshow.xmltype, this.getValue());
 					        else
-					            element.removeAttribute(editor.config.srnprck.cklist.gridshow.xmltype);
+					            element.removeAttribute(editor.config.srnprck.cklist.listshow.xmltype);
 					    }
 					}
 				]

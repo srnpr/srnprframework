@@ -88,5 +88,9 @@
     <Content Include="srnpr_ckeditor\plugins\srnpr_ck_gridshow\srnpr_ck_gridshow.gif" />
     <Content Include="srnpr_ckeditor\plugins\srnpr_ck_webtab\dialogs\srnpr_ck_webtab.js" />
     <Content Include="srnpr_ckeditor\plugins\srnpr_ck_webtab\plugin.js" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_listshow\dialogs\srnpr_ck_gridshow.js" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_listshow\gridshow.png" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_listshow\plugin.js" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_listshow\srnpr_ck_gridshow.gif" />
   </ItemGroup>
 </Project>

@@ -3,7 +3,7 @@ Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
-CKEDITOR.editorConfig = function(config)
+CKEDITOR.editorConfig = function (config)
 {
     // Define changes to default configuration here. For example:
     // config.language = 'fr';
@@ -62,13 +62,34 @@ CKEDITOR.editorConfig = function(config)
            listshow:
           {
               id: 'listshow',
-              xmltype: 'srnpr_ck_listshow_xmlid',
+              xmltype: 'srnpr_ck_listshow_id',
               imgsrc: '/srnpr_ckeditor/plugins/srnpr_ck_listshow/listshow.png',
-              toolbar: '数据显示',
-              title: '插入数据显示控件',
-              xmlid: '数据显示编号',
-              xmlemptymsg: '数据显示编号不能为空'
-          
+              toolbar: '列表显示',
+              title: '插入列表显示控件',
+              xmlid: '列表显示编号',
+              xmlemptymsg: '列表显示编号不能为空',
+
+              
+
+              listshowtypetitle:'显示方式',
+              listshowtype: 'srnpr_ck_listshow_listshowtype',
+              listtype: 
+              {
+                  select: { title: '下拉框', value: 'select' },
+                  radio: { title: '单选按钮', value: 'radio' } ,
+                  checkbox: { title: '复选按钮', value: 'checkbox' }
+              },
+
+              defaluttitle:'默认值',
+              defaulttypeid:'srnpr_ck_listshow_listshowdefault',
+              defaulttype: 
+              {
+                  empty: { title: '无', value: 'empty' },
+                  first: { title: '第一项', value: 'first' } ,
+                  choose: { title: '请选择', value: 'choose' },
+                  all: { title: '全部', value: 'all' }
+              }
+
           }
        },
 
@@ -89,6 +110,7 @@ CKEDITOR.editorConfig = function(config)
 
 
    version: "1.0.0.0"
+
 }
 
 };

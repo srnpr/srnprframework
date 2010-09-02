@@ -13,6 +13,15 @@ namespace SrnprWeb.WebProcess
 
 
 
+        /// <summary>
+        /// 
+        /// Author:Liudpc
+        /// Create Date: 2010-9-2 13:42:28
+        /// Description: 得到输出的信息
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="pro"></param>
+        /// <returns></returns>
         public WebInterface.WidgetResponseWWI GetResponse(WebInterface.WidgetRequestWWI request, WidgetProcessWWE pro)
         {
             ListShowResponseWWE res = new ListShowResponseWWE();
@@ -58,6 +67,25 @@ namespace SrnprWeb.WebProcess
             return res;
         }
 
+
+
+        /// <summary>
+        /// 
+        /// Author:Liudpc
+        /// Create Date: 2010-9-2 13:41:57
+        /// Description: 返回生成的HTML
+        /// </summary>
+        /// <returns></returns>
+        public string GetShowHtml()
+        {
+
+
+
+
+            return "";
+        }
+
+
         #region WidgetProcessWWI 成员
 
        
@@ -70,10 +98,7 @@ namespace SrnprWeb.WebProcess
         #endregion
 
 
-        private string ReplaceRow(DataRow dr, string sInput)
-        {
-            return string.Format(sInput, dr.ItemArray);
-        }
+       
 
         
     }

@@ -38,80 +38,13 @@ namespace SrnprSite.Web.PageShow
             string sText = tbEditor.Text.Trim();
             SrnprWeb.WebEntity.PageShowWWE psw = SrnprWeb.WebProcess.PageShowWWP.GetEntityById(sId);
             psw.HtmlContent = sText;
-            psw.Content = RecheckContent(psw.HtmlContent);
+            psw.Content = SrnprWeb.WebProcess.WidgetProcessWWP. RecheckContent(psw.HtmlContent);
             SrnprWeb.WebProcess.PageShowWWP.SaveFileByEntity(psw);
             CPageMessage("保存成功！");
 
         }
 
 
-        protected static string RecheckContent(string sCont)
-        {
-
-
-
-            //开始判断检测控件
-            if (sCont.IndexOf("srnpr_srnpr_ck_control_type_id") > -1)
-            {
-
-                Regex re = new Regex("<img.*?srnpr_srnpr_ck_control_type_id.*?/>");
-
-                MatchCollection mc = re.Matches(sCont);
-
-                for (int i = 0, j = mc.Count; i < j; i++)
-                {
-                    Dictionary<string, string> dKvp = GetElementProp(mc[i].Value.ToString());
-
-                    if (dKvp["srnpr_srnpr_ck_control_type_id"] == "gridshow")
-                    {
-
-                        if (dKvp.ContainsKey("src") && dKvp.ContainsKey("id"))
-                        {
-
-
-                            sCont = sCont.Replace(mc[i].Value, SrnprWeb.WebProcess.GridShowWWP.GetShowHtml(dKvp["srnpr_ck_gridshow_xmlid"], dKvp["id"]));
-
-
-
-                        }
-                    }
-
-
-                }
-            }
-            return sCont;
-        }
-
-
-        protected static Dictionary<string, string> GetElementProp(string sElm)
-        {
-
-            Dictionary<string, string> dkvp = new Dictionary<string, string>();
-
-            if (sElm.IndexOf(' ') > -1)
-            {
-                dkvp.Add("srnpr_html_elment_name", sElm.Substring(1, sElm.IndexOf(' ')));
-            }
-
-
-
-
-            Regex re = new Regex(" .*?\\=\".*?\"");
-
-
-            MatchCollection mc = re.Matches(sElm);
-
-            for (int i = 0, j = mc.Count; i < j; i++)
-            {
-                dkvp[mc[i].Value.Substring(0, mc[i].Value.IndexOf('=')).ToString().ToLower().Trim()] = mc[i].Value.Substring(mc[i].Value.IndexOf('=') + 1).ToString().Trim().Trim('"');
-            }
-
-
-
-
-            return dkvp;
-
-
-        }
+        
     }
 }

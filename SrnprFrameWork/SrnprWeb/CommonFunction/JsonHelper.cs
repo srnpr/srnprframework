@@ -13,6 +13,15 @@ namespace SrnprWeb.CommonFunction
     public class JsonHelper
     {
 
+        /// <summary>
+        /// 
+        /// Author:Liudpc
+        /// Create Date: 2010-9-2 14:29:38
+        /// Description: 实体序列化
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public static string Serialize<T>(T obj)
         {
 
@@ -22,6 +31,17 @@ namespace SrnprWeb.CommonFunction
             string retVal = Encoding.UTF8.GetString(ms.ToArray());
             return retVal;
         }
+
+
+        /// <summary>
+        /// 
+        /// Author:Liudpc
+        /// Create Date: 2010-9-2 14:29:52
+        /// Description: 实体反序列化
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="json"></param>
+        /// <returns></returns>
         public static T Deserialize<T>(string json)
         {
             MemoryStream ms = new MemoryStream(Encoding.Unicode.GetBytes(json));
@@ -30,5 +50,24 @@ namespace SrnprWeb.CommonFunction
             ms.Close();
             return obj;
         }
+
+
+
+        /// <summary>
+        /// 
+        /// Author:Liudpc
+        /// Create Date: 2010-9-2 14:34:09
+        /// Description: 字典序列化
+        /// </summary>
+        /// <param name="dObj"></param>
+        /// <returns></returns>
+        public static string SerializeDic(Dictionary<string, string> dObj)
+        {
+            return "{"+string.Join(",", dObj.Select(t => t.Key + ":\"" + t.Value + "\"").ToArray())+"}";
+
+
+        }
+
+
     }
 }

@@ -76,13 +76,13 @@ namespace SrnprWeb.WebProcess
         /// Description: 返回生成的HTML
         /// </summary>
         /// <returns></returns>
-        public string GetShowHtml()
+        public static string GetShowHtml(Dictionary<string,string> dObj)
         {
 
 
 
 
-            return "";
+            return "<span id=\""+dObj["SId"]+"\"></span>"+CommonFunction.JSHelper.CreateScriptDefer( WebProcess.WidgetProcessWWP.SwwJsBaseName("I", CommonFunction.JsonHelper.SerializeDic(dObj)));
         }
 
 

@@ -2,8 +2,11 @@
 
 CKEDITOR.dialog.add('srnpr_ck_listshow', function (editor)
 {
+
+    var sck = editor.config.srnprck;
+
     return {
-        title: editor.config.srnprck.cklist.listshow.title,
+        title: sck.cklist.listshow.title,
         hiddenField: null,
         minWidth: 350,
         minHeight: 110,
@@ -14,7 +17,7 @@ CKEDITOR.dialog.add('srnpr_ck_listshow', function (editor)
             var editor = this.getParentEditor(),
 				selection = editor.getSelection(),
 				element = selection.getSelectedElement();
-            if (element && element.getAttribute(editor.config.srnprck.cktype) && element.getAttribute(editor.config.srnprck.cktype) == editor.config.srnprck.cklist.listshow.id)
+            if (element && element.getAttribute(sck.cktype) && element.getAttribute(sck.cktype) == sck.cklist.listshow.id)
             {
                 this.hiddenField = element;
                 this.setupContent(this.hiddenField);
@@ -27,15 +30,26 @@ CKEDITOR.dialog.add('srnpr_ck_listshow', function (editor)
 			{
 			    attributes:
 				{
-				    id: this.getValueOf('info', '_cke_saved_name'),
-				    src: editor.config.srnprck.cklist.listshow.imgsrc
+				    id: this.getValueOf('info', '_cke_saved_id'),
+				    src: sck.cklist.listshow.imgsrc
 				}
 			});
 
-            img.setAttribute(editor.config.srnprck.cktype, editor.config.srnprck.cklist.listshow.id);
-            img.setAttribute(editor.config.srnprck.cklist.listshow.xmltype, this.getValueOf('info', '_xml_saved_id'));
-            img.setAttribute(editor.config.srnprck.cklist.listshow.listshowtype, this.getValueOf('info', 'listshowtype'));
-            img.setAttribute(editor.config.srnprck.cklist.listshow.defaulttypeid, this.getValueOf('info', 'listshowdefault'));
+            
+
+            img.setAttribute(sck.cktype, sck.cklist.listshow.id);
+
+            img.setAttribute(sck.json.listshow.WidgetType, sck.cklist.listshow.id);
+
+
+            img.setAttribute(sck.json.listshow.Id, this.getValueOf('info', '_ls_json_id'));
+            img.setAttribute(sck.json.listshow.ShowType, this.getValueOf('info', '_ls_json_showtype'));
+            img.setAttribute(sck.json.listshow.ShowDefault, this.getValueOf('info', '_ls_json_showdefault'));
+
+            img.setAttribute(sck.json.listshow.PId, this.getValueOf('info', '_cke_saved_id'));
+
+
+
             editor.insertElement(img);
 
 
@@ -44,20 +58,20 @@ CKEDITOR.dialog.add('srnpr_ck_listshow', function (editor)
         contents: [
 			{
 			    id: 'info',
-			    label: editor.config.srnprck.cklist.listshow.title,
-			    title: editor.config.srnprck.cklist.listshow.title,
+			    label: sck.cklist.listshow.title,
+			    title: sck.cklist.listshow.title,
 			    elements: [
 					{
-					    id: '_cke_saved_name',
+					    id: '_cke_saved_id',
 					    type: 'text',
-					    label: editor.config.srnprck.param.title,
-					    validate: CKEDITOR.dialog.validate.notEmpty(editor.config.srnprck.param.emptymsg),
+					    label: sck.param.title,
+					    validate: CKEDITOR.dialog.validate.notEmpty(sck.param.emptymsg),
 					    'default': '',
 					    accessKey: 'N',
 					    setup: function (element)
 					    {
 					        this.setValue(
-									element.getAttribute('_cke_saved_name') ||
+									element.getAttribute('_cke_saved_id') ||
 									element.getAttribute('id') ||
 									'');
 					    },
@@ -73,22 +87,22 @@ CKEDITOR.dialog.add('srnpr_ck_listshow', function (editor)
 					    }
 					},
 					{
-					    id: '_xml_saved_id',
+					    id: '_ls_json_id',
 					    type: 'text',
-					    label: editor.config.srnprck.cklist.listshow.xmlid,
-					    validate: CKEDITOR.dialog.validate.notEmpty(editor.config.srnprck.cklist.listshow.xmlemptymsg),
+					    label: sck.cklist.listshow.xmlid,
+					    validate: CKEDITOR.dialog.validate.notEmpty(sck.cklist.listshow.xmlemptymsg),
 					    'default': '',
 					    accessKey: 'V',
 					    setup: function (element)
 					    {
-					        this.setValue(element.getAttribute(editor.config.srnprck.cklist.listshow.xmltype) || '');
+					        this.setValue(element.getAttribute(sck.json.listshow.Id) || '');
 					    },
 					    commit: function (element)
 					    {
 					        if (this.getValue())
-					            element.setAttribute(editor.config.srnprck.cklist.listshow.xmltype, this.getValue());
+					            element.setAttribute(sck.json.listshow.Id, this.getValue());
 					        else
-					            element.removeAttribute(editor.config.srnprck.cklist.listshow.xmltype);
+					            element.removeAttribute(sck.json.listshow.Id);
 					    }
 					},
                     {
@@ -97,55 +111,55 @@ CKEDITOR.dialog.add('srnpr_ck_listshow', function (editor)
                         children:
 						[
 							{
-							    id: 'listshowtype',
+							    id: '_ls_json_showtype',
 							    type: 'select',
-							    label: editor.config.srnprck.cklist.listshow.listshowtypetitle,
+							    label: sck.cklist.listshow.listshowtypetitle,
 							    'default': 'text',
 							    accessKey: 'M',
 							    items:
 						        [
-							        [editor.config.srnprck.cklist.listshow.listtype.select.title, editor.config.srnprck.cklist.listshow.listtype.select.value],
-							        [editor.config.srnprck.cklist.listshow.listtype.radio.title, editor.config.srnprck.cklist.listshow.listtype.radio.value],
-                                    [editor.config.srnprck.cklist.listshow.listtype.checkbox.title, editor.config.srnprck.cklist.listshow.listtype.checkbox.value]
+							        [sck.cklist.listshow.listtype.select.title, sck.cklist.listshow.listtype.select.value],
+							        [sck.cklist.listshow.listtype.radio.title, sck.cklist.listshow.listtype.radio.value],
+                                    [sck.cklist.listshow.listtype.checkbox.title, sck.cklist.listshow.listtype.checkbox.value]
 						        ],
 							    setup: function (element)
 							    {
-							        this.setValue(element.getAttribute(editor.config.srnprck.cklist.listshow.listshowtype) || editor.config.srnprck.cklist.listshow.listtype.select.value);
+							        this.setValue(element.getAttribute(sck.json.listshow.ShowType) || sck.cklist.listshow.listtype.select.value);
 							    },
 							    commit: function (element)
 							    {
 							        if (this.getValue())
-							            element.setAttribute(editor.config.srnprck.cklist.listshow.listshowtype, this.getValue());
+							            element.setAttribute(sck.json.listshow.ShowType, this.getValue());
 							        else
-							            element.removeAttribute(editor.config.srnprck.cklist.listshow.listshowtype);
+							            element.removeAttribute(sck.json.listshow.ShowType);
 							    }
 
 
 
 							},
 							{
-							    id: 'listshowdefault',
+							    id: '_ls_json_showdefault',
 							    type: 'select',
-							    label: editor.config.srnprck.cklist.listshow.defaluttitle,
+							    label: sck.cklist.listshow.defaluttitle,
 							    'default': 'text',
 							    accessKey: 'M',
 							    items:
 						        [
-							        [editor.config.srnprck.cklist.listshow.defaulttype.empty.title, editor.config.srnprck.cklist.listshow.defaulttype.empty.value],
-							        [editor.config.srnprck.cklist.listshow.defaulttype.first.title, editor.config.srnprck.cklist.listshow.defaulttype.first.value],
-                                    [editor.config.srnprck.cklist.listshow.defaulttype.choose.title, editor.config.srnprck.cklist.listshow.defaulttype.choose.value],
-                                    [editor.config.srnprck.cklist.listshow.defaulttype.all.title, editor.config.srnprck.cklist.listshow.defaulttype.all.value]
+							        [sck.cklist.listshow.defaulttype.empty.title, sck.cklist.listshow.defaulttype.empty.value],
+							        [sck.cklist.listshow.defaulttype.first.title, sck.cklist.listshow.defaulttype.first.value],
+                                    [sck.cklist.listshow.defaulttype.choose.title, sck.cklist.listshow.defaulttype.choose.value],
+                                    [sck.cklist.listshow.defaulttype.all.title, sck.cklist.listshow.defaulttype.all.value]
 						        ],
 							    setup: function (element)
 							    {
-							        this.setValue(element.getAttribute(editor.config.srnprck.cklist.listshow.defaulttypeid) || editor.config.srnprck.cklist.listshow.defaulttype.empty.value);
+							        this.setValue(element.getAttribute(sck.json.listshow.ShowDefault) || sck.cklist.listshow.defaulttype.empty.value);
 							    },
 							    commit: function (element)
 							    {
 							        if (this.getValue())
-							            element.setAttribute(editor.config.srnprck.cklist.listshow.defaulttypeid, this.getValue());
+							            element.setAttribute(sck.json.listshow.ShowDefault, this.getValue());
 							        else
-							            element.removeAttribute(editor.config.srnprck.cklist.listshow.defaulttypeid);
+							            element.removeAttribute(sck.json.listshow.ShowDefault);
 							    }
 							}
 						]

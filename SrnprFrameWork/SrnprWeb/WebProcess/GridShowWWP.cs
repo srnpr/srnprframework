@@ -77,8 +77,8 @@ namespace SrnprWeb.WebProcess
             //定义参数名称
             string sObjId = "SWJGSF_Obj_" + sClientId.Replace('.','_');
             //开始输出执行逻辑
-            sb.Append("<div id=\"SWJGSF_Div_" + sClientId + "\"></div><input type=\"hidden\" name=\"SWJGSF_Hidden_" + sClientId + "\" id=\"SWJGSF_Hidden_" + sClientId + "\" value=\"" + sRequest + "\"><script>var " + sObjId + "=" + SrnprWeb.WebProcess.GridShowWWP.WidgetRequestString(sXmlId, sClientId) + ";SWW.I(" + sObjId + ");</script>");
-
+            sb.Append("<div id=\"SWJGSF_Div_" + sClientId + "\"></div><input type=\"hidden\" name=\"SWJGSF_Hidden_" + sClientId + "\" id=\"SWJGSF_Hidden_" + sClientId + "\" value=\"" + sRequest + "\">");
+            sb.Append(CommonFunction.JSHelper.CreateScriptDefer("var " + sObjId + "=" + SrnprWeb.WebProcess.GridShowWWP.WidgetRequestString(sXmlId, sClientId) + ";SWW.I(" + sObjId + ");"));
             return sb.ToString();
         }
 

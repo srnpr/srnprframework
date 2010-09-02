@@ -42,6 +42,23 @@ CKEDITOR.editorConfig = function (config)
        cktype: 'srnpr_srnpr_ck_control_type_id',
        eventbase: 'srnprck_eventbase_',
 
+      
+      //json配置  该配置所有内容以json_开头服务器端会替换掉
+       json:
+       {
+           listshow:
+           {
+               WidgetType: 'json_WidgetType',
+               Id: 'json_Id',
+               ShowType: 'json_ShowType',
+               ShowDefault: 'json_ShowDefault',
+               PId: 'json_PId'
+           },
+           gridshow:
+           {
+
+           }
+       },
        cklist:
        {
            gridshow:
@@ -61,31 +78,25 @@ CKEDITOR.editorConfig = function (config)
           },
            listshow:
           {
-              id: 'listshow',
-              xmltype: 'srnpr_ck_listshow_id',
+              id: 'LS',
+             
               imgsrc: '/srnpr_ckeditor/plugins/srnpr_ck_listshow/listshow.png',
               toolbar: '列表显示',
               title: '插入列表显示控件',
               xmlid: '列表显示编号',
               xmlemptymsg: '列表显示编号不能为空',
-
-              
-
-              listshowtypetitle:'显示方式',
-              listshowtype: 'srnpr_ck_listshow_listshowtype',
-              listtype: 
+              listshowtypetitle: '显示方式',
+              listtype:
               {
                   select: { title: '下拉框', value: 'select' },
-                  radio: { title: '单选按钮', value: 'radio' } ,
+                  radio: { title: '单选按钮', value: 'radio' },
                   checkbox: { title: '复选按钮', value: 'checkbox' }
               },
-
-              defaluttitle:'默认值',
-              defaulttypeid:'srnpr_ck_listshow_listshowdefault',
-              defaulttype: 
+              defaluttitle: '默认值',
+              defaulttype:
               {
                   empty: { title: '无', value: 'empty' },
-                  first: { title: '第一项', value: 'first' } ,
+                  first: { title: '第一项', value: 'first' },
                   choose: { title: '请选择', value: 'choose' },
                   all: { title: '全部', value: 'all' }
               }
@@ -100,7 +111,7 @@ CKEDITOR.editorConfig = function (config)
        srnpr_srnpr_ck_control_type_id:
        {
            gridshow: 'gridshow',
-           listshow: 'listshow',
+           listshow: 'LS',
            ct_list: 'ct_list'
        },
        ct_list:

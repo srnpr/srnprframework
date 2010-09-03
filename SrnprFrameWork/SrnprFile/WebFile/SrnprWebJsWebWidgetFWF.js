@@ -85,18 +85,11 @@ if (!window.SWW)
         },
 
        //Jquery适配器  
-       J: jQuery,
+       J: 
+      
+      jQuery,
 
-       J_Ready: function(f)
-       {
-           ///	<summary>
-           ///  脚本文件加载完成后调用函数
-           ///	</summary>
-           ///	<param name="f" type="function">
-           ///		函数
-           ///	</param>
-           this.J().ready(f);
-       },
+       
        //Req提交参数  Res返回参数  AF扩展函数  Guid唯一标识集
        O: { Req: {}, Res: {}, AF: {}, Guid: {} },
        A: function(t, f, id, fu)
@@ -140,6 +133,10 @@ if (!window.SWW)
        },
        F:
        {
+           ///	<summary>
+           ///  扩展调用接口
+           ///	</summary>
+
            Alert: function(m)
            {
                ///	<summary>
@@ -451,7 +448,7 @@ if (!window.SWW)
 
                if (!SWW.C.Init.LoadFlag)
                {
-                   SWW.J_Ready(function() { SWW.Z.Init(); });
+                   SWW.J().ready(function () { SWW.Z.Init(); });
                    SWW.C.Init.LoadFlag = true;
                }
            },
@@ -575,11 +572,13 @@ if (!window.SWW)
            }
 
 
-
+           
 
 
            //开始加载初始化函数
            this.Z.CheckInit();
+
+          
 
 
        }

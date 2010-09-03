@@ -20,5 +20,9 @@ namespace SrnprWeb.WebEntity
 
 
 
+        [DataMember(Order = 1)]
+        public bool ResultFlag { get; set; }
+
+
     }
 }

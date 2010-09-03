@@ -16,6 +16,17 @@ Description: 核心类文件 所有widget使用的初始化及加载文件
             
             
             
+            参数定义：
+            第一标识
+            s:字符串(str)
+            o:对象(obj)
+            i:数字(int)
+            f:函数(fun)
+
+            第二标识：
+            [y]:必填参数
+            n:非必填参数
+
             
 Author: Liudpc
 Create Date: 2010-8-18 9:27:36
@@ -44,7 +55,7 @@ if (!window.SWW)
            {
                Url: '/Asmx/WebWidgetHandler.ashx'
            },
-           
+
            //基本命名空间
            BaseNamespace: 'http://srnprframework/srnprweb',
 
@@ -85,14 +96,14 @@ if (!window.SWW)
         },
 
        //Jquery适配器  
-       J: 
-      
+       J:
+
       jQuery,
 
-       
+
        //Req提交参数  Res返回参数  AF扩展函数  Guid唯一标识集
        O: { Req: {}, Res: {}, AF: {}, Guid: {} },
-       A: function(t, f, id, fu)
+       A: function (t, f, id, fu)
        {
            ///	<summary>
            ///  扩展调用接口
@@ -109,11 +120,6 @@ if (!window.SWW)
            ///	<param name="fu" type="string">
            ///		函数  扩展当操作执行时的执行函数 不同函数所需参数不一致
            ///	</param>
-
-
-
-
-
            if (!SWW.O.AF[t])
            {
                SWW.O.AF[t] = {};
@@ -122,208 +128,272 @@ if (!window.SWW)
            {
                SWW.O.AF[t][f] = {};
            }
-
-
-
-
-
            SWW.O.AF[t][f][id] = fu;
-
-
        },
        F:
        {
-           ///	<summary>
-           ///  扩展调用接口
-           ///	</summary>
 
-           Alert: function(m)
+           DOM:
            {
-               ///	<summary>
-               ///  弹出提示信息
-               ///	</summary>
-               ///	<param name="m" type="string">
-               ///		提示信息
-               ///	</param>
-               alert(m);
-           },
-           Error: function(o)
-           {
-               ///	<summary>
-               ///  出现严重错误时提示
-               ///	</summary>
-               ///	<param name="o" type="object">
-               ///  错误内容  o{n:错误标识,m:错误内容,[p]:array 替换参数}
-               ///	</param>
-
-               if (o.p && o.m)
+               Html: function (sElement, snHtml)
                {
-                   for (var i = 0, j = o.p.length; i < j; i++)
+                   ///	<summary>
+                   ///  设置或返回元素的html内容
+                   ///	</summary>
+                   ///	<param name="sElement" type="str">
+                   ///		元素名称
+                   ///	</param>
+                   ///	<param name="snHtml" type="str">
+                   ///		元素的html
+                   ///	</param>
+                   if (snHtml)
                    {
-                       o.m = o.m.replace('{' + i + '}', o.p[i]);
+                       SWW.J('#' + sElement).html(snHtml);
+                   }
+                   else
+                   {
+                       return SWW.J('#' + sElement).html();
+                   }
+               },
+               Text: function (sElement, snText)
+               {
+                   ///	<summary>
+                   ///  设置或返回元素的Text
+                   ///	</summary>
+                   ///	<param name="sElement" type="str">
+                   ///		元素名称
+                   ///	</param>
+                   ///	<param name="snText" type="str">
+                   ///		元素的Text
+                   ///	</param>
+                   if (snText)
+                   {
+                       SWW.J('#' + sElement).text(snText);
+                   }
+                   else
+                   {
+                       return SWW.J('#' + sElement).text();
+                   }
+               },
+               Value: function (sElement, snValue)
+               {
+                   ///	<summary>
+                   ///  设置或返回元素的值
+                   ///	</summary>
+                   ///	<param name="sElement" type="str">
+                   ///		元素名称
+                   ///	</param>
+                   ///	<param name="snText" type="str">
+                   ///		元素的值
+                   ///	</param>
+                   if (snValue)
+                   {
+                       SWW.J('#' + sElement).val(snValue);
+                   }
+                   else
+                   {
+                       return SWW.J('#' + sElement).val();
                    }
                }
-
-               this.Alert(SWW.M.SE.ET + (o.n ? SWW.M.SE.EN + o.n : '') + (o.m ? SWW.M.SE.EM + o.m : ''));
-           },
-
-           Run: function(r)
-           {
-               ///	<summary>
-               ///  执行提交函数
-               ///	</summary>
-               ///	<param name="r" type="object">
-               ///		request
-               ///	</param>
-
-               return SWW.Z.Ajax(r);
-           },
-
-           GetGuid: function(r)
-           {
-               ///	<summary>
-               ///  生成Guid
-               ///	</summary>
-               ///	<param name="r" type="string">
-               ///		生成模板 example:8-12-16-20
-               ///	</param>
-               var a = (r ? r : '8-12-16-20').split('-');
-               var al = a.length;
-               var guid = "guid";
-               for (var i = 1 + guid.length; i <= 32; i++)
-               {
-                   var g = Math.floor(Math.random() * 16.0).toString(16);
-                   guid += g;
-                   for (var n = 0; n < al; n++)
-                   {
-                       if (i == a[n])
-                       {
-                           guid += '-';
-                       }
-                   }
-               }
-
-               //判断是否重复
-               if (SWW.O.Guid[guid])
-               {
-                   guid = this.GetGuid();
-               }
-               else
-               {
-                   SWW.O.Guid[guid] = guid;
-               }
-
-               return guid;
-
-           },
-
-           ItemBase: function()
-           {
-               ///	<summary>
-               ///  返回基本对象
-               ///	</summary>
-
-               return { __type: '' };
            },
 
 
-           InitReq: function(e)
-           {
-               ///	<summary>
-               ///  重新初始化对象
-               ///	</summary>
-               ///	<param name="e" type="obj">
-               ///		request
-               ///	</param>
-
-               if (e && e.WidgetType && (!e.__type || !e.Guid))
-               {
-                   var o = this.ItemBase();
-                   if (!e.__type && SWW.C.JS[e.WidgetType] && SWW.C.JS[e.WidgetType].q)
-                   {
-                       o.__type = SWW.C.JS[e.WidgetType].q + ':' + SWW.C.BaseNamespace;
-
-                   }
-                   if (!e.Guid)
-                   {
-                       e.Guid = this.GetGuid();
-                   }
-                   for (var p in e)
-                   {
-                       o[p] = e[p];
-                   }
-                   e = o;
-               }
-               return e;
-           },
-
-           ExecFunc: function(o)
-           {
-               ///	<summary>
-               ///  执行函数
-               ///	</summary>
-               ///	<param name="o" type="object">
-               ///	对象{t:类型,f:函数名称,e:参数}
-               ///  目前支持函数：
-               ///  F_Success({q:提交对象,s:返回对象})
-               ///	</param>
-
-               if (SWW[o.t] && SWW[o.t][o.f])
-               {
-                   SWW[o.t][o.f](o.e);
-               }
-               else
-               {
-                   //SWW.F.Error({ n: 'SWW.F.ExecFunc', m: SWW.M.SE.FEF, p: [o.t, o.f, this.GetObjPrototype(o.e)] });
-
-               }
-           },
 
 
-           GetObjPrototype: function(o)
-           {
-               ///	<summary>
-               ///  得到一个对象的属性字符串
-               ///	</summary>
-               ///	<param name="o" type="obj">
-               ///		对象
-               ///	</param>
+           SYS:
+            {
+                ///	<summary>
+                ///  扩展调用接口
+                ///	</summary>
+
+                Alert: function (s)
+                {
+                    ///	<summary>
+                    ///  弹出提示信息
+                    ///	</summary>
+                    ///	<param name="s" type="str">
+                    ///		提示信息
+                    ///	</param>
+                    alert(s);
+                },
+                Error: function (o)
+                {
+                    ///	<summary>
+                    ///  出现严重错误时提示
+                    ///	</summary>
+                    ///	<param name="o" type="obj">
+                    ///  错误内容  o{n:错误标识,m:错误内容,[p]:array 替换参数}
+                    ///	</param>
+
+                    if (o.p && o.m)
+                    {
+                        for (var i = 0, j = o.p.length; i < j; i++)
+                        {
+                            o.m = o.m.replace('{' + i + '}', o.p[i]);
+                        }
+                    }
+
+                    this.Alert(SWW.M.SE.ET + (o.n ? SWW.M.SE.EN + o.n : '') + (o.m ? SWW.M.SE.EM + o.m : ''));
+                },
+
+                Run: function (o)
+                {
+                    ///	<summary>
+                    ///  执行提交函数
+                    ///	</summary>
+                    ///	<param name="o" type="obj">
+                    ///		request
+                    ///	</param>
+
+                    return SWW.Z.Ajax(o);
+                },
+
+                GetGuid: function (r)
+                {
+                    ///	<summary>
+                    ///  生成Guid
+                    ///	</summary>
+                    ///	<param name="r" type="string">
+                    ///		生成模板 example:8-12-16-20
+                    ///	</param>
+                    var a = (r ? r : '8-12-16-20').split('-');
+                    var al = a.length;
+                    var guid = "guid";
+                    for (var i = 1 + guid.length; i <= 32; i++)
+                    {
+                        var g = Math.floor(Math.random() * 16.0).toString(16);
+                        guid += g;
+                        for (var n = 0; n < al; n++)
+                        {
+                            if (i == a[n])
+                            {
+                                guid += '-';
+                            }
+                        }
+                    }
+
+                    //判断是否重复
+                    if (SWW.O.Guid[guid])
+                    {
+                        guid = this.GetGuid();
+                    }
+                    else
+                    {
+                        SWW.O.Guid[guid] = guid;
+                    }
+
+                    return guid;
+
+                },
+
+                ItemBase: function ()
+                {
+                    ///	<summary>
+                    ///  返回基本对象
+                    ///	</summary>
+
+                    return { __type: '' };
+                },
 
 
-               var r = [];
+                InitReq: function (e)
+                {
+                    ///	<summary>
+                    ///  重新初始化对象
+                    ///	</summary>
+                    ///	<param name="e" type="obj">
+                    ///		request
+                    ///	</param>
 
-               for (var p in o)
-               {
-                   r.push('[' + p + ']:' + o[p]);
-               }
+                    if (e && e.WidgetType && (!e.__type || !e.Guid))
+                    {
+                        var o = this.ItemBase();
+                        if (!e.__type && SWW.C.JS[e.WidgetType] && SWW.C.JS[e.WidgetType].q)
+                        {
+                            o.__type = SWW.C.JS[e.WidgetType].q + ':' + SWW.C.BaseNamespace;
 
-               return r.join(';');
+                        }
+                        if (!e.Guid)
+                        {
+                            e.Guid = this.GetGuid();
+                        }
+                        for (var p in e)
+                        {
+                            o[p] = e[p];
+                        }
+                        e = o;
+                    }
+                    return e;
+                },
+
+                ExecFunc: function (o)
+                {
+                    ///	<summary>
+                    ///  执行函数
+                    ///	</summary>
+                    ///	<param name="o" type="object">
+                    ///	对象{t:类型,f:函数名称,e:参数}
+                    ///  目前支持函数：
+                    ///  F_Success({q:提交对象,s:返回对象})
+                    ///	</param>
+
+                    if (SWW[o.t] && SWW[o.t][o.f])
+                    {
+                        SWW[o.t][o.f](o.e);
+                    }
+                    else
+                    {
+                        //SWW.F.SYS.Error({ n: 'SWW.F.SYS.ExecFunc', m: SWW.M.SE.FEF, p: [o.t, o.f, this.GetObjPrototype(o.e)] });
+
+                    }
+                },
 
 
-           },
+                GetObjPrototype: function (o)
+                {
+                    ///	<summary>
+                    ///  得到一个对象的属性字符串
+                    ///	</summary>
+                    ///	<param name="o" type="obj">
+                    ///		对象
+                    ///	</param>
 
-           ExecAF: function(o)
-           {
 
-               ///	<summary>
-               ///  执行扩展函数
-               ///	</summary>
-               ///	<param name="t" type="obj">
-               ///		对象{f:函数名称,q:request,e:参数}
-               ///	</param>
+                    var r = [];
 
-               if (SWW.O.AF[o.q.WidgetType] && SWW.O.AF[o.q.WidgetType][o.f][o.q.Id])
-               {
-                   SWW.O.AF[o.q.WidgetType][o.f][o.q.Id](o.e);
-               }
+                    for (var p in o)
+                    {
+                        r.push('[' + p + ']:' + o[p]);
+                    }
 
-           }
+                    return r.join(';');
+
+
+                },
+
+                ExecAF: function (o)
+                {
+
+                    ///	<summary>
+                    ///  执行扩展函数
+                    ///	</summary>
+                    ///	<param name="t" type="obj">
+                    ///		对象{f:函数名称,q:request,e:参数}
+                    ///	</param>
+
+                    if (SWW.O.AF[o.q.WidgetType] && SWW.O.AF[o.q.WidgetType][o.f][o.q.Id])
+                    {
+                        SWW.O.AF[o.q.WidgetType][o.f][o.q.Id](o.e);
+                    }
+
+                }
+            }
 
        },
        Z:
        {
 
-           BasePath: function()
+           BasePath: function ()
            {
                ///	<summary>
                ///  返回文件所在路径
@@ -352,7 +422,7 @@ if (!window.SWW)
 
                return d;
            },
-           AddScript: function(u)
+           AddScript: function (u)
            {
                ///	<summary>
                ///  添加脚本文件
@@ -364,7 +434,7 @@ if (!window.SWW)
                SWW.J.getScript(this.BasePath() + u);
            },
 
-           Ajax: function(e)
+           Ajax: function (e)
            {
                ///	<summary>
                ///  提交请求
@@ -388,7 +458,7 @@ if (!window.SWW)
                //开始检测是否定义了正确的类型并是否需要重新初始化
                for (var i = 0, j = t.RQ.length; i < j; i++)
                {
-                   t.RQ[i] = SWW.F.InitReq(t.RQ[i]);
+                   t.RQ[i] = SWW.F.SYS.InitReq(t.RQ[i]);
 
                }
 
@@ -399,12 +469,12 @@ if (!window.SWW)
                     url: SWW.C.Ajax.Url,
                     type: "POST",
                     data: "json=" + JSON.stringify(t),
-                    success: function(s) { SWW.Z.AjaxSuccess(s); },
-                    error: function(XMLHttpRequest, textStatus) { SWW.F.Error({ n: 'SWW.Z.Ajax', m: textStatus }) }
+                    success: function (s) { SWW.Z.AjaxSuccess(s); },
+                    error: function (XMLHttpRequest, textStatus) { SWW.F.SYS.Error({ n: 'SWW.Z.Ajax', m: textStatus }) }
                 });
            },
 
-           AjaxSuccess: function(s)
+           AjaxSuccess: function (s)
            {
                ///	<summary>
                ///  执行成功时调用
@@ -413,7 +483,7 @@ if (!window.SWW)
                ///		响应内容
                ///	</param>
 
-               
+
 
                var json = JSON.parse(s);
 
@@ -423,23 +493,23 @@ if (!window.SWW)
                    {
 
                        SWW.O.Res[json.RQ[i].Guid] = json.RS[i];
-                       
+
                        //执行标准函数
-                       SWW.F.ExecFunc({ t: json.RS[i].WidgetType, f: 'F_Success', e: { q: json.RQ[i], s: json.RS[i]} });
+                       SWW.F.SYS.ExecFunc({ t: json.RS[i].WidgetType, f: 'F_Success', e: { q: json.RQ[i], s: json.RS[i]} });
 
                        //执行扩展函数
-                       SWW.F.ExecAF({ f: 'Success', q: json.RQ[i], e: { s: s} });
+                       SWW.F.SYS.ExecAF({ f: 'Success', q: json.RQ[i], e: { s: s} });
 
                    }
                    else
                    {
-                       SWW.F.Error({ n: 'SWW.Z.AjaxSuccess', m: x });
+                       SWW.F.SYS.Error({ n: 'SWW.Z.AjaxSuccess', m: x });
                    }
 
                }
            },
 
-           CheckInit: function()
+           CheckInit: function ()
            {
                ///	<summary>
                ///  判断系统初始化加载加载
@@ -454,7 +524,7 @@ if (!window.SWW)
            },
 
 
-           Init: function()
+           Init: function ()
            {
                ///	<summary>
                ///  系统初始化时调用
@@ -506,7 +576,7 @@ if (!window.SWW)
                    else
                    {
                        //提示错误信息
-                       SWW.F.Error({ n: 'SWW.Z.Init', m: SWW.M.SE.IM });
+                       SWW.F.SYS.Error({ n: 'SWW.Z.Init', m: SWW.M.SE.IM });
                    }
                }
 
@@ -515,7 +585,7 @@ if (!window.SWW)
            }
        },
 
-       I: function(t, o)
+       I: function (t, o)
        {
            ///	<summary>
            ///  根据名称初始化对象
@@ -539,7 +609,7 @@ if (!window.SWW)
            //判断是否存在参数并且重新初始化
            if (o)
            {
-               o = SWW.F.InitReq(o);
+               o = SWW.F.SYS.InitReq(o);
                this.O.Req[o.Guid] = o;
 
            }
@@ -572,13 +642,13 @@ if (!window.SWW)
            }
 
 
-           
+
 
 
            //开始加载初始化函数
            this.Z.CheckInit();
 
-          
+
 
 
        }

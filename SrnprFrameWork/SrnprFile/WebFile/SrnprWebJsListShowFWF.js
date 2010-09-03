@@ -17,19 +17,21 @@ if (SWW && !SWW.LS)
         S_WidgetType: 'LS',
 
 
-        F_Init: function(o)
+        F_Init: function (o)
         {
             //alert(o.WidgetType);
         },
 
-        F_Change: function(g, o)
+        F_Change: function (g, o)
         {
-        
-              
-            
+
+
+
+
+
         },
 
-        F_Success: function(o)
+        F_Success: function (o)
         {
             ///	<summary>
             ///  成功后执行
@@ -55,7 +57,7 @@ if (SWW && !SWW.LS)
                     {
                         aHtml.push('<option value="' + s.Kvd[i].V + '">' + s.Kvd[i].K + '</option>');
                     }
-                    sShow = '<select id="'+q.Guid+'" name="' + q.PId + '" onchange="SWW.LS.F_Change(\'' + q.Guid + '\',this)">' + aHtml.join('') + '</select>';
+                    sShow = '<select id="' + q.Guid + '" name="' + q.PId + '" onchange="SWW.LS.F_Change(\'' + q.Guid + '\',this)">' + aHtml.join('') + '</select>';
                     break;
                 case 'radio':
                     for (var i = 0, j = s.Kvd.length; i < j; i++)
@@ -74,10 +76,10 @@ if (SWW && !SWW.LS)
 
             }
 
-            SWW.J('#' + q.SId).html(sShow);
-
             
-           
+
+            SWW.F.DOM.Html(q.SId, sShow);
+
 
         }
 

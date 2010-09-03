@@ -136,7 +136,7 @@ if (!this.SWJGSF)
 
 
 
-            SWW.F.Run(SWJGSF.Obj[id]);
+            SWW.F.SYS.Run(SWJGSF.Obj[id]);
         }
 
         SWJGSF.AlertMsg = function(s)

@@ -14,8 +14,6 @@ if (SWW && !SWW.TS)
     SWW.TS =
     {
         S_WidgetType: 'TS',
-
-
         O_List:
         {
             onlyselect:
@@ -23,8 +21,6 @@ if (SWW && !SWW.TS)
                 url:''
             }
         }
-        
-        
         ,
         
         F_Init:function()

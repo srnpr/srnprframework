@@ -15,7 +15,6 @@ Description: 核心类文件 所有widget使用的初始化及加载文件
             A：扩展系列
             
             
-            
             参数定义：
             第一标识
             s:字符串(str)
@@ -96,13 +95,12 @@ if (!window.SWW)
         },
 
        //Jquery适配器  
-       J:
-
-      jQuery,
-
+       J:jQuery,
 
        //Req提交参数  Res返回参数  AF扩展函数  Guid唯一标识集
        O: { Req: {}, Res: {}, AF: {}, Guid: {} },
+
+       //扩展函数系列
        A: function (t, f, id, fu)
        {
            ///	<summary>
@@ -130,6 +128,8 @@ if (!window.SWW)
            }
            SWW.O.AF[t][f][id] = fu;
        },
+
+       //函数系列
        F:
        {
 
@@ -389,7 +389,9 @@ if (!window.SWW)
                 }
             }
 
-       },
+        },
+
+        //内部调用系列
        Z:
        {
 
@@ -585,6 +587,7 @@ if (!window.SWW)
            }
        },
 
+       //初始化
        I: function (t, o)
        {
            ///	<summary>

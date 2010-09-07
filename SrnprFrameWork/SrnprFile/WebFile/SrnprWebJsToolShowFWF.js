@@ -22,7 +22,6 @@ if (SWW && !SWW.TS)
             {
                 url:''
             }
-            
         }
         
         
@@ -44,4 +43,3 @@ if (SWW && !SWW.TS)
   
 }
 
-}

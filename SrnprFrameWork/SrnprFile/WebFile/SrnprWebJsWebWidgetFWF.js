@@ -22,6 +22,7 @@ Description: 核心类文件 所有widget使用的初始化及加载文件
             o:对象(obj)
             i:数字(int)
             f:函数(fun)
+            b:布尔型(bool)
 
             第二标识：
             [y]:必填参数
@@ -209,6 +210,23 @@ if (!window.SWW)
                    ///		元素名称
                    ///	</param>
                    return sn ? document.getElementById(sn) : document;
+               },
+               Display: function (s, bn)
+               {
+                   ///	<summary>
+                   ///  显示
+                   ///	</summary>
+                   ///	<param name="s" type="str">
+                   ///		元素名称
+                   ///	</param>
+                   ///	<param name="bn" type="bool">
+                   ///		是否显示 默认不显示
+                   ///	</param>
+
+                  
+                   this.Get(s).style.display = (!bn ? 'none' : '');
+
+
                }
            },
 
@@ -643,8 +661,12 @@ if (!window.SWW)
                        url: '',
                        //是否自动状态保存 0表示不自动保存状态 1表示自动保存状态
                        save: 0,
-                       //自身所加载的文档
-                       self: null
+                       //自身所加载的window对象
+                       self: null,
+                       //当前加载的序号
+                       current: 0,
+                       //Guid编号
+                       guid: ''
                    }
                    ,
                    Config:
@@ -692,17 +714,26 @@ if (!window.SWW)
                        }
                        else
                        {
-                           SWW.F.DOM.Get(this.Config.BgId).style.display = "";
+                           SWW.F.DOM.Display(this.Config.BgId,true);
                        }
                    },
                    Clear: function ()
                    {
+                       this.ObjArray.pop();
 
-                       if (this.Config.CountDialog == 1)
+                       if (this.Config.CountDialog <= 0)
                        {
-                           SWW.F.DOM.Get(this.Config.BgId).style.display = "none";
+
+                           SWW.F.DOM.Display(this.Config.BgId);
+                           this.Config.CountDialog = 0;
                        }
-                       this.Config.CountDialog--;
+                       else
+                       {
+                          
+                           SWW.F.DOM.Display(this.ObjArray[this.Config.CountDialog - 1].guid, true);
+
+                       }
+
 
 
                    },
@@ -726,6 +757,13 @@ if (!window.SWW)
                            o.id = this.Config.DefaultId;
                        }
 
+                       if (!o.guid)
+                       {
+                           o.guid = SWW.F.SYS.GetGuid();
+                       }
+
+
+
                        o.top = Math.max(document.body.scrollTop, document.documentElement.scrollTop) + o.top;
                        if (o.left == -1) o.left = (document.body.offsetWidth - parseInt(o.width)) / 2;
                        this.AddBg();
@@ -736,7 +774,7 @@ if (!window.SWW)
 
                        var aH = [];
 
-                       aH.push('<div id=' + o.id + ' style="background-color:#ccc;width:' + (o.width + 4) + 'px;height:' + (o.height + 4) + 'px; z-index:999;position:absolute;top:' + o.top + 'px;left:' + o.left + 'px;">');
+                       aH.push('<div id="' + o.guid + '" style="background-color:#ccc;width:' + (o.width + 4) + 'px;height:' + (o.height + 4) + 'px; z-index:999;position:absolute;top:' + o.top + 'px;left:' + o.left + 'px;">');
                        aH.push('<div style="background-color:#999;width:' + (o.width + 3) + 'px;height:' + (o.height + 3) + 'px;">');
 
                        aH.push('<div style="background-color:#fff;width:' + o.width + 'px;height:' + o.height + 'px;border-top:1px #999 solid;border-left:1px #999 solid;">');
@@ -744,7 +782,7 @@ if (!window.SWW)
 
                        //开始添加抬头
 
-                       aH.push('<div id=' + o.id + '_title class="SWW_Dialog_Title" style="background-color:#ccc;height:30px;line-height:30px;width:100%;border-bottom:solid 1px #999; text-align:right;text-indent:10px;cursor:move;"><span style=" text-align:left;float:left;">' + o.title + '</span><span style="margin:0px 20px 0px 0px;cursor:pointer;" onclick="SWW.W.Dialog.Close(\'#' + o.id + '\',' + o.save + ')">关闭</span></div>');
+                       aH.push('<div id=' + o.guid + '_title class="SWW_Dialog_Title" style="background-color:#ccc;height:30px;line-height:30px;width:100%;border-bottom:solid 1px #999; text-align:right;text-indent:10px;cursor:move;"><span style=" text-align:left;float:left;">' + o.title + '</span><span style="margin:0px 20px 0px 0px;cursor:pointer;" onclick="SWW.W.Dialog.Close(\'' + o.guid + '\',' + o.save + ')">关闭</span></div>');
 
 
 
@@ -752,31 +790,34 @@ if (!window.SWW)
                        if (o.url)
                        {
 
-                           aH.push('<iframe id=' + o.id + '_iframe style="width:' + (o.width - 12) + 'px;height:' + (o.height - 40) + 'px" src="' + o.url + '" frameborder="0"></iframe>');
+                           aH.push('<iframe id=' + o.guid + '_iframe style="width:' + (o.width - 12) + 'px;height:' + (o.height - 40) + 'px" src="' + o.url + '" frameborder="0"></iframe>');
 
                        }
                        aH.push('</div></div></div></div>');
                        SWW.J('body').append(aH.join(''));
 
+                       o.current = this.Config.CountDialog;
+
+                       if (this.Config.CountDialog > 0)
+                       {
+                           SWW.F.DOM.Display(this.ObjArray[this.Config.CountDialog - 1].guid);
+                       }
 
                        this.Config.CountDialog++;
 
                        //开始加载拖动代码
-                       SWW.W.Drag.DragElement(SWW.J('#' + o.id + '_title'), SWW.J('#' + o.id));
+                       SWW.W.Drag.DragElement(SWW.J('#' + o.guid + '_title'), SWW.J('#' + o.guid));
 
                        SWW.J(window).scroll(function ()
                        {
-                           SWW.J('#' + o.id).css("top", (document.documentElement.scrollTop + 120) + "px");
+                           SWW.J('#' + o.guid).css("top", (document.documentElement.scrollTop + 120) + "px");
                        });
+
 
                        this.ObjArray.push(o);
 
 
 
-
-                   },
-                   Close: function ()
-                   {
 
                    }
 
@@ -796,47 +837,107 @@ if (!window.SWW)
 
                    if (!o) o = {};
 
+
                    if (top != self)
                    {
                        o.self = self;
                        top.SWW.W.Dialog.Open(o);
                        return;
                    }
+                   else if (!o.self)
+                   {
+                       o.self = self;
+                   }
 
                    SWW.F.JF.Ready(function () { SWW.W.Dialog.Init.Create(o) });
 
                },
 
-               Close: function (s, save)
+               Close: function (sn, iSave)
                {
-                   if (!save)
+
+                   ///	<summary>
+                   ///  关闭对话框
+                   ///	</summary>
+                   ///	<param name="sn" type="obj">
+                   ///		对话框编号 如果留空时表示关闭最近一次打开的对话框
+                   ///	</param>
+                   ///	<param name="iSave" type="int">
+                   ///		关闭类型 0为直接清除 1为保存状态
+                   ///	</param>
+
+                   if (!sn)
                    {
-                       save = this.Init.Temp.save;
+                       sn = this.Init.ObjArray[this.Init.ObjArray.length - 1].guid;
                    }
 
-                   if (top != self)
+                   if (!iSave)
                    {
-                       top.SWW.W.Dialog.Close(s, save);
+                       iSave = this.Init.Temp.save;
+                   }
+
+                   if (top != self && top.SWW)
+                   {
+                       top.SWW.W.Dialog.Close(sn, save);
                        return;
                    }
 
-                   if (save == 0)
+                   if (iSave == 0)
                    {
-                       //document.body.removeChild(SWW.F.DOM.Get(s));
-                       SWW.J(s).remove();
+                       document.body.removeChild(SWW.F.DOM.Get(sn));
                    }
                    else
                    {
-                       SWW.J(s).hide();
+                       SWW.J('#' + sn).hide();
                    }
+                   this.Init.Config.CountDialog--;
 
 
 
-
+                   //清除背景
                    this.Init.Clear();
+               },
+
+               Father: function ()
+               {
+                   ///	<summary>
+                   ///  得到当前对话框的来源页面
+                   ///	</summary>
+
+                   var o = top.SWW.W.Dialog.Init.ObjArray[top.SWW.W.Dialog.Init.ObjArray.length - 1];
+                   if (o)
+                   {
+                       return o.self;
+                   }
+                   else
+                   {
+                       return self;
+                   }
+               },
+
+               GetValue: function (s)
+               {
+                   ///	<summary>
+                   ///  得到来源页面的元素的值
+                   ///	</summary>
+                   ///	<param name="s" type="str">
+                   ///		元素编号
+                   ///	</param>
+                   
+                   return this.Father().SWW.J('#' + s).val();
+
+               },
+               SetValue: function (s, v)
+               {
+                   ///	<summary>
+                   ///  设置来源页面的元素的值
+                   ///	</summary>
+                   ///	<param name="s" type="str">
+                   ///		元素编号
+                   ///	</param>
+                   this.Father().SWW.J('#' + s).val(v);
+
                }
-
-
 
            }
            ,

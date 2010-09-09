@@ -14,7 +14,12 @@
 
 
 <input type="button" onclick="SWW.W.Dialog.Open({height:500,width:400,url:'default.aspx',id:'aa'});" value="11111" />
-<div style="height:700px;"><input type="text" id="testtext" /></div>
+<div style="height:700px;"><input type="text" id="testtext" />
+
+<input type="button" value="Get" onclick="alert(SWW.W.Dialog.GetValue('testtext'))" />
+
+<input type="button" value="Set" onclick="SWW.W.Dialog.SetValue('testtext',SWW.F.DOM.Value('testtext'))" />
+</div>
 
 <input type="button" onclick="SWW.W.Dialog.Open({});" value="11111" />
 </asp:Content>

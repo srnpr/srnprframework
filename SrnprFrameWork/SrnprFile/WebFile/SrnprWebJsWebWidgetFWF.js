@@ -430,7 +430,7 @@ if (!window.SWW)
                var e = document.getElementsByTagName('script');
                for (var f = 0; f < e.length; f++)
                {
-                   var g = e[f].src.match(/(^|.*[\\\/])SrnprWebJsWebWidgetFWF.js(?:\?.*)?$/i);
+                   var g = e[f].src.match(/(^|.*[\\\/])SrnprWebJsWebWidgetFWF.js(?:\?.*)?SWW.J/i);
                    if (g)
                    {
                        d = g[1];
@@ -623,22 +623,36 @@ if (!window.SWW)
 
                    Temp:
                    {
+                       //控件高度
                        height: 400,
+                       //宽度
                        width: 400,
+                       //顶部距离
                        top: 100,
+                       //左边距 默认-1表示系统自动居中
                        left: -1,
+                       //弹出框表头
                        title: '正在处理中……',
+                       //弹出框html内容
                        html: '',
+                       //弹出框编号
                        id: '',
+                       //背景透明度
                        opacity: 50,
-                       url: ''
+                       //弹出框iframe链接
+                       url: '',
+                       //是否自动状态保存 0表示不自动保存状态 1表示自动保存状态
+                       save: 0
                    }
                    ,
                    Config:
                    {
 
                        BgId: 'SWW_SWW_F_BOX_INIT_CONFIG_BGID',
-                       DefaultId: 'SWW_SWW_F_BOX_INIT_CONFIG_DEFAULTID'
+                       DefaultId: 'SWW_SWW_F_BOX_INIT_CONFIG_DEFAULTID',
+                       Opactity: 50,
+                       BgColor: '#fff',
+                       CountDialog: 0
 
                    },
 
@@ -656,21 +670,19 @@ if (!window.SWW)
 
                            var t = (top != document ? top.document : document);
 
-                           var op = this.Temp.opacity;
+                           var co = this.Config;
 
                            with (e.style)
                            {
                                height = Math.max(window.screen.height, t.body.offsetHeight + 50) + "px";
                                position = 'absolute';
                                zIndex = 555;
-                               filter = " alpha(opacity = " + op + ")";
-                               opacity = op / 100;
+                               filter = " alpha(opacity = " + co.Opactity + ")";
+                               opacity = co.Opactity / 100;
                                width = t.documentElement.scrollWidth + "px";
                                top = "0px";
-                               backgroundColor = '#fff';
-
+                               backgroundColor = co.BgColor;
                            }
-
 
                            document.body.appendChild(e);
                        }
@@ -681,7 +693,13 @@ if (!window.SWW)
                    },
                    RemoveBg: function ()
                    {
-                       SWW.F.DOM.Get(this.Config.BgId).style.display = "none";
+
+                       if (this.Config.CountDialog == 1)
+                       {
+                           SWW.F.DOM.Get(this.Config.BgId).style.display = "none";
+                       }
+                       this.Config.CountDialog--;
+                       
 
                    },
                    Create: function (o)
@@ -708,6 +726,10 @@ if (!window.SWW)
                        if (o.left == -1) o.left = (document.body.offsetWidth - parseInt(o.width)) / 2;
                        this.AddBg();
 
+
+
+
+
                        var aH = [];
 
                        aH.push('<div id=' + o.id + ' style="background-color:#ccc;width:' + (o.width + 4) + 'px;height:' + (o.height + 4) + 'px; z-index:999;position:absolute;top:' + o.top + 'px;left:' + o.left + 'px;">');
@@ -718,19 +740,33 @@ if (!window.SWW)
 
                        //开始添加抬头
 
-                       aH.push('<div class="SWW_Dialog_Title" style="background-color:#ccc;height:30px;line-height:30px;width:100%;border-bottom:solid 1px #999; text-align:right;text-indent:10px;"><span style=" text-align:left;float:left;">' + o.title + '</span><span style="margin:0px 20px 0px 0px;cursor:pointer;" onclick="SWW.W.Dialog.Close(\'' + o.id + '\')">关闭</span></div>');
+                       aH.push('<div id=' + o.id + '_title class="SWW_Dialog_Title" style="background-color:#ccc;height:30px;line-height:30px;width:100%;border-bottom:solid 1px #999; text-align:right;text-indent:10px;cursor:move;"><span style=" text-align:left;float:left;">' + o.title + '</span><span style="margin:0px 20px 0px 0px;cursor:pointer;" onclick="SWW.W.Dialog.Close(\'#' + o.id + '\',' + o.save + ')">关闭</span></div>');
 
 
 
-                       aH.push("<div>");
+                       aH.push('<div style="margin:5px;">');
                        if (o.url)
                        {
 
-                           aH.push('<iframe src=' + o.url + '></iframe>');
+                           aH.push('<iframe style="width:'+(o.width-12)+'px" src="' + o.url + '" frameborder="0"></iframe>');
 
                        }
                        aH.push('</div></div></div></div>');
                        SWW.J('body').append(aH.join(''));
+
+
+                       this.Config.CountDialog++;
+
+                       //开始加载拖动代码
+                       SWW.W.Drag.DragElement(SWW.J('#' + o.id + '_title'), SWW.J('#' + o.id));
+
+                       SWW.J(window).scroll(function ()
+                       {
+                           SWW.J('#' + o.id).css("top", (document.documentElement.scrollTop + 120) + "px");
+                       });
+
+                       
+
 
                    },
                    Close: function ()
@@ -762,22 +798,97 @@ if (!window.SWW)
 
                },
 
-               Close: function (s)
+               Close: function (s, save)
                {
+                   if (!save)
+                   {
+                       save = this.Init.Temp.save;
+                   }
 
                    if (top != self)
                    {
-                       top.SWW.W.Dialog.Close(s);
+                       top.SWW.W.Dialog.Close(s, save);
                        return;
                    }
 
-                   document.body.removeChild(SWW.F.DOM.Get(s));
+                   if (save == 0)
+                   {
+                       //document.body.removeChild(SWW.F.DOM.Get(s));
+                       SWW.J(s).remove();
+                   }
+                   else
+                   {
+                       SWW.J(s).hide();
+                   }
+
+
+
 
                    this.Init.RemoveBg();
                }
 
 
 
+           }
+           ,
+           Drag:
+           {
+               GetPos: function (e)
+               {
+                   var D = document.documentElement;
+                   if (e.pageX)
+                       return { x: e.pageX, y: e.pageY };
+                   else
+                       return { x: (e.clientX + D.scrollLeft - D.clientLeft), y: (e.clientY + D.scrollTop - D.clientTop) }
+               },
+
+               DragElement: function (el, handle, fDragIng, end)
+               {
+
+                   SWW.J(el).mousedown(function (e)
+                   {
+                       var e = e || window.event;
+                       var pos = SWW.W.Drag.GetPos(e);
+
+                       var father = handle ? SWW.J(handle) : SWW.J(el);
+
+                       var hPos = father.offset();
+                       var diffx = pos.x - hPos.left;
+                       var diffy = pos.y - hPos.top;
+
+                       SWW.W.Drag.DragIng(father, diffx, diffy, fDragIng);
+
+
+
+                       SWW.W.Drag.Drop(end);
+
+
+                   });
+
+                   return false;
+               },
+
+               DragIng: function (handle, diffx, diffy, fDragIng)
+               {
+
+                   SWW.J(document).bind('mousemove', function (e)
+                   {
+                       var movePos = SWW.W.Drag.GetPos(e);
+                       SWW.J(handle).css({ left: (movePos.x - diffx), top: (movePos.y - diffy) });
+
+                       if (fDragIng) fDragIng();
+
+                   });
+               },
+
+               Drop: function (fEnd)
+               {
+                   SWW.J(document).mouseup(function (e)
+                   {
+                       SWW.J(document).unbind('mousemove');
+                       if (fEnd) fEnd();
+                   });
+               }
            }
 
        },

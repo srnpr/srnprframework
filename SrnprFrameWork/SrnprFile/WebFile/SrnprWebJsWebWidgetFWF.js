@@ -11,8 +11,9 @@ Description: 核心类文件 所有widget使用的初始化及加载文件
             I：初始化
             F：外部调用函数
             Z：基类使用自身操作
-            M：消息系列
+            M：消息系列配置
             A：扩展系列
+            W：调用控件系列
             
             
             参数定义：
@@ -220,146 +221,7 @@ if (!window.SWW)
                }
            }
            ,
-           Dialog:
-           {
-               Init:
-               {
 
-                   Temp:
-                   {
-                       height: 400,
-                       width: 400,
-                       top: 100,
-                       left: -1,
-                       title: '正在处理中……',
-                       id: '',
-                       dom: top.document
-                   }
-                   ,
-
-                   Config:
-                   {
-
-                       BgId: 'SWW_SWW_F_BOX_INIT_CONFIG_BGID',
-                       DefaultId: 'SWW_SWW_F_BOX_INIT_CONFIG_DEFAULTID'
-
-                   },
-
-
-                   AddBg: function ()
-                   {
-
-                       if (!SWW.F.DOM.Get(this.Config.BgId))
-                       {
-
-                           var e = document.createElement("div");
-                           e.id = this.Config.BgId;
-                           if (SWW.J.browser.msie && SWW.J.browser.version == '6.0')
-                               e.innerHTML = '<iframe style="width:100%;height:100%;border:none;filter:alpha(opacity=0);opacity:0;"></iframe>';
-
-                           var t = (top != document ? top.document : document);
-
-                           with (e.style)
-                           {
-                               height = Math.max(window.screen.height, t.body.offsetHeight + 50) + "px";
-                               position = 'absolute';
-                               zIndex = 555;
-                               filter = " alpha(opacity = 50)";
-                               opacity = 0.5;
-                               backgroundColor = '#e8f1f8';
-                               width = t.documentElement.scrollWidth + "px";
-                               top = "0px";
-                               backgroundColor = "#ebebeb";
-                           }
-                           document.body.appendChild(e);
-                       }
-                       else
-                       {
-                           SWW.F.DOM.Get(this.Config.BgId).style.display = "";
-                       }
-                   },
-                   RemoveBg: function ()
-                   {
-                       SWW.F.DOM.Get(this.Config.BgId).style.display = "none";
-
-                   },
-                   Create: function (o)
-                   {
-                       if (!o)
-                       {
-                           o = {};
-                       }
-                       for (var p in this.Temp)
-                       {
-                           if (!o[p])
-                           {
-                               o[p] = this.Temp[p];
-                           }
-                       }
-
-                       if (!o.id)
-                       {
-                           o.id = this.Config.DefaultId;
-                       }
-
-
-                       o.top = Math.max(o.dom.body.scrollTop, o.dom.documentElement.scrollTop) + o.top;
-                       if (o.left == -1) o.left = (o.dom.body.offsetWidth - parseInt(o.width)) / 2;
-
-
-                       this.AddBg();
-
-                       var aH = [];
-
-                       aH.push('<div id=' + o.id + ' style="background-color:#999;width:' + (o.width + 3) + 'px;height:' + (o.height + 3) + 'px; z-index:999;position:absolute;top:' + o.top + 'px;left:' + o.left + 'px;">');
-
-                       aH.push('<div style="background-color:#fff;width:' + o.width + 'px;height:' + o.height + 'px;margin:0px 3px 3px 0px;border-top:1px #ccc solid;border-left:1px #ccc solid;">');
-
-
-                       //开始添加抬头
-
-                       aH.push('<div class="SWW_Dialog_Title" style="background-color:#ccc;height:30px;line-height:30px;width:100%;border-bottom:solid 1px #999; text-align:right;text-indent:10px;"><span style=" text-align:left;float:left;">' + o.title + '</span><span style="margin:0px 20px 0px 0px;cursor:pointer;" onclick="SWW.F.Dialog.Close(\'' + o.id + '\')">关闭</span></div>');
-
-
-
-                       aH.push('</div></div>');
-                       SWW.J('body').append(aH.join(''));
-
-                   },
-                   Close: function ()
-                   {
-
-                   }
-
-
-
-               },
-
-               Open: function (o)
-               {
-                   ///	<summary>
-                   ///  创建对话框
-                   ///	</summary>
-                   ///	<param name="o" type="obj">
-                   ///		对话框
-                   ///	</param>
-
-
-                   SWW.F.JF.Ready(function () { SWW.F.Dialog.Init.Create(o) });
-
-               },
-
-               Close: function (s)
-               {
-
-                   document.body.removeChild(SWW.F.DOM.Get(s));
-
-                   this.Init.RemoveBg();
-               }
-
-
-
-           },
 
 
 
@@ -749,6 +611,179 @@ if (!window.SWW)
 
            }
        },
+
+
+       W:
+       {
+
+           Dialog:
+           {
+               Init:
+               {
+
+                   Temp:
+                   {
+                       height: 400,
+                       width: 400,
+                       top: 100,
+                       left: -1,
+                       title: '正在处理中……',
+                       html: '',
+                       id: '',
+                       opacity: 50,
+                       url: ''
+                   }
+                   ,
+                   Config:
+                   {
+
+                       BgId: 'SWW_SWW_F_BOX_INIT_CONFIG_BGID',
+                       DefaultId: 'SWW_SWW_F_BOX_INIT_CONFIG_DEFAULTID'
+
+                   },
+
+
+                   AddBg: function ()
+                   {
+
+                       if (!SWW.F.DOM.Get(this.Config.BgId))
+                       {
+
+                           var e = document.createElement("div");
+                           e.id = this.Config.BgId;
+                           if (SWW.J.browser.msie && SWW.J.browser.version == '6.0')
+                               e.innerHTML = '<iframe style="width:100%;height:100%;border:none;filter:alpha(opacity=0);opacity:0;"></iframe>';
+
+                           var t = (top != document ? top.document : document);
+
+                           var op = this.Temp.opacity;
+
+                           with (e.style)
+                           {
+                               height = Math.max(window.screen.height, t.body.offsetHeight + 50) + "px";
+                               position = 'absolute';
+                               zIndex = 555;
+                               filter = " alpha(opacity = " + op + ")";
+                               opacity = op / 100;
+                               width = t.documentElement.scrollWidth + "px";
+                               top = "0px";
+                               backgroundColor = '#fff';
+
+                           }
+
+
+                           document.body.appendChild(e);
+                       }
+                       else
+                       {
+                           SWW.F.DOM.Get(this.Config.BgId).style.display = "";
+                       }
+                   },
+                   RemoveBg: function ()
+                   {
+                       SWW.F.DOM.Get(this.Config.BgId).style.display = "none";
+
+                   },
+                   Create: function (o)
+                   {
+
+                       if (!o)
+                       {
+                           o = {};
+                       }
+                       for (var p in this.Temp)
+                       {
+                           if (!o[p])
+                           {
+                               o[p] = this.Temp[p];
+                           }
+                       }
+
+                       if (!o.id)
+                       {
+                           o.id = this.Config.DefaultId;
+                       }
+
+                       o.top = Math.max(document.body.scrollTop, document.documentElement.scrollTop) + o.top;
+                       if (o.left == -1) o.left = (document.body.offsetWidth - parseInt(o.width)) / 2;
+                       this.AddBg();
+
+                       var aH = [];
+
+                       aH.push('<div id=' + o.id + ' style="background-color:#ccc;width:' + (o.width + 4) + 'px;height:' + (o.height + 4) + 'px; z-index:999;position:absolute;top:' + o.top + 'px;left:' + o.left + 'px;">');
+                       aH.push('<div style="background-color:#999;width:' + (o.width + 3) + 'px;height:' + (o.height + 3) + 'px;">');
+
+                       aH.push('<div style="background-color:#fff;width:' + o.width + 'px;height:' + o.height + 'px;border-top:1px #999 solid;border-left:1px #999 solid;">');
+
+
+                       //开始添加抬头
+
+                       aH.push('<div class="SWW_Dialog_Title" style="background-color:#ccc;height:30px;line-height:30px;width:100%;border-bottom:solid 1px #999; text-align:right;text-indent:10px;"><span style=" text-align:left;float:left;">' + o.title + '</span><span style="margin:0px 20px 0px 0px;cursor:pointer;" onclick="SWW.W.Dialog.Close(\'' + o.id + '\')">关闭</span></div>');
+
+
+
+                       aH.push("<div>");
+                       if (o.url)
+                       {
+
+                           aH.push('<iframe src=' + o.url + '></iframe>');
+
+                       }
+                       aH.push('</div></div></div></div>');
+                       SWW.J('body').append(aH.join(''));
+
+                   },
+                   Close: function ()
+                   {
+
+                   }
+
+
+
+               },
+
+               Open: function (o)
+               {
+                   ///	<summary>
+                   ///  创建对话框
+                   ///	</summary>
+                   ///	<param name="o" type="obj">
+                   ///		对话框
+                   ///	</param>
+
+
+                   if (top != self)
+                   {
+                       top.SWW.W.Dialog.Open(o);
+                       return;
+                   }
+
+                   SWW.F.JF.Ready(function () { SWW.W.Dialog.Init.Create(o) });
+
+               },
+
+               Close: function (s)
+               {
+
+                   if (top != self)
+                   {
+                       top.SWW.W.Dialog.Close(s);
+                       return;
+                   }
+
+                   document.body.removeChild(SWW.F.DOM.Get(s));
+
+                   this.Init.RemoveBg();
+               }
+
+
+
+           }
+
+       },
+
+
+
 
        //初始化
        I: function (t, o)

@@ -642,7 +642,9 @@ if (!window.SWW)
                        //弹出框iframe链接
                        url: '',
                        //是否自动状态保存 0表示不自动保存状态 1表示自动保存状态
-                       save: 0
+                       save: 0,
+                       //自身所加载的文档
+                       self: null
                    }
                    ,
                    Config:
@@ -655,6 +657,8 @@ if (!window.SWW)
                        CountDialog: 0
 
                    },
+
+                   ObjArray: [],
 
 
                    AddBg: function ()
@@ -691,7 +695,7 @@ if (!window.SWW)
                            SWW.F.DOM.Get(this.Config.BgId).style.display = "";
                        }
                    },
-                   RemoveBg: function ()
+                   Clear: function ()
                    {
 
                        if (this.Config.CountDialog == 1)
@@ -699,7 +703,7 @@ if (!window.SWW)
                            SWW.F.DOM.Get(this.Config.BgId).style.display = "none";
                        }
                        this.Config.CountDialog--;
-                       
+
 
                    },
                    Create: function (o)
@@ -748,7 +752,7 @@ if (!window.SWW)
                        if (o.url)
                        {
 
-                           aH.push('<iframe style="width:'+(o.width-12)+'px" src="' + o.url + '" frameborder="0"></iframe>');
+                           aH.push('<iframe id=' + o.id + '_iframe style="width:' + (o.width - 12) + 'px;height:' + (o.height - 40) + 'px" src="' + o.url + '" frameborder="0"></iframe>');
 
                        }
                        aH.push('</div></div></div></div>');
@@ -765,7 +769,9 @@ if (!window.SWW)
                            SWW.J('#' + o.id).css("top", (document.documentElement.scrollTop + 120) + "px");
                        });
 
-                       
+                       this.ObjArray.push(o);
+
+
 
 
                    },
@@ -788,8 +794,11 @@ if (!window.SWW)
                    ///	</param>
 
 
+                   if (!o) o = {};
+
                    if (top != self)
                    {
+                       o.self = self;
                        top.SWW.W.Dialog.Open(o);
                        return;
                    }
@@ -824,7 +833,7 @@ if (!window.SWW)
 
 
 
-                   this.Init.RemoveBg();
+                   this.Init.Clear();
                }
 
 

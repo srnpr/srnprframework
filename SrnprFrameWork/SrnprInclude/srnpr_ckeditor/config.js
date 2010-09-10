@@ -12,13 +12,13 @@ CKEDITOR.editorConfig = function (config)
     config.skin = 'office2003';
 
 
-    config.extraPlugins = 'srnpr_ck_ct_list,srnpr_ck_forms,srnpr_ck_gridshow,srnpr_ck_listshow';
+    config.extraPlugins = 'srnpr_ck_ct_list,srnpr_ck_forms,srnpr_ck_gridshow,srnpr_ck_listshow,srnpr_ck_tooldialog';
 
     config.toolbar =
    [['Source', '-', 'Save', 'NewPage', 'Preview', '-', 'Templates'], ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'], ['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
 
    '/', ['Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript', 'Superscript'], ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', 'Blockquote', 'CreateDiv'], ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'], ['Link', 'Unlink', 'Anchor'], ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak'],
-   '/', ['srnpr_ck_ct_list', 'srnpr_ck_gridshow', 'srnpr_ck_listshow'],
+   '/', ['srnpr_ck_ct_list', 'srnpr_ck_gridshow', 'srnpr_ck_listshow', 'srnpr_ck_tooldialog'],
      ['TextField', 'Form', 'Checkbox', 'Radio', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField'],
    '/', ['Styles', 'Format', 'Font', 'FontSize'], ['TextColor', 'BGColor'], ['Maximize', 'ShowBlocks', '-', 'About']];
 
@@ -101,6 +101,45 @@ CKEDITOR.editorConfig = function (config)
                   all: { title: '全部', value: 'all' }
               }
 
+          },
+          tooldialog:
+          {
+              id: 'TD',
+
+              imgsrc: '/srnpr_ckeditor/plugins/srnpr_ck_tooldialog/tooldialog.png',
+              toolbar: '列表显示',
+              title: '插入列表显示控件',
+              xmlid: '附加标识【暂未使用】',
+              xmlemptymsg: '列表显示编号不能为空',
+              tooldialogtypetitle: '显示方式',
+
+              url: 'tooldialogurl',
+
+
+              items:
+              [
+              
+                    ['请选择', ''],
+                    ['员工单选', '/Demo/Dialog/DialogFirst.aspx']
+
+
+              ],
+
+              listtype:
+              {
+                  select: { title: '下拉框', value: 'select' },
+                  radio: { title: '单选按钮', value: 'radio' },
+                  checkbox: { title: '复选按钮', value: 'checkbox' }
+              },
+              defaluttitle: '默认值',
+              defaulttype:
+              {
+                  empty: { title: '无', value: 'empty' },
+                  first: { title: '第一项', value: 'first' },
+                  choose: { title: '请选择', value: 'choose' },
+                  all: { title: '全部', value: 'all' }
+              }
+
           }
        },
 
@@ -112,7 +151,8 @@ CKEDITOR.editorConfig = function (config)
        {
            gridshow: 'gridshow',
            listshow: 'LS',
-           ct_list: 'ct_list'
+           ct_list: 'ct_list',
+           tooldialog:'TD'
        },
        ct_list:
        {

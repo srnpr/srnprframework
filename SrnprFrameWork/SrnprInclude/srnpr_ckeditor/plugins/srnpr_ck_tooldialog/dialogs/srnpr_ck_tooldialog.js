@@ -1,12 +1,12 @@
 ﻿
 
-CKEDITOR.dialog.add('srnpr_ck_listshow', function (editor)
+CKEDITOR.dialog.add('srnpr_ck_tooldialog', function (editor)
 {
 
     var sck = editor.config.srnprck;
 
     return {
-        title: sck.cklist.listshow.title,
+        title: sck.cklist.tooldialog.title,
         hiddenField: null,
         minWidth: 350,
         minHeight: 110,
@@ -17,7 +17,7 @@ CKEDITOR.dialog.add('srnpr_ck_listshow', function (editor)
             var editor = this.getParentEditor(),
 				selection = editor.getSelection(),
 				element = selection.getSelectedElement();
-            if (element && element.getAttribute(sck.cktype) && element.getAttribute(sck.cktype) == sck.cklist.listshow.id)
+            if (element && element.getAttribute(sck.cktype) && element.getAttribute(sck.cktype) == sck.cklist.tooldialog.id)
             {
                 this.hiddenField = element;
                 this.setupContent(this.hiddenField);
@@ -31,23 +31,16 @@ CKEDITOR.dialog.add('srnpr_ck_listshow', function (editor)
 			    attributes:
 				{
 				    id: this.getValueOf('info', '_cke_saved_id'),
-				    src: sck.cklist.listshow.imgsrc
+				    src: sck.cklist.tooldialog.imgsrc
 				}
 			});
 
-            
-
-            img.setAttribute(sck.cktype, sck.cklist.listshow.id);
-
-            img.setAttribute(sck.json.listshow.WidgetType, sck.cklist.listshow.id);
 
 
-            img.setAttribute(sck.json.listshow.Id, this.getValueOf('info', '_ls_json_id'));
-            img.setAttribute(sck.json.listshow.ShowType, this.getValueOf('info', '_ls_json_showtype'));
-            img.setAttribute(sck.json.listshow.ShowDefault, this.getValueOf('info', '_ls_json_showdefault'));
+            img.setAttribute(sck.cktype, sck.cklist.tooldialog.id);
 
-            img.setAttribute(sck.json.listshow.PId, this.getValueOf('info', '_cke_saved_id'));
 
+            img.setAttribute(sck.cklist.tooldialog.url, this.getValueOf('info', '_select_url'));
 
 
             editor.insertElement(img);
@@ -58,8 +51,8 @@ CKEDITOR.dialog.add('srnpr_ck_listshow', function (editor)
         contents: [
 			{
 			    id: 'info',
-			    label: sck.cklist.listshow.title,
-			    title: sck.cklist.listshow.title,
+			    label: sck.cklist.tooldialog.title,
+			    title: sck.cklist.tooldialog.title,
 			    elements: [
 					{
 					    id: '_cke_saved_id',
@@ -86,80 +79,51 @@ CKEDITOR.dialog.add('srnpr_ck_listshow', function (editor)
 
 					    }
 					},
-					{
-					    id: '_ls_json_id',
-					    type: 'text',
-					    label: sck.cklist.listshow.xmlid,
-					    validate: CKEDITOR.dialog.validate.notEmpty(sck.cklist.listshow.xmlemptymsg),
-					    'default': '',
-					    accessKey: 'V',
-					    setup: function (element)
-					    {
-					        this.setValue(element.getAttribute(sck.json.listshow.Id) || '');
-					    },
-					    commit: function (element)
-					    {
-					        if (this.getValue())
-					            element.setAttribute(sck.json.listshow.Id, this.getValue());
-					        else
-					            element.removeAttribute(sck.json.listshow.Id);
-					    }
-					},
                     {
                         type: 'hbox',
                         widths: ['50%', '50%'],
                         children:
 						[
 							{
-							    id: '_ls_json_showtype',
+							    id: '_select_url',
 							    type: 'select',
-							    label: sck.cklist.listshow.listshowtypetitle,
+							    label: sck.cklist.tooldialog.tooldialogtypetitle,
 							    'default': 'text',
 							    accessKey: 'M',
 							    items:
-						        [
-							        [sck.cklist.listshow.listtype.select.title, sck.cklist.listshow.listtype.select.value],
-							        [sck.cklist.listshow.listtype.radio.title, sck.cklist.listshow.listtype.radio.value],
-                                    [sck.cklist.listshow.listtype.checkbox.title, sck.cklist.listshow.listtype.checkbox.value]
-						        ],
+						        sck.cklist.tooldialog.items,
 							    setup: function (element)
 							    {
-							        this.setValue(element.getAttribute(sck.json.listshow.ShowType) || sck.cklist.listshow.listtype.select.value);
+							        this.setValue(element.getAttribute(sck.cklist.tooldialog.url) || '');
 							    },
 							    commit: function (element)
 							    {
 							        if (this.getValue())
-							            element.setAttribute(sck.json.listshow.ShowType, this.getValue());
+							            element.setAttribute(sck.cklist.tooldialog.url, this.getValue());
 							        else
-							            element.removeAttribute(sck.json.listshow.ShowType);
+							            element.removeAttribute(sck.cklist.tooldialog.url);
 							    }
 
 
 
 							},
 							{
-							    id: '_ls_json_showdefault',
-							    type: 'select',
-							    label: sck.cklist.listshow.defaluttitle,
-							    'default': 'text',
-							    accessKey: 'M',
-							    items:
-						        [
-							        [sck.cklist.listshow.defaulttype.empty.title, sck.cklist.listshow.defaulttype.empty.value],
-							        [sck.cklist.listshow.defaulttype.first.title, sck.cklist.listshow.defaulttype.first.value],
-                                    [sck.cklist.listshow.defaulttype.choose.title, sck.cklist.listshow.defaulttype.choose.value],
-                                    [sck.cklist.listshow.defaulttype.all.title, sck.cklist.listshow.defaulttype.all.value]
-						        ],
+							    id: '_ls_json_id',
+							    type: 'text',
+							    label: sck.cklist.tooldialog.xmlid,
+							    
+							    'default': '',
+							    accessKey: 'V',
 							    setup: function (element)
 							    {
-							        this.setValue(element.getAttribute(sck.json.listshow.ShowDefault) || sck.cklist.listshow.defaulttype.empty.value);
+							        this.setValue(element.getAttribute(sck.json.tooldialog.Id) || '');
 							    },
 							    commit: function (element)
 							    {
 							        if (this.getValue())
-							            element.setAttribute(sck.json.listshow.ShowDefault, this.getValue());
+							            element.setAttribute(sck.json.tooldialog.Id, this.getValue());
 							        else
-							            element.removeAttribute(sck.json.listshow.ShowDefault);
+							            element.removeAttribute(sck.json.tooldialog.Id);
 							    }
 							}
 						]

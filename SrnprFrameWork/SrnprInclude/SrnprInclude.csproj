@@ -108,7 +108,7 @@
     <Content Include="srnpr_ckeditor\plugins\srnpr_ck_gridshow\plugin.js" />
     <Content Include="srnpr_ckeditor\plugins\srnpr_ck_gridshow\srnpr_ck_gridshow.gif" />
     <Content Include="srnpr_ckeditor\plugins\srnpr_ck_tooldialog\dialogs\srnpr_ck_tooldialog.js" />
-    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_tooldialog\listshow.png" />
+    <Content Include="srnpr_ckeditor\plugins\srnpr_ck_tooldialog\tooldialog.png" />
     <Content Include="srnpr_ckeditor\plugins\srnpr_ck_tooldialog\plugin.js" />
     <Content Include="srnpr_ckeditor\plugins\srnpr_ck_tooldialog\srnpr_ck_tooldialog.gif" />
     <Content Include="srnpr_ckeditor\plugins\srnpr_ck_webtab\dialogs\srnpr_ck_webtab.js" />

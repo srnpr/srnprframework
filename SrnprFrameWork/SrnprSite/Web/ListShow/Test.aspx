@@ -48,11 +48,7 @@
         Id: 'abc',
         SId: 'ddddd',
         ShowType: 'select',
-        PId: 't',
-        
-        OnChange: function()
-        {
-        }
+        PId: 't'
     };
 
     SWW.I("LS",t);
@@ -86,18 +82,7 @@
     SWW.I("LS", t3);
     
    
-    //SWW.I("LS", { a: 'dddd' });
-
-    SWW.A('LS', 'Success', t.Id,
-    
-      function(o)
-      {
-
-          //SWW.J("#dshow").text(s);
-        
-          SWW.J("#tshow").val(o.s);
-      }
-    )
+     
 
 
 

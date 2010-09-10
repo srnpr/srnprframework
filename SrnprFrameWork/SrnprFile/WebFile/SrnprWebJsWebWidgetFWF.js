@@ -43,9 +43,8 @@ if (!window.SWW)
            //系统加载脚本文件  u：脚本文件名称  n：需要加载的其他脚本  w：window基本名称（全局）  q：服务端类名称（JSON反向解析使用）
            JS:
            {
-               Json: 'json2.js',
+               Json: { u: 'json2.js', w: 'JSON' },
                JQuery: { u: 'jquery-1.4.2.min.js', w: 'jQuery' },
-               C: 'SrnprWebJsConfigFWF.js',
                GS: { u: 'SrnprWebJsGridShowFWF.js', n: ['JQuery', 'Json'], q: 'GridShowRequestWWE' },
                LS: { u: 'SrnprWebJsListShowFWF.js', n: ['JQuery', 'Json'], q: 'ListShowRequestWWE' },
                SWW: 'SrnprWebJsWebWidgetFWF.js'
@@ -96,6 +95,10 @@ if (!window.SWW)
                 IM: '系统尝试初始化失败！',
                 AS: '无法加载类型',
                 FEF: '加载类型{0}函数名{1}时错误，参数为：{2}'
+            },
+            ME:
+            {
+                Load: '正在加载中……'
             }
 
         },
@@ -223,7 +226,7 @@ if (!window.SWW)
                    ///		是否显示 默认不显示
                    ///	</param>
 
-                  
+
                    this.Get(s).style.display = (!bn ? 'none' : '');
 
 
@@ -448,7 +451,7 @@ if (!window.SWW)
                var e = document.getElementsByTagName('script');
                for (var f = 0; f < e.length; f++)
                {
-                   var g = e[f].src.match(/(^|.*[\\\/])SrnprWebJsWebWidgetFWF.js(?:\?.*)?SWW.J/i);
+                   var g = e[f].src.match(/(^|.*[\\\/])SrnprWebJsWebWidgetFWF.js(?:\?.*)?/i);
                    if (g)
                    {
                        d = g[1];
@@ -475,7 +478,7 @@ if (!window.SWW)
                ///	<param name="u" type="string">
                ///		地址
                ///	</param>
-
+               
                SWW.J.getScript(this.BasePath() + u);
            },
 
@@ -534,6 +537,8 @@ if (!window.SWW)
 
                for (var i = 0, j = json.RS.length; i < j; i++)
                {
+
+
                    if (json.RS[i].WidgetType && SWW[json.RS[i].WidgetType])
                    {
 
@@ -590,10 +595,13 @@ if (!window.SWW)
                            if (!SWW[SWW.O.Req[p].WidgetType])
                            {
                                bFlag = false;
+
+
                                break;
                            }
                        }
                    }
+
 
                    //累加当前调用次数
                    SWW.C.Init.N++;
@@ -650,7 +658,7 @@ if (!window.SWW)
                        //左边距 默认-1表示系统自动居中
                        left: -1,
                        //弹出框表头
-                       title: '正在处理中……',
+                       title: '',
                        //弹出框html内容
                        html: '',
                        //弹出框编号
@@ -714,7 +722,7 @@ if (!window.SWW)
                        }
                        else
                        {
-                           SWW.F.DOM.Display(this.Config.BgId,true);
+                           SWW.F.DOM.Display(this.Config.BgId, true);
                        }
                    },
                    Clear: function ()
@@ -729,7 +737,7 @@ if (!window.SWW)
                        }
                        else
                        {
-                          
+
                            SWW.F.DOM.Display(this.ObjArray[this.Config.CountDialog - 1].guid, true);
 
                        }
@@ -787,12 +795,23 @@ if (!window.SWW)
 
 
                        aH.push('<div style="margin:5px;">');
+
+                       //判断内容模型
                        if (o.url)
                        {
-
-                           aH.push('<iframe id=' + o.guid + '_iframe style="width:' + (o.width - 12) + 'px;height:' + (o.height - 40) + 'px" src="' + o.url + '" frameborder="0"></iframe>');
+                           aH.push('<div id="' + o.guid + '_iframe_load">' + SWW.M.ME.Load + '</div>');
+                           aH.push('<div id="' + o.guid + '_iframe_show" style="display:none;">');
+                           aH.push('<iframe id="' + o.guid + '_iframe" onload="SWW.F.DOM.Display(\'' + o.guid + '_iframe_load\');SWW.F.DOM.Display(\'' + o.guid + '_iframe_show\',true);" style="width:' + (o.width - 12) + 'px;height:' + (o.height - 40) + 'px" src="' + o.url + '" frameborder="0"></iframe>');
+                           aH.push('<div>');
+                       }
+                       else if (o.html)
+                       {
+                           aH.push(o.html);
 
                        }
+
+
+
                        aH.push('</div></div></div></div>');
                        SWW.J('body').append(aH.join(''));
 
@@ -812,17 +831,8 @@ if (!window.SWW)
                        {
                            SWW.J('#' + o.guid).css("top", (document.documentElement.scrollTop + 120) + "px");
                        });
-
-
                        this.ObjArray.push(o);
-
-
-
-
                    }
-
-
-
                },
 
                Open: function (o)
@@ -834,7 +844,8 @@ if (!window.SWW)
                    ///		对话框
                    ///	</param>
 
-
+                   
+                  
                    if (!o) o = {};
 
 
@@ -898,7 +909,7 @@ if (!window.SWW)
                    this.Init.Clear();
                },
 
-               Father: function ()
+               Source: function ()
                {
                    ///	<summary>
                    ///  得到当前对话框的来源页面
@@ -923,8 +934,8 @@ if (!window.SWW)
                    ///	<param name="s" type="str">
                    ///		元素编号
                    ///	</param>
-                   
-                   return this.Father().SWW.J('#' + s).val();
+
+                   return this.Source().SWW.J('#' + s).val();
 
                },
                SetValue: function (s, v)
@@ -935,7 +946,7 @@ if (!window.SWW)
                    ///	<param name="s" type="str">
                    ///		元素编号
                    ///	</param>
-                   this.Father().SWW.J('#' + s).val(v);
+                   this.Source().SWW.J('#' + s).val(v);
 
                }
 

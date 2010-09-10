@@ -112,6 +112,7 @@
     </Compile>
     <Compile Include="Master\MasterDialog.Master.cs">
       <DependentUpon>MasterDialog.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Master\MasterDialog.Master.designer.cs">
       <DependentUpon>MasterDialog.Master</DependentUpon>

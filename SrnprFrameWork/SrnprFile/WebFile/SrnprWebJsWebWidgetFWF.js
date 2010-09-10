@@ -478,7 +478,7 @@ if (!window.SWW)
                ///	<param name="u" type="string">
                ///		地址
                ///	</param>
-               
+
                SWW.J.getScript(this.BasePath() + u);
            },
 
@@ -667,6 +667,8 @@ if (!window.SWW)
                        opacity: 50,
                        //弹出框iframe链接
                        url: '',
+                       //按钮
+                       button: [],
                        //是否自动状态保存 0表示不自动保存状态 1表示自动保存状态
                        save: 0,
                        //自身所加载的window对象
@@ -683,13 +685,17 @@ if (!window.SWW)
                        BgId: 'SWW_SWW_F_BOX_INIT_CONFIG_BGID',
                        DefaultId: 'SWW_SWW_F_BOX_INIT_CONFIG_DEFAULTID',
                        Opactity: 50,
-                       BgColor: '#fff',
+                       BgColor: '#000',
                        CountDialog: 0
 
                    },
 
                    ObjArray: [],
 
+                   Father: function ()
+                   {
+                       return top;
+                   },
 
                    AddBg: function ()
                    {
@@ -702,18 +708,18 @@ if (!window.SWW)
                            if (SWW.J.browser.msie && SWW.J.browser.version == '6.0')
                                e.innerHTML = '<iframe style="width:100%;height:100%;border:none;filter:alpha(opacity=0);opacity:0;"></iframe>';
 
-                           var t = (top != document ? top.document : document);
+
 
                            var co = this.Config;
 
                            with (e.style)
                            {
-                               height = Math.max(window.screen.height, t.body.offsetHeight + 50) + "px";
+                               height = Math.max(window.screen.height, document.body.offsetHeight + 50) + "px";
                                position = 'absolute';
                                zIndex = 555;
                                filter = " alpha(opacity = " + co.Opactity + ")";
                                opacity = co.Opactity / 100;
-                               width = t.documentElement.scrollWidth + "px";
+                               width = document.documentElement.scrollWidth + "px";
                                top = "0px";
                                backgroundColor = co.BgColor;
                            }
@@ -794,25 +800,47 @@ if (!window.SWW)
 
 
 
-                       aH.push('<div style="margin:5px;">');
+
 
                        //判断内容模型
                        if (o.url)
                        {
                            aH.push('<div id="' + o.guid + '_iframe_load">' + SWW.M.ME.Load + '</div>');
                            aH.push('<div id="' + o.guid + '_iframe_show" style="display:none;">');
-                           aH.push('<iframe id="' + o.guid + '_iframe" onload="SWW.F.DOM.Display(\'' + o.guid + '_iframe_load\');SWW.F.DOM.Display(\'' + o.guid + '_iframe_show\',true);" style="width:' + (o.width - 12) + 'px;height:' + (o.height - 40) + 'px" src="' + o.url + '" frameborder="0"></iframe>');
+                           aH.push('<iframe id="' + o.guid + '_iframe" onload="SWW.F.DOM.Display(\'' + o.guid + '_iframe_load\');SWW.F.DOM.Display(\'' + o.guid + '_iframe_show\',true);" style="width:' + (o.width) + 'px;height:' + (o.height - 32) + 'px" src="' + o.url + '" frameborder="0"></iframe>');
                            aH.push('<div>');
                        }
                        else if (o.html)
                        {
+                           aH.push('<div style="margin:5px;">');
                            aH.push(o.html);
+
+                           aH.push('</div>');
 
                        }
 
 
+                       if (o.button && o.button.length > 0)
+                       {
+                           var s = '';
+                           aH.push('<div style="text-align:center;">');
 
-                       aH.push('</div></div></div></div>');
+                           for (var i = 0, j = o.button.length; i < j; i++)
+                           {
+                               var iIndex = o.button[i].indexOf(':');
+
+                               if (iIndex > -1)
+                               {
+
+
+                                   aH.push('<input type="button" onclick="SWW.W.Dialog.Source().' + o.button[i].substr(iIndex + 1) + '" value="' + o.button[i].substr(0, iIndex) + '"/>');
+
+                               }
+                           }
+                           aH.push('</div>');
+                       }
+
+                       aH.push('</div></div></div>');
                        SWW.J('body').append(aH.join(''));
 
                        o.current = this.Config.CountDialog;
@@ -830,9 +858,16 @@ if (!window.SWW)
                        SWW.J(window).scroll(function ()
                        {
                            SWW.J('#' + o.guid).css("top", (document.documentElement.scrollTop + 120) + "px");
+
                        });
                        this.ObjArray.push(o);
                    }
+               },
+
+
+               Father: function ()
+               {
+                   return top;
                },
 
                Open: function (o)
@@ -844,20 +879,22 @@ if (!window.SWW)
                    ///		对话框
                    ///	</param>
 
-                   
-                  
+
+
                    if (!o) o = {};
 
-
-                   if (top != self)
+                   if (!o.self)
                    {
-                       o.self = self;
-                       top.SWW.W.Dialog.Open(o);
-                       return;
-                   }
-                   else if (!o.self)
-                   {
-                       o.self = self;
+                       if (this.Father() != self)
+                       {
+                           o.self = self;
+                           this.Father().SWW.W.Dialog.Open(o);
+                           return;
+                       }
+                       else
+                       {
+                           o.self = window;
+                       }
                    }
 
                    SWW.F.JF.Ready(function () { SWW.W.Dialog.Init.Create(o) });
@@ -877,6 +914,13 @@ if (!window.SWW)
                    ///		关闭类型 0为直接清除 1为保存状态
                    ///	</param>
 
+
+                   if (this.Father() != self && this.Father().SWW)
+                   {
+                       this.Father().SWW.W.Dialog.Close(sn, iSave);
+                       return;
+                   }
+
                    if (!sn)
                    {
                        sn = this.Init.ObjArray[this.Init.ObjArray.length - 1].guid;
@@ -887,11 +931,7 @@ if (!window.SWW)
                        iSave = this.Init.Temp.save;
                    }
 
-                   if (top != self && top.SWW)
-                   {
-                       top.SWW.W.Dialog.Close(sn, save);
-                       return;
-                   }
+
 
                    if (iSave == 0)
                    {
@@ -915,7 +955,7 @@ if (!window.SWW)
                    ///  得到当前对话框的来源页面
                    ///	</summary>
 
-                   var o = top.SWW.W.Dialog.Init.ObjArray[top.SWW.W.Dialog.Init.ObjArray.length - 1];
+                   var o = this.Father().SWW.W.Dialog.Init.ObjArray[this.Father().SWW.W.Dialog.Init.ObjArray.length - 1];
                    if (o)
                    {
                        return o.self;

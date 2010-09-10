@@ -40,6 +40,7 @@
                             </div>
                             <ul class="srumaintop" id="srumaintop">
                                 <li><a href="#"><span>控件配置相关</span></a></li>
+                                <li><a href="#"><span>控件调用例子</span></a></li>
                             </ul>
                         </div>
                     </td>
@@ -78,6 +79,15 @@
                                     <li><a href="/Web/ListShow/Test.aspx">测试数据返回</a></li>
                                    
                                 </ul>
+
+
+                                <div>
+                                    <a href="#">对话框调用Demo</a></div>
+                                <ul>
+                                    <li><a href="/Demo/Dialog/BasePage.aspx">联级调用</a></li>
+                                   
+                                </ul>
+
                             </div>
                         </div>
                     </td>

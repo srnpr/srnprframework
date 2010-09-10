@@ -1,5 +1,6 @@
 ﻿/// <reference path="jquery-1.3.2.min-vsdoc.js"/>
 /// <reference path="json2.js"/>
+/// <reference path="SrnprWebJsWebWidgetFWF.js"/>
 
 
 if (!this.SWJGSF)
@@ -9,7 +10,7 @@ if (!this.SWJGSF)
 
     
 (
-    function()
+    function ()
     {
 
 
@@ -22,13 +23,13 @@ if (!this.SWJGSF)
 
 
 
-        SWJGSF.Set = function(id, p, v)
+        SWJGSF.Set = function (id, p, v)
         {
             SWJGSF.SetInit(id);
             SWJGSF.SetObj[id][p] = v;
         }
 
-        SWJGSF.SetInit = function(id)
+        SWJGSF.SetInit = function (id)
         {
 
             if (!SWJGSF.SetObj[id])
@@ -86,7 +87,7 @@ if (!this.SWJGSF)
 
 
         //初始化
-        SWJGSF.Init = function(s)
+        SWJGSF.Init = function (s)
         {
 
 
@@ -100,25 +101,25 @@ if (!this.SWJGSF)
 
             });
             */
-            
-            
+
+
             s.WidgetType = "GS";
             SWW.I(s);
 
-            $("form").submit(function() { SWJGSF.SubmitBefore(s.Id); });
+            $("form").submit(function () { SWJGSF.SubmitBefore(s.Id); });
 
 
         }
 
 
-        SWJGSF.SubmitBefore = function(id)
+        SWJGSF.SubmitBefore = function (id)
         {
             $("#SWJGSF_Hidden_" + SWJGSF.Obj[id].ClientId).val(JSON.stringify(SWJGSF.Obj[id]));
         }
 
 
         //提交请求
-        SWJGSF.Ajax = function(id)
+        SWJGSF.Ajax = function (id)
         {
 
             /*
@@ -139,7 +140,7 @@ if (!this.SWJGSF)
             SWW.F.SYS.Run(SWJGSF.Obj[id]);
         }
 
-        SWJGSF.AlertMsg = function(s)
+        SWJGSF.AlertMsg = function (s)
         {
             alert(s);
         }
@@ -147,7 +148,7 @@ if (!this.SWJGSF)
 
 
         //跳转页面
-        SWJGSF.PageGoto = function(id, iPage)
+        SWJGSF.PageGoto = function (id, iPage)
         {
 
 
@@ -182,7 +183,7 @@ if (!this.SWJGSF)
 
 
         //分组
-        SWJGSF.GroupTable = function(id, k)
+        SWJGSF.GroupTable = function (id, k)
         {
             SWJGSF.Obj[id].GroupValue = k;
             SWJGSF.Obj[id].PageIndex = 1;
@@ -192,7 +193,7 @@ if (!this.SWJGSF)
 
 
         //导航更换
-        SWJGSF.ChangeNav = function(id)
+        SWJGSF.ChangeNav = function (id)
         {
 
             var s = $('#' + SWJGSF.Obj[id].ClientId + '_nav_pagesize').val();
@@ -215,7 +216,7 @@ if (!this.SWJGSF)
 
 
         //执行成功时
-        SWJGSF.AjaxSuccess = function(id, o)
+        SWJGSF.AjaxSuccess = function (id, o)
         {
 
 
@@ -343,13 +344,13 @@ if (!this.SWJGSF)
             {
                 $('#GS_table_' + req.ClientId + ' tbody').children().each(
 
-                function(index, n)
+                function (index, n)
                 {
 
                     if (index > 0)
                     {
-                        $(n).mouseover(function() { $(n).addClass("SWCGSF_TABLE_TR_HOVER"); });
-                        $(n).mouseout(function() { $(n).removeClass("SWCGSF_TABLE_TR_HOVER"); });
+                        $(n).mouseover(function () { $(n).addClass("SWCGSF_TABLE_TR_HOVER"); });
+                        $(n).mouseout(function () { $(n).removeClass("SWCGSF_TABLE_TR_HOVER"); });
                     }
 
 
@@ -367,17 +368,20 @@ if (!this.SWJGSF)
 
 
         //导出Excel
-        SWJGSF.Excel = function(id)
+        SWJGSF.Excel = function (id)
         {
 
             SWJGSF.SubmitBefore(id);
 
-            SrnprNetJsAllAlphaShow({ s: "l", m: "请选择显示内容", w: "400", h: "100", u: "/Web/GridShow/Excel.aspx?id=SWJGSF_Hidden_" + SWJGSF.Obj[id].ClientId });
+            SWW.W.Dialog.Open({ title: '请选择显示内容', url: "/Web/GridShow/Excel.aspx?id=SWJGSF_Hidden_" + SWJGSF.Obj[id].ClientId, width: 400, height: 100 });
+
+            //SrnprNetJsAllAlphaShow({ s: "l", m: "请选择显示内容", w: "400", h: "100", u: "/Web/GridShow/Excel.aspx?id=SWJGSF_Hidden_" + SWJGSF.Obj[id].ClientId });
 
         }
-        SWJGSF.ExcelClose = function(id)
+        SWJGSF.ExcelClose = function (id)
         {
-            SrnprNetJsAllAlphaShow({ s: "c" });
+            //SrnprNetJsAllAlphaShow({ s: "c" });
+            SWW.W.Dialog.Close();
         }
 
 
@@ -386,7 +390,7 @@ if (!this.SWJGSF)
 
 
         //自定义显示字段
-        SWJGSF.ShowDisplay = function(id)
+        SWJGSF.ShowDisplay = function (id)
         {
 
             var s = "<ul>";
@@ -397,17 +401,23 @@ if (!this.SWJGSF)
 
             s += "</ul>";
 
-            SrnprNetJsAllAlphaShow({ s: "f", c: s, m: "请选择显示内容", y: "SWJGSF.SetDisplay('" + id + "')", w: "400" });
+            //SrnprNetJsAllAlphaShow({ s: "f", c: s, m: "请选择显示内容", y: "SWJGSF.SetDisplay('" + id + "')", w: "400" });
+
+            SWW.W.Dialog.Open({ title: '请选择显示内容', width: 400, html: s, button: ["确定:SWJGSF.SetDisplay('" + id + "')"] });
+
+
 
         }
 
         //设置显示字段
-        SWJGSF.SetDisplay = function(id)
+        SWJGSF.SetDisplay = function (id)
         {
 
+            var source = SWW.W.Dialog.Father();
+            
             for (var i = 0, j = SWJGSF.Obj[id].ShowColumn.length; i < j; i++)
             {
-                if ($("#" + SWJGSF.Obj[id].ClientId + "_showcolumn_ckb_" + SWJGSF.Obj[id].ShowColumn[i].Guid).attr("checked") == true)
+                if (source.SWW.J("#" + SWJGSF.Obj[id].ClientId + "_showcolumn_ckb_" + SWJGSF.Obj[id].ShowColumn[i].Guid).attr("checked") == true)
                 {
                     SWJGSF.Obj[id].ShowColumn[i].ShowDisplay = "d";
                 }
@@ -418,11 +428,12 @@ if (!this.SWJGSF)
             }
 
             SWJGSF.Ajax(id);
-            SrnprNetJsAllAlphaShow({ s: "c" });
+            //SrnprNetJsAllAlphaShow({ s: "c" });
+            SWW.W.Dialog.Close();
         }
 
         //开始执行排序操作
-        SWJGSF.Sort = function(id, gid)
+        SWJGSF.Sort = function (id, gid)
         {
             for (var i = 0, j = SWJGSF.Obj[id].ShowColumn.length; i < j; i++)
             {
@@ -442,7 +453,7 @@ if (!this.SWJGSF)
             SWJGSF.Ajax(id);
         }
 
-        SWJGSF.F_Success = function(o)
+        SWJGSF.F_Success = function (o)
         {
             SWJGSF.Obj[o.q.Id] = o.q;
             SWJGSF.AjaxSuccess(o.q.Id, o.s);
@@ -450,7 +461,7 @@ if (!this.SWJGSF)
 
 
         //设置显示类型
-        SWJGSF.Demo = function()
+        SWJGSF.Demo = function ()
         {
             for (var p in SWJGSF.Obj)
             {
@@ -462,9 +473,9 @@ if (!this.SWJGSF)
 
 
         //执行查询 第二参数为空时则遍历所有
-        SWJGSF.Query = function(id, sid)
+        SWJGSF.Query = function (id, sid)
         {
-            var a = function() { };
+            var a = function () { };
 
             if (id == undefined)
             {
@@ -506,7 +517,7 @@ if (!this.SWJGSF)
 
             vElms.each(
 
-             function(index, n)
+             function (index, n)
              {
 
                  var el = $(n);
@@ -553,7 +564,7 @@ if (!this.SWJGSF)
 
 
 
-        SWJGSF.WebTable = function()
+        SWJGSF.WebTable = function ()
         {
 
         }

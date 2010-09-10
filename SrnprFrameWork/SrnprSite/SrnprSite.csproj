@@ -62,7 +62,7 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="Demo\Dialog\BasePage.aspx" />
-    <Content Include="Demo\Dialog\DialogMember.aspx" />
+    <Content Include="Demo\Dialog\DialogFirst.aspx" />
     <Content Include="Demo\Dialog\DialogTwo.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -96,12 +96,12 @@
     <Compile Include="Demo\Dialog\BasePage.aspx.designer.cs">
       <DependentUpon>BasePage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Demo\Dialog\DialogMember.aspx.cs">
-      <DependentUpon>DialogMember.aspx</DependentUpon>
+    <Compile Include="Demo\Dialog\DialogFirst.aspx.cs">
+      <DependentUpon>DialogFirst.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Demo\Dialog\DialogMember.aspx.designer.cs">
-      <DependentUpon>DialogMember.aspx</DependentUpon>
+    <Compile Include="Demo\Dialog\DialogFirst.aspx.designer.cs">
+      <DependentUpon>DialogFirst.aspx</DependentUpon>
     </Compile>
     <Compile Include="Demo\Dialog\DialogTwo.aspx.cs">
       <DependentUpon>DialogTwo.aspx</DependentUpon>

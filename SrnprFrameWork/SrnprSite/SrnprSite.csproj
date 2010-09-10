@@ -62,6 +62,8 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="Demo\Dialog\BasePage.aspx" />
+    <Content Include="Demo\Dialog\DialogMember.aspx" />
+    <Content Include="Demo\Dialog\DialogTwo.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -93,6 +95,20 @@
     </Compile>
     <Compile Include="Demo\Dialog\BasePage.aspx.designer.cs">
       <DependentUpon>BasePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Demo\Dialog\DialogMember.aspx.cs">
+      <DependentUpon>DialogMember.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Demo\Dialog\DialogMember.aspx.designer.cs">
+      <DependentUpon>DialogMember.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Demo\Dialog\DialogTwo.aspx.cs">
+      <DependentUpon>DialogTwo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Demo\Dialog\DialogTwo.aspx.designer.cs">
+      <DependentUpon>DialogTwo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Master\MasterDialog.Master.cs">
       <DependentUpon>MasterDialog.Master</DependentUpon>
@@ -245,6 +261,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="SWW\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Master\MasterDialog.Master" />

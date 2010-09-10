@@ -1,6 +1,6 @@
 ﻿
 
-CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
+CKEDITOR.dialog.add('srnpr_ck_ct_list', function (editor)
 {
     var config = editor.config,
 		lang = editor.lang.srnpr_ck_ct_list,
@@ -10,7 +10,7 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
 
 
     var dialog;
-    var onClick = function(evt)
+    var onClick = function (evt)
     {
         var target = evt.data.getTarget(),
 			targetName = target.getName();
@@ -51,7 +51,7 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
         evt.data.preventDefault();
     };
 
-    var onKeydown = CKEDITOR.tools.addFunction(function(ev, element)
+    var onKeydown = CKEDITOR.tools.addFunction(function (ev, element)
     {
         ev = new CKEDITOR.dom.event(ev);
         element = new CKEDITOR.dom.element(element);
@@ -61,7 +61,7 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
         var rtl = editor.lang.dir == 'rtl';
         switch (keystroke)
         {
-            // UP-ARROW                     
+            // UP-ARROW                      
             case 38:
                 // relative is TR
                 if ((relative = element.getParent().getParent().getPrevious()))
@@ -71,7 +71,7 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
                 }
                 ev.preventDefault();
                 break;
-            // DOWN-ARROW                     
+            // DOWN-ARROW                      
             case 40:
                 // relative is TR
                 if ((relative = element.getParent().getParent().getNext()))
@@ -82,14 +82,14 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
                 }
                 ev.preventDefault();
                 break;
-            // ENTER                     
-            // SPACE                     
+            // ENTER                      
+            // SPACE                      
             case 32:
                 onClick({ data: ev });
                 ev.preventDefault();
                 break;
 
-            // RIGHT-ARROW                     
+            // RIGHT-ARROW                      
             case rtl ? 37 : 39:
                 // TAB
             case 9:
@@ -110,7 +110,7 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
                 }
                 break;
 
-            // LEFT-ARROW                     
+            // LEFT-ARROW                      
             case rtl ? 39 : 37:
                 // SHIFT + TAB
             case CKEDITOR.SHIFT + 9:
@@ -139,7 +139,7 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
     var labelId = 'srnpr_ck_ct_list_emtions_label' + CKEDITOR.tools.getNextNumber();
 
 
-    var GetHtml = function(eConfig)
+    var GetHtml = function (eConfig)
     {
 
         var inputId = eConfig.imagespath.replace("/", "");
@@ -163,23 +163,27 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
                 html.push('<tr>');
 
             var srnpr_ck_ct_listLabelId = 'cke_smile_label_' + i + '_' + CKEDITOR.tools.getNextNumber();
-            html.push(
-			'<td class="cke_dark_background cke_centered" style="vertical-align: middle;">' +
-				'<a href="javascript:void(0)" role="option"',
-					' aria-posinset="' + (i + 1) + '"',
-					' aria-setsize="' + size + '"',
-					' aria-labelledby="' + srnpr_ck_ct_listLabelId + '"',
-					' class="cke_smile cke_hand" tabindex="-1" onkeydown="CKEDITOR.tools.callFunction( ', onKeydown, ', event, this );">',
-					'<img class="cke_hand" inputid="' + inputId + '" title="', eConfig.descriptions[i], '"' +
-						' cke_src="', CKEDITOR.tools.htmlEncode(config.srnpr_ck_ct_list_path + eConfig.imagespath + "/" + eConfig.images[i]), '" alt="', eConfig.descriptions[i], '"',
-						' src="', CKEDITOR.tools.htmlEncode(config.srnpr_ck_ct_list_path + eConfig.imagespath + "/" + eConfig.images[i]), '"',
-            // IE BUG: Below is a workaround to an IE image loading bug to ensure the image sizes are correct.
-						(CKEDITOR.env.ie ? ' onload="this.setAttribute(\'width\', 2); this.removeAttribute(\'width\');" ' : ''),
-					'>' +
-					'<span id="' + srnpr_ck_ct_listLabelId + '" class="cke_voice_label">' + eConfig.descriptions[i] + '</span>' +
-				'</a>',
- 			'</td>');
 
+            html.push('<td></td>');
+
+            
+            html.push(
+            '<td class="cke_dark_background cke_centered" style="vertical-align: middle;">' +
+            '<a href="javascript:void(0)" role="option"',
+            ' aria-posinset="' + (i + 1) + '"',
+            ' aria-setsize="' + size + '"',
+            ' aria-labelledby="' + srnpr_ck_ct_listLabelId + '"',
+            ' class="cke_smile cke_hand" tabindex="-1" onkeydown="CKEDITOR.tools.callFunction( ', onKeydown, ', event, this );">',
+            '<img class="cke_hand" inputid="' + inputId + '" title="', eConfig.descriptions[i], '"' +
+            ' cke_src="', CKEDITOR.tools.htmlEncode(config.srnpr_ck_ct_list_path + eConfig.imagespath + "/" + eConfig.images[i]), '" alt="', eConfig.descriptions[i], '"',
+            ' src="', CKEDITOR.tools.htmlEncode(config.srnpr_ck_ct_list_path + eConfig.imagespath + "/" + eConfig.images[i]), '"',
+            // IE BUG: Below is a workaround to an IE image loading bug to ensure the image sizes are correct.
+            (CKEDITOR.env.ie ? ' onload="this.setAttribute(\'width\', 2); this.removeAttribute(\'width\');" ' : ''),
+            '>' +
+            '<span id="' + srnpr_ck_ct_listLabelId + '" class="cke_voice_label">' + eConfig.descriptions[i] + '</span>' +
+            '</a>',
+            '</td>');
+            
             if (i % columns == columns - 1)
                 html.push('</tr>');
         }
@@ -206,16 +210,16 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
 
 
 
-    var GetSelector = function(eConfig)
+    var GetSelector = function (eConfig)
     {
         return {
             type: 'html',
             html: GetHtml(eConfig).join(''),
-            onLoad: function(event)
+            onLoad: function (event)
             {
                 dialog = event.sender;
             },
-            focus: function()
+            focus: function ()
             {
                 var firstSmile = this.getElement().getElementsByTag('a').getItem(0);
                 firstSmile.focus();
@@ -227,7 +231,7 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
 
 
 
-    var GetContents = function()
+    var GetContents = function ()
     {
         var vCont = new Array();
 
@@ -266,7 +270,7 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
         minHeight: 220,
         contents: GetContents(),
         buttons: [CKEDITOR.dialog.cancelButton],
-        onShow: function()
+        onShow: function ()
         {
 
 
@@ -286,7 +290,7 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
             }
             else
             {
-               
+
                 for (var n = 0, m = config.srnpr_ck_ct_list_config.group.length; n < m; n++)
                 {
 
@@ -296,7 +300,7 @@ CKEDITOR.dialog.add('srnpr_ck_ct_list', function(editor)
                         document.getElementById("srnpr_ck_ct_list_paramid_" + inputId).value = "";
                     }
                 }
-                
+
             }
         }
     };

@@ -47,7 +47,7 @@ group:
 {
     title:'单选控件',
     imagespath:'singel_select',
-    images: ['peopleselect.gif', 'peopleselect.gif', 'peopleselect.gif', 'peopleselect.gif', 'peopleselect.gif', 'peopleselect.gif', 'peopleselect.gif', 'peopleselect.gif', 'peopleselect.gif', 'peopleselect.gif', 'peopleselect.gif'],
+    images: ['memberselect.png', 'memberselectall.png'],
     descriptions: ['人员单选', '', '', '', '', '', '', '', '', '', '']
 
 },

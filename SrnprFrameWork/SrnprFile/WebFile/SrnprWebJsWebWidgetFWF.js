@@ -217,6 +217,26 @@ if (!window.SWW)
                    ///	</param>
                    return sn ? document.getElementById(sn) : document;
                },
+
+
+               Auto: function (sE, sV)
+               {
+
+                   sE = '#' + sE;
+                   var bV = SWW.J(sE).is("input|textarea");
+
+
+                   if (sV)
+                   {
+                       bV ? SWW.J(sE).val(sV) : SWW.J(sE).html(sV);
+                   }
+                   else
+                   {
+                       return bV ? SWW.J(sE).val() : SWW.J(sE).html();
+                   }
+
+               },
+
                Display: function (s, bn)
                {
                    ///	<summary>
@@ -1060,8 +1080,10 @@ if (!window.SWW)
                    ///	</param>
 
 
-                  
-                   this.Source().SWW.J('#' + s).val(v);
+                  // this.Source().SWW.J('#' + s).val(v);
+
+                   this.Source().SWW.F.DOM.Auto(s, v);
+
 
                }
 

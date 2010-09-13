@@ -108,7 +108,7 @@ CKEDITOR.dialog.add('srnpr_ck_tooldialog', function (editor)
 
 							},
 							{
-							    id: '_ls_json_id',
+							    id: '_app_id',
 							    type: 'text',
 							    label: sck.cklist.tooldialog.xmlid,
 							    
@@ -116,14 +116,16 @@ CKEDITOR.dialog.add('srnpr_ck_tooldialog', function (editor)
 							    accessKey: 'V',
 							    setup: function (element)
 							    {
-							        this.setValue(element.getAttribute(sck.json.tooldialog.Id) || '');
+							        //this.setValue(element.getAttribute(sck.json.tooldialog.Id) || '');
 							    },
 							    commit: function (element)
 							    {
+                                /*
 							        if (this.getValue())
 							            element.setAttribute(sck.json.tooldialog.Id, this.getValue());
 							        else
 							            element.removeAttribute(sck.json.tooldialog.Id);
+                                        */
 							    }
 							}
 						]

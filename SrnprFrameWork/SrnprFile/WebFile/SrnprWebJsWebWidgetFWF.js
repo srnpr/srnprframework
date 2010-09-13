@@ -40,7 +40,7 @@ if (!window.SWW)
        //配置
        C:
        {
-           //系统加载脚本文件  u：脚本文件名称  n：需要加载的其他脚本  w：window基本名称（全局）  q：服务端类名称（JSON反向解析使用）
+           //系统加载脚本文件  u：脚本文件名称  n：需要加载的其他脚本  w：window基本名称（全局）  q：服务端类名称（JSON反向解析使用,如果不存在则表明不需初始化） 
            JS:
            {
                Json: { u: 'json2.js', w: 'JSON' },
@@ -230,6 +230,48 @@ if (!window.SWW)
                    this.Get(s).style.display = (!bn ? 'none' : '');
 
 
+               },
+               Url: function (s, on)
+               {
+                   ///	<summary>
+                   ///  返回url参数
+                   ///	</summary>
+                   ///	<param name="s" type="str">
+                   ///		url地址
+                   ///	</param>
+                   ///	<param name="on" type="obj">
+                   ///		链接地址上添加的对象   如果有该参数则返回的是拼接链接的字符串
+                   ///	</param>
+                   var r;
+                   if (!s)
+                   {
+                       s = location.href;
+                   }
+
+                   var iIndex = s.indexOf('?');
+                   if (!on)
+                   {
+                       if (iIndex > -1)
+                       {
+                           r = {};
+
+                           var u = s.substr(iIndex + 1);
+                           var a = u.split('&');
+                           for (var i = 0, j = a.length; i < j; i++)
+                           {
+                               var iN = a[i].indexOf('=');
+
+                               r[a[i].substr(0, iN)] = a[i].substr(iN + 1);
+                           }
+                       }
+
+                       return r;
+                   }
+                   else
+                   {
+                       return s + (iIndex > -1 ? '&' : '?') + SWW.F.SYS.GetObjPrototype(on);
+                   }
+
                }
            },
 
@@ -409,10 +451,10 @@ if (!window.SWW)
 
                     for (var p in o)
                     {
-                        r.push('[' + p + ']:' + o[p]);
+                        r.push('' + p + '=' + o[p]);
                     }
 
-                    return r.join(';');
+                    return r.join('&');
 
 
                 },
@@ -1082,8 +1124,11 @@ if (!window.SWW)
            //判断是否存在参数并且重新初始化
            if (o)
            {
-               o = SWW.F.SYS.InitReq(o);
-               this.O.Req[o.Guid] = o;
+               if (o.WidgetType)
+               {
+                   o = SWW.F.SYS.InitReq(o);
+                   this.O.Req[o.Guid] = o;
+               }
 
            }
 

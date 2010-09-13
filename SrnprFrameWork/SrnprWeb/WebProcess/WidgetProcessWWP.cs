@@ -181,7 +181,7 @@ namespace SrnprWeb.WebProcess
                     }
                     else if (dKvp["srnpr_srnpr_ck_control_type_id"] == "TD")
                     {
-
+                        sCont = sCont.Replace(mc[i].Value, ToolDialogWWP.GetResponse(dKvp["id"], dKvp["tooldialogurl"]));
                     }
 
 

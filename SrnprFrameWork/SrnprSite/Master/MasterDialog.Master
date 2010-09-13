@@ -8,7 +8,7 @@
     <link type="text/css" rel="Stylesheet" href="/Skin/Blue/MasterPageCss.css" />
     <script type="text/javascript" src="/WebFile/jquery-1.4.2.min.js"></script>
     <script type="text/javascript" src="/WebFile/SrnprWebJsWebWidgetFWF.js"></script>
-    
+    <script type="text/javascript" src="/WebFile/SrnprWebJsToolDialogFWF.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>

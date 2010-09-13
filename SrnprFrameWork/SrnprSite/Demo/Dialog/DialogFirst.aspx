@@ -13,8 +13,12 @@ a1字段：<input type="text" id="a1" />
 b1字段：<input type="text" id="b1" />
 <br /><br />
 <input type="text" id="sa" />
-<input type="button" value="设置a字段值" onclick="SWW.W.Dialog.SetValue('a',SWW.F.DOM.Value('sa'))" />
+<input type="button" value="设置父页面字段值" onclick="SWW.TD.SetValue(SWW.F.DOM.Value('sa'),SWW.F.DOM.Value('sa'),SWW.F.DOM.Value('sa'));SWW.W.Dialog.Close()" />
 
+<script type="text/javascript">
 
+    SWW.F.DOM.Value("sa", SWW.TD.GetValue());
+
+</script>
 
 </asp:Content>

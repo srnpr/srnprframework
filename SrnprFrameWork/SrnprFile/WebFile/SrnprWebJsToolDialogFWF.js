@@ -8,28 +8,61 @@ Create Date: 2010-8-31 16:50:38
 
 
 
-if (SWW && !SWW.TS)
+if (SWW && !SWW.TD)
 {
 
-    SWW.TS =
+    SWW.TD =
     {
-        S_WidgetType: 'TS',
+        S_WidgetType: 'TD',
         O_List:
         {
             onlyselect:
             {
-                url:''
+                url: ''
             }
         }
         ,
-        
-        F_Init:function()
-        {
-        
-        
-        
-        }
 
+
+        SetValue: function (sK, sV, sD)
+        {
+
+            var u = SWW.F.DOM.Url();
+
+            SWW.W.Dialog.SetValue(u.sww_td_parent_id + '_K', sK);
+
+            SWW.W.Dialog.SetValue(u.sww_td_parent_id, sV ? sV : sK);
+
+            if (sD)
+            {
+                SWW.W.Dialog.SetValue(u.sww_td_parent_id+"_D", sD);
+            }
+
+
+        },
+        GetValue: function (s)
+        {
+
+
+            var u = SWW.F.DOM.Url();
+
+            return SWW.W.Dialog.GetValue(u.sww_td_parent_id + (s ? s : ''));
+
+        }
+        ,
+
+
+        F_Init: function (o)
+        {
+
+            var sUrl = SWW.F.DOM.Url(o.url, { sww_td_parent_id: o.Id });
+
+            var aH = [];
+            aH.push('<input paramid="' + o.Id + '" id="' + o.Id + '" type="hidden" >');
+            aH.push('<input paramid="' + o.Id + '_K" id="' + o.Id + '_K" type="text" onclick="SWW.W.Dialog.Open({ url:\'' + sUrl + '\' });">');
+            aH.push('<input  id="' + o.Id + '_D"  ></input>');
+            SWW.F.DOM.Html(o.SId, aH.join(''));
+        }
 
 
     }

@@ -47,6 +47,7 @@ if (!window.SWW)
                JQuery: { u: 'jquery-1.4.2.min.js', w: 'jQuery' },
                GS: { u: 'SrnprWebJsGridShowFWF.js', n: ['JQuery', 'Json'], q: 'GridShowRequestWWE' },
                LS: { u: 'SrnprWebJsListShowFWF.js', n: ['JQuery', 'Json'], q: 'ListShowRequestWWE' },
+               TD: { u: 'SrnprWebJsToolDialogFWF.js', n: ['JQuery', 'Json'] },
                SWW: 'SrnprWebJsWebWidgetFWF.js'
            },
 
@@ -58,6 +59,8 @@ if (!window.SWW)
 
            //基本命名空间
            BaseNamespace: 'http://srnprframework/srnprweb',
+
+           DebugLog: false,
 
            //已经加载的js配置
            JSLoad: {},
@@ -461,7 +464,6 @@ if (!window.SWW)
 
                 ExecAF: function (o)
                 {
-
                     ///	<summary>
                     ///  执行扩展函数
                     ///	</summary>
@@ -482,6 +484,17 @@ if (!window.SWW)
        //内部调用系列
        Z:
        {
+
+
+           DebugLog: function (s, o)
+           {
+
+               if (SWW.C.DebugLog)
+               {
+                   alert(s);
+               }
+
+           },
 
            BasePath: function ()
            {
@@ -552,6 +565,10 @@ if (!window.SWW)
 
                }
 
+               if (SWW.C.DebugLog)
+               {
+                   SWW.Z.DebugLog('sww.z.ajax.onbefore', t);
+               }
 
                //开始提交数据
                SWW.J.ajax(
@@ -573,7 +590,10 @@ if (!window.SWW)
                ///		响应内容
                ///	</param>
 
-
+               if (SWW.C.DebugLog)
+               {
+                   SWW.Z.DebugLog('sww.z.ajaxsuccess.onsuccess', s);
+               }
 
                var json = JSON.parse(s);
 
@@ -633,12 +653,9 @@ if (!window.SWW)
                    {
                        for (var p in SWW.O.Req)
                        {
-
                            if (!SWW[SWW.O.Req[p].WidgetType])
                            {
                                bFlag = false;
-
-
                                break;
                            }
                        }
@@ -658,9 +675,22 @@ if (!window.SWW)
                            var sub = [];
                            for (var t in SWW.O.Req)
                            {
-                               sub.push(SWW.O.Req[t]);
+
+                               SWW.F.SYS.ExecFunc({ t: SWW.O.Req[t].WidgetType, f: "F_Init", e: SWW.O.Req[t] });
+
+                               if (SWW.O.Req[t].__type)
+                               {
+                                   sub.push(SWW.O.Req[t]);
+                               }
                            }
-                           this.Ajax(sub);
+                           if (sub.length > 0)
+                           {
+                               this.Ajax(sub);
+                           }
+
+
+
+
                        }
                        else
                        {
@@ -1028,6 +1058,9 @@ if (!window.SWW)
                    ///	<param name="s" type="str">
                    ///		元素编号
                    ///	</param>
+
+
+                  
                    this.Source().SWW.J('#' + s).val(v);
 
                }

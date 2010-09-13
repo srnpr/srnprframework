@@ -21,7 +21,7 @@ namespace SrnprWeb.WebProcess
 
             string sSpanId = sId + "_span_" + Guid.NewGuid().ToString();
 
-            return "<span id=\"" + sSpanId + "\"></span>" + CommonFunction.JSHelper.CreateScriptDefer(WebProcess.WidgetProcessWWP.SwwJsBaseName("W.Dialog.ToolDialog", "{Id:\"" + sId + "\",url:\"" + sUrl + "\",SId:\"" + sSpanId + "\"}"));
+            return "<span id=\"" + sSpanId + "\"></span>" + CommonFunction.JSHelper.CreateScriptDefer(WebProcess.WidgetProcessWWP.SwwJsBaseName("I", "{WidgetType:\"TD\",Id:\"" + sId + "\",url:\"" + sUrl + "\",SId:\"" + sSpanId + "\"}"));
 
            
         }

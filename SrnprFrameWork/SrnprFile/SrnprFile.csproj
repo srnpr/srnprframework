@@ -101,7 +101,7 @@
     <Content Include="WebFile\SrnprWebJsDragElementFWF.js" />
     <Content Include="WebFile\SrnprWebJsGridShowFWF.js" />
     <Content Include="WebFile\SrnprWebJsListShowFWF.js" />
-    <Content Include="WebFile\SrnprWebJsDialogFWF.js" />
+    <Content Include="WebFile\SrnprWebJsToolDialogFWF.js" />
     <Content Include="WebFile\SrnprWebJsWebWidgetFWF.js" />
   </ItemGroup>
   <ItemGroup>

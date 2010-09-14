@@ -103,6 +103,7 @@
     <Content Include="WebFile\SrnprWebJsListShowFWF.js" />
     <Content Include="WebFile\SrnprWebJsToolDialogFWF.js" />
     <Content Include="WebFile\SrnprWebJsWebWidgetFWF.js" />
+    <Content Include="WebFile\SWW-1.0.0.0.min.js" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ConfigFile\SrnprWebConfigRegFCF.reg" />

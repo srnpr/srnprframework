@@ -32,7 +32,7 @@ if (SWW && !SWW.TD)
             SWW.W.Dialog.SetValue(u.sww_td_parent_id + '_K', sK);
 
             SWW.W.Dialog.SetValue(u.sww_td_parent_id, sV ? sV : sK);
-            
+
             if (sD)
             {
                 SWW.W.Dialog.SetValue(u.sww_td_parent_id + "_D", sD);
@@ -55,13 +55,21 @@ if (SWW && !SWW.TD)
         F_Init: function (o)
         {
 
-            var sUrl = SWW.F.DOM.Url(o.url, { sww_td_parent_id: o.Id });
+            if (o && o.url)
+            {
 
-            var aH = [];
-            aH.push('<input paramid="' + o.Id + '" id="' + o.Id + '" type="hidden" >');
-            aH.push('<input paramid="' + o.Id + '_K" id="' + o.Id + '_K" type="text" onclick="SWW.W.Dialog.Open({ url:\'' + sUrl + '\' });">');
-            aH.push('<span  id="' + o.Id + '_D"  ></span>');
-            SWW.F.DOM.Html(o.SId, aH.join(''));
+                var sUrl = SWW.F.DOM.Url(o.url, { sww_td_parent_id: o.Id });
+
+                var aH = [];
+                aH.push('<input paramid="' + o.Id + '" id="' + o.Id + '" type="hidden" >');
+                aH.push('<input paramid="' + o.Id + '_K" id="' + o.Id + '_K" type="text" onclick="SWW.W.Dialog.Open({ url:\'' + sUrl + '\' });">');
+                aH.push('<span  id="' + o.Id + '_D"  ></span>');
+                SWW.F.DOM.Html(o.SId, aH.join(''));
+            }
+            else
+            {
+                SWW.F.SYS.Error({ n: 'SWW.TD.F_Init', m: 'o.url is null' });
+            }
         }
 
 

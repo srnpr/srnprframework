@@ -60,7 +60,7 @@ if (!window.SWW)
            //基本命名空间
            BaseNamespace: 'http://srnprframework/srnprweb',
 
-           DebugLog: false,
+           DebugFlag: false,
 
            //已经加载的js配置
            JSLoad: {},
@@ -509,7 +509,7 @@ if (!window.SWW)
            DebugLog: function (s, o)
            {
 
-               if (SWW.C.DebugLog)
+               if (SWW.C.DebugFlag)
                {
                    alert(s);
                }
@@ -555,6 +555,7 @@ if (!window.SWW)
                ///	</param>
 
                SWW.J.getScript(this.BasePath() + u);
+
            },
 
            Ajax: function (e)
@@ -585,7 +586,7 @@ if (!window.SWW)
 
                }
 
-               if (SWW.C.DebugLog)
+               if (SWW.C.DebugFlag)
                {
                    SWW.Z.DebugLog('sww.z.ajax.onbefore', t);
                }
@@ -610,7 +611,7 @@ if (!window.SWW)
                ///		响应内容
                ///	</param>
 
-               if (SWW.C.DebugLog)
+               if (SWW.C.DebugFlag)
                {
                    SWW.Z.DebugLog('sww.z.ajaxsuccess.onsuccess', s);
                }
@@ -692,25 +693,7 @@ if (!window.SWW)
                        //如果所有加载完成
                        if (bFlag)
                        {
-                           var sub = [];
-                           for (var t in SWW.O.Req)
-                           {
-
-                               SWW.F.SYS.ExecFunc({ t: SWW.O.Req[t].WidgetType, f: "F_Init", e: SWW.O.Req[t] });
-
-                               if (SWW.O.Req[t].__type)
-                               {
-                                   sub.push(SWW.O.Req[t]);
-                               }
-                           }
-                           if (sub.length > 0)
-                           {
-                               this.Ajax(sub);
-                           }
-
-
-
-
+                           this.InitSuccess();
                        }
                        else
                        {
@@ -727,6 +710,25 @@ if (!window.SWW)
 
 
 
+           }
+           ,
+           InitSuccess: function ()
+           {
+               var sub = [];
+               for (var t in SWW.O.Req)
+               {
+
+                   SWW.F.SYS.ExecFunc({ t: SWW.O.Req[t].WidgetType, f: "F_Init", e: SWW.O.Req[t] });
+
+                   if (SWW.O.Req[t].__type)
+                   {
+                       sub.push(SWW.O.Req[t]);
+                   }
+               }
+               if (sub.length > 0)
+               {
+                   this.Ajax(sub);
+               }
            }
        },
 
@@ -1080,7 +1082,7 @@ if (!window.SWW)
                    ///	</param>
 
 
-                  // this.Source().SWW.J('#' + s).val(v);
+                   // this.Source().SWW.J('#' + s).val(v);
 
                    this.Source().SWW.F.DOM.Auto(s, v);
 
@@ -1146,6 +1148,7 @@ if (!window.SWW)
                        SWW.J(document).unbind('mousemove');
                        if (fEnd) fEnd();
                    });
+
                }
            }
 
@@ -1166,6 +1169,7 @@ if (!window.SWW)
            ///	<param name="o" type="obj">
            ///		操作的对象
            ///	</param>
+
 
 
            //开始自动判断参数传入类型
@@ -1209,7 +1213,10 @@ if (!window.SWW)
                    u = this.C.JS[t].u;
                }
                this.C.JSLoad[t] = Date().toString();
+
                this.Z.AddScript(u);
+
+
 
 
            }
@@ -1225,6 +1232,8 @@ if (!window.SWW)
 
 
        }
+
+
 
 
    }

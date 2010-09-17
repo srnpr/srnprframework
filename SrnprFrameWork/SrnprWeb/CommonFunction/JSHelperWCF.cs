@@ -11,7 +11,7 @@ namespace SrnprWeb.CommonFunction
     /// Create Date: 2010-9-2 14:04:48
     /// Description: JS生成帮助
     /// </summary>
-    public class JSHelper
+    public class JSHelperWCF
     {
 
 

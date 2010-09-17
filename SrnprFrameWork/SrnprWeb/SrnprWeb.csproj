@@ -91,7 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonFunction\GetWebServicesWCF.cs" />
-    <Compile Include="CommonFunction\JSHelper.cs" />
+    <Compile Include="CommonFunction\JSHelperWCF.cs" />
     <Compile Include="CommonFunction\JsonHelper.cs" />
     <Compile Include="EnumType\WidgetEmumWET.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

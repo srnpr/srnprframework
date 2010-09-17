@@ -78,7 +78,7 @@ namespace SrnprWeb.WebProcess
             string sObjId = "SWJGSF_Obj_" + sClientId.Replace('.','_');
             //开始输出执行逻辑
             sb.Append("<div id=\"SWJGSF_Div_" + sClientId + "\"></div><input type=\"hidden\" name=\"SWJGSF_Hidden_" + sClientId + "\" id=\"SWJGSF_Hidden_" + sClientId + "\" value=\"" + sRequest + "\">");
-            sb.Append(CommonFunction.JSHelper.CreateScriptDefer("var " + sObjId + "=" + SrnprWeb.WebProcess.GridShowWWP.WidgetRequestString(sXmlId, sClientId) + ";SWW.I(" + sObjId + ");"));
+            sb.Append(CommonFunction.JSHelperWCF.CreateScriptDefer("var " + sObjId + "=" + SrnprWeb.WebProcess.GridShowWWP.WidgetRequestString(sXmlId, sClientId) + ";SWW.I(" + sObjId + ");"));
             return sb.ToString();
         }
 
@@ -605,7 +605,7 @@ namespace SrnprWeb.WebProcess
 
 
 
-                    sb.Append("<div class=\"SWCGSF_DIV_MAIN\"><table id=\"GS_table_" + request.ClientId + "\" cellspacing=\"1\" cellpadding=\"0\">");
+                    sb.Append("<div class=\"SWW_GS_CSS_DIV_MAIN\"><table id=\"GS_table_" + request.ClientId + "\" cellspacing=\"1\" cellpadding=\"0\">");
 
 
 
@@ -690,7 +690,7 @@ namespace SrnprWeb.WebProcess
 
 
 
-                                sb.Append("<th class=\"SWCGSF_TABLE_" + sOrderType + "\" " + (string.IsNullOrEmpty(gsw.ColumnList[i].Width) ? "" : gsw.ColumnList[i].Width) + " >" + sSortVisgn + "</th>");
+                                sb.Append("<th class=\"SWW_GS_CSS_TABLE_" + sOrderType + "\" " + (string.IsNullOrEmpty(gsw.ColumnList[i].Width) ? "" : gsw.ColumnList[i].Width) + " >" + sSortVisgn + "</th>");
                             }
 
                         }
@@ -704,7 +704,7 @@ namespace SrnprWeb.WebProcess
                         for (int i = 0, j = dt.Rows.Count; i < j; i++)
                         {
 
-                            sb.Append("<tr class=\"SWCGSF_TR_"+(i%2)+"\">");
+                            sb.Append("<tr class=\"SWW_GS_CSS_TR_"+(i%2)+"\">");
                             for (int n = 0; n < iColumnCount; n++)
                             {
 
@@ -783,7 +783,7 @@ namespace SrnprWeb.WebProcess
                 else if (request.ProcessType == "demo")
                 {
                     StringBuilder sb = new StringBuilder();
-                    sb.Append("<div class=\"SWCGSF_DIV_MAIN\"><table id=\"GS_table_" + request.ClientId + "\" cellspacing=\"1\" cellpadding=\"0\">");
+                    sb.Append("<div class=\"SWW_GS_CSS_DIV_MAIN\"><table id=\"GS_table_" + request.ClientId + "\" cellspacing=\"1\" cellpadding=\"0\">");
 
                     List<string> lTd = new List<string>();
 
@@ -804,7 +804,7 @@ namespace SrnprWeb.WebProcess
 
                     for (int i = 0; i < request.PageSize; i++)
                     {
-                        sb.Append(string.Format( sTd," class=\"SWCGSF_TR_"+(i%2)+"\""));
+                        sb.Append(string.Format( sTd," class=\"SWW_GS_CSS_TR_"+(i%2)+"\""));
                     }
 
 

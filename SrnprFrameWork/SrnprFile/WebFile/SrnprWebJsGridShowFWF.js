@@ -218,18 +218,18 @@ if (SWW && !SWW.GS)
 
                 for (var i = 0, j = req.GroupKvd.length; i < j; i++)
                 {
-                    aGroupHtml.push('<li' + (req.GroupValue == req.GroupKvd[i].K ? ' class="SWCGSF_WEBTAB_UL_LI_HOVER" ' : '') + '><a href="javascript:SWW.GS.GroupTable(\'' + id + '\',\'' + req.GroupKvd[i].K + '\')">' + so.GroupTextTemp.replace('{gtt:d}', req.GroupKvd[i].D).replace('{gtt:v}', req.GroupKvd[i].V) + '</a></li>');
+                    aGroupHtml.push('<li' + (req.GroupValue == req.GroupKvd[i].K ? ' class="SWW_GS_CSS_WEBTAB_UL_LI_HOVER" ' : '') + '><a href="javascript:SWW.GS.GroupTable(\'' + id + '\',\'' + req.GroupKvd[i].K + '\')">' + so.GroupTextTemp.replace('{gtt:d}', req.GroupKvd[i].D).replace('{gtt:v}', req.GroupKvd[i].V) + '</a></li>');
 
                     dSumAll += parseFloat(req.GroupKvd[i].V);
                 }
 
 
-                var sGroupSumAll = so.FlagGroupSum ? ('<li' + (!req.GroupValue ? ' class="SWCGSF_WEBTAB_UL_LI_HOVER" ' : '') + '><a href="javascript:SWW.GS.GroupTable(\'' + id + '\',\'\')"> ' + so.GroupTextTemp.replace('{gtt:d}', so.GroupSumText).replace('{gtt:v}', dSumAll) + '</a></li>') : '';
+                var sGroupSumAll = so.FlagGroupSum ? ('<li' + (!req.GroupValue ? ' class="SWW_GS_CSS_WEBTAB_UL_LI_HOVER" ' : '') + '><a href="javascript:SWW.GS.GroupTable(\'' + id + '\',\'\')"> ' + so.GroupTextTemp.replace('{gtt:d}', so.GroupSumText).replace('{gtt:v}', dSumAll) + '</a></li>') : '';
 
-                aHtml.push('<div class="SWCGSF_DIV_WEBTAB"><ul>' + sGroupSumAll + aGroupHtml.join("") + '</ul></div>');
+                aHtml.push('<div class="SWW_GS_CSS_DIV_WEBTAB"><ul>' + sGroupSumAll + aGroupHtml.join("") + '</ul></div>');
             }
 
-            aHtml.push('<div class="SWCGSF_DIV_SHOWINFO">' + obj.HtmlString);
+            aHtml.push('<div class="SWW_GS_CSS_DIV_SHOWINFO">' + obj.HtmlString);
 
             //开始底部导航
             if (req.ShowColumn)
@@ -266,7 +266,7 @@ if (SWW && !SWW.GS)
 
                         for (var iNowIndex = iStart + 1; iNowIndex < iEnd + 1; iNowIndex++)
                         {
-                            aPageInt.push(so.NavPageNumber.replace('{npn:n}', iNowIndex).replace('{npn:f}', "SWW.GS.PageGoto('" + req.Guid + "','" + iNowIndex + "')").replace('{npn:c}', (iNowIndex == req.PageIndex) ? "SWCGSF_A_FOOT_NAV_HOVER" : ""));
+                            aPageInt.push(so.NavPageNumber.replace('{npn:n}', iNowIndex).replace('{npn:f}', "SWW.GS.PageGoto('" + req.Guid + "','" + iNowIndex + "')").replace('{npn:c}', (iNowIndex == req.PageIndex) ? "SWW_GS_CSS_A_FOOT_NAV_HOVER" : ""));
                         }
 
 
@@ -293,7 +293,7 @@ if (SWW && !SWW.GS)
 
 
                 aHtml.push(
-                '<div class="SWCGSF_DIV_FOOT_NAV">' +
+                '<div class="SWW_GS_CSS_DIV_FOOT_NAV">' +
                 so.NavPageHtml
                 .replace("{nph:nps}", nav_nps)
                 .replace("{nph:npu}", nav_npu)
@@ -313,7 +313,7 @@ if (SWW && !SWW.GS)
 
 
 
-            SWW.J("#SWJGSF_Div_" + req.ClientId).html('<div class="SWCGSF_DIV_ALL">' + aHtml.join('') + '</div>');
+            SWW.J("#SWJGSF_Div_" + req.ClientId).html('<div class="SWW_GS_CSS_DIV_ALL">' + aHtml.join('') + '</div>');
 
 
             SWW.J("#jsonshow").text(o);
@@ -328,8 +328,8 @@ if (SWW && !SWW.GS)
 
                     if (index > 0)
                     {
-                        SWW.J(n).mouseover(function () { SWW.J(n).addClass("SWCGSF_TABLE_TR_HOVER"); });
-                        SWW.J(n).mouseout(function () { SWW.J(n).removeClass("SWCGSF_TABLE_TR_HOVER"); });
+                        SWW.J(n).mouseover(function () { SWW.J(n).addClass("SWW_GS_CSS_TABLE_TR_HOVER"); });
+                        SWW.J(n).mouseout(function () { SWW.J(n).removeClass("SWW_GS_CSS_TABLE_TR_HOVER"); });
                     }
 
 

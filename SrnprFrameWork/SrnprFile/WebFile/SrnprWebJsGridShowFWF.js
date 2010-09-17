@@ -3,36 +3,35 @@
 /// <reference path="SrnprWebJsWebWidgetFWF.js"/>
 
 
-if (!this.SWJGSF)
+
+
+
+
+
+if (SWW && !SWW.GS)
 {
 
-    this.SWJGSF = {};
-
-    
-(
-    function ()
+    SWW.GS =
     {
-
-
         //定义设置变量
-        SWJGSF.SetObj = {};
+        SetObj: {},
 
 
         //定义基本服务器交互变量
-        SWJGSF.Obj = {};
+        Obj: {},
 
 
 
-        SWJGSF.Set = function (id, p, v)
+        Set: function (id, p, v)
         {
-            SWJGSF.SetInit(id);
-            SWJGSF.SetObj[id][p] = v;
-        }
+            SWW.GS.SetInit(id);
+            SWW.GS.SetObj[id][p] = v;
+        },
 
-        SWJGSF.SetInit = function (id)
+        SetInit: function (id)
         {
 
-            if (!SWJGSF.SetObj[id])
+            if (!SWW.GS.SetObj[id])
             {
 
                 var temp =
@@ -75,92 +74,72 @@ if (!this.SWJGSF)
 
                     NavEveryPage: 10
 
-                }
+                };
 
-                SWJGSF.SetObj[id] = temp;
-            }
+                SWW.GS.SetObj[id] = temp;
+            };
 
-            return SWJGSF.SetObj[id];
+            return SWW.GS.SetObj[id];
         }
-
+        ,
 
 
 
         //初始化
-        SWJGSF.Init = function (s)
+        Init: function (s)
         {
 
 
-            /*
-            SWJGSF.Obj[s.Id] = s;
 
-
-            $("document").ready(function()
-            {
-            SWJGSF.Ajax(s.Id);
-
-            });
-            */
 
 
             s.WidgetType = "GS";
             SWW.I(s);
 
-            $("form").submit(function () { SWJGSF.SubmitBefore(s.Id); });
+            SWW.J("form").submit(function () { SWW.GS.SubmitBefore(s.Guid); });
 
 
         }
+        ,
 
-
-        SWJGSF.SubmitBefore = function (id)
+        SubmitBefore: function (id)
         {
-            $("#SWJGSF_Hidden_" + SWJGSF.Obj[id].ClientId).val(JSON.stringify(SWJGSF.Obj[id]));
-        }
+            SWW.J("#SWJGSF_Hidden_" + SWW.GS.Obj[id].ClientId).val(JSON.stringify(SWW.GS.Obj[id]));
+        },
 
 
         //提交请求
-        SWJGSF.Ajax = function (id)
+        Ajax: function (id)
         {
 
-            /*
-            $.ajax(
-            {
-            url: "/Asmx/GridShowHander.ashx",
-            type: "POST",
-            data: "json=" + JSON.stringify(SWJGSF.Obj[id]),
-            success: function(x) { SWJGSF.AjaxSuccess(id, x); },
-            error: function(XMLHttpRequest, textStatus) { SWJGSF.AlertMsg(textStatus) }
-
-            });
-            */
 
 
 
 
-            SWW.F.SYS.Run(SWJGSF.Obj[id]);
-        }
+            SWW.F.SYS.Run(SWW.GS.Obj[id]);
+        },
 
-        SWJGSF.AlertMsg = function (s)
+        AlertMsg: function (s)
         {
             alert(s);
         }
-
+        ,
 
 
         //跳转页面
-        SWJGSF.PageGoto = function (id, iPage)
+        PageGoto: function (id, iPage)
         {
 
 
-            var iPageCount = Math.ceil(SWJGSF.Obj[id].RowsCount / SWJGSF.Obj[id].PageSize);
+            var iPageCount = Math.ceil(SWW.GS.Obj[id].RowsCount / SWW.GS.Obj[id].PageSize);
 
             if (iPage == "-")
             {
-                iPage = SWJGSF.Obj[id].PageIndex - 1;
+                iPage = SWW.GS.Obj[id].PageIndex - 1;
             }
             else if (iPage == "+")
             {
-                iPage = SWJGSF.Obj[id].PageIndex + 1;
+                iPage = SWW.GS.Obj[id].PageIndex + 1;
             }
 
             iPage = parseInt(iPage);
@@ -176,58 +155,58 @@ if (!this.SWJGSF)
 
 
 
-            SWJGSF.Obj[id].PageIndex = iPage;
+            SWW.GS.Obj[id].PageIndex = iPage;
 
-            SWJGSF.Ajax(id);
-        }
+            SWW.GS.Ajax(id);
+        },
 
 
         //分组
-        SWJGSF.GroupTable = function (id, k)
+        GroupTable: function (id, k)
         {
-            SWJGSF.Obj[id].GroupValue = k;
-            SWJGSF.Obj[id].PageIndex = 1;
-            SWJGSF.Obj[id].RowsCount = -2;
-            SWJGSF.Ajax(id);
+            SWW.GS.Obj[id].GroupValue = k;
+            SWW.GS.Obj[id].PageIndex = 1;
+            SWW.GS.Obj[id].RowsCount = -2;
+            SWW.GS.Ajax(id);
         }
-
+        ,
 
         //导航更换
-        SWJGSF.ChangeNav = function (id)
+        ChangeNav: function (id)
         {
 
-            var s = $('#' + SWJGSF.Obj[id].ClientId + '_nav_pagesize').val();
+            var s = SWW.J('#' + SWW.GS.Obj[id].ClientId + '_nav_pagesize').val();
             if (s && !isNaN(s) && s > 0)
             {
-                SWJGSF.Obj[id].PageSize = parseInt(s);
+                SWW.GS.Obj[id].PageSize = parseInt(s);
             }
-            var i = $('#' + SWJGSF.Obj[id].ClientId + '_nav_pageindex').val();
+            var i = SWW.J('#' + SWW.GS.Obj[id].ClientId + '_nav_pageindex').val();
 
             if (i && !isNaN(i) && i > 0)
             {
-                SWJGSF.Obj[id].PageIndex = parseInt(i);
+                SWW.GS.Obj[id].PageIndex = parseInt(i);
             }
 
-            SWJGSF.PageGoto(id, SWJGSF.Obj[id].PageIndex);
+            SWW.GS.PageGoto(id, SWW.GS.Obj[id].PageIndex);
 
-        }
+        },
 
 
 
 
         //执行成功时
-        SWJGSF.AjaxSuccess = function (id, o)
+        AjaxSuccess: function (id, o)
         {
 
 
             var obj = typeof (o) == "string" ? JSON.parse(o) : o;
 
             //重新赋上最新版返回参数
-            var req = SWJGSF.Obj[id] = obj.Request;
+            var req = SWW.GS.Obj[id] = obj.Request;
 
 
             //开始尝试初始化设置
-            var so = SWJGSF.SetInit(id);
+            var so = SWW.GS.SetInit(id);
 
             var aHtml = [];
 
@@ -239,13 +218,13 @@ if (!this.SWJGSF)
 
                 for (var i = 0, j = req.GroupKvd.length; i < j; i++)
                 {
-                    aGroupHtml.push('<li' + (req.GroupValue == req.GroupKvd[i].K ? ' class="SWCGSF_WEBTAB_UL_LI_HOVER" ' : '') + '><a href="javascript:SWJGSF.GroupTable(\'' + id + '\',\'' + req.GroupKvd[i].K + '\')">' + so.GroupTextTemp.replace('{gtt:d}', req.GroupKvd[i].D).replace('{gtt:v}', req.GroupKvd[i].V) + '</a></li>');
+                    aGroupHtml.push('<li' + (req.GroupValue == req.GroupKvd[i].K ? ' class="SWCGSF_WEBTAB_UL_LI_HOVER" ' : '') + '><a href="javascript:SWW.GS.GroupTable(\'' + id + '\',\'' + req.GroupKvd[i].K + '\')">' + so.GroupTextTemp.replace('{gtt:d}', req.GroupKvd[i].D).replace('{gtt:v}', req.GroupKvd[i].V) + '</a></li>');
 
                     dSumAll += parseFloat(req.GroupKvd[i].V);
                 }
 
 
-                var sGroupSumAll = so.FlagGroupSum ? ('<li' + (!req.GroupValue ? ' class="SWCGSF_WEBTAB_UL_LI_HOVER" ' : '') + '><a href="javascript:SWJGSF.GroupTable(\'' + id + '\',\'\')"> ' + so.GroupTextTemp.replace('{gtt:d}', so.GroupSumText).replace('{gtt:v}', dSumAll) + '</a></li>') : '';
+                var sGroupSumAll = so.FlagGroupSum ? ('<li' + (!req.GroupValue ? ' class="SWCGSF_WEBTAB_UL_LI_HOVER" ' : '') + '><a href="javascript:SWW.GS.GroupTable(\'' + id + '\',\'\')"> ' + so.GroupTextTemp.replace('{gtt:d}', so.GroupSumText).replace('{gtt:v}', dSumAll) + '</a></li>') : '';
 
                 aHtml.push('<div class="SWCGSF_DIV_WEBTAB"><ul>' + sGroupSumAll + aGroupHtml.join("") + '</ul></div>');
             }
@@ -260,9 +239,9 @@ if (!this.SWJGSF)
 
                 var nav_nps = '', nav_npu = '', nav_npl = '', nav_npr = '', nav_npn = '', nav_npc = '', nav_npe = '';
 
-                nav_npu = so.NavPageUser.replace('{npu:f}', "SWJGSF.ShowDisplay('" + req.Id + "')");
+                nav_npu = so.NavPageUser.replace('{npu:f}', "SWW.GS.ShowDisplay('" + req.Guid + "')");
 
-                nav_npe = so.NavPageExcel.replace('{npe:f}', "SWJGSF.Excel('" + req.Id + "')");
+                nav_npe = so.NavPageExcel.replace('{npe:f}', "SWW.GS.Excel('" + req.Guid + "')");
 
 
                 if (req.ProcessType == "" || req.ProcessType == "server")
@@ -272,8 +251,8 @@ if (!this.SWJGSF)
 
                     if (req.RowsCount > 0)
                     {
-                        nav_npl = so.NavPageLeft.replace('{npl:f}', "SWJGSF.PageGoto('" + req.Id + "',1)").replace('{npl:p}', "SWJGSF.PageGoto('" + req.Id + "','-')");
-                        nav_npr = so.NavPageRight.replace('{npr:n}', "SWJGSF.PageGoto('" + req.Id + "','+')").replace('{npr:l}', "SWJGSF.PageGoto('" + req.Id + "','" + iPageCount + "')");
+                        nav_npl = so.NavPageLeft.replace('{npl:f}', "SWW.GS.PageGoto('" + req.Guid + "',1)").replace('{npl:p}', "SWW.GS.PageGoto('" + req.Guid + "','-')");
+                        nav_npr = so.NavPageRight.replace('{npr:n}', "SWW.GS.PageGoto('" + req.Guid + "','+')").replace('{npr:l}', "SWW.GS.PageGoto('" + req.Guid + "','" + iPageCount + "')");
 
 
 
@@ -287,7 +266,7 @@ if (!this.SWJGSF)
 
                         for (var iNowIndex = iStart + 1; iNowIndex < iEnd + 1; iNowIndex++)
                         {
-                            aPageInt.push(so.NavPageNumber.replace('{npn:n}', iNowIndex).replace('{npn:f}', "SWJGSF.PageGoto('" + req.Id + "','" + iNowIndex + "')").replace('{npn:c}', (iNowIndex == req.PageIndex) ? "SWCGSF_A_FOOT_NAV_HOVER" : ""));
+                            aPageInt.push(so.NavPageNumber.replace('{npn:n}', iNowIndex).replace('{npn:f}', "SWW.GS.PageGoto('" + req.Guid + "','" + iNowIndex + "')").replace('{npn:c}', (iNowIndex == req.PageIndex) ? "SWCGSF_A_FOOT_NAV_HOVER" : ""));
                         }
 
 
@@ -300,7 +279,7 @@ if (!this.SWJGSF)
                     nav_npc = so.NavPageChange
                     .replace('{npc:i}', '<input type="text" id="' + req.ClientId + '_nav_pagesize" value="' + req.PageSize + '" maxlength="3">')
                     .replace('{npc:s}', '<input type="text" id="' + req.ClientId + '_nav_pageindex" value="' + req.PageIndex + '">')
-                    .replace('{npc:f}', 'SWJGSF.ChangeNav(\'' + id + '\')');
+                    .replace('{npc:f}', 'SWW.GS.ChangeNav(\'' + id + '\')');
 
 
 
@@ -334,27 +313,27 @@ if (!this.SWJGSF)
 
 
 
-            $("#SWJGSF_Div_" + req.ClientId).html('<div class="SWCGSF_DIV_ALL">' + aHtml.join('') + '</div>');
+            SWW.J("#SWJGSF_Div_" + req.ClientId).html('<div class="SWCGSF_DIV_ALL">' + aHtml.join('') + '</div>');
 
 
-            $("#jsonshow").text(o);
+            SWW.J("#jsonshow").text(o);
 
 
             if (so.FlagIndexNumber)
             {
-                $('#GS_table_' + req.ClientId + ' tbody').children().each(
+                SWW.J('#GS_table_' + req.ClientId + ' tbody').children().each(
 
                 function (index, n)
                 {
 
                     if (index > 0)
                     {
-                        $(n).mouseover(function () { $(n).addClass("SWCGSF_TABLE_TR_HOVER"); });
-                        $(n).mouseout(function () { $(n).removeClass("SWCGSF_TABLE_TR_HOVER"); });
+                        SWW.J(n).mouseover(function () { SWW.J(n).addClass("SWCGSF_TABLE_TR_HOVER"); });
+                        SWW.J(n).mouseout(function () { SWW.J(n).removeClass("SWCGSF_TABLE_TR_HOVER"); });
                     }
 
 
-                    $($(n).children()[0]).before(index == 0 ? ('<th></th>') : ("<td>" + index + "</td>"));
+                    SWW.J(SWW.J(n).children()[0]).before(index == 0 ? ('<th></th>') : ("<td>" + index + "</td>"));
                 }
                 );
             }
@@ -364,25 +343,25 @@ if (!this.SWJGSF)
             //alert(obj.ListString[0].length);
         }
 
-
+        ,
 
 
         //导出Excel
-        SWJGSF.Excel = function (id)
+        Excel: function (id)
         {
 
-            SWJGSF.SubmitBefore(id);
+            SWW.GS.SubmitBefore(id);
 
-            SWW.W.Dialog.Open({ title: '请选择显示内容', url: "/Web/GridShow/Excel.aspx?id=SWJGSF_Hidden_" + SWJGSF.Obj[id].ClientId, width: 400, height: 100 });
+            SWW.W.Dialog.Open({ title: '请选择显示内容', url: "/Web/GridShow/Excel.aspx?id=SWJGSF_Hidden_" + SWW.GS.Obj[id].ClientId, width: 400, height: 100 });
 
-            //SrnprNetJsAllAlphaShow({ s: "l", m: "请选择显示内容", w: "400", h: "100", u: "/Web/GridShow/Excel.aspx?id=SWJGSF_Hidden_" + SWJGSF.Obj[id].ClientId });
+            //SrnprNetJsAllAlphaShow({ s: "l", m: "请选择显示内容", w: "400", h: "100", u: "/Web/GridShow/Excel.aspx?id=SWJGSF_Hidden_" + SWW.GS.Obj[id].ClientId });
 
-        }
-        SWJGSF.ExcelClose = function (id)
+        },
+        ExcelClose: function (id)
         {
             //SrnprNetJsAllAlphaShow({ s: "c" });
             SWW.W.Dialog.Close();
-        }
+        },
 
 
 
@@ -390,90 +369,90 @@ if (!this.SWJGSF)
 
 
         //自定义显示字段
-        SWJGSF.ShowDisplay = function (id)
+        ShowDisplay: function (id)
         {
 
             var s = "<ul>";
-            for (var i = 0, j = SWJGSF.Obj[id].ShowColumn.length; i < j; i++)
+            for (var i = 0, j = SWW.GS.Obj[id].ShowColumn.length; i < j; i++)
             {
-                s += "<li><input type=\"checkbox\" id=\"" + SWJGSF.Obj[id].ClientId + "_showcolumn_ckb_" + SWJGSF.Obj[id].ShowColumn[i].Guid + "\" " + (SWJGSF.Obj[id].ShowColumn[i].ShowDisplay == "n" ? "" : "checked=\"checked\"") + " />" + SWJGSF.Obj[id].ShowColumn[i].HeaderText + "</li>";
+                s += "<li><input type=\"checkbox\" id=\"" + SWW.GS.Obj[id].ClientId + "_showcolumn_ckb_" + SWW.GS.Obj[id].ShowColumn[i].Guid + "\" " + (SWW.GS.Obj[id].ShowColumn[i].ShowDisplay == "n" ? "" : "checked=\"checked\"") + " />" + SWW.GS.Obj[id].ShowColumn[i].HeaderText + "</li>";
             }
 
             s += "</ul>";
 
-            //SrnprNetJsAllAlphaShow({ s: "f", c: s, m: "请选择显示内容", y: "SWJGSF.SetDisplay('" + id + "')", w: "400" });
+            //SrnprNetJsAllAlphaShow({ s: "f", c: s, m: "请选择显示内容", y: "SWW.GS.SetDisplay('" + id + "')", w: "400" });
 
-            SWW.W.Dialog.Open({ title: '请选择显示内容', width: 400, html: s, button: ["确定:SWJGSF.SetDisplay('" + id + "')"] });
+            SWW.W.Dialog.Open({ title: '请选择显示内容', width: 400, html: s, button: ["确定:SWW.GS.SetDisplay('" + id + "')"] });
 
 
 
         }
-
+        ,
         //设置显示字段
-        SWJGSF.SetDisplay = function (id)
+        SetDisplay: function (id)
         {
 
             var source = SWW.W.Dialog.Father();
-            
-            for (var i = 0, j = SWJGSF.Obj[id].ShowColumn.length; i < j; i++)
+
+            for (var i = 0, j = SWW.GS.Obj[id].ShowColumn.length; i < j; i++)
             {
-                if (source.SWW.J("#" + SWJGSF.Obj[id].ClientId + "_showcolumn_ckb_" + SWJGSF.Obj[id].ShowColumn[i].Guid).attr("checked") == true)
+                if (source.SWW.J("#" + SWW.GS.Obj[id].ClientId + "_showcolumn_ckb_" + SWW.GS.Obj[id].ShowColumn[i].Guid).attr("checked") == true)
                 {
-                    SWJGSF.Obj[id].ShowColumn[i].ShowDisplay = "d";
+                    SWW.GS.Obj[id].ShowColumn[i].ShowDisplay = "d";
                 }
                 else
                 {
-                    SWJGSF.Obj[id].ShowColumn[i].ShowDisplay = "n";
+                    SWW.GS.Obj[id].ShowColumn[i].ShowDisplay = "n";
                 }
             }
 
-            SWJGSF.Ajax(id);
+            SWW.GS.Ajax(id);
             //SrnprNetJsAllAlphaShow({ s: "c" });
             SWW.W.Dialog.Close();
-        }
+        },
 
         //开始执行排序操作
-        SWJGSF.Sort = function (id, gid)
+        Sort: function (id, gid)
         {
-            for (var i = 0, j = SWJGSF.Obj[id].ShowColumn.length; i < j; i++)
+            for (var i = 0, j = SWW.GS.Obj[id].ShowColumn.length; i < j; i++)
             {
-                if (SWJGSF.Obj[id].ShowColumn[i].Guid == gid)
+                if (SWW.GS.Obj[id].ShowColumn[i].Guid == gid)
                 {
-                    SWJGSF.Obj[id].ShowColumn[i].OrderType = SWJGSF.Obj[id].ShowColumn[i].OrderType == "a" ? "e" : "a";
+                    SWW.GS.Obj[id].ShowColumn[i].OrderType = SWW.GS.Obj[id].ShowColumn[i].OrderType == "a" ? "e" : "a";
                 }
                 else
                 {
-                    if (SWJGSF.Obj[id].ShowColumn[i].OrderType != "n")
+                    if (SWW.GS.Obj[id].ShowColumn[i].OrderType != "n")
                     {
-                        SWJGSF.Obj[id].ShowColumn[i].OrderType = "d";
+                        SWW.GS.Obj[id].ShowColumn[i].OrderType = "d";
                     }
                 }
             }
 
-            SWJGSF.Ajax(id);
-        }
+            SWW.GS.Ajax(id);
+        },
 
-        SWJGSF.F_Success = function (o)
+        F_Success: function (o)
         {
-            SWJGSF.Obj[o.q.Id] = o.q;
-            SWJGSF.AjaxSuccess(o.q.Id, o.s);
-        }
+            SWW.GS.Obj[o.q.Guid] = o.q;
+            SWW.GS.AjaxSuccess(o.q.Guid, o.s);
+        },
 
 
         //设置显示类型
-        SWJGSF.Demo = function ()
+        Demo: function ()
         {
-            for (var p in SWJGSF.Obj)
+            for (var p in SWW.GS.Obj)
             {
-                SWJGSF.Obj[p].ProcessType = "demo";
+                SWW.GS.Obj[p].ProcessType = "demo";
             }
 
         }
-
+        ,
 
 
         //执行查询 第二参数为空时则遍历所有
-        SWJGSF.Query = function (id, sid)
+        Query: function (id, sid)
         {
             var a = function () { };
 
@@ -491,12 +470,12 @@ if (!this.SWJGSF)
                 {
 
                     var index = 0;
-                    for (var p in SWJGSF.Obj)
+                    for (var p in SWW.GS.Obj)
                     {
 
                         if (sIndex == index)
                         {
-                            id = SWJGSF.Obj[p].Id;
+                            id = SWW.GS.Obj[p].Guid;
                         }
                         index++;
                     }
@@ -507,11 +486,11 @@ if (!this.SWJGSF)
             //定义提交参数
             var t = [];
 
-            var vElms = $("#" + sid).children("[paramid][paramid<>'']");
+            var vElms = SWW.J("#" + sid).children("[paramid][paramid<>'']");
 
             if (!vElms || vElms.length == 0)
             {
-                vElms = $("[paramid][paramid<>'']");
+                vElms = SWW.J("[paramid][paramid<>'']");
             }
 
 
@@ -520,7 +499,7 @@ if (!this.SWJGSF)
              function (index, n)
              {
 
-                 var el = $(n);
+                 var el = SWW.J(n);
                  var vl = el.val();
                  if (el.is("input") && (n.type == "checkbox" || n.type == "radio") && !n.checked)
                  {
@@ -553,38 +532,22 @@ if (!this.SWJGSF)
 
 
 
-            SWJGSF.Obj[id].QueryDict = t;
-            SWJGSF.Obj[id].PageIndex = 1;
-            SWJGSF.Obj[id].RowsCount = -1;
+            SWW.GS.Obj[id].QueryDict = t;
+            SWW.GS.Obj[id].PageIndex = 1;
+            SWW.GS.Obj[id].RowsCount = -1;
 
-            SWJGSF.Ajax(id);
+            SWW.GS.Ajax(id);
 
 
         }
+        ,
 
 
-
-        SWJGSF.WebTable = function ()
+        WebTable: function ()
         {
 
         }
-
-
-
-
-
     }
-
-)();
-}
-
-
-
-
-if (SWW && !SWW.GS)
-{
-
-    SWW.GS = SWJGSF;
 }
 
 

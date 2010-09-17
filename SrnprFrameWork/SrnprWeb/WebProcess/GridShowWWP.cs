@@ -666,18 +666,18 @@ namespace SrnprWeb.WebProcess
 
 
 
-
+                                string sSortFunction = WebProcess.WidgetProcessWWP.SwwJsBaseName("GS.Sort", true, request.Guid, vSort.Guid);
 
                                 switch (sOrderType)
                                 {
                                     case "d":
-                                        sSortVisgn = " <a href=\"javascript:SWJGSF.Sort('" + gsw.Id + "','" + vSort.Guid + "')\"> " + vSort.HeaderText + "</a>";
+                                        sSortVisgn = " <a href=\"javascript:" + sSortFunction + "\"> " + vSort.HeaderText + "</a>";
                                         break;
                                     case "a":
-                                        sSortVisgn = " <a href=\"javascript:SWJGSF.Sort('" + gsw.Id + "','" + vSort.Guid + "')\"> " + vSort.HeaderText + "</a>↑";
+                                        sSortVisgn = " <a href=\"javascript:" + sSortFunction + "\"> " + vSort.HeaderText + "</a>↑";
                                         break;
                                     case "e":
-                                        sSortVisgn = " <a href=\"javascript:SWJGSF.Sort('" + gsw.Id + "','" + vSort.Guid + "')\"> " + vSort.HeaderText + "</a>↓";
+                                        sSortVisgn = " <a href=\"javascript:" + sSortFunction + "\"> " + vSort.HeaderText + "</a>↓";
                                         break;
                                     case "n":
                                     default:

@@ -132,6 +132,19 @@ namespace SrnprWeb.WebProcess
         }
 
 
+        public static string SwwJsBaseName(string FunctionName, bool bStringFlag, params string[] parm)
+        {
+            if (bStringFlag)
+            {
+                for (int i = 0, j = parm.Length; i < j; i++)
+                {
+                    parm[i] = "'" + parm[i] + "'";
+                }
+            }
+            return SwwJsBaseName(FunctionName, parm);
+        }
+
+
 
         #region  重新检测所有提交内容
 

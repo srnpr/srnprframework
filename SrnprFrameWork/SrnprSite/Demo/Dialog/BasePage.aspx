@@ -8,11 +8,15 @@
 
 
 
-<input type="button" value="打开一号对话框" onclick="SWW.W.Dialog.Open({url:'/Demo/Dialog/DialogFirst.aspx',title:'一号窗口'})" />
 
+<span id="aa_span_662babb2-7390-40cd-a453-a86731e35edb" ></span>
+<script>
+
+    SWW.I({ WidgetType: "TD", Id: "aa", url: "/Demo/Dialog/DialogFirst.aspx", SId: "aa_span_662babb2-7390-40cd-a453-a86731e35edb" });
+</script>
 
 <br /><br />
-a字段：<input type="text" id="a" />
+
 
 
 </asp:Content>

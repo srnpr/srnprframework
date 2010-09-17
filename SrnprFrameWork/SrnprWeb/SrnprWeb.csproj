@@ -90,6 +90,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonFunction\ECMAScriptPackerWCF.cs" />
     <Compile Include="CommonFunction\GetWebServicesWCF.cs" />
     <Compile Include="CommonFunction\JSHelperWCF.cs" />
     <Compile Include="CommonFunction\JsonHelperWCF.cs" />

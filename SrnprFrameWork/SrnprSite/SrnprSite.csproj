@@ -139,6 +139,13 @@
     <Compile Include="Test\Widget_ListShow.aspx.designer.cs">
       <DependentUpon>Widget_ListShow.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Web\ECMAScriptPacker\ECMAScriptPacker.aspx.cs">
+      <DependentUpon>ECMAScriptPacker.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\ECMAScriptPacker\ECMAScriptPacker.aspx.designer.cs">
+      <DependentUpon>ECMAScriptPacker.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Web\GridShow\Create.aspx.cs">
       <DependentUpon>Create.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -221,6 +228,7 @@
     <Content Include="Skin\Blue\sradmin\srmaintopbg.gif" />
     <Content Include="Skin\Blue\sradmin\srmaintopcenter.gif" />
     <Content Include="Skin\Blue\sradmin\srmaintophover.gif" />
+    <Content Include="Web\ECMAScriptPacker\ECMAScriptPacker.aspx" />
     <Content Include="Web\GridShow\Create.aspx" />
     <Content Include="Web\GridShow\List.aspx" />
     <Content Include="Web\PageShow\CreatePage.aspx" />

@@ -75,7 +75,7 @@ namespace SrnprWeb.WebProcess
         /// <returns></returns>
         public static string Response(string sRequest)
         {
-            return CommonFunction.JsonHelper.Serialize<WebEntity.WidgetResponseWWE>(GetResponse(CommonFunction.JsonHelper.Deserialize<WebEntity.WidgetRequestWWE>(sRequest),null));
+            return CommonFunction.JsonHelperWCF.Serialize<WebEntity.WidgetResponseWWE>(GetResponse(CommonFunction.JsonHelperWCF.Deserialize<WebEntity.WidgetRequestWWE>(sRequest),null));
 
 
         }
@@ -93,7 +93,7 @@ namespace SrnprWeb.WebProcess
         /// <returns></returns>
         public static WidgetRequestWWE DeserializeRequest(string sRequest)
         {
-            return CommonFunction.JsonHelper.Deserialize<WebEntity.WidgetRequestWWE>(sRequest);
+            return CommonFunction.JsonHelperWCF.Deserialize<WebEntity.WidgetRequestWWE>(sRequest);
         }
 
 
@@ -109,7 +109,7 @@ namespace SrnprWeb.WebProcess
         /// <returns></returns>
         public static string Response(WidgetRequestWWE req,Dictionary<int, SrnprWeb.WebEntity.WidgetProcessWWE> dic)
         {
-            return CommonFunction.JsonHelper.Serialize<WebEntity.WidgetResponseWWE>(GetResponse(req,dic));
+            return CommonFunction.JsonHelperWCF.Serialize<WebEntity.WidgetResponseWWE>(GetResponse(req,dic));
 
 
         }

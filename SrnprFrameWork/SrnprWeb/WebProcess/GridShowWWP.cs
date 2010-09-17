@@ -94,12 +94,12 @@ namespace SrnprWeb.WebProcess
         {
 
 
-            var t =  CommonFunction.JsonHelper.Deserialize<SrnprWeb.WebEntity.GridShowRequestWWE>(sJson);
+            var t =  CommonFunction.JsonHelperWCF.Deserialize<SrnprWeb.WebEntity.GridShowRequestWWE>(sJson);
 
         
            // SrnprWeb.WebProcess.GridShowWWP gsw = new SrnprWeb.WebProcess.GridShowWWP();
 
-            return CommonFunction.JsonHelper.Serialize<SrnprWeb.WebEntity.GridShowResponseWWE>(GetHtmlByEntity(GetEntityById(t.Id), t,null));
+            return CommonFunction.JsonHelperWCF.Serialize<SrnprWeb.WebEntity.GridShowResponseWWE>(GetHtmlByEntity(GetEntityById(t.Id), t,null));
         }
 
 
@@ -115,7 +115,7 @@ namespace SrnprWeb.WebProcess
         /// <returns></returns>
         public  DataTable GetDataTable(string sJson,int iType)
         {
-            var tJson = CommonFunction.JsonHelper.Deserialize<SrnprWeb.WebEntity.GridShowRequestWWE>(sJson);
+            var tJson = CommonFunction.JsonHelperWCF.Deserialize<SrnprWeb.WebEntity.GridShowRequestWWE>(sJson);
 
             if (iType== 1)
             {
@@ -245,7 +245,7 @@ namespace SrnprWeb.WebProcess
             req.RowsCount = -1;
             req.ClientId = sClientId;
 
-            return CommonFunction.JsonHelper.Serialize<WebEntity.GridShowRequestWWE>(req);
+            return CommonFunction.JsonHelperWCF.Serialize<WebEntity.GridShowRequestWWE>(req);
 
 
         }

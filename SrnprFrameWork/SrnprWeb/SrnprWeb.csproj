@@ -92,7 +92,7 @@
   <ItemGroup>
     <Compile Include="CommonFunction\GetWebServicesWCF.cs" />
     <Compile Include="CommonFunction\JSHelperWCF.cs" />
-    <Compile Include="CommonFunction\JsonHelper.cs" />
+    <Compile Include="CommonFunction\JsonHelperWCF.cs" />
     <Compile Include="EnumType\WidgetEmumWET.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebEntity\DragFieldWWE.cs" />

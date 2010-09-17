@@ -10,7 +10,7 @@ using System.Runtime.Serialization.Json;
 
 namespace SrnprWeb.CommonFunction
 {
-    public class JsonHelper
+    public class JsonHelperWCF
     {
 
         /// <summary>

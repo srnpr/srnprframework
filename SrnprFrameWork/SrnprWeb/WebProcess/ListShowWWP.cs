@@ -82,7 +82,7 @@ namespace SrnprWeb.WebProcess
 
 
 
-            return "<span id=\""+dObj["SId"]+"\"></span>"+CommonFunction.JSHelperWCF.CreateScriptDefer( WebProcess.WidgetProcessWWP.SwwJsBaseName("I", CommonFunction.JsonHelper.SerializeDic(dObj)));
+            return "<span id=\""+dObj["SId"]+"\"></span>"+CommonFunction.JSHelperWCF.CreateScriptDefer( WebProcess.WidgetProcessWWP.SwwJsBaseName("I", CommonFunction.JsonHelperWCF.SerializeDic(dObj)));
         }
 
 

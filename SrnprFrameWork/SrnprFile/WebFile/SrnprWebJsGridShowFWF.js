@@ -20,6 +20,7 @@ if (SWW && !SWW.GS)
         //定义基本服务器交互变量
         Obj: {},
 
+        DemoFlag: false,
 
 
         Set: function (id, p, v)
@@ -432,6 +433,22 @@ if (SWW && !SWW.GS)
             SWW.GS.Ajax(id);
         },
 
+
+        F_Init: function (o)
+        {
+
+            if (this.DemoFlag)
+            {
+                o.ProcessType = "demo";
+            }
+
+
+
+           
+
+        },
+
+
         F_Success: function (o)
         {
             SWW.GS.Obj[o.q.Guid] = o.q;
@@ -442,10 +459,10 @@ if (SWW && !SWW.GS)
         //设置显示类型
         Demo: function ()
         {
-            for (var p in SWW.GS.Obj)
-            {
-                SWW.GS.Obj[p].ProcessType = "demo";
-            }
+
+            this.DemoFlag = true;
+
+
 
         }
         ,

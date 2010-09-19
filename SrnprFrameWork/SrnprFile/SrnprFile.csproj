@@ -97,6 +97,7 @@
     <Content Include="WebFile\SrnprWebCssDragElementFWF.css" />
     <Content Include="WebFile\SrnprWebCssGridShowFWF.css" />
     <Content Include="WebFile\SrnprWebCssPageShowFWF.css" />
+    <Content Include="WebFile\SrnprWebCssWebWidgetFWF.css" />
     <Content Include="WebFile\SrnprWebJsCommonFWF.js" />
     <Content Include="WebFile\SrnprWebJsDragElementFWF.js" />
     <Content Include="WebFile\SrnprWebJsGridShowFWF.js" />

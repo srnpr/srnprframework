@@ -60,7 +60,8 @@ if (!window.SWW)
            //基本命名空间
            BaseNamespace: 'http://srnprframework/srnprweb',
 
-           DebugFlag: false,
+           Flag: { Debug: false },
+
 
            //已经加载的js配置
            JSLoad: {},
@@ -110,7 +111,7 @@ if (!window.SWW)
        J: jQuery,
 
        //Req提交参数  Res返回参数  AF扩展函数  Guid唯一标识集 系统自动检测全局唯一编号
-       O: { Req: {}, Res: {}, AF: {}, Guid: {} },
+       O: { Req: {}, Res: {}, AF: {}, Guid: {}, Log: { Debug: []} },
 
        //扩展函数系列
        A: function (t, f, id, fu)
@@ -509,9 +510,12 @@ if (!window.SWW)
            DebugLog: function (s, o)
            {
 
-               if (SWW.C.DebugFlag)
+               if (SWW.C.Flag.Debug)
                {
-                   alert(s);
+                   //alert(s);
+                  
+                   SWW.O.Log.Debug.push(s + (typeof (o) == "string" ? o : SWW.F.SYS.GetObjPrototype(o)));
+
                }
 
            },
@@ -586,7 +590,7 @@ if (!window.SWW)
 
                }
 
-               if (SWW.C.DebugFlag)
+               if (SWW.C.Flag.Debug)
                {
                    SWW.Z.DebugLog('sww.z.ajax.onbefore', t);
                }
@@ -607,11 +611,11 @@ if (!window.SWW)
                ///	<summary>
                ///  执行成功时调用
                ///	</summary>
-               ///	<param name="s" type="string">
+               ///	<param name="s" type="str">
                ///		响应内容
                ///	</param>
 
-               if (SWW.C.DebugFlag)
+               if (SWW.C.Flag.Debug)
                {
                    SWW.Z.DebugLog('sww.z.ajaxsuccess.onsuccess', s);
                }

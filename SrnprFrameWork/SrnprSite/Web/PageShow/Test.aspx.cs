@@ -16,7 +16,7 @@ namespace SrnprSite.Web.PageShow
 
             if (Request["demo"] != null && Request["demo"].ToString() == "demo")
             {
-                sDemo = "<script type=\"text/javascript\">SWJGSF.Demo();</script>";
+                sDemo = "<script type=\"text/javascript\">SWW.GS.Demo();</script>";
             }
         }
     }

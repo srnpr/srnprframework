@@ -28,7 +28,7 @@
 
 .SWW_GS_CSS_DIV_WEBTAB ul li
 {
-    background-image:url(http://f.xgou.com/AtGang/UI_C/images_css/bg_tab12_out.gif);
+    background-image:url("http://f.xgou.com/AtGang/UI_C/images_css/bg_tab12_out.gif");
     background-repeat:repeat-x;
     border-right:solid 1px #99cccc;
     border-top:solid 1px #99cccc;
@@ -45,7 +45,7 @@
 
 .SWW_GS_CSS_DIV_WEBTAB ul  .SWW_GS_CSS_WEBTAB_UL_LI_HOVER
 {
-    background-image: url(http://f.xgou.com/AtGang/UI_C/images_css/bg_tab12_hover.gif);
+    background-image: url("http://f.xgou.com/AtGang/UI_C/images_css/bg_tab12_hover.gif");
 }
 .SWW_GS_CSS_DIV_WEBTAB ul li a,.SWW_GS_CSS_DIV_WEBTAB ul  .SWW_GS_CSS_WEBTAB_UL_LI_HOVER a:hover
 {
@@ -111,7 +111,7 @@
     height:23px;
     line-height:23px;
     background-color:#fff;
-    background-image:url(http://f.xgou.com/AtGang/UI_C/images_css/h_bg.gif); 
+    background-image:url("http://f.xgou.com/AtGang/UI_C/images_css/h_bg.gif"); 
     background-position:bottom 50%;
     background-repeat:repeat-x;
     color:#043260;

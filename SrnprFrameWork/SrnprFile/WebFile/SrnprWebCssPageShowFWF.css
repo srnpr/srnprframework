@@ -6,7 +6,7 @@
 
 ol li
 {
-    background-image:url(http://f.xgou.com/AtGang/UI_C/images_css/bg_tab12_out.gif);
+    background-image:url("http://f.xgou.com/AtGang/UI_C/images_css/bg_tab12_out.gif");
     background-repeat:repeat-x;
     border-right:solid 1px #99cccc;
     border-top:solid 1px #99cccc;

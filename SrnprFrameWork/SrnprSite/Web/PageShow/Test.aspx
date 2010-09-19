@@ -7,11 +7,10 @@
     <title></title>
     <script type="text/javascript" src="/WebFile/jquery-1.4.2.min.js"></script>
     <script type="text/javascript" src="/WebFile/json2.js"></script>
-     <script type="text/javascript" src="/WebFile/SrnprWebJsWebWidgetFWF.js"></script>
+     <script type="text/javascript" src="/WebFile/SWW-1.0.0.0.min.js"></script>
 
-    <script type="text/javascript" src="/WebFile/SrnprWebJsGridShowFWF.js"></script>
-    <link href="/WebFile/SrnprWebCSSGridShowFWF.css" type="text/css" rel="Stylesheet" />
-    <link href="/WebFile/SrnprWebCSSPageShowFWF.css" type="text/css" rel="Stylesheet" />
+    <link href="/WebFile/SWW-CSS-1.0.0.0.min.css" type="text/css" rel="Stylesheet" />
+  
    
 </head>
 <body>

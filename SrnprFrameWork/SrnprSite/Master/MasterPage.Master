@@ -22,6 +22,8 @@
     <script type="text/javascript" src="http://f.xgou.com/AtGang/Common/js/SrnprNetJsAllAlpha.js"></script>
 
     <link href="/WebFile/SrnprWebCSSGridShowFWF.css" type="text/css" rel="Stylesheet" />
+
+
     <link href="/WebFile/SrnprWebCSSPageShowFWF.css" type="text/css" rel="Stylesheet" />
     <link href="http://f.xgou.com/AtGang/Manage/css/ManageAlpha.css" rel="stylesheet"
         type="text/css" />
@@ -87,7 +89,12 @@
                                     <li><a href="/Demo/Dialog/BasePage.aspx">联级调用</a></li>
                                    
                                 </ul>
-
+                                 <div>
+                                    <a href="#">压缩js+css</a></div>
+                                <ul>
+                                    <li><a href="/Web/ECMAScriptPacker/ECMAScriptPacker.aspx">压缩JS+CSS</a></li>
+                                   
+                                </ul>
                             </div>
                         </div>
                     </td>

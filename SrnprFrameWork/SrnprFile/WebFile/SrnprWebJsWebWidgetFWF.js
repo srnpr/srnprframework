@@ -1107,7 +1107,7 @@ if (!window.SWW)
 
                    SWW.J(el).mousedown(function (e)
                    {
-                       var e = e || window.event;
+                       e = e || window.event;
                        var pos = SWW.W.Drag.GetPos(e);
 
                        var father = handle ? SWW.J(handle) : SWW.J(el);

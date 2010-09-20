@@ -32,7 +32,7 @@ if (SWW && !SWW.DebugLog)
         {
 
             var h = [];
-            h.push('<div class="SWW_CSS_GS_DIV_MAIN" style="width:95%;"><table><tr><th>时间</th><th>调用接口</th><th>日志内容</th><th>参数</th></tr>');
+            h.push('<div class="SWW_CSS_GS_DIV_MAIN" style="width:95%;"><table><tr><th>序号</th><th>时间</th><th>调用接口</th><th>日志内容</th><th>参数</th></tr>');
 
             for (var i = SWW.O.Log.Debug.length - 1, j = -1; i > j; i--)
             {
@@ -70,7 +70,7 @@ if (SWW && !SWW.DebugLog)
 
                 }
 
-                h.push('<tr><td>' + SWW.O.Log.Debug[i].d + '</td><td>' + SWW.O.Log.Debug[i].t + '</td><td>' + a + '</td><td>' + b + '</td></tr>');
+                h.push('<tr><td>'+i+'</td><td>' + SWW.O.Log.Debug[i].d + '</td><td>' + SWW.O.Log.Debug[i].t + '</td><td>' + a + '</td><td>' + b + '</td></tr>');
             }
             h.push('</table></div>');
             SWW.W.Dialog.Open({ html: h.join(''), width: 800, title: '页面加载日志' });

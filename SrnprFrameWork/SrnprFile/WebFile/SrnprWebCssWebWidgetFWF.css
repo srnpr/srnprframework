@@ -1,3 +1,55 @@
-﻿body
+﻿
+
+.SWW_W_CSS_Dialog
 {
+    overflow:scroll;
+}
+
+.SWW_W_CSS_Dialog_Box_Over
+{
+    background-color:#CCC;
+    z-index:999;
+    position:absolute;
+}
+
+.SWW_W_CSS_Dialog_Box_Back
+{
+   background-color:#999;
+}
+.SWW_W_CSS_Dialog_Box
+{
+    background-color:#fff;
+   
+    border-top:1px #999 solid;
+    border-left:1px #999 solid;
+}
+
+.SWW_W_CSS_Dialog_Title
+{
+    background-color:#ccc;
+    height:30px;
+    line-height:30px;
+    width:100%;
+    border-bottom:solid 1px #999;
+     text-align:right;
+     text-indent:10px;
+     cursor:move;
+}
+
+.SWW_W_CSS_Dialog_Title_Left
+{
+     text-align:left;
+     float:left;
+}
+
+.SWW_W_CSS_Dialog_Title_Right
+{
+    margin:0px 20px 0px 0px;
+    cursor:pointer;
+}
+
+.SWW_W_CSS_Dialog_Content
+{
+   
+     overflow:auto;
 }

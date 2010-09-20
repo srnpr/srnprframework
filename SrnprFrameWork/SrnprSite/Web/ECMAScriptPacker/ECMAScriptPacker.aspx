@@ -30,7 +30,7 @@
     </p>
     <p>
         <asp:TextBox ID="tbSourceCss" runat="server" Height="71px" TextMode="MultiLine" 
-            Width="380px">SrnprWebCssGridShowFWF.css,SrnprWebCssPageShowFWF.css</asp:TextBox>
+            Width="380px">SrnprWebCssGridShowFWF.css,SrnprWebCssPageShowFWF.css,SrnprWebCssWebWidgetFWF.css</asp:TextBox>
 &nbsp;</p>
     <p>
         <asp:TextBox ID="tbSaveCSSSource" runat="server" Text="sww_css_source.css"></asp:TextBox>

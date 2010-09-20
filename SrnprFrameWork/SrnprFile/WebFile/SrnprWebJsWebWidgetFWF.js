@@ -23,6 +23,7 @@ Description: 核心类文件 所有widget使用的初始化及加载文件
             i:数字(int)
             f:函数(fun)
             b:布尔型(bool)
+            a:数组(arr)
 
             第二标识：
             [y]:必填参数
@@ -72,9 +73,9 @@ if (!window.SWW)
                //当前加载次数
                N: 0,
                //最大加载次数
-               M: 20,
+               M: 30,
                //加载时间间隔
-               T: 100,
+               T: 200,
                //是否添加ready加载函数
                LoadFlag: false
            },
@@ -310,6 +311,84 @@ if (!window.SWW)
            ,
 
 
+           STR:
+           {
+
+               Pad: function (sB, sP, iM)
+               {
+                   var a = '';
+
+                   sB = sB.toString();
+                   while (sB.length < Math.abs(iM))
+                   {
+                       sB = iM > 0 ? (sP + sB) : (sB + sP);
+                   }
+                   return sB;
+               },
+               HtmlEncode: function (s)
+               {
+
+                   if (s.length == 0) return "";
+                   s = s.replace(/&/g, "&amp;");
+                   s = s.replace(/</g, "&lt;");
+                   s = s.replace(/>/g, "&gt;");
+                   s = s.replace(/\'/g, "&#39;");
+                   s = s.replace(/\"/g, "&quot;");
+                   return s;
+               },
+               HtmlDecode: function (str)
+               {
+                   if (s.length == 0) return "";
+                   s = s.replace(/&amp;/g, "&");
+                   s = s.replace(/&lt;/g, "<");
+                   s = s.replace(/&gt;/g, ">");
+                   s = s.replace(/&#39;/g, "\'");
+                   s = s.replace(/&quot;/g, "\"");
+                   return s;
+               },
+
+
+               StringToDate: function (s)
+               {
+                   if (!s)
+                   {
+                       s = new Date();
+                   }
+                   else if (typeof (s) == 'string')
+                   {
+                       s = new Date(Date.parse(s.replace(/-/g, "/")));
+
+                   }
+                   return s;
+               },
+
+               DateTime: function (d, s)
+               {
+                   d = this.StringToDate(d);
+
+                   if (!s)
+                   {
+                       s = "yyyy-MM-dd hh:mm:ss";
+                   }
+
+                   return s.replace('yyyy', d.getYear()).replace('MM', SWW.F.STR.Pad(d.getMonth(), '0', 2)).replace('dd', SWW.F.STR.Pad(d.getDate(), '0', 2)).replace('hh', SWW.F.STR.Pad(d.getHours(), '0', 2)).replace('mm', SWW.F.STR.Pad(d.getMinutes(), '0', 2)).replace('ss', SWW.F.STR.Pad(d.getSeconds(), '0', 2)).replace('ms', d.getMilliseconds());
+
+
+               },
+               Format: function (s, a)
+               {
+                   for (var i = 0, j = a.length; i < j; i++)
+                   {
+                       var r = new RegExp("\{" + i + "\}","g");
+                      
+                       
+                       s = s.replace(r, a[i]);
+                   }
+                   return s;
+               }
+
+           },
+
 
 
            SYS:
@@ -328,6 +407,10 @@ if (!window.SWW)
                     ///	</param>
                     alert(s);
                 },
+
+
+
+
                 Error: function (o)
                 {
                     ///	<summary>
@@ -452,11 +535,12 @@ if (!window.SWW)
                     if (SWW[o.t] && SWW[o.t][o.f])
                     {
                         SWW[o.t][o.f](o.e);
+                        if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.f.sys.execfunc.exec', o);
                     }
                     else
                     {
                         //SWW.F.SYS.Error({ n: 'SWW.F.SYS.ExecFunc', m: SWW.M.SE.FEF, p: [o.t, o.f, this.GetObjPrototype(o.e)] });
-
+                        if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.f.sys.execfunc.notfunction', o);
                     }
                 },
 
@@ -495,6 +579,12 @@ if (!window.SWW)
                     if (SWW.O.AF[o.q.WidgetType] && SWW.O.AF[o.q.WidgetType][o.f][o.q.Id])
                     {
                         SWW.O.AF[o.q.WidgetType][o.f][o.q.Id](o.e);
+
+                        if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.f.sys.execaf.exec', o);
+                    }
+                    else
+                    {
+                        if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.f.sys.execaf.notfunction', o);
                     }
 
                 }
@@ -512,10 +602,7 @@ if (!window.SWW)
 
                if (SWW.C.Flag.Debug)
                {
-                   //alert(s);
-                  
-                   SWW.O.Log.Debug.push(s + (typeof (o) == "string" ? o : SWW.F.SYS.GetObjPrototype(o)));
-
+                   SWW.O.Log.Debug.push({ d: SWW.F.STR.DateTime(null, 'yyyy-MM-dd hh:mm:ss.ms'), t: s, c: o });
                }
 
            },
@@ -615,10 +702,7 @@ if (!window.SWW)
                ///		响应内容
                ///	</param>
 
-               if (SWW.C.Flag.Debug)
-               {
-                   SWW.Z.DebugLog('sww.z.ajaxsuccess.onsuccess', s);
-               }
+               if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.z.ajaxsuccess.onsuccess', s);
 
                var json = JSON.parse(s);
 
@@ -690,6 +774,9 @@ if (!window.SWW)
                    //累加当前调用次数
                    SWW.C.Init.N++;
 
+                   if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.z.init.initnow', SWW.C.Init.N);
+
+
                    //判断是否超过最大调用次数限制
                    if (SWW.C.Init.N < SWW.C.Init.M)
                    {
@@ -718,6 +805,8 @@ if (!window.SWW)
            ,
            InitSuccess: function ()
            {
+
+               if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.z.initsuccess.success', '');
                var sub = [];
                for (var t in SWW.O.Req)
                {
@@ -767,14 +856,18 @@ if (!window.SWW)
                        url: '',
                        //按钮
                        button: [],
-                       //是否自动状态保存 0表示不自动保存状态 1表示自动保存状态
+                       //是否自动状态保存 0表示不自动保存状态 2表示自动保存状态
                        save: 0,
+                       //是否自动跟随滚动 1为滚动 2为不滚动
+                       scroll: 1,
                        //自身所加载的window对象
                        self: null,
                        //当前加载的序号
                        current: 0,
                        //Guid编号
-                       guid: ''
+                       guid: '',
+                       //样式编号
+                       cssid: 'SWW_W_CSS_Dialog_'
                    }
                    ,
                    Config:
@@ -782,6 +875,7 @@ if (!window.SWW)
 
                        BgId: 'SWW_SWW_F_BOX_INIT_CONFIG_BGID',
                        DefaultId: 'SWW_SWW_F_BOX_INIT_CONFIG_DEFAULTID',
+
                        Opactity: 50,
                        BgColor: '#000',
                        CountDialog: 0
@@ -886,26 +980,26 @@ if (!window.SWW)
 
                        var aH = [];
 
-                       aH.push('<div id="' + o.guid + '" style="background-color:#ccc;width:' + (o.width + 4) + 'px;height:' + (o.height + 4) + 'px; z-index:999;position:absolute;top:' + o.top + 'px;left:' + o.left + 'px;">');
-                       aH.push('<div style="background-color:#999;width:' + (o.width + 3) + 'px;height:' + (o.height + 3) + 'px;">');
+                       aH.push('<div id="' + o.guid + '" class="' + o.cssid + 'Box_Over" style="width:' + (o.width + 4) + 'px;height:' + (o.height + 4) + 'px; top:' + o.top + 'px;left:' + o.left + 'px;">');
+                       aH.push('<div class="' + o.cssid + 'Box_Back" style="width:' + (o.width + 3) + 'px;height:' + (o.height + 3) + 'px;">');
 
-                       aH.push('<div style="background-color:#fff;width:' + o.width + 'px;height:' + o.height + 'px;border-top:1px #999 solid;border-left:1px #999 solid;">');
+                       aH.push('<div class="' + o.cssid + 'Box" style="width:' + o.width + 'px;height:' + o.height + 'px;">');
 
 
                        //开始添加抬头
 
-                       aH.push('<div id=' + o.guid + '_title class="SWW_Dialog_Title" style="background-color:#ccc;height:30px;line-height:30px;width:100%;border-bottom:solid 1px #999; text-align:right;text-indent:10px;cursor:move;"><span style=" text-align:left;float:left;">' + o.title + '</span><span style="margin:0px 20px 0px 0px;cursor:pointer;" onclick="SWW.W.Dialog.Close(\'' + o.guid + '\',' + o.save + ')">关闭</span></div>');
+                       aH.push('<div class="' + o.cssid + 'Title" id="' + o.guid + '_title"><span class="' + o.cssid + 'Title_Left">' + o.title + '</span><span  class="' + o.cssid + 'Title_Right" onclick="SWW.W.Dialog.Close(\'' + o.guid + '\',' + o.save + ')">关闭</span></div>');
 
 
 
 
-
+                       aH.push('<div class="' + o.cssid + 'Content" style="width:' + o.width + 'px;height:' + o.height + 'px;">');
                        //判断内容模型
                        if (o.url)
                        {
                            aH.push('<div id="' + o.guid + '_iframe_load">' + SWW.M.ME.Load + '</div>');
                            aH.push('<div id="' + o.guid + '_iframe_show" style="display:none;">');
-                           aH.push('<iframe id="' + o.guid + '_iframe" onload="SWW.F.DOM.Display(\'' + o.guid + '_iframe_load\');SWW.F.DOM.Display(\'' + o.guid + '_iframe_show\',true);" style="width:' + (o.width) + 'px;height:' + (o.height - 32) + 'px" src="' + o.url + '" frameborder="0"></iframe>');
+                           aH.push('<iframe id="' + o.guid + '_iframe" onload="SWW.F.DOM.Display(\'' + o.guid + '_iframe_load\');SWW.F.DOM.Display(\'' + o.guid + '_iframe_show\',true);" style="width:' + (o.width - 16) + 'px;height:' + (o.height - 32) + 'px" src="' + o.url + '" frameborder="0"></iframe>');
                            aH.push('<div>');
                        }
                        else if (o.html)
@@ -922,23 +1016,19 @@ if (!window.SWW)
                        {
                            var s = '';
                            aH.push('<div style="text-align:center;">');
-
                            for (var i = 0, j = o.button.length; i < j; i++)
                            {
                                var iIndex = o.button[i].indexOf(':');
 
                                if (iIndex > -1)
                                {
-
-
                                    aH.push('<input type="button" onclick="SWW.W.Dialog.Source().' + o.button[i].substr(iIndex + 1) + '" value="' + o.button[i].substr(0, iIndex) + '"/>');
-
                                }
                            }
                            aH.push('</div>');
                        }
 
-                       aH.push('</div></div></div>');
+                       aH.push('</div></div></div></div>');
                        SWW.J('body').append(aH.join(''));
 
                        o.current = this.Config.CountDialog;
@@ -953,11 +1043,14 @@ if (!window.SWW)
                        //开始加载拖动代码
                        SWW.W.Drag.DragElement(SWW.J('#' + o.guid + '_title'), SWW.J('#' + o.guid));
 
-                       SWW.J(window).scroll(function ()
+                       if (o.scroll == 1)
                        {
-                           SWW.J('#' + o.guid).css("top", (document.documentElement.scrollTop + 120) + "px");
+                           SWW.J(window).scroll(function ()
+                           {
+                               SWW.J('#' + o.guid).css("top", (document.documentElement.scrollTop + 120) + "px");
 
-                       });
+                           });
+                       }
                        this.ObjArray.push(o);
                    }
                },

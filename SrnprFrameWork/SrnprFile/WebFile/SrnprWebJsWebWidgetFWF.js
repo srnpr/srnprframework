@@ -46,9 +46,9 @@ if (!window.SWW)
            {
                Json: { u: 'json2.js', w: 'JSON' },
                JQuery: { u: 'jquery-1.4.2.min.js', w: 'jQuery' },
-               GS: { u: 'SrnprWebJsGridShowFWF.js', n: ['JQuery', 'Json'], q: 'GridShowRequestWWE' },
-               LS: { u: 'SrnprWebJsListShowFWF.js', n: ['JQuery', 'Json'], q: 'ListShowRequestWWE' },
-               TD: { u: 'SrnprWebJsToolDialogFWF.js', n: ['JQuery', 'Json'] },
+               GS: { u: 'SrnprWebJsGridShowFWF.js', n: ['JQuery'], q: 'GridShowRequestWWE' },
+               LS: { u: 'SrnprWebJsListShowFWF.js', n: ['JQuery'], q: 'ListShowRequestWWE' },
+               TD: { u: 'SrnprWebJsToolDialogFWF.js', n: ['JQuery'] },
                SWW: 'SrnprWebJsWebWidgetFWF.js'
            },
 
@@ -379,9 +379,9 @@ if (!window.SWW)
                {
                    for (var i = 0, j = a.length; i < j; i++)
                    {
-                       var r = new RegExp("\{" + i + "\}","g");
-                      
-                       
+                       var r = new RegExp("\{" + i + "\}", "g");
+
+
                        s = s.replace(r, a[i]);
                    }
                    return s;
@@ -588,6 +588,267 @@ if (!window.SWW)
                     }
 
                 }
+            },
+           JSON:
+            {
+
+
+
+                Obj_Json:
+            {
+                cx: /[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
+                escapable: /[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
+                gap: null,
+                indent: null,
+                meta: {    // table of character substitutions
+                    '\b': '\\b',
+                    '\t': '\\t',
+                    '\n': '\\n',
+                    '\f': '\\f',
+                    '\r': '\\r',
+                    '"': '\\"',
+                    '\\': '\\\\'
+                },
+                rep: null
+
+
+            },
+
+
+
+            Fun_Quote: function (string)
+                {
+
+                    var meta = this.Obj_Json.meta;
+
+                    this.Obj_Json.escapable.lastIndex = 0;
+                    return this.Obj_Json.escapable.test(string) ?
+            '"' + string.replace(this.Obj_Json.escapable, function (a)
+            {
+
+                var c = meta[a];
+                return typeof c === 'string' ? c :
+                    '\\u' + ('0000' + a.charCodeAt(0).toString(16)).slice(-4);
+            }) + '"' :
+            '"' + string + '"';
+                },
+
+        Fun_Str: function (key, holder)
+                {
+
+
+
+                    var i,
+                    k,
+                    v,
+                    length,
+                    mind = this.Obj_Json.gap,
+                    partial,
+                    value = holder[key];
+
+
+                    if (value && typeof value === 'object' &&typeof value.toJSON === 'function')
+                    {
+                        value = value.toJSON(key);
+                    }
+
+
+                    if (typeof this.Obj_Json.rep === 'function')
+                    {
+                        value = this.Obj_Json.rep.call(holder, key, value);
+                    }
+
+
+                    switch (typeof value)
+                    {
+                        case 'string':
+                            return this.Fun_Quote(value);
+
+                        case 'number':
+
+
+                            return isFinite(value) ? String(value) : 'null';
+
+                        case 'boolean':
+                        case 'null':
+
+
+                            return String(value);
+
+
+                        case 'object':
+
+
+                            if (!value)
+                            {
+                                return 'null';
+                            }
+
+
+                            this.Obj_Json.gap += this.Obj_Json.indent;
+                            partial = [];
+
+
+                            if (Object.prototype.toString.apply(value) === '[object Array]')
+                            {
+
+
+                                length = value.length;
+                                for (i = 0; i < length; i += 1)
+                                {
+                                    partial[i] = this.Fun_Str(i, value) || 'null';
+                                }
+
+
+
+                                v = partial.length === 0 ? '[]' :
+                    this.Obj_Json.gap ? '[\n' + this.Obj_Json.gap +
+                            partial.join(',\n' + this.Obj_Json.gap) + '\n' +
+                                mind + ']' :
+                          '[' + partial.join(',') + ']';
+                                this.Obj_Json.gap = mind;
+                                return v;
+                            }
+
+
+                            if (this.Obj_Json.rep && typeof this.Obj_Json.rep === 'object')
+                            {
+                                length = this.Obj_Json.rep.length;
+                                for (i = 0; i < length; i += 1)
+                                {
+                                    k = this.Obj_Json.rep[i];
+                                    if (typeof k === 'string')
+                                    {
+                                        v = this.Fun_Str(k, value);
+                                        if (v)
+                                        {
+                                            partial.push(this.Fun_Quote(k) + (this.Obj_Json.gap ? ': ' : ':') + v);
+                                        }
+                                    }
+                                }
+                            } else
+                            {
+
+
+                                for (k in value)
+                                {
+                                    if (Object.hasOwnProperty.call(value, k))
+                                    {
+                                        v = this.Fun_Str(k, value);
+                                        if (v)
+                                        {
+                                            partial.push(this.Fun_Quote(k) + (this.Obj_Json.gap ? ': ' : ':') + v);
+                                        }
+                                    }
+                                }
+                            }
+
+
+
+                            v = partial.length === 0 ? '{}' :
+                this.Obj_Json.gap ? '{\n' + this.Obj_Json.gap + partial.join(',\n' + this.Obj_Json.gap) + '\n' +
+                        mind + '}' : '{' + partial.join(',') + '}';
+                            this.Obj_Json.gap = mind;
+                            return v;
+                    }
+                },
+
+
+                StringToJson: function (value, replacer, space)
+                {
+
+
+                    var i;
+                    this.Obj_Json.gap = '';
+                    this.Obj_Json.indent = '';
+                    if (typeof space === 'number')
+                    {
+                        for (i = 0; i < space; i += 1)
+                        {
+                            this.Obj_Json.indent += ' ';
+                        }
+
+                    } else if (typeof space === 'string')
+                    {
+                        this.Obj_Json.indent = space;
+                    }
+                    this.Obj_Json.rep = replacer;
+                    if (replacer && typeof replacer !== 'function' &&
+                    (typeof replacer !== 'object' ||
+                     typeof replacer.length !== 'number'))
+                    {
+                        throw new Error('JSON.StringToJson');
+                    }
+
+                    return this.Fun_Str('', { '': value });
+                },
+
+
+
+
+
+
+                JsonToString: function (text, reviver)
+                {
+
+                    var j;
+                    function walk(holder, key)
+                    {
+                        var k, v, value = holder[key];
+                        if (value && typeof value === 'object')
+                        {
+                            for (k in value)
+                            {
+                                if (Object.hasOwnProperty.call(value, k))
+                                {
+                                    v = walk(value, k);
+                                    if (v !== undefined)
+                                    {
+                                        value[k] = v;
+                                    } else
+                                    {
+                                        delete value[k];
+                                    }
+                                }
+                            }
+                        }
+                        return reviver.call(holder, key, value);
+                    }
+
+                    text = String(text);
+
+                    this.Obj_Json.cx.lastIndex = 0;
+                    if (this.Obj_Json.cx.test(text))
+                    {
+                        text = text.replace(this.Obj_Json.cx, function (a)
+                        {
+                            return '\\u' +
+                        ('0000' + a.charCodeAt(0).toString(16)).slice(-4);
+                        });
+                    }
+
+
+                    if (/^[\],:{}\s]*$/.
+test(text.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g, '@').
+replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').
+replace(/(?:^|:|,)(?:\s*\[)+/g, '')))
+                    {
+
+
+
+                        j = eval('(' + text + ')');
+
+
+
+                        return typeof reviver === 'function' ?
+                    walk({ '': j }, '') : j;
+                    }
+
+
+
+                    throw new SyntaxError('JSON.JsonToString');
+                }
+
             }
 
        },
@@ -687,7 +948,7 @@ if (!window.SWW)
                 {
                     url: SWW.C.Ajax.Url,
                     type: "POST",
-                    data: "json=" + JSON.stringify(t),
+                    data: "json=" + SWW.F.JSON.StringToJson(t),
                     success: function (s) { SWW.Z.AjaxSuccess(s); },
                     error: function (XMLHttpRequest, textStatus) { SWW.F.SYS.Error({ n: 'SWW.Z.Ajax', m: textStatus }) }
                 });
@@ -704,7 +965,7 @@ if (!window.SWW)
 
                if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.z.ajaxsuccess.onsuccess', s);
 
-               var json = JSON.parse(s);
+               var json = SWW.F.JSON.JsonToString(s);
 
                for (var i = 0, j = json.RS.length; i < j; i++)
                {
@@ -999,7 +1260,7 @@ if (!window.SWW)
                        {
                            aH.push('<div id="' + o.guid + '_iframe_load">' + SWW.M.ME.Load + '</div>');
                            aH.push('<div id="' + o.guid + '_iframe_show" style="display:none;">');
-                           aH.push('<iframe id="' + o.guid + '_iframe" onload="SWW.F.DOM.Display(\'' + o.guid + '_iframe_load\');SWW.F.DOM.Display(\'' + o.guid + '_iframe_show\',true);" style="width:' + (o.width ) + 'px;height:' + (o.height) + 'px" src="' + o.url + '" frameborder="0"></iframe>');
+                           aH.push('<iframe id="' + o.guid + '_iframe" onload="SWW.F.DOM.Display(\'' + o.guid + '_iframe_load\');SWW.F.DOM.Display(\'' + o.guid + '_iframe_show\',true);" style="width:' + (o.width) + 'px;height:' + (o.height) + 'px" src="' + o.url + '" frameborder="0"></iframe>');
                            aH.push('<div>');
                        }
                        else if (o.html)

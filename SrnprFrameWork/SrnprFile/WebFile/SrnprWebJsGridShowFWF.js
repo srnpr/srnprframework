@@ -105,7 +105,7 @@ if (SWW && !SWW.GS)
 
         SubmitBefore: function (id)
         {
-            SWW.J("#SWJGSF_Hidden_" + SWW.GS.Obj[id].ClientId).val(JSON.stringify(SWW.GS.Obj[id]));
+            SWW.J("#SWJGSF_Hidden_" + SWW.GS.Obj[id].ClientId).val(SWW.F.JSON.stringify(SWW.GS.Obj[id]));
         },
 
 
@@ -200,7 +200,7 @@ if (SWW && !SWW.GS)
         {
 
 
-            var obj = typeof (o) == "string" ? JSON.parse(o) : o;
+            var obj = typeof (o) == "string" ? SWW.F.JSON.JsonToString(o) : o;
 
             //重新赋上最新版返回参数
             var req = SWW.GS.Obj[id] = obj.Request;

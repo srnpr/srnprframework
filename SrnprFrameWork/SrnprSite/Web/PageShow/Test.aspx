@@ -6,7 +6,7 @@
 <head runat="server">
     <title></title>
     <script type="text/javascript" src="/WebFile/jquery-1.4.2.min.js"></script>
-    <script type="text/javascript" src="/WebFile/json2.js"></script>
+   
 
 
 
@@ -41,6 +41,12 @@
     <script>
 
 
+
+        
+        
+
+
+
        // alert(SWW.F.STR.Format('1{0}2{1}',['aa','bb']));
 
         SWW.C.Flag.Debug = true;
@@ -56,7 +62,7 @@
 
             for (var i =  SWW.O.Log.Debug.length-1,j=-1; i >j;i--)
             {
-                var a = typeof (SWW.O.Log.Debug[i].c) != 'string' ? JSON.stringify(SWW.O.Log.Debug[i].c) : SWW.O.Log.Debug[i].c;
+                var a = typeof (SWW.O.Log.Debug[i].c) != 'string' ? SWW.F.JSON.StringToJson(SWW.O.Log.Debug[i].c) : SWW.O.Log.Debug[i].c;
 
                 if (a.length > 90)
                 {
@@ -78,7 +84,7 @@
         function ShowInfo(i)
         {
             SWW.W.Dialog.Open({ html: '<div id="debug"></div>', width: 1000 });
-            var a = typeof (SWW.O.Log.Debug[i].c) != 'string' ? JSON.stringify(SWW.O.Log.Debug[i].c) : SWW.O.Log.Debug[i].c;
+            var a = typeof (SWW.O.Log.Debug[i].c) != 'string' ? SWW.F.JSON.StringToJson(SWW.O.Log.Debug[i].c) : SWW.O.Log.Debug[i].c;
             SWW.W.Dialog.Father().SWW.F.DOM.Text('debug', a);
 
             //SWW.F.DOM.Text('debug', a);

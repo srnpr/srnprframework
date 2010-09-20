@@ -106,6 +106,7 @@
     <Content Include="WebFile\SrnprWebJsWebWidgetFWF.js" />
     <Content Include="WebFile\SWW-1.0.0.0.min.js" />
     <Content Include="WebFile\SWW-CSS-1.0.0.0.min.css" />
+    <Content Include="WebFile\SWW-DebugLog-1.0.0.0.js" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ConfigFile\SrnprWebConfigRegFCF.reg" />

@@ -616,7 +616,7 @@ if (!window.SWW)
 
 
 
-            Fun_Quote: function (string)
+                Fun_Quote: function (string)
                 {
 
                     var meta = this.Obj_Json.meta;
@@ -633,7 +633,7 @@ if (!window.SWW)
             '"' + string + '"';
                 },
 
-        Fun_Str: function (key, holder)
+                Fun_Str: function (key, holder)
                 {
 
 
@@ -828,20 +828,10 @@ if (!window.SWW)
                     }
 
 
-                    if (/^[\],:{}\s]*$/.
-test(text.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g, '@').
-replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').
-replace(/(?:^|:|,)(?:\s*\[)+/g, '')))
+                    if (/^[\],:{}\s]*$/.test(text.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g, '@').replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').replace(/(?:^|:|,)(?:\s*\[)+/g, '')))
                     {
-
-
-
                         j = eval('(' + text + ')');
-
-
-
-                        return typeof reviver === 'function' ?
-                    walk({ '': j }, '') : j;
+                        return typeof reviver === 'function' ?walk({ '': j }, '') : j;
                     }
 
 

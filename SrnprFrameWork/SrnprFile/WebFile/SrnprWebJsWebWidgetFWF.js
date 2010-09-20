@@ -867,7 +867,7 @@ if (!window.SWW)
                        //Guid编号
                        guid: '',
                        //样式编号
-                       cssid: 'SWW_W_CSS_Dialog_'
+                       cssid: 'SWW_CSS_W_Dialog_'
                    }
                    ,
                    Config:
@@ -999,7 +999,7 @@ if (!window.SWW)
                        {
                            aH.push('<div id="' + o.guid + '_iframe_load">' + SWW.M.ME.Load + '</div>');
                            aH.push('<div id="' + o.guid + '_iframe_show" style="display:none;">');
-                           aH.push('<iframe id="' + o.guid + '_iframe" onload="SWW.F.DOM.Display(\'' + o.guid + '_iframe_load\');SWW.F.DOM.Display(\'' + o.guid + '_iframe_show\',true);" style="width:' + (o.width - 16) + 'px;height:' + (o.height - 32) + 'px" src="' + o.url + '" frameborder="0"></iframe>');
+                           aH.push('<iframe id="' + o.guid + '_iframe" onload="SWW.F.DOM.Display(\'' + o.guid + '_iframe_load\');SWW.F.DOM.Display(\'' + o.guid + '_iframe_show\',true);" style="width:' + (o.width ) + 'px;height:' + (o.height) + 'px" src="' + o.url + '" frameborder="0"></iframe>');
                            aH.push('<div>');
                        }
                        else if (o.html)

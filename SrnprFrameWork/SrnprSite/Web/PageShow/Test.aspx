@@ -41,7 +41,7 @@
     <script>
 
 
-        alert(SWW.F.STR.Format('1{0}2{1}',['aa','bb']));
+       // alert(SWW.F.STR.Format('1{0}2{1}',['aa','bb']));
 
         SWW.C.Flag.Debug = true;
 
@@ -49,9 +49,10 @@
 
         function ShowDebug()
         {
+           
 
             var h = [];
-            h.push('<div class="SWW_GS_CSS_DIV_MAIN"><table><tr><th>时间</th><th>调用接口</th><th>日志内容</th></tr>');
+            h.push('<div class="SWW_CSS_GS_DIV_MAIN"><table><tr><th>时间</th><th>调用接口</th><th>日志内容</th></tr>');
 
             for (var i =  SWW.O.Log.Debug.length-1,j=-1; i >j;i--)
             {

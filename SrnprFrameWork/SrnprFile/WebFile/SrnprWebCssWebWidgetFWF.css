@@ -1,22 +1,22 @@
 ﻿
 
-.SWW_W_CSS_Dialog
+.SWW_CSS_W_Dialog
 {
     overflow:scroll;
 }
 
-.SWW_W_CSS_Dialog_Box_Over
+.SWW_CSS_W_Dialog_Box_Over
 {
     background-color:#CCC;
     z-index:999;
     position:absolute;
 }
 
-.SWW_W_CSS_Dialog_Box_Back
+.SWW_CSS_W_Dialog_Box_Back
 {
    background-color:#999;
 }
-.SWW_W_CSS_Dialog_Box
+.SWW_CSS_W_Dialog_Box
 {
     background-color:#fff;
    
@@ -24,7 +24,7 @@
     border-left:1px #999 solid;
 }
 
-.SWW_W_CSS_Dialog_Title
+.SWW_CSS_W_Dialog_Title
 {
     background-color:#ccc;
     height:30px;
@@ -36,19 +36,19 @@
      cursor:move;
 }
 
-.SWW_W_CSS_Dialog_Title_Left
+.SWW_CSS_W_Dialog_Title_Left
 {
      text-align:left;
      float:left;
 }
 
-.SWW_W_CSS_Dialog_Title_Right
+.SWW_CSS_W_Dialog_Title_Right
 {
     margin:0px 20px 0px 0px;
     cursor:pointer;
 }
 
-.SWW_W_CSS_Dialog_Content
+.SWW_CSS_W_Dialog_Content
 {
    
      overflow:auto;

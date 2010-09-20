@@ -1312,7 +1312,7 @@ if (!window.SWW)
                        this.ObjArray.push(o);
 
 
-                       if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.w.dialog.init.create', o, 'sww2009',o.title);
+                       if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.w.dialog.init.create', o.html||o.url, 'sww2009',o.title);
 
                    }
                },

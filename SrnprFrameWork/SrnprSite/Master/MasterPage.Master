@@ -27,6 +27,9 @@
     <link href="/WebFile/SrnprWebCSSPageShowFWF.css" type="text/css" rel="Stylesheet" />
     <link href="http://f.xgou.com/AtGang/Manage/css/ManageAlpha.css" rel="stylesheet"
         type="text/css" />
+
+        <script type="text/javascript" src="/WebFile/SWW-DebugLog-1.0.0.0.js"></script>
+
     <asp:ContentPlaceHolder ID="MasterPage_Head" runat="server">
     </asp:ContentPlaceHolder>
 </head>

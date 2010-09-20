@@ -535,12 +535,12 @@ if (!window.SWW)
                     if (SWW[o.t] && SWW[o.t][o.f])
                     {
                         SWW[o.t][o.f](o.e);
-                        if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.f.sys.execfunc.exec', o);
+                        if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.f.sys.execfunc', o, 'sww2003', [o.t,o.f]);
                     }
                     else
                     {
                         //SWW.F.SYS.Error({ n: 'SWW.F.SYS.ExecFunc', m: SWW.M.SE.FEF, p: [o.t, o.f, this.GetObjPrototype(o.e)] });
-                        if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.f.sys.execfunc.notfunction', o);
+                        if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.f.sys.execfunc', o,'sww2004', [o.t,o.f]);
                     }
                 },
 
@@ -580,19 +580,17 @@ if (!window.SWW)
                     {
                         SWW.O.AF[o.q.WidgetType][o.f][o.q.Id](o.e);
 
-                        if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.f.sys.execaf.exec', o);
+                        if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.f.sys.execaf', o, 'sww2005', [o.q.WidgetType, o.f]);
                     }
                     else
                     {
-                        if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.f.sys.execaf.notfunction', o);
+                        if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.f.sys.execaf', o, 'sww2001', [o.q.WidgetType, o.f]);
                     }
 
                 }
             },
            JSON:
             {
-
-
 
                 Obj_Json:
             {
@@ -613,8 +611,6 @@ if (!window.SWW)
 
 
             },
-
-
 
                 Fun_Quote: function (string)
                 {
@@ -753,7 +749,6 @@ if (!window.SWW)
                     }
                 },
 
-
                 StringToJson: function (value, replacer, space)
                 {
 
@@ -782,10 +777,6 @@ if (!window.SWW)
 
                     return this.Fun_Str('', { '': value });
                 },
-
-
-
-
 
 
                 JsonToString: function (text, reviver)
@@ -848,12 +839,28 @@ if (!window.SWW)
        {
 
 
-           DebugLog: function (s, o)
+           DebugLog: function (s, o,snMsg,an)
            {
+               ///	<summary>
+               ///  添加日志文件
+               ///	</summary>
+               ///	<param name="s" type="str">
+               ///		日志发生的函数路径
+               ///	</param>
+               ///	<param name="o" type="obj">
+               ///		日志调用时的对象
+               ///	</param>
+               ///	<param name="snMsg" type="str">
+               ///		日志附加的描述编号
+               ///	</param>
+               ///	<param name="an" type="arr">
+               ///		日志描述的替换参数
+               ///	</param>
+
 
                if (SWW.C.Flag.Debug)
                {
-                   SWW.O.Log.Debug.push({ d: SWW.F.STR.DateTime(null, 'yyyy-MM-dd hh:mm:ss.ms'), t: s, c: o });
+                   SWW.O.Log.Debug.push({ d: SWW.F.STR.DateTime(null, 'yyyy-MM-dd hh:mm:ss.ms'), t: s, c: o, m: snMsg, a: an });
                }
 
            },
@@ -930,7 +937,7 @@ if (!window.SWW)
 
                if (SWW.C.Flag.Debug)
                {
-                   SWW.Z.DebugLog('sww.z.ajax.onbefore', t);
+                   SWW.Z.DebugLog('sww.z.ajax', t,'sww2006');
                }
 
                //开始提交数据
@@ -953,7 +960,7 @@ if (!window.SWW)
                ///		响应内容
                ///	</param>
 
-               if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.z.ajaxsuccess.onsuccess', s);
+               if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.z.ajaxsuccess', s,'sww2007');
 
                var json = SWW.F.JSON.JsonToString(s);
 
@@ -1025,7 +1032,7 @@ if (!window.SWW)
                    //累加当前调用次数
                    SWW.C.Init.N++;
 
-                   if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.z.init.initnow', SWW.C.Init.N);
+                   if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.z.init', SWW.C.Init.N, 'sww2002', SWW.C.Init.N);
 
 
                    //判断是否超过最大调用次数限制
@@ -1057,7 +1064,7 @@ if (!window.SWW)
            InitSuccess: function ()
            {
 
-               if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.z.initsuccess.success', '');
+               if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.z.initsuccess', '','sww2008');
                var sub = [];
                for (var t in SWW.O.Req)
                {
@@ -1191,7 +1198,7 @@ if (!window.SWW)
 
                        }
 
-
+                       
 
                    },
                    Create: function (o)
@@ -1303,12 +1310,19 @@ if (!window.SWW)
                            });
                        }
                        this.ObjArray.push(o);
+
+
+                       if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.w.dialog.init.create', o, 'sww2009',o.title);
+
                    }
                },
 
 
                Father: function ()
                {
+                   ///	<summary>
+                   ///  返回打开对话框的
+                   ///	</summary>
                    return top;
                },
 
@@ -1339,7 +1353,12 @@ if (!window.SWW)
                        }
                    }
 
+
+
+
                    SWW.F.JF.Ready(function () { SWW.W.Dialog.Init.Create(o) });
+
+                   
 
                },
 
@@ -1389,6 +1408,10 @@ if (!window.SWW)
 
                    //清除背景
                    this.Init.Clear();
+
+
+                   
+
                },
 
                Source: function ()

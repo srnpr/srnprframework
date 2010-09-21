@@ -245,10 +245,10 @@ if (!window.SWW)
                    ///  显示
                    ///	</summary>
                    ///	<param name="s" type="str">
-                   ///		元素名称
+                   ///		元素id
                    ///	</param>
                    ///	<param name="bn" type="bool">
-                   ///		是否显示 默认不显示
+                   ///		是否显示 默认不显示 如果传true标记为显示
                    ///	</param>
 
 
@@ -310,12 +310,25 @@ if (!window.SWW)
            }
            ,
 
-
+           //字符串相关函数
            STR:
            {
 
                Pad: function (sB, sP, iM)
                {
+                   ///	<summary>
+                   ///  用字符补齐字符串长度
+                   ///	</summary>
+                   ///	<param name="sB" type="str">
+                   ///		原始字符
+                   ///	</param>
+                   ///	<param name="sP" type="str">
+                   ///		添加的字符
+                   ///	</param>
+                   ///	<param name="iM" type="int">
+                   ///		补全后的长度
+                   ///	</param>
+
                    var a = '';
 
                    sB = sB.toString();
@@ -327,6 +340,12 @@ if (!window.SWW)
                },
                HtmlEncode: function (s)
                {
+                   ///	<summary>
+                   ///  html编码字符串
+                   ///	</summary>
+                   ///	<param name="s" type="str">
+                   ///		原始字符串
+                   ///	</param>
 
                    if (s.length == 0) return "";
                    s = s.replace(/&/g, "&amp;");
@@ -336,8 +355,15 @@ if (!window.SWW)
                    s = s.replace(/\"/g, "&quot;");
                    return s;
                },
-               HtmlDecode: function (str)
+               HtmlDecode: function (s)
                {
+                   ///	<summary>
+                   ///  html解码字符串
+                   ///	</summary>
+                   ///	<param name="s" type="str">
+                   ///		待解码的字符串
+                   ///	</param>
+
                    if (s.length == 0) return "";
                    s = s.replace(/&amp;/g, "&");
                    s = s.replace(/&lt;/g, "<");
@@ -348,41 +374,77 @@ if (!window.SWW)
                },
 
 
-               StringToDate: function (s)
+               StringToDate: function (sn)
                {
-                   if (!s)
+                   ///	<summary>
+                   ///  字符串转换为日期
+                   ///	</summary>
+                   ///	<param name="sn" type="str">
+                   ///		日期的字符串表示 例如：2010-01-01 01:01:01
+                   ///	</param>
+
+
+                   if (!sn)
                    {
-                       s = new Date();
+                       sn = new Date();
                    }
-                   else if (typeof (s) == 'string')
+                   else if (typeof (sn) == 'string')
                    {
-                       s = new Date(Date.parse(s.replace(/-/g, "/")));
+                       sn = new Date(Date.parse(sn.replace(/-/g, "/")));
 
                    }
-                   return s;
+                   return sn;
                },
 
-               DateTime: function (d, s)
+               DateTime: function (snD, snR)
                {
-                   d = this.StringToDate(d);
+                   ///	<summary>
+                   ///  日期格式化
+                   ///	</summary>
+                   ///	<param name="snD" type="str">
+                   ///		要替换的日期格式  如果传空表示当前时间
+                   ///	</param>
+                   ///	<param name="snR" type="str">
+                   ///		转换的格式 支持：yyyy(年) MM(月) dd(日) hh(时) mm(分) ss(秒) ms(毫秒) 默认为：yyyy-MM-dd hh:mm:ss
+                   ///	</param>
 
-                   if (!s)
+                   var d = this.StringToDate(snD);
+
+                   if (!snR)
                    {
-                       s = "yyyy-MM-dd hh:mm:ss";
+                       snR = "yyyy-MM-dd hh:mm:ss";
                    }
 
-                   return s.replace('yyyy', d.getYear()).replace('MM', SWW.F.STR.Pad(d.getMonth(), '0', 2)).replace('dd', SWW.F.STR.Pad(d.getDate(), '0', 2)).replace('hh', SWW.F.STR.Pad(d.getHours(), '0', 2)).replace('mm', SWW.F.STR.Pad(d.getMinutes(), '0', 2)).replace('ss', SWW.F.STR.Pad(d.getSeconds(), '0', 2)).replace('ms', d.getMilliseconds());
+                   return snR.replace('yyyy', d.getYear()).replace('MM', SWW.F.STR.Pad(d.getMonth(), '0', 2)).replace('dd', SWW.F.STR.Pad(d.getDate(), '0', 2)).replace('hh', SWW.F.STR.Pad(d.getHours(), '0', 2)).replace('mm', SWW.F.STR.Pad(d.getMinutes(), '0', 2)).replace('ss', SWW.F.STR.Pad(d.getSeconds(), '0', 2)).replace('ms', d.getMilliseconds());
 
 
                },
                Format: function (s, a)
                {
-                   for (var i = 0, j = a.length; i < j; i++)
+                   ///	<summary>
+                   ///  格式替换函数
+                   ///	</summary>
+                   ///	<param name="s" type="str">
+                   ///		原始字符串
+                   ///	</param>
+                   ///	<param name="a" type="arr">
+                   ///		替换的数组
+                   ///	</param>
+
+                   if (a != undefined)
                    {
-                       var r = new RegExp("\{" + i + "\}", "g");
+                       if (typeof (a) != 'object')
+                       {
+                           a = [a];
+                       }
 
+                       for (var i = 0, j = a.length; i < j; i++)
+                       {
 
-                       s = s.replace(r, a[i]);
+                           var r = new RegExp("\\u007B" + i + "\\u007D", "g");
+
+                           s = s.replace(r, a[i]);
+                       }
                    }
                    return s;
                }
@@ -535,12 +597,12 @@ if (!window.SWW)
                     if (SWW[o.t] && SWW[o.t][o.f])
                     {
                         SWW[o.t][o.f](o.e);
-                        if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.f.sys.execfunc', o, 'sww2003', [o.t,o.f]);
+                        if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.f.sys.execfunc', o, 'sww2003', [o.t, o.f]);
                     }
                     else
                     {
                         //SWW.F.SYS.Error({ n: 'SWW.F.SYS.ExecFunc', m: SWW.M.SE.FEF, p: [o.t, o.f, this.GetObjPrototype(o.e)] });
-                        if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.f.sys.execfunc', o,'sww2004', [o.t,o.f]);
+                        if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.f.sys.execfunc', o, 'sww2004', [o.t, o.f]);
                     }
                 },
 
@@ -643,7 +705,7 @@ if (!window.SWW)
                     value = holder[key];
 
 
-                    if (value && typeof value === 'object' &&typeof value.toJSON === 'function')
+                    if (value && typeof value === 'object' && typeof value.toJSON === 'function')
                     {
                         value = value.toJSON(key);
                     }
@@ -778,56 +840,57 @@ if (!window.SWW)
                     return this.Fun_Str('', { '': value });
                 },
 
-
-                JsonToString: function (text, reviver)
+                Fun_Walk: function (holder, key, reviver)
                 {
-
-                    var j;
-                    function walk(holder, key)
+                    var k, v, value = holder[key];
+                    if (value && typeof value === 'object')
                     {
-                        var k, v, value = holder[key];
-                        if (value && typeof value === 'object')
+                        for (k in value)
                         {
-                            for (k in value)
+                            if (Object.hasOwnProperty.call(value, k))
                             {
-                                if (Object.hasOwnProperty.call(value, k))
+                                v = this.Fun_Walk(value, k, reviver);
+                                if (v !== undefined)
                                 {
-                                    v = walk(value, k);
-                                    if (v !== undefined)
-                                    {
-                                        value[k] = v;
-                                    } else
-                                    {
-                                        delete value[k];
-                                    }
+                                    value[k] = v;
+                                } else
+                                {
+                                    delete value[k];
                                 }
                             }
                         }
-                        return reviver.call(holder, key, value);
                     }
+                    return reviver.call(holder, key, value);
+                },
 
+                Fun_Cx: function (a)
+                {
+                    return '\\u' + ('0000' + a.charCodeAt(0).toString(16)).slice(-4);
+                },
+
+
+                JsonToString: function (text, reviver)
+                {
+                    var j;
                     text = String(text);
 
                     this.Obj_Json.cx.lastIndex = 0;
+
                     if (this.Obj_Json.cx.test(text))
                     {
-                        text = text.replace(this.Obj_Json.cx, function (a)
-                        {
-                            return '\\u' +
-                        ('0000' + a.charCodeAt(0).toString(16)).slice(-4);
-                        });
+                        text = text.replace(this.Obj_Json.cx, this.Fun_Cx);
                     }
 
 
-                    if (/^[\],:{}\s]*$/.test(text.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g, '@').replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').replace(/(?:^|:|,)(?:\s*\[)+/g, '')))
+                    var temp = text.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g, '@').replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').replace(/(?:^|:|,)(?:\s*\[)+/g, '');
+
+                    if (/^[\],:{}\s]*$/.test(temp))
                     {
                         j = eval('(' + text + ')');
-                        return typeof reviver === 'function' ?walk({ '': j }, '') : j;
+                        return typeof reviver === 'function' ? this.Fun_Walk({ '': j }, '', reviver) : j;
                     }
 
-
-
-                    throw new SyntaxError('JSON.JsonToString');
+                    return "";
                 }
 
             }
@@ -839,7 +902,7 @@ if (!window.SWW)
        {
 
 
-           DebugLog: function (s, o,snMsg,an)
+           DebugLog: function (s, o, snMsg, an)
            {
                ///	<summary>
                ///  添加日志文件
@@ -937,7 +1000,7 @@ if (!window.SWW)
 
                if (SWW.C.Flag.Debug)
                {
-                   SWW.Z.DebugLog('sww.z.ajax', t,'sww2006');
+                   SWW.Z.DebugLog('sww.z.ajax', t, 'sww2006');
                }
 
                //开始提交数据
@@ -960,7 +1023,7 @@ if (!window.SWW)
                ///		响应内容
                ///	</param>
 
-               if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.z.ajaxsuccess', s,'sww2007');
+               if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.z.ajaxsuccess', s, 'sww2007');
 
                var json = SWW.F.JSON.JsonToString(s);
 
@@ -1064,7 +1127,7 @@ if (!window.SWW)
            InitSuccess: function ()
            {
 
-               if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.z.initsuccess', '','sww2008');
+               if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.z.initsuccess', '', 'sww2008');
                var sub = [];
                for (var t in SWW.O.Req)
                {
@@ -1198,7 +1261,7 @@ if (!window.SWW)
 
                        }
 
-                       
+
 
                    },
                    Create: function (o)
@@ -1312,7 +1375,7 @@ if (!window.SWW)
                        this.ObjArray.push(o);
 
 
-                       if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.w.dialog.init.create', o.html||o.url, 'sww2009',o.title);
+                       if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.w.dialog.init.create', o.html || o.url, 'sww2009', o.title);
 
                    }
                },
@@ -1332,7 +1395,7 @@ if (!window.SWW)
                    ///  创建对话框
                    ///	</summary>
                    ///	<param name="o" type="obj">
-                   ///		对话框
+                   ///  弹出框对象 属性参照SWW.W.Dialog.Init.Temp
                    ///	</param>
 
 
@@ -1358,7 +1421,7 @@ if (!window.SWW)
 
                    SWW.F.JF.Ready(function () { SWW.W.Dialog.Init.Create(o) });
 
-                   
+
 
                },
 
@@ -1410,7 +1473,7 @@ if (!window.SWW)
                    this.Init.Clear();
 
 
-                   
+
 
                },
 
@@ -1462,6 +1525,8 @@ if (!window.SWW)
 
            }
            ,
+
+           //拖拽扩展
            Drag:
            {
                GetPos: function (e)
@@ -1587,7 +1652,7 @@ if (!window.SWW)
 
                this.Z.AddScript(u);
 
-
+               if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.i', u, 'sww2010', t);
 
 
            }

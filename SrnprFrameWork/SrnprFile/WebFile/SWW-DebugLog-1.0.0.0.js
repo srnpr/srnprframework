@@ -13,9 +13,9 @@ if (SWW && !SWW.DebugLog)
 
             sww1001: '开始调用',
 
-
+            sww1090: '开始加载日志模块',
             sww2001: '没有找到扩展函数{0}.{1}',
-            sww2002: '系统尝试初始化第{0}次',
+            sww2002: '系统尝试初始化校验第{0}次',
             sww2003: '开始执行函数{0}.{1}',
             sww2004: '没有找到函数{0}.{1}',
             sww2005: '没有找到扩展函数{0}.{1}',
@@ -23,7 +23,7 @@ if (SWW && !SWW.DebugLog)
             sww2007: '加载Ajax成功',
             sww2008: '系统初始化成功，调用各脚本文件正常',
             sww2009: '打开对话框：{0}',
-
+            sww2010: '开始加载模块：{0}',
 
             sww0000: '无法找到'
         }
@@ -46,18 +46,13 @@ if (SWW && !SWW.DebugLog)
                     {
                         a = this.LogMessage[SWW.O.Log.Debug[i].m];
 
-                        if (SWW.O.Log.Debug[i].a)
+                        if (SWW.O.Log.Debug[i].a != undefined)
                         {
-                            if (typeof (SWW.O.Log.Debug[i].a) != 'object')
-                            {
-                                SWW.O.Log.Debug[i].a = [SWW.O.Log.Debug[i].a];
-                                //SWW.O.Log.Debug[i].a.push();
-                            }
+                            
 
-                            for (var n = 0, m = SWW.O.Log.Debug[i].a.length; n < m; n++)
-                            {
-                                a = a.replace('{' + n + '}', SWW.O.Log.Debug[i].a[n]);
-                            }
+                            a = SWW.F.STR.Format(a, SWW.O.Log.Debug[i].a);
+
+
 
                         }
 
@@ -70,7 +65,7 @@ if (SWW && !SWW.DebugLog)
 
                 }
 
-                h.push('<tr><td>'+i+'</td><td>' + SWW.O.Log.Debug[i].d + '</td><td>' + SWW.O.Log.Debug[i].t + '</td><td>' + a + '</td><td>' + b + '</td></tr>');
+                h.push('<tr><td>' + i + '</td><td>' + SWW.O.Log.Debug[i].d + '</td><td>' + SWW.O.Log.Debug[i].t + '</td><td>' + a + '</td><td>' + b + '</td></tr>');
             }
             h.push('</table></div>');
             SWW.W.Dialog.Open({ html: h.join(''), width: 800, title: '页面加载日志' });
@@ -94,7 +89,7 @@ SWW.C.Flag.Debug = true;
 
 
 
-
+SWW.Z.DebugLog('sww-DebugLog', '1.0.0.0', 'sww1090');
 
 
 SWW.F.JF.Ready(function ()

@@ -35,6 +35,8 @@
             {
 
                 var v = parent.document.getElementById(id).value;
+
+               
                 if (v)
                 {
                     document.getElementById("<%=hfJson.ClientID %>").value = v;

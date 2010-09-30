@@ -105,7 +105,9 @@ if (SWW && !SWW.GS)
 
         SubmitBefore: function (id)
         {
-            SWW.J("#SWJGSF_Hidden_" + SWW.GS.Obj[id].ClientId).val(SWW.F.JSON.stringify(SWW.GS.Obj[id]));
+
+            SWW.J("#SWJGSF_Hidden_" + SWW.GS.Obj[id].ClientId).val(SWW.F.JSON.StringToJson(SWW.GS.Obj[id]));
+           
         },
 
 
@@ -444,7 +446,7 @@ if (SWW && !SWW.GS)
 
 
 
-           
+
 
         },
 

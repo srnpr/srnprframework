@@ -4,4 +4,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MasterPage_Title" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MasterPage_Content" runat="server">
+
+    <asp:Button ID="btnCreate" runat="server" onclick="btnCreate_Click" 
+        Text="生成配置文件" />
+
 </asp:Content>

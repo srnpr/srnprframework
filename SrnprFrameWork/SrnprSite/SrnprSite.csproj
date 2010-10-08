@@ -127,7 +127,6 @@
     </Compile>
     <Compile Include="Master\MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Master\MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
@@ -135,7 +134,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System\Config.aspx.cs">
       <DependentUpon>Config.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="System\Config.aspx.designer.cs">
       <DependentUpon>Config.aspx</DependentUpon>
@@ -163,7 +161,6 @@
     </Compile>
     <Compile Include="Web\GridShow\Excel.aspx.cs">
       <DependentUpon>Excel.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Web\GridShow\Excel.aspx.designer.cs">
       <DependentUpon>Excel.aspx</DependentUpon>

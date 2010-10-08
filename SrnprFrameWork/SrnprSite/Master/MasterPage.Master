@@ -96,7 +96,7 @@
                                     <a href="#">系统配置</a></div>
                                 <ul>
                                     <li><a href="/Web/ECMAScriptPacker/ECMAScriptPacker.aspx">压缩JS+CSS</a></li>
-                                   
+                                   <li><a href="/System/Config.aspx">压缩JS+CSS</a></li>
                                 </ul>
                             </div>
                         </div>

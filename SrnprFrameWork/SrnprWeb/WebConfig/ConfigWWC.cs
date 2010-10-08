@@ -9,7 +9,7 @@ namespace SrnprWeb.WebConfig
     {
         private  const  string WEB_CONFIG_NAME="SrnprWebConfig";
 
-         static string WebConfigPath()
+        public static string WebConfigPath()
         {
 
              if(!string.IsNullOrEmpty(System.Web.Configuration.WebConfigurationManager.AppSettings[WEB_CONFIG_NAME]))

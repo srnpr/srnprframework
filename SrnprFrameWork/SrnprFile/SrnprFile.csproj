@@ -102,6 +102,7 @@
     <Content Include="WebFile\SrnprWebJsDragElementFWF.js" />
     <Content Include="WebFile\SrnprWebJsGridShowFWF.js" />
     <Content Include="WebFile\SrnprWebJsListShowFWF.js" />
+    <Content Include="WebFile\SrnprWebJsPageShowFWF.js" />
     <Content Include="WebFile\SrnprWebJsToolDialogFWF.js" />
     <Content Include="WebFile\SrnprWebJsWebWidgetFWF.js" />
     <Content Include="WebFile\SWW-1.0.0.0.min.js" />

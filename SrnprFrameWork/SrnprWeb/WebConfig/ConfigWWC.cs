@@ -18,6 +18,21 @@ namespace SrnprWeb.WebConfig
                  return "D:\\SrnprFrameWork\\SrnprWebConfig.config.xml";
         }
 
+         private static ConfigEntityWWC Config;
+
+
+         public static ConfigEntityWWC GetConfig()
+         {
+             if (Config == null)
+             {
+                 Config = SrnprCommon.CommonFunction.EntitySerializerCCF<ConfigEntityWWC>.XmlToEntity(WebConfigPath());
+             }
+
+             return Config;
+
+
+         }
+
 
 
 

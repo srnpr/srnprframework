@@ -64,6 +64,7 @@
     <Content Include="Demo\Dialog\BasePage.aspx" />
     <Content Include="Demo\Dialog\DialogFirst.aspx" />
     <Content Include="Demo\Dialog\DialogTwo.aspx" />
+    <Content Include="System\Config.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -132,6 +133,13 @@
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\Config.aspx.cs">
+      <DependentUpon>Config.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="System\Config.aspx.designer.cs">
+      <DependentUpon>Config.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Test\Widget_ListShow.aspx.cs">
       <DependentUpon>Widget_ListShow.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

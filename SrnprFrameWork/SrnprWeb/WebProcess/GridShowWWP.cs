@@ -697,8 +697,19 @@ namespace SrnprWeb.WebProcess
                         sb.Append("</tr>");
 
 
+                        /*
+                        response.DataItem = new List<List<string>>();
+                        for (int i = 0, j = dt.Rows.Count; i < j; i++)
+                        {
+                            response.DataItem.Add(new List<string>());
 
+                            for (int n = 0; n < iColumnCount; n++)
+                            {
+                                response.DataItem[i].Add(dt.Rows[i][n].ToString().Trim());
+                            }
 
+                        }
+                        */
 
 
                         for (int i = 0, j = dt.Rows.Count; i < j; i++)

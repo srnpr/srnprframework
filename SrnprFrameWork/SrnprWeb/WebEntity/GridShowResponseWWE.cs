@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
+using System.Data;
 
 namespace SrnprWeb.WebEntity
 {
@@ -17,6 +18,9 @@ namespace SrnprWeb.WebEntity
         [DataMember(Order = 101)]
         public string HtmlString { get; set; }
 
+
+
+        [DataMember(Order = 103)]
         public List<List<string>> DataItem { get; set; }
 
 
@@ -26,12 +30,14 @@ namespace SrnprWeb.WebEntity
         /// Author:Liudpc
         /// Create Date: 2010-8-24 10:09:46
         /// </summary>
-        [DataMember(Order = 101)]
+        [DataMember(Order = 102)]
         public string WidgetType
         {
             get { return "GS"; }
             set { }
         }
 
+
+       
     }
 }

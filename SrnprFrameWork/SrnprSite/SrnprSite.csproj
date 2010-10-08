@@ -60,6 +60,7 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Config\Create.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Demo\Dialog\BasePage.aspx" />
     <Content Include="Demo\Dialog\DialogFirst.aspx" />
@@ -78,6 +79,13 @@
     </Compile>
     <Compile Include="Asmx\WebWidgetHandler.ashx.cs">
       <DependentUpon>WebWidgetHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Config\Create.aspx.cs">
+      <DependentUpon>Create.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Config\Create.aspx.designer.cs">
+      <DependentUpon>Create.aspx</DependentUpon>
     </Compile>
     <Compile Include="CPage.cs">
       <SubType>ASPXCodeBehind</SubType>

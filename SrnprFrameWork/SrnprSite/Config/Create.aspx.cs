@@ -13,5 +13,10 @@ namespace SrnprSite.Config
         {
 
         }
+
+        protected void btnCreate_Click(object sender, EventArgs e)
+        {
+            SrnprCommon.CommonFunction.EntitySerializerCCF<SrnprWeb.WebConfig.ConfigEntityWWC>.EntityToXml(new SrnprWeb.WebConfig.TempConfigWWC().ConfigTest(), SrnprWeb.WebConfig.ConfigWWC.WebConfigPath());
+        }
     }
 }

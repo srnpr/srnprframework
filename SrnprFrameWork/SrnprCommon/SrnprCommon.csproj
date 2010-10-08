@@ -79,6 +79,7 @@
   <ItemGroup>
     <Compile Include="BaseEntity\ResultReturnEntityCBE.cs" />
     <Compile Include="BaseEntity\WebWidgetConfigCBE.cs" />
+    <Compile Include="CommonConfig\DataServerEntityCCC.cs" />
     <Compile Include="CommonConfig\FrameWorkConfigCCC.cs" />
     <Compile Include="CommonConfig\FrameWorkConfigEntityCCC.cs" />
     <Compile Include="CommonConfig\ReplaceFileConfigCCC.cs" />

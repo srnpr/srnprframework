@@ -271,7 +271,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="SWW\" />
-    <Folder Include="System\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Master\MasterDialog.Master" />

@@ -37,14 +37,9 @@ namespace SrnprWeb.WebWidget
         private Dictionary<string, string> _requestContent = new Dictionary<string, string>();
         public Dictionary<string, string> RequestContent
         {
-            get;
-            set;
-        }
-
-        protected override void OnInit(EventArgs e)
-        {
-
-            if (HttpContext.Current.Request != null)
+            get
+            {
+                 if (HttpContext.Current.Request != null)
             {
                for(int i=0,j=HttpContext.Current.Request.Form.Count;i<j;i++)
 
@@ -53,6 +48,18 @@ namespace SrnprWeb.WebWidget
                 }
 
             }
+                return _requestContent;
+            }
+            set
+            {
+            }
+       
+        }
+
+        protected override void OnInit(EventArgs e)
+        {
+
+           
 
 
             base.OnInit(e);

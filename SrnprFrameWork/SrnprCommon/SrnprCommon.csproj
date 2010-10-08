@@ -85,6 +85,7 @@
     <Compile Include="CommonConfig\ReplaceFileConfigCCC.cs" />
     <Compile Include="CommonConfig\ReplaceFileConfigEntityCCC.cs" />
     <Compile Include="CommonFunction\EntitySerializerCCF.cs" />
+    <Compile Include="CommonFunction\EntityStaticCCF.cs" />
     <Compile Include="CommonFunction\EvalFunctionCCF.cs" />
     <Compile Include="CommonFunction\IoStaticCCF.cs" />
     <Compile Include="CommonFunction\ListStaticCCF.cs" />

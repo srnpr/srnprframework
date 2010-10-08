@@ -5,7 +5,30 @@ using System.Text;
 
 namespace SrnprCommon.CommonConfig
 {
-    class DataServerEntityCCC
+    public class DataServerEntityCCC
     {
+
+
+        public string ServerId
+        {
+            get;
+            set;
+        }
+
+
+        public string ServerType
+        {
+            get;
+            set;
+        }
+
+        public string ServerConn
+        {
+            get;
+            set;
+        }
+
+
+
     }
 }

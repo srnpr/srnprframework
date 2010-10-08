@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SrnprWeb.WebConfig
 {
-    public class ConfigWWC
+     class ConfigWWC
     {
     }
 }

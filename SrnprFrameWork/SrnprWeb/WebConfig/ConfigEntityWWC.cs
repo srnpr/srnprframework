@@ -7,5 +7,9 @@ namespace SrnprWeb.WebConfig
 {
     class ConfigEntityWWC
     {
+
+
+
+
     }
 }

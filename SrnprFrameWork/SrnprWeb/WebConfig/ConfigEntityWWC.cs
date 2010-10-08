@@ -5,8 +5,11 @@ using System.Text;
 
 namespace SrnprWeb.WebConfig
 {
-    class ConfigEntityWWC
+    public class ConfigEntityWWC
     {
+
+        public List<SrnprCommon.CommonConfig.DataServerEntityCCC> DataServer { get; set; }
+
 
 
 

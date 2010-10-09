@@ -8,6 +8,13 @@ using System.IO;
 
 namespace SrnprCommon.CommonFunction
 {
+
+    /// <summary>
+    /// Author:Liudpc
+    /// Create Date: 2010-10-8 20:23:48
+    /// Description: 实体序列化相关
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class EntitySerializerCCF<T>
     {
        

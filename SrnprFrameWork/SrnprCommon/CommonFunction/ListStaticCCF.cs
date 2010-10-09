@@ -7,10 +7,25 @@ using System.Reflection;
 
 namespace SrnprCommon.CommonFunction
 {
+
+    /// <summary>
+    /// Author:Liudpc
+    /// Create Date: 2010-10-8 20:25:08
+    /// Description: 序列相关
+    /// </summary>
     public class ListStaticCCF
     {
 
 
+        /// <summary>
+        /// 
+        /// Author:Liudpc
+        /// Create Date: 2010-10-8 20:24:54
+        /// Description: 序列转化为DataTable
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entitys"></param>
+        /// <returns></returns>
         public static DataTable ListToDataTable<T>(List<T> entitys)
         {
 

@@ -19,6 +19,7 @@
      
      <a href="javascript:ShowList()">显示返回Json内容</a>
      <div id="show" style="display:none;">
+     <table id="ttt"></table>
     <textarea id="jsonshow" rows="20" cols="100"></textarea>
 </div>
 
@@ -31,7 +32,22 @@
         {
             document.getElementById("show").style.display = "";
         }
-    
+
+        function SetColor(t)
+        {
+            GetLength(t.ClientId);
+            //alert(GetLength(t.ClientId));
+        }
+
+        function GetLength(g)
+        {
+            alert(SWW.J('#GS_table_' + g).children().eq(0).children().eq(1).children().eq(0).html());
+            return document.getElementById('GS_table_' + g).rows.length;
+        }
+
+
+        SWW.A('GS', 'Success', 'test.citysee', function (e) { SetColor(e.s.Request); });
+
     </script>
 
 </asp:Content>

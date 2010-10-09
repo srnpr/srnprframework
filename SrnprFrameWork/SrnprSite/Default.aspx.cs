@@ -15,15 +15,15 @@ namespace SrnprSite
 
 
 
-            SrnprCommon.BaseEntity.ResultReturnEntityCBE rre = new SrnprCommon.BaseEntity.ResultReturnEntityCBE();
+            //SrnprCommon.BaseEntity.ResultReturnEntityCBE rre = new SrnprCommon.BaseEntity.ResultReturnEntityCBE();
 
-            rre.ResultFlag = true;
+            //rre.ResultFlag = true;
             
 
-            Dictionary<string, string> dict = new Dictionary<string, string>();
-            dict.Add("ResultMessage", "ddd");
+            //Dictionary<string, string> dict = new Dictionary<string, string>();
+            //dict.Add("ResultMessage", "ddd");
 
-            var x=SrnprCommon.CommonFunction.EntityStaticCCF.DictToEntity<SrnprCommon.BaseEntity.ResultReturnEntityCBE>(rre, dict);
+            //var x=SrnprCommon.CommonFunction.EntityStaticCCF.DictToEntity<SrnprCommon.BaseEntity.ResultReturnEntityCBE>(rre, dict);
 
            
 

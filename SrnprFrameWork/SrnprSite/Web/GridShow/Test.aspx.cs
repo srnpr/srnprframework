@@ -15,6 +15,8 @@ namespace SrnprSite.Web.GridShow
             {
 
                 GSShow.XmlConfigName = Request["id"].Trim();
+                
+              
             }
         }
     }

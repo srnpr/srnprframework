@@ -634,19 +634,19 @@ if (!window.SWW)
                     ///	<summary>
                     ///  执行扩展函数
                     ///	</summary>
-                    ///	<param name="t" type="obj">
-                    ///		对象{f:函数名称,q:request,e:参数}
+                    ///	<param name="o" type="obj">
+                    ///		对象{f:函数名称,w:扩展类型,d:编号,e:参数}
                     ///	</param>
 
-                    if (SWW.O.AF[o.q.WidgetType] && SWW.O.AF[o.q.WidgetType][o.f][o.q.Id])
+                    if (SWW.O.AF[o.w] && SWW.O.AF[o.w][o.f][o.d])
                     {
-                        SWW.O.AF[o.q.WidgetType][o.f][o.q.Id](o.e);
+                        SWW.O.AF[o.w][o.f][o.d](o.e);
 
-                        if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.f.sys.execaf', o, 'sww2005', [o.q.WidgetType, o.f]);
+                        if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.f.sys.execaf', o, 'sww2005', [o.w, o.f]);
                     }
                     else
                     {
-                        if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.f.sys.execaf', o, 'sww2001', [o.q.WidgetType, o.f]);
+                        if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.f.sys.execaf', o, 'sww2001', [o.w, o.f]);
                     }
 
                 }
@@ -1040,7 +1040,7 @@ if (!window.SWW)
                        SWW.F.SYS.ExecFunc({ t: json.RS[i].WidgetType, f: 'F_Success', e: { q: json.RQ[i], s: json.RS[i]} });
 
                        //执行扩展函数
-                       SWW.F.SYS.ExecAF({ f: 'Success', q: json.RQ[i], e: { s: s} });
+                       SWW.F.SYS.ExecAF({ f: 'Success', w: json.RQ[i].WidgetType, d: json.RQ[i].Id, e: { s: json.RS[i]} });
 
                    }
                    else

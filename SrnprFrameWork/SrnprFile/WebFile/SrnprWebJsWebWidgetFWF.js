@@ -429,7 +429,7 @@ if (!window.SWW)
 
                Trim: function (s)
                {
-                   return s.replace(/\s+/,'');
+                   return s.replace(/(^\s*)|(\s*$)/g, '');
                },
 
 

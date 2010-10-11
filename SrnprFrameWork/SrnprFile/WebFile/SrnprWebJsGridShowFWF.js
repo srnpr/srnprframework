@@ -107,7 +107,7 @@ if (SWW && !SWW.GS)
         {
 
             SWW.J("#SWJGSF_Hidden_" + SWW.GS.Obj[id].ClientId).val(SWW.F.JSON.StringToJson(SWW.GS.Obj[id]));
-           
+
         },
 
 
@@ -468,6 +468,38 @@ if (SWW && !SWW.GS)
 
         }
         ,
+        //数据绑定
+        OnDataRowBind: function (s, f)
+        {
+            SWW.A('GS', 'Success', s, function (e) { SWW.GS.EventRowBind(e.s.Request.Guid, f); });
+        },
+
+
+
+        EventRowBind: function (c, f)
+        {
+            c = 'GS_table_' + SWW.GS.Obj[c].ClientId;
+
+
+            var aTitle = [];
+            SWW.J('#' + c).children().eq(0).children().eq(0).children().each(function (e) { aTitle.push(SWW.J(this).text()); });
+            for (var i = 0, j = document.getElementById(c).rows.length - 1; i < j; i++)
+            {
+                var row = {};
+                row.RowIndex = i;
+                row.CellCount = aTitle.length;
+                row.Cell = [];
+                row.CellTitle = {};
+                SWW.J('#' + c).children().eq(0).children().eq(i + 1).children().each(function (e) { row.Cell.push(SWW.J(this)); row.CellTitle[aTitle[e]] = SWW.J(this); });
+                f(row);
+            }
+
+        },
+
+
+
+
+
 
 
         //执行查询 第二参数为空时则遍历所有

@@ -111,36 +111,43 @@ if (!window.SWW)
        //Jquery适配器  
        J: jQuery,
 
-       //Req提交参数  Res返回参数  AF扩展函数  Guid唯一标识集 系统自动检测全局唯一编号
+       //Req提交参数  Res返回参数  AF扩展函数  Guid唯一标识集 系统自动检测全局唯一编号  Log日志系列
        O: { Req: {}, Res: {}, AF: {}, Guid: {}, Log: { Debug: []} },
 
        //扩展函数系列
-       A: function (t, f, id, fu)
+       A: function (sType, sFunc, sId, fExec)
        {
            ///	<summary>
            ///  扩展调用接口
            ///	</summary>
-           ///	<param name="t" type="string">
+           ///	<param name="sType" type="str">
            ///		类型
            ///	</param>
-           ///	<param name="f" type="string">
+           ///	<param name="sFunc" type="str">
            ///		函数操作 目前支持：Success(调用Ajax成功后)
            ///	</param>
-           ///	<param name="id" type="string">
+           ///	<param name="sId" type="str">
            ///		编号
            ///	</param>
-           ///	<param name="fu" type="string">
+           ///	<param name="fExec" type="fun">
            ///		函数  扩展当操作执行时的执行函数 不同函数所需参数不一致
            ///	</param>
-           if (!SWW.O.AF[t])
+           if (!SWW.O.AF[sType])
            {
-               SWW.O.AF[t] = {};
+               SWW.O.AF[sType] = {};
            }
-           if (!SWW.O.AF[t][f])
+           if (!SWW.O.AF[sType][sFunc])
            {
-               SWW.O.AF[t][f] = {};
+               SWW.O.AF[sType][sFunc] = {};
            }
-           SWW.O.AF[t][f][id] = fu;
+
+           if (!SWW.O.AF[sType][sFunc][sId])
+           {
+               SWW.O.AF[sType][sFunc][sId] = [];
+           }
+
+
+           SWW.O.AF[sType][sFunc][sId].push(fExec);
        },
 
        //函数系列
@@ -640,13 +647,20 @@ if (!window.SWW)
 
                     if (SWW.O.AF[o.w] && SWW.O.AF[o.w][o.f][o.d])
                     {
-                        SWW.O.AF[o.w][o.f][o.d](o.e);
+                        //SWW.O.AF[o.w][o.f][o.d](o.e);
+
+                        for (var i = 0, j = SWW.O.AF[o.w][o.f][o.d].length; i < j; i++)
+                        {
+                            SWW.O.AF[o.w][o.f][o.d][i](o.e);
+                        }
+
+
 
                         if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.f.sys.execaf', o, 'sww2005', [o.w, o.f]);
                     }
                     else
                     {
-                        if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.f.sys.execaf', o, 'sww2001', [o.w, o.f]);
+                        //if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.f.sys.execaf', o, 'sww2001', [o.w, o.f]);
                     }
 
                 }

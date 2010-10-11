@@ -426,6 +426,13 @@ if (!window.SWW)
 
 
                },
+
+               Trim: function (s)
+               {
+                   return s.replace(/\s+/,'');
+               },
+
+
                Format: function (s, a)
                {
                    ///	<summary>

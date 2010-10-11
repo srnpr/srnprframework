@@ -168,6 +168,13 @@
     <Compile Include="Web\GridShow\Excel.aspx.designer.cs">
       <DependentUpon>Excel.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Web\GridShow\Func.aspx.cs">
+      <DependentUpon>Func.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\GridShow\Func.aspx.designer.cs">
+      <DependentUpon>Func.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Web\GridShow\List.aspx.cs">
       <DependentUpon>List.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -238,6 +245,7 @@
     <Content Include="Skin\Blue\sradmin\srmaintophover.gif" />
     <Content Include="Web\ECMAScriptPacker\ECMAScriptPacker.aspx" />
     <Content Include="Web\GridShow\Create.aspx" />
+    <Content Include="Web\GridShow\Func.aspx" />
     <Content Include="Web\GridShow\List.aspx" />
     <Content Include="Web\PageShow\CreatePage.aspx" />
   </ItemGroup>

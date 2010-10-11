@@ -77,6 +77,7 @@
                                 <ul>
                                     <li><a href="/Web/GridShow/List.aspx">配置数据显示列表</a></li>
                                     <li><a href="/Web/GridShow/Create.aspx">创建数据显示</a></li>
+                                    <li><a href="/Web/GridShow/Func.aspx">扩展相关</a></li>
                                 </ul>
                                 <div>
                                     <a href="#">数据列表控件</a></div>

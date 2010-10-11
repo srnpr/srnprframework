@@ -427,9 +427,29 @@ if (!window.SWW)
 
                },
 
-               Trim: function (s)
+               Trim: function (s, sn)
                {
-                   return s.replace(/(^\s*)|(\s*$)/g, '');
+                   ///	<summary>
+                   ///  格式化字符串
+                   ///	</summary>
+                   ///	<param name="s" type="str">
+                   ///		原字符串
+                   ///	</param>
+                   ///	<param name="sn" type="str">
+                   ///		替换掉的字符串
+                   ///	</param>
+                   if (!sn)
+                   {
+                       sn = '\\s';
+                   }
+
+                   var r = new RegExp("(^" + sn + "*)|(" + sn + "*$)", "g");
+                   return s.replace(r, '');
+
+
+
+
+
                },
 
 

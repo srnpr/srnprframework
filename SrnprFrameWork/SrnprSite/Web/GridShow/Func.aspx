@@ -53,14 +53,14 @@
 
 
  
-
+        //点击时执行的函数
         function FuncClick(e)
         {
             SWW.GS.ExtendSetHtml(e,'aaa'+e.RowIndex);
         }
 
       
-
+      //添加扩展列的操作函数
     SWW.GS.OnDataRowBind('test.citysee', function (e) { SWW.GS.ExtendFunction(e, FuncClick); });
 
 </script>

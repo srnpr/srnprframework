@@ -12,7 +12,7 @@
 <script type="text/javascript">
 
 
-
+    /*行变色****************************************************************************************/
     //行变色
     function ChangeColorAll(e)
     {
@@ -21,9 +21,6 @@
             for (var i = 0, j = e.CellCount; i < j; i++)
             {
                 e.Cell[i].css('background-color', 'red');
-
-
-                
             }
         }
     }
@@ -31,7 +28,7 @@
     SWW.GS.OnDataRowBind('test.citysee', ChangeColorAll);
 
 
-
+    /*单元格变色****************************************************************************************/
 
     //单元格变色
     function ChangeColorOne(e)
@@ -46,12 +43,13 @@
 
     
 
+
+
     //SWW.A('GS', 'Success', 'test.citysee', function (e) { RowBind(e.s.Request.ClientId,RowIndex); });
 
 
 
-
-
+    /*点击列扩展内容****************************************************************************************/
  
         //点击时执行的函数
         function FuncClick(e)

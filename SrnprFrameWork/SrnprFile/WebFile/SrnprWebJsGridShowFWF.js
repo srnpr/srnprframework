@@ -511,12 +511,13 @@ if (SWW && !SWW.GS)
                 row.CellTitle = {};
                 row.Row = SWW.J('#' + c).children().eq(0).children().eq(i);
                 row.BaseGuid = g;
+                row.Guid = null;
                 row.ExtendFunc = null;
-                row.ExtendGuid = null;
+                
                 SWW.J('#' + c).children().eq(0).children().eq(i).children().each(function (e) { row.Cell.push(SWW.J(this)); row.CellTitle[aTitle[e]] = SWW.J(this); });
 
 
-
+                
                 f(row);
             }
 
@@ -538,47 +539,73 @@ if (SWW && !SWW.GS)
             ///		绑定扩展的列对象
             ///	</param>
 
-
-            if (!this.Obj_Extend[oRow.BaseGuid])
+            if (oRow.RowIndex == 0)
             {
-                this.Obj_Extend[oRow.BaseGuid] = [];
+            
             }
-
-
-            if (!this.Obj_Extend[oRow.BaseGuid][oRow.RowIndex])
+            else
             {
-                this.Obj_Extend[oRow.BaseGuid][oRow.RowIndex] = oRow;
+            
+
+                if (!this.Obj_Extend[oRow.BaseGuid])
+                {
+                    this.Obj_Extend[oRow.BaseGuid] = {};
+                }
+
+                if (!oRow.Guid)
+                {
+                    oRow.Guid = SWW.F.SYS.GetGuid();
+                }
+
+                if (!noSource)
+                {
+                    noSource = oRow.Row;
+                }
+
+
+
+                if (!this.Obj_Extend[oRow.BaseGuid][oRow.Guid])
+                {
+                    this.Obj_Extend[oRow.BaseGuid][oRow.Guid] = oRow;
+                }
+
+
+
+                noSource.attr('gs_extend_rowindex', oRow.Guid);
+                noSource.attr('gs_extend_baseguid', oRow.BaseGuid);
+
+                this.Obj_Extend[oRow.BaseGuid][oRow.Guid].ExtendFunc = f;
+                
+                noSource.click(SWW.GS.ExtendClickEvent);
             }
-
-            if (!noSource)
-            {
-                noSource = oRow.Row;
-            }
-
-            noSource.attr('gs_extend_rowindex', oRow.RowIndex);
-            noSource.attr('gs_extend_baseguid', oRow.BaseGuid);
-
-            this.Obj_Extend[oRow.BaseGuid][oRow.RowIndex].ExtendFunc = f;
-            this.Obj_Extend[oRow.BaseGuid][oRow.RowIndex].ExtendGuid = SWW.F.SYS.GetGuid();
-            noSource.click(SWW.GS.ExtendClickEvent);
-
 
         },
 
-        ExtendSetHtml:function(e,s)
+        ExtendSetHtml: function (e, s)
         {
-            SWW.J('#' + e.ExtendGuid).html(s);
+            SWW.J('#td_' + e.Guid).html(s);
         },
 
         ExtendClickEvent: function ()
         {
-            var iIndex =SWW.J(this).attr('gs_extend_rowindex');
+
+
+
+            var iIndex = SWW.J(this).attr('gs_extend_rowindex');
             var BaseGuid = SWW.J(this).attr('gs_extend_baseguid');
+
+
+
+
+            var tr = SWW.J(this).is('tr') ? SWW.J(this) : SWW.J(this).parents('tr');
+
+
 
             if (!SWW.GS.Obj_Extend[BaseGuid][iIndex].show)
             {
                 SWW.GS.Obj_Extend[BaseGuid][iIndex].show = 1;
-                SWW.J(this).after('<tr><td style="" colspan="100" id="' + SWW.GS.Obj_Extend[BaseGuid][iIndex].ExtendGuid + '">Loading……</td></tr>');
+
+                tr.after('<tr id="' + iIndex + '"><td style="" colspan="100" id="td_' + iIndex + '"></td></tr>');
 
                 SWW.GS.Obj_Extend[BaseGuid][iIndex].ExtendFunc(SWW.GS.Obj_Extend[BaseGuid][iIndex]);
 
@@ -586,12 +613,15 @@ if (SWW && !SWW.GS)
             else if (SWW.GS.Obj_Extend[BaseGuid][iIndex].show == '1')
             {
                 SWW.GS.Obj_Extend[BaseGuid][iIndex].show = 0;
-                SWW.J(this).next().css("display", 'none');
+                //tr.next().css("display", 'none');
+
+                SWW.J('#' + iIndex).css('display', 'none');
+
             }
             else
             {
                 SWW.GS.Obj_Extend[BaseGuid][iIndex].show = 1;
-                SWW.J(this).next().css("display", '');
+                SWW.J('#' + iIndex).css('display', '');
             }
 
         },

@@ -47,6 +47,21 @@
 
     //SWW.A('GS', 'Success', 'test.citysee', function (e) { RowBind(e.s.Request.ClientId,RowIndex); });
 
+    /*单元格内容替换****************************************************************************************/
+    //单元格内容替换
+    function ChangeContent(e)
+    {
+        if (e.CellTitle['消费平台'].text() == 'SO201010110001')
+        {
+            e.CellTitle['消费城市'].html('测试变化单元格内容');
+        }
+    }
+    //添加绑定函数
+    SWW.GS.OnDataRowBind('test.citysee', ChangeContent);
+
+
+
+
 
 
     /*点击列扩展内容****************************************************************************************/
@@ -59,7 +74,34 @@
 
       
       //添加扩展列的操作函数
-    SWW.GS.OnDataRowBind('test.citysee', function (e) { SWW.GS.ExtendFunction(e, FuncClick); });
+        SWW.GS.OnDataRowBind('test.citysee', function (e) { SWW.GS.ExtendFunction(e, FuncClick); });
+
+
+
+        /*点击单元格内容列扩展内容****************************************************************************************/
+
+
+        function TdClickFunc(e)
+        {
+            if (e.CellTitle['消费平台'].text() == 'SO201010080020')
+            {
+                var guid = SWW.F.SYS.GetGuid();
+                e.CellTitle['消费城市'].html('<input id="' + guid + '" value="点击" type="button" />');
+                SWW.GS.ExtendFunction(e, ButtonClickFunc,SWW.J('#'+guid));
+
+            }
+        }
+        function ButtonClickFunc(e)
+        {
+            SWW.GS.ExtendSetHtml(e, '特殊展示内容');
+        }
+
+
+
+        //添加扩展列的操作函数
+        SWW.GS.OnDataRowBind('test.citysee', TdClickFunc);
+
+
 
 </script>
 

@@ -692,6 +692,50 @@ if (!window.SWW)
 
                 }
             },
+
+           OBJ:
+            {
+                Clone: function (o)
+                {
+                    ///	<summary>
+                    ///  浅度克隆一个对象
+                    ///	</summary>
+                    ///	<param name="o" type="obj">
+                    ///		对象
+                    ///	</param>
+                    var r = {};
+                    for (var p in o)
+                    {
+                        r[p] = o[p];
+                    }
+                    return r;
+                },
+                CloneAll: function (o)
+                {
+                    ///	<summary>
+                    ///  深度克隆一个对象
+                    ///	</summary>
+                    ///	<param name="o" type="obj">
+                    ///		对象
+                    ///	</param>
+                    return SWW.F.JSON.JsonFromString(SWW.F.JSON.StringFromJson(o));
+                },
+
+                TypeName: function (o)
+                {
+                    return typeof (o);
+                },
+
+                IsObj: function (o)
+                {
+                    return this.TypeName(o) == 'object';
+                },
+                IsStr: function (o)
+                {
+                    return this.TypeName(o) == "string";
+                }
+            },
+
            JSON:
             {
 
@@ -852,7 +896,7 @@ if (!window.SWW)
                     }
                 },
 
-                StringToJson: function (value, replacer, space)
+                StringFromJson: function (value, replacer, space)
                 {
 
 
@@ -875,7 +919,7 @@ if (!window.SWW)
                     (typeof replacer !== 'object' ||
                      typeof replacer.length !== 'number'))
                     {
-                        throw new Error('JSON.StringToJson');
+                        throw new Error('JSON.StringFromJson');
                     }
 
                     return this.Fun_Str('', { '': value });
@@ -910,7 +954,7 @@ if (!window.SWW)
                 },
 
 
-                JsonToString: function (text, reviver)
+                JsonFromString: function (text, reviver)
                 {
                     var j;
                     text = String(text);
@@ -1049,7 +1093,7 @@ if (!window.SWW)
                 {
                     url: SWW.C.Ajax.Url,
                     type: "POST",
-                    data: "json=" + SWW.F.JSON.StringToJson(t),
+                    data: "json=" + SWW.F.JSON.StringFromJson(t),
                     success: function (s) { SWW.Z.AjaxSuccess(s); },
                     error: function (XMLHttpRequest, textStatus) { SWW.F.SYS.Error({ n: 'SWW.Z.Ajax', m: textStatus }) }
                 });
@@ -1066,7 +1110,7 @@ if (!window.SWW)
 
                if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.z.ajaxsuccess', s, 'sww2007');
 
-               var json = SWW.F.JSON.JsonToString(s);
+               var json = SWW.F.JSON.JsonFromString(s);
 
                for (var i = 0, j = json.RS.length; i < j; i++)
                {

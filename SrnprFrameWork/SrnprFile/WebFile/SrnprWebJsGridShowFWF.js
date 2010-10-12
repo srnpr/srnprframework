@@ -1,5 +1,4 @@
 ﻿/// <reference path="jquery-1.3.2.min-vsdoc.js"/>
-/// <reference path="json2.js"/>
 /// <reference path="SrnprWebJsWebWidgetFWF.js"/>
 
 
@@ -22,6 +21,8 @@ if (SWW && !SWW.GS)
 
         //扩充列对象
         Obj_Extend: {},
+
+
 
         DemoFlag: false,
 
@@ -109,7 +110,7 @@ if (SWW && !SWW.GS)
         SubmitBefore: function (id)
         {
 
-            SWW.J("#SWJGSF_Hidden_" + SWW.GS.Obj[id].ClientId).val(SWW.F.JSON.StringToJson(SWW.GS.Obj[id]));
+            SWW.J("#SWJGSF_Hidden_" + SWW.GS.Obj[id].ClientId).val(SWW.F.JSON.StringFromJson(SWW.GS.Obj[id]));
 
         },
 
@@ -205,7 +206,7 @@ if (SWW && !SWW.GS)
         {
 
 
-            var obj = typeof (o) == "string" ? SWW.F.JSON.JsonToString(o) : o;
+            var obj = typeof (o) == "string" ? SWW.F.JSON.JsonFromString(o) : o;
 
             //重新赋上最新版返回参数
             var req = SWW.GS.Obj[id] = obj.Request;
@@ -509,23 +510,34 @@ if (SWW && !SWW.GS)
                 row.CellCount = aTitle.length;
                 row.Cell = [];
                 row.CellTitle = {};
+                row.TableId = c;
                 row.Row = SWW.J('#' + c).children().eq(0).children().eq(i);
                 row.BaseGuid = g;
                 row.Guid = null;
                 row.ExtendFunc = null;
-                
+
                 SWW.J('#' + c).children().eq(0).children().eq(i).children().each(function (e) { row.Cell.push(SWW.J(this)); row.CellTitle[aTitle[e]] = SWW.J(this); });
 
 
-                
+
                 f(row);
             }
 
         },
-
-        ExtendFunction: function (oRow, f, noSource)
+        ///	<summary>
+        ///  绑定列扩展内容事件
+        ///	</summary>
+        ///	<param name="oRow" type="obj">
+        ///		绑定扩展的列对象
+        ///	</param>
+        ///	<param name="f" type="fun">
+        ///		点击时执行的函数
+        ///	</param>
+        ///	<param name="onTarget" type="obj">
+        ///		绑定扩展的列对象
+        ///	</param>
+        ExtendFunction: function (oRow, f, onTarget)
         {
-
             ///	<summary>
             ///  绑定列扩展内容事件
             ///	</summary>
@@ -535,21 +547,19 @@ if (SWW && !SWW.GS)
             ///	<param name="f" type="fun">
             ///		点击时执行的函数
             ///	</param>
-            ///	<param name="noSource" type="obj">
-            ///		绑定扩展的列对象
+            ///	<param name="" type="obj">
+            ///		点击时执行的函数
             ///	</param>
 
-            if (oRow.RowIndex == 0)
+
+            if (oRow.RowIndex != 0)
             {
-            
-            }
-            else
-            {
-            
+                oRow = SWW.F.OBJ.Clone(oRow);
 
                 if (!this.Obj_Extend[oRow.BaseGuid])
                 {
-                    this.Obj_Extend[oRow.BaseGuid] = {};
+                    this.Obj_Extend[oRow.BaseGuid] = { sum: 0 };
+
                 }
 
                 if (!oRow.Guid)
@@ -557,9 +567,13 @@ if (SWW && !SWW.GS)
                     oRow.Guid = SWW.F.SYS.GetGuid();
                 }
 
-                if (!noSource)
+                if (!onTarget)
                 {
-                    noSource = oRow.Row;
+                    onTarget = oRow.Row;
+                }
+                else
+                {
+                    oRow.Guid = SWW.F.SYS.GetGuid();
                 }
 
 
@@ -569,43 +583,45 @@ if (SWW && !SWW.GS)
                     this.Obj_Extend[oRow.BaseGuid][oRow.Guid] = oRow;
                 }
 
+                
 
-
-                noSource.attr('gs_extend_rowindex', oRow.Guid);
-                noSource.attr('gs_extend_baseguid', oRow.BaseGuid);
+                onTarget.attr('swwgs_extend_rowindex', oRow.Guid);
+                onTarget.attr('swwgs_extend_baseguid', oRow.BaseGuid);
 
                 this.Obj_Extend[oRow.BaseGuid][oRow.Guid].ExtendFunc = f;
-                
-                noSource.click(SWW.GS.ExtendClickEvent);
+
+                onTarget.click(SWW.GS.ExtendClickEvent);
             }
 
         },
 
         ExtendSetHtml: function (e, s)
         {
-            SWW.J('#td_' + e.Guid).html(s);
+
+            if(SWW.F.OBJ.IsObj(e))
+            e = e.Guid;
+
+            SWW.J('#swwgs_extend_td_' + e).html(s);
         },
 
         ExtendClickEvent: function ()
         {
+        
 
 
-
-            var iIndex = SWW.J(this).attr('gs_extend_rowindex');
-            var BaseGuid = SWW.J(this).attr('gs_extend_baseguid');
-
-
-
-
-            var tr = SWW.J(this).is('tr') ? SWW.J(this) : SWW.J(this).parents('tr');
-
-
+            var iIndex = SWW.J(this).attr('swwgs_extend_rowindex');
+            var BaseGuid = SWW.J(this).attr('swwgs_extend_baseguid');
 
             if (!SWW.GS.Obj_Extend[BaseGuid][iIndex].show)
             {
                 SWW.GS.Obj_Extend[BaseGuid][iIndex].show = 1;
+                //var tr = SWW.J(this).is('tr') ? SWW.J(this) : SWW.J(this).parents('tr');
+                // var tr = SWW.J('#' + SWW.GS.Obj_Extend[BaseGuid][iIndex].TableId).children().eq(0).children().eq(SWW.GS.Obj_Extend[BaseGuid][iIndex].RowIndex + SWW.GS.Obj_Extend[BaseGuid].sum);
 
-                tr.after('<tr id="' + iIndex + '"><td style="" colspan="100" id="td_' + iIndex + '"></td></tr>');
+                //SWW.GS.Obj_Extend[BaseGuid].sum++;
+                var tr = SWW.GS.Obj_Extend[BaseGuid][iIndex].Row;
+
+                tr.after('<tr id="' + iIndex + '"><td style="" colspan="100" id="swwgs_extend_td_' + iIndex + '"></td></tr>');
 
                 SWW.GS.Obj_Extend[BaseGuid][iIndex].ExtendFunc(SWW.GS.Obj_Extend[BaseGuid][iIndex]);
 

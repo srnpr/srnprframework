@@ -77,6 +77,9 @@
     <Compile Include="Asmx\ItemShowHandler.ashx.cs">
       <DependentUpon>ItemShowHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Asmx\TestRequest.ashx.cs">
+      <DependentUpon>TestRequest.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Asmx\WebWidgetHandler.ashx.cs">
       <DependentUpon>WebWidgetHandler.ashx</DependentUpon>
     </Compile>
@@ -290,6 +293,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Master\MasterDialog.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Asmx\TestRequest.ashx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

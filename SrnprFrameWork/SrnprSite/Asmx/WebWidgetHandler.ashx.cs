@@ -18,10 +18,6 @@ namespace SrnprSite.Asmx
         {
             context.Response.ContentType = "text/plain";
             string s = context.Request["json"];
-
-
-
-
             SrnprWeb.WebEntity.WidgetRequestWWE req = SrnprWeb.WebProcess.WidgetProcessWWP.DeserializeRequest(s);
 
             string sRes = SrnprWeb.WebProcess.WidgetProcessWWP.Response(req, DicProcess(req));

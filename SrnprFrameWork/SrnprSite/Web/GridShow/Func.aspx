@@ -16,11 +16,12 @@
     //行变色
     function ChangeColorAll(e)
     {
-        if (e.CellTitle['消费平台'].text() == 'SO201010110002')
+        
+        if (e.RowIndex%4==0)
         {
             for (var i = 0, j = e.CellCount; i < j; i++)
             {
-                e.Cell[i].css('background-color', 'red');
+                e.Cell[i].css('background-color', '#ffff00');
             }
         }
     }
@@ -62,15 +63,33 @@
 
 
 
-
+   
 
     /*点击列扩展内容****************************************************************************************/
- 
+
+    function AjaxSuccessFul(s)
+    {
+        alert(s);
+    }
+
         //点击时执行的函数
         function FuncClick(e)
         {
-            SWW.GS.ExtendSetHtml(e,'aaa'+e.RowIndex);
-        }
+            SWW.GS.ExtendSetHtml(e, 'aaa' + e.RowIndex);
+
+
+            SWW.J.ajax(
+                {
+                    url: SWW.C.Ajax.Url,
+                    type: "POST",
+                    data: "" ,
+                    success: function (s) { AjaxSuccessFul(s); },
+                    error: function (XMLHttpRequest, textStatus) { SWW.F.SYS.Error({ n: 'SWW.Z.Ajax', m: textStatus }) }
+                });
+
+            }
+
+
 
       
       //添加扩展列的操作函数
@@ -87,13 +106,16 @@
             {
                 var guid = SWW.F.SYS.GetGuid();
                 e.CellTitle['消费城市'].html('<input id="' + guid + '" value="点击" type="button" />');
-                SWW.GS.ExtendFunction(e, ButtonClickFunc,SWW.J('#'+guid));
+                SWW.GS.ExtendFunction(e, ButtonClickFunc, SWW.J('#' + guid));
+
+                SWW.GS.ExtendFunction(e, ButtonClickFunc, SWW.J('#aaaa' ));
 
             }
         }
         function ButtonClickFunc(e)
         {
             SWW.GS.ExtendSetHtml(e, '特殊展示内容');
+            
         }
 
 
@@ -103,9 +125,15 @@
 
 
 
+      
+
+        var x = SWW.F.OBJ.Clone(a);
+        alert(x.x);
+
+
 </script>
 
-
+<input type="button" id="aaaa" value="test" />
 
 
 </asp:Content>

@@ -75,7 +75,7 @@ if (SWW && !SWW.DebugLog)
         ShowInfo: function (i)
         {
             SWW.W.Dialog.Open({ html: '<div id="debug"></div>', width: 800 });
-            var a = typeof (SWW.O.Log.Debug[i].c) != 'string' ? SWW.F.JSON.StringToJson(SWW.O.Log.Debug[i].c) : SWW.O.Log.Debug[i].c;
+            var a = typeof (SWW.O.Log.Debug[i].c) != 'string' ? SWW.F.JSON.StringFromJson(SWW.O.Log.Debug[i].c) : SWW.O.Log.Debug[i].c;
             SWW.W.Dialog.Father().SWW.F.DOM.Text('debug', a);
 
             //SWW.F.DOM.Text('debug', a);

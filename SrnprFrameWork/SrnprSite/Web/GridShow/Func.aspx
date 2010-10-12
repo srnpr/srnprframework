@@ -67,25 +67,19 @@
 
     /*点击列扩展内容****************************************************************************************/
 
-    function AjaxSuccessFul(s)
-    {
-        alert(s);
-    }
+    
 
         //点击时执行的函数
         function FuncClick(e)
         {
-            SWW.GS.ExtendSetHtml(e, 'aaa' + e.RowIndex);
 
 
-            SWW.J.ajax(
-                {
-                    url: SWW.C.Ajax.Url,
-                    type: "POST",
-                    data: "" ,
-                    success: function (s) { AjaxSuccessFul(s); },
-                    error: function (XMLHttpRequest, textStatus) { SWW.F.SYS.Error({ n: 'SWW.Z.Ajax', m: textStatus }) }
-                });
+           
+            
+                SWW.GS.ExtendSetHtml(e, 'aaa' + e.RowIndex);
+            
+
+           
 
             }
 
@@ -102,22 +96,47 @@
 
         function TdClickFunc(e)
         {
+            //绑定到单元格的内部内容上
             if (e.CellTitle['消费平台'].text() == 'SO201010080020')
             {
                 var guid = SWW.F.SYS.GetGuid();
                 e.CellTitle['消费城市'].html('<input id="' + guid + '" value="点击" type="button" />');
                 SWW.GS.ExtendFunction(e, ButtonClickFunc, SWW.J('#' + guid));
-
-                SWW.GS.ExtendFunction(e, ButtonClickFunc, SWW.J('#aaaa' ));
-
             }
+
+            //绑定到外部按钮上
+            if (e.RowIndex == 2)
+            {
+               
+                SWW.GS.ExtendFunction(e, AjaxClickFunc, SWW.J('#ajax_extend_button'));
+            }
+
+
+
         }
         function ButtonClickFunc(e)
         {
-            SWW.GS.ExtendSetHtml(e, '特殊展示内容');
-            
+            SWW.GS.ExtendSetHtml(e, '行内按钮点击时');
+
         }
 
+
+        function AjaxClickFunc(e)
+        {
+           
+            if (e.RowIndex == 2)
+            {
+                SWW.J.ajax(
+                {
+                    url: "/ASMX/TestRequest.ashx",
+                    success: function (s) { AjaxSuccessFul(e, s); }
+                });
+            }
+        }
+        function AjaxSuccessFul(e, s)
+        {
+            SWW.GS.ExtendSetHtml(e, s);
+        }
 
 
         //添加扩展列的操作函数
@@ -133,7 +152,7 @@
 
 </script>
 
-<input type="button" id="aaaa" value="test" />
+<input type="button" id="ajax_extend_button" value="测试Ajax扩展列" />
 
 
 </asp:Content>

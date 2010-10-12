@@ -583,7 +583,7 @@ if (SWW && !SWW.GS)
                     this.Obj_Extend[oRow.BaseGuid][oRow.Guid] = oRow;
                 }
 
-                
+
 
                 onTarget.attr('swwgs_extend_rowindex', oRow.Guid);
                 onTarget.attr('swwgs_extend_baseguid', oRow.BaseGuid);
@@ -598,20 +598,20 @@ if (SWW && !SWW.GS)
         ExtendSetHtml: function (e, s)
         {
 
-            if(SWW.F.OBJ.IsObj(e))
-            e = e.Guid;
+            if (SWW.F.OBJ.IsObj(e))
+                e = e.Guid;
 
             SWW.J('#swwgs_extend_td_' + e).html(s);
         },
 
         ExtendClickEvent: function ()
         {
-        
 
+        
 
             var iIndex = SWW.J(this).attr('swwgs_extend_rowindex');
             var BaseGuid = SWW.J(this).attr('swwgs_extend_baseguid');
-
+           
             if (!SWW.GS.Obj_Extend[BaseGuid][iIndex].show)
             {
                 SWW.GS.Obj_Extend[BaseGuid][iIndex].show = 1;

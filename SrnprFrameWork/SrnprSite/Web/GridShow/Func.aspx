@@ -37,6 +37,12 @@
         if (e.CellTitle['消费平台'].text() == 'SO201010110004')
         {
             e.CellTitle['消费城市'].css('background-color', 'red');
+            e.CellTitle['分级'].css('background-color', '#ffbb00');
+            e.Cell[2].css('background-color', '#ffbbcc');
+            e.Cell[5].css('background-color', '#11cccc');
+            e.Cell[6].css('background-color', '#1111cc');
+            e.Cell[7].css('background-color', '#bb1111');
+            e.Cell[1].css('background-color', '#bbbbbb');
         }
     }
     //添加绑定函数
@@ -72,15 +78,8 @@
         //点击时执行的函数
         function FuncClick(e)
         {
-
-
-           
+            SWW.GS.ExtendSetHtml(e, '<table><tr><td>订单编号：</td><td><input type="text"/></td><td>订单商品 ：</td><td><input type="text"/></td></tr></table>此列编号：' + e.RowIndex);
             
-                SWW.GS.ExtendSetHtml(e, 'aaa' + e.RowIndex);
-            
-
-           
-
             }
 
 
@@ -146,8 +145,7 @@
 
       
 
-        var x = SWW.F.OBJ.Clone(a);
-        alert(x.x);
+       
 
 
 </script>

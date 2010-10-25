@@ -42,8 +42,11 @@
             e.Cell[5].css('background-color', '#11cccc');
             e.Cell[6].css('background-color', '#1111cc');
             e.Cell[7].css('background-color', '#bb1111');
-            e.Cell[1].css('background-color', '#bbbbbb');
+           
         }
+
+        //列变色
+        e.Cell[1].css('background-color', '#bbbbbb');
     }
     //添加绑定函数
     SWW.GS.OnDataRowBind('test.citysee',  ChangeColorOne);
@@ -149,6 +152,115 @@
 
 
 </script>
+
+
+<script>
+
+    (function ($)
+    {
+        //用正则表达式判断jQuery的版本  
+        if (/1\.(0|1|2)\.(0|1|2|3|4|5)/.test($.fn.jquery) || /^1.1/.test($.fn.jquery))
+        {
+            alert('movedTh 需要 jQuery v1.2.6 以后版本支持!  你正使用的是 v' + $.fn.jquery);
+            return;
+        }
+        me = null;
+        var ps = 3;
+        $.fn.movedTh = function ()
+        {
+            me = this;
+            var target = null;
+            var tempStr = "";
+            var i = 0;
+            $(me).find("tr:first").find("th").each(function ()
+            {
+                tempStr = '<div id="mydiv' + i + '"onmousedown="$().mousedone.movedown(event,this)" onmousemove="$().mousedone.moveresize(event,this)" onmouseup="$().mousedone.upresize(event,this)" ></div>';
+                var div = {};
+                $(this).html($(this).html() + tempStr);
+                var offset = $(this).offset();
+                var pos = offset.left + $(this).width() + me.offset().left - ps;
+                $("#mydiv" + i).addClass("resizeDivClass");
+                $("#mydiv" + i).css("left", pos);
+                i++;
+            });    //end each  
+        }    //end moveTh  
+        $.fn.mousedone = {
+            movedown: function (e, obj)
+            {
+                var e = window.event || e;
+                var myX = e.clientX || e.pageX;
+                obj.mouseDownX = myX;
+                obj.pareneTdW = $(obj).parent().width();    //obj.parentElement.offsetWidth;  
+                obj.pareneTableW = me.width();
+                if (obj.setCapture)
+                {
+                    obj.setCapture();
+                } else if (window.captureEvents)
+                {
+                    window.captureEvents(e.MOUSEMOVE | e.MOUSEUP);
+                }
+            },
+            moveresize: function (e, obj)
+            {
+                var dragData = obj;
+                var event = window.event || e;
+                if (!dragData.mouseDownX) return false;
+                var newWidth = dragData.pareneTdW * 1 + (event.clientX || event.pageX) * 1 - dragData.mouseDownX;
+                if (newWidth > 0)
+                {
+                    $(obj).parent().width(newWidth);
+                    me.width(dragData.pareneTableW * 1 + (event.clientX || event.pageX) * 1 - dragData.mouseDownX);
+                    var k = 0;
+                    me.find("tr:first").find("th").each(function ()
+                    {
+                        var offset = $(this).offset();
+                        var pos = offset.left * 1 + $(this).width() * 1 + me.offset().left * 1 - ps;
+                        $("#mydiv" + k).css("left", pos);
+                        k++;
+                    })    //end each  
+                } //end if  
+            },    //end moveresize  
+            upresize: function (e, obj)
+            {
+                var dragData = obj;
+                if (dragData.setCapture)
+                {
+                    dragData.releaseCapture();
+                } else if (window.captureEvents)
+                {
+                    window.releaseEvents(e.MOUSEMOVE | e.MOUSEUP);
+                }
+                dragData.mouseDownX = 0;
+            }    //end upresize  
+        }    //end mousedone  
+        $(window).resize(function ()
+        {
+            setTimeout(function ()
+            {
+                var target = null;
+                var tempStr = "";
+                var i = 0;
+                $(me).find("tr:first").find("th").each(function ()
+                {
+                    tempStr = '<div id="mydiv' + i + '"onmousedown="$().mousedone.movedown(event,this)" onmousemove="$().mousedone.moveresize(event,this)" onmouseup="$().mousedone.upresize(event,this)" ></div>';
+                    var div = {};
+                    $(this).html($(this).html() + tempStr);
+                    var offset = $(this).offset();
+                    var pos = offset.left + $(this).width() + me.offset().left - ps;
+                    $("#mydiv" + i).addClass("resizeDivClass");
+                    $("#mydiv" + i).css("left", pos);
+                    i++;
+                });    //end each  
+            }, 10);
+        });
+    })(jQuery)
+    $().ready(function ()
+    {
+        $("#GS_table_ctl00_MasterPage_Content_GSShow").movedTh();
+    }) 
+
+</script>
+
 
 <input type="button" id="ajax_extend_button" value="测试Ajax扩展列" />
 

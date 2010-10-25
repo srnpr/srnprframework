@@ -605,7 +605,7 @@ namespace SrnprWeb.WebProcess
 
 
 
-                    sb.Append("<div class=\"SWW_CSS_GS_DIV_MAIN\"><table id=\"GS_table_" + request.ClientId + "\" cellspacing=\"1\" cellpadding=\"0\">");
+                    sb.Append("<div class=\"SWW_CSS_GS_DIV_MAIN\"><table id=\"GS_table_" + request.ClientId + "\">");
 
 
 

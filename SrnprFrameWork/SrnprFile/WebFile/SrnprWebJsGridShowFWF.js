@@ -584,13 +584,14 @@ if (SWW && !SWW.GS)
                 }
 
 
-
+                if (!onTarget.attr('swwgs_extend_rowindex'))
+                    onTarget.click(SWW.GS.ExtendClickEvent);
                 onTarget.attr('swwgs_extend_rowindex', oRow.Guid);
                 onTarget.attr('swwgs_extend_baseguid', oRow.BaseGuid);
 
                 this.Obj_Extend[oRow.BaseGuid][oRow.Guid].ExtendFunc = f;
 
-                onTarget.click(SWW.GS.ExtendClickEvent);
+                
             }
 
         },

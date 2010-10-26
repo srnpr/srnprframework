@@ -24,7 +24,12 @@
                 e.Cell[i].css('background-color', '#ffff00');
             }
         }
+
+       
+
     }
+
+
     //添加绑定函数
     SWW.GS.OnDataRowBind('test.citysee', ChangeColorAll);
 

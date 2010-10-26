@@ -1394,7 +1394,7 @@ if (!window.SWW)
 
                        //开始添加抬头
 
-                       aH.push('<div class="' + o.cssid + 'Title" id="' + o.guid + '_title"><span class="' + o.cssid + 'Title_Left">' + o.title + '</span><span  class="' + o.cssid + 'Title_Right" onclick="SWW.W.Dialog.Close(\'' + o.guid + '\',' + o.save + ')">关闭</span></div>');
+                       aH.push('<div class="' + o.cssid + 'Title" id="' + o.guid + '_title"><span class="' + o.cssid + 'Title_Left">' + (o.title ? ('&nbsp;&nbsp;' + o.title + '&nbsp;&nbsp;&nbsp;&nbsp;') : '') + '</span><span  class="' + o.cssid + 'Title_Right" onclick="SWW.W.Dialog.Close(\'' + o.guid + '\',' + o.save + ')"></span></div>');
 
 
 

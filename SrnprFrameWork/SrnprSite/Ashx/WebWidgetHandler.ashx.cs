@@ -5,7 +5,7 @@ using System.Web;
 using System.Data;
 using System.Reflection;
 
-namespace SrnprSite.Asmx
+namespace SrnprSite.Ashx
 {
     /// <summary>
     /// $codebehindclassname$ 的摘要说明

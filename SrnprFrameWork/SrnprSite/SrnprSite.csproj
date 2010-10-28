@@ -69,19 +69,19 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Asmx\GridShowExcel.ashx.cs">
+    <Compile Include="Ashx\GridShowExcel.ashx.cs">
       <DependentUpon>GridShowExcel.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Asmx\GridShowHander.ashx.cs">
+    <Compile Include="Ashx\GridShowHander.ashx.cs">
       <DependentUpon>GridShowHander.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Asmx\ItemShowHandler.ashx.cs">
+    <Compile Include="Ashx\ItemShowHandler.ashx.cs">
       <DependentUpon>ItemShowHandler.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Asmx\TestRequest.ashx.cs">
+    <Compile Include="Ashx\TestRequest.ashx.cs">
       <DependentUpon>TestRequest.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Asmx\WebWidgetHandler.ashx.cs">
+    <Compile Include="Ashx\WebWidgetHandler.ashx.cs">
       <DependentUpon>WebWidgetHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="Config\Create.aspx.cs">
@@ -275,7 +275,7 @@
     <Content Include="Web\GridShow\Test.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Asmx\GridShowHander.ashx" />
+    <Content Include="Ashx\GridShowHander.ashx" />
     <Content Include="Modules\Master\MasterPage.js" />
     <Content Include="Skin\Blue\sradmin\buttonnext.gif" />
     <Content Include="Web\PageShow\CreateFromCk.aspx" />
@@ -284,15 +284,15 @@
     <Content Include="Web\PageShow\Test.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Asmx\GridShowExcel.ashx" />
+    <Content Include="Ashx\GridShowExcel.ashx" />
     <Content Include="Web\GridShow\Excel.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Asmx\ItemShowHandler.ashx" />
+    <Content Include="Ashx\ItemShowHandler.ashx" />
     <Content Include="Test\Widget_ListShow.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Asmx\WebWidgetHandler.ashx" />
+    <Content Include="Ashx\WebWidgetHandler.ashx" />
     <Content Include="Web\ListShow\Test.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -303,7 +303,7 @@
     <Content Include="Master\MasterDialog.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Asmx\TestRequest.ashx" />
+    <Content Include="Ashx\TestRequest.ashx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

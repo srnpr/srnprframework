@@ -55,7 +55,7 @@ if (!window.SWW)
            //Ajax相关配置
            Ajax:
            {
-               Url: '/Asmx/WebWidgetHandler.ashx'
+               Url: '/Ashx/WebWidgetHandler.ashx'
            },
 
            //基本命名空间

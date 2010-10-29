@@ -65,6 +65,27 @@
     <Content Include="Demo\Dialog\BasePage.aspx" />
     <Content Include="Demo\Dialog\DialogFirst.aspx" />
     <Content Include="Demo\Dialog\DialogTwo.aspx" />
+    <Content Include="Skin\Blue\dockmenu\css-dock-bottom.html" />
+    <Content Include="Skin\Blue\dockmenu\css-dock-top.html" />
+    <Content Include="Skin\Blue\dockmenu\css-dock.html" />
+    <Content Include="Skin\Blue\dockmenu\iepngfix.htc" />
+    <Content Include="Skin\Blue\dockmenu\images\blank.gif" />
+    <Content Include="Skin\Blue\dockmenu\images\calendar.png" />
+    <Content Include="Skin\Blue\dockmenu\images\dock-bg.gif" />
+    <Content Include="Skin\Blue\dockmenu\images\dock-bg2.gif" />
+    <Content Include="Skin\Blue\dockmenu\images\email.png" />
+    <Content Include="Skin\Blue\dockmenu\images\history.png" />
+    <Content Include="Skin\Blue\dockmenu\images\home.png" />
+    <Content Include="Skin\Blue\dockmenu\images\link.png" />
+    <Content Include="Skin\Blue\dockmenu\images\main-bg.gif" />
+    <Content Include="Skin\Blue\dockmenu\images\music.png" />
+    <Content Include="Skin\Blue\dockmenu\images\portfolio.png" />
+    <Content Include="Skin\Blue\dockmenu\images\rss.png" />
+    <Content Include="Skin\Blue\dockmenu\images\rss2.png" />
+    <Content Include="Skin\Blue\dockmenu\images\video.png" />
+    <Content Include="Skin\Blue\dockmenu\js\interface.js" />
+    <Content Include="Skin\Blue\dockmenu\js\jquery.js" />
+    <Content Include="Skin\Blue\dockmenu\style.css" />
     <Content Include="Test\WebForm1.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -304,6 +325,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Ashx\TestRequest.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Skin\Blue\dockmenu\images\Thumbs.db" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

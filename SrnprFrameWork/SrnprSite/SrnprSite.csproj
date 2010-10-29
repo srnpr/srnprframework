@@ -193,6 +193,13 @@
     <Compile Include="Web\GridShow\Create.aspx.designer.cs">
       <DependentUpon>Create.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Web\GridShow\DialogColumn.aspx.cs">
+      <DependentUpon>DialogColumn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\GridShow\DialogColumn.aspx.designer.cs">
+      <DependentUpon>DialogColumn.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Web\GridShow\Excel.aspx.cs">
       <DependentUpon>Excel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -277,6 +284,7 @@
     <Content Include="Skin\Blue\sradmin\srmaintophover.gif" />
     <Content Include="Web\ECMAScriptPacker\ECMAScriptPacker.aspx" />
     <Content Include="Web\GridShow\Create.aspx" />
+    <Content Include="Web\GridShow\DialogColumn.aspx" />
     <Content Include="Web\GridShow\Func.aspx" />
     <Content Include="Web\GridShow\List.aspx" />
     <Content Include="Web\PageShow\CreatePage.aspx" />

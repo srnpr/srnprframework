@@ -29,7 +29,7 @@ namespace SrnprWeb.WebEntity
 
 
         /// <summary>
-        /// Description: 参数操作符（d:默认自定义,e:等于,b:大于,s:小于,l:搜索）
+        /// Description: 参数操作符（d:默认自定义,e:等于,b:大于,s:小于,l:搜索匹配）
         /// Author:Liudpc
         /// Create Date: 2010-7-29 16:42:30
         /// </summary>

@@ -54,7 +54,7 @@
 
                             <div class="dock" id="dock">
   <div class="dock-container">
-  <a class="dock-item" href="#"><img src="/Skin/Blue/dockmenu/images/home.png" alt="home" /><span>Home</span></a> 
+  <a class="dock-item" href="/"><img src="/Skin/Blue/dockmenu/images/home.png" alt="home" /><span>首页</span></a> 
   <a class="dock-item" href="#"><img src="/Skin/Blue/dockmenu/images/email.png" alt="contact" /><span>Contact</span></a> 
   <a class="dock-item" href="#"><img src="/Skin/Blue/dockmenu/images/portfolio.png" alt="portfolio" /><span>Portfolio</span></a> 
   <a class="dock-item" href="#"><img src="/Skin/Blue/dockmenu/images/music.png" alt="music" /><span>Music</span></a> 

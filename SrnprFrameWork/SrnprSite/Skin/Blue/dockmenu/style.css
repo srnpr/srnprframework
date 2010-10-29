@@ -16,7 +16,7 @@ img {
 .dock-container {
 	position: absolute;
 	height: 50px;
-	/*background-color:#000;*/
+	background-color:#000;
 	padding-left: 20px;
 }
 a.dock-item {

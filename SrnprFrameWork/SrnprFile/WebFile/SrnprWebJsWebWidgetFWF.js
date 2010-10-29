@@ -1085,7 +1085,7 @@ if (!window.SWW)
 
                if (SWW.C.Flag.Debug)
                {
-                   SWW.Z.DebugLog('sww.z.ajax', t, 'sww2006');
+                   SWW.Z.DebugLog('sww.z.ajax', {url: SWW.C.Ajax.Url,parm:t}, 'sww2006');
                }
 
                //开始提交数据
@@ -1095,7 +1095,14 @@ if (!window.SWW)
                     type: "POST",
                     data: "json=" + SWW.F.JSON.StringFromJson(t),
                     success: function (s) { SWW.Z.AjaxSuccess(s); },
-                    error: function (XMLHttpRequest, textStatus) { SWW.F.SYS.Error({ n: 'SWW.Z.Ajax', m: textStatus }) }
+                    error: function (XMLHttpRequest, textStatus)
+                    {
+                        if (SWW.C.Flag.Debug)
+                        {
+                            SWW.Z.DebugLog('sww.z.ajax', t, 'sww2011', this.url);
+                        }
+                         SWW.F.SYS.Error({ n: 'SWW.Z.Ajax', m: textStatus })
+                    }
                 });
            },
 

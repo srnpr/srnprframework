@@ -1,1 +1,1 @@
-﻿<%@ WebHandler Language="C#" CodeBehind="WebWidgetHandler.ashx.cs" Class="SrnprSite.Asmx.WebWidgetHandler" %>
+﻿<%@ WebHandler Language="C#" CodeBehind="WebWidgetHandler.ashx.cs" Class="SrnprSite.Ashx.WebWidgetHandler" %>

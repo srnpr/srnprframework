@@ -1,6 +1,5 @@
 body {
-	font: 11px Arial, Helvetica, sans-serif;
-	background: #ffffff url(images/main-bg.gif);
+	
 	padding: 0;
 	margin: 0;
 }
@@ -17,13 +16,14 @@ img {
 .dock-container {
 	position: absolute;
 	height: 50px;
-	background: url(images/dock-bg2.gif);
+	/*background-color:#000;*/
 	padding-left: 20px;
 }
 a.dock-item {
 	display: block;
 	width: 40px;
-	color: #000;
+	
+	color: #fff;
 	position: absolute;
 	top: 0px;
 	text-align: center;
@@ -37,7 +37,8 @@ a.dock-item {
 }
 .dock-item span {
 	display: none; 
-	padding-left: 20px;
+	background-color:#000;
+	padding-left: 10px;
 }
 
 /* dock2 - bottom */

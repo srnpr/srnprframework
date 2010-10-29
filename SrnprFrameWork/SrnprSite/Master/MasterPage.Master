@@ -28,6 +28,15 @@
     <link href="http://f.xgou.com/AtGang/Manage/css/ManageAlpha.css" rel="stylesheet"
         type="text/css" />
 
+
+        <script type="text/javascript" src="/Skin/Blue/dockmenu/js/interface.js"></script>
+        <!--[if lt IE 7]>
+ <style type="text/css">
+ div, img { behavior: url(/Skin/Blue/dockmenu/iepngfix.htc) }
+ </style>
+<![endif]-->
+        <link href="/Skin/Blue/dockmenu/style.css" rel="stylesheet" type="text/css" />
+
         <script type="text/javascript" src="/WebFile/SWW-DebugLog-1.0.0.0.js"></script>
 
     <asp:ContentPlaceHolder ID="MasterPage_Head" runat="server">
@@ -42,6 +51,40 @@
                     <td colspan="3">
                         <div class="srdmaintop">
                             <div class="srdmaintopcenter">
+
+                            <div class="dock" id="dock">
+  <div class="dock-container">
+  <a class="dock-item" href="#"><img src="/Skin/Blue/dockmenu/images/home.png" alt="home" /><span>Home</span></a> 
+  <a class="dock-item" href="#"><img src="/Skin/Blue/dockmenu/images/email.png" alt="contact" /><span>Contact</span></a> 
+  <a class="dock-item" href="#"><img src="/Skin/Blue/dockmenu/images/portfolio.png" alt="portfolio" /><span>Portfolio</span></a> 
+  <a class="dock-item" href="#"><img src="/Skin/Blue/dockmenu/images/music.png" alt="music" /><span>Music</span></a> 
+  <a class="dock-item" href="#"><img src="/Skin/Blue/dockmenu/images/video.png" alt="video" /><span>Video</span></a> 
+  <a class="dock-item" href="#"><img src="/Skin/Blue/dockmenu/images/history.png" alt="history" /><span>History</span></a> 
+  <a class="dock-item" href="#"><img src="/Skin/Blue/dockmenu/images/calendar.png" alt="calendar" /><span>Calendar</span></a> 
+  <a class="dock-item" href="#"><img src="/Skin/Blue/dockmenu/images/rss.png" alt="rss" /><span>RSS</span></a> 
+</div>
+</div>
+<script type="text/javascript">
+
+    $(document).ready(
+		function ()
+		{
+		    $('#dock').Fisheye(
+				{
+				    maxWidth: 50,
+				    items: 'a',
+				    itemsText: 'span',
+				    container: '.dock-container',
+				    itemWidth: 40,
+				    proximity: 90,
+				    halign: 'center'
+				}
+			)
+		}
+	);
+
+</script>
+
                             </div>
                             <ul class="srumaintop" id="srumaintop">
                                 <li><a href="#"><span>控件配置相关</span></a></li>

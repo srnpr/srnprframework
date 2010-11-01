@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MasterPage_Content" runat="server">
 <div>
-    
+    <asp:HiddenField ID="hfGuid" runat="server" />
     <div><%=sMessage %></div>
     
         <div class="SWCGSF_DIV_MAIN">

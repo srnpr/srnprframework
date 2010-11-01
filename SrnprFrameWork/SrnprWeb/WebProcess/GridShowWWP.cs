@@ -385,7 +385,8 @@ namespace SrnprWeb.WebProcess
                                 break;
                             case "d":
                             default:
-                                sParam += o.ParamName;
+                                sParam += o.ColumnField;
+                                dQuery.Add(kvp.Key, kvp.Value);
                                 break;
                         }
 

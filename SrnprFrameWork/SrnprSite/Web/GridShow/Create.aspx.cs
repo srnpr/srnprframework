@@ -15,11 +15,11 @@ namespace SrnprSite.Web.GridShow
         {
             get
             {
-                return (SrnprWeb.WebEntity.GridShowWWE)Session["Config_ConfigGridShow"];
+                return (SrnprWeb.WebEntity.GridShowWWE)Session["Config_ConfigGridShow_" + hfGuid.Value];
             }
             set
             {
-                Session["Config_ConfigGridShow"] = value;
+                Session["Config_ConfigGridShow_" + hfGuid.Value] = value;
             }
         }
 
@@ -28,9 +28,19 @@ namespace SrnprSite.Web.GridShow
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if (string.IsNullOrEmpty(hfGuid.Value))
+            {
+                hfGuid.Value = Guid.NewGuid().ToString();
+            }
+
 
             if (!IsPostBack)
             {
+
+
+
+
+
                 if (!string.IsNullOrEmpty(Request["id"]))
                 {
                     TBId.Enabled = false;

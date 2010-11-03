@@ -672,7 +672,7 @@ if (!window.SWW)
                     ///		对象{f:函数名称,w:扩展类型,d:编号,e:参数}
                     ///	</param>
 
-                    if (SWW.O.AF[o.w] && SWW.O.AF[o.w][o.f][o.d])
+                    if (SWW.O.AF[o.w] && SWW.O.AF[o.w][o.f] && SWW.O.AF[o.w][o.f][o.d])
                     {
                         //SWW.O.AF[o.w][o.f][o.d](o.e);
 
@@ -1082,8 +1082,7 @@ if (!window.SWW)
                    t.RQ[i] = SWW.F.SYS.InitReq(t.RQ[i]);
 
 
-                   //执行扩展函数
-                   SWW.F.SYS.ExecAF({ f: 'BeforeAjax', w: t.RQ[i].WidgetType, d: t.RQ[i].Id, e: { s: t.RQ[i]} });
+                   
 
 
                }

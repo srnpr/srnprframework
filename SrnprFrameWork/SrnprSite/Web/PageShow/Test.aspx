@@ -43,7 +43,14 @@
     <script>
 
         //alert('\\u007B');
-         
+        function AA(e)
+        {
+
+            alert(e.QueryDict);
+        }
+        
+
+        SWW.GS.OnQueryBefore('dff',AA);
    
     </script>
    

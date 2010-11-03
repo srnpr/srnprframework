@@ -1,1 +1,285 @@
-﻿.SWW_CSS_GS_DIV_ALL{}.SWW_CSS_GS_DIV_WEBTAB{}.SWW_CSS_GS_DIV_WEBTAB ul{padding:0px;margin:0px;float:left}.SWW_CSS_GS_DIV_WEBTAB ul li{background-image:url("http://f.xgou.com/AtGang/UI_C/images_css/bg_tab12_out.gif");background-repeat:repeat-x;border-right:solid 1px#99cccc;border-top:solid 1px#99cccc;border-left:solid 1px#99cccc;float:left;height:22px;font-size:14px;font-weight:bold;margin-right:3px;padding:4px 4px 0px 4px;list-style-type:none}.SWW_CSS_GS_DIV_WEBTAB ul.SWW_CSS_GS_WEBTAB_UL_LI_HOVER{background-image:url("http://f.xgou.com/AtGang/UI_C/images_css/bg_tab12_hover.gif")}.SWW_CSS_GS_DIV_WEBTAB ul li a,.SWW_CSS_GS_DIV_WEBTAB ul.SWW_CSS_GS_WEBTAB_UL_LI_HOVER a:hover{text-decoration:none;color:#006699}.SWW_CSS_GS_DIV_WEBTAB ul li a:hover{text-decoration:none;color:#990000}.SWW_CSS_GS_DIV_SHOWINFO{clear:both;border:solid 1px#99cccc;padding:5px;background-color:#fff}.SWW_CSS_GS_DIV_MAIN{clear:both;width:100%;overflow:auto}.SWW_CSS_GS_DIV_MAIN table{width:100%;border-top:solid 1px#cfe5f8;border-left:solid 1px#cfe5f8;border-collapse:collapse}.SWW_CSS_GS_DIV_MAIN table tr{padding:3px 5px 3px 0px;background-color:#fff}.SWW_CSS_GS_TABLE_d{}.SWW_CSS_GS_DIV_MAIN table.SWW_CSS_GS_TR_1{background-color:#f5fbfe}.SWW_CSS_GS_DIV_MAIN table tr th{height:23px;line-height:23px;background-color:#fff;background-image:url("http://f.xgou.com/AtGang/UI_C/images_css/h_bg.gif");background-position:bottom 50%;background-repeat:repeat-x;color:#043260;font-size:12px;white-space:normal;border-right:solid 1px#cfe5f8;border-bottom:solid 1px#cfe5f8}.SWW_CSS_GS_DIV_MAIN table tr th a{color:#006699}.SWW_CSS_GS_DIV_MAIN table tr th a:hover{color:#990000}.SWW_CSS_GS_DIV_MAIN table tr td{height:22px;line-height:22px;word-break:break-all;overflow:hidden;text-indent:3px;border-right:solid 1px#cfe5f8;border-bottom:solid 1px#cfe5f8}.SWW_CSS_GS_DIV_MAIN table.SWW_CSS_GS_TABLE_TR_HOVER{background-color:#e8f1f8}.SWW_CSS_GS_DIV_FOOT_NAV{border-left:solid 1px#cfe5f8;border-bottom:solid 1px#cfe5f8;border-right:solid 1px#cfe5f8;background-color:#fff;padding:5px 0px 2px 10px}.SWW_CSS_GS_DIV_FOOT_NAV table{width:96%}.SWW_CSS_GS_DIV_FOOT_NAV a{margin-left:10px;color:#006699}.SWW_CSS_GS_DIV_FOOT_NAV a:hover{color:#990000}.SWW_CSS_GS_DIV_FOOT_NAV.SWW_CSS_GS_A_FOOT_NAV_HOVER{color:#990000}.SWW_CSS_GS_DIV_FOOT_NAV input{border:solid 1px#006699;width:20px;height:12px;font-size:11px}ol li{background-image:url("http://f.xgou.com/AtGang/UI_C/images_css/bg_tab12_out.gif");background-repeat:repeat-x;border-right:solid 1px#99cccc;border-top:solid 1px#99cccc;border-left:solid 1px#99cccc;float:left;height:22px;font-size:14px;font-weight:bold;margin-right:3px;padding:4px 4px 0px 4px;list-style-type:none;cursor:pointer}.SWW_CSS_W_Dialog{overflow:scroll}.SWW_CSS_W_Dialog_Box_Over{background-color:#CCC;z-index:999;position:absolute}.SWW_CSS_W_Dialog_Box_Back{background-color:#999}.SWW_CSS_W_Dialog_Box{background-color:#fff;border-top:1px#999 solid;border-left:1px#999 solid}.SWW_CSS_W_Dialog_Title{background-color:#0066cc;height:30px;line-height:30px;width:100%;border-bottom:solid 1px#999;text-align:right;text-indent:10px;cursor:move}.SWW_CSS_W_Dialog_Title_Left{text-align:left;float:left;background-color:#003366;font-weight:bold;color:#fff}.SWW_CSS_W_Dialog_Title_Right{margin:0px;width:30px;height:30px;display:block;cursor:pointer;background-image:url(http:background-repeat:no-repeat;background-position:center center}.SWW_CSS_W_Dialog_Content{overflow:auto}
+﻿
+
+
+
+
+.SWW_CSS_GS_DIV_ALL
+{
+    
+}
+
+
+.SWW_CSS_GS_DIV_WEBTAB
+{
+   
+}
+
+
+.SWW_CSS_GS_DIV_WEBTAB ul
+{
+   padding:0px;
+   margin:0px;
+    
+     float:left;
+}
+
+
+
+
+.SWW_CSS_GS_DIV_WEBTAB ul li
+{
+    background-image:url("http://f.xgou.com/AtGang/UI_C/images_css/bg_tab12_out.gif");
+    background-repeat:repeat-x;
+    border-right:solid 1px #99cccc;
+    border-top:solid 1px #99cccc;
+    border-left:solid 1px #99cccc;
+    float:left;
+    height:22px;
+    font-size:14px;
+    font-weight:bold;
+    margin-right:3px;
+    padding:4px 4px 0px 4px;
+    list-style-type:none;
+    
+}
+
+.SWW_CSS_GS_DIV_WEBTAB ul  .SWW_CSS_GS_WEBTAB_UL_LI_HOVER
+{
+    background-image: url("http://f.xgou.com/AtGang/UI_C/images_css/bg_tab12_hover.gif");
+}
+.SWW_CSS_GS_DIV_WEBTAB ul li a,.SWW_CSS_GS_DIV_WEBTAB ul  .SWW_CSS_GS_WEBTAB_UL_LI_HOVER a:hover
+{
+    text-decoration:none;
+    color:#006699;
+    
+}
+.SWW_CSS_GS_DIV_WEBTAB ul li a:hover
+{
+    text-decoration:none;
+    color:#990000;
+   
+}
+
+
+.SWW_CSS_GS_DIV_SHOWINFO
+{
+    clear:both;
+     border:solid 1px #99cccc;
+     padding:5px;
+     background-color:#fff;
+   
+}
+
+
+
+
+.SWW_CSS_GS_DIV_MAIN
+{
+    clear:both;
+    width:100%;
+    overflow:auto;
+}
+
+
+
+
+
+.SWW_CSS_GS_DIV_MAIN table
+{
+    
+    width:100%;
+    border-top:solid 1px #cfe5f8;
+    border-left:solid 1px #cfe5f8;
+    border-collapse:collapse;
+    
+}
+.SWW_CSS_GS_DIV_MAIN table tr
+{
+    padding:3px 5px 3px 0px;
+     background-color:#fff;
+}
+
+.SWW_CSS_GS_TABLE_d
+{
+    
+}
+
+
+.SWW_CSS_GS_DIV_MAIN table .SWW_CSS_GS_TR_1 
+{
+    background-color:#f5fbfe;
+}
+
+
+.SWW_CSS_GS_DIV_MAIN table tr th
+{
+    height:23px;
+    line-height:23px;
+    background-color:#fff;
+    background-image:url("http://f.xgou.com/AtGang/UI_C/images_css/h_bg.gif"); 
+    background-position:bottom 50%;
+    background-repeat:repeat-x;
+    color:#043260;
+    font-size:12px;
+    white-space:normal;
+    border-right:solid 1px #cfe5f8;
+    border-bottom:solid 1px #cfe5f8;
+}
+.SWW_CSS_GS_DIV_MAIN table tr th a
+{
+    color:#006699;
+}
+.SWW_CSS_GS_DIV_MAIN table tr th a:hover
+{
+    color:#990000;
+}
+
+
+.SWW_CSS_GS_DIV_MAIN table tr td
+{
+    height:22px;
+    line-height:22px;
+    
+   
+    word-break:break-all;
+    overflow:hidden;
+    text-indent:3px;
+    border-right:solid 1px #cfe5f8;
+    border-bottom:solid 1px #cfe5f8;
+}
+
+.SWW_CSS_GS_DIV_MAIN table .SWW_CSS_GS_TABLE_TR_HOVER
+{
+    background-color:#e8f1f8;
+   
+}
+
+
+
+.SWW_CSS_GS_DIV_FOOT_NAV
+{
+    border-left:solid 1px #cfe5f8;
+    border-bottom:solid 1px #cfe5f8;
+    border-right:solid 1px #cfe5f8;
+    background-color:#fff;
+    
+    padding:5px 0px 2px 10px;
+   
+}
+
+.SWW_CSS_GS_DIV_FOOT_NAV table
+{
+    width:96%;
+}
+
+.SWW_CSS_GS_DIV_FOOT_NAV a
+{
+    margin-left:10px;
+    
+    color:#006699;
+    
+}
+.SWW_CSS_GS_DIV_FOOT_NAV a:hover
+{
+    color:#990000;
+}
+
+.SWW_CSS_GS_DIV_FOOT_NAV .SWW_CSS_GS_A_FOOT_NAV_HOVER
+{
+    color:#990000;
+}
+
+
+
+.SWW_CSS_GS_DIV_FOOT_NAV input
+{
+    border:solid 1px #006699;
+    width:20px;
+    height:12px;
+    font-size:11px;
+}
+
+
+
+
+
+ol li
+{
+    background-image:url("http://f.xgou.com/AtGang/UI_C/images_css/bg_tab12_out.gif");
+    background-repeat:repeat-x;
+    border-right:solid 1px #99cccc;
+    border-top:solid 1px #99cccc;
+    border-left:solid 1px #99cccc;
+    float:left;
+    height:22px;
+    font-size:14px;
+    font-weight:bold;
+    margin-right:3px;
+    padding:4px 4px 0px 4px;
+    list-style-type:none;
+    cursor:pointer;
+}
+
+.SWW_CSS_W_Dialog
+{
+    overflow:scroll;
+}
+
+.SWW_CSS_W_Dialog_Box_Over
+{
+    background-color:#CCC;
+    z-index:999;
+    position:absolute;
+}
+
+.SWW_CSS_W_Dialog_Box_Back
+{
+   background-color:#999;
+}
+.SWW_CSS_W_Dialog_Box
+{
+    background-color:#fff;
+   
+    border-top:1px #999 solid;
+    border-left:1px #999 solid;
+}
+
+.SWW_CSS_W_Dialog_Title
+{
+    background-color:#0066cc;
+    height:30px;
+    line-height:30px;
+    width:100%;
+    border-bottom:solid 1px #999;
+     text-align:right;
+     text-indent:10px;
+     cursor:move;
+}
+
+.SWW_CSS_W_Dialog_Title_Left
+{
+     text-align:left;
+     float:left;
+     background-color:#003366;
+     font-weight:bold;
+     color:#fff;
+          
+}
+
+.SWW_CSS_W_Dialog_Title_Right
+{
+    margin:0px;
+    width:30px;
+    height:30px;
+    
+    cursor:pointer;
+    background-image:url(http://f.xgou.com/AtGang/UI_C/images/close_widget.gif);
+    background-repeat:no-repeat;
+    background-position:center center;
+}
+
+.SWW_CSS_W_Dialog_Content
+{
+   
+     overflow:auto;
+}

@@ -644,7 +644,12 @@ if (SWW && !SWW.GS)
         },
 
 
+        OnQueryBefore:function(id,f)
+        {
 
+            SWW.A("GS", "BeforeQuery", id, f);
+
+        },
 
 
 
@@ -733,6 +738,10 @@ if (SWW && !SWW.GS)
             SWW.GS.Obj[id].QueryDict = t;
             SWW.GS.Obj[id].PageIndex = 1;
             SWW.GS.Obj[id].RowsCount = -1;
+
+           
+            //执行扩展函数
+            SWW.F.SYS.ExecAF({ f: 'BeforeQuery', w: 'GS', d: SWW.GS.Obj[id].Id, e:  SWW.GS.Obj[id] });
 
             SWW.GS.Ajax(id);
 

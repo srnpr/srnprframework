@@ -1083,7 +1083,7 @@ if (!window.SWW)
 
 
                    //执行扩展函数
-                   SWW.F.SYS.ExecAF({ f: 'BeforeSubmit', w: t.RQ[i].WidgetType, d: t.RQ[i].Id, e: { s: t.RQ[i]} });
+                   SWW.F.SYS.ExecAF({ f: 'BeforeAjax', w: t.RQ[i].WidgetType, d: t.RQ[i].Id, e: { s: t.RQ[i]} });
 
 
                }

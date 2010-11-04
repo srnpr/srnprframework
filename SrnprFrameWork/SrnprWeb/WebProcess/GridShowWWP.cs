@@ -643,8 +643,7 @@ namespace SrnprWeb.WebProcess
                         for (int i = 0; i < iColumnCount; i++)
                         {
 
-                            if (dShow[gsw.ColumnList[i].Guid] != "h" && dShow[gsw.ColumnList[i].Guid] != "n")
-                            {
+                            
                                 bool bIsOrder = string.IsNullOrEmpty(ReckeckOrderColumn(gsw.ColumnList[i].ColumnData));
 
                                 var vSort = request.ShowColumn.SingleOrDefault(t => t.Guid == gsw.ColumnList[i].Guid);
@@ -691,8 +690,8 @@ namespace SrnprWeb.WebProcess
 
 
 
-                                sb.Append("<th class=\"SWW_CSS_GS_TABLE_" + sOrderType + "\" " + (string.IsNullOrEmpty(gsw.ColumnList[i].Width) ? "" : gsw.ColumnList[i].Width) + " >" + sSortVisgn + "</th>");
-                            }
+                            sb.Append("<th " + (dShow[gsw.ColumnList[i].Guid]=="d"?"":"style=\"display:none;\"") + " class=\"SWW_CSS_GS_TABLE_" + sOrderType + "\" " + (string.IsNullOrEmpty(gsw.ColumnList[i].Width) ? "" : gsw.ColumnList[i].Width) + " >" + sSortVisgn + "</th>");
+                            
 
                         }
                         sb.Append("</tr>");
@@ -720,9 +719,8 @@ namespace SrnprWeb.WebProcess
                             for (int n = 0; n < iColumnCount; n++)
                             {
 
-                                if (dShow[gsw.ColumnList[n].Guid] != "h" && dShow[gsw.ColumnList[n].Guid] != "n")
-                                {
-                                    sb.Append("<td >");
+
+                                sb.Append("<td " + (dShow[gsw.ColumnList[i].Guid] == "d" ? "" : "style=\"display:none;\"") + ">");
 
                                     if (!string.IsNullOrEmpty(gsw.ColumnList[n].ColumnData))
                                     {
@@ -756,7 +754,7 @@ namespace SrnprWeb.WebProcess
 
 
                                     sb.Append("</td>");
-                                }
+                                
 
 
 

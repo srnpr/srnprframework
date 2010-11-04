@@ -27,7 +27,7 @@ namespace SrnprWeb.WebEntity
         public string HeaderText { get; set; }
         
         /// <summary>
-        /// Description: 数据显示方式（d:默认,n:不显示,h:永久隐藏）
+        /// Description: 数据显示方式（d:默认,n:不显示,h:永久隐藏,）
         /// Author:Liudpc
         /// Create Date: 2010-8-3 9:24:30
         /// </summary>

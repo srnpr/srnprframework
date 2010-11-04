@@ -46,7 +46,17 @@
         function AA(e)
         {
 
-            alert(e.QueryDict);
+            for (var i = 0, j = e.QueryDict.length; i < j; i++)
+            {
+                if (e.QueryDict[i].Key == "ShowSalesOrderID" && e.QueryDict[i].Value!="")
+                {
+                    alert(e.QueryDict[i].Value);
+                    e.QueryDict[i].Value = '44';
+                }
+            }
+
+            
+            //e.QueryDict
         }
         
 

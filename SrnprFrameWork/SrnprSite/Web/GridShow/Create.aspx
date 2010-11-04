@@ -144,6 +144,7 @@
                     <asp:ListItem Text="默认" Value="d"></asp:ListItem>
                     <asp:ListItem Text="不显示" Value="n"></asp:ListItem>
                     <asp:ListItem Text="永久隐藏" Value="h"></asp:ListItem>
+                    <asp:ListItem Text="不显示但导出" Value="e"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td>

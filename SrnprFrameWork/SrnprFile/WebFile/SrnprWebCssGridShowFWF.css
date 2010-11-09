@@ -84,6 +84,9 @@
 .SWW_CSS_GS_DIV_MAIN_Scroll
 {
     overflow-x:scroll;
+    
+    
+    
     scrollbar-shadow-color: #FFFFFF; 
     scrollbar-highlight-color: #FFFFFF;
      scrollbar-arrow-color: #006699;
@@ -229,4 +232,23 @@
     width:20px;
     height:12px;
     font-size:11px;
+}
+
+.SWW_CSS_GS_DIV_ShowDisplay ul
+{
+    border-left:solid 1px #cfe5f8;
+    border-bottom:solid 1px #cfe5f8;
+    margin:0px;
+   
+   
+}
+
+.SWW_CSS_GS_DIV_ShowDisplay ul li
+{
+    list-style-type:none;
+     color:#043260;
+     border-right:solid 1px #cfe5f8;
+     border-top:solid 1px #cfe5f8;
+   
+    
 }

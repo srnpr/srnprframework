@@ -410,17 +410,24 @@ if (SWW && !SWW.GS)
         ShowDisplay: function (id)
         {
 
-            var s = "<ul>";
+
+
+            var aHtml = [];
+            aHtml.push('<div class="SWW_CSS_GS_DIV_ShowDisplay"><ul>');
+
             for (var i = 0, j = SWW.GS.Obj[id].ShowColumn.length; i < j; i++)
             {
-                s += "<li><input type=\"checkbox\" id=\"" + SWW.GS.Obj[id].ClientId + "_showcolumn_ckb_" + SWW.GS.Obj[id].ShowColumn[i].Guid + "\" " + (SWW.GS.Obj[id].ShowColumn[i].ShowDisplay == "n" ? "" : "checked=\"checked\"") + " />" + SWW.GS.Obj[id].ShowColumn[i].HeaderText + "</li>";
+                if (SWW.GS.Obj[id].ShowColumn.ShowDisplay != 'n')
+                {
+                    aHtml.push("<li><input type=\"checkbox\" id=\"" + SWW.GS.Obj[id].ClientId + "_showcolumn_ckb_" + SWW.GS.Obj[id].ShowColumn[i].Guid + "\" " + (SWW.GS.Obj[id].ShowColumn[i].ShowDisplay == "n" ? "" : "checked=\"checked\"") + " />" + SWW.GS.Obj[id].ShowColumn[i].HeaderText + "</li>");
+                }
             }
 
-            s += "</ul>";
+            aHtml.push("</ul></div>");
 
-            //SrnprNetJsAllAlphaShow({ s: "f", c: s, m: "请选择显示内容", y: "SWW.GS.SetDisplay('" + id + "')", w: "400" });
 
-            SWW.W.Dialog.Open({ title: '请选择显示内容', width: 400, html: s, button: ["确定:SWW.GS.SetDisplay('" + id + "')"] });
+
+            SWW.W.Dialog.Open({ title: '请选择显示内容', width: 400, html: aHtml.join(''), button: ["确定:SWW.GS.SetDisplay('" + id + "')"] });
 
 
 
@@ -480,7 +487,7 @@ if (SWW && !SWW.GS)
             }
 
 
-
+            this.SetQueryParam(o);
 
 
         },
@@ -717,6 +724,19 @@ if (SWW && !SWW.GS)
             }
 
 
+            this.SetQueryParam(SWW.GS.Obj[id], sid);
+
+            SWW.GS.Obj[id].PageIndex = 1;
+            SWW.GS.Obj[id].RowsCount = -1;
+            SWW.GS.Ajax(id);
+
+
+        }
+        ,
+
+        SetQueryParam: function (oGS, sid)
+        {
+
             //定义提交参数
             var t = [];
 
@@ -766,19 +786,15 @@ if (SWW && !SWW.GS)
 
 
 
-            SWW.GS.Obj[id].QueryDict = t;
-            SWW.GS.Obj[id].PageIndex = 1;
-            SWW.GS.Obj[id].RowsCount = -1;
+             oGS.QueryDict = t;
+             
 
 
             //执行扩展函数
-            SWW.F.SYS.ExecAF({ f: 'BeforeQuery', w: 'GS', d: SWW.GS.Obj[id].Id, e: SWW.GS.Obj[id] });
+             SWW.F.SYS.ExecAF({ f: 'BeforeQuery', w: 'GS', d: oGS.Id, e: oGS });
 
-            SWW.GS.Ajax(id);
+        },
 
-
-        }
-        ,
 
 
         WebTable: function ()

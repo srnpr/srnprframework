@@ -236,7 +236,9 @@ if (SWW && !SWW.GS)
                 aHtml.push('<div class="SWW_CSS_GS_DIV_WEBTAB"><ul>' + sGroupSumAll + aGroupHtml.join("") + '</ul></div>');
             }
 
-            aHtml.push('<div class="SWW_CSS_GS_DIV_SHOWINFO">' + obj.HtmlString);
+
+
+            aHtml.push('<div class="SWW_CSS_GS_DIV_SHOWINFO"><div class="SWW_CSS_GS_DIV_MAIN">' + obj.HtmlString + '</div>');
 
             //开始底部导航
             if (req.ShowColumn)
@@ -344,6 +346,35 @@ if (SWW && !SWW.GS)
                 }
                 );
             }
+
+
+            //开始自适应宽度
+            var iSumTitle = 0;
+
+            for (var i = 0, j = req.ShowColumn.length; i < j; i++)
+            {
+                if (req.ShowColumn[i].ShowDisplay == 'd')
+                    iSumTitle += req.ShowColumn[i].HeaderText.length;
+            }
+
+
+
+            var iDivWidth = $('#SWJGSF_Div_' + req.ClientId).width();
+
+            if (iSumTitle && iDivWidth)
+            {
+
+                if (Math.floor(iDivWidth / 18) < iSumTitle)
+                {
+
+                    var father = $('#GS_table_' + req.ClientId).parent();
+                    father.addClass('SWW_CSS_GS_DIV_MAIN_Scroll');
+                    father.css('width', iDivWidth - 20);
+                    $('#GS_table_' + req.ClientId).width(iSumTitle * 16);
+                }
+            }
+
+
 
 
 

@@ -605,7 +605,7 @@ namespace SrnprWeb.WebProcess
 
 
 
-                    sb.Append("<div class=\"SWW_CSS_GS_DIV_MAIN\"><table id=\"GS_table_" + request.ClientId + "\" class=\"SWW_CSS_GS_TABLE_SHOW\">");
+                    sb.Append("<table id=\"GS_table_" + request.ClientId + "\" class=\"SWW_CSS_GS_TABLE_SHOW\">");
 
 
 
@@ -768,7 +768,7 @@ namespace SrnprWeb.WebProcess
 
                     }
 
-                    sb.Append("</table></div>");
+                    sb.Append("</table>");
 
 
                     response.HtmlString = sb.ToString();
@@ -792,7 +792,7 @@ namespace SrnprWeb.WebProcess
                 else if (request.ProcessType == "demo")
                 {
                     StringBuilder sb = new StringBuilder();
-                    sb.Append("<div class=\"SWW_CSS_GS_DIV_MAIN\"><table id=\"GS_table_" + request.ClientId + "\" cellspacing=\"1\" cellpadding=\"0\">");
+                    sb.Append("<table id=\"GS_table_" + request.ClientId + "\" cellspacing=\"1\" cellpadding=\"0\">");
 
                     List<string> lTd = new List<string>();
 
@@ -817,7 +817,7 @@ namespace SrnprWeb.WebProcess
                     }
 
 
-                    sb.Append("</table></div>");
+                    sb.Append("</table>");
 
 
                     response.HtmlString = sb.ToString();

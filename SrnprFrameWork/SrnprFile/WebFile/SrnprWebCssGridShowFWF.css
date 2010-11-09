@@ -78,10 +78,20 @@
 {
     clear:both;
     width:100%;
-    overflow:scroll;
-     overflow-x:scroll;
-     overflow-y:hidden;
-   
+    
+}
+
+.SWW_CSS_GS_DIV_MAIN_Scroll
+{
+    overflow-x:scroll;
+    scrollbar-shadow-color: #FFFFFF; 
+    scrollbar-highlight-color: #FFFFFF;
+     scrollbar-arrow-color: #006699;
+      scrollbar-face-color: #cfe5f8;
+      scrollbar-track-color: #FFFFFF; 
+      scrollbar-3dlight-color: #006699;
+       scrollbar-darkshadow-color: #006699;
+    
 }
 
 
@@ -96,9 +106,7 @@
     border-left:solid 1px #cfe5f8;
     border-collapse:collapse;
    
-   
-   
-    
+
     
 }
 .SWW_CSS_GS_DIV_MAIN .SWW_CSS_GS_TABLE_SHOW tr
@@ -161,6 +169,8 @@
     background-color:#e8f1f8;
    
 }
+
+
 
 
 .SWW_CSS_GS_DIV_MAIN .SWW_CSS_GS_TABLE_SHOW .SWW_CSS_GS_TABLE_TD_SPAN_Extend div

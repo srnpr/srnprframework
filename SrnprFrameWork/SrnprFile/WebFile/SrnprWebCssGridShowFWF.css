@@ -67,6 +67,7 @@
      border:solid 1px #99cccc;
      padding:5px;
      background-color:#fff;
+    
    
 }
 
@@ -77,23 +78,30 @@
 {
     clear:both;
     width:100%;
-    overflow:auto;
+    overflow:scroll;
+     overflow-x:scroll;
+     overflow-y:hidden;
+   
 }
 
 
 
 
 
-.SWW_CSS_GS_DIV_MAIN table
+.SWW_CSS_GS_DIV_MAIN .SWW_CSS_GS_TABLE_SHOW
 {
     
-    width:100%;
+     width:100%;
     border-top:solid 1px #cfe5f8;
     border-left:solid 1px #cfe5f8;
     border-collapse:collapse;
+   
+   
+   
+    
     
 }
-.SWW_CSS_GS_DIV_MAIN table tr
+.SWW_CSS_GS_DIV_MAIN .SWW_CSS_GS_TABLE_SHOW tr
 {
     padding:3px 5px 3px 0px;
      background-color:#fff;
@@ -105,13 +113,13 @@
 }
 
 
-.SWW_CSS_GS_DIV_MAIN table .SWW_CSS_GS_TR_1 
+.SWW_CSS_GS_DIV_MAIN .SWW_CSS_GS_TABLE_SHOW .SWW_CSS_GS_TR_1 
 {
     background-color:#f5fbfe;
 }
 
 
-.SWW_CSS_GS_DIV_MAIN table tr th
+.SWW_CSS_GS_DIV_MAIN .SWW_CSS_GS_TABLE_SHOW tr th
 {
     height:23px;
     line-height:23px;
@@ -125,17 +133,17 @@
     border-right:solid 1px #cfe5f8;
     border-bottom:solid 1px #cfe5f8;
 }
-.SWW_CSS_GS_DIV_MAIN table tr th a
+.SWW_CSS_GS_DIV_MAIN .SWW_CSS_GS_TABLE_SHOW tr th a
 {
     color:#006699;
 }
-.SWW_CSS_GS_DIV_MAIN table tr th a:hover
+.SWW_CSS_GS_DIV_MAIN .SWW_CSS_GS_TABLE_SHOW tr th a:hover
 {
     color:#990000;
 }
 
 
-.SWW_CSS_GS_DIV_MAIN table tr td
+.SWW_CSS_GS_DIV_MAIN .SWW_CSS_GS_TABLE_SHOW tr td
 {
     height:22px;
     line-height:22px;
@@ -148,10 +156,24 @@
     border-bottom:solid 1px #cfe5f8;
 }
 
-.SWW_CSS_GS_DIV_MAIN table .SWW_CSS_GS_TABLE_TR_HOVER
+.SWW_CSS_GS_DIV_MAIN .SWW_CSS_GS_TABLE_SHOW .SWW_CSS_GS_TABLE_TR_HOVER
 {
     background-color:#e8f1f8;
    
+}
+
+
+.SWW_CSS_GS_DIV_MAIN .SWW_CSS_GS_TABLE_SHOW .SWW_CSS_GS_TABLE_TD_SPAN_Extend div
+{
+    background-color:#fff;
+    color:#1b5fa8;
+    font-size:11px;
+    margin:4px 0px 0px 2px;
+    width:10px;
+    height:10px;
+    line-height:10px;
+    border:solid 1px #1b5fa8;
+    float:left;
 }
 
 

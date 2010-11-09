@@ -5,8 +5,8 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MasterPage_Content" runat="server">
 
-<sw:GridShowWWW ID="GSShow" runat="server" XmlConfigName="test.citysee" />
 
+<sw:GridShowWWW ID="GSShow" runat="server" XmlConfigName="test.citysee" />
 
 
 <script type="text/javascript">

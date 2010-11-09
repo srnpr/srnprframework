@@ -569,10 +569,9 @@ namespace SrnprWeb.WebProcess
 
                     foreach (var t in gsw.ColumnList)
                     {
-                        if (t.ShowDisplay != "h")
-                        {
+                       
                             request.ShowColumn.Add(new GridShowColumnBaseWWE() { Guid = t.Guid, HeaderText = t.HeaderText, OrderType = t.OrderType, ShowDisplay = t.ShowDisplay });
-                        }
+                        
                     }
                 }
 
@@ -606,7 +605,7 @@ namespace SrnprWeb.WebProcess
 
 
 
-                    sb.Append("<div class=\"SWW_CSS_GS_DIV_MAIN\"><table id=\"GS_table_" + request.ClientId + "\">");
+                    sb.Append("<div class=\"SWW_CSS_GS_DIV_MAIN\"><table id=\"GS_table_" + request.ClientId + "\" class=\"SWW_CSS_GS_TABLE_SHOW\">");
 
 
 
@@ -720,7 +719,7 @@ namespace SrnprWeb.WebProcess
                             {
 
 
-                                sb.Append("<td " + (dShow[gsw.ColumnList[i].Guid] == "d" ? "" : "style=\"display:none;\"") + ">");
+                                sb.Append("<td " + (dShow[gsw.ColumnList[n].Guid] == "d" ? "" : "style=\"display:none;\"") + ">");
 
                                     if (!string.IsNullOrEmpty(gsw.ColumnList[n].ColumnData))
                                     {

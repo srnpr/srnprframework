@@ -323,7 +323,7 @@ if (SWW && !SWW.GS)
             SWW.J("#SWJGSF_Div_" + req.ClientId).html('<div class="SWW_CSS_GS_DIV_ALL">' + aHtml.join('') + '</div>');
 
 
-            SWW.J("#jsonshow").text(o);
+            //SWW.J("#jsonshow").text(o);
 
 
             if (so.FlagIndexNumber)
@@ -499,7 +499,7 @@ if (SWW && !SWW.GS)
 
 
 
-            SWW.J('#' + c).children().eq(0).children().eq(0).children().each(function (e) { aTitle.push(SWW.F.STR.Trim(SWW.J(this).text())); });
+            SWW.J('#' + c).children().eq(0).children().eq(0).children().each(function (e) { aTitle.push(SWW.F.STR.Trim(SWW.J(this).text().replace('↑', '').replace('↓', ''))); });
 
 
 
@@ -541,15 +541,10 @@ if (SWW && !SWW.GS)
             ///	<summary>
             ///  绑定列扩展内容事件
             ///	</summary>
-            ///	<param name="oRow" type="obj">
-            ///		绑定扩展的列对象
-            ///	</param>
-            ///	<param name="f" type="fun">
-            ///		点击时执行的函数
-            ///	</param>
-            ///	<param name="" type="obj">
-            ///		点击时执行的函数
-            ///	</param>
+
+
+
+
 
 
             if (oRow.RowIndex != 0)
@@ -570,6 +565,8 @@ if (SWW && !SWW.GS)
                 if (!onTarget)
                 {
                     onTarget = oRow.Row;
+
+                    onTarget.children().eq(0).prepend('<span class="SWW_CSS_GS_TABLE_TD_SPAN_Extend"><div id="swwgs_extend_Flag_' + oRow.Guid + '">+</div></span>');
                 }
                 else
                 {
@@ -591,7 +588,7 @@ if (SWW && !SWW.GS)
 
                 this.Obj_Extend[oRow.BaseGuid][oRow.Guid].ExtendFunc = f;
 
-                
+
             }
 
         },
@@ -608,11 +605,11 @@ if (SWW && !SWW.GS)
         ExtendClickEvent: function ()
         {
 
-        
+
 
             var iIndex = SWW.J(this).attr('swwgs_extend_rowindex');
             var BaseGuid = SWW.J(this).attr('swwgs_extend_baseguid');
-           
+
             if (!SWW.GS.Obj_Extend[BaseGuid][iIndex].show)
             {
                 SWW.GS.Obj_Extend[BaseGuid][iIndex].show = 1;
@@ -626,6 +623,8 @@ if (SWW && !SWW.GS)
 
                 SWW.GS.Obj_Extend[BaseGuid][iIndex].ExtendFunc(SWW.GS.Obj_Extend[BaseGuid][iIndex]);
 
+                if (SWW.J('#swwgs_extend_Flag_' + iIndex)) { SWW.J('#swwgs_extend_Flag_' + iIndex).html('-') };
+
             }
             else if (SWW.GS.Obj_Extend[BaseGuid][iIndex].show == '1')
             {
@@ -633,18 +632,19 @@ if (SWW && !SWW.GS)
                 //tr.next().css("display", 'none');
 
                 SWW.J('#' + iIndex).css('display', 'none');
-
+                if (SWW.J('#swwgs_extend_Flag_' + iIndex)) { SWW.J('#swwgs_extend_Flag_' + iIndex).html('+') };
             }
             else
             {
                 SWW.GS.Obj_Extend[BaseGuid][iIndex].show = 1;
                 SWW.J('#' + iIndex).css('display', '');
+                if (SWW.J('#swwgs_extend_Flag_' + iIndex)) { SWW.J('#swwgs_extend_Flag_' + iIndex).html('-') };
             }
 
         },
 
 
-        OnQueryBefore:function(id,f)
+        OnQueryBefore: function (id, f)
         {
 
             SWW.A("GS", "BeforeQuery", id, f);
@@ -739,9 +739,9 @@ if (SWW && !SWW.GS)
             SWW.GS.Obj[id].PageIndex = 1;
             SWW.GS.Obj[id].RowsCount = -1;
 
-           
+
             //执行扩展函数
-            SWW.F.SYS.ExecAF({ f: 'BeforeQuery', w: 'GS', d: SWW.GS.Obj[id].Id, e:  SWW.GS.Obj[id] });
+            SWW.F.SYS.ExecAF({ f: 'BeforeQuery', w: 'GS', d: SWW.GS.Obj[id].Id, e: SWW.GS.Obj[id] });
 
             SWW.GS.Ajax(id);
 

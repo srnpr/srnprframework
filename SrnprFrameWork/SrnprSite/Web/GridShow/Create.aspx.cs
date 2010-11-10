@@ -36,23 +36,15 @@ namespace SrnprSite.Web.GridShow
 
             if (!IsPostBack)
             {
-
-
-
-
-
                 if (!string.IsNullOrEmpty(Request["id"]))
                 {
                     TBId.Enabled = false;
-
                     var x = SrnprWeb.WebProcess.GridShowWWP.GetEntityById(Request["id"].Trim());
-
                     TBTableName.Text = x.TableInfo.TableName;
                     TBDataBaseId.Text = x.TableInfo.DataBaseId;
                     TBId.Text = x.Id.Trim();
                     tbDescription.Text = x.Description.Trim();
                     tbGroupColumn.Text = x.TableInfo.GroupColumn;
-
                     GSEntity = x;
                     BindDataColumn();
                     BindParams();
@@ -80,11 +72,11 @@ namespace SrnprSite.Web.GridShow
                 {
                     case "d_d":
                         GSEntity.ColumnList.Remove(GSEntity.ColumnList.SingleOrDefault(t => t.Guid == sId));
-                        BindDataColumn();
+                        Save();
                         break;
                     case "d_p":
                         GSEntity.ParamList.Remove(GSEntity.ParamList.SingleOrDefault(t => t.Guid == sId));
-                        BindParams();
+                        Save();
                         break;
 
 
@@ -123,6 +115,14 @@ namespace SrnprSite.Web.GridShow
         {
 
 
+            Save();
+            
+        }
+
+
+
+        protected void Save()
+        {
             if (TBId != null)
             {
                 var tList = SrnprWeb.WebProcess.GridShowWWP.GetList();
@@ -164,7 +164,7 @@ namespace SrnprSite.Web.GridShow
 
                     SrnprWeb.WebProcess.GridShowWWP.SaveList(tList);
 
-                    CPageMessage("保存成功！");
+                    CPageMessage("操作成功！");
 
                 }
                 else
@@ -180,8 +180,11 @@ namespace SrnprSite.Web.GridShow
                 CPageMessage("编号不能空！");
             }
 
+            BindDataColumn();
+            BindParams();
 
         }
+
 
        
 
@@ -192,16 +195,10 @@ namespace SrnprSite.Web.GridShow
             gsp.ParamName = tbParamName.Text.Trim();
             gsp.ParamOperator = ddlParamOperator.SelectedValue.Trim();
             gsp.ParamQueryType = ddlParamQueryType.SelectedValue.Trim();
-
-
             gsp.Guid = Guid.NewGuid().ToString();
-
             GSEntity.ParamList.Add(gsp);
-
-
             tbColumnField.Text = tbParamName.Text = "";
-
-            BindParams();
+            Save();
 
         }
 

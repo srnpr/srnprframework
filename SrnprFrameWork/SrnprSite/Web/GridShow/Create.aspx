@@ -53,7 +53,9 @@
             </table>
         </div>
          <br />
-        
+        <div>
+        <input type="button" value="添加字段" onclick="ChangeColumn()" />
+        </div>
         <div class="srdmaintable">
             <table cellpadding="0" cellspacing="1">
             <tr>
@@ -68,7 +70,7 @@
                 <th width="60px">
                     显示内容
                 </th>
-                <th width="60px">
+                <th width="80px">
                     显示方式
                 </th>
                 <th width="60px">
@@ -217,13 +219,19 @@
 
         function ChangeColumn(guid)
         {
-            var o=SWW.W.Dialog.Init.Temp;
+           
 
             var t = document.getElementById('<%=hfGuid.ClientID %>').value;
 
 
-            SWW.W.Dialog.Open({url:'DialogColumn.aspx?t='+t+'&c='+guid});
+            SWW.W.Dialog.Open({url:'DialogColumn.aspx?t='+t+'&c='+guid,title:(guid?'修改字段':'添加字段')});
         }
+
+        function SaveSubmit()
+        {
+            document.getElementById("<%=btnSave.ClientID %>").click();
+        }
+
     
     </script>
 </asp:Content>

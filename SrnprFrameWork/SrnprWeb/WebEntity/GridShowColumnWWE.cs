@@ -54,6 +54,12 @@ namespace SrnprWeb.WebEntity
 
 
 
+        /// <summary>
+        /// Description: 对齐方式（d:默认,l:左对齐,r:右对齐,c:居中）
+        /// Author:Liudpc
+        /// Create Date: 2010-8-4 10:43:15
+        /// </summary>
+        public string AlignType { get; set; }
       
 
 

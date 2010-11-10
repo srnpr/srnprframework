@@ -725,13 +725,19 @@ if (SWW && !SWW.GS)
                 }
             }
 
+            if (id && SWW.GS.Obj[id])
+            {
 
-            this.SetQueryParam(SWW.GS.Obj[id], sid);
+                this.SetQueryParam(SWW.GS.Obj[id], sid);
 
-            SWW.GS.Obj[id].PageIndex = 1;
-            SWW.GS.Obj[id].RowsCount = -1;
-            SWW.GS.Ajax(id);
-
+                SWW.GS.Obj[id].PageIndex = 1;
+                SWW.GS.Obj[id].RowsCount = -1;
+                SWW.GS.Ajax(id);
+            }
+            else
+            {
+               setTimeout(SWW.GS.Query(id, sid),1000);
+            }
 
         }
         ,

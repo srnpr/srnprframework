@@ -689,7 +689,7 @@ namespace SrnprWeb.WebProcess
 
 
 
-                                sb.Append("<th style=\"" + (dShow[gsw.ColumnList[i].Guid] == "d" ? "" : "display:none;")  + "\" class=\"SWW_CSS_GS_TABLE_" + sOrderType + "\" " + (string.IsNullOrEmpty(gsw.ColumnList[i].Width) ? "" : gsw.ColumnList[i].Width) + " >" + sSortVisgn + "</th>");
+                                sb.Append("<th class=\"SWW_CSS_GS_TABLE_" + sOrderType + (dShow[gsw.ColumnList[i].Guid] == "d" ? "" : " SWW_CSS_GS_DisplayNone") + "\" " + (string.IsNullOrEmpty(gsw.ColumnList[i].Width) ? "" : gsw.ColumnList[i].Width) + " >" + sSortVisgn + "</th>");
                             
 
                         }
@@ -719,7 +719,7 @@ namespace SrnprWeb.WebProcess
                             {
 
 
-                                sb.Append("<td style=\"" + (dShow[gsw.ColumnList[n].Guid] == "d" ? "" : "display:none;") + gsw.ColumnList[n].Style+ "\">");
+                                sb.Append("<td " + (dShow[gsw.ColumnList[n].Guid] == "d" ? "" : " class=\"SWW_CSS_GS_DisplayNone\" ") + (gsw.ColumnList[n].Style == "" ? "" : "style=\"" + gsw.ColumnList[n].Style + "\"") + ">");
 
                                     if (!string.IsNullOrEmpty(gsw.ColumnList[n].ColumnData))
                                     {

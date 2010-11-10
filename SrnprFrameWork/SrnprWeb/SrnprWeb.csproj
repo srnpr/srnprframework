@@ -95,12 +95,14 @@
     <Compile Include="CommonFunction\JSHelperWCF.cs" />
     <Compile Include="CommonFunction\JsonHelperWCF.cs" />
     <Compile Include="EnumType\WidgetEmumWET.cs" />
+    <Compile Include="EnumType\WidgetGridShowTypeWET.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebConfig\ConfigEntityWWC.cs" />
     <Compile Include="WebConfig\ConfigWWC.cs" />
     <Compile Include="WebConfig\TempConfigWWC.cs" />
     <Compile Include="WebEntity\DragFieldWWE.cs" />
     <Compile Include="WebEntity\FileUploadInfoWWE.cs" />
+    <Compile Include="WebEntity\GridShowColumnDictWWE.cs" />
     <Compile Include="WebEntity\GridShowColumnWWE.cs" />
     <Compile Include="WebEntity\GridShowListWWE.cs" />
     <Compile Include="WebEntity\GridShowColumnBaseWWE.cs" />

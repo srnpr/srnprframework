@@ -27,11 +27,14 @@ namespace SrnprWeb.CommonFunction
         public static Dictionary<string, string> GetDictByStyleString(string sStyle)
         {
             Dictionary<string, string> dict = new Dictionary<string, string>();
-            string[] str = sStyle.Trim().Split(';');
-            foreach (string s in str)
+            if (!string.IsNullOrEmpty(sStyle))
             {
-                string[] strStyle = s.Split(':');
-                dict[strStyle[0]] = strStyle[1];
+                string[] str = sStyle.Trim().Split(';');
+                foreach (string s in str)
+                {
+                    string[] strStyle = s.Split(':');
+                    dict[strStyle[0]] = strStyle[1];
+                }
             }
             return dict;
         }
@@ -65,12 +68,12 @@ namespace SrnprWeb.CommonFunction
                 {
                     if (sd.Item != null)
                     {
-                        listStyle.Add(string.Format(sFormat,sd.StyleName,sd.Item[kvp.Value]));
+                        listStyle.Add(string.Format(sFormat,sd.StyleDescription,sd.Item[kvp.Value]));
 
                     }
                     else
                     {
-                        listStyle.Add(string.Format(sFormat, sd.StyleName, kvp.Value));
+                        listStyle.Add(string.Format(sFormat, sd.StyleDescription, kvp.Value));
                     }
                 }
             }

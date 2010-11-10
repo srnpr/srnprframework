@@ -77,10 +77,10 @@
                     排序方式
                 </th>
                 <th width="60px">
-                    宽度
+                    附加内容
                 </th>
                  <th width="60px">
-                    对齐方式
+                    样式描述
                 </th>
                 <th width="60px">
                     操作
@@ -117,7 +117,7 @@
                         </td>
                          <td>
                         
-                        <%#GetStyleString(Eval("AlignType"))%>
+                        <%#GetStyleString(Eval("Style"))%>
                         </td>
                         <td>
                         <a href="javascript:ChangeColumn('<%#Eval("Guid") %>')">修改</a>

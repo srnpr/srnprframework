@@ -45,7 +45,7 @@ namespace SrnprSite.Web.GridShow
                 BindDDL(ddlColumnType, SrnprWeb.WebEntity.GridShowColumnDictWWE.ColumnType);
                 BindDDL(ddlOrderType, SrnprWeb.WebEntity.GridShowColumnDictWWE.OrderType);
                 BindDDL(ddlShowDisplay, SrnprWeb.WebEntity.GridShowColumnDictWWE.ShowDisplay);
-                BindStyle(ddlStyle_AlignType, "text-align");
+                BindStyle(ddlStyle_TextAlign, "text-align");
                 
                 if (!string.IsNullOrEmpty(sColumnGuid))
                 {

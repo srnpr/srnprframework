@@ -94,6 +94,7 @@
     <Compile Include="CommonFunction\GetWebServicesWCF.cs" />
     <Compile Include="CommonFunction\JSHelperWCF.cs" />
     <Compile Include="CommonFunction\JsonHelperWCF.cs" />
+    <Compile Include="CommonFunction\StyleHelperWCF.cs" />
     <Compile Include="EnumType\WidgetEmumWET.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebConfig\ConfigEntityWWC.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="WebEntity\GridShowWWE.cs" />
     <Compile Include="WebEntity\ItemBaseWWE.cs" />
     <Compile Include="WebEntity\ItemKvdWWE.cs" />
+    <Compile Include="WebEntity\StyleDescriptionWWE.cs" />
     <Compile Include="WebEntity\WidgetShowBaseWWE.cs" />
     <Compile Include="WebEntity\ListShowRequestWWE.cs" />
     <Compile Include="WebEntity\ListShowResponseWWE.cs" />

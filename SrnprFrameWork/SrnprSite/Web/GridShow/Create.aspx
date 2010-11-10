@@ -79,6 +79,9 @@
                 <th width="60px">
                     宽度
                 </th>
+                 <th width="60px">
+                    对齐方式
+                </th>
                 <th width="60px">
                     操作
                 </th>
@@ -111,6 +114,10 @@
                         </td>
                         <td>
                         <%#Eval("Width")%>
+                        </td>
+                         <td>
+                        
+                        <%#GetStyleString(Eval("AlignType"))%>
                         </td>
                         <td>
                         <a href="javascript:ChangeColumn('<%#Eval("Guid") %>')">修改</a>
@@ -224,7 +231,7 @@
             var t = document.getElementById('<%=hfGuid.ClientID %>').value;
 
 
-            SWW.W.Dialog.Open({url:'DialogColumn.aspx?t='+t+'&c='+guid,title:(guid?'修改字段':'添加字段')});
+            SWW.W.Dialog.Open({url:'DialogColumn.aspx?t='+t+(guid? '&c='+guid:''),title:(guid?'修改字段':'添加字段')});
         }
 
         function SaveSubmit()

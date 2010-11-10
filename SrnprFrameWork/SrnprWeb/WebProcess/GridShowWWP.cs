@@ -642,55 +642,66 @@ namespace SrnprWeb.WebProcess
                         for (int i = 0; i < iColumnCount; i++)
                         {
 
+
+                            bool bIsOrder = string.IsNullOrEmpty(ReckeckOrderColumn(gsw.ColumnList[i].ColumnData));
+
+                            var vSort = request.ShowColumn.SingleOrDefault(t => t.Guid == gsw.ColumnList[i].Guid);
+
+
+
+                            string sOrderType = string.IsNullOrEmpty(vSort.OrderType) ? "d" : vSort.OrderType; ;
+
+                            if (string.IsNullOrEmpty(ReckeckOrderColumn(gsw.ColumnList[i].ColumnData)))
+                            {
+                                sOrderType = "n";
+                            }
+
+
+
+
+
+
+                            string sSortVisgn = "";
+
+
+
+                            string sSortFunction = WebProcess.WidgetProcessWWP.SwwJsBaseName("GS.Sort", true, request.Guid, vSort.Guid);
+
+                            switch (sOrderType)
+                            {
+                                case "d":
+                                    sSortVisgn = " <a href=\"javascript:" + sSortFunction + "\"> " + vSort.HeaderText + "</a>";
+                                    break;
+                                case "a":
+                                    sSortVisgn = " <a href=\"javascript:" + sSortFunction + "\"> " + vSort.HeaderText + "</a>↑";
+                                    break;
+                                case "e":
+                                    sSortVisgn = " <a href=\"javascript:" + sSortFunction + "\"> " + vSort.HeaderText + "</a>↓";
+                                    break;
+                                case "n":
+                                default:
+                                    sSortVisgn = vSort.HeaderText;
+                                    break;
+                            }
+
+
+
+
+
+
+                            sb.Append("<th style=\"");
+
+                            if (dShow[gsw.ColumnList[i].Guid] == "d")
+                            {
+                                sb.Append("display:none;");
+                            }
+
                             
-                                bool bIsOrder = string.IsNullOrEmpty(ReckeckOrderColumn(gsw.ColumnList[i].ColumnData));
-
-                                var vSort = request.ShowColumn.SingleOrDefault(t => t.Guid == gsw.ColumnList[i].Guid);
 
 
 
-                                string sOrderType = string.IsNullOrEmpty(vSort.OrderType) ? "d" : vSort.OrderType; ;
+                            sb.Append("\" class=\"SWW_CSS_GS_TABLE_" + sOrderType + "\" " + (string.IsNullOrEmpty(gsw.ColumnList[i].Width) ? "" : gsw.ColumnList[i].Width) + " >" + sSortVisgn + "</th>");
 
-                                if (string.IsNullOrEmpty(ReckeckOrderColumn(gsw.ColumnList[i].ColumnData)))
-                                {
-                                    sOrderType = "n";
-                                }
-
-
-
-
-
-
-                                string sSortVisgn = "";
-
-
-
-                                string sSortFunction = WebProcess.WidgetProcessWWP.SwwJsBaseName("GS.Sort", true, request.Guid, vSort.Guid);
-
-                                switch (sOrderType)
-                                {
-                                    case "d":
-                                        sSortVisgn = " <a href=\"javascript:" + sSortFunction + "\"> " + vSort.HeaderText + "</a>";
-                                        break;
-                                    case "a":
-                                        sSortVisgn = " <a href=\"javascript:" + sSortFunction + "\"> " + vSort.HeaderText + "</a>↑";
-                                        break;
-                                    case "e":
-                                        sSortVisgn = " <a href=\"javascript:" + sSortFunction + "\"> " + vSort.HeaderText + "</a>↓";
-                                        break;
-                                    case "n":
-                                    default:
-                                        sSortVisgn = vSort.HeaderText;
-                                        break;
-                                }
-
-
-
-
-
-
-                            sb.Append("<th " + (dShow[gsw.ColumnList[i].Guid]=="d"?"":"style=\"display:none;\"") + " class=\"SWW_CSS_GS_TABLE_" + sOrderType + "\" " + (string.IsNullOrEmpty(gsw.ColumnList[i].Width) ? "" : gsw.ColumnList[i].Width) + " >" + sSortVisgn + "</th>");
-                            
 
                         }
                         sb.Append("</tr>");

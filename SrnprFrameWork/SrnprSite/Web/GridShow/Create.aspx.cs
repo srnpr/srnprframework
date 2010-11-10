@@ -45,7 +45,9 @@ namespace SrnprSite.Web.GridShow
                     TBId.Text = x.Id.Trim();
                     tbDescription.Text = x.Description.Trim();
                     tbGroupColumn.Text = x.TableInfo.GroupColumn;
-                    GSEntity = x;
+
+
+                        GSEntity = x;
                     BindDataColumn();
                     BindParams();
 
@@ -217,5 +219,20 @@ namespace SrnprSite.Web.GridShow
                 return ddl.Items[0].Text.Trim();
             }
         }
+
+
+        public string GetStyleString(object o)
+        {
+            string sReturn = "";
+            if (o != null&&!string.IsNullOrEmpty(o.ToString().Trim()))
+            {
+                sReturn = SrnprWeb.CommonFunction.StyleHelperWCF.GetDescriptByStleString(o.ToString().Trim(), "{0}:{1}", "<br/>");
+            }
+
+            return sReturn;
+
+        }
+
+
     }
 }

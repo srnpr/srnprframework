@@ -215,8 +215,11 @@ if (SWW && !SWW.GS)
             //开始尝试初始化设置
             var so = SWW.GS.SetInit(id);
 
+
             var aHtml = [];
 
+
+            //开始加载分组统计信息
             if (req.GroupKvd && so.FlagGroup)
             {
                 var aGroupHtml = [];
@@ -237,8 +240,37 @@ if (SWW && !SWW.GS)
             }
 
 
+            aHtml.push('<div class="SWW_CSS_GS_DIV_ALL"><div class="SWW_CSS_GS_DIV_SHOWINFO">');
 
-            aHtml.push('<div class="SWW_CSS_GS_DIV_SHOWINFO"><div class="SWW_CSS_GS_DIV_MAIN">' + obj.HtmlString + '</div>');
+            //开始加载显示的Table内容
+            if (true)
+            {
+                var sShowDivBox = '<div class="SWW_CSS_GS_DIV_MAIN"><table id="GS_table_' + req.ClientId + '" class="SWW_CSS_GS_TABLE_SHOW">';
+
+                //开始自适应宽度
+
+                var iAutoWidth_SumTitle = 0;
+                for (var i = 0, j = req.ShowColumn.length; i < j; i++)
+                {
+                    if (req.ShowColumn[i].ShowDisplay == 'd')
+                        iAutoWidth_SumTitle += req.ShowColumn[i].HeaderText.length;
+                }
+                var iAutoWidth_DivWidth = $('#SWJGSF_Div_' + req.ClientId).width();
+
+                if (iAutoWidth_SumTitle && iAutoWidth_DivWidth)
+                {
+                    if (Math.floor(iAutoWidth_DivWidth / 18) < iAutoWidth_SumTitle)
+                    {
+                        sShowDivBox = sShowDivBox.replace('<div class="', '<div style="width:' + (iAutoWidth_DivWidth - 14) + 'px" class="SWW_CSS_GS_DIV_MAIN_Scroll ').replace('<table ', '<table style="width:' + (iAutoWidth_SumTitle * 16) + 'px" ');
+                    }
+                }
+
+
+                aHtml.push(sShowDivBox);
+                aHtml.push(obj.HtmlString);
+                aHtml.push('</table></div>');
+            }
+
 
             //开始底部导航
             if (req.ShowColumn)
@@ -318,16 +350,17 @@ if (SWW && !SWW.GS)
 
 
 
-            aHtml.push('</div>');
+            aHtml.push('</div></div>');
 
 
 
-            SWW.J("#SWJGSF_Div_" + req.ClientId).html('<div class="SWW_CSS_GS_DIV_ALL">' + aHtml.join('') + '</div>');
+            SWW.J("#SWJGSF_Div_" + req.ClientId).html(aHtml.join(''));
 
 
             //SWW.J("#jsonshow").text(o);
 
 
+            //开始添加数字序列
             if (so.FlagIndexNumber)
             {
                 SWW.J('#GS_table_' + req.ClientId + ' tbody').children().each(
@@ -348,37 +381,6 @@ if (SWW && !SWW.GS)
             }
 
 
-            //开始自适应宽度
-            var iSumTitle = 0;
-
-            for (var i = 0, j = req.ShowColumn.length; i < j; i++)
-            {
-                if (req.ShowColumn[i].ShowDisplay == 'd')
-                    iSumTitle += req.ShowColumn[i].HeaderText.length;
-            }
-
-
-
-            var iDivWidth = $('#SWJGSF_Div_' + req.ClientId).width();
-
-            if (iSumTitle && iDivWidth)
-            {
-
-                if (Math.floor(iDivWidth / 18) < iSumTitle)
-                {
-
-                    var father = $('#GS_table_' + req.ClientId).parent();
-                    father.addClass('SWW_CSS_GS_DIV_MAIN_Scroll');
-                    father.css('width', iDivWidth - 20);
-                    $('#GS_table_' + req.ClientId).width(iSumTitle * 16);
-                }
-            }
-
-
-
-
-
-            //alert(obj.ListString[0].length);
         }
 
         ,
@@ -417,7 +419,7 @@ if (SWW && !SWW.GS)
 
             for (var i = 0, j = SWW.GS.Obj[id].ShowColumn.length; i < j; i++)
             {
-                if (SWW.GS.Obj[id].ShowColumn.ShowDisplay != 'n')
+                if (SWW.GS.Obj[id].ShowColumn.ShowDisplay != 'h')
                 {
                     aHtml.push("<li><input type=\"checkbox\" id=\"" + SWW.GS.Obj[id].ClientId + "_showcolumn_ckb_" + SWW.GS.Obj[id].ShowColumn[i].Guid + "\" " + (SWW.GS.Obj[id].ShowColumn[i].ShowDisplay == "n" ? "" : "checked=\"checked\"") + " />" + SWW.GS.Obj[id].ShowColumn[i].HeaderText + "</li>");
                 }
@@ -786,12 +788,12 @@ if (SWW && !SWW.GS)
 
 
 
-             oGS.QueryDict = t;
-             
+            oGS.QueryDict = t;
+
 
 
             //执行扩展函数
-             SWW.F.SYS.ExecAF({ f: 'BeforeQuery', w: 'GS', d: oGS.Id, e: oGS });
+            SWW.F.SYS.ExecAF({ f: 'BeforeQuery', w: 'GS', d: oGS.Id, e: oGS });
 
         },
 

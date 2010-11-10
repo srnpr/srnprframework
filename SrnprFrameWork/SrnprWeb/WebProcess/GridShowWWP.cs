@@ -605,7 +605,7 @@ namespace SrnprWeb.WebProcess
 
 
 
-                    sb.Append("<table id=\"GS_table_" + request.ClientId + "\" class=\"SWW_CSS_GS_TABLE_SHOW\">");
+                    sb.Append("");
 
 
 
@@ -817,7 +817,7 @@ namespace SrnprWeb.WebProcess
                     }
 
 
-                    sb.Append("</table>");
+                    sb.Append("");
 
 
                     response.HtmlString = sb.ToString();

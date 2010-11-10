@@ -256,6 +256,10 @@ if (SWW && !SWW.GS)
                         iAutoWidth_SumTitle += req.ShowColumn[i].HeaderText.length;
                 }
                 var iAutoWidth_DivWidth = $('#SWJGSF_Div_' + req.ClientId).width();
+                if (!iAutoWidth_DivWidth)
+                {
+                    iAutoWidth_DivWidth = $('document').width();
+                }
 
                 if (iAutoWidth_SumTitle && iAutoWidth_DivWidth)
                 {
@@ -736,7 +740,7 @@ if (SWW && !SWW.GS)
             }
             else
             {
-               setTimeout(SWW.GS.Query(id, sid),1000);
+                SWW.F.SYS.Alert(SWW.M.ME.Query);
             }
 
         }

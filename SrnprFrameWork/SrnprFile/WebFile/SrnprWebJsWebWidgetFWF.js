@@ -103,7 +103,8 @@ if (!window.SWW)
             },
             ME:
             {
-                Load: '正在加载中……'
+                Load: '正在加载中……',
+                Query:'【提示消息】：系统正在加载数据，请稍后点击该按钮！'
             }
 
         },
@@ -258,7 +259,7 @@ if (!window.SWW)
                    ///		是否显示 默认不显示 如果传true标记为显示
                    ///	</param>
 
-
+                   if(this.Get(s))
                    this.Get(s).style.display = (!bn ? 'none' : '');
 
 

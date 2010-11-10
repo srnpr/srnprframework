@@ -62,22 +62,22 @@
                 </th>
                 <th>
                     数据列
-                </th><th>
-                    数据显示类型
+                </th><th width="60px">
+                    显示类型
                 </th>
-                <th>
+                <th width="60px">
                     显示内容
                 </th>
-                <th>
+                <th width="60px">
                     显示方式
                 </th>
-                <th>
+                <th width="60px">
                     排序方式
                 </th>
-                <th>
+                <th width="60px">
                     宽度
                 </th>
-                <th>
+                <th width="60px">
                     操作
                 </th>
             </tr>
@@ -94,24 +94,24 @@
                         </td>
                         <td>
                         
-                        <%#GetTextByDDL(ddlColumnType,Eval("ColumnType"))%>
+                        <%# SrnprWeb.WebEntity.GridShowColumnDictWWE.ColumnType[Eval("ColumnType").ToString().Trim()]  %>
                         </td>
                         <td>
                         <%#Eval("ColumnShow")%>
                         </td>
                          <td>
                         
-                        <%#GetTextByDDL(ddlShowDisplay, Eval("ShowDisplay"))%>
+                        <%#SrnprWeb.WebEntity.GridShowColumnDictWWE.ShowDisplay[Eval("ShowDisplay").ToString().Trim()]%>
                         </td>
                         <td>
                         
-                        <%#GetTextByDDL(ddlOrderType, Eval("OrderType"))%>
+                        <%#SrnprWeb.WebEntity.GridShowColumnDictWWE.OrderType[Eval("OrderType").ToString().Trim()]%>
                         </td>
                         <td>
                         <%#Eval("Width")%>
                         </td>
                         <td>
-                        
+                        <a href="javascript:ChangeColumn('<%#Eval("Guid") %>')">修改</a>
                         <a href="javascript:SubmitCheck('d_d','<%#Eval("Guid") %>')">删除</a>
                         
                         </td>
@@ -120,48 +120,7 @@
                 <FooterTemplate>
                 </FooterTemplate>
             </asp:Repeater>
-            <tr>
-                <td>
-                    <asp:TextBox ID="TBHeaderText" runat="server"></asp:TextBox>
-                </td>
-                <td>
-                    <asp:TextBox ID="TBColumnData" runat="server"></asp:TextBox>
-                </td>
-                 <td>
-                    <asp:DropDownList ID="ddlColumnType" runat="server">
-                    <asp:ListItem Text="默认" Value="d"></asp:ListItem>
-                    <asp:ListItem Text="单选框" Value="r"></asp:ListItem>
-                    <asp:ListItem Text="复选框" Value="c"></asp:ListItem>
-                    <asp:ListItem Text="超级链接" Value="l"></asp:ListItem>
-                    <asp:ListItem Text="其他" Value="o"></asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-                <td>
-                    <asp:TextBox ID="tbColumnShow" runat="server"></asp:TextBox>
-                </td>
-                <td>
-                    <asp:DropDownList ID="ddlShowDisplay" runat="server">
-                    <asp:ListItem Text="默认" Value="d"></asp:ListItem>
-                    <asp:ListItem Text="不显示" Value="n"></asp:ListItem>
-                    <asp:ListItem Text="永久隐藏" Value="h"></asp:ListItem>
-                    <asp:ListItem Text="不显示但导出" Value="e"></asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-                <td>
-                    <asp:DropDownList ID="ddlOrderType" runat="server">
-                    <asp:ListItem Text="默认" Value="d"></asp:ListItem>
-                    <asp:ListItem Text="默认正序" Value="a"></asp:ListItem>
-                    <asp:ListItem Text="默认倒序" Value="e"></asp:ListItem>
-                    <asp:ListItem Text="不排序" Value="n"></asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-                 <td>
-                    <asp:TextBox ID="tbWidth" runat="server"></asp:TextBox>
-                </td>
-                <td>
-                    <asp:Button ID="btnAddDataColumn" runat="server" Text="添加" OnClick="btnAddDataColumn_Click" />
-                </td>
-            </tr>
+            
         </table>
         </div>
         <br />
@@ -254,6 +213,16 @@
             document.getElementById("submittype").value = t;
             document.getElementById("submitid").value = guid;
             document.getElementById("submitid").form.submit();
+        }
+
+        function ChangeColumn(guid)
+        {
+            var o=SWW.W.Dialog.Init.Temp;
+
+            var t = document.getElementById('<%=hfGuid.ClientID %>').value;
+
+
+            SWW.W.Dialog.Open({url:'DialogColumn.aspx?t='+t+'&c='+guid});
         }
     
     </script>

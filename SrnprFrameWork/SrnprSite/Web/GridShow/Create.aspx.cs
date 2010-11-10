@@ -116,27 +116,7 @@ namespace SrnprSite.Web.GridShow
         }
 
 
-        protected void btnAddDataColumn_Click(object sender, EventArgs e)
-        {
-            GridShowColumnWWE gsc = new GridShowColumnWWE();
-            gsc.HeaderText = TBHeaderText.Text.Trim();
-            gsc.ColumnData = TBColumnData.Text.Trim();
-            gsc.ColumnType = ddlColumnType.SelectedValue.Trim();
-            gsc.ColumnShow = tbColumnShow.Text.Trim();
-
-            gsc.ShowDisplay = ddlShowDisplay.SelectedValue.Trim();
-            gsc.OrderType = ddlOrderType.SelectedValue.Trim();
-            gsc.Width = tbWidth.Text.Trim();
-
-            gsc.Guid = Guid.NewGuid().ToString();
-
-            GSEntity.ColumnList.Add(gsc);
-
-            TBHeaderText.Text = "";
-            TBColumnData.Text = "";
-
-            BindDataColumn();
-        }
+        
 
 
         protected void btnSave_Click(object sender, EventArgs e)

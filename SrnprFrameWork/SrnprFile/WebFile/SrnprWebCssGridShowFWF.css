@@ -70,14 +70,9 @@
 
 .SWW_CSS_GS_DIV_SHOWINFO
 {
-   
-     
-     
      border-right:solid 1px #cfe5f8;
      border-top:solid 1px #cfe5f8;
      margin:5px;
-    
-   
 }
 
 
@@ -94,18 +89,13 @@
 {
      border-left:solid 1px #cfe5f8;
     overflow-x:scroll;
-    
-    
-    
-    scrollbar-shadow-color: #FFFFFF; 
+       scrollbar-shadow-color: #FFFFFF; 
     scrollbar-highlight-color: #FFFFFF;
      scrollbar-arrow-color: #006699;
       scrollbar-face-color: #cfe5f8;
       scrollbar-track-color: #FFFFFF; 
       scrollbar-3dlight-color: #006699;
-       scrollbar-darkshadow-color: #006699;
-    
-      
+       scrollbar-darkshadow-color: #006699;      
 }
 
 
@@ -115,13 +105,8 @@
 .SWW_CSS_GS_DIV_MAIN .SWW_CSS_GS_TABLE_SHOW
 {
     
-     width:100%;
-    
-    
-    border-collapse:collapse;
-   
-
-    
+     width:100%;    
+    border-collapse:collapse;    
 }
 .SWW_CSS_GS_DIV_MAIN .SWW_CSS_GS_TABLE_SHOW tr
 {
@@ -198,6 +183,27 @@
     line-height:10px;
     border:solid 1px #1b5fa8;
     float:left;
+}
+
+
+.SWW_CSS_GS_DIV_MAIN .SWW_CSS_GS_TABLE_SHOW .SWW_CSS_GS_TABLE_TD_EXTEND_Table
+{
+    width:97%;
+    margin:20px 1% 20px 1%;
+   border-collapse:collapse;    
+     border-top:solid 1px #1b5fa8;
+    border-right:solid 1px #1b5fa8;
+}
+.SWW_CSS_GS_DIV_MAIN .SWW_CSS_GS_TABLE_SHOW .SWW_CSS_GS_TABLE_TD_EXTEND_Table  td
+{
+    height:22px;
+    line-height:22px;   
+    word-break:break-all;
+    overflow:hidden;
+    text-indent:3px;
+    border-left:solid 1px #1b5fa8;
+    border-bottom:solid 1px #1b5fa8;
+    background-color:#cfe5f8;
 }
 
 

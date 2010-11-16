@@ -53,7 +53,7 @@
     height:30px;
     
     cursor:pointer;
-    background-image:url(http://f.xgou.com/AtGang/UI_C/images/close_widget.gif);
+    background-image:url("http://f.xgou.com/AtGang/UI_C/images/close_widget.gif");
     background-repeat:no-repeat;
     background-position:center center;
 }

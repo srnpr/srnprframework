@@ -7,7 +7,7 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace SrnprSite.Web.GridShow {
+namespace SrnprSite.Ashx {
     
     
     public partial class Excel {

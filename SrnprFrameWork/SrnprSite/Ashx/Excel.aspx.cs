@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Text;
 
-namespace SrnprSite.Web.GridShow
+namespace SrnprSite.Ashx
 {
     public partial class Excel : System.Web.UI.Page
     {

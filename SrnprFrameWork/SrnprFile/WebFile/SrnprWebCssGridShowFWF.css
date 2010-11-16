@@ -102,13 +102,13 @@
 
 
 
-.SWW_CSS_GS_DIV_MAIN .SWW_CSS_GS_TABLE_SHOW
+.SWW_CSS_GS_TABLE_SHOW
 {
     
      width:100%;    
     border-collapse:collapse;    
 }
-.SWW_CSS_GS_DIV_MAIN .SWW_CSS_GS_TABLE_SHOW tr
+ .SWW_CSS_GS_TABLE_SHOW tr
 {
     padding:3px 5px 3px 0px;
      background-color:#fff;
@@ -120,13 +120,13 @@
 }
 
 
-.SWW_CSS_GS_DIV_MAIN .SWW_CSS_GS_TABLE_SHOW .SWW_CSS_GS_TR_1 
+.SWW_CSS_GS_TABLE_SHOW .SWW_CSS_GS_TR_1 
 {
     background-color:#f5fbfe;
 }
 
 
-.SWW_CSS_GS_DIV_MAIN .SWW_CSS_GS_TABLE_SHOW tr th
+.SWW_CSS_GS_TABLE_SHOW tr th
 {
     height:23px;
     line-height:23px;
@@ -140,17 +140,17 @@
     border-left:solid 1px #cfe5f8;
     border-bottom:solid 1px #cfe5f8;
 }
-.SWW_CSS_GS_DIV_MAIN .SWW_CSS_GS_TABLE_SHOW tr th a
+.SWW_CSS_GS_TABLE_SHOW tr th a
 {
     color:#006699;
 }
-.SWW_CSS_GS_DIV_MAIN .SWW_CSS_GS_TABLE_SHOW tr th a:hover
+.SWW_CSS_GS_TABLE_SHOW tr th a:hover
 {
     color:#990000;
 }
 
 
-.SWW_CSS_GS_DIV_MAIN .SWW_CSS_GS_TABLE_SHOW tr td
+.SWW_CSS_GS_TABLE_SHOW tr td
 {
     height:22px;
     line-height:22px;
@@ -163,7 +163,7 @@
     border-bottom:solid 1px #cfe5f8;
 }
 
-.SWW_CSS_GS_DIV_MAIN .SWW_CSS_GS_TABLE_SHOW .SWW_CSS_GS_TABLE_TR_HOVER
+.SWW_CSS_GS_TABLE_SHOW .SWW_CSS_GS_TABLE_TR_HOVER
 {
     background-color:#e8f1f8;
    
@@ -172,7 +172,7 @@
 
 
 
-.SWW_CSS_GS_DIV_MAIN .SWW_CSS_GS_TABLE_SHOW .SWW_CSS_GS_TABLE_TD_SPAN_Extend div
+.SWW_CSS_GS_TABLE_SHOW .SWW_CSS_GS_TABLE_TD_SPAN_Extend div
 {
     background-color:#fff;
     color:#1b5fa8;
@@ -186,7 +186,7 @@
 }
 
 
-.SWW_CSS_GS_DIV_MAIN .SWW_CSS_GS_TABLE_SHOW .SWW_CSS_GS_TABLE_TD_EXTEND_Table
+.SWW_CSS_GS_TABLE_SHOW .SWW_CSS_GS_TABLE_TD_EXTEND_Table
 {
     width:97%;
     margin:20px 1% 20px 1%;
@@ -194,7 +194,7 @@
      border-top:solid 1px #1b5fa8;
     border-right:solid 1px #1b5fa8;
 }
-.SWW_CSS_GS_DIV_MAIN .SWW_CSS_GS_TABLE_SHOW .SWW_CSS_GS_TABLE_TD_EXTEND_Table  td
+.SWW_CSS_GS_TABLE_SHOW .SWW_CSS_GS_TABLE_TD_EXTEND_Table  td
 {
     height:22px;
     line-height:22px;   
@@ -255,7 +255,7 @@
 {
     border-left:solid 1px #cfe5f8;
     border-bottom:solid 1px #cfe5f8;
-    margin:0px;
+    margin:10px;
    
    
 }
@@ -269,3 +269,4 @@
    
     
 }
+

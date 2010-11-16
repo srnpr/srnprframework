@@ -1440,7 +1440,7 @@ if (!window.SWW)
 
                                if (iIndex > -1)
                                {
-                                   aH.push('<input type="button" onclick="SWW.W.Dialog.Source().' + o.button[i].substr(iIndex + 1) + '" value="' + o.button[i].substr(0, iIndex) + '"/>');
+                                   aH.push('<input type="button" class="' + o.cssid + 'Button" onclick="SWW.W.Dialog.Source().' + o.button[i].substr(iIndex + 1) + '" value="' + o.button[i].substr(0, iIndex) + '"/>');
                                }
                            }
                            aH.push('</div>');

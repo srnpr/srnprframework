@@ -419,44 +419,95 @@ if (SWW && !SWW.GS)
 
 
             var aHtml = [];
+            /*
             aHtml.push('<div class="SWW_CSS_GS_DIV_ShowDisplay"><ul>');
 
             for (var i = 0, j = SWW.GS.Obj[id].ShowColumn.length; i < j; i++)
             {
-                if (SWW.GS.Obj[id].ShowColumn.ShowDisplay != 'h')
+            if (SWW.GS.Obj[id].ShowColumn[i].ShowDisplay != 'h')
+            {
+            aHtml.push('<li><input type="checkbox" value="' + i + '" id="' + SWW.GS.Obj[id].ClientId + '_showcolumn_ckb_' + SWW.GS.Obj[id].ShowColumn[i].Guid + '" ' + (SWW.GS.Obj[id].ShowColumn[i].ShowDisplay == 'n'? '' : 'checked="checked"') + ' />' + SWW.GS.Obj[id].ShowColumn[i].HeaderText + '</li>');
+            }
+            }
+
+            aHtml.push('</ul></div>');
+            */
+
+            aHtml.push('<div style="width:350px;" id="SWW_GS_DIV_ShowDisplay_' + id + '"><div class="SWW_CSS_GS_DIV_SHOWINFO"><table class="SWW_CSS_GS_TABLE_SHOW">');
+            aHtml.push('<tr><th style="width:80px;"><input type="checkbox" onclick="SWW.GS.ShowDisplaySelectAll(\'' + id + '\',this)">全选</th><th>字段</th></tr>');
+            for (var i = 0, j = SWW.GS.Obj[id].ShowColumn.length; i < j; i++)
+            {
+                if (SWW.GS.Obj[id].ShowColumn[i].ShowDisplay != 'h')
                 {
-                    aHtml.push("<li><input type=\"checkbox\" id=\"" + SWW.GS.Obj[id].ClientId + "_showcolumn_ckb_" + SWW.GS.Obj[id].ShowColumn[i].Guid + "\" " + (SWW.GS.Obj[id].ShowColumn[i].ShowDisplay == "n" ? "" : "checked=\"checked\"") + " />" + SWW.GS.Obj[id].ShowColumn[i].HeaderText + "</li>");
+                    aHtml.push('<tr><td><input type="checkbox" value="' + i + '" id="' + SWW.GS.Obj[id].ClientId + '_showcolumn_ckb_' + SWW.GS.Obj[id].ShowColumn[i].Guid + '" ' + (SWW.GS.Obj[id].ShowColumn[i].ShowDisplay == 'n' ? '' : 'checked="checked"') + ' /></td><td>' + SWW.GS.Obj[id].ShowColumn[i].HeaderText + '</td></tr>');
                 }
             }
 
-            aHtml.push("</ul></div>");
-
-
-
+            aHtml.push('</table></div></div>');
             SWW.W.Dialog.Open({ title: '请选择显示内容', width: 400, html: aHtml.join(''), button: ["确定:SWW.GS.SetDisplay('" + id + "')"] });
 
 
 
         }
         ,
+
+        ShowDisplaySelectAll: function (id, chk)
+        {
+            var c = chk.checked;
+            SWW.W.Dialog.Father().SWW.J('#SWW_GS_DIV_ShowDisplay_' + id + ' :checkbox').each(function (i)
+            {
+                $(this).attr("checked",c);
+            }
+            );
+        },
+
+
         //设置显示字段
         SetDisplay: function (id)
         {
 
             var source = SWW.W.Dialog.Father();
 
+
+
+            source.SWW.J('#SWW_GS_DIV_ShowDisplay_' + id + ' :checkbox').each(function (i)
+            {
+                var vCheckedIndex = $(this).val();
+                if (vCheckedIndex != undefined && vCheckedIndex != null && vCheckedIndex != '' && !isNaN(vCheckedIndex))
+                {
+                    if ($(this).attr('checked') == true)
+                    {
+                        SWW.GS.Obj[id].ShowColumn[vCheckedIndex].ShowDisplay = "d";
+                    }
+                    else
+                    {
+                        if (SWW.GS.Obj[id].ShowColumn[vCheckedIndex].ShowDisplay == 'd')
+                            SWW.GS.Obj[id].ShowColumn[vCheckedIndex].ShowDisplay = "n";
+                    }
+                }
+
+
+            });
+
+
+            /*
             for (var i = 0, j = SWW.GS.Obj[id].ShowColumn.length; i < j; i++)
             {
-                if (source.SWW.J("#" + SWW.GS.Obj[id].ClientId + "_showcolumn_ckb_" + SWW.GS.Obj[id].ShowColumn[i].Guid).attr("checked") == true)
-                {
-                    SWW.GS.Obj[id].ShowColumn[i].ShowDisplay = "d";
-                }
-                else
-                {
-                    SWW.GS.Obj[id].ShowColumn[i].ShowDisplay = "n";
-                }
-            }
 
+
+
+               
+            if (source.SWW.J("#" + SWW.GS.Obj[id].ClientId + "_showcolumn_ckb_" + SWW.GS.Obj[id].ShowColumn[i].Guid).attr("checked") == true)
+            {
+            SWW.GS.Obj[id].ShowColumn[i].ShowDisplay = "d";
+            }
+            else
+            {
+            SWW.GS.Obj[id].ShowColumn[i].ShowDisplay = "n";
+            }
+                
+            }
+            */
             SWW.GS.Ajax(id);
             //SrnprNetJsAllAlphaShow({ s: "c" });
             SWW.W.Dialog.Close();

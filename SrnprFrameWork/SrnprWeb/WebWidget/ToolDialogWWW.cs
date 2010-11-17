@@ -35,5 +35,18 @@ namespace SrnprWeb.WebWidget
         {
             output.Write(Text);
         }
+
+
+
+        public string Control_Text
+        {
+            get;
+            set;
+        }
+
+
+
+
+
     }
 }

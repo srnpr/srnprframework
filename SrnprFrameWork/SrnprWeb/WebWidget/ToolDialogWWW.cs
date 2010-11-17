@@ -45,6 +45,19 @@ namespace SrnprWeb.WebWidget
         }
 
 
+        public string Control_Value
+        {
+            get;
+            set;
+
+        }
+
+        public string Control_Description
+        {
+            get;
+            set;
+        }
+
 
 
 

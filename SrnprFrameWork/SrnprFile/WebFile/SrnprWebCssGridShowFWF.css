@@ -54,7 +54,7 @@
 {
     background-image: url("http://f.xgou.com/AtGang/UI_C/images_css/bg_tab12_hover.gif");
 }
-.SWW_CSS_GS_DIV_WEBTAB ul li a,.SWW_CSS_GS_DIV_WEBTAB ul  .SWW_CSS_GS_WEBTAB_UL_LI_HOVER a:hover
+.SWW_CSS_GS_DIV_WEBTAB ul li a .SWW_CSS_GS_DIV_WEBTAB ul  .SWW_CSS_GS_WEBTAB_UL_LI_HOVER a:hover
 {
     text-decoration:none;
     color:#006699;
@@ -120,7 +120,7 @@
 }
 
 
-.SWW_CSS_GS_TABLE_SHOW .SWW_CSS_GS_TR_1 
+.SWW_CSS_GS_TR_1 
 {
     background-color:#f5fbfe;
 }
@@ -163,7 +163,7 @@
     border-bottom:solid 1px #cfe5f8;
 }
 
-.SWW_CSS_GS_TABLE_SHOW .SWW_CSS_GS_TABLE_TR_HOVER
+ .SWW_CSS_GS_TABLE_TR_HOVER
 {
     background-color:#e8f1f8;
    
@@ -172,7 +172,7 @@
 
 
 
-.SWW_CSS_GS_TABLE_SHOW .SWW_CSS_GS_TABLE_TD_SPAN_Extend div
+ .SWW_CSS_GS_TABLE_TD_SPAN_Extend div
 {
     background-color:#fff;
     color:#1b5fa8;
@@ -186,7 +186,7 @@
 }
 
 
-.SWW_CSS_GS_TABLE_SHOW .SWW_CSS_GS_TABLE_TD_EXTEND_Table
+ .SWW_CSS_GS_TABLE_TD_EXTEND_Table
 {
     width:97%;
     margin:20px 1% 20px 1%;
@@ -194,7 +194,7 @@
      border-top:solid 1px #1b5fa8;
     border-right:solid 1px #1b5fa8;
 }
-.SWW_CSS_GS_TABLE_SHOW .SWW_CSS_GS_TABLE_TD_EXTEND_Table  td
+ .SWW_CSS_GS_TABLE_TD_EXTEND_Table  td
 {
     height:22px;
     line-height:22px;   
@@ -236,7 +236,7 @@
     color:#990000;
 }
 
-.SWW_CSS_GS_DIV_FOOT_NAV .SWW_CSS_GS_A_FOOT_NAV_HOVER
+ .SWW_CSS_GS_A_FOOT_NAV_HOVER
 {
     color:#990000;
 }

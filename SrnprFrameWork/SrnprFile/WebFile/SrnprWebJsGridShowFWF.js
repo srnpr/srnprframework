@@ -396,7 +396,7 @@ if (SWW && !SWW.GS)
 
             SWW.GS.SubmitBefore(id);
 
-            SWW.W.Dialog.Open({ title: '请选择显示内容', url: "/Web/GridShow/Excel.aspx?id=SWJGSF_Hidden_" + SWW.GS.Obj[id].ClientId, width: 400, height: 100 });
+            SWW.W.Dialog.Open({ title: '请选择显示内容', url: "/Ashx/Excel.aspx?id=SWJGSF_Hidden_" + SWW.GS.Obj[id].ClientId, width: 400, height: 100 });
 
             //SrnprNetJsAllAlphaShow({ s: "l", m: "请选择显示内容", w: "400", h: "100", u: "/Web/GridShow/Excel.aspx?id=SWJGSF_Hidden_" + SWW.GS.Obj[id].ClientId });
 

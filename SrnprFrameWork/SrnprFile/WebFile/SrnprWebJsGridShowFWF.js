@@ -456,7 +456,7 @@ if (SWW && !SWW.GS)
             var c = chk.checked;
             SWW.W.Dialog.Father().SWW.J('#SWW_GS_DIV_ShowDisplay_' + id + ' :checkbox').each(function (i)
             {
-                $(this).attr("checked",c);
+                $(this).attr("checked", c);
             }
             );
         },
@@ -582,6 +582,17 @@ if (SWW && !SWW.GS)
 
             SWW.A('GS', 'Success', s, function (e) { SWW.GS.EventRowBind(e.s.Request.Guid, f); });
         },
+
+
+        OnDataSuccess: function (s, f)
+        {
+
+
+
+            SWW.A('GS', 'Success', s, function (e) { f(e.s.Request); });
+
+        },
+
 
 
 
@@ -747,13 +758,8 @@ if (SWW && !SWW.GS)
         },
 
 
-
-
-        //执行查询 第二参数为空时则遍历所有
-        Query: function (id, sid)
+        ZZZ_ReLoadGuid: function (id)
         {
-            var a = function () { };
-
             if (id == undefined)
             {
                 id = "[0]";
@@ -779,6 +785,20 @@ if (SWW && !SWW.GS)
                     }
                 }
             }
+        },
+
+
+
+
+
+
+
+        //执行查询 第二参数为空时则遍历所有
+        Query: function (id, sid)
+        {
+
+
+            id = this.ZZZ_ReLoadGuid(id);
 
             if (id && SWW.GS.Obj[id])
             {

@@ -785,6 +785,7 @@ if (SWW && !SWW.GS)
                     }
                 }
             }
+            return id;
         },
 
 
@@ -799,6 +800,8 @@ if (SWW && !SWW.GS)
 
 
             id = this.ZZZ_ReLoadGuid(id);
+
+           
 
             if (id && SWW.GS.Obj[id])
             {

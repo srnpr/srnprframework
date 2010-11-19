@@ -107,7 +107,7 @@ if (!window.SWW)
             ME:
             {
                 Load: '正在加载中……',
-                Query:'【提示消息】：系统正在加载数据，请稍后点击该按钮！'
+                Query: '【提示消息】：系统正在加载数据，请稍后点击该按钮！'
             }
 
         },
@@ -119,8 +119,7 @@ if (!window.SWW)
        O: { Req: {}, Res: {}, AF: {}, Guid: {}, Log: { Debug: []} },
 
        //扩展函数系列
-       A: function (sType, sFunc, sId, fExec)
-       {
+       A: function (sType, sFunc, sId, fExec) {
            ///	<summary>
            ///  扩展调用接口
            ///	</summary>
@@ -136,17 +135,14 @@ if (!window.SWW)
            ///	<param name="fExec" type="fun">
            ///		函数  扩展当操作执行时的执行函数 不同函数所需参数不一致
            ///	</param>
-           if (!SWW.O.AF[sType])
-           {
+           if (!SWW.O.AF[sType]) {
                SWW.O.AF[sType] = {};
            }
-           if (!SWW.O.AF[sType][sFunc])
-           {
+           if (!SWW.O.AF[sType][sFunc]) {
                SWW.O.AF[sType][sFunc] = {};
            }
 
-           if (!SWW.O.AF[sType][sFunc][sId])
-           {
+           if (!SWW.O.AF[sType][sFunc][sId]) {
                SWW.O.AF[sType][sFunc][sId] = [];
            }
 
@@ -160,8 +156,7 @@ if (!window.SWW)
 
            DOM:
            {
-               Html: function (sElement, snHtml)
-               {
+               Html: function (sElement, snHtml) {
                    ///	<summary>
                    ///  设置或返回元素的html内容
                    ///	</summary>
@@ -171,17 +166,14 @@ if (!window.SWW)
                    ///	<param name="snHtml" type="str">
                    ///		元素的html
                    ///	</param>
-                   if (snHtml)
-                   {
+                   if (snHtml) {
                        SWW.J('#' + sElement).html(snHtml);
                    }
-                   else
-                   {
+                   else {
                        return SWW.J('#' + sElement).html();
                    }
                },
-               Text: function (sElement, snText)
-               {
+               Text: function (sElement, snText) {
                    ///	<summary>
                    ///  设置或返回元素的Text
                    ///	</summary>
@@ -191,17 +183,14 @@ if (!window.SWW)
                    ///	<param name="snText" type="str">
                    ///		元素的Text
                    ///	</param>
-                   if (snText)
-                   {
+                   if (snText) {
                        SWW.J('#' + sElement).text(snText);
                    }
-                   else
-                   {
+                   else {
                        return SWW.J('#' + sElement).text();
                    }
                },
-               Value: function (sElement, snValue)
-               {
+               Value: function (sElement, snValue) {
                    ///	<summary>
                    ///  设置或返回元素的值
                    ///	</summary>
@@ -211,17 +200,14 @@ if (!window.SWW)
                    ///	<param name="snText" type="str">
                    ///		元素的值
                    ///	</param>
-                   if (snValue)
-                   {
+                   if (snValue) {
                        SWW.J('#' + sElement).val(snValue);
                    }
-                   else
-                   {
+                   else {
                        return SWW.J('#' + sElement).val();
                    }
                },
-               Get: function (sn)
-               {
+               Get: function (sn) {
                    ///	<summary>
                    ///  返回元素
                    ///	</summary>
@@ -232,26 +218,22 @@ if (!window.SWW)
                },
 
 
-               Auto: function (sE, sV)
-               {
+               Auto: function (sE, sV) {
 
                    sE = '#' + sE;
                    var bV = SWW.J(sE).is("input|textarea");
 
 
-                   if (sV)
-                   {
+                   if (sV) {
                        bV ? SWW.J(sE).val(sV) : SWW.J(sE).html(sV);
                    }
-                   else
-                   {
+                   else {
                        return bV ? SWW.J(sE).val() : SWW.J(sE).html();
                    }
 
                },
 
-               Display: function (s, bn)
-               {
+               Display: function (s, bn) {
                    ///	<summary>
                    ///  显示
                    ///	</summary>
@@ -262,13 +244,12 @@ if (!window.SWW)
                    ///		是否显示 默认不显示 如果传true标记为显示
                    ///	</param>
 
-                   if(this.Get(s))
-                   this.Get(s).style.display = (!bn ? 'none' : '');
+                   if (this.Get(s))
+                       this.Get(s).style.display = (!bn ? 'none' : '');
 
 
                },
-               Url: function (s, on)
-               {
+               Url: function (s, on) {
                    ///	<summary>
                    ///  返回url参数
                    ///	</summary>
@@ -279,22 +260,18 @@ if (!window.SWW)
                    ///		链接地址上添加的对象   如果有该参数则返回的是拼接链接的字符串
                    ///	</param>
                    var r;
-                   if (!s)
-                   {
+                   if (!s) {
                        s = location.href;
                    }
 
                    var iIndex = s.indexOf('?');
-                   if (!on)
-                   {
-                       if (iIndex > -1)
-                       {
+                   if (!on) {
+                       if (iIndex > -1) {
                            r = {};
 
                            var u = s.substr(iIndex + 1);
                            var a = u.split('&');
-                           for (var i = 0, j = a.length; i < j; i++)
-                           {
+                           for (var i = 0, j = a.length; i < j; i++) {
                                var iN = a[i].indexOf('=');
 
                                r[a[i].substr(0, iN)] = a[i].substr(iN + 1);
@@ -303,8 +280,7 @@ if (!window.SWW)
 
                        return r;
                    }
-                   else
-                   {
+                   else {
                        return s + (iIndex > -1 ? '&' : '?') + SWW.F.SYS.GetObjPrototype(on);
                    }
 
@@ -314,8 +290,7 @@ if (!window.SWW)
 
            JF:
            {
-               Ready: function (f)
-               {
+               Ready: function (f) {
                    SWW.J().ready(f);
                }
            }
@@ -325,8 +300,7 @@ if (!window.SWW)
            STR:
            {
 
-               Pad: function (sB, sP, iM)
-               {
+               Pad: function (sB, sP, iM) {
                    ///	<summary>
                    ///  用字符补齐字符串长度
                    ///	</summary>
@@ -343,14 +317,12 @@ if (!window.SWW)
                    var a = '';
 
                    sB = sB.toString();
-                   while (sB.length < Math.abs(iM))
-                   {
+                   while (sB.length < Math.abs(iM)) {
                        sB = iM > 0 ? (sP + sB) : (sB + sP);
                    }
                    return sB;
                },
-               HtmlEncode: function (s)
-               {
+               HtmlEncode: function (s) {
                    ///	<summary>
                    ///  html编码字符串
                    ///	</summary>
@@ -366,8 +338,7 @@ if (!window.SWW)
                    s = s.replace(/\"/g, "&quot;");
                    return s;
                },
-               HtmlDecode: function (s)
-               {
+               HtmlDecode: function (s) {
                    ///	<summary>
                    ///  html解码字符串
                    ///	</summary>
@@ -385,8 +356,7 @@ if (!window.SWW)
                },
 
 
-               StringToDate: function (sn)
-               {
+               StringToDate: function (sn) {
                    ///	<summary>
                    ///  字符串转换为日期
                    ///	</summary>
@@ -395,20 +365,17 @@ if (!window.SWW)
                    ///	</param>
 
 
-                   if (!sn)
-                   {
+                   if (!sn) {
                        sn = new Date();
                    }
-                   else if (typeof (sn) == 'string')
-                   {
+                   else if (typeof (sn) == 'string') {
                        sn = new Date(Date.parse(sn.replace(/-/g, "/")));
 
                    }
                    return sn;
                },
 
-               DateTime: function (snD, snR)
-               {
+               DateTime: function (snD, snR) {
                    ///	<summary>
                    ///  日期格式化
                    ///	</summary>
@@ -421,8 +388,7 @@ if (!window.SWW)
 
                    var d = this.StringToDate(snD);
 
-                   if (!snR)
-                   {
+                   if (!snR) {
                        snR = "yyyy-MM-dd hh:mm:ss";
                    }
 
@@ -431,8 +397,7 @@ if (!window.SWW)
 
                },
 
-               Trim: function (s, sn)
-               {
+               Trim: function (s, sn) {
                    ///	<summary>
                    ///  格式化字符串
                    ///	</summary>
@@ -442,8 +407,7 @@ if (!window.SWW)
                    ///	<param name="sn" type="str">
                    ///		替换掉的字符串
                    ///	</param>
-                   if (!sn)
-                   {
+                   if (!sn) {
                        sn = '\\s';
                    }
 
@@ -457,8 +421,7 @@ if (!window.SWW)
                },
 
 
-               Format: function (s, a)
-               {
+               Format: function (s, a) {
                    ///	<summary>
                    ///  格式替换函数
                    ///	</summary>
@@ -469,15 +432,12 @@ if (!window.SWW)
                    ///		替换的数组
                    ///	</param>
 
-                   if (a != undefined)
-                   {
-                       if (typeof (a) != 'object')
-                       {
+                   if (a != undefined) {
+                       if (typeof (a) != 'object') {
                            a = [a];
                        }
 
-                       for (var i = 0, j = a.length; i < j; i++)
-                       {
+                       for (var i = 0, j = a.length; i < j; i++) {
 
                            var r = new RegExp("\\u007B" + i + "\\u007D", "g");
 
@@ -497,8 +457,7 @@ if (!window.SWW)
                 ///  扩展调用接口
                 ///	</summary>
 
-                Alert: function (s)
-                {
+                Alert: function (s) {
                     ///	<summary>
                     ///  弹出提示信息
                     ///	</summary>
@@ -511,8 +470,7 @@ if (!window.SWW)
 
 
 
-                Error: function (o)
-                {
+                Error: function (o) {
                     ///	<summary>
                     ///  出现严重错误时提示
                     ///	</summary>
@@ -520,10 +478,8 @@ if (!window.SWW)
                     ///  错误内容  o{n:错误标识,m:错误内容,[p]:array 替换参数}
                     ///	</param>
 
-                    if (o.p && o.m)
-                    {
-                        for (var i = 0, j = o.p.length; i < j; i++)
-                        {
+                    if (o.p && o.m) {
+                        for (var i = 0, j = o.p.length; i < j; i++) {
                             o.m = o.m.replace('{' + i + '}', o.p[i]);
                         }
                     }
@@ -531,8 +487,7 @@ if (!window.SWW)
                     this.Alert(SWW.M.SE.ET + (o.n ? SWW.M.SE.EN + o.n : '') + (o.m ? SWW.M.SE.EM + o.m : ''));
                 },
 
-                Run: function (o)
-                {
+                Run: function (o) {
                     ///	<summary>
                     ///  执行提交函数
                     ///	</summary>
@@ -543,8 +498,7 @@ if (!window.SWW)
                     return SWW.Z.Ajax(o);
                 },
 
-                GetGuid: function (r)
-                {
+                GetGuid: function (r) {
                     ///	<summary>
                     ///  生成Guid
                     ///	</summary>
@@ -554,26 +508,21 @@ if (!window.SWW)
                     var a = (r ? r : '8-12-16-20').split('-');
                     var al = a.length;
                     var guid = "guid";
-                    for (var i = 1 + guid.length; i <= 32; i++)
-                    {
+                    for (var i = 1 + guid.length; i <= 32; i++) {
                         var g = Math.floor(Math.random() * 16.0).toString(16);
                         guid += g;
-                        for (var n = 0; n < al; n++)
-                        {
-                            if (i == a[n])
-                            {
+                        for (var n = 0; n < al; n++) {
+                            if (i == a[n]) {
                                 guid += '-';
                             }
                         }
                     }
 
                     //判断是否重复
-                    if (SWW.O.Guid[guid])
-                    {
+                    if (SWW.O.Guid[guid]) {
                         guid = this.GetGuid();
                     }
-                    else
-                    {
+                    else {
                         SWW.O.Guid[guid] = guid;
                     }
 
@@ -581,8 +530,7 @@ if (!window.SWW)
 
                 },
 
-                ItemBase: function ()
-                {
+                ItemBase: function () {
                     ///	<summary>
                     ///  返回基本对象
                     ///	</summary>
@@ -591,8 +539,7 @@ if (!window.SWW)
                 },
 
 
-                InitReq: function (e)
-                {
+                InitReq: function (e) {
                     ///	<summary>
                     ///  重新初始化对象
                     ///	</summary>
@@ -600,20 +547,16 @@ if (!window.SWW)
                     ///		request
                     ///	</param>
 
-                    if (e && e.WidgetType && (!e.__type || !e.Guid))
-                    {
+                    if (e && e.WidgetType && (!e.__type || !e.Guid)) {
                         var o = this.ItemBase();
-                        if (!e.__type && SWW.C.JS[e.WidgetType] && SWW.C.JS[e.WidgetType].q)
-                        {
+                        if (!e.__type && SWW.C.JS[e.WidgetType] && SWW.C.JS[e.WidgetType].q) {
                             o.__type = SWW.C.JS[e.WidgetType].q + ':' + SWW.C.BaseNamespace;
 
                         }
-                        if (!e.Guid)
-                        {
+                        if (!e.Guid) {
                             e.Guid = this.GetGuid();
                         }
-                        for (var p in e)
-                        {
+                        for (var p in e) {
                             o[p] = e[p];
                         }
                         e = o;
@@ -621,8 +564,7 @@ if (!window.SWW)
                     return e;
                 },
 
-                ExecFunc: function (o)
-                {
+                ExecFunc: function (o) {
                     ///	<summary>
                     ///  执行函数
                     ///	</summary>
@@ -632,21 +574,18 @@ if (!window.SWW)
                     ///  F_Success({q:提交对象,s:返回对象})
                     ///	</param>
 
-                    if (SWW[o.t] && SWW[o.t][o.f])
-                    {
+                    if (SWW[o.t] && SWW[o.t][o.f]) {
                         SWW[o.t][o.f](o.e);
                         if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.f.sys.execfunc', o, 'sww2003', [o.t, o.f]);
                     }
-                    else
-                    {
+                    else {
                         //SWW.F.SYS.Error({ n: 'SWW.F.SYS.ExecFunc', m: SWW.M.SE.FEF, p: [o.t, o.f, this.GetObjPrototype(o.e)] });
                         if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.f.sys.execfunc', o, 'sww2004', [o.t, o.f]);
                     }
                 },
 
 
-                GetObjPrototype: function (o)
-                {
+                GetObjPrototype: function (o) {
                     ///	<summary>
                     ///  得到一个对象的属性字符串
                     ///	</summary>
@@ -657,8 +596,7 @@ if (!window.SWW)
 
                     var r = [];
 
-                    for (var p in o)
-                    {
+                    for (var p in o) {
                         r.push('' + p + '=' + o[p]);
                     }
 
@@ -667,8 +605,7 @@ if (!window.SWW)
 
                 },
 
-                ExecAF: function (o)
-                {
+                ExecAF: function (o) {
                     ///	<summary>
                     ///  执行扩展函数
                     ///	</summary>
@@ -676,12 +613,10 @@ if (!window.SWW)
                     ///		对象{f:函数名称,w:扩展类型,d:编号,e:参数}
                     ///	</param>
 
-                    if (SWW.O.AF[o.w] && SWW.O.AF[o.w][o.f] && SWW.O.AF[o.w][o.f][o.d])
-                    {
+                    if (SWW.O.AF[o.w] && SWW.O.AF[o.w][o.f] && SWW.O.AF[o.w][o.f][o.d]) {
                         //SWW.O.AF[o.w][o.f][o.d](o.e);
 
-                        for (var i = 0, j = SWW.O.AF[o.w][o.f][o.d].length; i < j; i++)
-                        {
+                        for (var i = 0, j = SWW.O.AF[o.w][o.f][o.d].length; i < j; i++) {
                             SWW.O.AF[o.w][o.f][o.d][i](o.e);
                         }
 
@@ -689,8 +624,7 @@ if (!window.SWW)
 
                         if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.f.sys.execaf', o, 'sww2005', [o.w, o.f]);
                     }
-                    else
-                    {
+                    else {
                         //if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.f.sys.execaf', o, 'sww2001', [o.w, o.f]);
                     }
 
@@ -699,8 +633,7 @@ if (!window.SWW)
 
            OBJ:
             {
-                Clone: function (o)
-                {
+                Clone: function (o) {
                     ///	<summary>
                     ///  浅度克隆一个对象
                     ///	</summary>
@@ -708,14 +641,12 @@ if (!window.SWW)
                     ///		对象
                     ///	</param>
                     var r = {};
-                    for (var p in o)
-                    {
+                    for (var p in o) {
                         r[p] = o[p];
                     }
                     return r;
                 },
-                CloneAll: function (o)
-                {
+                CloneAll: function (o) {
                     ///	<summary>
                     ///  深度克隆一个对象
                     ///	</summary>
@@ -725,17 +656,14 @@ if (!window.SWW)
                     return SWW.F.JSON.JsonFromString(SWW.F.JSON.StringFromJson(o));
                 },
 
-                TypeName: function (o)
-                {
+                TypeName: function (o) {
                     return typeof (o);
                 },
 
-                IsObj: function (o)
-                {
+                IsObj: function (o) {
                     return this.TypeName(o) == 'object';
                 },
-                IsStr: function (o)
-                {
+                IsStr: function (o) {
                     return this.TypeName(o) == "string";
                 }
             },
@@ -763,15 +691,13 @@ if (!window.SWW)
 
             },
 
-                Fun_Quote: function (string)
-                {
+                Fun_Quote: function (string) {
 
                     var meta = this.Obj_Json.meta;
 
                     this.Obj_Json.escapable.lastIndex = 0;
                     return this.Obj_Json.escapable.test(string) ?
-            '"' + string.replace(this.Obj_Json.escapable, function (a)
-            {
+            '"' + string.replace(this.Obj_Json.escapable, function (a) {
 
                 var c = meta[a];
                 return typeof c === 'string' ? c :
@@ -780,8 +706,7 @@ if (!window.SWW)
             '"' + string + '"';
                 },
 
-                Fun_Str: function (key, holder)
-                {
+                Fun_Str: function (key, holder) {
 
 
 
@@ -794,20 +719,17 @@ if (!window.SWW)
                     value = holder[key];
 
 
-                    if (value && typeof value === 'object' && typeof value.toJSON === 'function')
-                    {
+                    if (value && typeof value === 'object' && typeof value.toJSON === 'function') {
                         value = value.toJSON(key);
                     }
 
 
-                    if (typeof this.Obj_Json.rep === 'function')
-                    {
+                    if (typeof this.Obj_Json.rep === 'function') {
                         value = this.Obj_Json.rep.call(holder, key, value);
                     }
 
 
-                    switch (typeof value)
-                    {
+                    switch (typeof value) {
                         case 'string':
                             return this.Fun_Quote(value);
 
@@ -826,8 +748,7 @@ if (!window.SWW)
                         case 'object':
 
 
-                            if (!value)
-                            {
+                            if (!value) {
                                 return 'null';
                             }
 
@@ -836,13 +757,11 @@ if (!window.SWW)
                             partial = [];
 
 
-                            if (Object.prototype.toString.apply(value) === '[object Array]')
-                            {
+                            if (Object.prototype.toString.apply(value) === '[object Array]') {
 
 
                                 length = value.length;
-                                for (i = 0; i < length; i += 1)
-                                {
+                                for (i = 0; i < length; i += 1) {
                                     partial[i] = this.Fun_Str(i, value) || 'null';
                                 }
 
@@ -858,32 +777,24 @@ if (!window.SWW)
                             }
 
 
-                            if (this.Obj_Json.rep && typeof this.Obj_Json.rep === 'object')
-                            {
+                            if (this.Obj_Json.rep && typeof this.Obj_Json.rep === 'object') {
                                 length = this.Obj_Json.rep.length;
-                                for (i = 0; i < length; i += 1)
-                                {
+                                for (i = 0; i < length; i += 1) {
                                     k = this.Obj_Json.rep[i];
-                                    if (typeof k === 'string')
-                                    {
+                                    if (typeof k === 'string') {
                                         v = this.Fun_Str(k, value);
-                                        if (v)
-                                        {
+                                        if (v) {
                                             partial.push(this.Fun_Quote(k) + (this.Obj_Json.gap ? ': ' : ':') + v);
                                         }
                                     }
                                 }
-                            } else
-                            {
+                            } else {
 
 
-                                for (k in value)
-                                {
-                                    if (Object.hasOwnProperty.call(value, k))
-                                    {
+                                for (k in value) {
+                                    if (Object.hasOwnProperty.call(value, k)) {
                                         v = this.Fun_Str(k, value);
-                                        if (v)
-                                        {
+                                        if (v) {
                                             partial.push(this.Fun_Quote(k) + (this.Obj_Json.gap ? ': ' : ':') + v);
                                         }
                                     }
@@ -900,50 +811,39 @@ if (!window.SWW)
                     }
                 },
 
-                StringFromJson: function (value, replacer, space)
-                {
+                StringFromJson: function (value, replacer, space) {
 
 
                     var i;
                     this.Obj_Json.gap = '';
                     this.Obj_Json.indent = '';
-                    if (typeof space === 'number')
-                    {
-                        for (i = 0; i < space; i += 1)
-                        {
+                    if (typeof space === 'number') {
+                        for (i = 0; i < space; i += 1) {
                             this.Obj_Json.indent += ' ';
                         }
 
-                    } else if (typeof space === 'string')
-                    {
+                    } else if (typeof space === 'string') {
                         this.Obj_Json.indent = space;
                     }
                     this.Obj_Json.rep = replacer;
                     if (replacer && typeof replacer !== 'function' &&
                     (typeof replacer !== 'object' ||
-                     typeof replacer.length !== 'number'))
-                    {
+                     typeof replacer.length !== 'number')) {
                         throw new Error('JSON.StringFromJson');
                     }
 
                     return this.Fun_Str('', { '': value });
                 },
 
-                Fun_Walk: function (holder, key, reviver)
-                {
+                Fun_Walk: function (holder, key, reviver) {
                     var k, v, value = holder[key];
-                    if (value && typeof value === 'object')
-                    {
-                        for (k in value)
-                        {
-                            if (Object.hasOwnProperty.call(value, k))
-                            {
+                    if (value && typeof value === 'object') {
+                        for (k in value) {
+                            if (Object.hasOwnProperty.call(value, k)) {
                                 v = this.Fun_Walk(value, k, reviver);
-                                if (v !== undefined)
-                                {
+                                if (v !== undefined) {
                                     value[k] = v;
-                                } else
-                                {
+                                } else {
                                     delete value[k];
                                 }
                             }
@@ -952,29 +852,25 @@ if (!window.SWW)
                     return reviver.call(holder, key, value);
                 },
 
-                Fun_Cx: function (a)
-                {
+                Fun_Cx: function (a) {
                     return '\\u' + ('0000' + a.charCodeAt(0).toString(16)).slice(-4);
                 },
 
 
-                JsonFromString: function (text, reviver)
-                {
+                JsonFromString: function (text, reviver) {
                     var j;
                     text = String(text);
 
                     this.Obj_Json.cx.lastIndex = 0;
 
-                    if (this.Obj_Json.cx.test(text))
-                    {
+                    if (this.Obj_Json.cx.test(text)) {
                         text = text.replace(this.Obj_Json.cx, this.Fun_Cx);
                     }
 
 
                     var temp = text.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g, '@').replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').replace(/(?:^|:|,)(?:\s*\[)+/g, '');
 
-                    if (/^[\],:{}\s]*$/.test(temp))
-                    {
+                    if (/^[\],:{}\s]*$/.test(temp)) {
                         j = eval('(' + text + ')');
                         return typeof reviver === 'function' ? this.Fun_Walk({ '': j }, '', reviver) : j;
                     }
@@ -991,8 +887,7 @@ if (!window.SWW)
        {
 
 
-           DebugLog: function (s, o, snMsg, an)
-           {
+           DebugLog: function (s, o, snMsg, an) {
                ///	<summary>
                ///  添加日志文件
                ///	</summary>
@@ -1010,44 +905,37 @@ if (!window.SWW)
                ///	</param>
 
 
-               if (SWW.C.Flag.Debug)
-               {
+               if (SWW.C.Flag.Debug) {
                    SWW.O.Log.Debug.push({ d: SWW.F.STR.DateTime(null, 'yyyy-MM-dd hh:mm:ss.ms'), t: s, c: o, m: snMsg, a: an });
                }
 
            },
 
-           BasePath: function ()
-           {
+           BasePath: function () {
                ///	<summary>
                ///  返回文件所在路径
                ///	</summary>
 
                var d = '';
                var e = document.getElementsByTagName('script');
-               for (var f = 0; f < e.length; f++)
-               {
+               for (var f = 0; f < e.length; f++) {
                    var g = e[f].src.match(/(^|.*[\\\/])SrnprWebJsWebWidgetFWF.js(?:\?.*)?/i);
-                   if (g)
-                   {
+                   if (g) {
                        d = g[1];
                        break;
                    }
                }
 
-               if (d.indexOf('://') == -1)
-               {
+               if (d.indexOf('://') == -1) {
                    if (d.indexOf('/') === 0) d = location.href.match(/^.*?:\/\/[^\/]*/)[0] + d;
                }
-               else
-               {
+               else {
                    //d = location.href.match(/^[^\?]*\/(?:)/)[0] + d;
                }
 
                return d;
            },
-           AddScript: function (u)
-           {
+           AddScript: function (u) {
                ///	<summary>
                ///  添加脚本文件
                ///	</summary>
@@ -1059,8 +947,7 @@ if (!window.SWW)
 
            },
 
-           Ajax: function (e)
-           {
+           Ajax: function (e) {
                ///	<summary>
                ///  提交请求
                ///	</summary>
@@ -1070,30 +957,26 @@ if (!window.SWW)
 
 
                var t = {};
-               if (e.length)
-               {
+               if (e.length) {
                    t.RQ = e;
-               } else
-               {
+               } else {
                    t.RQ = [];
                    t.RQ.push(e);
                }
 
 
                //开始检测是否定义了正确的类型并是否需要重新初始化
-               for (var i = 0, j = t.RQ.length; i < j; i++)
-               {
+               for (var i = 0, j = t.RQ.length; i < j; i++) {
                    t.RQ[i] = SWW.F.SYS.InitReq(t.RQ[i]);
 
 
-                   
+
 
 
                }
 
-               if (SWW.C.Flag.Debug)
-               {
-                   SWW.Z.DebugLog('sww.z.ajax', {url: SWW.C.Ajax.Url,parm:t}, 'sww2006');
+               if (SWW.C.Flag.Debug) {
+                   SWW.Z.DebugLog('sww.z.ajax', { url: SWW.C.Ajax.Url, parm: t }, 'sww2006');
                }
 
                //开始提交数据
@@ -1103,19 +986,16 @@ if (!window.SWW)
                     type: "POST",
                     data: "json=" + SWW.F.JSON.StringFromJson(t),
                     success: function (s) { SWW.Z.AjaxSuccess(s); },
-                    error: function (XMLHttpRequest, textStatus)
-                    {
-                        if (SWW.C.Flag.Debug)
-                        {
+                    error: function (XMLHttpRequest, textStatus) {
+                        if (SWW.C.Flag.Debug) {
                             SWW.Z.DebugLog('sww.z.ajax', t, 'sww2011', this.url);
                         }
-                         SWW.F.SYS.Error({ n: 'SWW.Z.Ajax', m: textStatus })
+                        SWW.F.SYS.Error({ n: 'SWW.Z.Ajax', m: textStatus })
                     }
                 });
            },
 
-           AjaxSuccess: function (s)
-           {
+           AjaxSuccess: function (s) {
                ///	<summary>
                ///  执行成功时调用
                ///	</summary>
@@ -1127,12 +1007,10 @@ if (!window.SWW)
 
                var json = SWW.F.JSON.JsonFromString(s);
 
-               for (var i = 0, j = json.RS.length; i < j; i++)
-               {
+               for (var i = 0, j = json.RS.length; i < j; i++) {
 
 
-                   if (json.RS[i].WidgetType && SWW[json.RS[i].WidgetType])
-                   {
+                   if (json.RS[i].WidgetType && SWW[json.RS[i].WidgetType]) {
 
                        SWW.O.Res[json.RQ[i].Guid] = json.RS[i];
 
@@ -1143,48 +1021,40 @@ if (!window.SWW)
                        SWW.F.SYS.ExecAF({ f: 'Success', w: json.RQ[i].WidgetType, d: json.RQ[i].Id, e: { s: json.RS[i]} });
 
                    }
-                   else
-                   {
+                   else {
                        SWW.F.SYS.Error({ n: 'SWW.Z.AjaxSuccess', m: x });
                    }
 
                }
            },
 
-           CheckInit: function ()
-           {
+           CheckInit: function () {
                ///	<summary>
                ///  判断系统初始化加载加载
                ///	</summary>
 
 
-               if (!SWW.C.Init.LoadFlag)
-               {
+               if (!SWW.C.Init.LoadFlag) {
                    SWW.J().ready(function () { SWW.Z.Init(); });
                    SWW.C.Init.LoadFlag = true;
                }
            },
 
 
-           Init: function ()
-           {
+           Init: function () {
                ///	<summary>
                ///  系统初始化时调用
                ///	</summary>
 
 
-               if (SWW.O)
-               {
+               if (SWW.O) {
                    //定义是否加载完成
                    var bFlag = true;
 
                    //开始判断是否所有加载完成
-                   if (bFlag)
-                   {
-                       for (var p in SWW.O.Req)
-                       {
-                           if (!SWW[SWW.O.Req[p].WidgetType])
-                           {
+                   if (bFlag) {
+                       for (var p in SWW.O.Req) {
+                           if (!SWW[SWW.O.Req[p].WidgetType]) {
                                bFlag = false;
                                break;
                            }
@@ -1199,22 +1069,18 @@ if (!window.SWW)
 
 
                    //判断是否超过最大调用次数限制
-                   if (SWW.C.Init.N < SWW.C.Init.M)
-                   {
+                   if (SWW.C.Init.N < SWW.C.Init.M) {
 
                        //如果所有加载完成
-                       if (bFlag)
-                       {
+                       if (bFlag) {
                            this.InitSuccess();
                        }
-                       else
-                       {
+                       else {
                            //重新调用执行
                            setTimeout("SWW.Z.Init()", SWW.C.Init.T);
                        }
                    }
-                   else
-                   {
+                   else {
                        //提示错误信息
                        SWW.F.SYS.Error({ n: 'SWW.Z.Init', m: SWW.M.SE.IM });
                    }
@@ -1224,23 +1090,19 @@ if (!window.SWW)
 
            }
            ,
-           InitSuccess: function ()
-           {
+           InitSuccess: function () {
 
                if (SWW.C.Flag.Debug) SWW.Z.DebugLog('sww.z.initsuccess', '', 'sww2008');
                var sub = [];
-               for (var t in SWW.O.Req)
-               {
+               for (var t in SWW.O.Req) {
 
                    SWW.F.SYS.ExecFunc({ t: SWW.O.Req[t].WidgetType, f: "F_Init", e: SWW.O.Req[t] });
 
-                   if (SWW.O.Req[t].__type)
-                   {
+                   if (SWW.O.Req[t].__type) {
                        sub.push(SWW.O.Req[t]);
                    }
                }
-               if (sub.length > 0)
-               {
+               if (sub.length > 0) {
                    this.Ajax(sub);
                }
            }
@@ -1305,16 +1167,13 @@ if (!window.SWW)
 
                    ObjArray: [],
 
-                   Father: function ()
-                   {
+                   Father: function () {
                        return top;
                    },
 
-                   AddBg: function ()
-                   {
+                   AddBg: function () {
 
-                       if (!SWW.F.DOM.Get(this.Config.BgId))
-                       {
+                       if (!SWW.F.DOM.Get(this.Config.BgId)) {
 
                            var e = document.createElement("div");
                            e.id = this.Config.BgId;
@@ -1325,8 +1184,7 @@ if (!window.SWW)
 
                            var co = this.Config;
 
-                           with (e.style)
-                           {
+                           with (e.style) {
                                height = Math.max(window.screen.height, document.body.offsetHeight + 50) + "px";
                                position = 'absolute';
                                zIndex = 555;
@@ -1339,23 +1197,19 @@ if (!window.SWW)
 
                            document.body.appendChild(e);
                        }
-                       else
-                       {
+                       else {
                            SWW.F.DOM.Display(this.Config.BgId, true);
                        }
                    },
-                   Clear: function ()
-                   {
+                   Clear: function () {
                        this.ObjArray.pop();
 
-                       if (this.Config.CountDialog <= 0)
-                       {
+                       if (this.Config.CountDialog <= 0) {
 
                            SWW.F.DOM.Display(this.Config.BgId);
                            this.Config.CountDialog = 0;
                        }
-                       else
-                       {
+                       else {
 
                            SWW.F.DOM.Display(this.ObjArray[this.Config.CountDialog - 1].guid, true);
 
@@ -1364,28 +1218,22 @@ if (!window.SWW)
 
 
                    },
-                   Create: function (o)
-                   {
+                   Create: function (o) {
 
-                       if (!o)
-                       {
+                       if (!o) {
                            o = {};
                        }
-                       for (var p in this.Temp)
-                       {
-                           if (!o[p])
-                           {
+                       for (var p in this.Temp) {
+                           if (!o[p]) {
                                o[p] = this.Temp[p];
                            }
                        }
 
-                       if (!o.id)
-                       {
+                       if (!o.id) {
                            o.id = this.Config.DefaultId;
                        }
 
-                       if (!o.guid)
-                       {
+                       if (!o.guid) {
                            o.guid = SWW.F.SYS.GetGuid();
                        }
 
@@ -1400,6 +1248,8 @@ if (!window.SWW)
 
 
                        var aH = [];
+
+
 
                        aH.push('<div id="' + o.guid + '" class="' + o.cssid + 'Box_Over" style="width:' + (o.width + 4) + 'px;height:' + (o.height + 4) + 'px; top:' + o.top + 'px;left:' + o.left + 'px;">');
                        aH.push('<div class="' + o.cssid + 'Box_Back" style="width:' + (o.width + 3) + 'px;height:' + (o.height + 3) + 'px;">');
@@ -1416,15 +1266,13 @@ if (!window.SWW)
 
                        aH.push('<div class="' + o.cssid + 'Content" style="width:' + o.width + 'px;height:' + o.height + 'px;">');
                        //判断内容模型
-                       if (o.url)
-                       {
+                       if (o.url) {
                            aH.push('<div id="' + o.guid + '_iframe_load">' + SWW.M.ME.Load + '</div>');
                            aH.push('<div id="' + o.guid + '_iframe_show" style="display:none;">');
                            aH.push('<iframe id="' + o.guid + '_iframe" onload="SWW.F.DOM.Display(\'' + o.guid + '_iframe_load\');SWW.F.DOM.Display(\'' + o.guid + '_iframe_show\',true);" style="width:' + (o.width) + 'px;height:' + (o.height) + 'px" src="' + o.url + '" frameborder="0"></iframe>');
                            aH.push('<div>');
                        }
-                       else if (o.html)
-                       {
+                       else if (o.html) {
                            aH.push('<div style="margin:5px;">');
                            aH.push(o.html);
 
@@ -1433,16 +1281,13 @@ if (!window.SWW)
                        }
 
 
-                       if (o.button && o.button.length > 0)
-                       {
+                       if (o.button && o.button.length > 0) {
                            var s = '';
                            aH.push('<div style="text-align:center;">');
-                           for (var i = 0, j = o.button.length; i < j; i++)
-                           {
+                           for (var i = 0, j = o.button.length; i < j; i++) {
                                var iIndex = o.button[i].indexOf(':');
 
-                               if (iIndex > -1)
-                               {
+                               if (iIndex > -1) {
                                    aH.push('<input type="button" class="' + o.cssid + 'Button" onclick="SWW.W.Dialog.Source().' + o.button[i].substr(iIndex + 1) + '" value="' + o.button[i].substr(0, iIndex) + '"/>');
                                }
                            }
@@ -1454,8 +1299,7 @@ if (!window.SWW)
 
                        o.current = this.Config.CountDialog;
 
-                       if (this.Config.CountDialog > 0)
-                       {
+                       if (this.Config.CountDialog > 0) {
                            SWW.F.DOM.Display(this.ObjArray[this.Config.CountDialog - 1].guid);
                        }
 
@@ -1464,10 +1308,8 @@ if (!window.SWW)
                        //开始加载拖动代码
                        SWW.W.Drag.DragElement(SWW.J('#' + o.guid + '_title'), SWW.J('#' + o.guid));
 
-                       if (o.scroll == 1)
-                       {
-                           SWW.J(window).scroll(function ()
-                           {
+                       if (o.scroll == 1) {
+                           SWW.J(window).scroll(function () {
                                SWW.J('#' + o.guid).css("top", (document.documentElement.scrollTop + 120) + "px");
 
                            });
@@ -1481,16 +1323,14 @@ if (!window.SWW)
                },
 
 
-               Father: function ()
-               {
+               Father: function () {
                    ///	<summary>
                    ///  返回打开对话框的
                    ///	</summary>
                    return top;
                },
 
-               Open: function (o)
-               {
+               Open: function (o) {
                    ///	<summary>
                    ///  创建对话框
                    ///	</summary>
@@ -1502,16 +1342,13 @@ if (!window.SWW)
 
                    if (!o) o = {};
 
-                   if (!o.self)
-                   {
-                       if (this.Father() != self)
-                       {
+                   if (!o.self) {
+                       if (this.Father() != self) {
                            o.self = self;
                            this.Father().SWW.W.Dialog.Open(o);
                            return;
                        }
-                       else
-                       {
+                       else {
                            o.self = window;
                        }
                    }
@@ -1525,8 +1362,7 @@ if (!window.SWW)
 
                },
 
-               Close: function (sn, iSave)
-               {
+               Close: function (sn, iSave) {
 
                    ///	<summary>
                    ///  关闭对话框
@@ -1539,30 +1375,25 @@ if (!window.SWW)
                    ///	</param>
 
 
-                   if (this.Father() != self && this.Father().SWW)
-                   {
+                   if (this.Father() != self && this.Father().SWW) {
                        this.Father().SWW.W.Dialog.Close(sn, iSave);
                        return;
                    }
 
-                   if (!sn)
-                   {
+                   if (!sn) {
                        sn = this.Init.ObjArray[this.Init.ObjArray.length - 1].guid;
                    }
 
-                   if (!iSave)
-                   {
+                   if (!iSave) {
                        iSave = this.Init.Temp.save;
                    }
 
 
 
-                   if (iSave == 0)
-                   {
+                   if (iSave == 0) {
                        document.body.removeChild(SWW.F.DOM.Get(sn));
                    }
-                   else
-                   {
+                   else {
                        SWW.J('#' + sn).hide();
                    }
                    this.Init.Config.CountDialog--;
@@ -1577,25 +1408,21 @@ if (!window.SWW)
 
                },
 
-               Source: function ()
-               {
+               Source: function () {
                    ///	<summary>
                    ///  得到当前对话框的来源页面
                    ///	</summary>
 
                    var o = this.Father().SWW.W.Dialog.Init.ObjArray[this.Father().SWW.W.Dialog.Init.ObjArray.length - 1];
-                   if (o)
-                   {
+                   if (o) {
                        return o.self;
                    }
-                   else
-                   {
+                   else {
                        return self;
                    }
                },
 
-               GetValue: function (s)
-               {
+               GetValue: function (s) {
                    ///	<summary>
                    ///  得到来源页面的元素的值
                    ///	</summary>
@@ -1606,8 +1433,7 @@ if (!window.SWW)
                    return this.Source().SWW.J('#' + s).val();
 
                },
-               SetValue: function (s, v)
-               {
+               SetValue: function (s, v) {
                    ///	<summary>
                    ///  设置来源页面的元素的值
                    ///	</summary>
@@ -1629,8 +1455,7 @@ if (!window.SWW)
            //拖拽扩展
            Drag:
            {
-               GetPos: function (e)
-               {
+               GetPos: function (e) {
                    var D = document.documentElement;
                    if (e.pageX)
                        return { x: e.pageX, y: e.pageY };
@@ -1638,11 +1463,9 @@ if (!window.SWW)
                        return { x: (e.clientX + D.scrollLeft - D.clientLeft), y: (e.clientY + D.scrollTop - D.clientTop) }
                },
 
-               DragElement: function (el, handle, fDragIng, end)
-               {
+               DragElement: function (el, handle, fDragIng, end) {
 
-                   SWW.J(el).mousedown(function (e)
-                   {
+                   SWW.J(el).mousedown(function (e) {
                        e = e || window.event;
                        var pos = SWW.W.Drag.GetPos(e);
 
@@ -1664,11 +1487,9 @@ if (!window.SWW)
                    return false;
                },
 
-               DragIng: function (handle, diffx, diffy, fDragIng)
-               {
+               DragIng: function (handle, diffx, diffy, fDragIng) {
 
-                   SWW.J(document).bind('mousemove', function (e)
-                   {
+                   SWW.J(document).bind('mousemove', function (e) {
                        var movePos = SWW.W.Drag.GetPos(e);
                        SWW.J(handle).css({ left: (movePos.x - diffx), top: (movePos.y - diffy) });
 
@@ -1677,10 +1498,8 @@ if (!window.SWW)
                    });
                },
 
-               Drop: function (fEnd)
-               {
-                   SWW.J(document).mouseup(function (e)
-                   {
+               Drop: function (fEnd) {
+                   SWW.J(document).mouseup(function (e) {
                        SWW.J(document).unbind('mousemove');
                        if (fEnd) fEnd();
                    });
@@ -1694,8 +1513,7 @@ if (!window.SWW)
 
 
        //初始化
-       I: function (t, o)
-       {
+       I: function (t, o) {
            ///	<summary>
            ///  根据名称初始化对象
            ///	</summary>
@@ -1709,18 +1527,15 @@ if (!window.SWW)
 
 
            //开始自动判断参数传入类型
-           if (typeof (t) != "string" && t.WidgetType)
-           {
+           if (typeof (t) != "string" && t.WidgetType) {
                o = t;
                t = o.WidgetType;
            }
 
 
            //判断是否存在参数并且重新初始化
-           if (o)
-           {
-               if (o.WidgetType)
-               {
+           if (o) {
+               if (o.WidgetType) {
                    o = SWW.F.SYS.InitReq(o);
                    this.O.Req[o.Guid] = o;
                }
@@ -1728,21 +1543,16 @@ if (!window.SWW)
            }
 
            //判断是否已经存在加载的对象
-           if (!this[t] && this.C.JS[t] && !this.C.JSLoad[t] && (!this.C.JS[t].w || !window[this.C.JS[t].w]))
-           {
+           if (!this[t] && this.C.JS[t] && !this.C.JSLoad[t] && (!this.C.JS[t].w || !window[this.C.JS[t].w])) {
                //定义文件
                var u = '';
-               if ("string" == typeof (this.C.JS[t]))
-               {
+               if ("string" == typeof (this.C.JS[t])) {
                    u = this.C.JS[t];
                }
-               else
-               {
+               else {
                    //判断是否有需要加载的内容
-                   if (this.C.JS[t].n)
-                   {
-                       for (var i = 0; i < this.C.JS[t].n.length; i++)
-                       {
+                   if (this.C.JS[t].n) {
+                       for (var i = 0; i < this.C.JS[t].n.length; i++) {
                            this.I(this.C.JS[t].n[i]);
                        }
                    }

@@ -27,17 +27,14 @@ if (SWW && !SWW.GS)
         DemoFlag: false,
 
 
-        Set: function (id, p, v)
-        {
+        Set: function (id, p, v) {
             SWW.GS.SetInit(id);
             SWW.GS.SetObj[id][p] = v;
         },
 
-        SetInit: function (id)
-        {
+        SetInit: function (id) {
 
-            if (!SWW.GS.SetObj[id])
-            {
+            if (!SWW.GS.SetObj[id]) {
 
                 var temp =
                 {
@@ -91,8 +88,7 @@ if (SWW && !SWW.GS)
 
 
         //初始化
-        Init: function (s)
-        {
+        Init: function (s) {
 
 
 
@@ -107,8 +103,7 @@ if (SWW && !SWW.GS)
         }
         ,
 
-        SubmitBefore: function (id)
-        {
+        SubmitBefore: function (id) {
 
             SWW.J("#SWJGSF_Hidden_" + SWW.GS.Obj[id].ClientId).val(SWW.F.JSON.StringFromJson(SWW.GS.Obj[id]));
 
@@ -116,8 +111,7 @@ if (SWW && !SWW.GS)
 
 
         //提交请求
-        Ajax: function (id)
-        {
+        Ajax: function (id) {
 
 
 
@@ -126,37 +120,31 @@ if (SWW && !SWW.GS)
             SWW.F.SYS.Run(SWW.GS.Obj[id]);
         },
 
-        AlertMsg: function (s)
-        {
+        AlertMsg: function (s) {
             alert(s);
         }
         ,
 
 
         //跳转页面
-        PageGoto: function (id, iPage)
-        {
+        PageGoto: function (id, iPage) {
 
 
             var iPageCount = Math.ceil(SWW.GS.Obj[id].RowsCount / SWW.GS.Obj[id].PageSize);
 
-            if (iPage == "-")
-            {
+            if (iPage == "-") {
                 iPage = SWW.GS.Obj[id].PageIndex - 1;
             }
-            else if (iPage == "+")
-            {
+            else if (iPage == "+") {
                 iPage = SWW.GS.Obj[id].PageIndex + 1;
             }
 
             iPage = parseInt(iPage);
 
-            if (iPage < 1)
-            {
+            if (iPage < 1) {
                 iPage = 1;
             }
-            else if (iPage > iPageCount)
-            {
+            else if (iPage > iPageCount) {
                 iPage = iPageCount;
             }
 
@@ -169,8 +157,7 @@ if (SWW && !SWW.GS)
 
 
         //分组
-        GroupTable: function (id, k)
-        {
+        GroupTable: function (id, k) {
             SWW.GS.Obj[id].GroupValue = k;
             SWW.GS.Obj[id].PageIndex = 1;
             SWW.GS.Obj[id].RowsCount = -2;
@@ -179,18 +166,15 @@ if (SWW && !SWW.GS)
         ,
 
         //导航更换
-        ChangeNav: function (id)
-        {
+        ChangeNav: function (id) {
 
             var s = SWW.J('#' + SWW.GS.Obj[id].ClientId + '_nav_pagesize').val();
-            if (s && !isNaN(s) && s > 0)
-            {
+            if (s && !isNaN(s) && s > 0) {
                 SWW.GS.Obj[id].PageSize = parseInt(s);
             }
             var i = SWW.J('#' + SWW.GS.Obj[id].ClientId + '_nav_pageindex').val();
 
-            if (i && !isNaN(i) && i > 0)
-            {
+            if (i && !isNaN(i) && i > 0) {
                 SWW.GS.Obj[id].PageIndex = parseInt(i);
             }
 
@@ -202,8 +186,7 @@ if (SWW && !SWW.GS)
 
 
         //执行成功时
-        AjaxSuccess: function (id, o)
-        {
+        AjaxSuccess: function (id, o) {
 
 
             var obj = typeof (o) == "string" ? SWW.F.JSON.JsonFromString(o) : o;
@@ -220,14 +203,12 @@ if (SWW && !SWW.GS)
 
 
             //开始加载分组统计信息
-            if (req.GroupKvd && so.FlagGroup)
-            {
+            if (req.GroupKvd && so.FlagGroup) {
                 var aGroupHtml = [];
 
                 var dSumAll = 0;
 
-                for (var i = 0, j = req.GroupKvd.length; i < j; i++)
-                {
+                for (var i = 0, j = req.GroupKvd.length; i < j; i++) {
                     aGroupHtml.push('<li' + (req.GroupValue == req.GroupKvd[i].K ? ' class="SWW_CSS_GS_WEBTAB_UL_LI_HOVER" ' : '') + '><a href="javascript:SWW.GS.GroupTable(\'' + id + '\',\'' + req.GroupKvd[i].K + '\')">' + so.GroupTextTemp.replace('{gtt:d}', req.GroupKvd[i].D).replace('{gtt:v}', req.GroupKvd[i].V) + '</a></li>');
 
                     dSumAll += parseFloat(req.GroupKvd[i].V);
@@ -243,28 +224,23 @@ if (SWW && !SWW.GS)
             aHtml.push('<div class="SWW_CSS_GS_DIV_ALL"><div class="SWW_CSS_GS_DIV_SHOWINFO">');
 
             //开始加载显示的Table内容
-            if (true)
-            {
+            if (true) {
                 var sShowDivBox = '<div class="SWW_CSS_GS_DIV_MAIN"><table id="GS_table_' + req.ClientId + '" class="SWW_CSS_GS_TABLE_SHOW">';
 
                 //开始自适应宽度
 
                 var iAutoWidth_SumTitle = 0;
-                for (var i = 0, j = req.ShowColumn.length; i < j; i++)
-                {
+                for (var i = 0, j = req.ShowColumn.length; i < j; i++) {
                     if (req.ShowColumn[i].ShowDisplay == 'd')
                         iAutoWidth_SumTitle += req.ShowColumn[i].HeaderText.length;
                 }
                 var iAutoWidth_DivWidth = $('#SWJGSF_Div_' + req.ClientId).width();
-                if (!iAutoWidth_DivWidth)
-                {
+                if (!iAutoWidth_DivWidth) {
                     iAutoWidth_DivWidth = $('document').width();
                 }
 
-                if (iAutoWidth_SumTitle && iAutoWidth_DivWidth)
-                {
-                    if (Math.floor(iAutoWidth_DivWidth / 18) < iAutoWidth_SumTitle)
-                    {
+                if (iAutoWidth_SumTitle && iAutoWidth_DivWidth) {
+                    if (Math.floor(iAutoWidth_DivWidth / 18) < iAutoWidth_SumTitle) {
                         sShowDivBox = sShowDivBox.replace('<div class="', '<div style="width:' + (iAutoWidth_DivWidth - 14) + 'px" class="SWW_CSS_GS_DIV_MAIN_Scroll ').replace('<table ', '<table style="width:' + (iAutoWidth_SumTitle * 16) + 'px" ');
                     }
                 }
@@ -277,8 +253,7 @@ if (SWW && !SWW.GS)
 
 
             //开始底部导航
-            if (req.ShowColumn)
-            {
+            if (req.ShowColumn) {
 
                 var iPageCount = Math.ceil(req.RowsCount / req.PageSize);
 
@@ -289,13 +264,11 @@ if (SWW && !SWW.GS)
                 nav_npe = so.NavPageExcel.replace('{npe:f}', "SWW.GS.Excel('" + req.Guid + "')");
 
 
-                if (req.ProcessType == "" || req.ProcessType == "server")
-                {
+                if (req.ProcessType == "" || req.ProcessType == "server") {
 
                     nav_nps = so.NavPageSum.replace('{nps:i}', iPageCount > 0 ? req.PageIndex : 0).replace('{nps:c}', iPageCount).replace('{nps:r}', req.RowsCount);
 
-                    if (req.RowsCount > 0)
-                    {
+                    if (req.RowsCount > 0) {
                         nav_npl = so.NavPageLeft.replace('{npl:f}', "SWW.GS.PageGoto('" + req.Guid + "',1)").replace('{npl:p}', "SWW.GS.PageGoto('" + req.Guid + "','-')");
                         nav_npr = so.NavPageRight.replace('{npr:n}', "SWW.GS.PageGoto('" + req.Guid + "','+')").replace('{npr:l}', "SWW.GS.PageGoto('" + req.Guid + "','" + iPageCount + "')");
 
@@ -309,8 +282,7 @@ if (SWW && !SWW.GS)
 
                         if (iEnd > iPageCount) iEnd = iPageCount;
 
-                        for (var iNowIndex = iStart + 1; iNowIndex < iEnd + 1; iNowIndex++)
-                        {
+                        for (var iNowIndex = iStart + 1; iNowIndex < iEnd + 1; iNowIndex++) {
                             aPageInt.push(so.NavPageNumber.replace('{npn:n}', iNowIndex).replace('{npn:f}', "SWW.GS.PageGoto('" + req.Guid + "','" + iNowIndex + "')").replace('{npn:c}', (iNowIndex == req.PageIndex) ? "SWW_CSS_GS_A_FOOT_NAV_HOVER" : ""));
                         }
 
@@ -329,8 +301,7 @@ if (SWW && !SWW.GS)
 
 
                 }
-                else if (req.ProcessType == "demo")
-                {
+                else if (req.ProcessType == "demo") {
 
                 }
 
@@ -365,15 +336,12 @@ if (SWW && !SWW.GS)
 
 
             //开始添加数字序列
-            if (so.FlagIndexNumber)
-            {
+            if (so.FlagIndexNumber) {
                 SWW.J('#GS_table_' + req.ClientId + ' tbody').children().each(
 
-                function (index, n)
-                {
+                function (index, n) {
 
-                    if (index > 0)
-                    {
+                    if (index > 0) {
                         SWW.J(n).mouseover(function () { SWW.J(n).addClass("SWW_CSS_GS_TABLE_TR_HOVER"); });
                         SWW.J(n).mouseout(function () { SWW.J(n).removeClass("SWW_CSS_GS_TABLE_TR_HOVER"); });
                     }
@@ -391,8 +359,7 @@ if (SWW && !SWW.GS)
 
 
         //导出Excel
-        Excel: function (id)
-        {
+        Excel: function (id) {
 
             SWW.GS.SubmitBefore(id);
 
@@ -401,8 +368,7 @@ if (SWW && !SWW.GS)
             //SrnprNetJsAllAlphaShow({ s: "l", m: "请选择显示内容", w: "400", h: "100", u: "/Web/GridShow/Excel.aspx?id=SWJGSF_Hidden_" + SWW.GS.Obj[id].ClientId });
 
         },
-        ExcelClose: function (id)
-        {
+        ExcelClose: function (id) {
             //SrnprNetJsAllAlphaShow({ s: "c" });
             SWW.W.Dialog.Close();
         },
@@ -413,8 +379,7 @@ if (SWW && !SWW.GS)
 
 
         //自定义显示字段
-        ShowDisplay: function (id)
-        {
+        ShowDisplay: function (id) {
 
 
 
@@ -435,10 +400,8 @@ if (SWW && !SWW.GS)
 
             aHtml.push('<div style="width:350px;" id="SWW_GS_DIV_ShowDisplay_' + id + '"><div class="SWW_CSS_GS_DIV_SHOWINFO"><table class="SWW_CSS_GS_TABLE_SHOW">');
             aHtml.push('<tr><th style="width:80px;"><input type="checkbox" onclick="SWW.GS.ShowDisplaySelectAll(\'' + id + '\',this)">全选</th><th>字段</th></tr>');
-            for (var i = 0, j = SWW.GS.Obj[id].ShowColumn.length; i < j; i++)
-            {
-                if (SWW.GS.Obj[id].ShowColumn[i].ShowDisplay != 'h')
-                {
+            for (var i = 0, j = SWW.GS.Obj[id].ShowColumn.length; i < j; i++) {
+                if (SWW.GS.Obj[id].ShowColumn[i].ShowDisplay != 'h') {
                     aHtml.push('<tr><td><input type="checkbox" value="' + i + '" id="' + SWW.GS.Obj[id].ClientId + '_showcolumn_ckb_' + SWW.GS.Obj[id].ShowColumn[i].Guid + '" ' + (SWW.GS.Obj[id].ShowColumn[i].ShowDisplay == 'n' ? '' : 'checked="checked"') + ' /></td><td>' + SWW.GS.Obj[id].ShowColumn[i].HeaderText + '</td></tr>');
                 }
             }
@@ -451,11 +414,9 @@ if (SWW && !SWW.GS)
         }
         ,
 
-        ShowDisplaySelectAll: function (id, chk)
-        {
+        ShowDisplaySelectAll: function (id, chk) {
             var c = chk.checked;
-            SWW.W.Dialog.Father().SWW.J('#SWW_GS_DIV_ShowDisplay_' + id + ' :checkbox').each(function (i)
-            {
+            SWW.W.Dialog.Father().SWW.J('#SWW_GS_DIV_ShowDisplay_' + id + ' :checkbox').each(function (i) {
                 $(this).attr("checked", c);
             }
             );
@@ -463,24 +424,19 @@ if (SWW && !SWW.GS)
 
 
         //设置显示字段
-        SetDisplay: function (id)
-        {
+        SetDisplay: function (id) {
 
             var source = SWW.W.Dialog.Father();
 
 
 
-            source.SWW.J('#SWW_GS_DIV_ShowDisplay_' + id + ' :checkbox').each(function (i)
-            {
+            source.SWW.J('#SWW_GS_DIV_ShowDisplay_' + id + ' :checkbox').each(function (i) {
                 var vCheckedIndex = $(this).val();
-                if (vCheckedIndex != undefined && vCheckedIndex != null && vCheckedIndex != '' && !isNaN(vCheckedIndex))
-                {
-                    if ($(this).attr('checked') == true)
-                    {
+                if (vCheckedIndex != undefined && vCheckedIndex != null && vCheckedIndex != '' && !isNaN(vCheckedIndex)) {
+                    if ($(this).attr('checked') == true) {
                         SWW.GS.Obj[id].ShowColumn[vCheckedIndex].ShowDisplay = "d";
                     }
-                    else
-                    {
+                    else {
                         if (SWW.GS.Obj[id].ShowColumn[vCheckedIndex].ShowDisplay == 'd')
                             SWW.GS.Obj[id].ShowColumn[vCheckedIndex].ShowDisplay = "n";
                     }
@@ -514,18 +470,13 @@ if (SWW && !SWW.GS)
         },
 
         //开始执行排序操作
-        Sort: function (id, gid)
-        {
-            for (var i = 0, j = SWW.GS.Obj[id].ShowColumn.length; i < j; i++)
-            {
-                if (SWW.GS.Obj[id].ShowColumn[i].Guid == gid)
-                {
+        Sort: function (id, gid) {
+            for (var i = 0, j = SWW.GS.Obj[id].ShowColumn.length; i < j; i++) {
+                if (SWW.GS.Obj[id].ShowColumn[i].Guid == gid) {
                     SWW.GS.Obj[id].ShowColumn[i].OrderType = SWW.GS.Obj[id].ShowColumn[i].OrderType == "a" ? "e" : "a";
                 }
-                else
-                {
-                    if (SWW.GS.Obj[id].ShowColumn[i].OrderType != "n")
-                    {
+                else {
+                    if (SWW.GS.Obj[id].ShowColumn[i].OrderType != "n") {
                         SWW.GS.Obj[id].ShowColumn[i].OrderType = "d";
                     }
                 }
@@ -535,11 +486,9 @@ if (SWW && !SWW.GS)
         },
 
 
-        F_Init: function (o)
-        {
+        F_Init: function (o) {
 
-            if (this.DemoFlag)
-            {
+            if (this.DemoFlag) {
                 o.ProcessType = "demo";
             }
 
@@ -550,16 +499,14 @@ if (SWW && !SWW.GS)
         },
 
 
-        F_Success: function (o)
-        {
+        F_Success: function (o) {
             SWW.GS.Obj[o.q.Guid] = o.q;
             SWW.GS.AjaxSuccess(o.q.Guid, o.s);
         },
 
 
         //设置显示类型
-        Demo: function ()
-        {
+        Demo: function () {
 
             this.DemoFlag = true;
 
@@ -568,8 +515,7 @@ if (SWW && !SWW.GS)
         }
         ,
         //数据绑定
-        OnDataRowBind: function (s, f)
-        {
+        OnDataRowBind: function (s, f) {
             ///	<summary>
             ///  绑定列函数操作
             ///	</summary>
@@ -584,8 +530,7 @@ if (SWW && !SWW.GS)
         },
 
 
-        OnDataSuccess: function (s, f)
-        {
+        OnDataSuccess: function (s, f) {
 
 
 
@@ -596,8 +541,7 @@ if (SWW && !SWW.GS)
 
 
 
-        EventRowBind: function (g, f)
-        {
+        EventRowBind: function (g, f) {
             var c = 'GS_table_' + SWW.GS.Obj[g].ClientId;
 
 
@@ -608,25 +552,25 @@ if (SWW && !SWW.GS)
             SWW.J('#' + c).children().eq(0).children().eq(0).children().each(function (e) { aTitle.push(SWW.F.STR.Trim(SWW.J(this).text().replace('↑', '').replace('↓', ''))); });
 
 
+            if (document.getElementById(c)) {
+                for (var i = 0, j = document.getElementById(c).rows.length; i < j; i++) {
+                    var row = {};
+                    row.RowIndex = i;
+                    row.CellCount = aTitle.length;
+                    row.Cell = [];
+                    row.CellTitle = {};
+                    row.TableId = c;
+                    row.Row = SWW.J('#' + c).children().eq(0).children().eq(i);
+                    row.BaseGuid = g;
+                    row.Guid = null;
+                    row.ExtendFunc = null;
 
-            for (var i = 0, j = document.getElementById(c).rows.length; i < j; i++)
-            {
-                var row = {};
-                row.RowIndex = i;
-                row.CellCount = aTitle.length;
-                row.Cell = [];
-                row.CellTitle = {};
-                row.TableId = c;
-                row.Row = SWW.J('#' + c).children().eq(0).children().eq(i);
-                row.BaseGuid = g;
-                row.Guid = null;
-                row.ExtendFunc = null;
-
-                SWW.J('#' + c).children().eq(0).children().eq(i).children().each(function (e) { row.Cell.push(SWW.J(this)); row.CellTitle[aTitle[e]] = SWW.J(this); });
-
+                    SWW.J('#' + c).children().eq(0).children().eq(i).children().each(function (e) { row.Cell.push(SWW.J(this)); row.CellTitle[aTitle[e]] = SWW.J(this); });
 
 
-                f(row);
+
+                    f(row);
+                }
             }
 
         },
@@ -642,8 +586,7 @@ if (SWW && !SWW.GS)
         ///	<param name="onTarget" type="obj">
         ///		绑定扩展的列对象
         ///	</param>
-        ExtendFunction: function (oRow, f, onTarget)
-        {
+        ExtendFunction: function (oRow, f, onTarget) {
             ///	<summary>
             ///  绑定列扩展内容事件
             ///	</summary>
@@ -653,36 +596,30 @@ if (SWW && !SWW.GS)
 
 
 
-            if (oRow.RowIndex != 0)
-            {
+            if (oRow.RowIndex != 0) {
                 oRow = SWW.F.OBJ.Clone(oRow);
 
-                if (!this.Obj_Extend[oRow.BaseGuid])
-                {
+                if (!this.Obj_Extend[oRow.BaseGuid]) {
                     this.Obj_Extend[oRow.BaseGuid] = { sum: 0 };
 
                 }
 
-                if (!oRow.Guid)
-                {
+                if (!oRow.Guid) {
                     oRow.Guid = SWW.F.SYS.GetGuid();
                 }
 
-                if (!onTarget)
-                {
+                if (!onTarget) {
                     onTarget = oRow.Row;
 
                     onTarget.children().eq(0).prepend('<span class="SWW_CSS_GS_TABLE_TD_SPAN_Extend"><div id="swwgs_extend_Flag_' + oRow.Guid + '">+</div></span>');
                 }
-                else
-                {
+                else {
                     oRow.Guid = SWW.F.SYS.GetGuid();
                 }
 
 
 
-                if (!this.Obj_Extend[oRow.BaseGuid][oRow.Guid])
-                {
+                if (!this.Obj_Extend[oRow.BaseGuid][oRow.Guid]) {
                     this.Obj_Extend[oRow.BaseGuid][oRow.Guid] = oRow;
                 }
 
@@ -699,8 +636,7 @@ if (SWW && !SWW.GS)
 
         },
 
-        ExtendSetHtml: function (e, s)
-        {
+        ExtendSetHtml: function (e, s) {
 
             if (SWW.F.OBJ.IsObj(e))
                 e = e.Guid;
@@ -708,16 +644,14 @@ if (SWW && !SWW.GS)
             SWW.J('#swwgs_extend_td_' + e).html(s);
         },
 
-        ExtendClickEvent: function ()
-        {
+        ExtendClickEvent: function () {
 
 
 
             var iIndex = SWW.J(this).attr('swwgs_extend_rowindex');
             var BaseGuid = SWW.J(this).attr('swwgs_extend_baseguid');
 
-            if (!SWW.GS.Obj_Extend[BaseGuid][iIndex].show)
-            {
+            if (!SWW.GS.Obj_Extend[BaseGuid][iIndex].show) {
                 SWW.GS.Obj_Extend[BaseGuid][iIndex].show = 1;
                 //var tr = SWW.J(this).is('tr') ? SWW.J(this) : SWW.J(this).parents('tr');
                 // var tr = SWW.J('#' + SWW.GS.Obj_Extend[BaseGuid][iIndex].TableId).children().eq(0).children().eq(SWW.GS.Obj_Extend[BaseGuid][iIndex].RowIndex + SWW.GS.Obj_Extend[BaseGuid].sum);
@@ -732,16 +666,14 @@ if (SWW && !SWW.GS)
                 if (SWW.J('#swwgs_extend_Flag_' + iIndex)) { SWW.J('#swwgs_extend_Flag_' + iIndex).html('-') };
 
             }
-            else if (SWW.GS.Obj_Extend[BaseGuid][iIndex].show == '1')
-            {
+            else if (SWW.GS.Obj_Extend[BaseGuid][iIndex].show == '1') {
                 SWW.GS.Obj_Extend[BaseGuid][iIndex].show = 0;
                 //tr.next().css("display", 'none');
 
                 SWW.J('#' + iIndex).css('display', 'none');
                 if (SWW.J('#swwgs_extend_Flag_' + iIndex)) { SWW.J('#swwgs_extend_Flag_' + iIndex).html('+') };
             }
-            else
-            {
+            else {
                 SWW.GS.Obj_Extend[BaseGuid][iIndex].show = 1;
                 SWW.J('#' + iIndex).css('display', '');
                 if (SWW.J('#swwgs_extend_Flag_' + iIndex)) { SWW.J('#swwgs_extend_Flag_' + iIndex).html('-') };
@@ -750,35 +682,28 @@ if (SWW && !SWW.GS)
         },
 
 
-        OnQueryBefore: function (id, f)
-        {
+        OnQueryBefore: function (id, f) {
 
             SWW.A("GS", "BeforeQuery", id, f);
 
         },
 
 
-        ZZZ_ReLoadGuid: function (id)
-        {
-            if (id == undefined)
-            {
+        ZZZ_ReLoadGuid: function (id) {
+            if (id == undefined) {
                 id = "[0]";
 
             }
-            if (id.indexOf('[') > -1)
-            {
+            if (id.indexOf('[') > -1) {
 
                 var sIndex = id.replace('[', '').replace(']', '');
 
-                if (!isNaN(sIndex))
-                {
+                if (!isNaN(sIndex)) {
 
                     var index = 0;
-                    for (var p in SWW.GS.Obj)
-                    {
+                    for (var p in SWW.GS.Obj) {
 
-                        if (sIndex == index)
-                        {
+                        if (sIndex == index) {
                             id = SWW.GS.Obj[p].Guid;
                         }
                         index++;
@@ -795,16 +720,14 @@ if (SWW && !SWW.GS)
 
 
         //执行查询 第二参数为空时则遍历所有
-        Query: function (id, sid)
-        {
+        Query: function (id, sid) {
 
 
             id = this.ZZZ_ReLoadGuid(id);
 
-           
 
-            if (id && SWW.GS.Obj[id])
-            {
+
+            if (id && SWW.GS.Obj[id]) {
 
                 this.SetQueryParam(SWW.GS.Obj[id], sid);
 
@@ -812,55 +735,46 @@ if (SWW && !SWW.GS)
                 SWW.GS.Obj[id].RowsCount = -1;
                 SWW.GS.Ajax(id);
             }
-            else
-            {
+            else {
                 SWW.F.SYS.Alert(SWW.M.ME.Query);
             }
 
         }
         ,
 
-        SetQueryParam: function (oGS, sid)
-        {
+        SetQueryParam: function (oGS, sid) {
 
             //定义提交参数
             var t = [];
 
             var vElms = SWW.J("#" + sid).children("[paramid][paramid<>'']");
 
-            if (!vElms || vElms.length == 0)
-            {
+            if (!vElms || vElms.length == 0) {
                 vElms = SWW.J("[paramid][paramid<>'']");
             }
 
 
             vElms.each(
 
-             function (index, n)
-             {
+             function (index, n) {
 
                  var el = SWW.J(n);
                  var vl = el.val();
-                 if (el.is("input") && (n.type == "checkbox" || n.type == "radio") && !n.checked)
-                 {
+                 if (el.is("input") && (n.type == "checkbox" || n.type == "radio") && !n.checked) {
                      vl = "";
                  }
 
-                 if (vl != "")
-                 {
+                 if (vl != "") {
                      var jLength = t.length;
 
-                     for (var i = 0, j = t.length; i < j; i++)
-                     {
-                         if (t[i].Key == n.paramid)
-                         {
+                     for (var i = 0, j = t.length; i < j; i++) {
+                         if (t[i].Key == n.paramid) {
                              t[i].Value = t[i].Value + "," + vl;
                              jLength = -1;
                          }
                      }
 
-                     if (jLength > -1)
-                     {
+                     if (jLength > -1) {
                          t.push({ Key: n.paramid, Value: vl });
 
                      }
@@ -883,8 +797,7 @@ if (SWW && !SWW.GS)
 
 
 
-        WebTable: function ()
-        {
+        WebTable: function () {
 
         }
     }

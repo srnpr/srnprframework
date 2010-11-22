@@ -31,11 +31,17 @@ if (SWW && !SWW.TD)
 
             SWW.W.Dialog.SetValue(u.sww_td_parent_id + '_K', sK);
 
-            SWW.W.Dialog.SetValue(u.sww_td_parent_id, sV ? sV : sK);
+
+
+            SWW.W.Dialog.SetValue(u.sww_td_parent_id + '_Control_Text', sK);
+
+            SWW.W.Dialog.SetValue(u.sww_td_parent_id + '_Control_Value', sV ? sV : sK);
 
             if (sD)
             {
                 SWW.W.Dialog.SetValue(u.sww_td_parent_id + "_D", sD);
+
+                SWW.W.Dialog.SetValue(u.sww_td_parent_id + "_Control_Description", sD);
             }
 
 
@@ -61,9 +67,9 @@ if (SWW && !SWW.TD)
                 var sUrl = SWW.F.DOM.Url(o.url, { sww_td_parent_id: o.Id });
 
                 var aH = [];
-                aH.push('<input paramid="' + o.Id + '" id="' + o.Id + '" type="hidden" >');
-                aH.push('<input paramid="' + o.Id + '_K" id="' + o.Id + '_K" type="text" onclick="SWW.W.Dialog.Open({ url:\'' + sUrl + '\' });">');
-                aH.push('<span  id="' + o.Id + '_D"  ></span>');
+
+                aH.push('<input paramid="' + o.Id + '_K" id="' + o.Id + '_K" type="text" value="' + SWW.F.DOM.Auto(o.Id + '_Control_Text') + '" onclick="SWW.W.Dialog.Open({ url:\'' + sUrl + '\' });">');
+                aH.push('<span  id="' + o.Id + '_D"  >' + SWW.F.DOM.Auto(o.Id + '_Control_Value') + '</span>');
                 SWW.F.DOM.Html(o.SId, aH.join(''));
             }
             else

@@ -33,29 +33,71 @@ namespace SrnprWeb.WebWidget
 
         protected override void RenderContents(HtmlTextWriter output)
         {
+            StringBuilder sb = new StringBuilder();
+            
+
+
             output.Write(Text);
         }
 
 
 
+
+
+
+        private string sControl_Text;
+        private string sControl_Value;
+        private string sControl_Description;
+
         public string Control_Text
         {
-            get;
-            set;
+            get
+            {
+                if (string.IsNullOrEmpty(sControl_Text))
+                {
+                    sControl_Text = base.Page.Request[base.ClientID + "_Control_Text"];
+                }
+
+                return sControl_Text;
+            }
+            set
+            {
+                sControl_Text = value;
+            }
         }
 
 
         public string Control_Value
         {
-            get;
-            set;
+            get
+            {
+                if (string.IsNullOrEmpty(sControl_Value))
+                {
+                    sControl_Value = base.Page.Request[base.ClientID + "_Control_Value"];
+                }
+                return sControl_Value;
+            }
+            set
+            {
+                sControl_Value = value;
+            }
 
         }
 
         public string Control_Description
         {
-            get;
-            set;
+            get
+            {
+                if (string.IsNullOrEmpty(sControl_Description))
+                {
+                    sControl_Description = base.Page.Request[base.ClientID + "_Control_Description"];
+                }
+                return sControl_Description;
+            }
+            set
+            {
+                sControl_Description = value;
+            }
         }
 
 

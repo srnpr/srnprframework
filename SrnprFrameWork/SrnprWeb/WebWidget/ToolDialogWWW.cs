@@ -33,15 +33,23 @@ namespace SrnprWeb.WebWidget
 
         protected override void RenderContents(HtmlTextWriter output)
         {
-            StringBuilder sb = new StringBuilder();
             
+            Dictionary<string,string> dict=new Dictionary<string,string>();
+            dict.Add("Control_Text", Control_Text);
+            dict.Add("Control_Value",Control_Value);
+            dict.Add("Control_Description",Control_Description);
 
 
-            output.Write(Text);
+            output.Write(WebProcess.ToolDialogWWP.GetResponse(base.ClientID,Control_Url,dict));
         }
 
 
 
+        public string Control_Url
+        {
+            get;
+            set;
+        }
 
 
 

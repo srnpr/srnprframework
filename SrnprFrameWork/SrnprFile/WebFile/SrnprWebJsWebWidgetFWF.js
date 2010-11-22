@@ -224,7 +224,7 @@ if (!window.SWW)
                    var bV = SWW.J(sE).is("input|textarea");
 
 
-                   if (sV) {
+                   if (sV!=undefined) {
                        bV ? SWW.J(sE).val(sV) : SWW.J(sE).html(sV);
                    }
                    else {

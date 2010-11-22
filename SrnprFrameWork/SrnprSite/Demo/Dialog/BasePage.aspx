@@ -20,6 +20,14 @@
 <input type="button" value="打开一号对话框" onclick="SWW.W.Dialog.Open({url:'/Demo/Dialog/DialogFirst.aspx?sww_td_parent_id=aa',title:'一号对话框',width:900,height:450,top:200})" />
 
 
-<sw:ToolDialogWWW ID="TD" runat="server" />
+
+
+
+
+<sw:ToolDialogWWW ID="TD" runat="server" Control_Url="/Demo/Dialog/DialogFirst.aspx"  />
+
+<br />
+
+    <asp:Button ID="Button1" runat="server" Text="Button" onclick="Button1_Click" />
 
 </asp:Content>

@@ -7,9 +7,15 @@
     <title></title>
     <link type="text/css" rel="Stylesheet" href="/Skin/Blue/MasterPageCss.css" />
     <script type="text/javascript" src="/WebFile/jquery-1.4.2.min.js"></script>
-    
-    <script type="text/javascript" src="/WebFile/SWW-1.0.0.0.min.js"></script>
-   <link type="text/css" rel="Stylesheet" href="/WebFile/SWW-CSS-1.0.0.0.min.css" />
+
+    <script type="text/javascript" src="/WebFile/SrnprWebJsWebWidgetFWF.js"></script>
+    <script type="text/javascript" src="/WebFile/SrnprWebJsGridShowFWF.js"></script>
+    <script type="text/javascript" src="/WebFile/SrnprWebJsToolDialogFWF.js"></script>
+   <link href="/WebFile/SrnprWebCSSWebWidgetFWF.css" type="text/css" rel="Stylesheet" />
+    <link href="/WebFile/SrnprWebCSSGridShowFWF.css" type="text/css" rel="Stylesheet" />
+     
+    <link href="/WebFile/SrnprWebCSSPageShowFWF.css" type="text/css" rel="Stylesheet" />
+
     <script type="text/javascript">
     
    

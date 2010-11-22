@@ -86,7 +86,7 @@
         //点击时执行的函数
         function FuncClick(e)
         {
-            SWW.GS.ExtendSetHtml(e, '<table><tr><td>订单编号：</td><td><input type="text"/></td><td>订单商品 ：</td><td><input type="text"/></td></tr></table>此列编号：' + e.RowIndex);
+            SWW.GS.ExtendSetHtml(e, '<table class="SWW_CSS_GS_TABLE_TD_EXTEND_Table"><tr><td>订单编号：</td><td><input type="text"/></td><td>订单商品 ：</td><td><input type="text"/></td></tr></table>此列编号：' + e.RowIndex);
             
             }
 

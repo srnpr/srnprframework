@@ -26,6 +26,26 @@ namespace SrnprWeb.WebProcess
            
         }
 
+        public static string GetResponse(string sId, string sUrl,Dictionary<string,string> HiddenValue)
+        {
+
+            string sSpanId = sId + "_span_" + Guid.NewGuid().ToString();
+
+            StringBuilder sb = new StringBuilder();
+            foreach (KeyValuePair<string, string> kvp in HiddenValue)
+            {
+                sb.Append("<input type=\"hidden\" name=\"" + sId + "_" + kvp.Key + "\" id=\"" + sId + "_" + kvp.Key + "\" value=\"" + kvp.Value + "\" />");
+            }
+
+
+            return "<span>"+sb.ToString().Trim()+"<span id=\"" + sSpanId + "\"></span></span>" + CommonFunction.JSHelperWCF.CreateScriptDefer(WebProcess.WidgetProcessWWP.SwwJsBaseName("I", "{WidgetType:\"TD\",Id:\"" + sId + "\",url:\"" + sUrl + "\",SId:\"" + sSpanId + "\"}"));
+
+
+        }
+
+
+
+        
 
 
 

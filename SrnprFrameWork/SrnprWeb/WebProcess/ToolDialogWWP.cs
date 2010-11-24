@@ -34,7 +34,7 @@ namespace SrnprWeb.WebProcess
             StringBuilder sb = new StringBuilder();
             foreach (KeyValuePair<string, string> kvp in HiddenValue)
             {
-                sb.Append("<input type=\"hidden\" name=\"" + sId + "_" + kvp.Key + "\" id=\"" + sId + "_" + kvp.Key + "\" value=\"" + kvp.Value + "\" />");
+                sb.Append("<input type=\"hidden\" name=\"" + sId + "_Control_" + kvp.Key + "\" id=\"" + sId + "_" + kvp.Key + "\" value=\"" + kvp.Value + "\" />");
             }
 
 

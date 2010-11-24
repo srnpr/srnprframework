@@ -13,38 +13,29 @@ namespace SrnprWeb.WebWidget
     [ToolboxData("<{0}:ToolDialogWWW runat=server></{0}:ToolDialogWWW>")]
     public class ToolDialogWWW : WebControl
     {
-        [Bindable(true)]
-        [Category("Appearance")]
-        [DefaultValue("")]
-        [Localizable(true)]
-        public string Text
-        {
-            get
-            {
-                String s = (String)ViewState["Text"];
-                return ((s == null) ? String.Empty : s);
-            }
 
-            set
-            {
-                ViewState["Text"] = value;
-            }
-        }
+
+        Dictionary<string, string> dict = new Dictionary<string, string>();
+
+
 
         protected override void RenderContents(HtmlTextWriter output)
         {
             
-            Dictionary<string,string> dict=new Dictionary<string,string>();
-            dict.Add("Control_Text", Control_Text);
-            dict.Add("Control_Value",Control_Value);
-            dict.Add("Control_Description",Control_Description);
+            
+            dict.Add("Text", Control_Text);
+            dict.Add("Value",Control_Value);
+            dict.Add("Description",Control_Description);
 
 
             output.Write(WebProcess.ToolDialogWWP.GetResponse(base.ClientID,Control_Url,dict));
         }
 
 
-
+        [Bindable(true)]
+        [Category("Appearance")]
+        [DefaultValue("")]
+        [Localizable(true)]
         public string Control_Url
         {
             get;
@@ -63,7 +54,7 @@ namespace SrnprWeb.WebWidget
             {
                 if (string.IsNullOrEmpty(sControl_Text))
                 {
-                    sControl_Text = base.Page.Request[base.ClientID + "_Control_Text"];
+                    sControl_Text = Control_DictGetValue("Text");
                 }
 
                 return sControl_Text;
@@ -81,7 +72,7 @@ namespace SrnprWeb.WebWidget
             {
                 if (string.IsNullOrEmpty(sControl_Value))
                 {
-                    sControl_Value = base.Page.Request[base.ClientID + "_Control_Value"];
+                    sControl_Value = Control_DictGetValue("Value");
                 }
                 return sControl_Value;
             }
@@ -89,7 +80,6 @@ namespace SrnprWeb.WebWidget
             {
                 sControl_Value = value;
             }
-
         }
 
         public string Control_Description
@@ -98,7 +88,7 @@ namespace SrnprWeb.WebWidget
             {
                 if (string.IsNullOrEmpty(sControl_Description))
                 {
-                    sControl_Description = base.Page.Request[base.ClientID + "_Control_Description"];
+                    sControl_Description = Control_DictGetValue("Description");
                 }
                 return sControl_Description;
             }
@@ -108,7 +98,28 @@ namespace SrnprWeb.WebWidget
             }
         }
 
+        public Dictionary<string, string> Control_Dict
+        {
+            get
+            {
+                return dict;
+            }
+        }
 
+        public string Control_DictGetValue(string sKey)
+        {
+            string sReturn = "";
+
+
+            if (Context.Request[base.ClientID + "_Control_" + sKey] != null)
+            {
+                sReturn = base.Context.Request[base.ClientID + "_Control_" + sKey].Trim();
+            }
+
+
+            return sReturn;
+
+        }
 
 
     }

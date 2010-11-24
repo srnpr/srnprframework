@@ -24,7 +24,7 @@
 
 
 
-<sw:ToolDialogWWW ID="TD" runat="server" Control_Url="/Demo/Dialog/DialogFirst.aspx"  />
+<sw:ToolDialogWWW ID="TD" runat="server" Control_Url="/Demo/Dialog/DialogFirst.aspx" Controldd="ff" Controldd2="ff"  />
 
 <br />
 

@@ -66,6 +66,43 @@ if (SWW && !SWW.TD)
 
                 var sUrl = SWW.F.DOM.Url(o.url, { sww_td_parent_id: o.Id });
 
+
+
+                if (document.getElementById(o.Id)) {
+
+
+                    var the = document.getElementById(o.Id);
+                    var arrUrlQuery = [];
+                    for (var i = 0; i < the.attributes.length; i++) {
+
+                        var ch = the.attributes[i].nodeName;
+
+                        if ((ch.charCodeAt(0) >= 65) && (ch.charCodeAt(0) <= 90)) {
+                            /*
+                            str += "nodeName: " + the.attributes[i].nodeName + " <br> ";
+                            str += "nodeType: " + the.attributes[i].nodeType + " <br> ";
+                            str += "nodeValue: " + the.attributes[i].nodeValue + " <br> ";
+                            str += "name: " + the.attributes[i].name + " <br> ";
+                            str += "specified: " + the.attributes[i].specified + " <br> ";
+                            str += "expando: " + the.attributes[i].expando + " <br> ";
+                            str += " <br> --------------- <br> ";
+                            */
+
+                            arrUrlQuery.push(the.attributes[i].nodeName + '=' + the.attributes[i].nodeValue);
+
+                        }
+                    }
+
+
+                    sUrl += '&'+ arrUrlQuery.join('&');
+
+
+                }
+
+
+
+
+
                 var aH = [];
 
                 aH.push('<input paramid="' + o.Id + '_K" id="' + o.Id + '_K" type="text" value="' + SWW.F.DOM.Auto(o.Id + '_Control_Text') + '" onclick="SWW.W.Dialog.Open({ url:\'' + sUrl + '\' });">');
@@ -85,7 +122,6 @@ if (SWW && !SWW.TD)
 
 
 }
-
 
 
 

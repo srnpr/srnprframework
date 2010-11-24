@@ -23,13 +23,18 @@ if (SWW && !SWW.TD)
         }
         ,
 
+        Close: function () {
+            SWW.W.Dialog.Close();
+        },
+
+
 
         SetValue: function (sK, sV, sD) {
 
             var u = SWW.F.DOM.Url();
-            
+
             SWW.W.Dialog.SetValue(u.sww_td_parent_id + '_K', sK);
-           
+
 
 
             SWW.W.Dialog.SetValue(u.sww_td_parent_id + '_Control_Text', sK);

@@ -9,15 +9,16 @@
     
     
     
-    
+    <div id="testshow" style="display:none;">
     <sw:GridShowWWW ID="GSShow" runat="server" />
-    
+    </div>
      <br /><br /><br /><br />
      
      <a href="List.aspx">返回列表</a>
      <br /><br />
      
      <a href="javascript:ShowList()">显示返回Json内容</a>
+     <a href="javascript:TestGSShow()">测试展开</a>
      <div id="show" style="display:none;">
      <table id="ttt"></table>
     <textarea id="jsonshow" rows="20" cols="100"></textarea>
@@ -33,9 +34,11 @@
             document.getElementById("show").style.display = "";
         }
 
-      
 
-        
+
+        function TestGSShow() {
+            document.getElementById("testshow").style.display = '';
+        }
 
 
 

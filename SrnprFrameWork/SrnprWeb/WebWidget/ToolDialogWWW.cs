@@ -28,7 +28,7 @@ namespace SrnprWeb.WebWidget
             dict.Add("Description",Control_Description);
 
 
-            output.Write(WebProcess.ToolDialogWWP.GetResponse(base.ClientID,Control_Url,dict));
+            output.Write(WebProcess.ToolDialogWWP.GetResponse(base.ClientID, Control_Url, base.ID, dict));
         }
 
 
@@ -105,6 +105,8 @@ namespace SrnprWeb.WebWidget
                 return dict;
             }
         }
+
+
 
         public string Control_DictGetValue(string sKey)
         {

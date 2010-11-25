@@ -224,7 +224,7 @@ if (!window.SWW)
                    var bV = SWW.J(sE).is("input|textarea");
 
 
-                   if (sV!=undefined) {
+                   if (sV != undefined) {
                        bV ? SWW.J(sE).val(sV) : SWW.J(sE).html(sV);
                    }
                    else {
@@ -1247,14 +1247,19 @@ if (!window.SWW)
 
 
 
+                       if (o.button && o.button.length > 0) {
+                           //o.height += 30;
+                       }
+
+
                        var aH = [];
 
 
 
-                       aH.push('<div id="' + o.guid + '" class="' + o.cssid + 'Box_Over" style="width:' + (o.width + 4) + 'px;height:' + (o.height + 4) + 'px; top:' + o.top + 'px;left:' + o.left + 'px;">');
-                       aH.push('<div class="' + o.cssid + 'Box_Back" style="width:' + (o.width + 3) + 'px;height:' + (o.height + 3) + 'px;">');
+                       aH.push('<div id="' + o.guid + '" class="' + o.cssid + 'Box_Over" style=" top:' + o.top + ';left:' + o.left + ';">');
+                       aH.push('<div class="' + o.cssid + 'Box_Back" >');
 
-                       aH.push('<div class="' + o.cssid + 'Box" style="width:' + o.width + 'px;height:' + o.height + 'px;">');
+                       aH.push('<div class="' + o.cssid + 'Box" style="width:' + o.width + ';">');
 
 
                        //开始添加抬头
@@ -1264,7 +1269,9 @@ if (!window.SWW)
 
 
 
-                       aH.push('<div class="' + o.cssid + 'Content" style="width:' + o.width + 'px;height:' + o.height + 'px;">');
+                       aH.push('<div class="' + o.cssid + 'Content" style="width:' + o.width + ';height:' + o.height + ';">');
+
+
                        //判断内容模型
                        if (o.url) {
                            aH.push('<div id="' + o.guid + '_iframe_load">' + SWW.M.ME.Load + '</div>');
@@ -1280,10 +1287,11 @@ if (!window.SWW)
 
                        }
 
+                       aH.push('</div>');
 
                        if (o.button && o.button.length > 0) {
-                           var s = '';
-                           aH.push('<div style="text-align:center;">');
+
+                           aH.push('<div class="' + o.cssid + 'Button_Back">');
                            for (var i = 0, j = o.button.length; i < j; i++) {
                                var iIndex = o.button[i].indexOf(':');
 
@@ -1294,7 +1302,7 @@ if (!window.SWW)
                            aH.push('</div>');
                        }
 
-                       aH.push('</div></div></div></div>');
+                       aH.push('</div></div></div>');
                        SWW.J('body').append(aH.join(''));
 
                        o.current = this.Config.CountDialog;

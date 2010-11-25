@@ -26,7 +26,7 @@ namespace SrnprWeb.WebProcess
            
         }
 
-        public static string GetResponse(string sId, string sUrl,Dictionary<string,string> HiddenValue)
+        public static string GetResponse(string sId, string sUrl,string sServerId,Dictionary<string,string> HiddenValue)
         {
 
             string sSpanId = sId + "_span_" + Guid.NewGuid().ToString();
@@ -38,7 +38,7 @@ namespace SrnprWeb.WebProcess
             }
 
 
-            return "<span>"+sb.ToString().Trim()+"<span id=\"" + sSpanId + "\"></span></span>" + CommonFunction.JSHelperWCF.CreateScriptDefer(WebProcess.WidgetProcessWWP.SwwJsBaseName("I", "{WidgetType:\"TD\",Id:\"" + sId + "\",url:\"" + sUrl + "\",SId:\"" + sSpanId + "\"}"));
+            return "<span>"+sb.ToString().Trim()+"<span id=\"" + sSpanId + "\"></span></span>" + CommonFunction.JSHelperWCF.CreateScriptDefer(WebProcess.WidgetProcessWWP.SwwJsBaseName("I", "{WidgetType:\"TD\",Id:\"" + sId + "\",ServerId:\""+sServerId+"\",url:\"" + sUrl + "\",SId:\"" + sSpanId + "\"}"));
 
 
         }

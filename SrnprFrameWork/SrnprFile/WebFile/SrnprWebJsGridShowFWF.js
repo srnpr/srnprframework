@@ -236,7 +236,15 @@ if (SWW && !SWW.GS)
                 }
                 var iAutoWidth_DivWidth = $('#SWJGSF_Div_' + req.ClientId).width();
                 if (!iAutoWidth_DivWidth) {
-                    iAutoWidth_DivWidth = $('document').width();
+                    //iAutoWidth_DivWidth = $('body').width();
+
+
+                    var eAutoWidth_Check_Father = $('#SWJGSF_Div_' + req.ClientId);
+                    while (iAutoWidth_DivWidth <= 0) {
+
+                        iAutoWidth_DivWidth = eAutoWidth_Check_Father.width();
+                        eAutoWidth_Check_Father = eAutoWidth_Check_Father.parent();
+                    }
                 }
 
                 if (iAutoWidth_SumTitle && iAutoWidth_DivWidth) {
@@ -733,6 +741,9 @@ if (SWW && !SWW.GS)
 
                 SWW.GS.Obj[id].PageIndex = 1;
                 SWW.GS.Obj[id].RowsCount = -1;
+
+                SWW.F.SYS.ExecAF({ f: 'Query', w: 'GS', d: id, e: SWW.GS.Obj[id] });
+
                 SWW.GS.Ajax(id);
             }
             else {
@@ -741,6 +752,13 @@ if (SWW && !SWW.GS)
 
         }
         ,
+
+        OnQuery: function (id, f) {
+
+            SWW.A("GS", "Query", id, f);
+
+        },
+
 
         SetQueryParam: function (oGS, sid) {
 

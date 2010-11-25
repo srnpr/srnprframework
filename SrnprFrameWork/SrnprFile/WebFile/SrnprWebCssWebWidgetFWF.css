@@ -10,11 +10,13 @@
     background-color:#CCC;
     z-index:999;
     position:absolute;
+    padding:0px 1px 1px 0px;
 }
 
 .SWW_CSS_W_Dialog_Box_Back
 {
    background-color:#999;
+   padding:0px 2px 2px 0px;
 }
 .SWW_CSS_W_Dialog_Box
 {
@@ -22,6 +24,7 @@
    
     border-top:1px #999 solid;
     border-left:1px #999 solid;
+    width:100%;
 }
 
 .SWW_CSS_W_Dialog_Title
@@ -64,6 +67,22 @@
      overflow:auto;
 }
 
+
+.SWW_CSS_W_Dialog_Button_Back
+{
+    text-align:center;
+    
+    
+    margin-top:10px;
+}
+
+.SWW_CSS_W_Dialog_Button_Back hr
+{
+    
+   
+    
+}
+
 .SWW_CSS_W_Dialog_Button
 {
     
@@ -76,6 +95,7 @@
      cursor:pointer;
      line-height:20px;
      letter-spacing:2px;
+     margin:5px 0px 5px 0px;
      background-image:url("http://f.xgou.com/atgang/UI_c/images/button_back.gif");
      
 }

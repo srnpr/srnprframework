@@ -23,9 +23,9 @@ namespace SrnprWeb.WebWidget
         {
             
             
-            dict.Add("Text", Control_Text);
-            dict.Add("Value",Control_Value);
-            dict.Add("Description",Control_Description);
+            dict.Add("Text", Control_Text.Trim());
+            dict.Add("Value", Control_Value.Trim());
+            dict.Add("Description", Control_Description.Trim());
 
 
             output.Write(WebProcess.ToolDialogWWP.GetResponse(base.ClientID, Control_Url, base.ID, dict));

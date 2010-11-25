@@ -70,18 +70,68 @@ if (SWW && !SWW.TD)
 
 
 
-    OnBeforeOpen: function (e) {
+    OnBeforeOpen: function (sServerId, f) {
+
+        var o = null;
+
+        SWW.A('TD', "BeforeOpen", sServerId, f);
 
 
 
     },
 
-    OpenDialog: function (e) {
+    OpenDialog: function (sGuid) {
 
 
-        SWW.F.SYS.ExecAF({ f: 'BeforeOpen', w: 'TD', d: id, e: SWW.GS.Obj[id] });
+        var o = this.Obj[sGuid];
 
-        SWW.W.Dialog.Open(e.url);
+        SWW.F.SYS.ExecAF({ f: 'BeforeOpen', w: 'TD', d: o.ServerId, e: o });
+
+
+        var eDialog = {};
+
+
+
+        o.UrlParam.sww_td_parent_id = o.Id;
+
+
+
+        //开始判断加载控件上的标记
+        if (document.getElementById(o.Id)) {
+
+            var the = document.getElementById(o.Id);
+            
+            for (var i = 0; i < the.attributes.length; i++) {
+
+                var ch = the.attributes[i].nodeName;
+
+                if ((ch.charCodeAt(0) >= 65) && (ch.charCodeAt(0) <= 90)) {
+                    /*
+                    str += "nodeName: " + the.attributes[i].nodeName + " <br> ";
+                    str += "nodeType: " + the.attributes[i].nodeType + " <br> ";
+                    str += "nodeValue: " + the.attributes[i].nodeValue + " <br> ";
+                    str += "name: " + the.attributes[i].name + " <br> ";
+                    str += "specified: " + the.attributes[i].specified + " <br> ";
+                    str += "expando: " + the.attributes[i].expando + " <br> ";
+                    str += " <br> --------------- <br> ";
+                    */
+                    //arrUrlQuery.push(the.attributes[i].nodeName + '=' + the.attributes[i].nodeValue);
+
+                    o.UrlParam[the.attributes[i].nodeName] = the.attributes[i].nodeValue;
+
+                }
+            }
+            
+
+
+        }
+        var sUrl = SWW.F.DOM.Url(o.url, o.UrlParam);
+
+        eDialog.url = sUrl;
+
+
+
+        SWW.W.Dialog.Open(eDialog);
 
     },
 
@@ -90,50 +140,22 @@ if (SWW && !SWW.TD)
 
         if (o && o.url) {
 
-            var sUrl = SWW.F.DOM.Url(o.url, { sww_td_parent_id: o.Id });
 
+            o.UrlParam = {};
 
             this.Obj[o.Guid] = o;
 
-            if (document.getElementById(o.Id)) {
-
-                var the = document.getElementById(o.Id);
-                var arrUrlQuery = [];
-                for (var i = 0; i < the.attributes.length; i++) {
-
-                    var ch = the.attributes[i].nodeName;
-
-                    if ((ch.charCodeAt(0) >= 65) && (ch.charCodeAt(0) <= 90)) {
-                        /*
-                        str += "nodeName: " + the.attributes[i].nodeName + " <br> ";
-                        str += "nodeType: " + the.attributes[i].nodeType + " <br> ";
-                        str += "nodeValue: " + the.attributes[i].nodeValue + " <br> ";
-                        str += "name: " + the.attributes[i].name + " <br> ";
-                        str += "specified: " + the.attributes[i].specified + " <br> ";
-                        str += "expando: " + the.attributes[i].expando + " <br> ";
-                        str += " <br> --------------- <br> ";
-                        */
-
-                        arrUrlQuery.push(the.attributes[i].nodeName + '=' + the.attributes[i].nodeValue);
-
-                    }
-                }
 
 
-                sUrl += '&' + arrUrlQuery.join('&');
 
 
-            }
-
-
-            alert(o.Guid);
 
 
             var aH = [];
 
-            aH.push('<input paramid="' + o.Id + '_K" id="' + o.Id + '_K" type="text" value="' + SWW.F.DOM.Auto(o.Id + '_Control_Text') + '" onclick="SWW.TD.OpenDialog({ url:\'' + sUrl + '\' });">');
-            aH.push('<img src="http://f.xgou.com/AtGang/UI_C/images/search_helpsearch.gif" onclick="SWW.TD.OpenDialog({ url:\'' + sUrl + '\' });">');
-            aH.push('<span  id="' + o.Id + '_D"  >' + SWW.F.DOM.Auto(o.Id + '_Control_Value') + '</span>');
+            aH.push('<input paramid="' + o.Id + '_K" id="' + o.Id + '_K" type="text" value="' + SWW.F.DOM.Value(o.Id + '_Control_Text') + '" onclick="SWW.TD.OpenDialog(\'' + o.Guid + '\');">');
+            aH.push('<img src="http://f.xgou.com/AtGang/UI_C/images/search_helpsearch.gif" onclick="SWW.TD.OpenDialog(\'' + o.Guid + '\');">');
+            aH.push('<span  id="' + o.Id + '_D"  >' + SWW.F.DOM.Html(o.Id + '_Control_Value') + '</span>');
             SWW.F.DOM.Html(o.SId, aH.join(''));
         }
         else {

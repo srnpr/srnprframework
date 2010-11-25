@@ -170,7 +170,7 @@ if (!window.SWW)
                        SWW.J('#' + sElement).html(snHtml);
                    }
                    else {
-                       return SWW.J('#' + sElement).html();
+                       return SWW.J('#' + sElement).html()?SWW.J('#' + sElement).html():'';
                    }
                },
                Text: function (sElement, snText) {
@@ -204,7 +204,7 @@ if (!window.SWW)
                        SWW.J('#' + sElement).val(snValue);
                    }
                    else {
-                       return SWW.J('#' + sElement).val();
+                       return SWW.J('#' + sElement).val()?SWW.J('#' + sElement).val():'';
                    }
                },
                Get: function (sn) {

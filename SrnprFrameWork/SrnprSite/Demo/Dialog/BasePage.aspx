@@ -30,4 +30,18 @@
 
     <asp:Button ID="Button1" runat="server" Text="Button" onclick="Button1_Click" />
 
+
+
+    <script>
+
+        SWW.TD.OnBeforeOpen('TD', BeforeOpen);
+
+        function BeforeOpen(e) {
+            //添加Url参数
+            e.UrlParam['aa'] = 'xxx';
+        }
+    
+    </script>
+
+
 </asp:Content>

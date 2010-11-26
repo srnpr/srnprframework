@@ -67,7 +67,29 @@ if (SWW && !SWW.TD)
         ,
 
 
+    Source: function () {
+        return SWW.W.Dialog.Source();
+    },
 
+    GetPageValue: function (sServerId, sDictKey) {
+
+        var sReturn = '';
+
+        var guid = '';
+        for (var p in this.Obj) {
+            if (this.Obj[p].ServerId == sServerId) {
+
+                guid = p;
+
+            }
+
+        }
+        
+        return SWW.F.DOM.Value(this.Obj[p].Id + '_' + sDictKey);
+
+
+
+    },
 
 
     OnBeforeOpen: function (sServerId, f) {
@@ -100,7 +122,7 @@ if (SWW && !SWW.TD)
         if (document.getElementById(o.Id)) {
 
             var the = document.getElementById(o.Id);
-            
+
             for (var i = 0; i < the.attributes.length; i++) {
 
                 var ch = the.attributes[i].nodeName;
@@ -121,7 +143,7 @@ if (SWW && !SWW.TD)
 
                 }
             }
-            
+
 
 
         }

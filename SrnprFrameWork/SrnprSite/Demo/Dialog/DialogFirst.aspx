@@ -17,7 +17,7 @@ b1字段：<input type="text" id="b1" />
 
 
 
-<input type="button" value="设置父页面字段值" onclick="SWW.TD.SetValue(SWW.F.DOM.Value('sa'),SWW.F.DOM.Value('sa'),SWW.F.DOM.Value('sa'));SWW.W.Dialog.Close()" />
+<input type="button" value="设置父页面字段值" onclick="SWW.TD.SetValue(SWW.F.DOM.Value('sa'),SWW.F.DOM.Value('sa'),SWW.F.DOM.Value('sa'));SWW.TD.Source().Test();SWW.W.Dialog.Close()" />
 
 <script type="text/javascript">
 

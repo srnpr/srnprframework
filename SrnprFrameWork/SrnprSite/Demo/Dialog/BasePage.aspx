@@ -24,7 +24,7 @@
 
 
 
-<sw:ToolDialogWWW ID="TD" runat="server" Control_Url="/Demo/Dialog/DialogFirst.aspx" Controldd="ff" Controldd2="ff"  />
+<sw:ToolDialogWWW ID="TD" runat="server" Control_Url="/Demo/Dialog/DialogFirst.aspx" Controldd="ff" Controldd2="ff"   />
 
 <br />
 
@@ -40,7 +40,15 @@
             //添加Url参数
             e.UrlParam['aa'] = 'xxx';
         }
-    
+
+
+
+        function Test() {
+
+            alert(SWW.TD.GetPageValue('TD', 'Control_Value'));
+        }
+
+
     </script>
 
 

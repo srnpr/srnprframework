@@ -249,6 +249,7 @@ if (SWW && !SWW.GS)
 
                 if (iAutoWidth_SumTitle && iAutoWidth_DivWidth) {
                     if (Math.floor(iAutoWidth_DivWidth / 18) < iAutoWidth_SumTitle) {
+                        
                         sShowDivBox = sShowDivBox.replace('<div class="', '<div style="width:' + (iAutoWidth_DivWidth - 14) + 'px" class="SWW_CSS_GS_DIV_MAIN_Scroll ').replace('<table ', '<table style="width:' + (iAutoWidth_SumTitle * 16) + 'px" ');
                     }
                 }
@@ -692,7 +693,7 @@ if (SWW && !SWW.GS)
 
         OnQueryBefore: function (id, f) {
 
-            SWW.A("GS", "BeforeQuery", this.ZZZ_ReLoadGuid(id), f);
+            SWW.A("GS", "BeforeQuery", id, f);
 
         },
 
@@ -721,7 +722,9 @@ if (SWW && !SWW.GS)
 
 
             var iNow = 0;
+
             for (var p in SWW.GS.Obj) {
+
 
                 if (iIndex > -1) {
                     if (iNow == iIndex) {
@@ -730,6 +733,7 @@ if (SWW && !SWW.GS)
                 }
                 else if (SWW.GS.Obj[p].Id == id) {
                     id = SWW.GS.Obj[p].Guid;
+
                 }
             }
 
@@ -820,7 +824,7 @@ if (SWW && !SWW.GS)
 
 
             //执行扩展函数
-            SWW.F.SYS.ExecAF({ f: 'BeforeQuery', w: 'GS', d: oGS.Guid, e: oGS });
+            SWW.F.SYS.ExecAF({ f: 'BeforeQuery', w: 'GS', d: oGS.Id, e: oGS });
 
         },
 

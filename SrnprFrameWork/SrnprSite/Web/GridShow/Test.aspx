@@ -9,7 +9,7 @@
     
     
     
-    <div id="testshow" style="display:none;">
+    <div id="testshow" >
     <sw:GridShowWWW ID="GSShow" runat="server" />
     </div>
      <br /><br /><br /><br />

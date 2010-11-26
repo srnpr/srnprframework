@@ -692,32 +692,47 @@ if (SWW && !SWW.GS)
 
         OnQueryBefore: function (id, f) {
 
-            SWW.A("GS", "BeforeQuery", id, f);
+            SWW.A("GS", "BeforeQuery", this.ZZZ_ReLoadGuid(id), f);
 
         },
 
 
+        Display: function (id, b) {
+
+            SWW.F.DOM.Display('SWW_GS_DIV_ShowDisplay_' + this.ZZZ_ReLoadGuid(id), b);
+
+        },
+
+
+
         ZZZ_ReLoadGuid: function (id) {
-            if (id == undefined) {
+            if (id == undefined || !id) {
                 id = "[0]";
 
             }
+            var iIndex = -1;
             if (id.indexOf('[') > -1) {
 
                 var sIndex = id.replace('[', '').replace(']', '');
-
                 if (!isNaN(sIndex)) {
-
-                    var index = 0;
-                    for (var p in SWW.GS.Obj) {
-
-                        if (sIndex == index) {
-                            id = SWW.GS.Obj[p].Guid;
-                        }
-                        index++;
-                    }
+                    iIndex = parseInt(Math.abs(sIndex));
                 }
             }
+
+
+            var iNow = 0;
+            for (var p in SWW.GS.Obj) {
+
+                if (iIndex > -1) {
+                    if (iNow == iIndex) {
+                        id = SWW.GS.Obj[p].Guid;
+                    }
+                }
+                else if (SWW.GS.Obj[p].Id == id) {
+                    id = SWW.GS.Obj[p].Guid;
+                }
+            }
+
             return id;
         },
 
@@ -742,7 +757,7 @@ if (SWW && !SWW.GS)
                 SWW.GS.Obj[id].PageIndex = 1;
                 SWW.GS.Obj[id].RowsCount = -1;
 
-                SWW.F.SYS.ExecAF({ f: 'Query', w: 'GS', d: id, e: SWW.GS.Obj[id] });
+
 
                 SWW.GS.Ajax(id);
             }
@@ -753,11 +768,7 @@ if (SWW && !SWW.GS)
         }
         ,
 
-        OnQuery: function (id, f) {
 
-            SWW.A("GS", "Query", id, f);
-
-        },
 
 
         SetQueryParam: function (oGS, sid) {
@@ -809,7 +820,7 @@ if (SWW && !SWW.GS)
 
 
             //执行扩展函数
-            SWW.F.SYS.ExecAF({ f: 'BeforeQuery', w: 'GS', d: oGS.Id, e: oGS });
+            SWW.F.SYS.ExecAF({ f: 'BeforeQuery', w: 'GS', d: oGS.Guid, e: oGS });
 
         },
 

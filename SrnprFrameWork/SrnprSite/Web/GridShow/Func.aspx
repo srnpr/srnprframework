@@ -70,13 +70,22 @@
         {
             e.CellTitle['消费城市'].html('测试变化单元格内容');
         }
+
+
+        e.CellTitle["分级"].html('<input type="checkbox" onclick="SWW.GS.ExtendSetFlag(\'' + e.BaseGuid + '\')"/>');
+
     }
     //添加绑定函数
     SWW.GS.OnDataRowBind('test.citysee', ChangeContent);
 
 
+    function HiddenClick(i) {
 
+        SWW.GS.Obj_Extend[i].ExtendFlag = true;
+       
+    }
 
+    
    
 
     /*点击列扩展内容****************************************************************************************/
@@ -84,8 +93,9 @@
     
 
         //点击时执行的函数
-        function FuncClick(e)
-        {
+        function FuncClick(e) {
+
+        
             SWW.GS.ExtendSetHtml(e, '<table class="SWW_CSS_GS_TABLE_TD_EXTEND_Table"><tr><td>订单编号：</td><td><input type="text"/></td><td>订单商品 ：</td><td><input type="text"/></td></tr></table>此列编号：' + e.RowIndex);
             
             }

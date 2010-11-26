@@ -40,6 +40,8 @@ namespace SrnprSite.Ashx
 
             StringBuilder sb = new StringBuilder();
 
+            sb.Append("<table>");
+
             int iColumnLength = dt.Columns.Count;
 
 
@@ -47,10 +49,10 @@ namespace SrnprSite.Ashx
 
             for (int i = 0; i < iColumnLength; i++)
             {
-                strList.Add(dt.Columns[i].ColumnName);
+                strList.Add("<th>"+dt.Columns[i].ColumnName+"</th>");
 
             }
-            sb.Append(string.Join("\t", strList.ToArray()) + "\n");
+            sb.Append("<tr>"+string.Join("", strList.ToArray()) + "</tr>");
 
             for (int i = 0, j = dt.Rows.Count; i < j; i++)
             {
@@ -58,15 +60,15 @@ namespace SrnprSite.Ashx
                 strList = new List<string>();
                 for (int n = 0; n < iColumnLength; n++)
                 {
-                    strList.Add(dt.Rows[i][n].ToString());
+                    strList.Add("<td style=\"vnd.ms-excel.numberformat: @;\">"+dt.Rows[i][n].ToString()+"</td>");
 
                 }
 
-                sb.Append(string.Join("\t", strList.ToArray()) + "\n");
+                sb.Append("<tr>"+string.Join("", strList.ToArray()) + "</tr>");
             }
 
 
-
+            sb.Append("</table>");
 
 
 

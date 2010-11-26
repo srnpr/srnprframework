@@ -27,6 +27,8 @@ if (SWW && !SWW.GS)
         DemoFlag: false,
 
 
+
+
         Set: function (id, p, v) {
             SWW.GS.SetInit(id);
             SWW.GS.SetObj[id][p] = v;
@@ -238,18 +240,18 @@ if (SWW && !SWW.GS)
                 if (!iAutoWidth_DivWidth) {
                     //iAutoWidth_DivWidth = $('body').width();
 
-
+                    /*
                     var eAutoWidth_Check_Father = $('#SWJGSF_Div_' + req.ClientId);
                     while (iAutoWidth_DivWidth <= 0) {
 
-                        iAutoWidth_DivWidth = eAutoWidth_Check_Father.width();
-                        eAutoWidth_Check_Father = eAutoWidth_Check_Father.parent();
-                    }
+                    iAutoWidth_DivWidth = eAutoWidth_Check_Father.width();
+                    eAutoWidth_Check_Father = eAutoWidth_Check_Father.parent();
+                    }*/
                 }
 
                 if (iAutoWidth_SumTitle && iAutoWidth_DivWidth) {
                     if (Math.floor(iAutoWidth_DivWidth / 18) < iAutoWidth_SumTitle) {
-                        
+
                         sShowDivBox = sShowDivBox.replace('<div class="', '<div style="width:' + (iAutoWidth_DivWidth - 14) + 'px" class="SWW_CSS_GS_DIV_MAIN_Scroll ').replace('<table ', '<table style="width:' + (iAutoWidth_SumTitle * 16) + 'px" ');
                     }
                 }
@@ -571,7 +573,7 @@ if (SWW && !SWW.GS)
                     row.TableId = c;
                     row.Row = SWW.J('#' + c).children().eq(0).children().eq(i);
                     row.BaseGuid = g;
-                    row.Guid = null;
+                    row.Guid = SWW.F.SYS.GetGuid();
                     row.ExtendFunc = null;
 
                     SWW.J('#' + c).children().eq(0).children().eq(i).children().each(function (e) { row.Cell.push(SWW.J(this)); row.CellTitle[aTitle[e]] = SWW.J(this); });
@@ -613,6 +615,7 @@ if (SWW && !SWW.GS)
 
                 }
 
+
                 if (!oRow.Guid) {
                     oRow.Guid = SWW.F.SYS.GetGuid();
                 }
@@ -641,6 +644,10 @@ if (SWW && !SWW.GS)
                 this.Obj_Extend[oRow.BaseGuid][oRow.Guid].ExtendFunc = f;
 
 
+
+            }
+            else {
+                //SWW.ExtendFlag = true;
             }
 
         },
@@ -653,39 +660,50 @@ if (SWW && !SWW.GS)
             SWW.J('#swwgs_extend_td_' + e).html(s);
         },
 
+        ExtendSetFlag:function(sId) {
+
+            SWW.GS.Obj_Extend[sId].ExtendFlag = true;
+
+        },
+
+
         ExtendClickEvent: function () {
 
 
 
             var iIndex = SWW.J(this).attr('swwgs_extend_rowindex');
             var BaseGuid = SWW.J(this).attr('swwgs_extend_baseguid');
+            if (!SWW.GS.Obj_Extend[BaseGuid].ExtendFlag) {
+                if (!SWW.GS.Obj_Extend[BaseGuid][iIndex].show) {
+                    SWW.GS.Obj_Extend[BaseGuid][iIndex].show = 1;
+                    //var tr = SWW.J(this).is('tr') ? SWW.J(this) : SWW.J(this).parents('tr');
+                    // var tr = SWW.J('#' + SWW.GS.Obj_Extend[BaseGuid][iIndex].TableId).children().eq(0).children().eq(SWW.GS.Obj_Extend[BaseGuid][iIndex].RowIndex + SWW.GS.Obj_Extend[BaseGuid].sum);
 
-            if (!SWW.GS.Obj_Extend[BaseGuid][iIndex].show) {
-                SWW.GS.Obj_Extend[BaseGuid][iIndex].show = 1;
-                //var tr = SWW.J(this).is('tr') ? SWW.J(this) : SWW.J(this).parents('tr');
-                // var tr = SWW.J('#' + SWW.GS.Obj_Extend[BaseGuid][iIndex].TableId).children().eq(0).children().eq(SWW.GS.Obj_Extend[BaseGuid][iIndex].RowIndex + SWW.GS.Obj_Extend[BaseGuid].sum);
+                    //SWW.GS.Obj_Extend[BaseGuid].sum++;
+                    var tr = SWW.GS.Obj_Extend[BaseGuid][iIndex].Row;
 
-                //SWW.GS.Obj_Extend[BaseGuid].sum++;
-                var tr = SWW.GS.Obj_Extend[BaseGuid][iIndex].Row;
+                    tr.after('<tr id="' + iIndex + '"><td style="" colspan="100" id="swwgs_extend_td_' + iIndex + '"></td></tr>');
 
-                tr.after('<tr id="' + iIndex + '"><td style="" colspan="100" id="swwgs_extend_td_' + iIndex + '"></td></tr>');
+                    SWW.GS.Obj_Extend[BaseGuid][iIndex].ExtendFunc(SWW.GS.Obj_Extend[BaseGuid][iIndex]);
 
-                SWW.GS.Obj_Extend[BaseGuid][iIndex].ExtendFunc(SWW.GS.Obj_Extend[BaseGuid][iIndex]);
+                    if (SWW.J('#swwgs_extend_Flag_' + iIndex)) { SWW.J('#swwgs_extend_Flag_' + iIndex).html('-') };
 
-                if (SWW.J('#swwgs_extend_Flag_' + iIndex)) { SWW.J('#swwgs_extend_Flag_' + iIndex).html('-') };
+                }
+                else if (SWW.GS.Obj_Extend[BaseGuid][iIndex].show == '1') {
+                    SWW.GS.Obj_Extend[BaseGuid][iIndex].show = 0;
+                    //tr.next().css("display", 'none');
 
-            }
-            else if (SWW.GS.Obj_Extend[BaseGuid][iIndex].show == '1') {
-                SWW.GS.Obj_Extend[BaseGuid][iIndex].show = 0;
-                //tr.next().css("display", 'none');
-
-                SWW.J('#' + iIndex).css('display', 'none');
-                if (SWW.J('#swwgs_extend_Flag_' + iIndex)) { SWW.J('#swwgs_extend_Flag_' + iIndex).html('+') };
+                    SWW.J('#' + iIndex).css('display', 'none');
+                    if (SWW.J('#swwgs_extend_Flag_' + iIndex)) { SWW.J('#swwgs_extend_Flag_' + iIndex).html('+') };
+                }
+                else {
+                    SWW.GS.Obj_Extend[BaseGuid][iIndex].show = 1;
+                    SWW.J('#' + iIndex).css('display', '');
+                    if (SWW.J('#swwgs_extend_Flag_' + iIndex)) { SWW.J('#swwgs_extend_Flag_' + iIndex).html('-') };
+                }
             }
             else {
-                SWW.GS.Obj_Extend[BaseGuid][iIndex].show = 1;
-                SWW.J('#' + iIndex).css('display', '');
-                if (SWW.J('#swwgs_extend_Flag_' + iIndex)) { SWW.J('#swwgs_extend_Flag_' + iIndex).html('-') };
+                SWW.GS.Obj_Extend[BaseGuid].ExtendFlag = false;
             }
 
         },

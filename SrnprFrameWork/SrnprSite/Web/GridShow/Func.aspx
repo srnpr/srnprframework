@@ -17,11 +17,14 @@
     function ChangeColorAll(e)
     {
         
-        if (e.RowIndex%4==0)
+        if (e.RowIndex%4==1)
         {
             for (var i = 0, j = e.CellCount; i < j; i++)
             {
                 e.Cell[i].css('background-color', '#ffff00');
+
+                e.CellTitle["分级"].html('<input type="checkbox" onclick="SWW.GS.ExtendSetFlag(\'' + e.BaseGuid + '\')"/>');
+
             }
         }
 
@@ -29,6 +32,12 @@
 
     }
 
+
+    function AjaxBefore(e) {
+        alert(e);
+    }
+
+    SWW.GS.OnAjaxBefore('test.citysee', AjaxBefore);
 
     //添加绑定函数
     SWW.GS.OnDataRowBind('test.citysee', ChangeColorAll);

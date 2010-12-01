@@ -35,12 +35,12 @@ namespace SrnprSite.Ashx
 
             HttpResponse resp;
             resp = System.Web.HttpContext.Current.Response;
-            resp.ContentEncoding = System.Text.Encoding.GetEncoding("GB2312");
+            //resp.ContentEncoding = System.Text.Encoding.GetEncoding("GB2312");
             resp.AppendHeader("Content-Disposition", "attachment;filename=" + sFileName);
 
             StringBuilder sb = new StringBuilder();
 
-            sb.Append("<table>");
+            sb.Append("<table >");
 
             int iColumnLength = dt.Columns.Count;
 
@@ -49,7 +49,7 @@ namespace SrnprSite.Ashx
 
             for (int i = 0; i < iColumnLength; i++)
             {
-                strList.Add("<th>"+dt.Columns[i].ColumnName+"</th>");
+                strList.Add("<th style=\"vnd.ms-excel.numberformat: @;border:solid 1px #999;\">" + dt.Columns[i].ColumnName + "</th>");
 
             }
             sb.Append("<tr>"+string.Join("", strList.ToArray()) + "</tr>");
@@ -60,7 +60,7 @@ namespace SrnprSite.Ashx
                 strList = new List<string>();
                 for (int n = 0; n < iColumnLength; n++)
                 {
-                    strList.Add("<td style=\"vnd.ms-excel.numberformat: @;\">"+dt.Rows[i][n].ToString()+"</td>");
+                    strList.Add("<td style=\"vnd.ms-excel.numberformat: @;border:solid 1px #999;\">"+dt.Rows[i][n].ToString()+"</td>");
 
                 }
 

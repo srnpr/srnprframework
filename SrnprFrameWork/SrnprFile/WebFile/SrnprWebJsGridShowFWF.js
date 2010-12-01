@@ -26,7 +26,7 @@ if (SWW && !SWW.GS)
 
         DemoFlag: false,
 
-
+        AjaxFlag: true,
 
 
         Set: function (id, p, v) {
@@ -58,20 +58,20 @@ if (SWW && !SWW.GS)
                     NavPageSum: '{nps:i}/{nps:c}页 共计：{nps:r}条 ',
 
                     //更改页面字段  i表述页码  s表示每页大小  f表示切换函数
-                    NavPageChange: '每页：{npc:i} 跳转到：{npc:s}<a href="javascript:{npc:f}">go</a>',
+                    NavPageChange: '每页：{npc:i} 跳转到：{npc:s}<a  onclick="{npc:f}">go</a>',
 
                     //数字导航样式  f:函数  n数字
-                    NavPageNumber: '<a href="javascript:{npn:f}" class="{npn:c}">{npn:n}</a>',
+                    NavPageNumber: '<a  onclick="{npn:f}" class="{npn:c}">{npn:n}</a>',
 
                     //导航 f:首页 p：上一页
-                    NavPageLeft: '<a href="javascript:{npl:f}">首页</a><a href="javascript:{npl:p}">上一页</a>',
+                    NavPageLeft: '<a onclick="{npl:f}">首页</a><a  onclick="{npl:p}">上一页</a>',
                     //导航  n下一页  l尾页
-                    NavPageRight: '<a href="javascript:{npr:n}">下一页</a><a href="javascript:{npr:l}">尾页</a>',
+                    NavPageRight: '<a onclick="{npr:n}">下一页</a><a onclick="{npr:l}">尾页</a>',
 
                     //自定义字段 f函数
-                    NavPageUser: '<a href="javascript:{npu:f}">自定义</a>',
+                    NavPageUser: '<a onclick="{npu:f}">自定义</a>',
 
-                    NavPageExcel: '<a href="javascript:{npe:f}">导出Excel</a>',
+                    NavPageExcel: '<a onclick="{npe:f}">导出Excel</a>',
 
                     //导航显示样式
                     NavPageHtml: '<table><tr><td>{nph:nps}</td><td>{nph:npl}{nph:npn}{nph:npr}</td><td>{nph:npu}{nph:npe}</td><td style="text-align:right;">{nph:npc}</td></tr></table>',
@@ -110,13 +110,17 @@ if (SWW && !SWW.GS)
             SWW.J("#SWJGSF_Hidden_" + SWW.GS.Obj[id].ClientId).val(SWW.F.JSON.StringFromJson(SWW.GS.Obj[id]));
 
         },
+        OnAjaxBefore: function (id, f) {
 
+
+            SWW.A('GS', 'AjaxBefore', id, f);
+        },
 
         //提交请求
         Ajax: function (id) {
 
 
-
+            SWW.F.SYS.ExecAF({ f: 'AjaxBefore', w: 'GS', d: SWW.GS.Obj[id].Id, e: SWW.GS.Obj[id] });
 
 
             SWW.F.SYS.Run(SWW.GS.Obj[id]);
@@ -252,7 +256,7 @@ if (SWW && !SWW.GS)
                 if (iAutoWidth_SumTitle && iAutoWidth_DivWidth) {
                     if (Math.floor(iAutoWidth_DivWidth / 18) < iAutoWidth_SumTitle) {
 
-                        sShowDivBox = sShowDivBox.replace('<div class="', '<div style="width:' + (iAutoWidth_DivWidth - 14) + 'px" class="SWW_CSS_GS_DIV_MAIN_Scroll ').replace('<table ', '<table style="width:' + (iAutoWidth_SumTitle * 16) + 'px" ');
+                        sShowDivBox = sShowDivBox.replace('<div class="', '<div style="width:' + (iAutoWidth_DivWidth - 44) + 'px" class="SWW_CSS_GS_DIV_MAIN_Scroll ').replace('<table ', '<table style="width:' + (iAutoWidth_SumTitle * 16) + 'px" ');
                     }
                 }
 
@@ -374,7 +378,7 @@ if (SWW && !SWW.GS)
 
             SWW.GS.SubmitBefore(id);
 
-            SWW.W.Dialog.Open({ title: '请选择显示内容', url: "/Ashx/Excel.aspx?id=SWJGSF_Hidden_" + SWW.GS.Obj[id].ClientId, width: 400, height: 100 });
+            SWW.W.Dialog.Open({ title: '导出Excel', url: "/Ashx/Excel.aspx?id=SWJGSF_Hidden_" + SWW.GS.Obj[id].ClientId, width: 400, height: 100 });
 
             //SrnprNetJsAllAlphaShow({ s: "l", m: "请选择显示内容", w: "400", h: "100", u: "/Web/GridShow/Excel.aspx?id=SWJGSF_Hidden_" + SWW.GS.Obj[id].ClientId });
 
@@ -660,9 +664,12 @@ if (SWW && !SWW.GS)
             SWW.J('#swwgs_extend_td_' + e).html(s);
         },
 
-        ExtendSetFlag:function(sId) {
+        ExtendSetFlag: function (sId) {
 
-            SWW.GS.Obj_Extend[sId].ExtendFlag = true;
+
+            if (SWW.GS.Obj_Extend[sId]) {
+                SWW.GS.Obj_Extend[sId].ExtendFlag = true;
+            }
 
         },
 
@@ -718,7 +725,7 @@ if (SWW && !SWW.GS)
 
         Display: function (id, b) {
 
-            SWW.F.DOM.Display('SWW_GS_DIV_ShowDisplay_' + this.ZZZ_ReLoadGuid(id), b);
+            SWW.F.DOM.Display('SWJGSF_Div_' + SWW.GS.Obj[this.ZZZ_ReLoadGuid(id)].ClientId, b);
 
         },
 
@@ -753,6 +760,10 @@ if (SWW && !SWW.GS)
                     id = SWW.GS.Obj[p].Guid;
 
                 }
+
+                iNow++;
+
+
             }
 
             return id;

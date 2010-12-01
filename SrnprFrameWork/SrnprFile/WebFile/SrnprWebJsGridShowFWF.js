@@ -284,7 +284,11 @@ if (SWW && !SWW.GS)
                     nav_nps = so.NavPageSum.replace('{nps:i}', iPageCount > 0 ? req.PageIndex : 0).replace('{nps:c}', iPageCount).replace('{nps:r}', req.RowsCount);
 
                     if (req.RowsCount > 0) {
+
+                        if (req.PageIndex!=1)
                         nav_npl = so.NavPageLeft.replace('{npl:f}', "SWW.GS.PageGoto('" + req.Guid + "',1)").replace('{npl:p}', "SWW.GS.PageGoto('" + req.Guid + "','-')");
+
+                        if (req.PageIndex!=iPageCount)
                         nav_npr = so.NavPageRight.replace('{npr:n}', "SWW.GS.PageGoto('" + req.Guid + "','+')").replace('{npr:l}', "SWW.GS.PageGoto('" + req.Guid + "','" + iPageCount + "')");
 
 

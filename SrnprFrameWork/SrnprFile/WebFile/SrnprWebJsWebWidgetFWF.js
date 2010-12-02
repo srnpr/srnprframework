@@ -156,6 +156,54 @@ if (!window.SWW)
 
            DOM:
            {
+
+
+               Cookie: function (sName, snValue, snOptions) {
+
+                   if (typeof snValue != 'undefined') {
+                       snOptions = snOptions || {};
+                       if (snValue === null) {
+                           snValue = '';
+                           snOptions = $.extend({}, snOptions);
+                           snOptions.expires = -1;
+                       }
+                       var expires = '';
+                       if (snOptions.expires && (typeof snOptions.expires == 'number' || snOptions.expires.toUTCString)) {
+                           var date;
+                           if (typeof snOptions.expires == 'number') {
+                               date = new Date();
+                               date.setTime(date.getTime() + (snOptions.expires * 24 * 60 * 60 * 1000));
+                           } else {
+                               date = snOptions.expires;
+                           }
+                           expires = '; expires=' + date.toUTCString(); 
+                       }
+                       var path = snOptions.path ? '; path=' + (snOptions.path) : '';
+                       var domain = snOptions.domain ? '; domain=' + (snOptions.domain) : '';
+                       var secure = snOptions.secure ? '; secure' : '';
+                       document.cookie = [sName, '=', encodeURIComponent(snValue), expires, path, domain, secure].join('');
+                   } else { // only sName given, get cookie
+                       var cookieValue = null;
+                       if (document.cookie && document.cookie != '') {
+                           var cookies = document.cookie.split(';');
+                           for (var i = 0; i < cookies.length; i++) {
+                               var cookie = jQuery.trim(cookies[i]);
+                               
+                               if (cookie.substring(0, sName.length + 1) == (sName + '=')) {
+                                   cookieValue = decodeURIComponent(cookie.substring(sName.length + 1));
+                                   break;
+                               }
+                           }
+                       }
+                       return cookieValue;
+                   }
+
+
+
+               },
+
+
+
                Html: function (sElement, snHtml) {
                    ///	<summary>
                    ///  设置或返回元素的html内容
@@ -170,7 +218,7 @@ if (!window.SWW)
                        SWW.J('#' + sElement).html(snHtml);
                    }
                    else {
-                       return SWW.J('#' + sElement).html()?SWW.J('#' + sElement).html():'';
+                       return SWW.J('#' + sElement).html() ? SWW.J('#' + sElement).html() : '';
                    }
                },
                Text: function (sElement, snText) {
@@ -204,7 +252,7 @@ if (!window.SWW)
                        SWW.J('#' + sElement).val(snValue);
                    }
                    else {
-                       return SWW.J('#' + sElement).val()?SWW.J('#' + sElement).val():'';
+                       return SWW.J('#' + sElement).val() ? SWW.J('#' + sElement).val() : '';
                    }
                },
                Get: function (sn) {

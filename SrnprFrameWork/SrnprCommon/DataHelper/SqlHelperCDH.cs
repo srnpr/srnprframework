@@ -26,10 +26,28 @@ namespace SrnprCommon.DataHelper
 
         public static int ExecuteNonQuery(string connectionString, string cmdText, params string[] strParameters)
         {
-
-
-            return ExecuteNonQuery(connectionString, CommandType.Text, cmdText, null);
+            return ExecuteNonQuery(connectionString, CommandType.Text, ReplaceCmdText(cmdText),ReplaceCommandParameters(strParameters));
         }
+        public static int ExecuteNonQuery(string connectionString, string cmdText, Dictionary<string, string> dictParameters)
+        {
+            return ExecuteNonQuery(connectionString, CommandType.Text, cmdText, GetSqlParameterByDict(dictParameters));
+        }
+
+        private static string ReplaceCmdText(string sCmd)
+        {
+            return sCmd.Replace("{","@replace").Replace("}"," ");
+        }
+
+        private static SqlParameter[] ReplaceCommandParameters(params string[] strParameters)
+        {
+            SqlParameter[] commandParameters = new SqlParameter[strParameters.Length];
+            for (int i = 0, j = strParameters.Length; i < j; i++)
+            {
+                commandParameters[i] = new SqlParameter("@replace" + i.ToString(), strParameters[i].Trim());
+            }
+            return commandParameters;
+        }
+
 
 
         /// <summary>
@@ -146,6 +164,12 @@ namespace SrnprCommon.DataHelper
             return ExecuteScalar(connectionString, CommandType.Text, cmdText, null);
         }
 
+
+        public static object ExecuteScalar(string connectionString, string cmdText, params string[] strParameters)
+        {
+            return ExecuteScalar(connectionString, CommandType.Text, ReplaceCmdText(cmdText), ReplaceCommandParameters(strParameters));
+        }
+
         public static object ExecuteScalar(string connectionString, string cmdText, Dictionary<string, string> dictParameters)
         {
             return ExecuteScalar(connectionString, CommandType.Text, cmdText, GetSqlParameterByDict(dictParameters));
@@ -167,6 +191,15 @@ namespace SrnprCommon.DataHelper
         {
             return ExecuteDataTable(connectionString, CommandType.Text, cmdText, commandParameters);
         }
+        public static DataTable ExecuteDataTable(string connectionString, string cmdText, params string[] strParameters)
+        {
+            return ExecuteDataTable(connectionString, CommandType.Text, ReplaceCmdText(cmdText), ReplaceCommandParameters(strParameters));
+        }
+
+        public static DataTable ExecuteDataTable(string connectionString, string cmdText, Dictionary<string, string> dictParameters)
+        {
+            return ExecuteDataTable(connectionString, CommandType.Text, cmdText, GetSqlParameterByDict(dictParameters));
+        }
 
 
         private static SqlParameter[] GetSqlParameterByDict(Dictionary<string, string> dictParameters)
@@ -184,10 +217,7 @@ namespace SrnprCommon.DataHelper
             return sp.ToArray();
         }
 
-        public static DataTable ExecuteDataTable(string connectionString, string cmdText,Dictionary<string,string> dictParameters)
-        {
-            return ExecuteDataTable(connectionString, CommandType.Text, cmdText, GetSqlParameterByDict(dictParameters));
-        }
+        
 
         public static DataTable ExecuteDataTable(string connectionString, CommandType cmdType, string cmdText, params SqlParameter[] commandParameters)
         {

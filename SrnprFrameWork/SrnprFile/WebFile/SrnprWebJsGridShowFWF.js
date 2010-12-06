@@ -433,7 +433,7 @@ if (SWW && !SWW.GS)
             aHtml.push('<tr><th style="width:80px;"><input type="checkbox" onclick="SWW.GS.ShowDisplaySelectAll(\'' + id + '\',this)">全选</th><th>字段</th></tr>');
             for (var i = 0, j = SWW.GS.Obj[id].ShowColumn.length; i < j; i++) {
                 if (SWW.GS.Obj[id].ShowColumn[i].ShowDisplay != 'h') {
-                    aHtml.push('<tr><td><input type="checkbox" value="' + i + '" id="' + SWW.GS.Obj[id].ClientId + '_showcolumn_ckb_' + SWW.GS.Obj[id].ShowColumn[i].Guid + '" ' + (SWW.GS.Obj[id].ShowColumn[i].ShowDisplay == 'n' ? '' : 'checked="checked"') + ' /></td><td>' + SWW.GS.Obj[id].ShowColumn[i].HeaderText + '</td></tr>');
+                    aHtml.push('<tr><td><input type="checkbox" value="' + i + '" id="' + SWW.GS.Obj[id].ClientId + '_showcolumn_ckb_' + SWW.GS.Obj[id].ShowColumn[i].Guid + '" ' + ((SWW.GS.Obj[id].ShowColumn[i].ShowDisplay == 'n' || SWW.GS.Obj[id].ShowColumn[i].ShowDisplay == 'e') ? '' : 'checked="checked"') + ' /></td><td>' + SWW.GS.Obj[id].ShowColumn[i].HeaderText + '</td></tr>');
                 }
             }
 

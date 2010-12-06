@@ -16,6 +16,13 @@ if (SWW && !SWW.GS)
         SetObj: {},
 
 
+        StaticConfig:
+        {
+            AutoMaxWidth: 0
+        },
+
+
+
         //定义基本服务器交互变量
         Obj: {},
 
@@ -253,6 +260,11 @@ if (SWW && !SWW.GS)
                     }*/
                 }
 
+                if (SWW.GS.StaticConfig.AutoMaxWidth) {
+                    iAutoWidth_DivWidth = SWW.GS.StaticConfig.AutoMaxWidth;
+                }
+
+
                 if (iAutoWidth_SumTitle && iAutoWidth_DivWidth) {
                     if (Math.floor(iAutoWidth_DivWidth / 18) < iAutoWidth_SumTitle) {
 
@@ -285,11 +297,11 @@ if (SWW && !SWW.GS)
 
                     if (req.RowsCount > 0) {
 
-                        if (req.PageIndex!=1)
-                        nav_npl = so.NavPageLeft.replace('{npl:f}', "SWW.GS.PageGoto('" + req.Guid + "',1)").replace('{npl:p}', "SWW.GS.PageGoto('" + req.Guid + "','-')");
+                        if (req.PageIndex != 1)
+                            nav_npl = so.NavPageLeft.replace('{npl:f}', "SWW.GS.PageGoto('" + req.Guid + "',1)").replace('{npl:p}', "SWW.GS.PageGoto('" + req.Guid + "','-')");
 
-                        if (req.PageIndex!=iPageCount)
-                        nav_npr = so.NavPageRight.replace('{npr:n}', "SWW.GS.PageGoto('" + req.Guid + "','+')").replace('{npr:l}', "SWW.GS.PageGoto('" + req.Guid + "','" + iPageCount + "')");
+                        if (req.PageIndex != iPageCount)
+                            nav_npr = so.NavPageRight.replace('{npr:n}', "SWW.GS.PageGoto('" + req.Guid + "','+')").replace('{npr:l}', "SWW.GS.PageGoto('" + req.Guid + "','" + iPageCount + "')");
 
 
 

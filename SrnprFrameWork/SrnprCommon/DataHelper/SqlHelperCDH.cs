@@ -24,6 +24,14 @@ namespace SrnprCommon.DataHelper
             return ExecuteNonQuery(connectionString, CommandType.Text, cmdText, commandParameters);
         }
 
+        public static int ExecuteNonQuery(string connectionString, string cmdText, params string[] strParameters)
+        {
+
+
+            return ExecuteNonQuery(connectionString, CommandType.Text, cmdText, null);
+        }
+
+
         /// <summary>
         /// Execute a SqlCommand (that returns no resultset) against the database specified in the connection string 
         /// using the provided parameters.

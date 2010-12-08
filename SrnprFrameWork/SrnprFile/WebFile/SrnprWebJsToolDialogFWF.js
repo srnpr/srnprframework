@@ -71,10 +71,14 @@ if (SWW && !SWW.TD)
         return SWW.W.Dialog.Source();
     },
 
-    SetPageValue:function(sDictKey,sDictValue) {
+    SetPageValue: function (sDictKey, sDictValue) {
 
         var u = SWW.F.DOM.Url();
-        SWW.W.Dialog.SetValue(u.sww_td_parent_id + sDictKey, sDictValue);
+        
+        SWW.W.Dialog.SetValue(u.sww_td_parent_id + "_Control_" + sDictKey, sDictValue);
+
+        alert(SWW.W.Dialog.Source().$(u.sww_td_parent_id + "_Control_" + sDictKey).val());
+
     },
 
     GetPageValue: function (sServerId, sDictKey) {
@@ -90,7 +94,7 @@ if (SWW && !SWW.TD)
             }
 
         }
-        
+
         return SWW.F.DOM.Value(this.Obj[p].Id + '_' + sDictKey);
 
 

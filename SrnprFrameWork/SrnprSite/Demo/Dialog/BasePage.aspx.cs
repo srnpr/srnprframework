@@ -11,13 +11,15 @@ namespace SrnprSite.Demo.Dialog
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
+           
+            TD.Control_Dict.Add("MMM","");
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
 
-            TD.Control_Dict.Add("MMM","");
+            string sValue = TD.Control_DictGetValue("MMM");
            
 
         }

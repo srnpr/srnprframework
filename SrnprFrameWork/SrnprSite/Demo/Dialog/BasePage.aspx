@@ -51,7 +51,7 @@
 
         SWW.F.DOM.Cookie('a', 'cookiev');
 
-        alert(SWW.F.DOM.Cookie('a'));
+        //alert(SWW.F.DOM.Cookie('a'));
 
       
     </script>

@@ -71,6 +71,12 @@ if (SWW && !SWW.TD)
         return SWW.W.Dialog.Source();
     },
 
+    SetPageValue:function(sDictKey,sDictValue) {
+
+        var u = SWW.F.DOM.Url();
+        SWW.W.Dialog.SetValue(u.sww_td_parent_id + sDictKey, sDictValue);
+    },
+
     GetPageValue: function (sServerId, sDictKey) {
 
         var sReturn = '';

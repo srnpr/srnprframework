@@ -47,6 +47,7 @@
             //添加绑定函数
             SWW.GS.OnDataRowBind('test.areainfo', ChangeColorAll);
         
+        
         </script>
 
 
@@ -55,7 +56,7 @@
     <form id="form1" runat="server">
     <div>
         <asp:TextBox ID="TextBox1" runat="server" paramid="parmareaname"></asp:TextBox>
-    
+
     
     </div>
 
@@ -65,5 +66,9 @@
     <sw:GridShowWWW ID="GS" runat="server" XmlConfigName="test.areainfo" />
     </div>
     </form>
+
+    <script>
+        document.getElementById("button2").form.submit();
+    </script>
 </body>
 </html>

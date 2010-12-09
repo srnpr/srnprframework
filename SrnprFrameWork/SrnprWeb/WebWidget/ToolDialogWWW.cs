@@ -26,7 +26,9 @@ namespace SrnprWeb.WebWidget
             dict.Add("Text", Control_Text.Trim());
             dict.Add("Value", Control_Value.Trim());
             dict.Add("Description", Control_Description.Trim());
-
+            dict.Add("Value_One", Control_Value_One.Trim());
+            dict.Add("Value_Two", Control_Value_Two.Trim());
+            dict.Add("Value_Three", Control_Value_Three.Trim());
 
             output.Write(WebProcess.ToolDialogWWP.GetResponse(base.ClientID, Control_Url, base.ID, dict));
         }
@@ -81,6 +83,59 @@ namespace SrnprWeb.WebWidget
                 sControl_Value = value;
             }
         }
+
+
+        public string Control_Value_One
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(sControl_Value))
+                {
+                    sControl_Value = Control_DictGetValue("Value_One");
+                }
+                return sControl_Value;
+            }
+            set
+            {
+                sControl_Value = value;
+            }
+        }
+
+        public string Control_Value_Two
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(sControl_Value))
+                {
+                    sControl_Value = Control_DictGetValue("Value_Two");
+                }
+                return sControl_Value;
+            }
+            set
+            {
+                sControl_Value = value;
+            }
+        }
+
+        public string Control_Value_Three
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(sControl_Value))
+                {
+                    sControl_Value = Control_DictGetValue("Value_Three");
+                }
+                return sControl_Value;
+            }
+            set
+            {
+                sControl_Value = value;
+            }
+        }
+
+
+
+
 
         public string Control_Description
         {

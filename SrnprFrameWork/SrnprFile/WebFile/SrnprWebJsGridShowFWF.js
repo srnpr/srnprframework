@@ -76,9 +76,9 @@ if (SWW && !SWW.GS)
                     NavPageRight: '<a onclick="{npr:n}">下一页</a><a onclick="{npr:l}">尾页</a>',
 
                     //自定义字段 f函数
-                    NavPageUser: '<a onclick="{npu:f}">自定义</a>',
+                    NavPageUser: '<a onclick="{npu:f}">显示字段</a>',
 
-                    NavPageExcel: '<a onclick="{npe:f}">导出Excel</a>',
+                    NavPageExcel: '<a onclick="{npe:f}">自定义导出</a>',
 
                     //导航显示样式
                     NavPageHtml: '<table><tr><td>{nph:nps}</td><td>{nph:npl}{nph:npn}{nph:npr}</td><td>{nph:npu}{nph:npe}</td><td style="text-align:right;">{nph:npc}</td></tr></table>',

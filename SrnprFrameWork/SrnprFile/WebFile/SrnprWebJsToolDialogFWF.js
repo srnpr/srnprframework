@@ -36,7 +36,7 @@ if (SWW && !SWW.TD)
 
 
 
-    SetValue: function (sK, sV, sD) {
+    SetValue: function (sK, sV, sD, sOne, sTwo, sThree) {
 
         var u = SWW.F.DOM.Url();
 
@@ -53,6 +53,18 @@ if (SWW && !SWW.TD)
 
             SWW.W.Dialog.SetValue(u.sww_td_parent_id + "_Control_Description", sD);
         }
+
+        if (sOne) {
+            SWW.W.Dialog.SetValue(u.sww_td_parent_id + '_Control_Value_One', sOne);
+        }
+        if (sTwo) {
+            SWW.W.Dialog.SetValue(u.sww_td_parent_id + '_Control_Value_Two', sOne);
+        }
+        if (sThree) {
+            SWW.W.Dialog.SetValue(u.sww_td_parent_id + '_Control_Value_Three', sOne);
+        }
+
+
 
 
     },
@@ -75,8 +87,8 @@ if (SWW && !SWW.TD)
 
         var u = SWW.F.DOM.Url();
 
-        SWW.W.Dialog.Source().$('#'+u.sww_td_parent_id + "_Control_" + sDictKey).val(sDictValue);
-       
+        SWW.W.Dialog.Source().$('#' + u.sww_td_parent_id + "_Control_" + sDictKey).val(sDictValue);
+
 
     },
 

@@ -13,7 +13,7 @@ namespace SrnprSite.Demo.Dialog
         {
 
            
-            TD.Control_Dict.Add("MMM","");
+            TD.Control_Dict.Add("MMM","aa");
         }
 
         protected void Button1_Click(object sender, EventArgs e)

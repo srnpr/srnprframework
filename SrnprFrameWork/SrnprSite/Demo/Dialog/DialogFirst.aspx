@@ -23,7 +23,11 @@ b1字段：<input type="text" id="b1" />
 
     SWW.F.DOM.Value("sa", SWW.TD.GetValue());
 
-    SWW.TD.SetPageValue("MMM", "aaaaaa");
+
+   
+
+
+    SWW.TD.SetSourceDictValue("MMM", "bb");
 
    
 

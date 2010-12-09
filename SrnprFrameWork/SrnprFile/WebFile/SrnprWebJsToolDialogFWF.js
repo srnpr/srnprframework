@@ -71,13 +71,12 @@ if (SWW && !SWW.TD)
         return SWW.W.Dialog.Source();
     },
 
-    SetPageValue: function (sDictKey, sDictValue) {
+    SetSourceDictValue: function (sDictKey, sDictValue) {
 
         var u = SWW.F.DOM.Url();
-        
-        SWW.W.Dialog.SetValue(u.sww_td_parent_id + "_Control_" + sDictKey, sDictValue);
 
-        alert(SWW.W.Dialog.Source().$(u.sww_td_parent_id + "_Control_" + sDictKey).val());
+        SWW.W.Dialog.Source().$('#'+u.sww_td_parent_id + "_Control_" + sDictKey).val(sDictValue);
+       
 
     },
 

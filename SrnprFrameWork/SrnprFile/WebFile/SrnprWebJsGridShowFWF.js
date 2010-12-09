@@ -268,7 +268,7 @@ if (SWW && !SWW.GS)
                 if (iAutoWidth_SumTitle && iAutoWidth_DivWidth) {
                     if (Math.floor(iAutoWidth_DivWidth / 18) < iAutoWidth_SumTitle) {
 
-                        sShowDivBox = sShowDivBox.replace('<div class="', '<div style="width:' + (iAutoWidth_DivWidth - 14) + 'px" class="SWW_CSS_GS_DIV_MAIN_Scroll ').replace('<table ', '<table style="width:' + (iAutoWidth_SumTitle * 16) + 'px" ');
+                        sShowDivBox = sShowDivBox.replace('<div class="', '<div style="width:' + (iAutoWidth_DivWidth - 14) + 'px" class="SWW_CSS_GS_DIV_MAIN_Scroll ').replace('<table ', '<table style="width:' + (iAutoWidth_SumTitle * 18) + 'px" ');
                     }
                 }
 
@@ -642,7 +642,7 @@ if (SWW && !SWW.GS)
 
                 if (!onTarget) {
                     onTarget = oRow.Row;
-
+                    onTarget.addClass("SWW_CSS_GS_TABLE_TR_RowExtend");
                     onTarget.children().eq(0).prepend('<span class="SWW_CSS_GS_TABLE_TD_SPAN_Extend"><div id="swwgs_extend_Flag_' + oRow.Guid + '">+</div></span>');
                 }
                 else {

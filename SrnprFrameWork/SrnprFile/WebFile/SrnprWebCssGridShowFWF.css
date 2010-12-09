@@ -72,6 +72,7 @@
 {
     
      border-top:solid 1px #cfe5f8;
+     border-right:solid 1px #cfe5f8;
      margin:5px;
 }
 
@@ -163,13 +164,23 @@
     border-bottom:solid 1px #cfe5f8;
 }
 
- .SWW_CSS_GS_TABLE_TR_HOVER
+ .SWW_CSS_GS_TABLE_TR_HOVER td
 {
-    background-color:#e8f1f8;
+    background-color:#cfe5f8 !important;
    
 }
 
+.SWW_CSS_GS_TR_0 td
+{
+    background-color:#f5fbfe;
+}
 
+
+
+.SWW_CSS_GS_TABLE_TR_RowExtend
+{
+    cursor:pointer;
+}
 
 
  .SWW_CSS_GS_TABLE_TD_SPAN_Extend div
@@ -183,6 +194,7 @@
     line-height:10px;
     border:solid 1px #1b5fa8;
     float:left;
+    cursor:pointer;
 }
 
 

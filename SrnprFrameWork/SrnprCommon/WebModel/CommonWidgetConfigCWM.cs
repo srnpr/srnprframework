@@ -20,7 +20,7 @@ namespace SrnprCommon.WebModel
     /// Author:Liudpc
     /// Create Date: 2010-2-8 11:34:56
     /// </summary>
-    class CommonWidgetConfigCWM : BaseEntity.WebWidgetConfigCBE
+   public class CommonWidgetConfigCWM : BaseEntity.WebWidgetConfigCBE
     {
         /// <summary>
         /// 配置类型

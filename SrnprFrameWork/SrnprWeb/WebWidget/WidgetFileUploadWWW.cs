@@ -319,7 +319,7 @@ namespace SrnprWeb.WebWidget
 
         private void InitControl()
         {
-            WidgetConfig = (SrnprCommon.WebModel.FileUploadConfigCWM)new SrnprCommon.WebFunction.LoadConfigCWF().GetWeightConfig(SrnprCommon.EnumCommon.WebWidgetTypeCEC.FileUploadWWW, BuildVersion, RevisionVersion);
+            WidgetConfig = (SrnprCommon.WebModel.FileUploadConfigCWM)new WebFunction.LoadConfigWWF().GetWeightConfig(SrnprCommon.EnumCommon.WebWidgetTypeCEC.FileUploadWWW, BuildVersion, RevisionVersion);
 
 
             _fileInfo = new List<SrnprWeb.WebEntity.FileUploadInfoWWE>();

@@ -1,28 +1,22 @@
-﻿/******************************************************
- * Description: 加载配置
- * Author: Liudpc
- * Create Date: 2010-2-8 14:33:53
- ******************************************************/
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Xml;
-using Microsoft.Win32;
-using System.Web;
+using SrnprCommon;
+using SrnprCommon.InterFace;
+using SrnprCommon.EnumCommon;
 using System.Web.Caching;
+using System.Xml;
+using SrnprCommon.WebFunction;
+using Microsoft.Win32;
+using System.Web.Configuration;
+using System.Configuration;
 
-namespace SrnprCommon.WebFunction
+namespace SrnprWeb.WebFunction
 {
-
-    /// <summary>
-    /// Description: 加载配置
-    /// Author:Liudpc
-    /// Create Date: 2010-2-8 14:34:06
-    /// </summary>
-    public class LoadConfigCWF
+    class LoadConfigWWF
     {
+
         /// <summary>
         /// 定义配置值
         /// </summary>
@@ -41,10 +35,10 @@ namespace SrnprCommon.WebFunction
         /// <param name="sBuildVersion"></param>
         /// <param name="sRevisionVersion"></param>
         /// <returns></returns>
-        public InterFace.WebWidgetConfigCIF GetWeightConfig(EnumCommon.WebWidgetTypeCEC widgetType, string sBuildVersion, string sRevisionVersion)
+        public SrnprCommon.InterFace.WebWidgetConfigCIF GetWeightConfig(SrnprCommon.EnumCommon.WebWidgetTypeCEC widgetType, string sBuildVersion, string sRevisionVersion)
         {
 
-            InterFace.WebWidgetConfigCIF widgetConfig;
+            SrnprCommon.InterFace.WebWidgetConfigCIF widgetConfig;
 
             /*
             switch (widgetType)
@@ -81,20 +75,18 @@ namespace SrnprCommon.WebFunction
             switch (widgetType)
             {
                 case SrnprCommon.EnumCommon.WebWidgetTypeCEC.FileUploadWWW:
-                    widgetConfig = new WebModel.FileUploadConfigCWM();
+                    widgetConfig = new SrnprCommon.WebModel.FileUploadConfigCWM();
                     break;
-                default:
-                    widgetConfig = new WebModel.CommonWidgetConfigCWM();
-                    break;
+                
             }
 
 
-            Dictionary<string, InterFace.WebWidgetConfigCIF> d ;
+            Dictionary<string, SrnprCommon.InterFace.WebWidgetConfigCIF> d;
 
-            if (System.Web.HttpContext.Current != null&&System.Web.HttpContext.Current.Cache[SRNPR_WEB_CONFIG_CACHE_NAME]!=null)
+            if (System.Web.HttpContext.Current != null && System.Web.HttpContext.Current.Cache[SRNPR_WEB_CONFIG_CACHE_NAME] != null)
             {
                 //从缓存读取配置
-                d = (Dictionary<string, InterFace.WebWidgetConfigCIF>)System.Web.HttpContext.Current.Cache[SRNPR_WEB_CONFIG_CACHE_NAME];
+                d = (Dictionary<string, SrnprCommon.InterFace.WebWidgetConfigCIF>)System.Web.HttpContext.Current.Cache[SRNPR_WEB_CONFIG_CACHE_NAME];
             }
             else
             {
@@ -103,12 +95,12 @@ namespace SrnprCommon.WebFunction
                 if (System.Web.HttpContext.Current != null)
                 {
                     //建立缓存依赖
-                    System.Web.Caching.CacheDependency cd = new System.Web.Caching.CacheDependency(((WebModel.CommonWidgetConfigCWM)d[SrnprCommon.EnumCommon.WebWidgetTypeCEC.CommonWidgetWWW.ToString()]).XmlFilePath);
+                    System.Web.Caching.CacheDependency cd = new System.Web.Caching.CacheDependency(((SrnprCommon.WebModel.CommonWidgetConfigCWM)d[SrnprCommon.EnumCommon.WebWidgetTypeCEC.CommonWidgetWWW.ToString()]).XmlFilePath);
                     System.Web.HttpContext.Current.Cache.Insert(SRNPR_WEB_CONFIG_CACHE_NAME, d, cd, Cache.NoAbsoluteExpiration, Cache.NoSlidingExpiration);
                 }
             }
 
-           
+
 
 
             widgetConfig = d[widgetType.ToString()];
@@ -125,10 +117,10 @@ namespace SrnprCommon.WebFunction
         /// Description: 得到List
         /// </summary>
         /// <returns></returns>
-        public Dictionary<string, InterFace.WebWidgetConfigCIF> GetListFromXML()
+        public Dictionary<string, SrnprCommon.InterFace.WebWidgetConfigCIF> GetListFromXML()
         {
-            Dictionary<string, InterFace.WebWidgetConfigCIF> dConfigReturn = new Dictionary<string, SrnprCommon.InterFace.WebWidgetConfigCIF>();
-            WebModel.CommonWidgetConfigCWM commonConfig = new SrnprCommon.WebModel.CommonWidgetConfigCWM();
+            Dictionary<string, SrnprCommon.InterFace.WebWidgetConfigCIF> dConfigReturn = new Dictionary<string, SrnprCommon.InterFace.WebWidgetConfigCIF>();
+            SrnprCommon.WebModel.CommonWidgetConfigCWM commonConfig = new SrnprCommon.WebModel.CommonWidgetConfigCWM();
             Dictionary<string, string> dInculdeFile = new Dictionary<string, string>();
             XmlDocument xdXml = new XmlDocument();
 
@@ -240,7 +232,7 @@ namespace SrnprCommon.WebFunction
 
                 XmlNode xnlIncludeFile = xnlFileUpload[0].SelectSingleNode("s:includeFile", xmm);
 
-                WebModel.FileUploadConfigCWM fuc = new SrnprCommon.WebModel.FileUploadConfigCWM();
+                SrnprCommon.WebModel.FileUploadConfigCWM fuc = new SrnprCommon.WebModel.FileUploadConfigCWM();
                 fuc.IncludeFile = new Dictionary<string, string>();
                 foreach (XmlNode xnInc in xnlIncludeFile.ChildNodes)
                 {
@@ -374,7 +366,7 @@ namespace SrnprCommon.WebFunction
 
 
 
-        private string GetIncludeFileUrl(string sPath, string sBaseUrl, EnumCommon.WebWidgetIncludeFileType fileType)
+        private string GetIncludeFileUrl(string sPath, string sBaseUrl, SrnprCommon.EnumCommon.WebWidgetIncludeFileType fileType)
         {
             string sReturn = "";
             if (StaticFunctionCWF.IsHttpUrl(sPath))
@@ -399,11 +391,6 @@ namespace SrnprCommon.WebFunction
 
             return sReturn;
         }
-
-
-
-
-
 
 
     }

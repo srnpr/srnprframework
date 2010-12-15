@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SrnprCommon.WebFunction
 {
-    class StaticFunctionCWF
+    public class StaticFunctionCWF
     {
 
         /// <summary>

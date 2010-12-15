@@ -65,6 +65,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -124,6 +125,7 @@
     <Compile Include="WebEntity\WidgetProcessWWE.cs" />
     <Compile Include="WebEntity\WidgetRequestWWE.cs" />
     <Compile Include="WebEntity\WidgetResponseWWE.cs" />
+    <Compile Include="WebFunction\LoadConfigWWF.cs" />
     <Compile Include="WebInterface\WidgetProcessWWI.cs" />
     <Compile Include="WebInterface\WidgetRequestWWI.cs" />
     <Compile Include="WebInterface\WidgetResponseWWI.cs" />

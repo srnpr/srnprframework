@@ -21,7 +21,7 @@ namespace SrnprCommon.CommonConfig
 
 
 
-         /// <summary>
+               
          /// 
          /// Description: 得到最基本配置
          /// Author:Liudpc

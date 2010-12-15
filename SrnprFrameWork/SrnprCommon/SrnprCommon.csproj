@@ -100,7 +100,6 @@
     <Compile Include="InterFace\ResultReturnBaseCIF.cs" />
     <Compile Include="InterFace\WebWidgetBaseCIF.cs" />
     <Compile Include="InterFace\WebWidgetConfigCIF.cs" />
-    <Compile Include="MessageInfo\WebWidgetErrorCMI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReplaceFile\DataReplaceEntityCRF.cs" />
     <Compile Include="ReplaceFile\DoSendEmailEntityCRF.cs" />

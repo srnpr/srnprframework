@@ -7,7 +7,7 @@ namespace SrnprWeb.WebConfig
 {
     public class ConfigWWC
     {
-        private  const  string WEB_CONFIG_NAME="SrnprWebConfig";
+        private const string WEB_CONFIG_NAME = "SrnprWeb_WebConfig";
 
         public static string WebConfigPath()
         {

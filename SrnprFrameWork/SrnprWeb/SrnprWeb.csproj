@@ -97,6 +97,7 @@
     <Compile Include="CommonFunction\JSHelperWCF.cs" />
     <Compile Include="CommonFunction\JsonHelperWCF.cs" />
     <Compile Include="CommonFunction\StyleHelperWCF.cs" />
+    <Compile Include="ConstStatic\WebConfigWCS.cs" />
     <Compile Include="EnumType\WidgetEmumWET.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebConfig\ConfigEntityWWC.cs" />

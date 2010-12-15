@@ -13,6 +13,8 @@ namespace SrnprCommon.CommonLog
         {
 
             return "";
+            
+            
 
         }
 

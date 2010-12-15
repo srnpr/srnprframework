@@ -7,31 +7,33 @@ namespace SrnprWeb.WebConfig
 {
     public class ConfigWWC
     {
-        private const string WEB_CONFIG_NAME = "SrnprWeb_WebConfig";
+      
 
-        public static string WebConfigPath()
+
+        public static string WebConfigPath = "";
+
+        private static string GetWebConfigPath()
         {
 
-             if(!string.IsNullOrEmpty(System.Web.Configuration.WebConfigurationManager.AppSettings[WEB_CONFIG_NAME]))
-            return System.Web.Configuration.WebConfigurationManager.AppSettings[WEB_CONFIG_NAME].Trim();
-             else
-                 return "D:\\SrnprFrameWork\\SrnprWebConfig.config.xml";
+            string sDir = "";
+
+
+
+
+            if (!string.IsNullOrEmpty(System.Web.Configuration.WebConfigurationManager.AppSettings[ConstStatic.WebConfigWCS.WebConfig_AppKeyName]))
+                sDir= System.Web.Configuration.WebConfigurationManager.AppSettings[ConstStatic.WebConfigWCS.WebConfig_AppKeyName].Trim();
+            else
+                sDir= ConstStatic.WebConfigWCS.WebConfig_DefaultBaseFullPath+ConstStatic.WebConfigWCS.WebConfig_DefaultPath+"\\";
+
+
+            
+
+
+
+            return sDir;
         }
 
-         private static ConfigEntityWWC Config;
 
-
-         public static ConfigEntityWWC GetConfig()
-         {
-             if (Config == null)
-             {
-                 Config = SrnprCommon.CommonFunction.EntitySerializerCCF<ConfigEntityWWC>.XmlToEntity(WebConfigPath());
-             }
-
-             return Config;
-
-
-         }
 
 
 

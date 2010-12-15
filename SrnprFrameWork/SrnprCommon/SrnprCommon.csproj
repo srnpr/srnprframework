@@ -91,6 +91,7 @@
     <Compile Include="CommonFunction\ListStaticCCF.cs" />
     <Compile Include="CommonFunction\SendEmailCCF.cs" />
     <Compile Include="CommonFunction\XmlStaticCCF.cs" />
+    <Compile Include="CommonLog\ExceptionLogCCL.cs" />
     <Compile Include="CommonLog\LogInfoCCL.cs" />
     <Compile Include="DataHelper\DataTableAutoHelperCDH.cs" />
     <Compile Include="DataHelper\SqlHelperCDH.cs" />

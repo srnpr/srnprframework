@@ -22,4 +22,28 @@ namespace SrnprCommon.EnumCommon
         /// </summary>
         ReplaceFileLogFLF
     }
+
+
+
+
+
+
+    /// <summary>
+    /// Description: 异常抛出错误类型
+    /// Author:Liudpc
+    /// Create Date: 2010/12/15 16:21:34
+    /// </summary>
+    public enum ExceptionEnum
+    {
+
+        /// <summary>
+        /// Description: 无法加载配置文件
+        /// Author:Liudpc
+        /// Create Date: 2010/12/15 16:21:55
+        /// </summary>
+        NotConfigPath
+    }
+
+
+
 }

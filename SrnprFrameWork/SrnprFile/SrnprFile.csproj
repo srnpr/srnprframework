@@ -91,6 +91,8 @@
     <Content Include="ReplaceFile\DcEmailConfigTestFRF.xml" />
     <Content Include="ReplaceFile\DcEmailCodeFRF.ds.xml" />
     <Content Include="ReplaceFile\DcEmailConfigFormalFRF.xml" />
+    <Content Include="SrnprFrame\GridShowFSF.js" />
+    <Content Include="SrnprFrame\SrnprFrameFSF.js" />
     <Content Include="WebFile\jquery-1.3.2-vsdoc2.js" />
     <Content Include="WebFile\jquery-1.3.2.min-vsdoc.js" />
     <Content Include="WebFile\jquery-1.4.2.min.js" />
@@ -101,6 +103,7 @@
     <Content Include="WebFile\SrnprWebCssWebWidgetFWF.css" />
     <Content Include="WebFile\SrnprWebJsCommonFWF.js" />
     <Content Include="WebFile\SrnprWebJsDragElementFWF.js" />
+    <Content Include="WebFile\SrnprWebJsFrameFWF.js" />
     <Content Include="WebFile\SrnprWebJsGridShowFWF.js" />
     <Content Include="WebFile\SrnprWebJsListShowFWF.js" />
     <Content Include="WebFile\SrnprWebJsPageShowFWF.js" />
@@ -133,6 +136,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

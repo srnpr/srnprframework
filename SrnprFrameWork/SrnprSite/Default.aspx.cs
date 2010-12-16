@@ -13,7 +13,7 @@ namespace SrnprSite
         protected void Page_Load(object sender, EventArgs e)
         {
 
-
+           
 
             //SrnprCommon.BaseEntity.ResultReturnEntityCBE rre = new SrnprCommon.BaseEntity.ResultReturnEntityCBE();
 

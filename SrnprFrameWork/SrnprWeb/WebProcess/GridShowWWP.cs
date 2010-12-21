@@ -737,7 +737,7 @@ namespace SrnprWeb.WebProcess
                                                 sb.Append("<input type=\"checkbox\" name=\"" + request.ClientId + "_column_" + gsw.ColumnList[n].Guid + "\" value=\"" + dt.Rows[i][sData].ToString().Trim() + "\" />" + GetDataRowReplace(gsw.ColumnList[n].ColumnShow, dt.Rows[i]));
                                                 break;
                                             case "l":
-                                                sb.Append("<a target=\"_blank\" href=\"" + GetDataRowReplace(gsw.ColumnList[n].ColumnShow, dt.Rows[i]).Replace("[this]", dt.Rows[i][sData].ToString().Trim()) + "\">" + dt.Rows[i][sData].ToString().Trim() + "</a>");
+                                                sb.Append("<a href=\"" + GetDataRowReplace(gsw.ColumnList[n].ColumnShow, dt.Rows[i]).Replace("[this]", dt.Rows[i][sData].ToString().Trim()) + "\">" + dt.Rows[i][sData].ToString().Trim() + "</a>");
                                                 break;
                                             case "d":
                                             default:

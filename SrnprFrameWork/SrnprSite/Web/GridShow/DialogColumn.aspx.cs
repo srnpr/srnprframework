@@ -99,6 +99,7 @@ namespace SrnprSite.Web.GridShow
             gsc.HeaderText = TBHeaderText.Text.Trim();
             gsc.ColumnData = TBColumnData.Text.Trim();
             gsc.ColumnType = ddlColumnType.SelectedValue.Trim();
+            gsc.ExcelType = ddlExcelType.SelectedValue.Trim();
             gsc.ColumnShow = tbColumnShow.Text.Trim();
 
             gsc.ShowDisplay = ddlShowDisplay.SelectedValue.Trim();

@@ -45,6 +45,7 @@ namespace SrnprSite.Web.GridShow
                 BindDDL(ddlColumnType, SrnprWeb.WebEntity.GridShowColumnDictWWE.ColumnType);
                 BindDDL(ddlOrderType, SrnprWeb.WebEntity.GridShowColumnDictWWE.OrderType);
                 BindDDL(ddlShowDisplay, SrnprWeb.WebEntity.GridShowColumnDictWWE.ShowDisplay);
+                BindDDL(ddlExcelType, SrnprWeb.WebEntity.GridShowColumnDictWWE.ExcelType);
                 BindStyle(ddlStyle_TextAlign, "text-align");
                 
                 if (!string.IsNullOrEmpty(sColumnGuid))
@@ -54,8 +55,9 @@ namespace SrnprSite.Web.GridShow
                     TBColumnData.Text = column.ColumnData.Trim();
                     ddlColumnType.Items.FindByValue(column.ColumnType).Selected=true;
                     tbColumnShow.Text = column.ColumnShow.Trim();
-                    ddlShowDisplay.Items.FindByValue(column.ShowDisplay).Selected = true;
+                    ddlShowDisplay.Items.FindByValue(column.ExcelType).Selected = true;
                     ddlOrderType.Items.FindByValue(column.OrderType).Selected = true;
+                    ddlExcelType.Items.FindByValue(column.OrderType).Selected = true;
                     Dictionary<string, string> dictStyle = SrnprWeb.CommonFunction.StyleHelperWCF.GetDictByStyleString(column.Style);
                     if (dictStyle.ContainsKey("text-align")) ddlStyle_TextAlign.Items.FindByValue(dictStyle["text-align"].Trim()).Selected = true;
 

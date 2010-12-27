@@ -35,6 +35,7 @@ namespace SrnprWeb.WebEntity
         public string ShowDisplay { get; set; }
 
 
+
         
         /// <summary>
         /// Description: 排序方式（d:默认,a:默认正序,e:默认倒序,n:不排序）
@@ -43,5 +44,13 @@ namespace SrnprWeb.WebEntity
         /// </summary>
         [DataMember(Order = 3)]
         public string OrderType { get; set; }
+
+
+        /// <summary>
+        /// Excel导出类型  (d默认可导出  n不可导出)
+        /// </summary>
+        [DataMember(Order = 4)]
+        public string ExcelType { get; set; }
+
     }
 }

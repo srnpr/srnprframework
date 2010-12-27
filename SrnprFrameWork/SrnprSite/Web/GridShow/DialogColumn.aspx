@@ -48,6 +48,17 @@
                 </asp:DropDownList>
             </td>
         </tr>
+
+        <tr>
+            <td>
+                导出字段
+            </td>
+            <td>
+                <asp:DropDownList ID="ddlExcelType" runat="server">
+                </asp:DropDownList>
+            </td>
+        </tr>
+
         <tr>
             <td>
                 排序方式

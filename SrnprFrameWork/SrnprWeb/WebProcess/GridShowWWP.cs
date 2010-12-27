@@ -143,7 +143,7 @@ namespace SrnprWeb.WebProcess
 
                     var te = tJson.ShowColumn.SingleOrDefault(x => x.Guid == tc.Guid);
 
-                    if (te != null && GetSelectValue(te.ShowDisplay) == "d")
+                    if (te != null && GetSelectValue(te.ShowDisplay) == "d" && GetSelectValue(te.ExcelType) == "d")
                     {
                         dtOld.Columns[i].ColumnName = te.HeaderText;
 

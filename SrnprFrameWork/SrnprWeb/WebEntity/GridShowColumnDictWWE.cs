@@ -36,7 +36,8 @@ namespace SrnprWeb.WebEntity
                 dict.Add("d", "默认");
                 dict.Add("n", "不显示");
                 dict.Add("h", "永久隐藏");
-                dict.Add("e", "不显示但导出");
+                dict.Add("e", "不显示但可导出");
+               
                 return dict;
 
             }
@@ -56,6 +57,20 @@ namespace SrnprWeb.WebEntity
 
             }
         }
+
+
+        public static Dictionary<string, string> ExcelType
+        {
+            get
+            {
+                Dictionary<string, string> dict = new Dictionary<string, string>();
+                dict.Add("d", "默认可导出");
+                dict.Add("n", "不可导出字段");
+                return dict;
+
+            }
+        }
+
 
        
 

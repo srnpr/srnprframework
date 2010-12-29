@@ -60,6 +60,7 @@
     <Content Include="Demo\Dialog\BasePage.aspx" />
     <Content Include="Demo\Dialog\DialogFirst.aspx" />
     <Content Include="Demo\Dialog\DialogTwo.aspx" />
+    <Content Include="Demo\Widget\Upload.aspx" />
     <Content Include="Skin\Blue\dockmenu\css-dock-bottom.html" />
     <Content Include="Skin\Blue\dockmenu\css-dock-top.html" />
     <Content Include="Skin\Blue\dockmenu\css-dock.html" />
@@ -146,6 +147,13 @@
     </Compile>
     <Compile Include="Demo\Dialog\DialogTwo.aspx.designer.cs">
       <DependentUpon>DialogTwo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Demo\Widget\Upload.aspx.cs">
+      <DependentUpon>Upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Demo\Widget\Upload.aspx.designer.cs">
+      <DependentUpon>Upload.aspx</DependentUpon>
     </Compile>
     <Compile Include="Master\MasterDialog.Master.cs">
       <DependentUpon>MasterDialog.Master</DependentUpon>

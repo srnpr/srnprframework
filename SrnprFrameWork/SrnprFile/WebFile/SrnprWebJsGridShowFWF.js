@@ -843,17 +843,21 @@ if (SWW && !SWW.GS)
                  }
 
                  if (vl != "") {
+
+                     var sParamid = el.attr("paramid");
+
                      var jLength = t.length;
 
                      for (var i = 0, j = t.length; i < j; i++) {
-                         if (t[i].Key == n.paramid) {
+                         if (t[i].Key == sParamid) {
                              t[i].Value = t[i].Value + "," + vl;
                              jLength = -1;
                          }
                      }
 
                      if (jLength > -1) {
-                         t.push({ Key: n.paramid, Value: vl });
+
+                         t.push({ Key: sParamid, Value: vl });
 
                      }
 

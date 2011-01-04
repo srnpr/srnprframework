@@ -7,7 +7,7 @@
 
 <div>
     
-    
+    <input type="text" name="BFI_FoodName" paramid="BFI_FoodName" /><input type="button" onclick="SWW.GS.Query();" value="查询" />
     
     <div id="testshow" >
     <sw:GridShowWWW ID="GSShow" runat="server" />

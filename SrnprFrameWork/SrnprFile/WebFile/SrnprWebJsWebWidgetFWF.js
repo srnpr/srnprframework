@@ -176,7 +176,7 @@ if (!window.SWW)
                            } else {
                                date = snOptions.expires;
                            }
-                           expires = '; expires=' + date.toUTCString(); 
+                           expires = '; expires=' + date.toUTCString();
                        }
                        var path = snOptions.path ? '; path=' + (snOptions.path) : '';
                        var domain = snOptions.domain ? '; domain=' + (snOptions.domain) : '';
@@ -188,7 +188,7 @@ if (!window.SWW)
                            var cookies = document.cookie.split(';');
                            for (var i = 0; i < cookies.length; i++) {
                                var cookie = jQuery.trim(cookies[i]);
-                               
+
                                if (cookie.substring(0, sName.length + 1) == (sName + '=')) {
                                    cookieValue = decodeURIComponent(cookie.substring(sName.length + 1));
                                    break;
@@ -1249,6 +1249,14 @@ if (!window.SWW)
                            SWW.F.DOM.Display(this.Config.BgId, true);
                        }
                    },
+
+                   DefaultPosition: function (i) {
+
+                       return isNaN(i) ? i : (i + "px");
+
+                   },
+
+
                    Clear: function () {
                        this.ObjArray.pop();
 
@@ -1303,11 +1311,14 @@ if (!window.SWW)
                        var aH = [];
 
 
+                       var boxover = '<div id="' + o.guid + '" class="' + o.cssid + 'Box_Over" style=" top:' + this.DefaultPosition(o.top) + ';left:' + this.DefaultPosition(o.left) + ';">';
 
-                       aH.push('<div id="' + o.guid + '" class="' + o.cssid + 'Box_Over" style=" top:' + o.top + ';left:' + o.left + ';">');
+
+                       aH.push(boxover);
+
                        aH.push('<div class="' + o.cssid + 'Box_Back" >');
 
-                       aH.push('<div class="' + o.cssid + 'Box" style="width:' + o.width + ';">');
+                       aH.push('<div class="' + o.cssid + 'Box" style="width:' + this.DefaultPosition(o.width) + ';">');
 
 
                        //开始添加抬头
